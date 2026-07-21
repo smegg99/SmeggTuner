@@ -95,6 +95,17 @@ Section
     !insertmacro wails.associateCustomProtocols
     
     !insertmacro wails.writeUninstaller
+
+    # The product page, next to the entries wails.writeUninstaller put under ${UNINST_KEY}.
+    # Same scope switch as the macro: HKCU for a user install, HKLM otherwise.
+    SetRegView 64
+    !if "${WAILS_INSTALL_SCOPE}" == "user"
+        WriteRegStr HKCU "${UNINST_KEY}" "URLInfoAbout" "https://smeggtuner.com"
+        WriteRegStr HKCU "${UNINST_KEY}" "HelpLink" "https://smeggtuner.com"
+    !else
+        WriteRegStr HKLM "${UNINST_KEY}" "URLInfoAbout" "https://smeggtuner.com"
+        WriteRegStr HKLM "${UNINST_KEY}" "HelpLink" "https://smeggtuner.com"
+    !endif
 SectionEnd
 
 Section "uninstall" 

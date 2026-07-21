@@ -12,7 +12,7 @@ priority: "extra"
 maintainer: ${GIT_COMMITTER_NAME} <${GIT_COMMITTER_EMAIL}>
 description: "A free and open source accordion tuner for the desktop."
 vendor: "Smegg99"
-homepage: "https://smegg.me"
+homepage: "https://smeggtuner.com"
 license: "MIT"
 release: "1"
 
