@@ -1,0 +1,80 @@
+{
+  "app.name": "SmeggTuner",
+  "app.description": "Wolna i otwarta aplikacja do strojenia akordeonów.",
+  "tray.tooltip": "SmeggTuner",
+  "tray.show": "Pokaż",
+  "tray.quit": "Zakończ",
+  "report.title": "Raport strojenia",
+  "report.head.reed": "Głos {{.Index}}",
+  "report.head.beat": "Dud. {{.Pair}}",
+  "report.mark.merged": "Z",
+  "report.mark.derived": "D",
+  "report.mark.edited": "R",
+  "report.mark.envelope": "ob",
+  "report.facts.instrument": "Instrument",
+  "report.facts.reference": "Odniesienie A4 (ten przebieg)",
+  "report.facts.curve": "Krzywa docelowa",
+  "report.facts.tolerance": "Tolerancja",
+  "report.facts.toleranceValue": "{{.Reed}} c na głosie / {{.Beat}} c na dudnieniu",
+  "report.facts.curveUnnamed": "bez nazwy",
+  "report.facts.curveNone": "brak",
+  "report.facts.empty": "-",
+  "report.summary.notes": {
+    "one": "{{.PluralCount}} dźwięk",
+    "few": "{{.PluralCount}} dźwięki",
+    "many": "{{.PluralCount}} dźwięków",
+    "other": "{{.PluralCount}} dźwięku"
+  },
+  "report.summary.reeds": {
+    "one": "{{.PluralCount}} odczyt głosu",
+    "few": "{{.PluralCount}} odczyty głosów",
+    "many": "{{.PluralCount}} odczytów głosów",
+    "other": "{{.PluralCount}} odczytu głosów"
+  },
+  "report.summary.beats": {
+    "one": "{{.PluralCount}} dudnienie",
+    "few": "{{.PluralCount}} dudnienia",
+    "many": "{{.PluralCount}} dudnień",
+    "other": "{{.PluralCount}} dudnienia"
+  },
+  "report.summary.reedsShort": {
+    "one": "{{.PluralCount}} głos",
+    "few": "{{.PluralCount}} głosy",
+    "many": "{{.PluralCount}} głosów",
+    "other": "{{.PluralCount}} głosu"
+  },
+  "report.summary.line": "{{.Notes}} (od {{.Min}} do {{.Max}}), {{.Reeds}}, {{.Beats}}.",
+  "report.summary.out": {
+    "one": "{{.PluralCount}} dźwięk jest poza tolerancją ({{.Reeds}}, {{.Beats}}).",
+    "few": "{{.PluralCount}} dźwięki są poza tolerancją ({{.Reeds}}, {{.Beats}}).",
+    "many": "{{.PluralCount}} dźwięków jest poza tolerancją ({{.Reeds}}, {{.Beats}}).",
+    "other": "{{.PluralCount}} dźwięku jest poza tolerancją ({{.Reeds}}, {{.Beats}})."
+  },
+  "report.summary.allIn": "Wszystko, co zmierzono, mieści się w tolerancji.",
+  "report.summary.merged": {
+    "one": "{{.PluralCount}} dźwięk wrócił ze zlanymi głosami i jest opisany dudnieniem.",
+    "few": "{{.PluralCount}} dźwięki wróciły ze zlanymi głosami i są opisane dudnieniem.",
+    "many": "{{.PluralCount}} dźwięków wróciło ze zlanymi głosami i jest opisanych dudnieniem.",
+    "other": "{{.PluralCount}} dźwięku wróciło ze zlanymi głosami i jest opisane dudnieniem."
+  },
+  "report.table.title": "Tabela strojenia",
+  "report.table.note": "Dźwięk",
+  "report.table.register": "Rejestr",
+  "report.table.curr": "Jest",
+  "report.table.err": "Popr.",
+  "report.table.mergedWide": "Głosy się nie rozdzieliły: ten dźwięk nie ma odczytu osobno dla każdego głosu. Strój go według dudnienia.",
+  "report.table.mergedNarrow": "Głosy się nie rozdzieliły. Strój ten dźwięk według dudnienia.",
+  "report.graph.merged": "{{.Mark}} - głosy zlane.",
+  "report.graph.derived": "{{.Mark}} - głosy z dudnienia.",
+  "report.graph.edited": "{{.Mark}} - edytowane ręcznie.",
+  "report.legend.error.key": "Poprawka = Jest - Cel.",
+  "report.legend.error.body": "To, co trzeba zdjąć z głosu: piłuj w stronę zera. Jest i Cel podane są w centach od skali równomiernie temperowanej przy odniesieniu tego przebiegu, {{.A4}} Hz.",
+  "report.legend.error.noCurve": "Ta sesja nie ma krzywej docelowej, więc Cel jest zerem na każdym głosie, a Poprawka jest odchyłką od samej skali.",
+  "report.legend.takes.key": "xN",
+  "report.footer.reference": "odniesienie A4 {{.A4}} Hz",
+  "report.footer.generated": "Wygenerowano {{.At}} przez {{.App}}",
+  "report.mark.out": "!",
+  "report.legend.out.short": "poza tolerancją",
+  "report.legend.envelope.short": "dudnienie z obwiedni",
+  "report.legend.takes.short": "nagrane wielokrotnie, pokazano ostatnie"
+}

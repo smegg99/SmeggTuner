@@ -1,0 +1,77 @@
+{
+  "settings": {
+    "themeLabel": "Theme",
+    "themeHint": "Follow the desktop, or pin light or dark.",
+    "languageLabel": "Language",
+    "languageHint": "Interface language.",
+    "closeToTrayHint": "The X puts the app in the tray instead of ending it.",
+    "lockedWhileRunning": "Stop the tuner to change the audio input.",
+    "audioDeviceLabel": "Input device",
+    "audioDeviceHint": "The microphone the tuner listens on. Switching it restarts a running tuner.",
+    "audioDeviceSystemDefault": "Follow the system default",
+    "audioDeviceRefresh": "Refresh the device list",
+    "humFilterLabel": "Mains hum filter",
+    "humFilterHint": "Notch out mains hum the microphone picks up: 50 Hz in Europe, 60 Hz in North America.",
+    "humFilter50": "50 Hz",
+    "humFilter60": "60 Hz",
+    "clockPpmLabel": "Clock correction",
+    "clockPpmHint": "Corrects a sound card whose sample clock runs fast or slow, in parts per million. Leave it at 0 unless you have measured the offset.",
+    "clockPpmUnit": "ppm",
+    "a4Unit": "Hz",
+    "unitLabel": "Deviation unit",
+    "unitHint": "Show the deviation in cents or in hertz.",
+    "scaleNamingLabel": "Note naming",
+    "scaleNamingHint": "How notes are named. German naming writes H for B natural and B for B flat.",
+    "errorReferenceHint": "The same measurement, said two ways. Pick the one you have in your hands.",
+    "stopAfterLockHint": "The figure freezes the moment the tuner is sure of the note, and stays frozen until you move on. For filing: your hand comes off the keyboard and the number is still there.",
+    "themes": {
+      "auto": "System",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "scaleNamings": {
+      "cdefgab": "C D E F G A B (international, sharps as C#)",
+      "cdefgah": "C D E F G A H (German, sharps as C#)",
+      "polish": "C Cis D Dis E F Fis G Gis A Ais H (Polish)",
+      "doremi": "Do Re Mi (solfege)"
+    },
+    "toleranceUnit": "¢",
+    "toleranceLabel": "Tolerances",
+    "toleranceHint": "How close counts as in tune when no session is open. A session's own instrument sets its own, tighter or looser, and those win while it is open.",
+    "toleranceReed": "Reed",
+    "toleranceBeat": "Beat",
+    "accent": {
+      "label": "Accent",
+      "hint": "Follow the desktop's own accent, or pick one.",
+      "auto": "Desktop",
+      "custom": "Custom",
+      "pick": "Pick a colour",
+      "pickTitle": "Accent colour"
+    },
+    "groups": {
+      "audio": "Audio",
+      "reading": "Reading",
+      "appearance": "Appearance",
+      "behaviour": "Behaviour",
+      "report": "Your workshop"
+    },
+    "stopAfterLock": "Hold the reading once it locks",
+    "continuousManual": "Keep updating on a pinned note",
+    "continuousManualHint": "With a note pinned, the reading keeps moving even when the tuner is not certain. For watching a reed come into tune as you file it.",
+    "errorReference": "You drive to",
+    "errorReferenceScale": "The goal",
+    "errorReferenceGoal": "Zero",
+    "closeToTray": "Closing the window keeps it running",
+    "report": {
+      "name": "Workshop name",
+      "nameHint": "Printed at the head of a card, when you ask for a letterhead at export.",
+      "address": "Address",
+      "website": "Website",
+      "logo": "Logo",
+      "logoHint": "Embedded in the card itself, so it survives being emailed and printed from anywhere.",
+      "pickLogo": "Choose",
+      "clearLogo": "Remove the logo",
+      "noLogo": "No logo"
+    }
+  }
+}

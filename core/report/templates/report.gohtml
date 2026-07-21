@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+<meta charset="utf-8">
+<title>{{T "report.title"}} - {{.Identity.Session}}</title>
+<style>
+/*
+ * THE BENCH CARD, IN INK ONLY.
+ *
+ * It is printed, and printed on whatever is in the workshop - which is a laser with one
+ * cartridge in it. So there is no colour anywhere in this sheet: not a red for a reed out of
+ * tolerance, not a per-rank hue in a plot, not a tinted cell. A verdict carried by colour is a
+ * verdict that vanishes in grayscale, or costs a colour cartridge to keep.
+ *
+ * What carries meaning instead: a MARK beside the number, and weight. Both survive a fax.
+ *
+ * The whole style block is deliberately short. The sheet is a heading, some facts, one table
+ * and a legend - it was a page and a half of CSS with a plot, a shadowed page, tinted panels
+ * and eight custom properties, for a document nobody looks at on a screen.
+ */
+{{if .Layout.Landscape}}
+@page { size: A4 landscape; margin: 10mm; }
+{{else}}
+@page { size: A4 portrait; margin: 12mm 10mm; }
+{{end}}
+
+* { box-sizing: border-box; }
+
+html, body {
+  background: #fff;
+  color: #000;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10pt;
+  line-height: 1.35;
+  margin: 0;
+  padding: 0;
+}
+
+.sheet { margin: 0 auto; max-width: 210mm; padding: 10mm 8mm; }
+body.landscape .sheet { max-width: 297mm; }
+
+h1 { font-size: 15pt; margin: 0; }
+h2 { font-size: 10.5pt; margin: 12px 0 4px; }
+
+/* The one rule that separates the letterhead from the card. */
+.letterhead {
+  border-bottom: 1.5pt solid #000;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+}
+.letterhead img { max-height: 22mm; max-width: 60mm; object-fit: contain; }
+.letterhead .company { font-weight: 700; }
+.letterhead .lines { font-size: 9pt; white-space: pre-line; }
+
+.head { align-items: baseline; display: flex; gap: 12px; justify-content: space-between; }
+
+/* The facts, as plain label-and-value pairs across the page. No panel, no tint. */
+.facts {
+  display: grid;
+  gap: 2px 14px;
+  grid-template-columns: repeat(4, auto);
+  margin: 8px 0 0;
+}
+.facts dt { font-size: 8.5pt; text-transform: uppercase; }
+.facts dd { font-weight: 700; margin: 0 0 4px; }
+
+.summary, .notes { margin: 8px 0 0; }
+.notes { font-style: italic; }
+
+table { border-collapse: collapse; font-size: 9pt; table-layout: fixed; width: 100%; }
+caption { font-weight: 700; padding: 6px 0 2px; text-align: left; }
+th, td { padding: 2px 4px; text-align: right; white-space: nowrap; }
+/* The merged note's sentence is prose, and prose wraps. Nowrap on every cell is what let it
+   run out of its own colspan and across the beat columns. */
+.merged { text-align: left; white-space: normal; }
+th { border-bottom: 1pt solid #000; font-size: 8.5pt; }
+td { border-bottom: 0.4pt solid #999; }
+.note, th.note { text-align: left; white-space: nowrap; }
+.sep { border-left: 0.4pt solid #999; }
+.absent { color: #777; }
+
+/*
+ * OUT OF TOLERANCE IS BOLD AND MARKED, never coloured. The mark is what a photocopy keeps.
+ *
+ * The mark is written into the cell rather than added by CSS. As an ::after it was appended
+ * to everything the cell held, and a beat cell holds the hertz rate on a line of its own -
+ * so the mark landed underneath it, a row down from the number it belonged to.
+ */
+.out { font-weight: 700; }
+
+/* The row marks - merged, derived, edited - are letters, set small beside the note. */
+.mark { font-size: 7.5pt; padding-left: 2px; vertical-align: super; }
+.hz { display: block; font-size: 7.5pt; }
+
+.tables { display: grid; gap: 10px 14px; grid-template-columns: 1fr 1fr; }
+
+.legend { font-size: 8.5pt; margin-top: 10px; }
+.legend p { margin: 0 0 3px; }
+/* The marks, along one line rather than down a column of paragraphs. */
+.keys { display: flex; flex-wrap: wrap; gap: 2px 14px; }
+.legend .key { font-weight: 700; }
+
+footer {
+  border-top: 0.4pt solid #999;
+  display: flex;
+  font-size: 8pt;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-top: 4px;
+}
+
+/*
+ * A LINK THAT PRINTS AS TEXT. The href is real - a PDF written from this page keeps it
+ * clickable, and so does the browser - but a default anchor is blue and underlined, which is
+ * the one thing this sheet does not do. It is set in ink like everything around it.
+ */
+a { color: inherit; text-decoration: none; }
+
+@media print {
+  .sheet { padding: 0; }
+  table { page-break-inside: auto; }
+  tr { page-break-inside: avoid; }
+  thead { display: table-header-group; }
+}
+</style>
+</head>
+<body class="{{.Layout.Class}}">
+<main class="sheet">
+
+{{with .Letterhead}}
+<div class="letterhead">
+  {{with logo .Logo}}<img src="{{.}}" alt="">{{end}}
+  <div>
+    {{with .CompanyName}}<div class="company">{{.}}</div>{{end}}
+    {{with .CompanyAddress}}<div class="lines">{{.}}</div>{{end}}
+    {{/* The technician's own site, clickable where the card is read on a screen or as a PDF,
+         and still just the address where it is read on paper. */}}
+    {{with .CompanyWebsite}}<div class="lines">{{$u := site .}}{{if $u}}<a href="{{$u}}">{{.}}</a>{{else}}{{.}}{{end}}</div>{{end}}
+  </div>
+</div>
+{{end}}
+
+<header class="head">
+  <h1>{{.Identity.Session}}</h1>
+  <div class="when">{{date .Date}}</div>
+</header>
+
+<dl class="facts">
+  <div>
+    <dt>{{T "report.facts.instrument"}}</dt>
+    <dd>{{if or .Identity.Make .Identity.Model}}{{.Identity.Make}} {{.Identity.Model}}{{else}}-{{end}}{{with .Identity.Serial}} / {{.}}{{end}}</dd>
+  </div>
+  <div>
+    <dt>{{T "report.facts.reference"}}</dt>
+    <dd>{{freq .Session.A4}} Hz</dd>
+  </div>
+  <div>
+    <dt>{{T "report.facts.tolerance"}}</dt>
+    <dd>{{Tf "report.facts.toleranceValue" "Reed" (tol .Summary.Tolerance) "Beat" (tol .Summary.BeatTol)}}</dd>
+  </div>
+  <div>
+    <dt>{{T "report.facts.curve"}}</dt>
+    <dd>{{if .Identity.HasCurve}}{{if .Identity.CurveName}}{{.Identity.CurveName}}{{else}}{{T "report.facts.curveUnnamed"}}{{end}}{{else}}{{T "report.facts.curveNone"}}{{end}}</dd>
+  </div>
+</dl>
+
+<p class="summary">
+  {{Tf "report.summary.line"
+      "Notes" (Tn "report.summary.notes" .Summary.Notes)
+      "Min" .Summary.MinName "Max" .Summary.MaxName
+      "Reeds" (Tn "report.summary.reeds" .Summary.Reeds)
+      "Beats" (Tn "report.summary.beats" .Summary.Beats)}}
+  {{if .Summary.NotesOut}}{{Tn "report.summary.out" .Summary.NotesOut
+      "Reeds" (Tn "report.summary.reedsShort" .Summary.ReedsOut)
+      "Beats" (Tn "report.summary.beats" .Summary.BeatsOut)}}
+  {{else}}{{T "report.summary.allIn"}}{{end}}
+  {{if .Summary.Merged}}{{Tn "report.summary.merged" .Summary.Merged}}{{end}}
+</p>
+
+{{with .Identity.Notes}}<p class="notes">{{.}}</p>{{end}}
+
+{{if .Layout.Grouped}}{{template "grouped" .}}{{else}}{{template "wide" .}}{{end}}
+
+<div class="legend">
+  <!--
+    A KEY, NOT AN ESSAY.
+
+    This was seven paragraphs and it took a third of the page - a full explanation of what a
+    merged reed is, printed on every card, for a technician who knows what a merged reed is.
+    The marks are what a reader actually needs looking up, so it is the marks, one line each,
+    and the sentence that says what Error means because that is the number he files by.
+  -->
+  <p><span class="key">{{T "report.legend.error.key"}}</span> {{Tf "report.legend.error.body" "A4" (freq .Session.A4)}}
+  {{if not .Identity.HasCurve}}{{T "report.legend.error.noCurve"}}{{end}}</p>
+  <!--
+    Each mark and its meaning as ONE phrase, not a styled glyph followed by prose. A span
+    between the mark and its dash splits the line into two text nodes, so "M - reeds merged"
+    stops being a thing anyone - a reader, a search, a test - can find in the document.
+  -->
+  <p class="keys">
+    <span>{{T "report.mark.out"}} - {{T "report.legend.out.short"}}</span>
+    {{if .Summary.Merged}}<span>{{Tf "report.graph.merged" "Mark" (T "report.mark.merged")}}</span>{{end}}
+    {{if .Summary.Derived}}<span>{{Tf "report.graph.derived" "Mark" (T "report.mark.derived")}}</span>{{end}}
+    {{if .Summary.Manual}}<span>{{Tf "report.graph.edited" "Mark" (T "report.mark.edited")}}</span>{{end}}
+    {{if .Summary.Beats}}<span>{{T "report.mark.envelope"}} - {{T "report.legend.envelope.short"}}</span>{{end}}
+    <span>{{T "report.legend.takes.key"}} - {{T "report.legend.takes.short"}}</span>
+  </p>
+</div>
+
+<footer>
+  <span>{{.Identity.Session}} - {{stamp .Session.At}} - {{Tf "report.footer.reference" "A4" (freq .Session.A4)}}</span>
+  <span>{{Tf "report.footer.generated" "At" (stamp .Generated) "App" "SmeggTuner"}} - <a href="{{home}}">{{homeLabel}}</a></span>
+</footer>
+
+</main>
+
+</body>
+</html>
+
+{{/* The bench table: one row per note, every reed and every beat across it. */}}
+{{define "wide"}}
+<h2>{{T "report.table.title"}}</h2>
+<table>
+  <thead>
+    <tr>
+      <th class="note" rowspan="2">{{T "report.table.note"}}</th>
+      {{if .MultiRegister}}<th class="note" rowspan="2">{{T "report.table.register"}}</th>{{end}}
+      {{range $i, $reed := .Reeds}}<th colspan="2" class="sep">{{$.Head $i}}</th>{{end}}
+      {{range .Pairs}}<th colspan="2" class="sep">{{Tf "report.head.beat" "Pair" .Key}}</th>{{end}}
+    </tr>
+    <tr>
+      {{range .Reeds}}<th class="sep">{{T "report.table.curr"}}</th><th>{{T "report.table.err"}}</th>{{end}}
+      {{range .Pairs}}<th class="sep">{{T "report.table.curr"}}</th><th>{{T "report.table.err"}}</th>{{end}}
+    </tr>
+  </thead>
+  <tbody>
+    {{range $row := .Rows}}
+    <tr>
+      <td class="note">{{$row.Name}}{{template "marks" $row}}</td>
+      {{if $.MultiRegister}}<td class="note">{{if $row.Register}}{{$row.Register}}{{else}}-{{end}}</td>{{end}}
+      {{if $row.Merged}}
+      <td class="merged sep" colspan="{{$.ReedSpan}}">{{T "report.table.mergedWide"}}</td>
+      {{else}}
+        {{range $i, $reed := $.Reeds}}
+          {{$c := cell $row.Reeds $i}}
+          {{if $c.Present}}
+          <td class="sep{{if not $c.InTol}} out{{end}}">{{cents $c.Curr}}{{if not $c.InTol}}&#160;{{T "report.mark.out"}}{{end}}</td>
+          <td{{if not $c.InTol}} class="out"{{end}}>{{cents $c.Error}}</td>
+          {{else}}
+          <td class="sep absent">-</td><td class="absent">-</td>
+          {{end}}
+        {{end}}
+      {{end}}
+      {{range $i, $pair := $.Pairs}}
+        {{$b := beat $row.Beats $i}}
+        {{if $b.Present}}
+        <td class="sep{{if not $b.InTol}} out{{end}}">{{cents $b.Curr}}{{if not $b.InTol}}&#160;{{T "report.mark.out"}}{{end}}{{if $b.FromEnvelope}}<span class="mark">{{T "report.mark.envelope"}}</span>{{end}}<span class="hz">{{hz $b.CurrHz}}</span></td>
+        <td{{if not $b.InTol}} class="out"{{end}}>{{cents $b.Error}}</td>
+        {{else}}
+        <td class="sep absent">-</td><td class="absent">-</td>
+        {{end}}
+      {{end}}
+    </tr>
+    {{end}}
+  </tbody>
+</table>
+{{end}}
+
+{{/* Past five reeds the bench table is wider than any paper, so it becomes one
+     narrow table per reed and per beat pair - four columns, which fit anything. */}}
+{{define "grouped"}}
+<h2>{{T "report.table.title"}}</h2>
+<div class="tables">
+{{range $i, $reed := .Reeds}}
+<table>
+  <caption>{{$.Head $i}}</caption>
+  <thead>
+    <tr><th class="note">{{T "report.table.note"}}</th><th>{{T "report.table.curr"}}</th><th>{{T "report.table.err"}}</th></tr>
+  </thead>
+  <tbody>
+    {{range $row := $.Rows}}
+    <tr>
+      <td class="note">{{$row.Name}}{{template "marks" $row}}</td>
+      {{if $row.Merged}}
+      <td class="merged" colspan="2">{{T "report.table.mergedNarrow"}}</td>
+      {{else}}
+        {{$c := cell $row.Reeds $i}}
+        {{if $c.Present}}
+        <td{{if not $c.InTol}} class="out"{{end}}>{{cents $c.Curr}}{{if not $c.InTol}}&#160;{{T "report.mark.out"}}{{end}}</td>
+        <td{{if not $c.InTol}} class="out"{{end}}>{{cents $c.Error}}</td>
+        {{else}}
+        <td class="absent">-</td><td class="absent">-</td>
+        {{end}}
+      {{end}}
+    </tr>
+    {{end}}
+  </tbody>
+</table>
+{{end}}
+{{range $i, $pair := .Pairs}}
+<table>
+  <caption>{{Tf "report.head.beat" "Pair" $pair.Key}}</caption>
+  <thead>
+    <tr><th class="note">{{T "report.table.note"}}</th><th>{{T "report.table.curr"}}</th><th>{{T "report.table.err"}}</th></tr>
+  </thead>
+  <tbody>
+    {{range $row := $.Rows}}
+    <tr>
+      <td class="note">{{$row.Name}}{{template "marks" $row}}</td>
+      {{$b := beat $row.Beats $i}}
+      {{if $b.Present}}
+      <td{{if not $b.InTol}} class="out"{{end}}>{{cents $b.Curr}}{{if not $b.InTol}}&#160;{{T "report.mark.out"}}{{end}}{{if $b.FromEnvelope}}<span class="mark">{{T "report.mark.envelope"}}</span>{{end}}<span class="hz">{{hz $b.CurrHz}}</span></td>
+      <td{{if not $b.InTol}} class="out"{{end}}>{{cents $b.Error}}</td>
+      {{else}}
+      <td class="absent">-</td><td class="absent">-</td>
+      {{end}}
+    </tr>
+    {{end}}
+  </tbody>
+</table>
+{{end}}
+</div>
+{{end}}
+
+{{define "marks"}}
+{{- if .Merged}}<span class="mark">{{T "report.mark.merged"}}</span>{{end -}}
+{{- if .Derived}}<span class="mark">{{T "report.mark.derived"}}</span>{{end -}}
+{{- if .Manual}}<span class="mark">{{T "report.mark.edited"}}</span>{{end -}}
+{{end}}

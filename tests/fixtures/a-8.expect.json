@@ -1,0 +1,8 @@
+{
+  "comment": "technician-supplied reference sample, 2026-07-11 (A '8 clarinet register)",
+  "reeds": 1,
+  "a4": 440,
+  "note": "A4",
+  "freqs": [441.6856],
+  "freqTol": 0.15
+}

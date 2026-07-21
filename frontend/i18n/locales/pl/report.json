@@ -1,0 +1,13 @@
+{
+  "report": {
+    "error": {
+      "invalidFormat": "W tym formacie raportu nie da się zapisać.",
+      "invalidDate": "To nie jest data. Wybierz ją z kalendarza.",
+      "logoUnreadable": "Nie udało się wczytać logo. Raport ma obraz osadzony w środku, więc musi to być prawdziwy obraz i mniejszy niż megabajt.",
+      "renderFailed": "Nie udało się zbudować raportu. Nic nie zostało zapisane.",
+      "noBrowser": "PDF składa przeglądarka, a na tym komputerze nie ma Chrome ani Chromium. Zainstaluj jedną z nich albo wyeksportuj kartę jako HTML i wydrukuj ją.",
+      "writeFailed": "Nie udało się zapisać raportu w tym miejscu. Poprzedni plik, jeśli był, pozostał nietknięty.",
+      "openFailed": "Raport został zapisany, ale żadna przeglądarka go nie otworzyła. Otwórz plik samodzielnie."
+    }
+  }
+}

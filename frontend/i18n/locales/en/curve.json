@@ -1,0 +1,29 @@
+{
+  "curve": {
+    "fitPass": "no notes | one note | {count} notes",
+    "table": {
+      "entries": "no entries | one entry | {count} entries",
+      "clearBody": "There is nothing to clear. | The one entry in this list will be removed. | All {count} entries in this list will be removed."
+    },
+    "rank": "Rank",
+    "interpolate": "Interpolate",
+    "interpolateHint": "Follow the line between anchors. Off, each anchor holds until the next one.",
+    "clearAll": "Clear curve",
+    "clearAllHint": "Take every anchor out and leave the goal at the scale pitch.",
+    "clearAllTitle": "Clear the whole curve?",
+    "clearAllConfirm": "Every anchor is taken out. The goal goes back to the scale pitch for every note, and the tuner becomes a plain indicator.",
+    "startHint": "No anchors yet. The goal is the scale pitch for every note.",
+    "set": "Set",
+    "setHint": "Put an anchor on this note for the rank selected.",
+    "remove": "Remove",
+    "removeHint": "Take this note’s anchor out of the curve.",
+    "helpTitle": "Desired beatings",
+    "help": {
+      "lead": "The goal you are tuning toward: how far each reed should sit from its scale pitch, note by note. A recorded reed is read against this, so the table calls it in or out against your target, not against dead-centre.",
+      "setTitle": "Setting a point",
+      "set": "Pick a note and a value and press Set, or drag a point on the chart up or down. Each rank is its own line, and the one you are editing is highlighted.",
+      "interpTitle": "Between the points",
+      "interp": "With Interpolate on, notes between your anchors follow the line; off, each anchor holds until the next. With no anchors the goal is the scale pitch everywhere."
+    }
+  }
+}

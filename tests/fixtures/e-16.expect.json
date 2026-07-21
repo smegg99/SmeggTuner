@@ -1,0 +1,8 @@
+{
+  "comment": "technician-supplied reference sample, 2026-07-11 (E '16 bassoon register)",
+  "reeds": 1,
+  "a4": 440,
+  "note": "E3",
+  "freqs": [165.7684],
+  "freqTol": 0.15
+}

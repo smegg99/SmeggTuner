@@ -1,0 +1,18 @@
+{
+  "common": {
+    "cancel": "Anuluj",
+    "accept": "Zatwierdź",
+    "save": "Zapisz",
+    "delete": "Usuń",
+    "close": "Zamknij",
+    "website": "Strona",
+    "yes": "Tak",
+    "no": "Nie",
+    "back": "Wstecz",
+    "color": {
+      "hue": "Barwa",
+      "saturation": "Nasycenie",
+      "value": "Jasność"
+    }
+  }
+}

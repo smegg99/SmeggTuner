@@ -1,0 +1,13 @@
+{
+  "title": {
+    "room": {
+      "tune": "strojenie",
+      "workshop": "warsztat",
+      "settings": "ustawienia",
+      "calibrate": "kalibracja"
+    },
+    "session": "{room} {name}",
+    "progress": "{room} {name} {done}/{total}",
+    "count": "{room} {name} ({done})"
+  }
+}

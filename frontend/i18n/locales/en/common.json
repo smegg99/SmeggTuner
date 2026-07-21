@@ -1,0 +1,18 @@
+{
+  "common": {
+    "cancel": "Cancel",
+    "accept": "Accept",
+    "save": "Save",
+    "delete": "Delete",
+    "close": "Close",
+    "website": "Website",
+    "yes": "Yes",
+    "no": "No",
+    "back": "Back",
+    "color": {
+      "hue": "Hue",
+      "saturation": "Saturation",
+      "value": "Value"
+    }
+  }
+}

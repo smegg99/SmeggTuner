@@ -1,0 +1,56 @@
+{
+  "record": {
+    "controls": {
+      "takes": "no takes | one take | {count} takes",
+      "clearConfirm": "There is nothing to clear. | The one take in this pass will be thrown away. This cannot be undone. | All {count} takes in this pass will be thrown away. This cannot be undone."
+    },
+    "table": {
+      "label": "Recorded tuning",
+      "helpTitle": "About this table",
+      "notes": "no notes | one note | {count} notes",
+      "empty": "Play through the instrument with record armed. Every locked tone lands here.",
+      "note": "Note",
+      "reed": "Reed {index}",
+      "beat": "Beating {pair}",
+      "unitLabel": "Unit",
+      "cent": "Cent",
+      "hertz": "Hertz",
+      "unitHint": "The whole table, in either unit. A reed is filed in cents and a beat is heard as a rate, and every number here arrived from the tuner in both.",
+      "merged": "Reeds merged",
+      "mergedHint": "The spectrum could not separate this note's reeds: what it returned are lobes of one merged pair, not one reed each. Numbers written against them would send you to file a reed that is not there, so they are not printed. The beat is the honest reading of this note, and it is what to tune by.",
+      "derived": "Reeds from the beat",
+      "derivedHint": "These reeds were too close to separate in the spectrum, so the tuner measured the beat between them and read the reeds back off it. They are real readings, arrived at by another route.",
+      "manual": "Edited",
+      "manualHint": "A value in this row was typed, not heard.",
+      "takesHint": "one take of this note | {count} takes of this note, and the last of them is shown",
+      "envelopeHint": "This beat was read off the amplitude envelope rather than the spectrum, which is how a pair too close to separate is still measured.",
+      "delete": "Remove this reading",
+      "deleteTitle": "Remove this reading?",
+      "deleteHint": "This reading is thrown away and cannot be brought back. Play the note again and the tuner will record a new one in its place."
+    },
+    "report": {
+      "title": "Tuning card",
+      "pass": "Pass: {label}",
+      "format": "Format",
+      "html": "HTML",
+      "pdf": "PDF",
+      "csv": "CSV",
+      "formatHint": "PDF is the card as one A4 page, laid out the way it prints. HTML is the same sheet as a web page. CSV is the table for a spreadsheet.",
+      "date": "Date",
+      "export": "Export"
+    },
+    "error": {
+      "reedsMerged": "This note's reeds never separated, so there is no single reed to correct. What the tuner knows about it is the beat between them.",
+      "takeNotFound": "That take is no longer in the pass.",
+      "unexpected": "Something went wrong that the app has no name for. The action was not carried out."
+    },
+    "arm": {
+      "hint": "Record a take on every lock",
+      "warmup": "Not recording: play freely, nothing is saved. Press to start recording.",
+      "needsSession": "Open a session to record"
+    },
+    "undo": {
+      "hint": "Undo the last take"
+    }
+  }
+}

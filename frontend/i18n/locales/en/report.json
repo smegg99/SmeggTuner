@@ -1,0 +1,13 @@
+{
+  "report": {
+    "error": {
+      "invalidFormat": "That is not a format this report can be written in.",
+      "invalidDate": "That date is not a date. Use the picker.",
+      "logoUnreadable": "That logo could not be read. The report carries the image inside itself, so it has to be a real image and under a megabyte.",
+      "renderFailed": "The report could not be built. Nothing was written.",
+      "noBrowser": "A PDF is laid out by a browser, and there is no Chrome or Chromium on this machine to do it with. Install one, or export the card as HTML and print that.",
+      "writeFailed": "The report could not be written there. The old file, if there was one, is untouched.",
+      "openFailed": "The report was written, but no browser would open it. Open the file yourself."
+    }
+  }
+}

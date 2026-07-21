@@ -1,0 +1,188 @@
+{
+  "session": {
+    "title": "Sesje",
+    "new": "Nowa sesja",
+    "empty": "Brak sesji",
+    "emptyHint": "Załóż sesję dla instrumentu na warsztacie albo po prostu otwórz tuner: działa bez sesji.",
+    "card": {
+      "a4": "A = {hz} Hz",
+      "reeds": "brak głosów | {count} głos | {count} głosy | {count} głosów",
+      "hasCurve": "Krzywa docelowa ustawiona",
+      "updated": "Zmieniono {when}",
+      "unnamedInstrument": "Instrument bez nazwy",
+      "changed": "Instrument na półce zmienił się od nagrania tej sesji.",
+      "readings": "brak odczytów | {count} odczyt | {count} odczyty | {count} odczytów"
+    },
+    "dialog": {
+      "newTitle": "Nowa sesja",
+      "create": "Utwórz",
+      "name": "Nazwa sesji",
+      "nameHint": "Cokolwiek, po czym ją poznasz: instrument albo czyj jest",
+      "nameRequired": "Nadaj sesji nazwę",
+      "a4": "Wysokość odniesienia",
+      "a4Hint": "Własne A tego instrumentu. Zmierz je, zanim założysz 440.",
+      "notes": "Notatki",
+      "instrument": "Instrument",
+      "instrumentNone": "Nieopisany",
+      "instrumentHint": "Wybierz akordeon, a jego chóry głosowe ustawią się same. Zostaw puste, jeśli nie wiesz: tuner działa tak czy inaczej.",
+      "namePlaceholder": "Czyj to akordeon?",
+      "says": "Chóry głosowe {banks} i {registers} rejestrów. Ustawione za ciebie: nigdy nie musisz mówić, z którego chóru pochodzi odczyt. | Chóry głosowe {banks} i {registers} rejestr. Ustawione za ciebie: nigdy nie musisz mówić, z którego chóru pochodzi odczyt. | Chóry głosowe {banks} i {registers} rejestry. Ustawione za ciebie: nigdy nie musisz mówić, z którego chóru pochodzi odczyt. | Chóry głosowe {banks} i {registers} rejestrów. Ustawione za ciebie: nigdy nie musisz mówić, z którego chóru pochodzi odczyt.",
+      "saysNothing": "Nie nazwano chórów głosowych, więc tabela numeruje kolumny zamiast je nazywać. To w porządku, instrument możesz wybrać później."
+    },
+    "delete": "Usuń",
+    "footer": {
+      "none": "Brak sesji",
+      "coverage": "{done} / {total} dźwięków",
+      "inTune": "{done} / {total} nastrojonych"
+    },
+    "error": {
+      "unexpected": "Coś poszło nie tak.",
+      "noSession": "Żadna sesja nie jest otwarta.",
+      "notFound": "Nie ma takiej sesji.",
+      "loadFailed": "Nie udało się odczytać sesji.",
+      "saveFailed": "Nie udało się zapisać sesji. Jeśli teraz zamkniesz, ostatnie nagrania mogą przepaść.",
+      "invalidName": "Nadaj sesji nazwę.",
+      "invalidA4": "Wysokość odniesienia musi mieścić się w zakresie 430-450 Hz.",
+      "invalidReedCount": "Instrument gra od 1 do 8 głosów na jednym dźwięku.",
+      "invalidNote": "Ten dźwięk jest poza zakresem tunera.",
+      "invalidReed": "Ten instrument nie ma takiego głosu.",
+      "invalidUnit": "Wartości podaje się w centach albo hercach.",
+      "invalidValue": "To nie jest liczba.",
+      "fitFailed": "Nie udało się dopasować krzywej do tego przebiegu.",
+      "noCurve": "Ta sesja nie ma krzywej docelowej.",
+      "invalidInstrument": "Tego instrumentu nie można użyć: chór głosowy nazwany dwa razy albo rejestr używa chóru, którego instrument nie ma.",
+      "noRegister": "Ten akordeon nie ma takiego rejestru.",
+      "instrumentName": "Nadaj instrumentowi nazwę, żeby go potem znaleźć.",
+      "notAnImage": "Ten plik nie jest zdjęciem.",
+      "imageUnreadable": "Nie udało się otworzyć tego zdjęcia.",
+      "hasReadings": "Ta sesja ma już odczyty: wszystkie zmierzono względem jej odniesienia i liczby głosów, więc żadnego z nich nie da się teraz zmienić.",
+      "takeNotFound": "Nie ma już tego odczytu.",
+      "noReadings": "W tej sesji nic jeszcze nie nagrano."
+    },
+    "export": "Eksportuj sesję",
+    "deleteTitle": "Usunąć tę sesję?",
+    "deleteHint": "Wszystko, co nagrano na tym akordeonie, znika razem z nią: każdy przebieg, każdy odczyt i krzywa docelowa. Nie da się tego odtworzyć z dźwięku ani cofnąć.",
+    "file": {
+      "openTitle": "Wybierz plik sesji",
+      "openFilter": "sesja smeggtuner",
+      "exportSessionTitle": "Eksportuj sesję"
+    },
+    "readings": {
+      "empty": "Nic jeszcze nie nagrano. Otwórz tuner i zagraj na instrumencie: to, co złapiesz, wyląduje tutaj.",
+      "notes": "brak dźwięków | jeden dźwięk | {n} dźwięki | {n} dźwięków"
+    }
+  },
+  "sessionPage": {
+    "tabs": {
+      "curve": "Żądane dudnienia",
+      "recorded": "Nagrane strojenie"
+    }
+  },
+  "instrument": {
+    "title": "Instrumenty",
+    "sections": {
+      "identity": "Oznaczenie",
+      "reference": "Odniesienie i tolerancja",
+      "keyboard": "Klawiatura",
+      "voices": "Rejestry"
+    },
+    "new": "Opisz instrument",
+    "export": "Eksportuj",
+    "edit": "Edytuj",
+    "delete": "Usuń",
+    "photo": "Zdjęcie",
+    "empty": "Brak instrumentów",
+    "emptyHint": "Akordeon opisuje się raz i używa w każdej sesji na nim: jego chóry głosowe i rejestry. Zaimportuj instrument, który ktoś ci przysłał, albo opisz ten na warsztacie.",
+    "newTitle": "Opisz instrument",
+    "editTitle": "Edytuj instrument",
+    "name": "Nazwa",
+    "nameHint": "Jak nazywasz ten akordeon. Twoja nazwa; nic jej nie tłumaczy.",
+    "namePlaceholder": "Hohner Morino V N",
+    "nameRequired": "Nadaj nazwę, żeby go potem znaleźć",
+    "make": "Marka",
+    "model": "Model",
+    "registersHint": "Klikaj kropki symbolu każdego rejestru - kółka wygrawerowanego na akordeonie - albo wybierz typowy. To, co gra, odczytuje się prosto z kropek.",
+    "says": "Chóry głosowe {banks}. Najszerszy rejestr uruchamia {reeds} głosów. | Chóry głosowe {banks}. Najszerszy rejestr uruchamia {reeds} głos. | Chóry głosowe {banks}. Najszerszy rejestr uruchamia {reeds} głosy. | Chóry głosowe {banks}. Najszerszy rejestr uruchamia {reeds} głosów.",
+    "deleteTitle": "Usunąć ten instrument?",
+    "deleteHint": "Opis i zdjęcie znikają. Sesje już nagrane na nim pozostają nietknięte: każda niesie własną kopię instrumentu i nadal się otworzy, wydrukuje i będzie znaczyć to co znaczyła.",
+    "card": {
+      "unnamed": "Bez nazwy",
+      "noBanks": "brak nazwanych chórów",
+      "registers": "brak rejestrów | jeden rejestr | {n} rejestry | {n} rejestrów"
+    },
+    "file": {
+      "openTitle": "Wybierz plik instrumentu",
+      "exportTitle": "Eksportuj instrument",
+      "filterName": "instrument smeggtuner",
+      "imageTitle": "Wybierz zdjęcie",
+      "imageFilter": "Obrazy"
+    },
+    "builder": {
+      "high": "4 stopy (pikolo)",
+      "middle": "8 stóp (głosy)",
+      "low": "16 stóp (bas)",
+      "add": "Dodaj",
+      "remove": "Usuń ten rejestr",
+      "none": "Brak rejestrów. Wybierz typowy albo zbuduj na kropkach.",
+      "custom": "Nietypowy rejestr"
+    },
+    "range": {
+      "label": "Zakres klawiatury",
+      "hint": "Opcjonalne. Najniższy i najwyższy klawisz. Możesz też ustawić go słuchowo podczas kalibracji.",
+      "to": "do",
+      "down": "Niżej",
+      "up": "Wyżej",
+      "clear": "Wyczyść",
+      "backwards": "Klawiatura idzie od najniższego do najwyższego."
+    },
+    "a4": "Wysokość odniesienia",
+    "a4Hint": "Strojenie tego akordeonu: 442 na starym, 440 na nowszym. Każda sesja na nim zaczyna od tej wartości.",
+    "tolerance": "Tolerancja głosu",
+    "toleranceHint": "O ile centów głos może odbiegać, zanim zostanie uznany za rozstrojony. Własna dla tego akordeonu; koncertowy trzyma się ciaśniej niż ludowy.",
+    "beatTolerance": "Tolerancja dudnienia"
+  },
+  "workshop": {
+    "label": "Warsztat",
+    "exit": "Wyjdź z sesji",
+    "print": "Drukuj kartę",
+    "import": "Importuj",
+    "open": "Otwórz"
+  },
+  "calibrate": {
+    "title": "Kalibracja",
+    "start": "Kalibruj",
+    "leave": "Wyjdź z kalibracji",
+    "needsSession": "Najpierw otwórz sesję. Kalibracja mierzy na akordeonie, na którym nagrywana jest sesja.",
+    "status": {
+      "play": "Zagraj dźwięk",
+      "listening": "Słucham",
+      "holding": "Trzymaj",
+      "captured": "Mam",
+      "loud": "Za głośno"
+    },
+    "range": {
+      "step": "Klawiatura",
+      "playLow": "Zagraj najniższy klawisz.",
+      "playHigh": "Teraz zagraj najwyższy klawisz.",
+      "capture": "Zapisz",
+      "lowest": "Najniższy",
+      "highest": "Najwyższy",
+      "again": "Od nowa",
+      "next": "Dalej, do głosów",
+      "backwards": "Najwyższy wyszedł niżej niż najniższy. Zagraj je na odwrót."
+    },
+    "sweep": {
+      "step": "Głosy",
+      "pickRegister": "Który rejestr kalibrujesz?",
+      "noRegisters": "Ten akordeon nie ma opisanych rejestrów. Skan i tak działa; odczyty trafiają do numerowanych kolumn.",
+      "startPlain": "Zacznij skan",
+      "redoRange": "Popraw klawiaturę",
+      "progress": "{done} z {total}",
+      "skip": "Pomiń",
+      "stop": "Zatrzymaj",
+      "done": "Zeskanowano. {n} odczytów na karcie. | Zeskanowano. {n} odczyt na karcie. | Zeskanowano. {n} odczyty na karcie. | Zeskanowano. {n} odczytów na karcie.",
+      "review": "Zobacz kartę",
+      "again": "Kalibruj ponownie"
+    }
+  }
+}

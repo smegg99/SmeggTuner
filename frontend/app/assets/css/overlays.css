@@ -1,0 +1,71 @@
+/* Vuetify teleports overlays into .v-overlay-container, outside .window, so cqh loses its
+   container context and Vuetify's px/rem sizing mismatches the cqh-sized app. Making
+   .v-application the size container fixes both. These rules are global/unscoped deliberately:
+   scoped styles can't reliably reach teleported content. */
+
+/* :root duplicates these because a v-dialog teleports into .v-overlay-container, outside
+   .v-application, and can't see them there; at :root cqw resolves against the viewport. */
+:root {
+  --dlg-sm: 40cqw;
+  --dlg-md: 58cqw;
+  --dlg-lg: 76cqw;
+}
+
+.v-application {
+  --dlg-sm: 40cqw;
+  --dlg-md: 58cqw;
+  --dlg-lg: 76cqw;
+
+  container-type: size;
+  height: 100dvh;
+  width: 100vw;
+}
+
+/* App-wide user-select:none - it's an instrument, not a document; inputs opt back in below.
+   The -webkit- prefix is required: the WebKit/WebKitGTK webviews this ships in ignore the unprefixed property. */
+.v-application,
+.v-overlay-container {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.v-application input,
+.v-application textarea,
+.v-overlay-container input,
+.v-overlay-container textarea {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Menus are custom UiMenuSheet/UiMenuItem; v-menu is kept only for anchoring, focus-trap and escape. */
+
+/* Only the card ground is styled here; each dialog's structure lives in UiDialogCard's scoped CSS. */
+.v-overlay .v-card {
+  background: rgb(var(--v-theme-chrome));
+  border: 1px solid rgb(var(--v-theme-line));
+  border-radius: 2px;
+}
+
+.v-overlay .v-btn {
+  font-size: 1.75cqh;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.v-overlay .v-icon {
+  font-size: 2.2cqh;
+}
+
+/* The one Vuetify overlay still showing its own chrome; restyled to match the app's sheets.
+   Unlayered so it beats Vuetify's own @layer rule. */
+.v-tooltip > .v-overlay__content {
+  background: rgb(var(--v-theme-chrome));
+  border: 1px solid rgb(var(--v-theme-line));
+  border-radius: 2px;
+  color: rgb(var(--v-theme-ink));
+  font-size: 1.6cqh;
+  font-weight: 500;
+  line-height: 1.35;
+  max-width: 34cqw;
+  padding: 0.7cqh 0.9cqw;
+}

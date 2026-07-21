@@ -1,0 +1,22 @@
+{
+  "file": {
+    "play": "Play",
+    "pause": "Pause",
+    "stop": "Stop, and go back to the start of the selection",
+    "toStart": "To the start of the selection",
+    "toEnd": "To the end of the selection",
+    "loop": "Loop the selection",
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "fit": "Show the whole recording",
+    "clearSelection": "Select the whole recording",
+    "selected": "measuring {from} to {to}",
+    "whole": "measuring all of it",
+    "waveform": "Waveform of {name}. Drag the timeline to move the playhead, drag the trace to select a fragment. When playback stops, a pale dashed line marks the audio the reading on screen was measured from.",
+    "mute": "Mute the recording",
+    "unmute": "Play the recording aloud",
+    "volume": "Playback volume",
+    "openTitle": "Select a WAV recording",
+    "openFilter": "WAV audio"
+  }
+}

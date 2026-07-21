@@ -1,0 +1,9 @@
+# pnpm 11 no longer reads `pnpm.onlyBuiltDependencies` from package.json; the same
+# three packages are approved here instead. They are the ones that need a
+# postinstall to be usable at all - esbuild and unrs-resolver unpack a native
+# binary, @parcel/watcher builds one - and without them the dev server and the
+# linter do not run.
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
+  unrs-resolver: true

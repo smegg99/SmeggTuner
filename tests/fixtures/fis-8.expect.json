@@ -1,0 +1,8 @@
+{
+  "comment": "technician-supplied reference sample, 2026-07-11 (Fis '8 clarinet register, German Fis = F#)",
+  "reeds": 1,
+  "a4": 440,
+  "note": "F#4",
+  "freqs": [371.1766],
+  "freqTol": 0.15
+}

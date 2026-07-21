@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Smegg's professional Accordion Tuner
+Exec=smeggtuner
+Icon=smeggtuner
+Categories=Utility;Audio;
+Terminal=false
+Keywords=wails
+Version=1.0
+StartupNotify=false

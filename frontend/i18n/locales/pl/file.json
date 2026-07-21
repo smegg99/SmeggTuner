@@ -1,0 +1,22 @@
+{
+  "file": {
+    "play": "Odtwarzaj",
+    "pause": "Pauza",
+    "stop": "Zatrzymaj i wróć na początek zaznaczenia",
+    "toStart": "Na początek zaznaczenia",
+    "toEnd": "Na koniec zaznaczenia",
+    "loop": "Zapętl zaznaczenie",
+    "zoomIn": "Powiększ",
+    "zoomOut": "Pomniejsz",
+    "fit": "Pokaż całe nagranie",
+    "clearSelection": "Zaznacz całe nagranie",
+    "selected": "mierzone od {from} do {to}",
+    "whole": "mierzone całe nagranie",
+    "waveform": "Przebieg pliku {name}. Przeciągnij oś czasu, aby przesunąć głowicę, przeciągnij przebieg, aby zaznaczyć fragment. Po zatrzymaniu odtwarzania jasna przerywana linia wskazuje dźwięk, z którego pochodzi odczyt na ekranie.",
+    "mute": "Wycisz nagranie",
+    "unmute": "Włącz dźwięk nagrania",
+    "volume": "Głośność odtwarzania",
+    "openTitle": "Wybierz nagranie WAV",
+    "openFilter": "Audio WAV"
+  }
+}

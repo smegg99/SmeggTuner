@@ -1,0 +1,43 @@
+{
+  "about": {
+    "aboutTitle": "About",
+    "helpTitle": "Help",
+    "appName": "SmeggTuner",
+    "tagline": "Free and open source accordion tuning program.",
+    "untagged": "development build",
+    "version": "Version",
+    "commit": "Build",
+    "donate": "Support on Ko-fi",
+    "help": {
+      "intro": "SmeggTuner listens to an accordion through the microphone and measures each reed against a reference pitch. Readings are filed into a session for one instrument, and that session's goal curve is what every reed is judged against.",
+      "rooms": {
+        "title": "The three rooms",
+        "tuneName": "Tune",
+        "tune": "the microphone is open and the needle moves. Play a note to read its reeds and the beats between them.",
+        "workshopName": "Workshop",
+        "workshop": "sessions, instruments and printed cards. Open or create a session here.",
+        "settingsName": "Settings",
+        "settings": "the input device, the reading, the naming and the look of the app."
+      },
+      "shortcuts": {
+        "title": "Playback keys (with a file open)",
+        "space": "Play or pause",
+        "homeEnd": "Jump to the start or end of the selection",
+        "loop": "Loop the selection",
+        "mute": "Mute the speakers - the reading keeps moving",
+        "fit": "Fit the whole file, or fit the selection",
+        "zoom": "Zoom in or out"
+      },
+      "everywhere": {
+        "title": "Everywhere",
+        "rooms": "Tune, Workshop, Settings",
+        "manual": "Let the tuner pick the note, or pin the one it is on",
+        "step": "Step the pinned note down or up",
+        "hold": "Hold the reading where it is",
+        "sounds": "Note sounds on or off",
+        "record": "Start or stop recording into the open session",
+        "undo": "Throw away the reading captured last"
+      }
+    }
+  }
+}

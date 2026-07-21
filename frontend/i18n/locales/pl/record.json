@@ -1,0 +1,56 @@
+{
+  "record": {
+    "controls": {
+      "takes": "brak nagrań | jedno nagranie | {count} nagrania | {count} nagrań",
+      "clearConfirm": "Nie ma czego usuwać. | Jedyne nagranie w tym przebiegu przepadnie. Tego nie można cofnąć. | Przepadną {count} nagrania z tego przebiegu. Tego nie można cofnąć. | Przepadnie {count} nagrań z tego przebiegu. Tego nie można cofnąć."
+    },
+    "table": {
+      "label": "Nagrane strojenie",
+      "helpTitle": "O tej tabeli",
+      "notes": "brak dźwięków | jeden dźwięk | {count} dźwięki | {count} dźwięków",
+      "empty": "Przejdź przez instrument z włączonym nagrywaniem. Każdy zablokowany dźwięk trafi tutaj.",
+      "note": "Dźwięk",
+      "reed": "Głos {index}",
+      "beat": "Dudnienie {pair}",
+      "unitLabel": "Jednostka",
+      "cent": "Cent",
+      "hertz": "Herc",
+      "unitHint": "Cała tabela, w jednej albo drugiej jednostce. Głos piłuje się w centach, a dudnienie słychać jako tempo, i każda liczba tutaj przyszła z tunera w obu.",
+      "merged": "Głosy zlane",
+      "mergedHint": "Widmo nie rozdzieliło głosów tego dźwięku: to, co zwróciło, to listki jednej zlanej pary, a nie osobne głosy. Liczby wypisane obok nich kazałyby piłować głos, którego tam nie ma, więc nie są drukowane. Uczciwym odczytem tego dźwięku jest dudnienie i to według niego należy stroić.",
+      "derived": "Głosy z dudnienia",
+      "derivedHint": "Te głosy leżały zbyt blisko, by rozdzielić je w widmie, więc tuner zmierzył dudnienie między nimi i z niego odczytał ich położenie. To prawdziwe odczyty, uzyskane inną drogą.",
+      "manual": "Edytowane",
+      "manualHint": "Wartość w tym wierszu została wpisana ręcznie, a nie usłyszana.",
+      "takesHint": "brak nagrań tego dźwięku | jedno nagranie tego dźwięku | {count} nagrania tego dźwięku, pokazane jest ostatnie | {count} nagrań tego dźwięku, pokazane jest ostatnie",
+      "envelopeHint": "To dudnienie odczytano z obwiedni amplitudy, a nie z widma. Tak mierzy się parę zbyt bliską, by ją rozdzielić.",
+      "delete": "Usuń ten odczyt",
+      "deleteTitle": "Usunąć ten odczyt?",
+      "deleteHint": "Ten odczyt przepadnie i nie da się go przywrócić. Zagraj ten dźwięk ponownie, a tuner nagra na jego miejsce nowy."
+    },
+    "report": {
+      "title": "Karta strojenia",
+      "pass": "Przebieg: {label}",
+      "format": "Format",
+      "html": "HTML",
+      "pdf": "PDF",
+      "csv": "CSV",
+      "formatHint": "PDF to karta na jednej stronie A4, złożona tak jak się drukuje. HTML to ten sam arkusz jako strona. CSV to tabela do arkusza kalkulacyjnego.",
+      "date": "Data",
+      "export": "Eksportuj"
+    },
+    "error": {
+      "reedsMerged": "Głosy tego dźwięku nie rozdzieliły się, więc nie ma pojedynczego głosu do poprawienia. Tuner wie o nim tyle, ile mówi dudnienie między nimi.",
+      "takeNotFound": "Tego nagrania nie ma już w przebiegu.",
+      "unexpected": "Coś poszło nie tak i aplikacja nie ma na to nazwy. Operacja nie została wykonana."
+    },
+    "arm": {
+      "hint": "Zapisuje nagranie przy każdej blokadzie",
+      "warmup": "Nagrywanie wyłączone: graj swobodnie, nic nie jest zapisywane. Naciśnij, aby rozpocząć nagrywanie.",
+      "needsSession": "Otwórz sesję, aby nagrywać"
+    },
+    "undo": {
+      "hint": "Cofnij ostatnie nagranie"
+    }
+  }
+}

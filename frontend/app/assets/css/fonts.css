@@ -1,0 +1,8 @@
+@import '@fontsource-variable/overpass';
+
+/* Numbers are monospaced (tabular-nums when they change) so digits don't shift width as
+   values are redrawn many times a second. */
+:root {
+  --font-sans: 'Overpass Variable', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', 'Cascadia Code', menlo, consolas, monospace;
+}

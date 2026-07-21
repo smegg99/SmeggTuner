@@ -1,0 +1,29 @@
+{
+  "curve": {
+    "fitPass": "brak dźwięków | jeden dźwięk | {count} dźwięki | {count} dźwięków",
+    "table": {
+      "entries": "brak wpisów | jeden wpis | {count} wpisy | {count} wpisów",
+      "clearBody": "Nie ma czego czyścić. | Jedyny wpis na tej liście zostanie usunięty. | Zostaną usunięte {count} wpisy z tej listy. | Zostanie usuniętych {count} wpisów z tej listy."
+    },
+    "rank": "Chór",
+    "interpolate": "Interpoluj",
+    "interpolateHint": "Prowadź linię między punktami. Wyłączone - każdy punkt obowiązuje aż do następnego.",
+    "clearAll": "Wyczyść krzywą",
+    "clearAllHint": "Usuń wszystkie punkty i zostaw cel na wysokości skali.",
+    "clearAllTitle": "Wyczyścić całą krzywą?",
+    "clearAllConfirm": "Wszystkie punkty zostaną usunięte. Cel wróci do wysokości skali dla każdego dźwięku, a tuner stanie się zwykłym wskaźnikiem.",
+    "startHint": "Brak punktów. Celem jest wysokość skali dla każdego dźwięku.",
+    "set": "Ustaw",
+    "setHint": "Umieść punkt na tym dźwięku dla wybranego chóru.",
+    "remove": "Usuń",
+    "removeHint": "Usuń punkt tego dźwięku z krzywej.",
+    "helpTitle": "Żądane dudnienia",
+    "help": {
+      "lead": "Cel, do którego stroisz: jak daleko każdy głos ma leżeć od swojej wysokości skali, dźwięk po dźwięku. Nagrany głos jest oceniany względem tego celu, a nie względem czystego środka.",
+      "setTitle": "Ustawianie punktu",
+      "set": "Wybierz dźwięk i wartość i naciśnij Ustaw, albo przeciągnij punkt na wykresie w górę lub w dół. Każdy chór to osobna linia, a edytowany jest wyróżniony.",
+      "interpTitle": "Między punktami",
+      "interp": "Przy włączonej Interpolacji dźwięki między punktami idą po linii; wyłączona - każdy punkt obowiązuje aż do następnego. Bez punktów celem jest wszędzie wysokość skali."
+    }
+  }
+}

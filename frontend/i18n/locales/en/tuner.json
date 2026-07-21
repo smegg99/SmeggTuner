@@ -1,0 +1,108 @@
+{
+  "tuner": {
+    "warmup": {
+      "quiet": "Stay quiet",
+      "play": "Now play"
+    },
+    "state": {
+      "initializing": "Measuring the room",
+      "running": "Listening",
+      "frozen": "Frozen",
+      "tooLoud": "Too loud, play softer or move back",
+      "tooQuiet": "Too quiet, play louder or move closer",
+      "deviceLost": "Input lost",
+      "stopped": "Stopped"
+    },
+    "error": {
+      "noDevices": "No microphone was found. Connect one and refresh the device list.",
+      "deviceGone": "That microphone is no longer connected.",
+      "deviceLost": "The microphone stopped responding and the tuner was stopped.",
+      "fileUnreadable": "That recording could not be read. It must be a WAV file.",
+      "invalidA4": "The reference pitch must be between 430 and 450 Hz.",
+      "invalidReedCount": "The tuner resolves one to three reeds per note.",
+      "invalidNote": "That note is outside the range the tuner tracks.",
+      "invalidTranspose": "Transposition is limited to two octaves either way.",
+      "playbackFailed": "The reference tone could not be played.",
+      "unexpected": "Something went wrong. See the log for details."
+    },
+    "source": {
+      "devices": "Microphones",
+      "noDevices": "No microphones found",
+      "default": "System default",
+      "analyze": "Analyze recording…",
+      "refresh": "Refresh the device list"
+    },
+    "transport": {
+      "start": "Start",
+      "stop": "Stop"
+    },
+    "level": {
+      "silent": "silent"
+    },
+    "unit": {
+      "label": "Deviation unit",
+      "cent": "Cent",
+      "hz": "Hz"
+    },
+    "mode": {
+      "label": "Note tracking",
+      "auto": "Auto",
+      "manual": "Manual"
+    },
+    "step": {
+      "noteDown": "One semitone down",
+      "noteUp": "One semitone up"
+    },
+    "reeds": {
+      "count": "{n} reed | {n} reeds"
+    },
+    "freeze": {
+      "hint": "Hold the reading on screen while the note keeps sounding (H)"
+    },
+    "spectrum": {
+      "title": "Spectrum",
+      "label": "The frequency spectrum of the tracked note",
+      "separated": "separated",
+      "fromBeat": "recovered from the beat",
+      "notSplit": "not split, beat only",
+      "reeds": "{n} reed | {n} reeds"
+    },
+    "panel": {
+      "locked": "Lock"
+    },
+    "boxes": {
+      "notSplit": "not split, no reading",
+      "goal": "goal",
+      "reed": "Reed {n}",
+      "beat": "Beat {a} to {b}"
+    },
+    "ruler": {
+      "title": "Deviation",
+      "label": "The deviation of each reed, in cents",
+      "meta": "cent, tolerance {tol}"
+    },
+    "notes": {
+      "title": "Notes",
+      "label": "The notes E0 to C9. Click one to pin it.",
+      "range": "E0 to C9",
+      "tracking": "tracking",
+      "clickToPin": "click to pin"
+    },
+    "inputPanel": {
+      "title": "Input",
+      "label": "The input signal"
+    },
+    "sounds": {
+      "hint": "Note sounds: hold a note on the strip to hear it"
+    },
+    "output": {
+      "volume": "Output volume",
+      "mute": "Mute",
+      "unmute": "Unmute"
+    },
+    "register": {
+      "hint": "The register you have pulled. It sets how many reeds the tuner listens for, and which rank each reading belongs to.",
+      "lockedPlaying": "Stop playback to change the register."
+    }
+  }
+}

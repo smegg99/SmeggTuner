@@ -1,0 +1,68 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Code coverage profiles and other test artifacts
+*.out
+coverage.*
+*.coverprofile
+profile.cov
+
+# Go workspace file
+go.work
+go.work.sum
+
+# env file
+.env
+
+# Editor/IDE
+node_modules
+
+.task
+bin
+logs
+
+# Stray builds of the s99wails codegen tools and scripts/analyze, left in the root
+# by a bare `go build`. They are run via `go run`/`go tool` from the dependency,
+# never as local binaries.
+/analyze
+/frontendgen
+/traygen
+frontend/dist
+frontend/.output
+frontend/.nuxt
+frontend/node_modules
+build/linux/appimage/build
+build/windows/nsis/MicrosoftEdgeWebview2Setup.exe
+smeggtuner
+
+# Runtime config (generated from the CUE schema on first run)
+config.json
+
+# The SQLite datastore and its write-ahead sidecars. In a portable/dev run it
+# lands beside the config, which is the repo root. Holds the sessions, the
+# instrument library and the window geometry.
+/smeggtuner.db
+/smeggtuner.db-shm
+/smeggtuner.db-wal
+
+# A tuning report exported by hand during testing.
+/test-session-*.html
+
+# Local reference recordings (~85 MB). Not needed to build or test: TestSamples
+# skips unless SMEGGTUNER_SAMPLES points at a folder. The committed fixture set
+# is tests/fixtures/, which carries its own .expect.json goldens.
+/sounds/
+
+# Working notes. Written to hand a task over mid-flight, dated, and true only of
+# the day they were written. The durable parts belong in architecture.md and
+# roadmap.md; these stay on disk as scratch.
+docs/
+testlab
+frontend/tests

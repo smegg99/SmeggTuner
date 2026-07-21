@@ -1,0 +1,18 @@
+// app/assets/css/vuetify.scss
+//
+// Flat, and square-ish.
+//
+// 3px is the whole radius budget: enough that a panel is not a raw rectangle, not
+// enough that it reads as a card in a dashboard. Buttons get no elevation at any
+// state, because a button that lifts under the cursor is a button announcing
+// itself, and nothing here should announce itself except a reading.
+@use 'vuetify/settings' with (
+  $body-font-family: ('Overpass Variable', sans-serif),
+  $heading-font-family: ('Overpass Variable', sans-serif),
+  $border-radius-root: 2px,
+  $button-elevation: (
+    'default': 0,
+    'hover': 0,
+    'active': 0,
+  )
+);

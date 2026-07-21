@@ -1,0 +1,8 @@
+{
+  "routes": {
+    "navigation": "Nawigacja główna",
+    "settings": "Ustawienia",
+    "tune": "Strojenie",
+    "workshop": "Warsztat"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "app.name": "SmeggTuner",
+  "app.description": "A FOSS accordion tuner desktop app.",
+  "tray.tooltip": "SmeggTuner",
+  "tray.show": "Show",
+  "tray.quit": "Quit",
+  "report.title": "Tuning report",
+  "report.head.reed": "Reed {{.Index}}",
+  "report.head.beat": "Beat {{.Pair}}",
+  "report.mark.merged": "M",
+  "report.mark.derived": "D",
+  "report.mark.edited": "H",
+  "report.mark.envelope": "e",
+  "report.facts.instrument": "Instrument",
+  "report.facts.reference": "Reference A4 (this pass)",
+  "report.facts.curve": "Goal curve",
+  "report.facts.tolerance": "Tolerance",
+  "report.facts.toleranceValue": "{{.Reed}} c reed / {{.Beat}} c beat",
+  "report.facts.curveUnnamed": "unnamed",
+  "report.facts.curveNone": "none",
+  "report.facts.empty": "-",
+  "report.summary.notes": {
+    "one": "{{.PluralCount}} note",
+    "other": "{{.PluralCount}} notes"
+  },
+  "report.summary.reeds": {
+    "one": "{{.PluralCount}} reed reading",
+    "other": "{{.PluralCount}} reed readings"
+  },
+  "report.summary.beats": {
+    "one": "{{.PluralCount}} beat",
+    "other": "{{.PluralCount}} beats"
+  },
+  "report.summary.reedsShort": {
+    "one": "{{.PluralCount}} reed",
+    "other": "{{.PluralCount}} reeds"
+  },
+  "report.summary.line": "{{.Notes}} ({{.Min}} to {{.Max}}), {{.Reeds}}, {{.Beats}}.",
+  "report.summary.out": {
+    "one": "{{.PluralCount}} note is out of tolerance ({{.Reeds}}, {{.Beats}}).",
+    "other": "{{.PluralCount}} notes are out of tolerance ({{.Reeds}}, {{.Beats}})."
+  },
+  "report.summary.allIn": "Everything measured is in tolerance.",
+  "report.summary.merged": {
+    "one": "{{.PluralCount}} note came back merged and is reported by the beat.",
+    "other": "{{.PluralCount}} notes came back merged and are reported by the beat."
+  },
+  "report.table.title": "Tuning table",
+  "report.table.note": "Note",
+  "report.table.register": "Register",
+  "report.table.curr": "Curr",
+  "report.table.err": "Err",
+  "report.table.mergedWide": "Reeds not separated: this note has no per-reed reading. Tune it by the beat.",
+  "report.table.mergedNarrow": "Reeds not separated. Tune this note by the beat.",
+  "report.graph.merged": "{{.Mark}} - reeds merged.",
+  "report.graph.derived": "{{.Mark}} - reeds from the beat.",
+  "report.graph.edited": "{{.Mark}} - hand-edited.",
+  "report.legend.error.key": "Error = Curr - Goal.",
+  "report.legend.error.body": "It is what has to come off the reed: file toward zero. Curr and Goal are cents from the tempered scale at this pass's reference, {{.A4}} Hz.",
+  "report.legend.error.noCurve": "This session has no goal curve, so Goal is zero on every reed and Error is the deviation from the scale itself.",
+  "report.legend.takes.key": "xN",
+  "report.footer.reference": "reference A4 {{.A4}} Hz",
+  "report.footer.generated": "Generated {{.At}} by {{.App}}",
+  "report.mark.out": "!",
+  "report.legend.out.short": "outside tolerance",
+  "report.legend.envelope.short": "beat from the envelope",
+  "report.legend.takes.short": "recorded more than once, last take shown"
+}

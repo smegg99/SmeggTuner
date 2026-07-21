@@ -1,0 +1,108 @@
+{
+  "tuner": {
+    "warmup": {
+      "quiet": "Cisza",
+      "play": "Teraz graj"
+    },
+    "state": {
+      "initializing": "Pomiar tła",
+      "running": "Nasłuchiwanie",
+      "frozen": "Zamrożony",
+      "tooLoud": "Za głośno, graj ciszej lub odsuń się",
+      "tooQuiet": "Za cicho, graj głośniej lub podejdź bliżej",
+      "deviceLost": "Utracono wejście",
+      "stopped": "Zatrzymany"
+    },
+    "error": {
+      "noDevices": "Nie znaleziono mikrofonu. Podłącz go i odśwież listę urządzeń.",
+      "deviceGone": "Ten mikrofon nie jest już podłączony.",
+      "deviceLost": "Mikrofon przestał odpowiadać i tuner został zatrzymany.",
+      "fileUnreadable": "Nie udało się odczytać nagrania. Musi to być plik WAV.",
+      "invalidA4": "Wysokość odniesienia musi mieścić się w zakresie 430-450 Hz.",
+      "invalidReedCount": "Tuner rozróżnia od jednego do trzech głosów na dźwięk.",
+      "invalidNote": "Ten dźwięk jest poza zakresem śledzonym przez tuner.",
+      "invalidTranspose": "Transpozycja jest ograniczona do dwóch oktaw w każdą stronę.",
+      "playbackFailed": "Nie udało się odtworzyć dźwięku odniesienia.",
+      "unexpected": "Coś poszło nie tak. Szczegóły znajdziesz w logu."
+    },
+    "source": {
+      "devices": "Mikrofony",
+      "noDevices": "Nie znaleziono mikrofonów",
+      "default": "Urządzenie domyślne",
+      "analyze": "Analizuj nagranie…",
+      "refresh": "Odśwież listę urządzeń"
+    },
+    "transport": {
+      "start": "Start",
+      "stop": "Stop"
+    },
+    "level": {
+      "silent": "cisza"
+    },
+    "unit": {
+      "label": "Jednostka odchyłki",
+      "cent": "Cent",
+      "hz": "Hz"
+    },
+    "mode": {
+      "label": "Śledzenie dźwięku",
+      "auto": "Auto",
+      "manual": "Ręcznie"
+    },
+    "step": {
+      "noteDown": "Pół tonu w dół",
+      "noteUp": "Pół tonu w górę"
+    },
+    "reeds": {
+      "count": "brak głosów | {n} głos | {n} głosy | {n} głosów"
+    },
+    "freeze": {
+      "hint": "Zatrzymaj odczyt na ekranie, gdy dźwięk wciąż brzmi (H)"
+    },
+    "spectrum": {
+      "title": "Widmo",
+      "label": "Widmo częstotliwości śledzonego dźwięku",
+      "separated": "rozdzielone",
+      "fromBeat": "odzyskane z dudnienia",
+      "notSplit": "nie rozdzielono, tylko dudnienie",
+      "reeds": "brak głosów | {n} głos | {n} głosy | {n} głosów"
+    },
+    "panel": {
+      "locked": "Blokada"
+    },
+    "boxes": {
+      "notSplit": "nie rozdzielono, brak odczytu",
+      "goal": "cel",
+      "reed": "Głos {n}",
+      "beat": "Dudnienie {a} do {b}"
+    },
+    "ruler": {
+      "title": "Odchyłka",
+      "label": "Odchyłka każdego głosu, w centach",
+      "meta": "cent, tolerancja {tol}"
+    },
+    "notes": {
+      "title": "Nuty",
+      "label": "Nuty od E0 do C9. Kliknij, aby przypiąć.",
+      "range": "E0 do C9",
+      "tracking": "śledzi",
+      "clickToPin": "kliknij, aby przypiąć"
+    },
+    "inputPanel": {
+      "title": "Wejście",
+      "label": "Sygnał wejściowy"
+    },
+    "sounds": {
+      "hint": "Dźwięk nut: przytrzymaj nutę na pasku, aby ją usłyszeć"
+    },
+    "output": {
+      "volume": "Głośność wyjścia",
+      "mute": "Wycisz",
+      "unmute": "Wyłącz wyciszenie"
+    },
+    "register": {
+      "hint": "Wyciągnięty rejestr. Ustawia, ilu głosów tuner słucha, i do którego chóru należy każdy odczyt.",
+      "lockedPlaying": "Zatrzymaj odtwarzanie, aby zmienić rejestr."
+    }
+  }
+}

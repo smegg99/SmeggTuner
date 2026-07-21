@@ -1,0 +1,77 @@
+{
+  "settings": {
+    "themeLabel": "Motyw",
+    "themeHint": "Podążaj za pulpitem albo wymuś jasny lub ciemny.",
+    "languageLabel": "Język",
+    "languageHint": "Język interfejsu.",
+    "closeToTrayHint": "X chowa aplikację do zasobnika zamiast ją zamykać.",
+    "lockedWhileRunning": "Zatrzymaj tuner, aby zmienić wejście audio.",
+    "audioDeviceLabel": "Urządzenie wejściowe",
+    "audioDeviceHint": "Mikrofon, którego słucha tuner. Zmiana urządzenia restartuje działający tuner.",
+    "audioDeviceSystemDefault": "Podążaj za domyślnym systemowym",
+    "audioDeviceRefresh": "Odśwież listę urządzeń",
+    "humFilterLabel": "Filtr przydźwięku sieciowego",
+    "humFilterHint": "Wycina przydźwięk sieci zbierany przez mikrofon: 50 Hz w Europie, 60 Hz w Ameryce Północnej.",
+    "humFilter50": "50 Hz",
+    "humFilter60": "60 Hz",
+    "clockPpmLabel": "Korekcja zegara",
+    "clockPpmHint": "Koryguje kartę dźwiękową, której zegar próbkowania spieszy się lub spóźnia, w częściach na milion. Zostaw 0, chyba że masz zmierzoną odchyłkę.",
+    "clockPpmUnit": "ppm",
+    "a4Unit": "Hz",
+    "unitLabel": "Jednostka odchyłki",
+    "unitHint": "Pokazuj odchyłkę w centach albo w hercach.",
+    "scaleNamingLabel": "Nazewnictwo dźwięków",
+    "scaleNamingHint": "Jak nazywane są dźwięki. Nazewnictwo niemieckie zapisuje H dla dźwięku h, a B dla b (h obniżonego o pół tonu).",
+    "errorReferenceHint": "Ten sam pomiar, powiedziany na dwa sposoby. Wybierz ten, który masz w ręku.",
+    "stopAfterLockHint": "Liczba zamraża się, gdy tuner jest pewny dźwięku, i stoi aż przejdziesz dalej. Do piłowania: zdejmujesz rękę z klawiatury, a liczba nadal tam jest.",
+    "themes": {
+      "auto": "Systemowy",
+      "light": "Jasny",
+      "dark": "Ciemny"
+    },
+    "scaleNamings": {
+      "cdefgab": "C D E F G A B (międzynarodowe, krzyżyki jako C#)",
+      "cdefgah": "C D E F G A H (niemieckie, krzyżyki jako C#)",
+      "polish": "C Cis D Dis E F Fis G Gis A Ais H (polskie)",
+      "doremi": "Do Re Mi (solmizacja)"
+    },
+    "toleranceUnit": "¢",
+    "toleranceLabel": "Tolerancje",
+    "toleranceHint": "Jak blisko liczy się jako w stroju, gdy nie ma otwartej sesji. Instrument sesji ma własne, ciaśniejsze lub luźniejsze, i to one obowiązują, dopóki jest otwarta.",
+    "toleranceReed": "Głos",
+    "toleranceBeat": "Dudnienie",
+    "accent": {
+      "label": "Akcent",
+      "hint": "Podążaj za akcentem pulpitu albo wybierz własny.",
+      "auto": "Pulpit",
+      "custom": "Własny",
+      "pick": "Wybierz kolor",
+      "pickTitle": "Kolor akcentu"
+    },
+    "groups": {
+      "audio": "Dźwięk",
+      "reading": "Odczyt",
+      "appearance": "Wygląd",
+      "behaviour": "Zachowanie",
+      "report": "Twój warsztat"
+    },
+    "stopAfterLock": "Zatrzymaj odczyt po złapaniu dźwięku",
+    "continuousManual": "Aktualizuj przypięty dźwięk na bieżąco",
+    "continuousManualHint": "Przy przypiętym dźwięku odczyt zmienia się nawet wtedy, gdy tuner nie jest pewny. Do patrzenia, jak głos wchodzi w strój pod pilnikiem.",
+    "errorReference": "Doprowadzasz do",
+    "errorReferenceScale": "Cel",
+    "errorReferenceGoal": "Zero",
+    "closeToTray": "Zamknięcie okna nie kończy programu",
+    "report": {
+      "name": "Nazwa warsztatu",
+      "nameHint": "Drukowana w nagłówku karty, jeśli poprosisz o nagłówek przy eksporcie.",
+      "address": "Adres",
+      "website": "Strona",
+      "logo": "Logo",
+      "logoHint": "Osadzone w samej karcie, więc przetrwa wysłanie mailem i wydruk gdziekolwiek.",
+      "pickLogo": "Wybierz",
+      "clearLogo": "Usuń logo",
+      "noLogo": "Brak logo"
+    }
+  }
+}
