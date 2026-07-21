@@ -21,11 +21,15 @@ tags := "gtk3"
 # a recipe: `just release 1.0.0`, `just package 1.0.0`.
 version := `git describe --tags --exact-match 2>/dev/null | sed 's/^v//' | grep . || echo 0.0.0-dev`
 
-# What `just release` builds. Cross targets (anything but this host's os/arch) need the wails
-# cross-compile image once (`wails3 task setup:docker`); Windows and macOS are untested and off
-# by default. Pass your own list to change it, e.g.
+# What `just release` builds. linux/* go through wails3 (native, or the cross-compile image
+# `wails3 task setup:docker` for another arch). windows/* are built in a Windows VM via the test
+# lab (testlab/README.md) - CGO + WebView2 + NSIS do not cross-compile from Linux, so the VM is
+# the honest path. windows is off by default (it boots a VM); pass your own list to add it:
 #   just release 1.0.0 "linux/amd64 linux/arm64 windows/amd64"
 release_targets := "linux/amd64 linux/arm64"
+
+# The test-lab VM `just release` drives for windows/* targets (win10 or win11).
+windows_lab := "win11"
 
 # List available commands
 default:
@@ -86,28 +90,48 @@ release ver=version targets=release_targets:
     for target in {{targets}}; do
         os="${target%%/*}"; arch="${target##*/}"
         echo "==> {{app_name}} {{ver}} :: ${os}/${arch}"
-        rm -f "{{bin_dir}}/{{app_name}}" "{{bin_dir}}/{{app_name}}".deb "{{bin_dir}}/{{app_name}}".rpm \
-              "{{bin_dir}}/{{app_name}}".pkg.tar.zst "{{bin_dir}}/{{app_name}}"-*.AppImage
-        if VERSION="{{ver}}" EXTRA_TAGS="{{tags}}" wails3 task "${os}:package" ARCH="${arch}"; then
-            for f in "{{bin_dir}}/{{app_name}}".deb "{{bin_dir}}/{{app_name}}".rpm \
-                     "{{bin_dir}}/{{app_name}}".pkg.tar.zst "{{bin_dir}}/{{app_name}}"-*.AppImage; do
-                case "$f" in
-                    *.pkg.tar.zst) ext="pkg.tar.zst" ;;
-                    *)             ext="${f##*.}" ;;
-                esac
-                mv -f "$f" "$out/{{app_name}}-{{ver}}-${os}-${arch}.${ext}"
-            done
-            [ -e "{{bin_dir}}/{{app_name}}" ] && cp -f "{{bin_dir}}/{{app_name}}" "$out/{{app_name}}-{{ver}}-${os}-${arch}"
-            built+=("${os}/${arch}")
-        else
-            skipped+=("${os}/${arch}")
-        fi
+        case "$os" in
+        linux)
+            rm -f "{{bin_dir}}/{{app_name}}" "{{bin_dir}}/{{app_name}}".deb "{{bin_dir}}/{{app_name}}".rpm \
+                  "{{bin_dir}}/{{app_name}}".pkg.tar.zst "{{bin_dir}}/{{app_name}}"-*.AppImage
+            if VERSION="{{ver}}" EXTRA_TAGS="{{tags}}" wails3 task "linux:package" ARCH="${arch}"; then
+                for f in "{{bin_dir}}/{{app_name}}".deb "{{bin_dir}}/{{app_name}}".rpm \
+                         "{{bin_dir}}/{{app_name}}".pkg.tar.zst "{{bin_dir}}/{{app_name}}"-*.AppImage; do
+                    case "$f" in
+                        *.pkg.tar.zst) ext="pkg.tar.zst" ;;
+                        *)             ext="${f##*.}" ;;
+                    esac
+                    mv -f "$f" "$out/{{app_name}}-{{ver}}-${os}-${arch}.${ext}"
+                done
+                [ -e "{{bin_dir}}/{{app_name}}" ] && cp -f "{{bin_dir}}/{{app_name}}" "$out/{{app_name}}-{{ver}}-${os}-${arch}"
+                built+=("${os}/${arch}")
+            else
+                skipped+=("${os}/${arch}")
+            fi
+            ;;
+        windows)
+            # Built in a Windows VM through the test lab; amd64 only (that is the VM's arch).
+            if [ "${arch}" != "amd64" ]; then echo "  no windows/${arch} VM"; skipped+=("${os}/${arch}"); continue; fi
+            if ./testlab/lab.sh sync "{{windows_lab}}" && ./testlab/lab.sh package "{{windows_lab}}"; then
+                for f in "{{bin_dir}}/lab-out/{{windows_lab}}"/*.exe; do
+                    case "$f" in *installer*) sfx="-installer" ;; *) sfx="" ;; esac
+                    mv -f "$f" "$out/{{app_name}}-{{ver}}-${os}-${arch}${sfx}.exe"
+                done
+                built+=("${os}/${arch}")
+            else
+                skipped+=("${os}/${arch}")
+            fi
+            ;;
+        *)
+            echo "  no build path wired for ${os}"; skipped+=("${os}/${arch}")
+            ;;
+        esac
     done
     echo
     echo "release {{ver}} -> $out"
     ls -1sh "$out" 2>/dev/null || true
     [ ${#built[@]}   -gt 0 ] && echo "built:   ${built[*]}"
-    [ ${#skipped[@]} -gt 0 ] && echo "skipped: ${skipped[*]}  (cross builds need once: wails3 task setup:docker)"
+    [ ${#skipped[@]} -gt 0 ] && echo "skipped: ${skipped[*]}"
     [ ${#built[@]}   -gt 0 ]
 
 # Run the built application
@@ -143,7 +167,7 @@ generate-bindings:
 generate-cue:
     go generate ./...
 
-# Generate app icons from build/appicon.png
+# Generate app icons from build/appicon.svg (the editable master; appicon.png is its render)
 #
 # -iconcomposerinput is not standalone: without -macassetdir wails3 refuses the whole
 # run with "mac asset directory is required" and nothing is written, not even the .ico.
@@ -153,6 +177,7 @@ generate-cue:
 # needs macOS actool, and wails3 skips it and still exits 0. The committed Assets.car
 # is the only copy, so refresh it on a Mac if appicon.icon ever changes.
 generate-icons:
+    rsvg-convert -w 2048 -h 2048 build/appicon.svg -o build/appicon.png
     wails3 generate icons -input build/appicon.png -windowsfilename build/windows/icon.ico -iconcomposerinput build/appicon.icon -macfilename build/darwin/icons.icns -macassetdir build/darwin
 
 # Run the Go test suite with the race detector.
@@ -208,6 +233,11 @@ lab-sync target:
 # Build the app inside a target
 lab-build target:
     ./testlab/lab.sh build {{target}}
+
+# Package the app in a VM target and pull the artifacts back to bin/lab-out/<target>
+# (sync first: `just lab-sync <target>`). `just release` uses this for windows/* targets.
+lab-package target:
+    ./testlab/lab.sh package {{target}}
 
 # Launch the app in a target, optionally inside a nested desktop (--de gnome)
 lab-run target *args:
