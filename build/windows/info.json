@@ -1,14 +1,14 @@
 {
 	"fixed": {
-		"file_version": "1.0.1"
+		"file_version": "1.0.2"
 	},
 	"info": {
 		"0000": {
-			"ProductVersion": "1.0.1",
+			"ProductVersion": "1.0.2",
 			"CompanyName": "Smegg99",
 			"FileDescription": "A FOSS accordion tuner desktop app.",
 			"LegalCopyright": "(c) 2026, Smegg99",
-			"ProductName": "Smegg's professional Accordion Tuner",
+			"ProductName": "SmeggTuner",
 			"Comments": "This is a comment"
 		}
 	}

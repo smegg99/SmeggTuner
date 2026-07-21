@@ -178,7 +178,7 @@ tasks:
       # The launcher name a user reads in their menu, and the category it files
       # under. This is a tuner, so Utility - the generator's default was the
       # boilerplate's Development.
-      DISPLAY_NAME: "Smegg's professional Accordion Tuner"
+      DISPLAY_NAME: "SmeggTuner"
       EXEC: '{{.APP_NAME}}'
       ICON: '{{.APP_NAME}}'
       CATEGORIES: 'Utility;Audio;'

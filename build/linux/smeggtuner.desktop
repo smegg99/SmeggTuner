@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=Smegg's professional Accordion Tuner
+Name=SmeggTuner
 Exec=smeggtuner
 Icon=smeggtuner
 Categories=Utility;Audio;

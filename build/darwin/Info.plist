@@ -13,13 +13,13 @@
 		<key>CFBundleIdentifier</key>
 		<string>me.smegg.smeggtuner</string>
 		<key>CFBundleName</key>
-		<string>Smegg&#39;s professional Accordion Tuner</string>
+		<string>SmeggTuner</string>
 		<key>CFBundlePackageType</key>
 		<string>APPL</string>
 		<key>CFBundleShortVersionString</key>
-		<string>1.0.1</string>
+		<string>1.0.2</string>
 		<key>CFBundleVersion</key>
-		<string>1.0.1</string>
+		<string>1.0.2</string>
 		<key>LSMinimumSystemVersion</key>
 		<string>12.0.0</string>
 		<key>NSHighResolutionCapable</key>

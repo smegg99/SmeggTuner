@@ -94,7 +94,9 @@ release ver=version targets=release_targets:
         linux)
             rm -f "{{bin_dir}}/{{app_name}}" "{{bin_dir}}/{{app_name}}".deb "{{bin_dir}}/{{app_name}}".rpm \
                   "{{bin_dir}}/{{app_name}}".pkg.tar.zst "{{bin_dir}}/{{app_name}}"-*.AppImage
-            if VERSION="{{ver}}" EXTRA_TAGS="{{tags}}" wails3 task "linux:package" ARCH="${arch}"; then
+            # CI=true: pnpm may decide to purge node_modules (e.g. after a pnpm major bump) and
+            # aborts without a TTY to confirm on; release runs must never hang on a prompt.
+            if VERSION="{{ver}}" EXTRA_TAGS="{{tags}}" CI=true wails3 task "linux:package" ARCH="${arch}"; then
                 for f in "{{bin_dir}}/{{app_name}}".deb "{{bin_dir}}/{{app_name}}".rpm \
                          "{{bin_dir}}/{{app_name}}".pkg.tar.zst "{{bin_dir}}/{{app_name}}"-*.AppImage; do
                     case "$f" in

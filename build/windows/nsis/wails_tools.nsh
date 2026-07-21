@@ -11,10 +11,10 @@
     !define INFO_COMPANYNAME "Smegg99"
 !endif
 !ifndef INFO_PRODUCTNAME
-    !define INFO_PRODUCTNAME "Smegg's professional Accordion Tuner"
+    !define INFO_PRODUCTNAME "SmeggTuner"
 !endif
 !ifndef INFO_PRODUCTVERSION
-    !define INFO_PRODUCTVERSION "1.0.1"
+    !define INFO_PRODUCTVERSION "1.0.2"
 !endif
 !ifndef INFO_COPYRIGHT
     !define INFO_COPYRIGHT "(c) 2026, Smegg99"

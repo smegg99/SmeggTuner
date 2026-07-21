@@ -4,6 +4,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 )
 
 // Format is how this build reached the user's machine, which decides where its data may live.
@@ -20,6 +21,7 @@ const (
 	FormatNSIS     Format = "nsis"     // Windows NSIS installer
 	FormatExe      Format = "exe"      // Windows portable executable
 	FormatMacApp   Format = "macapp"   // macOS .app bundle
+	FormatSystem   Format = "system"   // Linux system location (/usr); deb, rpm and the AUR are indistinguishable at runtime
 )
 
 const appName = "smeggtuner"
@@ -45,14 +47,52 @@ func detectFromEnv() Format {
 	if os.Getenv("SNAP") != "" {
 		return FormatSnap
 	}
+	return detectFromPath()
+}
+
+// detectFromPath recognizes system-managed install locations by where the binary sits. This
+// cannot be a compile-time stamp: NSIS installs the same exe that ships portable, and one
+// Linux build feeds deb, rpm and the AUR alike. An unrecognized location is a portable run.
+func detectFromPath() Format {
+	exe, err := os.Executable()
+	if err != nil {
+		return FormatBinary
+	}
+	if resolved, err := filepath.EvalSymlinks(exe); err == nil {
+		exe = resolved
+	}
+	return formatForLocation(runtime.GOOS, exe, os.Getenv)
+}
+
+// formatForLocation decides by path prefix alone (host filepath semantics would make it
+// untestable for the other OS), so windows paths are case-folded and slash-normalized first.
+func formatForLocation(goos, exe string, env func(string) string) Format {
+	switch goos {
+	case "windows":
+		norm := func(p string) string { return strings.ToLower(strings.ReplaceAll(p, `\`, "/")) }
+		for _, v := range []string{"ProgramW6432", "ProgramFiles", "ProgramFiles(x86)"} {
+			if root := env(v); root != "" && pathUnder(norm(exe), norm(root)) {
+				return FormatNSIS
+			}
+		}
+	case "linux":
+		if pathUnder(exe, "/usr") {
+			return FormatSystem
+		}
+	}
 	return FormatBinary
+}
+
+// pathUnder reports whether path sits below root on a path-segment boundary; both slash-separated.
+func pathUnder(path, root string) bool {
+	return strings.HasPrefix(path, strings.TrimSuffix(root, "/")+"/")
 }
 
 // IsInstalled reports whether the format lives in a read-only or system-managed location that cannot hold runtime data.
 func (f Format) IsInstalled() bool {
 	switch f {
 	case FormatAppImage, FormatFlatpak, FormatSnap, FormatMacApp,
-		FormatDeb, FormatRPM, FormatAUR, FormatNSIS:
+		FormatDeb, FormatRPM, FormatAUR, FormatNSIS, FormatSystem:
 		return true
 	default:
 		return false
