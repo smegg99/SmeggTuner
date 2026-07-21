@@ -72,7 +72,9 @@ ManifestDPIAware true
 
 Name "${INFO_PRODUCTNAME}"
 OutFile "..\..\..\bin\${INFO_PROJECTNAME}-${ARCH}-installer.exe" # Name of the installer's file.
-InstallDir "$PROGRAMFILES64\${INFO_COMPANYNAME}\${INFO_PRODUCTNAME}" # Default installing folder ($PROGRAMFILES is Program Files folder).
+# The folder gets the short project name; the long product name stays a display string
+# (Add/Remove Programs, shortcuts). Deliberately NOT ${INFO_PRODUCTNAME}.
+InstallDir "$PROGRAMFILES64\${INFO_COMPANYNAME}\SmeggTuner"
 ShowInstDetails show # This will always show the installation details.
 
 Function .onInit
