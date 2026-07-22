@@ -9,7 +9,9 @@
     </div>
 
     <!-- "merged": the pair could not be split, so no number is shown (a wrong reed is worse
-         than none). "idle": nothing sounding. Either way the box keeps its shape. -->
+         than none). "notHeard"/"harmonicOnly": a declared rank the engine did not hear - the
+         latter is the blocked-rank shape, where only the lower rank's harmonic stands in the
+         band. "idle": nothing sounding. Either way the box keeps its shape. -->
     <div
       class="box__value"
       :class="{ 'box__value--none': box.value === null }"
@@ -19,6 +21,12 @@
       </template>
       <template v-else-if="box.blank === 'merged'">
         {{ t('tuner.boxes.notSplit') }}
+      </template>
+      <template v-else-if="box.blank === 'notHeard'">
+        {{ t('tuner.boxes.notHeard') }}
+      </template>
+      <template v-else-if="box.blank === 'harmonicOnly'">
+        {{ t('tuner.boxes.harmonicOnly') }}
       </template>
     </div>
 
@@ -44,10 +52,16 @@ const props = defineProps<{ box: Box }>()
 
 const { t } = useI18n()
 
-// Label text is composed here, not in the model: it's UI language (Polish-first).
-const label = computed(() => (props.box.kind === 'reed'
-  ? t('tuner.boxes.reed', { n: props.box.index + 1 })
-  : t('tuner.boxes.beat', { a: props.box.index, b: props.box.index + 1 })))
+// Label text is composed here, not in the model: it's UI language (Polish-first). A box standing
+// for a named rank is labeled by it - the same name as the card's column.
+const label = computed(() => {
+  if (props.box.kind === 'reed') {
+    return props.box.bank
+      ? t('tuner.boxes.reedBank', { bank: props.box.bank })
+      : t('tuner.boxes.reed', { n: props.box.index + 1 })
+  }
+  return t('tuner.boxes.beat', { a: props.box.index, b: props.box.index + 1 })
+})
 
 // Formatting only; the value comes from the DTO.
 function signed(value: number | null): string {

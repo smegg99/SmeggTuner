@@ -20,13 +20,14 @@
       <div class="build__body">
         <span class="build__sym"><InstrumentRegisterSymbol :banks="banks" /></span>
 
+        <!-- Rows mirror the engraving top to bottom: 4' high, 8' middle, 16' low. -->
         <div class="build__rows">
           <div class="build__row">
-            <span class="build__label">{{ t('instrument.builder.low') }}</span>
+            <span class="build__label">{{ t('instrument.builder.high') }}</span>
             <UiToolKey
-              :label="t(sym.low ? 'common.yes' : 'common.no')"
-              :active="sym.low"
-              @click="sym.low = !sym.low"
+              :label="t(sym.high ? 'common.yes' : 'common.no')"
+              :active="sym.high"
+              @click="sym.high = !sym.high"
             />
           </div>
 
@@ -41,11 +42,11 @@
           </div>
 
           <div class="build__row">
-            <span class="build__label">{{ t('instrument.builder.high') }}</span>
+            <span class="build__label">{{ t('instrument.builder.low') }}</span>
             <UiToolKey
-              :label="t(sym.high ? 'common.yes' : 'common.no')"
-              :active="sym.high"
-              @click="sym.high = !sym.high"
+              :label="t(sym.low ? 'common.yes' : 'common.no')"
+              :active="sym.low"
+              @click="sym.low = !sym.low"
             />
           </div>
         </div>

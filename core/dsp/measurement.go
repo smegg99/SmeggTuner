@@ -15,7 +15,26 @@ const (
 
 type ReedMeasure struct {
 	Freq     float64 `json:"freq"`
-	DevCents float64 `json:"devCents"` // vs the note's scale pitch at engine A4
+	DevCents float64 `json:"devCents"` // vs this reed's own band pitch (ScalePitch shifted by Octave)
+	// Octave is the band the reed was found in, in semitones from the note: -12 a 16', 0 an 8',
+	// +12 a 4'. Zero in single-band mode, so old readings keep their meaning.
+	Octave int `json:"octave,omitempty"`
+	// Harmonics is the reed's own voice: the amplitude of its 2nd and 4th partials over its
+	// fundamental's, measured only when the rank sounds alone (EngineConfig.ProfileHarmonics).
+	// A calibration sweep of a solo register records these; compound tuning then knows how loud a
+	// partial this reed lays into the octaves above, and can tell a rank tuned dead onto it from
+	// no rank at all - by amplitude, where the beat is too slow for phase to say.
+	Harmonics []float64 `json:"harmonics,omitempty"`
+}
+
+// BandReport is one octave band's accounting in a compound register: what the register declares
+// there, what was found, and whether the band held only a lower rank's harmonic - a blocked rank
+// shows exactly that shape, and it must not be reported as a sounding voice.
+type BandReport struct {
+	Octave    int  `json:"octave"`
+	Ranks     int  `json:"ranks"`
+	Found     int  `json:"found"`
+	GhostOnly bool `json:"ghostOnly"`
 }
 
 type BeatMeasure struct {
@@ -56,6 +75,10 @@ type Measurement struct {
 	// be told from three merged reeds or one reed on a moving bellows, both are false.
 	ReedsFromBeat bool          `json:"reedsFromBeat"`
 	Beats         []BeatMeasure `json:"beats"`
+	// Bands is the per-octave accounting of a compound register, in ascending octave order. Empty in
+	// single-band mode. A band with Found < Ranks is a rank the engine did not hear; GhostOnly says
+	// the only thing there was the lower rank's harmonic.
+	Bands []BandReport `json:"bands,omitempty"`
 	Equalizer     []float32     `json:"equalizer"` // one dB-ish value per note, for the UI
 
 	// SourceAt is where in the recording this reading's audio came from, in seconds: the end of the

@@ -14,7 +14,7 @@ import type { ToolItem } from '~/components/ui/ToolGroup.vue'
 import { useShell } from '~/composables/useShell'
 import type { View } from '~/composables/useShell'
 
-// The three rooms — not routes: engine, shelf and config live for the whole process.
+// The three rooms - not routes: engine, shelf and config live for the whole process.
 const { t } = useI18n()
 const { view, setView } = useShell()
 

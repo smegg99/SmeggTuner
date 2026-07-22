@@ -111,6 +111,10 @@ type reedShape struct {
 	reeds    int
 	beats    int
 	fromBeat bool
+	// Compound mode only: the key the note resolved to and each band's line count, so a base flip
+	// or a rank appearing must also repeat before it is reported. Zero in single-band mode.
+	base  tuning.Note
+	found [3]int8
 }
 
 // lobeWidth is how much spectrum a single sinusoid occupies under the analysis window: the Hann main

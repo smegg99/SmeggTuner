@@ -18,7 +18,7 @@ import { useInputRender } from '~/composables/render/useInputRender'
 import { useAudioDevices } from '~/composables/useAudioDevices'
 import { useTuner } from '~/composables/useTuner'
 
-// With the engine stopped the header shows nothing — never a fabricated "0 dB" / "-inf".
+// With the engine stopped the header shows nothing - never a fabricated "0 dB" / "-inf".
 const { t } = useI18n()
 const { inputLevel, running } = useTuner()
 const { current } = useAudioDevices()

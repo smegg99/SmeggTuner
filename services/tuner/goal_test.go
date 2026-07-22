@@ -58,7 +58,7 @@ func TestMeasurementWithNoSessionIsAPureIndicator(t *testing.T) {
 
 // goalOf is what the emit path reads on every measurement.
 func goalOf(s *Service) goal {
-	_, curve := s.session()
+	_, _, curve := s.session()
 	return goal{curve: curve, a4: s.snapshot().A4}
 }
 

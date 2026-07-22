@@ -50,7 +50,7 @@ func TestNoSessionIsALegalState(t *testing.T) {
 	if a := s.Active(); a != nil {
 		t.Fatalf("Active() = %+v, want nil with nothing open", a)
 	}
-	if g := (s.Goal()); g != (Goal{}) {
+	if g := s.Goal(); g.Curve != nil || g.A4 != 0 || g.Reeds != 0 || g.Banks != nil {
 		t.Fatalf("Goal() = %+v, want the zero goal with nothing open", g)
 	}
 	list, err := s.List()

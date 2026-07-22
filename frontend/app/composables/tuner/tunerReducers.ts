@@ -1,6 +1,6 @@
 import type { Ref } from 'vue'
 import type { MeasurementDTO, StateDTO } from '~~bindings/smegg.me/smeggtuner/services/tuner/models.js'
-import type { BeatMeasure, ReedMeasure } from '~~bindings/smegg.me/smeggtuner/core/dsp/models.js'
+import type { BandReport, BeatMeasure, ReedMeasure } from '~~bindings/smegg.me/smeggtuner/core/dsp/models.js'
 import type { BeatError, ReedError } from '~/types/record'
 import type { EngineState } from './tunerProtocol'
 import { AUTO_NOTE, EQUALIZER_CEILING_DB, ERROR_DEVICE_LOST, toEngineState, unpack, unpackSigned } from './tunerProtocol'
@@ -22,6 +22,7 @@ export interface TunerState {
   scalePitch: Ref<number>
   reeds: Ref<ReedMeasure[]>
   beats: Ref<BeatMeasure[]>
+  bands: Ref<BandReport[]>
   reedsSeparated: Ref<boolean>
   reedsFromBeat: Ref<boolean>
   reedErrors: Ref<ReedError[]>
@@ -70,6 +71,7 @@ export function onMeasurement(m: MeasurementDTO, s: TunerState) {
     s.locked.value = m.locked
     s.reeds.value = m.reeds
     s.beats.value = m.beats
+    s.bands.value = m.bands ?? []
     s.reedsSeparated.value = m.reedsSeparated
     s.reedsFromBeat.value = m.reedsFromBeat
     s.reedErrors.value = m.reedErrors ?? []
@@ -109,6 +111,7 @@ export function clearReading(s: TunerState) {
   s.scalePitch.value = 0
   s.reeds.value = []
   s.beats.value = []
+  s.bands.value = []
   s.reedsSeparated.value = true
   s.reedsFromBeat.value = false
   s.reedErrors.value = []

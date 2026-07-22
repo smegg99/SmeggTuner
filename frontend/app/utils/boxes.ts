@@ -1,4 +1,6 @@
 import { liveReedsUsable } from '~/utils/tuning'
+import { octaveOf } from '~/utils/feet'
+import type { Bank } from '~/types/session'
 
 // Values and verdicts come from the DTO as-is; the only number produced here is `frac` (drawing geometry).
 
@@ -8,6 +10,17 @@ export interface Reading {
   goal: number
   error: number
   inTol: boolean
+  /** 0-based measurement-reed indices of a beat's pair; absent on reeds and in older fixtures */
+  low?: number
+  high?: number
+}
+
+/** One octave band's accounting from the engine, for a register that spans octaves. */
+export interface BandInfo {
+  octave: number
+  ranks: number
+  found: number
+  ghostOnly: boolean
 }
 
 export interface BoxInput {
@@ -22,6 +35,12 @@ export interface BoxInput {
   beatTolerance: number
   /** reeds the engine looks for; drives box count so the row is stable */
   reedCount: number
+  /** the pulled register's banks in card order; a register spanning octaves maps boxes onto them */
+  banks?: readonly Bank[]
+  /** each measurement reed's octave, aligned with `reeds`; the compound engine sets them */
+  octaves?: readonly number[]
+  /** the engine's per-band accounting, for saying WHY a rank's box is empty */
+  bands?: readonly BandInfo[]
 }
 
 /** Why a box has no number. Never "it is zero". */
@@ -30,6 +49,10 @@ export type Blank
   = | 'idle'
   /** the spectrum could not split the pair, so those figures are lobes, not reeds */
     | 'merged'
+  /** the register sounds this rank but the engine did not hear it */
+    | 'notHeard'
+  /** all the engine heard in this rank's octave is the lower rank's harmonic - a blocked rank shows exactly this */
+    | 'harmonicOnly'
 
 export interface Box {
   kind: 'reed' | 'beat'
@@ -45,6 +68,8 @@ export interface Box {
   out: boolean
   /** 0..1, where the error bar ends. Drawing geometry. */
   frac: number | null
+  /** the rank this box stands for, when the pulled register names one */
+  bank?: Bank
 }
 
 // Track is four tolerances wide, so cents and hertz read identically and the notches sit in the same place whatever the technician sets.
@@ -82,10 +107,46 @@ const blankBeat = (i: number): Box => ({
   frac: null,
 })
 
+const beatBox = (i: number, beat: Reading, tolerance: number): Box => ({
+  kind: 'beat',
+  index: i,
+  unit: 'Hz',
+  value: beat.error,
+  goal: beat.goal,
+  blank: null,
+  out: !beat.inTol,
+  frac: fraction(beat.error, tolerance),
+})
+
+const reedBox = (i: number, reed: Reading, tolerance: number): Box => ({
+  kind: 'reed',
+  index: i,
+  unit: 'cent',
+  value: reed.error,
+  goal: reed.goal,
+  blank: null,
+  out: !reed.inTol,
+  frac: fraction(reed.error, tolerance),
+})
+
+// beatFor picks the beat between two measurement reeds by its pair indices; readings without pair
+// info (older fixtures) fall back to the positional slot.
+function beatFor(beats: readonly Reading[], lo: number, hi: number): Reading | undefined {
+  const named = beats.find(b => b.low === lo && b.high === hi)
+  if (named) return named
+  const positional = beats[lo]
+  return positional && positional.low === undefined ? positional : undefined
+}
+
 // The merged-pair rule lives in liveReedsUsable() (and record.ts), not duplicated here, so dial and report can't disagree.
 
 // buildBoxes: one box per configured reed always, so the row keeps its places as voices drop out; an unheard reed is empty and says which kind of empty.
+// A register spanning octaves maps each box onto its rank instead, so a missing 16' leaves the 16' box empty rather than shifting every reading one place left.
 export function buildBoxes(input: BoxInput): Box[] {
+  if (input.banks?.some(b => octaveOf(b) !== 0)) {
+    return buildBankBoxes(input, input.banks)
+  }
+
   // Count is declared, not measured: the split count flickers each hop and would resize the flex row; only with nothing declared does the reading decide.
   const count = input.reedCount > 0 ? input.reedCount : input.reeds.length
   if (count <= 0) return []
@@ -98,21 +159,8 @@ export function buildBoxes(input: BoxInput): Box[] {
 
   for (let i = 0; i < count; i++) {
     if (i > 0) {
-      const beat = input.beats[i - 1]
-
-      boxes.push(beat
-        ? {
-            kind: 'beat',
-            index: i,
-            unit: 'Hz',
-            // The beat survives a merged pair: measured off the envelope, not the spectrum.
-            value: beat.error,
-            goal: beat.goal,
-            blank: null,
-            out: !beat.inTol,
-            frac: fraction(beat.error, input.beatTolerance),
-          }
-        : blankBeat(i))
+      const beat = beatFor(input.beats, i - 1, i)
+      boxes.push(beat ? beatBox(i, beat, input.beatTolerance) : blankBeat(i))
     }
 
     const reed = input.reeds[i]
@@ -127,17 +175,55 @@ export function buildBoxes(input: BoxInput): Box[] {
       continue
     }
 
-    boxes.push({
-      kind: 'reed',
-      index: i,
-      unit: 'cent',
-      value: reed.error,
-      goal: reed.goal,
-      blank: null,
-      out: !reed.inTol,
-      frac: fraction(reed.error, input.tolerance),
-    })
+    boxes.push(reedBox(i, reed, input.tolerance))
   }
 
   return boxes
+}
+
+// buildBankBoxes lays the row out by the register's ranks: each reed claims the first unclaimed
+// bank in its own octave (the same rule the card's columns follow), so every box keeps naming the
+// same rank as voices come and go. In compound mode a found reed is a band's own line, never a
+// merged lobe, so the merged blank does not apply; an empty box says notHeard, or harmonicOnly
+// when the engine heard only the rank below's partial there - the blocked-rank case.
+function buildBankBoxes(input: BoxInput, banks: readonly Bank[]): Box[] {
+  const octaves = input.octaves ?? []
+  const claimed = input.reeds.map(() => false)
+  const slots = banks.map((bank) => {
+    const octave = octaveOf(bank)
+    let reed = -1
+    for (let i = 0; i < input.reeds.length; i++) {
+      if (!claimed[i] && (octaves[i] ?? 0) === octave) {
+        claimed[i] = true
+        reed = i
+        break
+      }
+    }
+    return { bank, octave, reed }
+  })
+
+  const idle = input.reeds.length === 0
+  const boxes: Box[] = []
+  slots.forEach((slot, s) => {
+    if (s > 0) {
+      const prev = slots[s - 1]!
+      const beat = prev.reed >= 0 && slot.reed >= 0
+        ? beatFor(input.beats, prev.reed, slot.reed)
+        : undefined
+      boxes.push(beat ? beatBox(s, beat, input.beatTolerance) : blankBeat(s))
+    }
+
+    if (slot.reed >= 0) {
+      boxes.push({ ...reedBox(s, input.reeds[slot.reed]!, input.tolerance), bank: slot.bank })
+      return
+    }
+    boxes.push({ ...blankReed(s, idle ? 'idle' : bandBlank(slot.octave, input.bands)), bank: slot.bank })
+  })
+  return boxes
+}
+
+// bandBlank is WHY a rank's box is empty while others read: the engine's per-band accounting says.
+function bandBlank(octave: number, bands?: readonly BandInfo[]): Blank {
+  const band = bands?.find(b => b.octave === octave)
+  return band?.ghostOnly ? 'harmonicOnly' : 'notHeard'
 }

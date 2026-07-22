@@ -174,6 +174,7 @@
     "sweep": {
       "step": "The reeds",
       "pickRegister": "Which register are you calibrating?",
+      "soloTeaches": "Sweeping a single-voice register also teaches the app that voice's sound, so in combined registers it can tell that voice from the harmonic of the one below it.",
       "noRegisters": "This accordion has no registers described. The sweep still runs; its readings land in numbered columns.",
       "startPlain": "Start the sweep",
       "redoRange": "Redo the keyboard",

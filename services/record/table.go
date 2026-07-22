@@ -48,18 +48,19 @@ func (s *Service) tableOf(d *sessionsvc.ReadingData) *TableDTO {
 	}
 }
 
-// banksOf maps each reed of a row to its column: reeds low to high, the register's
-// banks in the same order. Returns nil (the table then numbers reeds) when no
-// register is named, the register is gone, or the reed count does not match it.
+// banksOf maps each reed of a row to its column: each reed claims a register bank in its own
+// octave (see session.AssignBanks), so a take short a rank still names the ranks it has. Returns
+// nil (the table then numbers reeds) when no register is named, the register is gone, or the
+// claim fails.
 func banksOf(i coresession.Instrument, t coresession.Take, reeds int) []coresession.Bank {
 	if t.Register == "" || reeds == 0 {
 		return nil
 	}
 	r, ok := i.Register(t.Register)
-	if !ok || r.ReedCount() != reeds {
+	if !ok {
 		return nil
 	}
-	return r.Banks
+	return coresession.AssignBanks(r.Banks, t.Reeds)
 }
 
 // measurementOf reads a take back as the measurement it came from. It carries no

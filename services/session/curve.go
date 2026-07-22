@@ -15,10 +15,14 @@ func (s *Service) Goal() Goal {
 	if s.active == nil {
 		return Goal{}
 	}
+	bench := s.benchLocked()
 	return Goal{
 		Curve:         s.active.Curve,
 		A4:            s.active.A4,
-		Reeds:         s.benchLocked().Reeds,
+		Reeds:         bench.Reeds,
+		Banks:         bench.Banks,
+		Profile:       s.active.Profile(),
+		ProfileRev:    s.active.ProfileRev(),
 		Tolerance:     s.active.Instrument.Tolerance,
 		BeatTolerance: s.active.Instrument.BeatTolerance,
 	}

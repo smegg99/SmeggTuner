@@ -19,7 +19,7 @@ func setupSystemTray(app *application.App, window *application.WebviewWindow, qu
 	systemTray := app.SystemTray.New()
 
 	manager := tray.NewManager(systemTray, tray.Options{
-		Icons:   trayicons.ForStatus(trayicons.StatusIdle),
+		Icons:   trayicons.PlatformIcons(trayicons.StatusIdle),
 		Tooltip: func() string { return i18n.T("tray.tooltip") },
 		OnError: func(err error) {
 			logger.Error(logger.MsgTrayIconFailed, logger.Err(err))
@@ -62,7 +62,7 @@ func setupRecordTrayState(app *application.App, manager *tray.Manager) {
 		if state.SessionID != "" && state.Armed {
 			status = trayicons.StatusRecording
 		}
-		manager.SetIcons(trayicons.ForStatus(status))
+		manager.SetIcons(trayicons.PlatformIcons(status))
 	})
 }
 

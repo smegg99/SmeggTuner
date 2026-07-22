@@ -3,7 +3,7 @@ import { computed, effectScope, ref, shallowRef, watch } from 'vue'
 import { Events } from '@wailsio/runtime'
 import * as TunerService from '~~bindings/smegg.me/smeggtuner/services/tuner/service.js'
 import type { MeasurementDTO, StateDTO, SettingsDTO } from '~~bindings/smegg.me/smeggtuner/services/tuner/models.js'
-import type { BeatMeasure, ReedMeasure } from '~~bindings/smegg.me/smeggtuner/core/dsp/models.js'
+import type { BandReport, BeatMeasure, ReedMeasure } from '~~bindings/smegg.me/smeggtuner/core/dsp/models.js'
 import type { Config } from '~~bindings/smegg.me/smeggtuner/common/config/models.js'
 import type { BeatError, ReedError } from '~/types/record'
 import { AUTO_NOTE, EQUALIZER_CEILING_DB, EQUALIZER_FULL_SCALE_DB, NOTE_BANDS, NOTE_MAX, NOTE_MIN, SPECTRUM_CENTS, SPECTRUM_COLUMNS, SPECTRUM_FLOOR_DB, WAVE_POINTS, toErrorKey } from './tuner/tunerProtocol'
@@ -46,6 +46,9 @@ const lockProgress = ref(0)
 const scalePitch = ref(0)
 const reeds = shallowRef<ReedMeasure[]>([])
 const beats = shallowRef<BeatMeasure[]>([])
+// The compound engine's per-octave accounting: which ranks were heard, and whether an empty band
+// held only the rank below's harmonic. Empty in single-band mode.
+const bands = shallowRef<BandReport[]>([])
 const reedsSeparated = ref(true)
 const reedsFromBeat = ref(false)
 
@@ -84,7 +87,7 @@ const unit = computed<TuningUnit>({
 })
 
 const tunerState: TunerState = {
-  note, noteName, locked, lockProgress, scalePitch, reeds, beats, reedsSeparated, reedsFromBeat,
+  note, noteName, locked, lockProgress, scalePitch, reeds, beats, bands, reedsSeparated, reedsFromBeat,
   reedErrors, beatErrors, inputLevel, state, running, readingAt, starting, error,
   live,
   notify: () => { for (const fn of listeners) fn() },
@@ -163,6 +166,7 @@ export function useTuner() {
     scalePitch,
     reeds,
     beats,
+    bands,
     reedsSeparated,
     reedsFromBeat,
     reedErrors,

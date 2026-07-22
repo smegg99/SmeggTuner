@@ -115,14 +115,18 @@ func (z *Zoom) Analyze(ring *Ring, centerHz, spanHz float64, window time.Duratio
 	if bins > nfft/2-1 {
 		bins = nfft/2 - 1
 	}
+	// Magnitudes are normalized by the window's sample count, so a line's amplitude does not depend
+	// on how far this band's rate was decimated: bands zoomed at different centers compare honestly
+	// (the compound stage's cross-band floor and the harmonic profiles both do).
 	spec := make([]float64, 2*bins+1)
 	phases := make([]float64, 2*bins+1)
+	norm := 1 / float64(n)
 	for k := -bins; k <= bins; k++ {
 		idx := k
 		if idx < 0 {
 			idx += nfft
 		}
-		spec[k+bins] = cmplx.Abs(coeffs[idx])
+		spec[k+bins] = cmplx.Abs(coeffs[idx]) * norm
 		phases[k+bins] = cmplx.Phase(coeffs[idx])
 	}
 	return ZoomResult{

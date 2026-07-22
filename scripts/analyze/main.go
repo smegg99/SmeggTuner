@@ -11,6 +11,7 @@ import (
 
 	"smegg.me/smeggtuner/core/audio"
 	"smegg.me/smeggtuner/core/dsp"
+	"smegg.me/smeggtuner/core/session"
 	"smegg.me/smeggtuner/core/tuning"
 )
 
@@ -37,6 +38,7 @@ func main() {
 	a4 := flag.Float64("a4", 440, "A4 reference frequency")
 	noteName := flag.String("note", "", "manual note (e.g. A4); empty = auto")
 	reeds := flag.Int("reeds", 1, "reed count 1..3")
+	banks := flag.String("banks", "", "register banks (e.g. LM, LMMM, MH); sets the compound layout and the reed count")
 	ppm := flag.Float64("ppm", 0, "clock correction ppm")
 	window := flag.Float64("window", 3.0, "fine analysis window, seconds")
 	trace := flag.Bool("trace", false, "print every measurement to stderr")
@@ -48,6 +50,16 @@ func main() {
 	}
 	if *reeds < 1 || *reeds > 3 {
 		fail("-reeds must be 1..3")
+	}
+
+	var octaves []dsp.OctaveRequest
+	if *banks != "" {
+		bs, err := session.ParseBanks(*banks)
+		if err != nil {
+			fail("%v", err)
+		}
+		octaves = session.OctavesOf(bs)
+		*reeds = len(bs)
 	}
 
 	var src audio.Source
@@ -88,6 +100,7 @@ func main() {
 		ReedCount:  *reeds,
 		ManualNote: manual,
 		ClockPPM:   *ppm,
+		Octaves:    octaves,
 		// CalibSecs 0: recordings start mid-note; calibrating would fold the tone into the noise floor.
 		FineWindow: time.Duration(*window * float64(time.Second)),
 	}, emit)

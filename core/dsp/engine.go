@@ -2,6 +2,7 @@ package dsp
 
 import (
 	"smegg.me/smeggtuner/common/logger"
+	"smegg.me/smeggtuner/core/tuning"
 )
 
 const msgTrackedNoteChanged logger.MessageID = "tracked note changed"
@@ -24,6 +25,13 @@ type Engine struct {
 	// the height Measurement.Spectrum is drawn against, and the note it was measured on. Run loop only.
 	specPeak float64
 	specFc   float64
+	// which key the tracked note resolved to in compound mode, cached while the note holds and
+	// re-resolved once a second (compAge counts fine hops). Run loop only.
+	compFor  tuning.Note
+	compBase tuning.Note
+	compAge  int
+	// per-band residual-angle trackers for the compound verdicts, reset with the note. Run loop only.
+	compTracks [4]bandTrack
 }
 
 // NewEngine builds an engine that emits once per coarse hop. While a note sounds the fine stage runs

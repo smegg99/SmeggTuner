@@ -300,8 +300,10 @@ func (e *Engine) Run(ctx context.Context, src audio.Source) error {
 					}
 				}
 
+				compound := e.compound()
+
 				zr := ZoomResult{}
-				if window >= minSpectrumWindow {
+				if window >= minSpectrumWindow && !(full && compound) {
 					zr = zoom.Analyze(ring, fc, span, window)
 				}
 
@@ -316,7 +318,31 @@ func (e *Engine) Run(ctx context.Context, src audio.Source) error {
 					measured = true
 				}
 
-				if zr.Valid && full {
+				// The compound stage: one band per octave the register sounds, in place of the single
+				// band and its pair machinery. The phase-refinement chain is not run here - the bands
+				// re-centre as the key resolves, and the number a compound register is tuned by is the
+				// beat within one window, not a tenth of a cent on one line.
+				if full && compound {
+					now := float64(consumed) / float64(sr)
+					if cf, ok := e.compoundAnalyze(zoom, ring, curNote, window, now); ok {
+						locked := lock.Observe(cf.freqs, now-lastFineAt)
+						lastFineAt = now
+						m := e.buildCompound(cf, lastCoarse, refFloor, level, locked, srcAt)
+						m.LockProgress = lock.Progress()
+						e.attachProfile(&m, zoom, ring, window)
+						if shape := compoundShape(cf, len(m.Beats)); shape == lastShape {
+							m.State = hopState(level, clipped)
+							e.publish(m)
+						} else {
+							// Not trusted yet, but the meters still have to move.
+							lastShape = shape
+							e.publish(e.stateMeasurement(hopState(level, clipped), lastCoarse, refFloor, level, srcAt))
+						}
+						measured = true
+					}
+				}
+
+				if zr.Valid && full && !compound {
 					peaks := FindPeaks(zr, e.cfg.ReedCount, e.lobeWidth())
 
 					// seconds of samples consumed, never wall clock: RefinePhase's error sensitivity is f*dt/hop.
@@ -340,6 +366,7 @@ func (e *Engine) Run(ctx context.Context, src audio.Source) error {
 					lastFineAt = now
 					m := e.buildMeasurement(curNote, fc, freqs, peaks, zr, lastCoarse, refFloor, level, locked, srcAt)
 					m.LockProgress = lock.Progress()
+					e.attachProfile(&m, zoom, ring, window)
 
 					// Wait for the shape of the result to repeat before reporting it: a stray sideband
 					// that dressed itself up as a second reed does not survive that.

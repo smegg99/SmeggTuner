@@ -11,13 +11,14 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { buildBoxes } from '~/utils/boxes'
+import type { Bank } from '~/types/session'
 import { useConfigSync } from '~/composables/useConfigSync'
 import { useSessions } from '~/composables/useSessions'
 import { useTuner } from '~/composables/useTuner'
 
 // One box per reed plus a beat between each pair; flex row fits 1..8 reeds (nothing assumes three).
 // DOM not canvas, so the readout stays selectable and screen-readable.
-const { reedErrors, beatErrors, reedsSeparated, reedsFromBeat, reedCount } = useTuner()
+const { reedErrors, beatErrors, reeds, bands, reedsSeparated, reedsFromBeat, reedCount } = useTuner()
 const { active } = useSessions()
 const { config } = useConfigSync()
 
@@ -35,6 +36,13 @@ const boxes = computed(() => buildBoxes({
 
   // Passing the count keeps the row's shape even with nothing sounding.
   reedCount: boxCount.value,
+
+  // The pulled register's ranks and the engine's octave tags: a register spanning octaves maps
+  // each box onto its rank, so a silent 16' leaves the 16' box empty instead of shifting the row.
+  // The bindings' Bank enum carries the same strings the app's Bank union names.
+  banks: (active.value?.bench?.banks as Bank[] | undefined) ?? undefined,
+  octaves: reeds.value.map(r => r.octave ?? 0),
+  bands: bands.value,
 
   // tolerance only scales the bar; the in-tune verdict (inTol) is already decided by the backend.
   tolerance: config.tuner?.tolerance ?? 0,

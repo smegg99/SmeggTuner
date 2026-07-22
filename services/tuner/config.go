@@ -77,20 +77,20 @@ func (s *Service) merged(c dsp.EngineConfig) dsp.EngineConfig {
 
 // snapshot returns the config the engine would run with now, session included. Read-only: PlayTone must not move service state.
 func (s *Service) snapshot() dsp.EngineConfig {
-	p, _ := s.session()
+	p, prof, _ := s.session()
 	s.mu.Lock()
 	defer s.mu.Unlock()
-	return impose(s.merged(s.cfg), p)
+	return impose(s.merged(s.cfg), p, prof)
 }
 
 // refresh folds the config file into the stored config and returns what the engine runs on; the session's own values never enter the stored config that persist writes back.
 func (s *Service) refresh() dsp.EngineConfig {
-	p, _ := s.session()
+	p, prof, _ := s.session()
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	s.cfg = s.merged(s.cfg)
 	s.imposed = p
-	return impose(s.cfg, p)
+	return impose(s.cfg, p, prof)
 }
 
 // persist writes a setting back to the config file; a failed write is logged, not returned, and writes are serialized because Wails runs SetA4 and SetFilters concurrently.

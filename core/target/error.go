@@ -75,7 +75,8 @@ func Errors(m dsp.Measurement, c *Curve, a4, tol float64) []ReedError {
 
 	out := make([]ReedError, 0, len(m.Reeds))
 	for i, r := range m.Reeds {
-		curr := CurrCents(r, ref)
+		rref := BandRef(ref, r.Octave)
+		curr := CurrCents(r, rref)
 		g := goalAt(goal, i)
 		err := curr - g
 		out = append(out, ReedError{
@@ -83,13 +84,22 @@ func Errors(m dsp.Measurement, c *Curve, a4, tol float64) []ReedError {
 			Curr:    curr,
 			Goal:    g,
 			Error:   err,
-			CurrHz:  hzAt(ref, curr),
-			GoalHz:  hzAt(ref, g),
-			ErrorHz: hzAt(ref, curr) - hzAt(ref, g),
+			CurrHz:  hzAt(rref, curr),
+			GoalHz:  hzAt(rref, g),
+			ErrorHz: hzAt(rref, curr) - hzAt(rref, g),
 			InTol:   math.Abs(err) <= tol,
 		})
 	}
 	return out
+}
+
+// BandRef shifts a note's reference pitch to a reed's own octave: a compound register's 16' and 4'
+// ranks each read against their own band, not the key's. Octave zero is every single-band reading.
+func BandRef(ref float64, octave int) float64 {
+	if octave == 0 {
+		return ref
+	}
+	return ref * math.Exp2(float64(octave)/12)
 }
 
 // CurrCents is the deviation a reed sits at, in cents from ref. It recomputes from

@@ -11,6 +11,13 @@ const FEET: Record<Bank, string> = {
   H: '4\'',
 }
 
+// octaveOf is where a bank sounds, in semitones from the played key; mirrors core/session Bank.Octave.
+export function octaveOf(bank: Bank): number {
+  if (bank === 'L') return -12
+  if (bank === 'H') return 12
+  return 0
+}
+
 // feetOf renders a register's banks in feet, e.g. [L,M1,M2,M3] -> "16'+8'+8'+8'", in card order low to high.
 export function feetOf(banks: readonly Bank[]): string {
   const ordered = BANKS.filter(b => banks.includes(b))
@@ -20,11 +27,11 @@ export function feetOf(banks: readonly Bank[]): string {
 
 // RegisterDots is the engraved register symbol as booleans and a count, so a component can draw it without knowing banks.
 export interface RegisterDots {
-  /** 4' at the bottom */
+  /** 4' at the top */
   high: boolean
   /** how many 8' dots in the middle: 0 to 4 */
   middle: number
-  /** 16' bass on top */
+  /** 16' bass at the bottom */
   low: boolean
 }
 

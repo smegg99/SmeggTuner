@@ -72,8 +72,11 @@
     },
     "boxes": {
       "notSplit": "not split, no reading",
+      "notHeard": "not heard",
+      "harmonicOnly": "only the lower rank's harmonic",
       "goal": "goal",
       "reed": "Reed {n}",
+      "reedBank": "Reed {bank}",
       "beat": "Beat {a} to {b}"
     },
     "ruler": {

@@ -24,6 +24,10 @@ type OctaveBand struct {
 	Center float64 // Hz the band was centred on: base * 2^(Offset/12)
 	Reeds  []Peak  // lines found, strongest-refined, ascending in frequency
 	Valid  bool    // false when the ring held too little to analyse this band
+	// Ghosts is what SubtractHarmonics took away: lines sitting on a lower rank's partial, strongest
+	// first. A caller with more evidence (the engine's phase-lock test) may hand one back as a reed
+	// tuned onto the partial; without that evidence they stay what they look like.
+	Ghosts []Peak
 }
 
 // AnalyzeOctaves resolves each octave of a compound register independently. Each request places a
@@ -60,6 +64,10 @@ const harmonicSlack = 2
 // AnalyzeCompound reads a compound register and hands back each octave's own reeds, the ranks below
 // subtracted out. Each band is over-resolved (its ranks plus slack) so a lower rank's leaked partial
 // is seen, then SubtractHarmonics removes those partials bottom-up. tolFor is the drift prior.
+// A band left short of its rank count gets its strongest ghosts back: a partial falling exactly on a
+// genuine reed cannot be told from it in one spectrum, and this API has no second witness. The
+// engine does - it phase-locks the band against the rank below and backfills only when the band
+// holds something independent (see run's compound stage).
 func (z *Zoom) AnalyzeCompound(ring *Ring, baseHz float64, reqs []OctaveRequest, minSepHz float64, window time.Duration, tolFor func(freq float64) float64) []OctaveBand {
 	raw := make([]OctaveRequest, len(reqs))
 	ranks := make([]int, len(reqs))
@@ -67,19 +75,43 @@ func (z *Zoom) AnalyzeCompound(ring *Ring, baseHz float64, reqs []OctaveRequest,
 		ranks[i] = r.Reeds
 		raw[i] = OctaveRequest{Offset: r.Offset, Reeds: r.Reeds + harmonicSlack}
 	}
-	bands := AnalyzeOctaves(z, ring, baseHz, raw, minSepHz, window)
-	return SubtractHarmonics(bands, ranks, tolFor)
+	bands := SubtractHarmonics(AnalyzeOctaves(z, ring, baseHz, raw, minSepHz, window), ranks, tolFor)
+	for i := range bands {
+		want := 1
+		if i < len(ranks) {
+			want = ranks[i]
+		}
+		bands[i].Reeds = backfillGhosts(bands[i].Reeds, bands[i].Ghosts, want)
+	}
+	return bands
+}
+
+// backfillGhosts returns genuine topped up from the strongest ghosts to want lines, trimmed to the
+// want strongest and returned ascending in frequency.
+func backfillGhosts(genuine, ghosts []Peak, want int) []Peak {
+	out := append([]Peak(nil), genuine...)
+	for len(out) < want && len(ghosts) > 0 {
+		out = append(out, ghosts[0])
+		ghosts = ghosts[1:]
+	}
+	sort.SliceStable(out, func(a, b int) bool { return out[a].Amp > out[b].Amp })
+	if len(out) > want {
+		out = out[:want]
+	}
+	sort.SliceStable(out, func(a, b int) bool { return out[a].Freq < out[b].Freq })
+	return out
 }
 
 // SubtractHarmonics removes, bottom-up, the partials a lower rank leaks into the bands above. The
 // lowest rank is spectrally clean, so it is solved first and its partials predicted upward; each band
 // is then cleaned of what the ranks below it predict before adding its own.
 //
-// ranks[i] is how many genuine ranks band i has. A peak is dropped as a ghost only while doing so
-// leaves the band at least that many: a partial falling exactly on a genuine reed cannot be told from
-// it in one spectrum, so the coincident case keeps the reed. tolFor is the half-window, in Hz, around
-// a predicted partial - wide enough to catch an inharmonic partial, tight enough not to swallow a
-// detuned reed - and the caller sets it because that width is the bellows-drift prior.
+// ranks[i] is how many genuine ranks band i has: what the band's own lines are trimmed to, never a
+// reason to keep a ghost. What was dropped lands in Ghosts, strongest first, because this function
+// cannot tell a partial from a reed tuned exactly onto it - that takes a second witness (the
+// engine's phase-lock test, or AnalyzeCompound's benefit of the doubt). tolFor is the half-window,
+// in Hz, around a predicted partial - wide enough to catch drift within the window, tight enough not
+// to swallow a detuned reed - and the caller sets it because that width is the drift prior.
 func SubtractHarmonics(bands []OctaveBand, ranks []int, tolFor func(freq float64) float64) []OctaveBand {
 	// Traverse lowest band first, whatever order they arrived in; return them in that same order.
 	order := make([]int, len(bands))
@@ -109,14 +141,7 @@ func SubtractHarmonics(bands []OctaveBand, ranks []int, tolFor func(freq float64
 				genuine = append(genuine, p)
 			}
 		}
-
-		// A ghost sitting on a real reed must not starve the band below its rank count: give the
-		// strongest ghosts back until it has what the register says it has.
 		sort.SliceStable(ghosts, func(a, b int) bool { return ghosts[a].Amp > ghosts[b].Amp })
-		for len(genuine) < want && len(ghosts) > 0 {
-			genuine = append(genuine, ghosts[0])
-			ghosts = ghosts[1:]
-		}
 
 		// Keep the `want` strongest, returned ascending in frequency.
 		sort.SliceStable(genuine, func(a, b int) bool { return genuine[a].Amp > genuine[b].Amp })
@@ -125,6 +150,7 @@ func SubtractHarmonics(bands []OctaveBand, ranks []int, tolFor func(freq float64
 		}
 		sort.SliceStable(genuine, func(a, b int) bool { return genuine[a].Freq < genuine[b].Freq })
 		out[idx].Reeds = genuine
+		out[idx].Ghosts = ghosts
 
 		// This band's own reeds leak upward in turn.
 		for _, r := range genuine {

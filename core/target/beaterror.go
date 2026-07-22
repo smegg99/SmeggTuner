@@ -41,9 +41,19 @@ func BeatErrors(m dsp.Measurement, c *Curve, a4, tol float64) []BeatError {
 	}
 	goal := c.At(m.Note)
 
+	// A beat is heard where its upper reed sounds, so the Hz conversions run at that reed's own
+	// octave; hiOct resolves it from the measurement, zero on any single-band reading.
+	hiOct := func(hi int) int {
+		if hi >= 0 && hi < len(m.Reeds) {
+			return m.Reeds[hi].Octave
+		}
+		return 0
+	}
+
 	row := func(lo, hi int, curr float64, fromEnvelope bool) BeatError {
 		g := goalAt(goal, hi) - goalAt(goal, lo)
 		err := curr - g
+		pref := BandRef(ref, hiOct(hi))
 		return BeatError{
 			Pair:         fmt.Sprintf("%d-%d", lo+1, hi+1),
 			Low:          lo,
@@ -51,9 +61,9 @@ func BeatErrors(m dsp.Measurement, c *Curve, a4, tol float64) []BeatError {
 			Curr:         curr,
 			Goal:         g,
 			Error:        err,
-			CurrHz:       hzAt(ref, curr),
-			GoalHz:       hzAt(ref, g),
-			ErrorHz:      hzAt(ref, curr) - hzAt(ref, g),
+			CurrHz:       hzAt(pref, curr),
+			GoalHz:       hzAt(pref, g),
+			ErrorHz:      hzAt(pref, curr) - hzAt(pref, g),
 			InTol:        math.Abs(err) <= tol,
 			FromEnvelope: fromEnvelope,
 		}
@@ -67,15 +77,18 @@ func BeatErrors(m dsp.Measurement, c *Curve, a4, tol float64) []BeatError {
 				continue
 			}
 			// Envelope beat is a positive rate; the goal runs low reed to high, positive on an ascending curve.
-			out = append(out, row(lo, hi, tuning.Cents(ref+b.Hz, ref), b.FromEnvelope))
+			pref := BandRef(ref, hiOct(hi))
+			out = append(out, row(lo, hi, tuning.Cents(pref+b.Hz, pref), b.FromEnvelope))
 		}
 		return out
 	}
 
+	// Band-relative cents make the pair difference the beat itself: an octave pair's 1200-cent gap
+	// cancels, leaving only how far the upper reed sits from the lower one's partial.
 	n := len(m.Reeds)
 	curr := make([]float64, n)
 	for i, r := range m.Reeds {
-		curr[i] = CurrCents(r, ref)
+		curr[i] = CurrCents(r, BandRef(ref, r.Octave))
 	}
 	out := make([]BeatError, 0, n*(n-1)/2)
 	for lo := 0; lo < n; lo++ {

@@ -11,7 +11,7 @@
       r="18"
     />
 
-    <!-- Two lines divide the circle into three bands: 16' top, 8' middle, 4' bottom. -->
+    <!-- Two lines divide the circle into three bands, as engraved on the instrument: 4' top, 8' middle, 16' bottom. -->
     <line
       class="sym__band"
       x1="4"
@@ -27,9 +27,9 @@
       y2="26"
     />
 
-    <!-- 16', top band -->
+    <!-- 4', top band -->
     <circle
-      v-if="sym.low"
+      v-if="sym.high"
       class="sym__dot"
       cx="20"
       cy="8.5"
@@ -46,9 +46,9 @@
       r="2.3"
     />
 
-    <!-- 4', bottom band -->
+    <!-- 16', bottom band -->
     <circle
-      v-if="sym.high"
+      v-if="sym.low"
       class="sym__dot"
       cx="20"
       cy="31.5"
@@ -62,7 +62,7 @@ import { computed } from 'vue'
 import { symbolOf } from '~/utils/feet'
 import type { Bank } from '~/types/session'
 
-// Read-only register symbol: three bands (16'/8'/4'), a dot per rank. RegisterBuilder draws the same thing but interactive.
+// Read-only register symbol: three bands (4'/8'/16', top down - the instrument's own engraving), a dot per rank. RegisterBuilder draws the same thing but interactive.
 const props = defineProps<{ banks: readonly Bank[] }>()
 
 const sym = computed(() => symbolOf(props.banks))

@@ -113,8 +113,10 @@ func TestSubtractHarmonicsDropsAResolvedGhost(t *testing.T) {
 	}
 }
 
-// The coincident case one spectrum cannot resolve: the 16's partial falls exactly on the genuine 8', so the reed is kept.
-func TestSubtractHarmonicsKeepsACoincidentReed(t *testing.T) {
+// The coincident case one spectrum cannot resolve: the 16's partial falls exactly where the 8'
+// would sound. SubtractHarmonics no longer decides it - the line lands in Ghosts for a caller with
+// a second witness (the engine's phase lock); AnalyzeCompound, which has none, keeps the reed.
+func TestSubtractHarmonicsHandsACoincidentLineToTheCaller(t *testing.T) {
 	bands := []OctaveBand{
 		{Offset: -12, Center: 220, Valid: true, Reeds: []Peak{{Freq: 220, Amp: 0.6}}},
 		{Offset: 0, Center: 440, Valid: true, Reeds: []Peak{{Freq: 440, Amp: 0.4}}},
@@ -122,8 +124,14 @@ func TestSubtractHarmonicsKeepsACoincidentReed(t *testing.T) {
 	tol := func(float64) float64 { return 3.0 }
 	out := SubtractHarmonics(bands, []int{1, 1}, tol)
 
-	if len(out[1].Reeds) != 1 || math.Abs(out[1].Reeds[0].Freq-440) > 0.01 {
-		t.Errorf("8' band: a coincident reed must survive, want [440], got %+v", out[1].Reeds)
+	if len(out[1].Reeds) != 0 {
+		t.Errorf("8' band: the only line sits on the 16's partial, want no reeds, got %+v", out[1].Reeds)
+	}
+	if len(out[1].Ghosts) != 1 || math.Abs(out[1].Ghosts[0].Freq-440) > 0.01 {
+		t.Errorf("8' band: the line must land in Ghosts, got %+v", out[1].Ghosts)
+	}
+	if back := backfillGhosts(out[1].Reeds, out[1].Ghosts, 1); len(back) != 1 || math.Abs(back[0].Freq-440) > 0.01 {
+		t.Errorf("backfill must restore the coincident line, got %+v", back)
 	}
 }
 

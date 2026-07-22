@@ -106,7 +106,7 @@ func Fit(rs []Reading, reedCount int, a4 float64, opts FitOptions) (*FitResult, 
 
 		ref := r.Note.Freq(a4)
 		for i := 0; i < len(r.Reeds) && i < reedCount; i++ {
-			c := CurrCents(r.Reeds[i], ref)
+			c := CurrCents(r.Reeds[i], BandRef(ref, r.Reeds[i].Octave))
 			if math.IsNaN(c) || math.IsInf(c, 0) {
 				continue
 			}

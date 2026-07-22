@@ -4,6 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"strings"
+
+	"smegg.me/smeggtuner/core/dsp"
 )
 
 // Bank is a rank of reeds.
@@ -38,6 +40,80 @@ func (b Bank) Valid() bool {
 		return true
 	}
 	return false
+}
+
+// Octave is where the bank sounds, in semitones from the played key: L an octave under, H one over.
+func (b Bank) Octave() int {
+	switch b {
+	case BankL:
+		return -12
+	case BankH:
+		return 12
+	}
+	return 0
+}
+
+// AssignBanks names the bank each of a take's reeds landed in: a reed claims the register's first
+// unclaimed bank in its own octave, in card order. A take from before octaves (every reed at zero)
+// claims positionally when the counts match - the old contract. Nil when any claim fails; the
+// caller then numbers the reeds instead of naming ranks it is not sure of.
+func AssignBanks(register []Bank, reeds []dsp.ReedMeasure) []Bank {
+	if len(register) == 0 || len(reeds) == 0 {
+		return nil
+	}
+	octaved := false
+	for _, r := range reeds {
+		if r.Octave != 0 {
+			octaved = true
+			break
+		}
+	}
+	if !octaved {
+		if len(reeds) != len(register) {
+			return nil
+		}
+		return append([]Bank(nil), register...)
+	}
+	used := make([]bool, len(register))
+	out := make([]Bank, len(reeds))
+	for i, r := range reeds {
+		claimed := false
+		for j, b := range register {
+			if !used[j] && b.Octave() == r.Octave {
+				used[j], out[i], claimed = true, b, true
+				break
+			}
+		}
+		if !claimed {
+			return nil
+		}
+	}
+	return out
+}
+
+// OctavesOf maps a register's banks onto the engine's compound layout: one band per octave the
+// register sounds, ascending, each carrying its rank count. Nil for a register that stays in the
+// key's own octave - the engine's single band (and its musette machinery) is the right tool there.
+func OctavesOf(banks []Bank) []dsp.OctaveRequest {
+	counts := map[int]int{}
+	spans := false
+	for _, b := range banks {
+		off := b.Octave()
+		counts[off]++
+		if off != 0 {
+			spans = true
+		}
+	}
+	if !spans {
+		return nil
+	}
+	var out []dsp.OctaveRequest
+	for _, off := range []int{-12, 0, 12} {
+		if counts[off] > 0 {
+			out = append(out, dsp.OctaveRequest{Offset: off, Reeds: counts[off]})
+		}
+	}
+	return out
 }
 
 // ParseBanks reads a register name (LMMM, MMM, M2) as the banks it sounds.

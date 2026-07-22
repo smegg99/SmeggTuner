@@ -23,6 +23,16 @@
       </button>
     </div>
 
+    <!-- A solo register's sweep doubles as calibration of that rank's voice: the app learns how
+         loud its partials stand, and compound registers can then tell that rank tuned dead onto a
+         partial from a rank not sounding at all. -->
+    <p
+      v-if="hasSolo"
+      class="sw__hint"
+    >
+      {{ t('calibrate.sweep.soloTeaches') }}
+    </p>
+
     <!-- No register described: sweep into numbered columns, like an undescribed session. -->
     <template v-else>
       <p class="sw__hint">
@@ -45,15 +55,18 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { Register } from '~/types/session'
 
-defineProps<{ registers: Register[] }>()
+const props = defineProps<{ registers: Register[] }>()
 const emit = defineEmits<{
   begin: [name: string]
   redoRange: []
 }>()
 
 const { t } = useI18n()
+
+const hasSolo = computed(() => props.registers.some(r => r.banks.length === 1))
 </script>
 
 <style scoped>

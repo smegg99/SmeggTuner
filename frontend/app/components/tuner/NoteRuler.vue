@@ -96,7 +96,7 @@ function onPress(event: PointerEvent) {
   press(note)
 }
 
-// Release, cancel, or leave — each ends the tone.
+// Release, cancel, or leave - each ends the tone.
 function onRelease() {
   held.value = -1
   release()

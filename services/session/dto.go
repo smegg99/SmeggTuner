@@ -3,6 +3,7 @@ package session
 import (
 	"time"
 
+	"smegg.me/smeggtuner/core/dsp"
 	coresession "smegg.me/smeggtuner/core/session"
 	"smegg.me/smeggtuner/core/target"
 )
@@ -62,6 +63,14 @@ type Goal struct {
 	A4    float64       `json:"a4"`
 	// Reeds is what the instrument sounds (1..8), not what the engine resolves.
 	Reeds int `json:"reeds"`
+	// Banks is the pulled register's ranks in card order, or nil when none is pulled (or the
+	// instrument predates banks). The tuner maps these onto the engine's octave layout.
+	Banks []coresession.Bank `json:"banks"`
+
+	// Profile is the rank voices this session's calibration takes taught (see Session.Profile),
+	// and ProfileRev the fingerprint that says when to re-read it.
+	Profile    []dsp.RankProfile `json:"profile"`
+	ProfileRev int64             `json:"profileRev"`
 
 	// Tolerance and BeatTolerance are this accordion's judging windows, in cents, or zero for the app default.
 	Tolerance     float64 `json:"tolerance"`

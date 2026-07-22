@@ -72,8 +72,11 @@
     },
     "boxes": {
       "notSplit": "nie rozdzielono, brak odczytu",
+      "notHeard": "nie słychać",
+      "harmonicOnly": "tylko harmoniczna niższego głosu",
       "goal": "cel",
       "reed": "Głos {n}",
+      "reedBank": "Głos {bank}",
       "beat": "Dudnienie {a} do {b}"
     },
     "ruler": {

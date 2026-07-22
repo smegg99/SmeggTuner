@@ -44,18 +44,25 @@ func reedCells(errs []target.ReedError, reedCount int, banks []session.Bank, int
 	return cells
 }
 
-// columnsFor maps each reed of a take to its card column, returning nil on any uncertain mapping so reeds fall back to positions. See services/record.banksOf for the screen's copy.
+// columnsFor maps each reed of a take to its card column: each reed claims a register bank in its
+// own octave (see session.AssignBanks), so a take short a rank still lands in the right columns.
+// Nil on any uncertain mapping so reeds fall back to positions. See services/record.banksOf for the
+// screen's copy.
 func columnsFor(i session.Instrument, t session.Take, reeds int) []int {
 	if len(i.Banks) == 0 || t.Register == "" || reeds == 0 {
 		return nil
 	}
 	r, ok := i.Register(t.Register)
-	if !ok || r.ReedCount() != reeds {
+	if !ok {
+		return nil
+	}
+	assigned := session.AssignBanks(r.Banks, t.Reeds)
+	if assigned == nil {
 		return nil
 	}
 
-	into := make([]int, reeds)
-	for n, b := range r.Banks {
+	into := make([]int, len(assigned))
+	for n, b := range assigned {
 		col := slices.Index(i.Banks, b)
 		if col < 0 {
 			return nil // a rank the instrument does not have

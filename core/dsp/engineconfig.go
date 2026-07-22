@@ -31,11 +31,38 @@ type EngineConfig struct {
 	// balance the whole detector is calibrated around.
 	FineWindow time.Duration
 
+	// Octaves is the compound-register layout: one band per octave the register sounds, Offset in
+	// semitones from the played key (-12 a 16', 0 the 8' ranks, +12 a 4'), Reeds the ranks sharing
+	// that octave. Set only when the register spans octaves; empty (or offset-0 only) keeps the
+	// single band of ReedCount, where the musette pair machinery lives. The service boundary maps
+	// the pulled register's banks onto this.
+	Octaves []OctaveRequest
+
+	// ProfileHarmonics asks the engine to measure each reading's own partials (see
+	// ReedMeasure.Harmonics). Set while a solo-rank register is pulled - a rank alone is the one
+	// time a partial is unmistakably that reed's - and left off everywhere else.
+	ProfileHarmonics bool
+
+	// Profiles is what such measurements taught: per rank octave and sounding note, how loud the
+	// rank's partials stand over its fundamental. The compound stage reads it to judge the
+	// coincident case by amplitude (see thresholds.go, profileExcess). Empty means unprofiled, and
+	// the phase rules stand alone.
+	Profiles []RankProfile
+
 	// LockHold is how long a reading must hold still before the engine reports a stable lock.
 	// LockEpsilonHz is how far any reed may drift, in Hz, between fine results and still count as the
 	// same reading.
 	LockHold      time.Duration
 	LockEpsilonHz float64
+}
+
+// RankProfile is one calibrated note of one rank, measured with the rank sounding alone. Note is
+// the rank's own sounding note (the key shifted by its octave); R2 and R4 the second and fourth
+// partial's amplitude over the fundamental's, zero where none was found.
+type RankProfile struct {
+	Offset int
+	Note   tuning.Note
+	R2, R4 float64
 }
 
 // DefaultEngineConfig returns the engine's own defaults: the one place the out-of-the-box timings are stated.
@@ -62,5 +89,17 @@ func (c *EngineConfig) fill() {
 	}
 	if c.LockEpsilonHz == 0 {
 		c.LockEpsilonHz = 0.1
+	}
+	// The compound stage walks bands lowest first and resolves the key against the lowest declared
+	// rank; both need the layout ascending, so it is normalized once here.
+	for i := 1; i < len(c.Octaves); i++ {
+		for j := i; j > 0 && c.Octaves[j].Offset < c.Octaves[j-1].Offset; j-- {
+			c.Octaves[j], c.Octaves[j-1] = c.Octaves[j-1], c.Octaves[j]
+		}
+	}
+	for i := range c.Octaves {
+		if c.Octaves[i].Reeds < 1 {
+			c.Octaves[i].Reeds = 1
+		}
 	}
 }

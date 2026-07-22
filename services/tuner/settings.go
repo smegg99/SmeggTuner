@@ -16,7 +16,7 @@ func (s *Service) SetA4(hz float64) error {
 			logger.Str("setting", "a4"), logger.Any("value", hz))
 		return ErrInvalidA4
 	}
-	if p, _ := s.session(); p.a4 > 0 {
+	if p, _, _ := s.session(); p.a4 > 0 {
 		return s.sessions.SetA4(hz)
 	}
 	s.apply(func(c *dsp.EngineConfig) { c.A4 = hz })
@@ -26,7 +26,7 @@ func (s *Service) SetA4(hz float64) error {
 
 // Settings is what the engine is measuring with right now. The UI reads it once on mount and follows EventSettings.
 func (s *Service) Settings() SettingsDTO {
-	p, _ := s.session()
+	p, _, _ := s.session()
 	return settingsDTO(s.snapshot(), p)
 }
 

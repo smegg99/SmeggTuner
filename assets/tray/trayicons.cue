@@ -21,7 +21,12 @@ prefix: "smeggtuner-tray"
 // enlarged to ~48px and looks it. Downscaling from 64 costs nothing and stays
 // sharp. This whole line goes away if the tray is ever handed the SVG by name,
 // which is what a StatusNotifierItem actually wants.
-sizes: [64, 32]
+//
+// 16 exists for Windows and ONLY for Windows: its tray wants the small-icon
+// metric (16px at 100% scaling) and GDI's CreateIconFromResourceEx scales
+// whatever PNG it gets with no filtering - a 64px source arrives as jagged
+// mush. PlatformIcons (platform.go) serves the 16px render there.
+sizes: [64, 32, 16]
 
 slots: []
 
