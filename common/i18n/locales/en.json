@@ -1,6 +1,6 @@
 {
   "app.name": "SmeggTuner",
-  "app.description": "A FOSS accordion tuner desktop app.",
+  "app.description": "Free and open-source accordion tuner.",
   "tray.tooltip": "SmeggTuner",
   "tray.show": "Show",
   "tray.quit": "Quit",

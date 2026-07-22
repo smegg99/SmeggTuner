@@ -10,24 +10,24 @@
     <Installer
         Path="smeggtuner"
         Arguments=""
-        InstallLocation="C:\Program Files\My Company\My Product">
+        InstallLocation="C:\Program Files\Smegg99\SmeggTuner">
     </Installer>
     <PackageInformation
-        PackageName="My Product"
-        PackageDisplayName="My Product"
-        PublisherName="CN=My Company"
-        PublisherDisplayName="My Company"
-        Version="0.1.0.0"
-        PackageDescription="A smeggtuner application">
+        PackageName="SmeggTuner"
+        PackageDisplayName="SmeggTuner"
+        PublisherName="CN=Smegg99"
+        PublisherDisplayName="Smegg99"
+        Version="1.0.3.0"
+        PackageDescription="Free and open-source accordion tuner.">
         <Capabilities>
             <Capability Name="runFullTrust" />
             
         </Capabilities>
         <Applications>
             <Application
-                Id="com.example.smeggtuner"
-                Description="A smeggtuner application"
-                DisplayName="My Product"
+                Id="SmeggTuner"
+                Description="Free and open-source accordion tuner."
+                DisplayName="SmeggTuner"
                 ExecutableName="smeggtuner"
                 EntryPoint="Windows.FullTrustApplication">
                 
@@ -41,13 +41,13 @@
         </Dependencies>
         <Properties>
             <Framework>false</Framework>
-            <DisplayName>My Product</DisplayName>
-            <PublisherDisplayName>My Company</PublisherDisplayName>
-            <Description>A smeggtuner application</Description>
+            <DisplayName>SmeggTuner</DisplayName>
+            <PublisherDisplayName>Smegg99</PublisherDisplayName>
+            <Description>Free and open-source accordion tuner.</Description>
             <Logo>Assets\AppIcon.png</Logo>
         </Properties>
     </PackageInformation>
-    <SaveLocation PackagePath="smeggtuner.msix" />
+    <SaveLocation PackagePath="SmeggTuner.msix" />
     <PackageIntegrity>
         <CertificatePath></CertificatePath>
     </PackageIntegrity>

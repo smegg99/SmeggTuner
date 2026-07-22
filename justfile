@@ -16,16 +16,15 @@ vite_port := env("WAILS_VITE_PORT", "9245")
 # for the day that stops being true. Test both before believing either.
 tags := "gtk3"
 
-# The release version: the exact git tag with a leading `v` stripped, else 0.0.0-dev. Tag the
-# commit (`git tag v1.0.0`) before a release so the app's own version badge matches. Override on
-# a recipe: `just release 1.0.0`, `just package 1.0.0`.
-version := `git describe --tags --exact-match 2>/dev/null | sed 's/^v//' | grep . || echo 0.0.0-dev`
+# The single manually controlled application version. Edit VERSION directly or use
+# `just set-version 1.0.4`; packaging synchronizes generated platform metadata before building.
+version := `tr -d '\r\n' < VERSION`
 
 # What `just release` builds. linux/* go through wails3 (native, or the cross-compile image
 # `wails3 task setup:docker` for another arch). windows/* are built in a Windows VM via the test
 # lab (testlab/README.md) - CGO + WebView2 + NSIS do not cross-compile from Linux, so the VM is
 # the honest path. windows is off by default (it boots a VM); pass your own list to add it:
-#   just release 1.0.0 "linux/amd64 linux/arm64 windows/amd64"
+#   just release "linux/amd64 linux/arm64 windows/amd64"
 release_targets := "linux/amd64 linux/arm64"
 
 # The test-lab VM `just release` drives for windows/* targets (win10 or win11).
@@ -34,6 +33,18 @@ windows_lab := "win11"
 # List available commands
 default:
     @just --list
+
+# Set the central version and synchronize every generated platform metadata file
+set-version ver:
+    node scripts/sync-version.mjs "{{ver}}"
+
+# Synchronize generated Wails, macOS and Windows metadata from VERSION
+sync-version:
+    node scripts/sync-version.mjs
+
+# Fail when generated platform metadata does not match VERSION
+check-version:
+    node scripts/sync-version.mjs --check
 
 # Run the full Wails app in development mode (hot-reload, GTK 3)
 dev:
@@ -48,39 +59,38 @@ dev-frontend:
     cd {{web_dir}} && pnpm dev
 
 # Production build (current platform, GTK 3)
-build:
+build: sync-version
     wails3 build -tags {{tags}}
 
 # Production build against the GTK 4 / WebKitGTK 6.0 stack
-build-gtk4:
+build-gtk4: sync-version
     wails3 build
 
 # Development build (fast, unoptimised, GTK 3)
-build-dev:
+build-dev: sync-version
     wails3 build -tags {{tags}} DEV=true
 
 # Development build against the GTK 4 / WebKitGTK 6.0 stack
-build-dev-gtk4:
+build-dev-gtk4: sync-version
     wails3 build DEV=true
 
 # `wails3 package` takes no -tags flag, so the tag goes in through the variable
 # the build tasks actually read (see build/linux/Taskfile.yml: EXTRA_TAGS).
 
 # Package the app for the current platform (GTK 3), stamped with the version
-package ver=version:
-    VERSION="{{ver}}" EXTRA_TAGS="{{tags}}" wails3 package
+package: sync-version
+    VERSION="{{version}}" EXTRA_TAGS="{{tags}}" wails3 package
 
 # Package against the GTK 4 / WebKitGTK 6.0 stack
-package-gtk4 ver=version:
-    VERSION="{{ver}}" wails3 package
+package-gtk4: sync-version
+    VERSION="{{version}}" wails3 package
 
 # Build and package release artifacts for every target in release_targets, named the way a
 # release is: bin/release/<app>-<version>-<os>-<arch>.<ext>, plus the bare binary. A target that
 # fails (usually a missing cross toolchain) is reported and skipped; the others still build.
-#   just release                            # version from the exact git tag
-#   just release 1.0.0                      # explicit version
-#   just release 1.0.0 "linux/amd64 windows/amd64"
-release ver=version targets=release_targets:
+#   just release
+#   just release "linux/amd64 windows/amd64"
+release targets=release_targets: sync-version
     #!/usr/bin/env bash
     set -uo pipefail
     shopt -s nullglob
@@ -89,23 +99,23 @@ release ver=version targets=release_targets:
     built=(); skipped=()
     for target in {{targets}}; do
         os="${target%%/*}"; arch="${target##*/}"
-        echo "==> {{app_name}} {{ver}} :: ${os}/${arch}"
+        echo "==> {{app_name}} {{version}} :: ${os}/${arch}"
         case "$os" in
         linux)
             rm -f "{{bin_dir}}/{{app_name}}" "{{bin_dir}}/{{app_name}}".deb "{{bin_dir}}/{{app_name}}".rpm \
                   "{{bin_dir}}/{{app_name}}".pkg.tar.zst "{{bin_dir}}/{{app_name}}"-*.AppImage
             # CI=true: pnpm may decide to purge node_modules (e.g. after a pnpm major bump) and
             # aborts without a TTY to confirm on; release runs must never hang on a prompt.
-            if VERSION="{{ver}}" EXTRA_TAGS="{{tags}}" CI=true wails3 task "linux:package" ARCH="${arch}"; then
+            if VERSION="{{version}}" EXTRA_TAGS="{{tags}}" CI=true wails3 task "linux:package" ARCH="${arch}"; then
                 for f in "{{bin_dir}}/{{app_name}}".deb "{{bin_dir}}/{{app_name}}".rpm \
                          "{{bin_dir}}/{{app_name}}".pkg.tar.zst "{{bin_dir}}/{{app_name}}"-*.AppImage; do
                     case "$f" in
                         *.pkg.tar.zst) ext="pkg.tar.zst" ;;
                         *)             ext="${f##*.}" ;;
                     esac
-                    mv -f "$f" "$out/{{app_name}}-{{ver}}-${os}-${arch}.${ext}"
+                    mv -f "$f" "$out/{{app_name}}-{{version}}-${os}-${arch}.${ext}"
                 done
-                [ -e "{{bin_dir}}/{{app_name}}" ] && cp -f "{{bin_dir}}/{{app_name}}" "$out/{{app_name}}-{{ver}}-${os}-${arch}"
+                [ -e "{{bin_dir}}/{{app_name}}" ] && cp -f "{{bin_dir}}/{{app_name}}" "$out/{{app_name}}-{{version}}-${os}-${arch}"
                 built+=("${os}/${arch}")
             else
                 skipped+=("${os}/${arch}")
@@ -117,7 +127,7 @@ release ver=version targets=release_targets:
             if ./testlab/lab.sh sync "{{windows_lab}}" && ./testlab/lab.sh package "{{windows_lab}}"; then
                 for f in "{{bin_dir}}/lab-out/{{windows_lab}}"/*.exe; do
                     case "$f" in *installer*) sfx="-installer" ;; *) sfx="" ;; esac
-                    mv -f "$f" "$out/{{app_name}}-{{ver}}-${os}-${arch}${sfx}.exe"
+                    mv -f "$f" "$out/{{app_name}}-{{version}}-${os}-${arch}${sfx}.exe"
                 done
                 built+=("${os}/${arch}")
             else
@@ -130,7 +140,7 @@ release ver=version targets=release_targets:
         esac
     done
     echo
-    echo "release {{ver}} -> $out"
+    echo "release {{version}} -> $out"
     ls -1sh "$out" 2>/dev/null || true
     [ ${#built[@]}   -gt 0 ] && echo "built:   ${built[*]}"
     [ ${#skipped[@]} -gt 0 ] && echo "skipped: ${skipped[*]}"

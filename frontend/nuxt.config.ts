@@ -1,5 +1,6 @@
 // nuxt.config.ts
 import { execSync } from 'node:child_process'
+import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
@@ -12,12 +13,9 @@ const bindingsDir = path.resolve(__dirname, 'bindings')
 const localeFiles = ['about.json', 'common.json', 'curve.json', 'file.json', 'record.json', 'report.json', 'routes.json', 'session.json', 'settings.json', 'title.json', 'tuner.json']
 
 /*
- * The build stamps its own version and commit.
- *
- * A version typed into a source file is a version that is wrong the moment somebody
- * forgets to change it, and "which build is this" is the first question of every bug
- * report. If git is not there (a source tarball, a clean-room CI image) it says so
- * rather than inventing a plausible hash.
+ * VERSION is the manually controlled release source of truth. The commit stays automatic;
+ * if git is unavailable (for example in a source tarball), leave it empty instead of
+ * inventing a plausible hash.
  */
 function stamp(command: string, fallback: string): string {
   try {
@@ -29,20 +27,12 @@ function stamp(command: string, fallback: string): string {
   }
 }
 
-/*
- * The version is the nearest TAG, and nothing else.
- *
- * `git describe --always` falls back to the commit hash when there are no tags, so
- * the status bar read "v0920a8f 0920a8f": the same hash, printed twice, one of them
- * pretending to be a version. Untagged is a real state and it should say so.
- *
- * It says so by being EMPTY, not by the word "dev". The status bar shows the version beside
- * its keys only when there IS one (v-if), so an untagged build simply does not carry a badge
- * saying "dev" around forever - and the About dialog, which has room to be exact, spells the
- * empty case out as a development build. One build, said once, in the place with room for it.
- */
-const VERSION = process.env.SMEGGTUNER_VERSION
-  ?? stamp('git describe --tags --abbrev=0', '')
+const releaseVersion = readFileSync(path.resolve(__dirname, '../VERSION'), 'utf8').trim()
+if (!/^\d+\.\d+\.\d+$/.test(releaseVersion)) {
+  throw new Error(`invalid VERSION "${releaseVersion}": expected MAJOR.MINOR.PATCH`)
+}
+
+const VERSION = `v${releaseVersion}`
 const COMMIT = process.env.SMEGGTUNER_COMMIT
   ?? stamp('git rev-parse --short HEAD', '')
 

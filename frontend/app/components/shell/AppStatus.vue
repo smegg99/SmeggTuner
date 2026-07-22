@@ -57,7 +57,7 @@ const { t } = useI18n()
 
 const progress = useSessionProgress()
 
-// The build stamps this (nuxt.config): the nearest tag. The commit is in the About dialog.
+// The build reads this from VERSION. The commit is in the About dialog.
 const config = useRuntimeConfig()
 const version = config.public.version
 

@@ -8,15 +8,15 @@
   IgnorableNamespaces="uap3">
   
   <Identity 
-    Name="com.example.smeggtuner"
-    Publisher="CN=My Company"
-    Version="0.1.0.0" 
+    Name="me.smegg.smeggtuner"
+    Publisher="CN=Smegg99"
+    Version="1.0.3.0"
     ProcessorArchitecture="x64" />
   
   <Properties>
-    <DisplayName>My Product</DisplayName>
-    <PublisherDisplayName>My Company</PublisherDisplayName>
-    <Description>A smeggtuner application</Description>
+    <DisplayName>SmeggTuner</DisplayName>
+    <PublisherDisplayName>Smegg99</PublisherDisplayName>
+    <Description>Free and open-source accordion tuner.</Description>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   
@@ -29,10 +29,10 @@
   </Resources>
   
   <Applications>
-    <Application Id="com.example.smeggtuner" Executable="smeggtuner" EntryPoint="Windows.FullTrustApplication">
+    <Application Id="SmeggTuner" Executable="smeggtuner" EntryPoint="Windows.FullTrustApplication">
       <uap:VisualElements
-        DisplayName="My Product"
-        Description="A smeggtuner application"
+        DisplayName="SmeggTuner"
+        Description="Free and open-source accordion tuner."
         BackgroundColor="transparent"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png">

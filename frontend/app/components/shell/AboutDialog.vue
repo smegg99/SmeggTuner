@@ -17,6 +17,9 @@
         <p class="about__tagline">
           {{ t('about.tagline') }}
         </p>
+        <p class="about__publisher">
+          {{ t('about.publisher') }}
+        </p>
 
         <dl class="about__meta">
           <div class="about__meta-row">
@@ -85,7 +88,7 @@ const { t } = useI18n()
 
 const open = defineModel<boolean>({ required: true })
 
-// The build stamps these (nuxt.config): the nearest tag, and the short commit under it.
+// The build stamps these (nuxt.config): VERSION and the current short commit.
 const config = useRuntimeConfig()
 const version = config.public.version
 const commit = config.public.commit
@@ -117,6 +120,13 @@ function visit(url: string) {
   font-weight: 500;
   line-height: 1.4;
   margin: 0;
+}
+
+.about__publisher {
+  color: rgb(var(--v-theme-ink3));
+  font-size: 1.7cqh;
+  font-weight: 600;
+  margin: -1.2cqh 0 0;
 }
 
 .about__meta {

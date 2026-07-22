@@ -2,6 +2,10 @@
   <img src="assets/SmeggTunerStacked.svg" alt="SmeggTuner" width="220">
 </p>
 
+<p align="center">
+  <a href="https://smeggtuner.com">smeggtuner.com</a> · by Smegg99
+</p>
+
 SmeggTuner is a desktop tuner for accordions, a free reimplementation of Dirk's professional Accordion Tuner. It listens to a whole register at once, tells the reeds of a musette apart, and shows how far each one is from where it should be.
 
 Built with Go, Wails 3, and Nuxt (Vue 3).
@@ -36,8 +40,8 @@ Linux only for now. Windows is untested but close, since the audio layer is `mal
 ## Setup
 
 ```sh
-git clone https://github.com/smegg99/Smegg-s-professional-Accordion-Tuner
-cd Smegg-s-professional-Accordion-Tuner
+git clone https://github.com/smegg99/SmeggTuner.git
+cd SmeggTuner
 cd frontend && pnpm install && cd ..
 just dev
 ```
@@ -53,6 +57,12 @@ just build          # production build -> bin/
 just test           # Go suite, race detector
 just lint           # frontend
 ```
+
+## Versioning
+
+[`VERSION`](VERSION) is the single source of truth for the application version. Set it directly
+or run `just set-version 1.0.4`. Build and package recipes synchronize the generated Wails,
+macOS, Windows, NSIS, and MSIX metadata automatically. Use `just check-version` to verify them.
 
 ## Screenshots
 
