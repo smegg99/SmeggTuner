@@ -11,6 +11,7 @@ export function useInputRender(): CanvasOptions {
   function draw(ctx: CanvasRenderingContext2D, view: CanvasView) {
     const c = theme.current.value.colors
     const neutral = cssColor(c.neutral)
+    const accent = cssColor(c.accent)
 
     const padX = view.width * 0.011
     const mid = view.height / 2
@@ -47,13 +48,13 @@ export function useInputRender(): CanvasOptions {
       path.closePath()
 
       const fill = ctx.createLinearGradient(0, mid - amp, 0, mid + amp)
-      fill.addColorStop(0, alpha(neutral, 0.3))
-      fill.addColorStop(0.5, alpha(neutral, 0.1))
-      fill.addColorStop(1, alpha(neutral, 0.3))
+      fill.addColorStop(0, alpha(accent, 0.3))
+      fill.addColorStop(0.5, alpha(accent, 0.1))
+      fill.addColorStop(1, alpha(accent, 0.3))
       ctx.fillStyle = fill
       ctx.fill(path)
 
-      ctx.strokeStyle = cssColor(c.ink2)
+      ctx.strokeStyle = accent
       ctx.lineWidth = 1.2
       ctx.beginPath()
       for (let i = 0; i < points; i++) {

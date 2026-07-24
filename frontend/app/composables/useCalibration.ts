@@ -1,6 +1,6 @@
 import { computed, ref } from 'vue'
 import * as SessionService from '~~bindings/smegg.me/smeggtuner/services/session/service.js'
-import { buildSteps, isRecorded, nextUndone } from '~/composables/calibrationSteps'
+import { buildBassSteps, buildSteps, isRecorded, isRecordedBass, nextUndone } from '~/composables/calibrationSteps'
 import type { Step } from '~/composables/calibrationSteps'
 import { captureStatus } from '~/composables/calibrationStatus'
 import { useCaptureLatch } from '~/composables/captureLatch'
@@ -19,6 +19,8 @@ const hi = ref(0)
 const saving = ref(false)
 
 const register = ref('')
+// The sweep walks one keyboard at a time; a bass sweep steps the twelve buttons instead of keys.
+const bassSweep = ref(false)
 const steps = ref<Step[]>([])
 const stepIndex = ref(0)
 
@@ -78,8 +80,10 @@ export function useCalibration() {
 
   const currentStep = computed<Step | null>(() => steps.value[stepIndex.value] ?? null)
 
-  // register.value is '' for a no-register sweep.
-  const isDone = (s: Step) => isRecorded(record.table.value?.rows ?? [], s.note, register.value)
+  // register.value is '' for a no-register sweep, and for the whole (or fixed) bass machine.
+  const isDone = (s: Step) => (s.pc !== undefined
+    ? isRecordedBass(record.table.value?.rows ?? [], s.pc, register.value)
+    : isRecorded(record.table.value?.rows ?? [], s.note, register.value))
   const captured = computed(() => currentStep.value ? isDone(currentStep.value) : false)
 
   const capturedCount = computed(() => record.table.value?.rows.length ?? 0)
@@ -89,14 +93,23 @@ export function useCalibration() {
   function applyStep() {
     const s = currentStep.value
     if (!s) return
-    void setManualNote(s.note)
+    // A bass button's octave is the machine's own; the note is detected, never pinned.
+    void setManualNote(s.pc !== undefined ? AUTO_NOTE : s.note)
   }
 
-  async function begin(reg: string) {
+  async function begin(reg: string, bass = false) {
     register.value = reg
-    steps.value = buildSteps(sweepLo.value, sweepHi.value)
-
-    await sessions.setRegister(reg)
+    bassSweep.value = bass
+    if (bass) {
+      steps.value = buildBassSteps()
+      await sessions.setBass(true)
+      await sessions.setBassRegister(reg)
+    }
+    else {
+      steps.value = buildSteps(sweepLo.value, sweepHi.value)
+      await sessions.setBass(false).catch(() => undefined)
+      await sessions.setRegister(reg)
+    }
     await record.setArmed(true)
     // Load readings first so a resumed sweep skips only voices it really has.
     await record.load()
@@ -135,6 +148,7 @@ export function useCalibration() {
   function reset() {
     resetRange()
     register.value = ''
+    bassSweep.value = false
     steps.value = []
     stepIndex.value = 0
     stage.value = instrument.value?.lo && instrument.value?.hi ? 'setup' : 'range'
@@ -170,6 +184,7 @@ export function useCalibration() {
 
     registers,
     register: computed(() => register.value),
+    bassSweep: computed(() => bassSweep.value),
     currentStep,
     captured,
     capturedCount,

@@ -1,6 +1,7 @@
 package report
 
 import (
+	"slices"
 	"time"
 
 	"smegg.me/smeggtuner/core/dsp"
@@ -42,13 +43,14 @@ func Build(s *session.Session, opts Options) (*Report, error) {
 		banks = s.Instrument.Banks
 	}
 
-	rows, pairs := build(s, s.Curve, s.A4, s.Instrument, banks, reedCount, opts.Naming, tol, beatTol)
+	display, bassDisplay := splitBySide(s.Display())
+	rows, pairs := buildRows(display, s.Curve, s.A4, banks, reedCount, opts.Naming, tol, beatTol,
+		func(t session.Take, reeds int) []int { return columnsFor(s.Instrument, t, reeds) })
 
 	rep := &Report{
 		Identity: Identity{
 			Session:   s.Name,
-			Make:      s.Instrument.Make,
-			Model:     s.Instrument.Model,
+			Accordion: s.Instrument.Name,
 			Serial:    s.Instrument.Serial,
 			ReedCount: reedCount,
 			Notes:     s.Notes,
@@ -81,17 +83,77 @@ func Build(s *session.Session, opts Options) (*Report, error) {
 	for i := 1; i <= reedCount; i++ {
 		rep.Reeds = append(rep.Reeds, i)
 	}
-	rep.Summary = summarize(rows, tol, beatTol)
+	// The bass side gets its own table: different columns (the machine's ranks by foot), and the
+	// buttons' real pitches for rows. It shares the page, the summary and the layout decision.
+	if len(bassDisplay) > 0 {
+		count := s.Instrument.BassReeds
+		for _, d := range bassDisplay {
+			if n := len(d.Take.Reeds); n > count {
+				count = n
+			}
+		}
+		feet := session.BassFeet(count)
+		bassRows, bassPairs := buildRows(bassDisplay, s.Curve, s.A4, nil, count, opts.Naming, tol, beatTol,
+			bassColumnsFor(s.Instrument, feet))
+		part := &BassPart{Feet: feet, Pairs: bassPairs, Rows: bassRows}
+		for i := 1; i <= count; i++ {
+			part.Reeds = append(part.Reeds, i)
+		}
+		part.MultiRegister = manyRegisters(bassRows)
+		rep.Bass = part
+	}
+
+	rep.Summary = summarize(allRows(rep), tol, beatTol)
 	rep.Layout = layoutFor(rep.Columns())
 	rep.Graph = graph(rep, s.Curve)
 	return rep, nil
 }
 
-func build(
-	s *session.Session, c *target.Curve, a4 float64, i session.Instrument, banks []session.Bank,
+// splitBySide deals a pass's readings to the keyboard they came from.
+func splitBySide(display []session.DisplayRow) (treble, bass []session.DisplayRow) {
+	for _, d := range display {
+		if d.Take.Bass {
+			bass = append(bass, d)
+		} else {
+			treble = append(treble, d)
+		}
+	}
+	return treble, bass
+}
+
+// allRows is every row of the sheet, both keyboards, for the summary.
+func allRows(r *Report) []Row {
+	if r.Bass == nil {
+		return r.Rows
+	}
+	return append(append([]Row(nil), r.Rows...), r.Bass.Rows...)
+}
+
+// bassColumnsFor maps a bass take's reeds onto the machine's rank columns by foot; nil on any
+// uncertain mapping, and the reeds fall back to positions.
+func bassColumnsFor(i session.Instrument, feet []int) func(session.Take, int) []int {
+	return func(t session.Take, reeds int) []int {
+		tf := i.TakeFeet(t)
+		if len(tf) == 0 || len(feet) == 0 {
+			return nil
+		}
+		into := make([]int, len(tf))
+		for n, f := range tf {
+			col := slices.Index(feet, f)
+			if col < 0 {
+				return nil
+			}
+			into[n] = col
+		}
+		return into
+	}
+}
+
+func buildRows(
+	display []session.DisplayRow, c *target.Curve, a4 float64, banks []session.Bank,
 	reedCount int, naming tuning.ScaleNaming, tol, beatTol float64,
+	intoFor func(session.Take, int) []int,
 ) ([]Row, []Pair) {
-	display := s.Display()
 	rows := make([]Row, 0, len(display))
 	beats := make([]map[string]target.BeatError, 0, len(display))
 
@@ -110,7 +172,7 @@ func build(
 		// A merged take gets no per-reed cells: its figures are lobes of one peak.
 		if !row.Merged {
 			errs := target.Errors(m, c, a4, tol)
-			row.Reeds = reedCells(errs, reedCount, banks, columnsFor(i, d.Take, len(errs)))
+			row.Reeds = reedCells(errs, reedCount, banks, intoFor(d.Take, len(errs)))
 			for _, cell := range row.Reeds {
 				if cell.Present && !cell.InTol {
 					row.OutOfTol++

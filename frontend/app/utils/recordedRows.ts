@@ -62,9 +62,13 @@ export function buildRecordedRows(
 
   return byNote(rows).map((row) => {
     const usable = reedsUsable(row)
+    // A row that knows its columns places each reed there; without the mapping, by position.
+    const colOf = (i: number) => row.cols?.[i] ?? i
 
     const reedCells = reeds.map<ReedCell>((group) => {
-      const reed = reedOf(row, group.reed)
+      const reed = row.cols
+        ? row.reeds.find(r => colOf(r.reed) === group.reed)
+        : reedOf(row, group.reed)
       return {
         key: group.key,
         reed: group.reed,
@@ -79,7 +83,9 @@ export function buildRecordedRows(
     })
 
     const beatCells = beats.map<BeatCell>((group) => {
-      const beat = beatOf(row, group.pair)
+      const beat = row.cols
+        ? row.beats.find(b => colOf(b.low) === group.low && colOf(b.high) === group.high)
+        : beatOf(row, group.pair)
       return {
         key: group.key,
         present: beat !== undefined,

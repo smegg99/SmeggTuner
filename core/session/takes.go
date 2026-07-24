@@ -69,10 +69,11 @@ type DisplayRow struct {
 type voice struct {
 	note     tuning.Note
 	register string
+	bass     bool
 }
 
 func voiceOf(t Take) voice {
-	return voice{note: t.Note, register: t.Register}
+	return voice{note: t.Note, register: t.Register, bass: t.Bass}
 }
 
 // Display is the session's readings in reading order. Takes stays in capture order; only the table is sorted.

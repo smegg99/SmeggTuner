@@ -18,6 +18,22 @@ export function octaveOf(bank: Bank): number {
   return 0
 }
 
+// bassFeetOf is the bass machine's ranks by foot for a voice count, largest (lowest) first and
+// always ending at 2': 5 voices -> 32,16,8,4,2. Mirrors core/session.BassFeet.
+export function bassFeetOf(count: number): number[] {
+  if (count < 2 || count > 6) return []
+  return Array.from({ length: count }, (_, i) => 1 << (count - i))
+}
+
+// bassSlotsOf lays sounding bass ranks out as boxes slots: the largest foot is the base, each
+// halving climbs an octave. Mirrors core/session.OctavesOfFeet.
+export function bassSlotsOf(feet: readonly number[]): { name: string, octave: number }[] {
+  const sorted = [...feet].sort((a, b) => b - a)
+  const top = sorted[0]
+  if (!top) return []
+  return sorted.map(f => ({ name: `${f}'`, octave: 12 * Math.round(Math.log2(top / f)) }))
+}
+
 // feetOf renders a register's banks in feet, e.g. [L,M1,M2,M3] -> "16'+8'+8'+8'", in card order low to high.
 export function feetOf(banks: readonly Bank[]): string {
   const ordered = BANKS.filter(b => banks.includes(b))

@@ -8,7 +8,7 @@
       "label": "Recorded tuning",
       "helpTitle": "About this table",
       "notes": "no notes | one note | {count} notes",
-      "empty": "Play through the instrument with record armed. Every locked tone lands here.",
+      "empty": "Play through the accordion with record armed. Every locked tone lands here.",
       "note": "Note",
       "reed": "Reed {index}",
       "beat": "Beating {pair}",
@@ -26,7 +26,8 @@
       "envelopeHint": "This beat was read off the amplitude envelope rather than the spectrum, which is how a pair too close to separate is still measured.",
       "delete": "Remove this reading",
       "deleteTitle": "Remove this reading?",
-      "deleteHint": "This reading is thrown away and cannot be brought back. Play the note again and the tuner will record a new one in its place."
+      "deleteHint": "This reading is thrown away and cannot be brought back. Play the note again and the tuner will record a new one in its place.",
+      "bassTitle": "Bass"
     },
     "report": {
       "title": "Tuning card",

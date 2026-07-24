@@ -160,6 +160,54 @@ func TestCompoundEngineRefusesAPartialImage(t *testing.T) {
 	}
 }
 
+// A five-voice bass machine: one rank per octave from F1 up, the way a Stradella bass stacks them.
+// The engine must resolve every voice against its own octave and lay an octave beat between each
+// neighbouring pair - the same measurement as 16+8+4, only taller and five times lower.
+func TestCompoundEngineReadsAFiveVoiceBass(t *testing.T) {
+	spec := audio.SynthSpec{
+		Duration: 8 * time.Second,
+		Reeds: []audio.ReedSpec{
+			{Freq: 43.7, Amp: 0.07, Harmonics: []float64{0.30}},
+			{Freq: 87.6, Amp: 0.10, Harmonics: []float64{0.25}},
+			{Freq: 174.2, Amp: 0.13, Harmonics: []float64{0.20}},
+			{Freq: 349.9, Amp: 0.15},
+			{Freq: 698.0, Amp: 0.12},
+		},
+		NoiseAmp: 1e-4,
+	}
+	cfg := EngineConfig{
+		A4:         440,
+		ReedCount:  5,
+		FineWindow: 3 * time.Second,
+		Octaves: []OctaveRequest{
+			{Offset: 0, Reeds: 1}, {Offset: 12, Reeds: 1}, {Offset: 24, Reeds: 1},
+			{Offset: 36, Reeds: 1}, {Offset: 48, Reeds: 1},
+		},
+	}
+	cap := runEngine(t, spec, cfg)
+	m, ok := Aggregate(cap.all, 440, 0.5)
+	if !ok {
+		t.Fatal("no usable measurements")
+	}
+
+	if m.Note != tuning.Note(29) {
+		t.Errorf("note %s, want F1: the lowest sounding rank", m.Note.Name(tuning.NamingCDEFGAB))
+	}
+	if len(m.Reeds) != 5 {
+		t.Fatalf("resolved %d voices, the machine sounds 5: %+v", len(m.Reeds), m.Reeds)
+	}
+	wantOcts := []int{0, 12, 24, 36, 48}
+	wantFreqs := []float64{43.7, 87.6, 174.2, 349.9, 698.0}
+	for i, r := range m.Reeds {
+		if r.Octave != wantOcts[i] || math.Abs(r.Freq-wantFreqs[i]) > 0.2 {
+			t.Errorf("voice %d: got %+v, want ~%.1f at +%d", i+1, r, wantFreqs[i], wantOcts[i])
+		}
+	}
+	if len(m.Beats) != 4 {
+		t.Errorf("want an octave beat between each neighbouring pair, got %+v", m.Beats)
+	}
+}
+
 // HarmonicPLV itself: a rank's own partial locks near 1, an independent reed does not.
 func TestHarmonicPLVSeparatesPartialFromReed(t *testing.T) {
 	const sr = 48000

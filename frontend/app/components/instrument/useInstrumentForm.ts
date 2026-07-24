@@ -3,7 +3,7 @@ import type { Ref } from 'vue'
 import { banksOfRegisters } from '~/utils/banks'
 import { A4_DEFAULT, A4_MAX, A4_MIN } from '~/types/session'
 import { DEFAULT_BEAT_TOLERANCE, DEFAULT_TOLERANCE } from '~/types/config'
-import type { Bank, InstrumentTemplate, Register } from '~/types/session'
+import type { Bank, BassRegister, InstrumentTemplate, Register } from '~/types/session'
 
 const TOL_MAX = 50
 
@@ -18,8 +18,6 @@ export function useInstrumentForm(props: Props, emit: Emit, open: Ref<boolean>) 
   const form = reactive({
     id: '',
     name: '',
-    make: '',
-    model: '',
     lo: 0, // MIDI note; 0 means unset
     hi: 0,
     a4: A4_DEFAULT,
@@ -33,6 +31,10 @@ export function useInstrumentForm(props: Props, emit: Emit, open: Ref<boolean>) 
   const beatDraft = ref(String(DEFAULT_BEAT_TOLERANCE))
 
   const registers = ref<Register[]>([])
+
+  // The bass machine: 0 is no bass section; its registers only exist inside a declared machine.
+  const bassReeds = ref(0)
+  const bassRegisters = ref<BassRegister[]>([])
 
   const banks = computed<Bank[]>(() => banksOfRegisters(registers.value))
 
@@ -54,8 +56,6 @@ export function useInstrumentForm(props: Props, emit: Emit, open: Ref<boolean>) 
     Object.assign(form, {
       id: i?.id ?? '',
       name: i?.name ?? '',
-      make: i?.instrument.make ?? '',
-      model: i?.instrument.model ?? '',
       lo: i?.instrument.lo ?? 0,
       hi: i?.instrument.hi ?? 0,
       a4: i?.instrument.a4 || A4_DEFAULT,
@@ -66,6 +66,8 @@ export function useInstrumentForm(props: Props, emit: Emit, open: Ref<boolean>) 
     tolDraft.value = String(form.tolerance)
     beatDraft.value = String(form.beatTolerance)
     registers.value = (i?.instrument.registers ?? []).map(r => ({ name: r.name, banks: [...r.banks] }))
+    bassReeds.value = i?.instrument.bassReeds ?? 0
+    bassRegisters.value = (i?.instrument.bassRegisters ?? []).map(r => ({ name: r.name, feet: [...r.feet] }))
   })
 
   function commitA4() {
@@ -105,12 +107,12 @@ export function useInstrumentForm(props: Props, emit: Emit, open: Ref<boolean>) 
       instrument: {
         // The name on the instrument itself, so a session copy and a .stif export are self-describing.
         name,
-        make: form.make.trim(),
-        model: form.model.trim(),
         serial: '', // serial belongs to a physical accordion, not the model
         reedCount: reedCount.value,
         banks: banks.value,
         registers: registers.value,
+        bassReeds: bassReeds.value || undefined,
+        bassRegisters: bassReeds.value > 0 && bassRegisters.value.length ? bassRegisters.value : undefined,
         lo: form.lo || undefined,
         hi: form.hi || undefined,
         a4: form.a4,
@@ -128,6 +130,8 @@ export function useInstrumentForm(props: Props, emit: Emit, open: Ref<boolean>) 
     tolDraft,
     beatDraft,
     registers,
+    bassReeds,
+    bassRegisters,
     banks,
     reedCount,
     rangeError,

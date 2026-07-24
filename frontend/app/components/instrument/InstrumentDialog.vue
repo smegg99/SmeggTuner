@@ -15,8 +15,6 @@
         <section class="form__col">
           <IdentityFields
             v-model:name="form.name"
-            v-model:make="form.make"
-            v-model:model="form.model"
             :name-error="nameError"
             @submit="submit"
           />
@@ -28,37 +26,37 @@
             @commit-tol="commitTol"
             @commit-beat="commitBeat"
           />
-          <KeyboardFields
-            v-model:lo="form.lo"
-            v-model:hi="form.hi"
-            :range-error="rangeError"
-          />
+          <UiFieldGroup
+            dense
+            :title="t('instrument.sections.bass')"
+            :hint="t('instrument.bass.hint')"
+          >
+            <InstrumentBassSection
+              v-model:reeds="bassReeds"
+              v-model:registers="bassRegisters"
+            />
+          </UiFieldGroup>
         </section>
 
         <section class="form__col">
           <UiFieldGroup
             dense
             :title="t('instrument.sections.voices')"
+            :hint="t('instrument.registersHint')"
           >
-            <!-- Hint and summary share one slot: once registers exist the hint stays as an invisible
-                 spacer under the summary, so the block keeps its height and the pane never moves. -->
-            <div class="form__lead">
-              <p
-                class="form__note"
-                :class="{ 'form__note--ghost': banks.length }"
-              >
-                {{ t('instrument.registersHint') }}
-              </p>
-              <p
-                v-if="banks.length"
-                class="form__says"
-              >
-                {{ t('instrument.says', { banks: banks.join(' '), reeds: reedCount }, reedCount) }}
-              </p>
-            </div>
+            <!-- One reserved line: a subtitle until switches exist, then what they add up to. -->
+            <p class="form__says">
+              {{ banks.length ? t('instrument.says', { banks: banks.join(' '), reeds: reedCount }, reedCount) : t('instrument.registersSubtitle') }}
+            </p>
 
             <InstrumentRegisterSection v-model="registers" />
           </UiFieldGroup>
+
+          <KeyboardFields
+            v-model:lo="form.lo"
+            v-model:hi="form.hi"
+            :range-error="rangeError"
+          />
         </section>
       </div>
     </UiDialogCard>
@@ -91,6 +89,8 @@ const {
   tolDraft,
   beatDraft,
   registers,
+  bassReeds,
+  bassRegisters,
   banks,
   reedCount,
   rangeError,
@@ -115,30 +115,13 @@ const {
   min-width: 0;
 }
 
-.form__lead {
-  position: relative;
-}
-
-.form__note {
-  color: rgb(var(--v-theme-ink3));
-  font-size: 1.45cqh;
-  line-height: 1.4;
-  margin: 0;
-}
-
-/* Kept in flow as a spacer once the summary is shown, so the block's height does not change. */
-.form__note--ghost {
-  visibility: hidden;
-}
-
-/* Same font as the hint it stands over: the summary is always shorter text, so at equal size it can
-   never wrap past the hint's height and spill onto the pane. Emphasis comes from the brighter ink. */
+/* One line, reserved even when empty, so describing switches never reflows the pane below. */
 .form__says {
   color: rgb(var(--v-theme-ink2));
   font-size: 1.45cqh;
-  inset: 0;
-  line-height: 1.4;
+  height: 2.1cqh;
+  line-height: 2.1cqh;
   margin: 0;
-  position: absolute;
+  overflow: hidden;
 }
 </style>

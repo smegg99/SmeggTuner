@@ -52,7 +52,7 @@ func musette(t *testing.T) *session.Session {
 	t.Helper()
 
 	s := session.New("Hohner Morino - Jan K.",
-		session.Instrument{Make: "Hohner", Model: "Morino VI M", Serial: "SN-4471", ReedCount: 3},
+		session.Instrument{Serial: "SN-4471", ReedCount: 3},
 		passA4)
 	s.Notes = "Musette register, low block replaced."
 	s.Curve = curve(t, 3, map[tuning.Note][]float64{60: {-8, 0, 8}, 84: {-8, 0, 8}})

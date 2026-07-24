@@ -84,7 +84,7 @@ func decodeTemplate(data []byte) (*Template, error) {
 // FromSession makes a template out of the instrument a session describes: the model, not the one accordion.
 func FromSession(s *Session, name string) *Template {
 	if strings.TrimSpace(name) == "" {
-		name = strings.TrimSpace(s.Instrument.Make + " " + s.Instrument.Model)
+		name = strings.TrimSpace(s.Instrument.Name)
 	}
 
 	i := s.Instrument

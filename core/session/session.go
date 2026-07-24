@@ -37,8 +37,6 @@ type Register struct {
 type Instrument struct {
 	// Name travels with the session so it survives on a machine that has never seen this instrument.
 	Name   string `json:"name,omitempty"`
-	Make   string `json:"make"`
-	Model  string `json:"model"`
 	Serial string `json:"serial"`
 
 	// Banks is every reed rank this instrument has, in card order: the columns of the printed card.
@@ -49,6 +47,12 @@ type Instrument struct {
 	// Lo and Hi are the keyboard's lowest and highest key; zero means unspecified.
 	Lo tuning.Note `json:"lo,omitempty"`
 	Hi tuning.Note `json:"hi,omitempty"`
+
+	// BassReeds is how many octave-stacked ranks the bass machine sounds (see bass.go); zero means
+	// no bass section described. BassRegisters are its switches, when it has any - a fixed machine
+	// (every older instrument) has none and always sounds them all.
+	BassReeds     int            `json:"bassReeds,omitempty"`
+	BassRegisters []BassRegister `json:"bassRegisters,omitempty"`
 
 	// A4 is this accordion's reference pitch; zero means unspecified and falls back to the app default.
 	A4 float64 `json:"a4,omitempty"`
@@ -68,6 +72,9 @@ type Take struct {
 
 	// Register is the switch pulled when this note was played. Empty on a session recorded before the instrument had registers.
 	Register string `json:"register,omitempty"`
+	// Bass says the take came from the bass side; Register then names a bass register (or nothing,
+	// on a fixed machine). Kept apart from the treble registers so their names cannot collide.
+	Bass bool `json:"bass,omitempty"`
 
 	Reeds []dsp.ReedMeasure `json:"reeds"`
 	Beats []dsp.BeatMeasure `json:"beats,omitempty"`

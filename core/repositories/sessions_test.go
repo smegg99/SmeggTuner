@@ -17,8 +17,6 @@ import (
 func recorded(t *testing.T) *session.Session {
 	t.Helper()
 	s := session.New("Jan K.", session.Instrument{
-		Make:      "Hohner",
-		Model:     "Morino",
 		Banks:     []session.Bank{session.BankM1, session.BankM2, session.BankM3},
 		Registers: []session.Register{{Name: "MMM", Banks: []session.Bank{session.BankM1, session.BankM2, session.BankM3}}},
 		ReedCount: 3,
@@ -52,7 +50,7 @@ func TestASessionSurvivesTheDatabase(t *testing.T) {
 	if got.Name != s.Name || got.A4 != s.A4 {
 		t.Fatalf("got %q at %v, want %q at %v", got.Name, got.A4, s.Name, s.A4)
 	}
-	if got.Instrument.Model != "Morino" || len(got.Instrument.Registers) != 1 {
+	if len(got.Instrument.Registers) != 1 {
 		t.Fatalf("the instrument did not survive: %+v", got.Instrument)
 	}
 	if got.Curve == nil || len(got.Curve.Anchors) != 1 {

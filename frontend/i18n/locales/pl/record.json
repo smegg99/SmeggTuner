@@ -8,7 +8,7 @@
       "label": "Nagrane strojenie",
       "helpTitle": "O tej tabeli",
       "notes": "brak dźwięków | jeden dźwięk | {count} dźwięki | {count} dźwięków",
-      "empty": "Przejdź przez instrument z włączonym nagrywaniem. Każdy zablokowany dźwięk trafi tutaj.",
+      "empty": "Przejdź przez akordeon z włączonym nagrywaniem. Każdy zablokowany dźwięk trafi tutaj.",
       "note": "Dźwięk",
       "reed": "Głos {index}",
       "beat": "Dudnienie {pair}",
@@ -26,7 +26,8 @@
       "envelopeHint": "To dudnienie odczytano z obwiedni amplitudy, a nie z widma. Tak mierzy się parę zbyt bliską, by ją rozdzielić.",
       "delete": "Usuń ten odczyt",
       "deleteTitle": "Usunąć ten odczyt?",
-      "deleteHint": "Ten odczyt przepadnie i nie da się go przywrócić. Zagraj ten dźwięk ponownie, a tuner nagra na jego miejsce nowy."
+      "deleteHint": "Ten odczyt przepadnie i nie da się go przywrócić. Zagraj ten dźwięk ponownie, a tuner nagra na jego miejsce nowy.",
+      "bassTitle": "Basy"
     },
     "report": {
       "title": "Karta strojenia",

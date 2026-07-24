@@ -11,7 +11,7 @@
   "report.mark.derived": "D",
   "report.mark.edited": "R",
   "report.mark.envelope": "ob",
-  "report.facts.instrument": "Instrument",
+  "report.facts.instrument": "Akordeon",
   "report.facts.reference": "Odniesienie A4 (ten przebieg)",
   "report.facts.curve": "Krzywa docelowa",
   "report.facts.tolerance": "Tolerancja",
@@ -58,6 +58,7 @@
     "other": "{{.PluralCount}} dźwięku wróciło ze zlanymi głosami i jest opisane dudnieniem."
   },
   "report.table.title": "Tabela strojenia",
+  "report.table.bassTitle": "Tabela strojenia basów",
   "report.table.note": "Dźwięk",
   "report.table.register": "Rejestr",
   "report.table.curr": "Jest",

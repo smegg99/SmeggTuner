@@ -22,18 +22,38 @@
 
       <!-- One table per recording: mixing recordings would mix separate takes of the accordion. -->
       <!-- Tag must be RecordRecordedTable, not RecordedTable: the short form resolves to a native element that silently renders nothing. -->
-      <RecordRecordedTable
-        v-else
-        v-model:unit="unit"
-        class="read__table"
-        :rows="rows"
-        :reed-count="table.reedCount"
-        :banks="table.banks"
-        :removable="true"
-        :selected-note="selectedNote"
-        @select-note="(n: number) => selectedNote = n"
-        @delete-take="askDelete"
-      />
+      <template v-else>
+        <RecordRecordedTable
+          v-if="trebleRows.length || !bassRows.length"
+          v-model:unit="unit"
+          class="read__table"
+          :rows="trebleRows"
+          :reed-count="table.reedCount"
+          :banks="table.banks"
+          :removable="true"
+          :selected-note="selectedNote"
+          @select-note="(n: number) => selectedNote = n"
+          @delete-take="askDelete"
+        />
+
+        <!-- The bass side: its own columns, the machine's ranks by foot. -->
+        <template v-if="bassRows.length">
+          <h3 class="read__bass-title">
+            {{ t('record.table.bassTitle') }}
+          </h3>
+          <RecordRecordedTable
+            v-model:unit="unit"
+            class="read__table"
+            :rows="bassRows"
+            :reed-count="table.bassReedCount || bassReeds"
+            :banks="bassFeetLabels"
+            :removable="true"
+            :selected-note="selectedNote"
+            @select-note="(n: number) => selectedNote = n"
+            @delete-take="askDelete"
+          />
+        </template>
+      </template>
     </div>
 
     <CurveEditor
@@ -89,6 +109,16 @@ const printing = ref(false)
 const killTake = ref<number | null>(null)
 
 const rows = computed<TakeRow[]>(() => (table.value?.rows ?? []) as unknown as TakeRow[])
+const trebleRows = computed(() => rows.value.filter(r => !r.bass))
+const bassRows = computed(() => rows.value.filter(r => r.bass))
+
+// The bass section's columns; a machine nobody declared falls back to the widest row.
+const bassReeds = computed(() =>
+  Math.max(1, ...bassRows.value.map(r => r.reeds.length)),
+)
+const bassFeetLabels = computed(() =>
+  (table.value?.bassFeet ?? []).map((f: number) => `${f}'`),
+)
 
 // Refetch per id: covers first paint and clears the stale selection when switching sessions.
 watch(() => props.id, () => {
@@ -130,6 +160,12 @@ async function confirmDelete() {
 </script>
 
 <style scoped>
+.read__bass-title {
+  color: rgb(var(--v-theme-ink));
+  font-size: 1.9cqh;
+  margin: 1.2cqh 0 0.4cqh;
+}
+
 .read {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);

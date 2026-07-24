@@ -47,6 +47,16 @@ export function useSessions() {
     return run(() => SessionService.SetRegister(name))
   }
 
+  // Turns the bench toward the bass keyboard, or back to the treble.
+  async function setBass(on: boolean) {
+    return run(() => SessionService.SetBass(on))
+  }
+
+  // Pulls a bass switch; empty is the whole (or fixed) machine.
+  async function setBassRegister(name: string) {
+    return run(() => SessionService.SetBassRegister(name))
+  }
+
   // Import always creates a new session, never overwriting the open one.
   async function importFile() {
     const path = await run(() => SessionService.OpenFileDialog(
@@ -113,6 +123,8 @@ export function useSessions() {
     setA4,
     save,
     setRegister,
+    setBass,
+    setBassRegister,
     importFile,
     exportFile,
     ...useSessionCurve(),

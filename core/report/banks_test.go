@@ -13,8 +13,6 @@ func bank(b ...session.Bank) []session.Bank { return b }
 
 func lmmm() session.Instrument {
 	return session.Instrument{
-		Make:      "Hohner",
-		Model:     "Morino",
 		ReedCount: 4,
 		Banks:     bank(session.BankL, session.BankM1, session.BankM2, session.BankM3),
 		Registers: []session.Register{

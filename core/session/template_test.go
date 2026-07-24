@@ -97,8 +97,7 @@ func TestATemplateNeedsAName(t *testing.T) {
 // FromSession keeps the model, not the one accordion: the serial is left behind, and it is a copy.
 func TestSavingTheInstrumentOnTheBenchKeepsTheModelAndNotTheAccordion(t *testing.T) {
 	s := New("Jan K.", Instrument{
-		Make:      "Hohner",
-		Model:     "Morino",
+		Name:      "Hohner Morino",
 		Serial:    "12345",
 		Banks:     []Bank{BankM1, BankM2, BankM3},
 		Registers: []Register{{Name: "MMM", Banks: []Bank{BankM1, BankM2, BankM3}}},
@@ -107,7 +106,7 @@ func TestSavingTheInstrumentOnTheBenchKeepsTheModelAndNotTheAccordion(t *testing
 
 	tpl := FromSession(s, "")
 	if tpl.Name != "Hohner Morino" {
-		t.Fatalf("name = %q, want it to fall back to the make and model", tpl.Name)
+		t.Fatalf("name = %q, want it to fall back to the accordion's own name", tpl.Name)
 	}
 	if tpl.Instrument.Serial != "" {
 		t.Fatal("the template kept the serial number of one particular accordion")
@@ -123,7 +122,7 @@ func TestSavingTheInstrumentOnTheBenchKeepsTheModelAndNotTheAccordion(t *testing
 
 // The saved instrument keeps the model's pitch, not the one accordion's serial.
 func TestSavingTheBenchInstrumentKeepsItsPitch(t *testing.T) {
-	s := New("Jan K.", Instrument{Make: "Hohner", Serial: "12345", ReedCount: 3, A4: 442}, 442)
+	s := New("Jan K.", Instrument{Serial: "12345", ReedCount: 3, A4: 442}, 442)
 	tpl := FromSession(s, "")
 	if tpl.Instrument.A4 != 442 {
 		t.Fatalf("A4 = %v, want 442", tpl.Instrument.A4)

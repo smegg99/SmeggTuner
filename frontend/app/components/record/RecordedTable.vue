@@ -44,7 +44,6 @@
 // Row models are built in ~/utils/recordedRows; editing a Curr emits so the backend recomputes.
 import { computed, ref } from 'vue'
 import type { RecordUnit, TakeRow } from '~/types/record'
-import type { Bank } from '~/types/session'
 import { beatGroups, reedGroups } from '~/utils/record'
 import { buildRecordedRows } from '~/utils/recordedRows'
 import { useRecordFormat } from '~/composables/useRecordFormat'
@@ -55,8 +54,9 @@ const props = withDefaults(defineProps<{
   rows: TakeRow[]
   /** Reeds this register sounds, 1..8; never assume three. */
   reedCount: number
-  /** Ranks in card order, naming the reed columns; numbered when absent. */
-  banks?: Bank[]
+  /** Ranks in card order, naming the reed columns; numbered when absent. The treble side passes
+   * its banks (L, M1...), the bass side its feet ("32'", "16'"...). */
+  banks?: readonly string[]
   removable?: boolean
   selectedNote?: number | null
 }>(), {

@@ -20,7 +20,7 @@ func service(t *testing.T) *Service {
 }
 
 func instrument(reeds int) coresession.Instrument {
-	return coresession.Instrument{Make: "Hohner", Model: "Morino", ReedCount: reeds}
+	return coresession.Instrument{ReedCount: reeds}
 }
 
 func create(t *testing.T, s *Service, name string, reeds int, a4 float64) *SessionDTO {

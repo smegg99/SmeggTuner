@@ -7,3 +7,8 @@ allowBuilds:
   '@parcel/watcher': true
   esbuild: true
   unrs-resolver: true
+
+# Two pnpm entry points (corepack and the system binary) once ping-ponged the modules layout,
+# each demanding a from-scratch reinstall of the other's. packageManager pins them to one
+# version; this makes any remaining layout migration reinstall without stopping a build to ask.
+confirmModulesPurge: false

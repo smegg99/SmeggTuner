@@ -39,6 +39,7 @@ func main() {
 	noteName := flag.String("note", "", "manual note (e.g. A4); empty = auto")
 	reeds := flag.Int("reeds", 1, "reed count 1..3")
 	banks := flag.String("banks", "", "register banks (e.g. LM, LMMM, MH); sets the compound layout and the reed count")
+	bass := flag.Int("bass", 0, "bass machine voice count (2..6): tune the whole octave ladder")
 	ppm := flag.Float64("ppm", 0, "clock correction ppm")
 	window := flag.Float64("window", 3.0, "fine analysis window, seconds")
 	trace := flag.Bool("trace", false, "print every measurement to stderr")
@@ -60,6 +61,14 @@ func main() {
 		}
 		octaves = session.OctavesOf(bs)
 		*reeds = len(bs)
+	}
+	if *bass != 0 {
+		feet := session.BassFeet(*bass)
+		if feet == nil {
+			fail("-bass must be %d..%d", session.MinBassReeds, session.MaxBassReeds)
+		}
+		octaves = session.OctavesOfFeet(feet)
+		*reeds = len(feet)
 	}
 
 	var src audio.Source

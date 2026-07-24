@@ -15,6 +15,8 @@ func (s *Service) adopt(next *coresession.Session) (*SessionDTO, error) {
 	s.active = next
 	// A new instrument gets its own bench; nothing carries over.
 	s.register = s.defaultRegisterLocked()
+	s.bassSide = false
+	s.bassRegister = ""
 	dto := s.dtoLocked()
 	s.mu.Unlock()
 

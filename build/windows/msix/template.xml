@@ -17,7 +17,7 @@
         PackageDisplayName="SmeggTuner"
         PublisherName="CN=Smegg99"
         PublisherDisplayName="Smegg99"
-        Version="1.0.3.0"
+        Version="1.1.0.0"
         PackageDescription="Free and open-source accordion tuner.">
         <Capabilities>
             <Capability Name="runFullTrust" />

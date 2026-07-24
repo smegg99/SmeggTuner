@@ -73,7 +73,7 @@
     "boxes": {
       "notSplit": "not split, no reading",
       "notHeard": "not heard",
-      "harmonicOnly": "only the lower rank's harmonic",
+      "harmonicOnly": "harmonic only",
       "goal": "goal",
       "reed": "Reed {n}",
       "reedBank": "Reed {bank}",
@@ -106,6 +106,15 @@
     "register": {
       "hint": "The register you have pulled. It sets how many reeds the tuner listens for, and which rank each reading belongs to.",
       "lockedPlaying": "Stop playback to change the register."
+    },
+    "side": {
+      "treble": "Treble",
+      "bass": "Bass",
+      "hint": "Which keyboard the bench faces. The bass side tunes the whole octave ladder at once."
+    },
+    "bassRegister": {
+      "all": "Whole machine",
+      "hint": "The bass switch you have pulled; a fixed machine always sounds every voice."
     }
   }
 }

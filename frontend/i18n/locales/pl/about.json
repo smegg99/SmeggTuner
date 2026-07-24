@@ -10,13 +10,13 @@
     "commit": "Kompilacja",
     "donate": "Wesprzyj na Ko-fi",
     "help": {
-      "intro": "SmeggTuner słucha akordeonu przez mikrofon i mierzy każdy głos względem tonu odniesienia. Odczyty trafiają do sesji jednego instrumentu, a krzywa docelowa tej sesji jest tym, względem czego oceniany jest każdy głos.",
+      "intro": "SmeggTuner słucha akordeonu przez mikrofon i mierzy każdy głos względem tonu odniesienia. Odczyty trafiają do sesji jednego akordeonu, a krzywa docelowa tej sesji jest tym, względem czego oceniany jest każdy głos.",
       "rooms": {
         "title": "Trzy pokoje",
         "tuneName": "Strojenie",
         "tune": "mikrofon jest otwarty, a wskazówka się porusza. Zagraj dźwięk, aby odczytać jego głosy i dudnienia między nimi.",
         "workshopName": "Warsztat",
-        "workshop": "sesje, instrumenty i drukowane karty. Tutaj otwierasz lub tworzysz sesję.",
+        "workshop": "sesje, akordeony i drukowane karty. Tutaj otwierasz lub tworzysz sesję.",
         "settingsName": "Ustawienia",
         "settings": "urządzenie wejściowe, odczyt, nazewnictwo i wygląd aplikacji."
       },

@@ -1,6 +1,8 @@
 package tuner
 
 import (
+	"sort"
+	"strconv"
 	"strings"
 
 	appconfig "smegg.me/smeggtuner/common/config"
@@ -19,6 +21,9 @@ type imposed struct {
 	a4    float64
 	reeds int
 	banks string
+	// bassFeet is the sounding bass ladder ("32,16,8") while the bench faces the bass side; empty
+	// on the treble side. Like banks, a join keeps the struct comparable.
+	bassFeet string
 	// profileRev fingerprints the calibrated rank voices, so a fresh take re-imposes them; the
 	// profile itself travels beside this struct (a slice cannot live in a comparable one).
 	profileRev int64
@@ -51,6 +56,53 @@ func splitBanks(s string) []coresession.Bank {
 	return banks
 }
 
+func joinFeet(feet []int) string {
+	if len(feet) == 0 {
+		return ""
+	}
+	parts := make([]string, len(feet))
+	for i, f := range feet {
+		parts[i] = strconv.Itoa(f)
+	}
+	return strings.Join(parts, ",")
+}
+
+func splitFeet(s string) []int {
+	if s == "" {
+		return nil
+	}
+	parts := strings.Split(s, ",")
+	feet := make([]int, 0, len(parts))
+	for _, p := range parts {
+		if f, err := strconv.Atoi(p); err == nil {
+			feet = append(feet, f)
+		}
+	}
+	return feet
+}
+
+// bassProfilesFor resolves foot-keyed bass calibrations onto the pulled ladder's octave slots: the
+// largest sounding foot is the base, so a rank's offset moves with the register - which is why the
+// foot, not the offset, is what the session stores.
+func bassProfilesFor(feet []int, profs []coresession.BassProfile) []dsp.RankProfile {
+	reqs := coresession.OctavesOfFeet(feet)
+	if len(reqs) == 0 {
+		return nil
+	}
+	sorted := append([]int(nil), feet...)
+	sort.Sort(sort.Reverse(sort.IntSlice(sorted)))
+	var out []dsp.RankProfile
+	for _, p := range profs {
+		for i, f := range sorted {
+			if f == p.Foot {
+				out = append(out, dsp.RankProfile{Offset: reqs[i].Offset, Note: p.Note, R2: p.R2, R4: p.R4})
+				break
+			}
+		}
+	}
+	return out
+}
+
 // goal is the target a measurement is read against: curve, reference, and reed/beat windows. A nil curve is the empty curve.
 type goal struct {
 	curve   *target.Curve
@@ -70,10 +122,14 @@ func (s *Service) session() (imposed, []dsp.RankProfile, *target.Curve) {
 	if g.A4 <= 0 {
 		return imposed{}, nil, nil // no session: the empty curve, and the app's own A4
 	}
+	prof := g.Profile
+	if len(g.BassFeet) > 0 {
+		prof = bassProfilesFor(g.BassFeet, g.BassProfiles)
+	}
 	return imposed{
-		a4: g.A4, reeds: g.Reeds, banks: joinBanks(g.Banks),
+		a4: g.A4, reeds: g.Reeds, banks: joinBanks(g.Banks), bassFeet: joinFeet(g.BassFeet),
 		profileRev: g.ProfileRev, tol: g.Tolerance, beatTol: g.BeatTolerance,
-	}, g.Profile, g.Curve
+	}, prof, g.Curve
 }
 
 // adopt makes a running engine agree with the active session and returns the goal and rules; it acts only when the session changed, so the tuner's own reed-count control wins in between, and the config is re-read here (not cached at Start) so a tightened tolerance takes effect without a restart.
@@ -151,9 +207,10 @@ func decorate(m dsp.Measurement, g goal) MeasurementDTO {
 }
 
 // impose folds the active session over an engine config: its reference pitch becomes the engine's,
-// its instrument sets the reed count (up to what the tones mode can split) and the pulled register's
-// banks become the compound octave layout - nil when the register stays in one octave, which keeps
-// the single band and its musette machinery. A solo-rank register turns harmonic profiling on: the
+// its instrument sets the reed count (up to what the tones mode can split) and the pulled
+// register's banks - or, facing the bass side, the sounding ladder's feet - become the compound
+// octave layout. Nil when the register stays in one octave, which keeps the single band and its
+// musette machinery. A solo-rank register on either side turns harmonic profiling on: the
 // calibration sweep of such a register is what teaches the profile the engine reads back.
 func impose(c dsp.EngineConfig, p imposed, prof []dsp.RankProfile) dsp.EngineConfig {
 	if p.a4 > 0 {
@@ -162,9 +219,14 @@ func impose(c dsp.EngineConfig, p imposed, prof []dsp.RankProfile) dsp.EngineCon
 	if p.reeds > 0 {
 		c.ReedCount = clampReeds(p.reeds)
 	}
-	banks := splitBanks(p.banks)
-	c.Octaves = coresession.OctavesOf(banks)
-	c.ProfileHarmonics = len(banks) == 1
+	if feet := splitFeet(p.bassFeet); len(feet) > 0 {
+		c.Octaves = coresession.OctavesOfFeet(feet)
+		c.ProfileHarmonics = len(feet) == 1
+	} else {
+		banks := splitBanks(p.banks)
+		c.Octaves = coresession.OctavesOf(banks)
+		c.ProfileHarmonics = len(banks) == 1
+	}
 	c.Profiles = prof
 	return c
 }

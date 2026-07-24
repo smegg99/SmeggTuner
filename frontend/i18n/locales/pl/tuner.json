@@ -73,7 +73,7 @@
     "boxes": {
       "notSplit": "nie rozdzielono, brak odczytu",
       "notHeard": "nie słychać",
-      "harmonicOnly": "tylko harmoniczna niższego głosu",
+      "harmonicOnly": "tylko harmoniczna",
       "goal": "cel",
       "reed": "Głos {n}",
       "reedBank": "Głos {bank}",
@@ -106,6 +106,15 @@
     "register": {
       "hint": "Wyciągnięty rejestr. Ustawia, ilu głosów tuner słucha, i do którego chóru należy każdy odczyt.",
       "lockedPlaying": "Zatrzymaj odtwarzanie, aby zmienić rejestr."
+    },
+    "side": {
+      "treble": "Dyskant",
+      "bass": "Basy",
+      "hint": "Którą klawiaturą zajęty jest warsztat. Strona basowa stroi całą drabinkę oktaw naraz."
+    },
+    "bassRegister": {
+      "all": "Cała maszyna",
+      "hint": "Wyciągnięty przełącznik basowy; maszyna na sztywno zawsze gra wszystkimi głosami."
     }
   }
 }

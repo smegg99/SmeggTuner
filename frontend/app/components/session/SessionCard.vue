@@ -85,7 +85,7 @@ const { find } = useInstruments()
 
 const instrument = computed(() => {
   const i = props.session.instrument
-  return i.name || [i.make, i.model].filter(Boolean).join(' ')
+  return i.name ?? ''
 })
 
 // True when the shelf instrument's tuning-relevant fields diverge from the recorded snapshot; a renamed or missing instrument isn't flagged.

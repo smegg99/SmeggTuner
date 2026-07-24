@@ -122,7 +122,7 @@ function add() {
   cursor: pointer;
   display: flex;
   gap: 0.6cqw;
-  padding: 0.8cqh 0.7cqw;
+  padding: 0.55cqh 0.7cqw;
 }
 
 .preset:hover {
@@ -130,9 +130,9 @@ function add() {
 }
 
 .preset__sym {
-  block-size: 5cqh;
+  block-size: 4cqh;
   flex: 0 0 auto;
-  inline-size: 5cqh;
+  inline-size: 4cqh;
 }
 
 .preset__feet {
@@ -147,8 +147,8 @@ function add() {
   border-top: 1px solid rgb(var(--v-theme-lineSoft));
   display: flex;
   flex-direction: column;
-  gap: 0.9cqh;
-  padding-top: 1.2cqh;
+  gap: 0.6cqh;
+  padding-top: 0.9cqh;
 }
 
 .build__custom-h {
@@ -166,16 +166,16 @@ function add() {
 }
 
 .build__sym {
-  block-size: 7cqh;
+  block-size: 4cqh;
   flex: 0 0 auto;
-  inline-size: 7cqh;
+  inline-size: 4cqh;
 }
 
 .build__rows {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  gap: 0.55cqh;
+  gap: 0.4cqh;
   min-width: 0;
 }
 

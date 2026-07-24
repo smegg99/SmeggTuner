@@ -2,6 +2,8 @@
   <CalibrationSweepSetup
     v-if="stage === 'setup'"
     :registers="registers"
+    :bass-reeds="instrument?.bassReeds"
+    :bass-registers="instrument?.bassRegisters"
     @begin="begin"
     @redo-range="redoRange"
   />
@@ -24,7 +26,7 @@
       v-if="currentStep"
       class="sw__ask"
     >
-      <span class="sw__asknote">{{ noteName(currentStep.note) }}</span>
+      <span class="sw__asknote">{{ stepLabel(currentStep) }}</span>
     </p>
 
     <CalibrationReadout
@@ -85,13 +87,14 @@ import CalibrationSweepSetup from './CalibrationSweepSetup.vue'
 import { useCalibration } from '~/composables/useCalibration'
 import { useShell } from '~/composables/useShell'
 import { useConfigSync } from '~/composables/useConfigSync'
-import { noteName as toNoteName } from '~/utils/tuning'
+import { noteName as toNoteName, pitchClassName } from '~/utils/tuning'
+import type { Step } from '~/composables/calibrationSteps'
 
 const { t } = useI18n()
 const { setView } = useShell()
 const { config } = useConfigSync()
 const {
-  stage, registers, currentStep, heard, shown, liveNote, status, lockProgress,
+  stage, registers, instrument, currentStep, heard, shown, liveNote, status, lockProgress,
   captured, capturedCount, progress, begin, skip, finish, redoRange, reset,
 } = useCalibration()
 
@@ -101,6 +104,11 @@ const readoutNote = computed(() => heard.value || liveNote.value || shown.value)
 
 function noteName(n: number): string {
   return toNoteName(n, config.tuner?.scale_naming)
+}
+
+// A bass step names a button, not a key: the pitch class alone, whatever octave the ladder answers at.
+function stepLabel(s: Step): string {
+  return s.pc !== undefined ? pitchClassName(s.pc, config.tuner?.scale_naming) : noteName(s.note)
 }
 
 watch(captured, (got) => {

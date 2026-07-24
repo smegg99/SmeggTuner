@@ -67,10 +67,16 @@ type Goal struct {
 	// instrument predates banks). The tuner maps these onto the engine's octave layout.
 	Banks []coresession.Bank `json:"banks"`
 
+	// BassFeet is what sounds when the bench faces the bass side, largest foot first; nil while it
+	// faces the treble. The tuner maps these onto the engine's octave layout the way Banks map.
+	BassFeet []int `json:"bassFeet"`
+
 	// Profile is the rank voices this session's calibration takes taught (see Session.Profile),
-	// and ProfileRev the fingerprint that says when to re-read it.
-	Profile    []dsp.RankProfile `json:"profile"`
-	ProfileRev int64             `json:"profileRev"`
+	// BassProfiles the bass side's (keyed by foot; the octave depends on the pulled register), and
+	// ProfileRev the fingerprint that says when to re-read them.
+	Profile      []dsp.RankProfile         `json:"profile"`
+	BassProfiles []coresession.BassProfile `json:"bassProfiles"`
+	ProfileRev   int64                     `json:"profileRev"`
 
 	// Tolerance and BeatTolerance are this accordion's judging windows, in cents, or zero for the app default.
 	Tolerance     float64 `json:"tolerance"`

@@ -11,11 +11,15 @@ export interface Register {
   banks: Bank[]
 }
 
+/** One of the bass machine's switches: which ranks it sounds, by foot (32, 16, 8...). */
+export interface BassRegister {
+  name: string
+  feet: number[]
+}
+
 export interface Instrument {
   /** What the technician calls this accordion. Travels with the session, since a session opens on machines whose shelf never heard of this instrument. */
   name?: string
-  make: string
-  model: string
   serial: string
   // Reeds per note on the bench, 1..8; not assumed to be 3 (a bass sounds five voices on one button).
   reedCount: number
@@ -25,6 +29,10 @@ export interface Instrument {
   // Lowest and highest key. Zero for an instrument nobody described.
   lo?: number
   hi?: number
+  // The bass machine: how many octave-stacked ranks it sounds (2..6, usually 4 or 5); absent means
+  // no bass section described. Its switches, when it has any - an older fixed machine has none.
+  bassReeds?: number
+  bassRegisters?: BassRegister[]
   // This accordion's own reference pitch (e.g. 442 vs 440); absent falls back to the app default. See core/session.Instrument.
   a4?: number
   // How tight this accordion is judged, in cents; absent falls back to the app default. See core/session.Instrument.Tolerances.

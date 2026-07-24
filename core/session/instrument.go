@@ -72,7 +72,7 @@ func (i Instrument) validate() error {
 			return ErrTolerance
 		}
 	}
-	return nil
+	return i.validateBass()
 }
 
 // Tolerances returns this instrument's windows, or the given defaults where unset; the one place instrument-over-default precedence lives.
@@ -87,9 +87,21 @@ func (i Instrument) Tolerances(defTol, defBeat float64) (tol, beat float64) {
 	return tol, beat
 }
 
-// validTake refuses a take naming a register the instrument does not have.
+// validTake refuses a take naming a register the instrument does not have; a bass take checks the
+// bass switches, a treble take the treble ones.
 func (i Instrument) validTake(t Take) error {
-	if t.Register != "" && len(i.Registers) > 0 {
+	if t.Register == "" {
+		return nil
+	}
+	if t.Bass {
+		if len(i.BassRegisters) > 0 {
+			if _, ok := i.BassRegister(t.Register); !ok {
+				return fmt.Errorf("%w: %q", ErrBassRegister, t.Register)
+			}
+		}
+		return nil
+	}
+	if len(i.Registers) > 0 {
 		if _, ok := i.Register(t.Register); !ok {
 			return fmt.Errorf("%w: %q", ErrRegister, t.Register)
 		}

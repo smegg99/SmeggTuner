@@ -20,6 +20,10 @@ type Service struct {
 	active *coresession.Session
 	// register is which switch is pulled; see bench.go.
 	register string
+	// bassSide says the bench faces the bass keyboard; bassRegister is the pulled bass switch, or
+	// empty for the whole (or fixed) machine.
+	bassSide     bool
+	bassRegister string
 
 	// saveMu serializes flushes, so an older snapshot can never land on disk on top of a newer one.
 	saveMu   sync.Mutex

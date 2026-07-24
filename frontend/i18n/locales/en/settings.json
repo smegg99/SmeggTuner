@@ -37,7 +37,7 @@
     },
     "toleranceUnit": "¢",
     "toleranceLabel": "Tolerances",
-    "toleranceHint": "How close counts as in tune when no session is open. A session's own instrument sets its own, tighter or looser, and those win while it is open.",
+    "toleranceHint": "How close counts as in tune when no session is open. A session's own accordion sets its own, tighter or looser, and those win while it is open.",
     "toleranceReed": "Reed",
     "toleranceBeat": "Beat",
     "accent": {

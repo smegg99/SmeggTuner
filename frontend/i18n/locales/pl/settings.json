@@ -37,7 +37,7 @@
     },
     "toleranceUnit": "¢",
     "toleranceLabel": "Tolerancje",
-    "toleranceHint": "Jak blisko liczy się jako w stroju, gdy nie ma otwartej sesji. Instrument sesji ma własne, ciaśniejsze lub luźniejsze, i to one obowiązują, dopóki jest otwarta.",
+    "toleranceHint": "Jak blisko liczy się jako w stroju, gdy nie ma otwartej sesji. Akordeon sesji ma własne, ciaśniejsze lub luźniejsze, i to one obowiązują, dopóki jest otwarta.",
     "toleranceReed": "Głos",
     "toleranceBeat": "Dudnienie",
     "accent": {

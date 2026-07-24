@@ -53,11 +53,12 @@ const props = defineProps<{ box: Box }>()
 const { t } = useI18n()
 
 // Label text is composed here, not in the model: it's UI language (Polish-first). A box standing
-// for a named rank is labeled by it - the same name as the card's column.
+// for a named rank is labeled by it - the treble side's bank (the card's column) or the bass
+// side's foot.
 const label = computed(() => {
   if (props.box.kind === 'reed') {
-    return props.box.bank
-      ? t('tuner.boxes.reedBank', { bank: props.box.bank })
+    return props.box.rank
+      ? t('tuner.boxes.reedBank', { bank: props.box.rank })
       : t('tuner.boxes.reed', { n: props.box.index + 1 })
   }
   return t('tuner.boxes.beat', { a: props.box.index, b: props.box.index + 1 })

@@ -77,7 +77,7 @@ onUnmounted(() => {
 
 const instrumentName = computed(() => {
   const i = instrument.value
-  return i?.name || [i?.make, i?.model].filter(Boolean).join(' ')
+  return i?.name ?? ''
 })
 </script>
 

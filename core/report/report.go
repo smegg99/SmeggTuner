@@ -5,6 +5,7 @@ package report
 
 import (
 	"errors"
+	"fmt"
 	"time"
 
 	"smegg.me/smeggtuner/common/i18n"
@@ -45,9 +46,9 @@ type Options struct {
 
 // Identity is the instrument the sheet is about.
 type Identity struct {
-	Session    string
-	Make       string
-	Model      string
+	Session string
+	// Accordion is the instrument's own name, the one the technician calls it by.
+	Accordion  string
 	Serial     string
 	ReedCount  int
 	Notes      string
@@ -155,14 +156,55 @@ type Report struct {
 	Pairs         []Pair
 	Rows          []Row
 
+	// Bass is the bass side's own table, when the pass recorded any: columns are the machine's
+	// ranks by foot, rows its buttons at their real pitches. Nil on an all-treble pass.
+	Bass *BassPart
+
 	Summary Summary
 	Graph   *Graph
 	Layout  Layout
 }
 
-// Columns is the width of the bench table; it drives the page layout.
+// Columns is the width of the bench table - the wider of the two keyboards' - and it drives the
+// page layout, so both tables share one orientation and grouping.
 func (r *Report) Columns() int {
-	return 1 + r.VoiceColumns() + 3*len(r.Reeds) + 3*len(r.Pairs)
+	main := 1 + r.VoiceColumns() + 3*len(r.Reeds) + 3*len(r.Pairs)
+	if r.Bass == nil {
+		return main
+	}
+	return max(main, 1+r.Bass.VoiceColumns()+3*len(r.Bass.Reeds)+3*len(r.Bass.Pairs))
+}
+
+// BassPart is the bass side of the sheet. It exposes the same surface the table templates read off
+// the Report, so "wide" and "grouped" render either without knowing which keyboard they hold.
+type BassPart struct {
+	// Feet names the columns (32', 16'...), largest first; empty when the machine was never
+	// declared and the columns are numbered instead.
+	Feet []int
+	// Reeds is the columns: 1..the machine's voice count.
+	Reeds         []int
+	MultiRegister bool
+	Pairs         []Pair
+	Rows          []Row
+}
+
+// Head is a rank column's heading: the foot, or the translated reed number.
+func (p *BassPart) Head(i int) string {
+	if i >= 0 && i < len(p.Feet) {
+		return fmt.Sprintf("%d'", p.Feet[i])
+	}
+	return i18n.Tf("report.head.reed", map[string]any{"Index": i + 1})
+}
+
+// ReedSpan is how far a merged row's "reeds did not separate" cell reaches.
+func (p *BassPart) ReedSpan() int { return 2 * len(p.Reeds) }
+
+// VoiceColumns is the columns needed to label a reading, zero unless multi-register.
+func (p *BassPart) VoiceColumns() int {
+	if p.MultiRegister {
+		return 1
+	}
+	return 0
 }
 
 // VoiceColumns is the columns needed to label a reading, zero unless multi-register.

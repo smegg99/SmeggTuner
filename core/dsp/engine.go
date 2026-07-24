@@ -30,8 +30,9 @@ type Engine struct {
 	compFor  tuning.Note
 	compBase tuning.Note
 	compAge  int
-	// per-band residual-angle trackers for the compound verdicts, reset with the note. Run loop only.
-	compTracks [4]bandTrack
+	// per-band residual-angle trackers for the compound verdicts, reset with the note; sized for
+	// the tallest register there is, a six-voice bass machine. Run loop only.
+	compTracks [6]bandTrack
 }
 
 // NewEngine builds an engine that emits once per coarse hop. While a note sounds the fine stage runs

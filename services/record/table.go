@@ -1,6 +1,8 @@
 package record
 
 import (
+	"slices"
+
 	appconfig "smegg.me/smeggtuner/common/config"
 	"smegg.me/smeggtuner/core/dsp"
 	coresession "smegg.me/smeggtuner/core/session"
@@ -20,14 +22,15 @@ func (s *Service) tableOf(d *sessionsvc.ReadingData) *TableDTO {
 	sess := coresession.Session{Takes: d.Takes}
 	rows := make([]RowDTO, 0, len(d.Takes))
 
+	bassFeet := coresession.BassFeet(d.Instrument.BassReeds)
 	for _, r := range sess.Display() {
 		m := measurementOf(r.Take)
 		reeds := target.Errors(m, d.Curve, d.A4, tol)
-		rows = append(rows, RowDTO{
+		row := RowDTO{
 			Note:          r.Note,
 			NoteName:      r.Note.Name(naming),
 			Register:      r.Register,
-			Banks:         banksOf(d.Instrument, r.Take, len(reeds)),
+			Bass:          r.Take.Bass,
 			Take:          r.Index,
 			At:            r.Take.At,
 			Manual:        r.Take.Manual,
@@ -35,7 +38,14 @@ func (s *Service) tableOf(d *sessionsvc.ReadingData) *TableDTO {
 			ReedsFromBeat: r.Take.ReedsFromBeat,
 			Reeds:         reeds,
 			Beats:         target.BeatErrors(m, d.Curve, d.A4, beatTol),
-		})
+		}
+		if r.Take.Bass {
+			row.Cols = feetColsOf(d.Instrument, r.Take, bassFeet)
+		} else {
+			row.Banks = banksOf(d.Instrument, r.Take, len(reeds))
+			row.Cols = bankColsOf(d.Instrument, row.Banks)
+		}
+		rows = append(rows, row)
 	}
 	return &TableDTO{
 		SessionID:     d.SessionID,
@@ -45,7 +55,43 @@ func (s *Service) tableOf(d *sessionsvc.ReadingData) *TableDTO {
 		Tolerance:     tol,
 		BeatTolerance: beatTol,
 		Rows:          rows,
+		BassFeet:      bassFeet,
+		BassReedCount: len(bassFeet),
 	}
+}
+
+// feetColsOf places a bass take's reeds in the machine's rank columns by foot; nil when uncertain,
+// and the row falls back to positions.
+func feetColsOf(i coresession.Instrument, t coresession.Take, feet []int) []int {
+	tf := i.TakeFeet(t)
+	if len(tf) == 0 || len(feet) == 0 {
+		return nil
+	}
+	cols := make([]int, len(tf))
+	for n, f := range tf {
+		col := slices.Index(feet, f)
+		if col < 0 {
+			return nil
+		}
+		cols[n] = col
+	}
+	return cols
+}
+
+// bankColsOf places a treble take's reeds in the instrument's bank columns; nil when unmapped.
+func bankColsOf(i coresession.Instrument, banks []coresession.Bank) []int {
+	if len(banks) == 0 || len(i.Banks) == 0 {
+		return nil
+	}
+	cols := make([]int, len(banks))
+	for n, b := range banks {
+		col := slices.Index(i.Banks, b)
+		if col < 0 {
+			return nil
+		}
+		cols[n] = col
+	}
+	return cols
 }
 
 // banksOf maps each reed of a row to its column: each reed claims a register bank in its own

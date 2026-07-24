@@ -10,7 +10,7 @@
   <Identity 
     Name="me.smegg.smeggtuner"
     Publisher="CN=Smegg99"
-    Version="1.0.3.0"
+    Version="1.1.0.0"
     ProcessorArchitecture="x64" />
   
   <Properties>

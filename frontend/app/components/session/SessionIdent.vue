@@ -60,7 +60,7 @@ const { t } = useI18n()
 
 const instrument = computed(() => {
   const i = props.session?.instrument
-  return i?.name || [i?.make, i?.model].filter(Boolean).join(' ')
+  return i?.name ?? ''
 })
 
 const registers = computed(() => props.session?.instrument?.registers ?? [])

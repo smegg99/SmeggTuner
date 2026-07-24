@@ -1,6 +1,6 @@
 import type { Ref } from 'vue'
 import { useTheme } from 'vuetify'
-import { cssColor } from '~/composables/canvasColor'
+import { alphaColor, cssColor } from '~/composables/canvasColor'
 import type { CanvasOptions, CanvasView } from '~/composables/useCanvas'
 import { useConfigSync } from '~/composables/useConfigSync'
 import { NOTE_BANDS, NOTE_MIN, live, useTuner } from '~/composables/useTuner'
@@ -19,14 +19,14 @@ export function useNotesRender(hover: Ref<number>): CanvasOptions {
   const nameOf = (midi: number) => noteName(midi, config.tuner?.scale_naming)
 
   function drawBars(ctx: CanvasRenderingContext2D, g: Geometry, band: number, c: Record<string, unknown>) {
-    const ink = cssColor(c.ink)
-    const ink3 = cssColor(c.ink3)
+    const accent = cssColor(c.accent)
+    const dim = alphaColor(c.accent, 0.45)
 
     for (let i = 0; i < NOTE_BANDS; i++) {
       // Read from the module buffer, not a Vue ref: 105 floats at 12Hz would thrash reactivity.
       const height = bandToFrac(live.bands[i] ?? 0) * (g.base - g.top)
 
-      ctx.fillStyle = i === band ? ink : ink3
+      ctx.fillStyle = i === band ? accent : dim
       ctx.fillRect(g.xOf(i) + g.bw * 0.12, g.base - height, Math.max(1, g.bw * 0.76), height)
     }
   }

@@ -150,7 +150,7 @@ a { color: inherit; text-decoration: none; }
 <dl class="facts">
   <div>
     <dt>{{T "report.facts.instrument"}}</dt>
-    <dd>{{if or .Identity.Make .Identity.Model}}{{.Identity.Make}} {{.Identity.Model}}{{else}}-{{end}}{{with .Identity.Serial}} / {{.}}{{end}}</dd>
+    <dd>{{with .Identity.Accordion}}{{.}}{{else}}-{{end}}{{with .Identity.Serial}} / {{.}}{{end}}</dd>
   </div>
   <div>
     <dt>{{T "report.facts.reference"}}</dt>
@@ -181,7 +181,12 @@ a { color: inherit; text-decoration: none; }
 
 {{with .Identity.Notes}}<p class="notes">{{.}}</p>{{end}}
 
+<h2>{{T "report.table.title"}}</h2>
 {{if .Layout.Grouped}}{{template "grouped" .}}{{else}}{{template "wide" .}}{{end}}
+{{with .Bass}}
+<h2>{{T "report.table.bassTitle"}}</h2>
+{{if $.Layout.Grouped}}{{template "grouped" .}}{{else}}{{template "wide" .}}{{end}}
+{{end}}
 
 <div class="legend">
   <!--
@@ -221,7 +226,6 @@ a { color: inherit; text-decoration: none; }
 
 {{/* The bench table: one row per note, every reed and every beat across it. */}}
 {{define "wide"}}
-<h2>{{T "report.table.title"}}</h2>
 <table>
   <thead>
     <tr>
@@ -271,7 +275,6 @@ a { color: inherit; text-decoration: none; }
 {{/* Past five reeds the bench table is wider than any paper, so it becomes one
      narrow table per reed and per beat pair - four columns, which fit anything. */}}
 {{define "grouped"}}
-<h2>{{T "report.table.title"}}</h2>
 <div class="tables">
 {{range $i, $reed := .Reeds}}
 <table>

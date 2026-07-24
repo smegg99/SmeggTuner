@@ -10,8 +10,6 @@ import (
 func musette() coresession.Instrument {
 	m := func(b ...coresession.Bank) []coresession.Bank { return b }
 	return coresession.Instrument{
-		Make:      "Hohner",
-		Model:     "Morino",
 		ReedCount: 3,
 		Banks:     m(coresession.BankM1, coresession.BankM2, coresession.BankM3),
 		Registers: []coresession.Register{

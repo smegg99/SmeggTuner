@@ -3,31 +3,31 @@
     "title": "Sessions",
     "new": "New session",
     "empty": "No sessions yet",
-    "emptyHint": "Create one for the instrument on the bench, or just open the tuner: it works without a session.",
+    "emptyHint": "Create one for the accordion on the bench, or just open the tuner: it works without a session.",
     "card": {
       "a4": "A = {hz} Hz",
       "reeds": "no reeds | {count} reed | {count} reeds",
       "hasCurve": "Goal curve set",
       "updated": "Updated {when}",
-      "unnamedInstrument": "Instrument not named",
-      "changed": "The instrument on the shelf has changed since this session was recorded.",
+      "unnamedInstrument": "Accordion not named",
+      "changed": "The accordion on the shelf has changed since this session was recorded.",
       "readings": "no readings | {count} reading | {count} readings"
     },
     "dialog": {
       "newTitle": "New session",
       "create": "Create",
       "name": "Session name",
-      "nameHint": "Whatever you will recognise it by: the instrument, or whose it is",
+      "nameHint": "Whatever you will recognise it by: the accordion, or whose it is",
       "nameRequired": "Give the session a name",
       "a4": "Reference pitch",
-      "a4Hint": "This instrument's own A. Measure it before you assume 440.",
+      "a4Hint": "This accordion's own A. Measure it before you assume 440.",
       "notes": "Notes",
-      "instrument": "Instrument",
+      "instrument": "Accordion",
       "instrumentNone": "Not described",
       "instrumentHint": "Pick the accordion and its reed ranks are set for you. Leave it if you do not know: the tuner works either way.",
       "namePlaceholder": "Whose accordion is this?",
       "says": "Reed ranks {banks}, and {registers} register. Set for you: you never have to say which rank a reading came from. | Reed ranks {banks}, and {registers} registers. Set for you: you never have to say which rank a reading came from.",
-      "saysNothing": "No reed ranks named, so the tuning table numbers its columns instead of naming them. That is fine, and you can pick an instrument later."
+      "saysNothing": "No reed ranks named, so the tuning table numbers its columns instead of naming them. That is fine, and you can pick an accordion later."
     },
     "delete": "Delete",
     "footer": {
@@ -43,21 +43,23 @@
       "saveFailed": "Could not save the session. Your last takes may be lost if you close now.",
       "invalidName": "Give the session a name.",
       "invalidA4": "The reference pitch must be between 430 and 450 Hz.",
-      "invalidReedCount": "An instrument sounds between 1 and 8 reeds on a note.",
+      "invalidReedCount": "An accordion sounds between 1 and 8 reeds on a note.",
       "invalidNote": "That note is outside the range the tuner tracks.",
-      "invalidReed": "This instrument does not sound that reed.",
+      "invalidReed": "This accordion does not sound that reed.",
       "invalidUnit": "Values are entered in cents or hertz.",
       "invalidValue": "That value is not a number.",
       "fitFailed": "Could not fit a curve to that pass.",
       "noCurve": "This session has no goal curve.",
-      "invalidInstrument": "That instrument cannot be used: a reed rank is named twice, or a register sounds a rank the instrument does not have.",
+      "invalidInstrument": "That accordion cannot be used: a reed rank is named twice, or a register sounds a rank the accordion does not have.",
       "noRegister": "This accordion has no such register.",
-      "instrumentName": "Give the instrument a name so you can find it again.",
+      "instrumentName": "Give the accordion a name so you can find it again.",
       "notAnImage": "That file is not a photograph.",
       "imageUnreadable": "That photograph would not open.",
       "hasReadings": "This session already holds readings: they were all measured against its reference and reed count, so neither can change now.",
       "takeNotFound": "That reading is gone.",
-      "noReadings": "Nothing has been recorded in this session yet."
+      "noReadings": "Nothing has been recorded in this session yet.",
+      "noBassMachine": "This accordion declares no bass machine.",
+      "noBassRegister": "The accordion has no such bass register."
     },
     "export": "Export session",
     "deleteTitle": "Delete this session?",
@@ -68,7 +70,7 @@
       "exportSessionTitle": "Export session"
     },
     "readings": {
-      "empty": "Nothing recorded yet. Open the tuner and play the instrument: what you catch lands here.",
+      "empty": "Nothing recorded yet. Open the tuner and play the accordion: what you catch lands here.",
       "notes": "no notes | one note | {n} notes"
     }
   },
@@ -79,41 +81,41 @@
     }
   },
   "instrument": {
-    "title": "Instruments",
+    "title": "Accordions",
     "sections": {
       "identity": "Identity",
       "reference": "Reference & tolerance",
       "keyboard": "Keyboard",
-      "voices": "Registers"
+      "voices": "Registers",
+      "bass": "Bass machine"
     },
     "new": "Describe one",
     "export": "Export",
     "edit": "Edit",
     "delete": "Delete",
     "photo": "Photograph",
-    "empty": "No instruments yet",
+    "empty": "No accordions yet",
     "emptyHint": "An accordion is described once and used for every session on it: its reed ranks and its switches. Import one somebody sent you, or describe the one on your bench.",
-    "newTitle": "Describe an instrument",
-    "editTitle": "Edit instrument",
+    "newTitle": "Describe an accordion",
+    "editTitle": "Edit accordion",
     "name": "Name",
     "nameHint": "What you call this accordion. Yours to name; nothing translates it.",
     "namePlaceholder": "Hohner Morino V N",
     "nameRequired": "Give it a name so you can find it again",
-    "make": "Make",
-    "model": "Model",
     "registersHint": "Click the dots of each switch's symbol - the circle engraved on the accordion - or pick a common one. What it sounds is read straight off the dots.",
+    "registersSubtitle": "The treble-side switches, and the ranks each one sounds.",
     "says": "Reed ranks {banks}. The widest switch sounds {reeds} reed. | Reed ranks {banks}. The widest switch sounds {reeds} reeds.",
-    "deleteTitle": "Delete this instrument?",
-    "deleteHint": "The description and its photograph go. Sessions already recorded on it are untouched: each one carries its own copy of the instrument and will still open, still print, and still mean what it meant.",
+    "deleteTitle": "Delete this accordion?",
+    "deleteHint": "The description and its photograph go. Sessions already recorded on it are untouched: each one carries its own copy of the accordion and will still open, still print, and still mean what it meant.",
     "card": {
       "unnamed": "Not named",
       "noBanks": "no ranks named",
       "registers": "no registers | one register | {n} registers"
     },
     "file": {
-      "openTitle": "Select an instrument file",
-      "exportTitle": "Export instrument",
-      "filterName": "smeggtuner instrument",
+      "openTitle": "Select an accordion file",
+      "exportTitle": "Export accordion",
+      "filterName": "smeggtuner accordion",
       "imageTitle": "Select a photograph",
       "imageFilter": "Images"
     },
@@ -139,7 +141,14 @@
     "a4Hint": "This accordion's tuning: 442 on an old box, 440 on a newer one. Every session on it starts from here.",
     "tolerance": "Reed tolerance",
     "toleranceHint": "How many cents off a reed may be before it is called out of tune. This accordion's own; a concert box is held tighter than a folk one.",
-    "beatTolerance": "Beat tolerance"
+    "beatTolerance": "Beat tolerance",
+    "bass": {
+      "voices": "Bass voices",
+      "none": "None",
+      "hint": "Declare how many voices the bass sounds; most machines have four or five.",
+      "fixed": "No bass registers: a fixed machine, every voice always sounds.",
+      "registerName": "Switch name"
+    }
   },
   "workshop": {
     "label": "Workshop",
@@ -174,7 +183,7 @@
     "sweep": {
       "step": "The reeds",
       "pickRegister": "Which register are you calibrating?",
-      "soloTeaches": "Sweeping a single-voice register also teaches the app that voice's sound, so in combined registers it can tell that voice from the harmonic of the one below it.",
+      "soloTeaches": "Sweeping a single-voice register also teaches the app that voice's sound.",
       "noRegisters": "This accordion has no registers described. The sweep still runs; its readings land in numbered columns.",
       "startPlain": "Start the sweep",
       "redoRange": "Redo the keyboard",
@@ -183,7 +192,8 @@
       "stop": "Stop",
       "done": "Swept. {n} reading on the card. | Swept. {n} readings on the card.",
       "review": "See the card",
-      "again": "Calibrate again"
+      "again": "Calibrate again",
+      "bassAll": "Bass - whole machine"
     }
   }
 }

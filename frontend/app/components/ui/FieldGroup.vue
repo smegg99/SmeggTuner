@@ -3,8 +3,19 @@
     class="group"
     :class="{ 'group--dense': dense }"
   >
-    <h5 class="group__title">
-      {{ title }}
+    <h5
+      class="group__title"
+      :class="{ 'group__title--hinted': hint }"
+    >
+      {{ title }}<v-tooltip
+        v-if="hint"
+        activator="parent"
+        location="top start"
+        max-width="340"
+        open-delay="300"
+      >
+        {{ hint }}
+      </v-tooltip>
     </h5>
 
     <div class="group__fields">
@@ -16,6 +27,8 @@
 <script setup lang="ts">
 defineProps<{
   title: string
+  // Hovers on the title, so a section can explain itself without spending a paragraph of dialog.
+  hint?: string
   dense?: boolean
 }>()
 </script>
@@ -41,6 +54,10 @@ defineProps<{
   margin: 0;
   padding-bottom: 0.6cqh;
   text-transform: uppercase;
+}
+
+.group__title--hinted {
+  cursor: help;
 }
 
 .group__fields {

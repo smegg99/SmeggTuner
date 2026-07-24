@@ -23,6 +23,22 @@
       </button>
     </div>
 
+    <!-- The bass side sweeps its twelve buttons: the whole ladder, and each declared switch. -->
+    <div
+      v-if="bassOptions.length"
+      class="sw__registers"
+    >
+      <button
+        v-for="b in bassOptions"
+        :key="`bass-${b.register}`"
+        type="button"
+        class="sw__reg"
+        @click="emit('begin', b.register, true)"
+      >
+        <span class="sw__regname">{{ b.label }}</span>
+      </button>
+    </div>
+
     <!-- A solo register's sweep doubles as calibration of that rank's voice: the app learns how
          loud its partials stand, and compound registers can then tell that rank tuned dead onto a
          partial from a rank not sounding at all. -->
@@ -56,17 +72,33 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { Register } from '~/types/session'
+import type { BassRegister, Register } from '~/types/session'
 
-const props = defineProps<{ registers: Register[] }>()
+const props = defineProps<{
+  registers: Register[]
+  bassReeds?: number
+  bassRegisters?: BassRegister[]
+}>()
 const emit = defineEmits<{
-  begin: [name: string]
+  begin: [name: string, bass?: boolean]
   redoRange: []
 }>()
 
 const { t } = useI18n()
 
-const hasSolo = computed(() => props.registers.some(r => r.banks.length === 1))
+const hasSolo = computed(() =>
+  props.registers.some(r => r.banks.length === 1)
+  || (props.bassRegisters ?? []).some(r => r.feet.length === 1))
+
+// The whole machine first - the only choice on a fixed bass - then each declared switch.
+const bassOptions = computed(() => {
+  if (!props.bassReeds) return []
+  const out = [{ register: '', label: t('calibrate.sweep.bassAll') }]
+  for (const r of props.bassRegisters ?? []) {
+    out.push({ register: r.name, label: `${r.name} - ${r.feet.map(f => `${f}'`).join('+')}` })
+  }
+  return out
+})
 </script>
 
 <style scoped>

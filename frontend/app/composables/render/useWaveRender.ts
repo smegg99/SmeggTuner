@@ -57,9 +57,9 @@ export function useWaveRender(): CanvasOptions {
     if (cols.length === 0 || half <= 0) return
 
     const g = ctx.createLinearGradient(0, lane, 0, v.height)
-    g.addColorStop(0, alphaColor(c.neutral, 0.55))
-    g.addColorStop(0.5, alphaColor(c.neutral, 1))
-    g.addColorStop(1, alphaColor(c.neutral, 0.55))
+    g.addColorStop(0, alphaColor(c.accent, 0.55))
+    g.addColorStop(0.5, alphaColor(c.accent, 1))
+    g.addColorStop(1, alphaColor(c.accent, 0.55))
     ctx.fillStyle = g
 
     const bw = v.width / cols.length

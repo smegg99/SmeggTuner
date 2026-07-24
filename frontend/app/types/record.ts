@@ -67,6 +67,10 @@ export interface TakeRow {
   reedsFromBeat?: boolean
   /** A Curr was hand-edited: typed, not heard. */
   manual: boolean
+  /** The row came from the bass side and belongs to the table's bass section. */
+  bass?: boolean
+  /** Which table column each reed sits in: reeds[i] in column cols[i]. Absent when the mapping is uncertain; the row then falls back to positions. */
+  cols?: number[]
 }
 
 /** The session's readings, against the goal. services/record.TableDTO. */

@@ -53,9 +53,10 @@ func AnalyzeOctaves(z *Zoom, ring *Ring, baseHz float64, reqs []OctaveRequest, m
 	return bands
 }
 
-// How many partials of a solved rank to predict into the bands above. 2..8 reaches three octaves up,
-// which covers any register a card has columns for; odd partials fall between the octave bands.
-const harmonicMax = 8
+// How many partials of a solved rank to predict into the bands above. 2..32 reaches five octaves
+// up, which covers a six-voice bass machine's whole ladder; odd partials fall between the octave
+// bands, so only the powers of two ever match anything.
+const harmonicMax = 32
 
 // Extra peaks to look for per band beyond its genuine ranks, so a leaked partial standing beside a
 // fundamental is actually found before it can be subtracted.

@@ -43,7 +43,7 @@ export function useSpectrumRender(): CanvasOptions {
     const g = geometry(view)
     const c = theme.current.value.colors
 
-    const red = cssColor(c.reed)
+    const accent = cssColor(c.accent)
     const green = cssColor(c.goal)
     const wellLine = cssColor(c.wellLine)
 
@@ -100,12 +100,12 @@ export function useSpectrumRender(): CanvasOptions {
     path.closePath()
 
     const fill = ctx.createLinearGradient(0, g.top, 0, g.base)
-    fill.addColorStop(0, alpha(red, 0.34))
-    fill.addColorStop(1, alpha(red, 0.02))
+    fill.addColorStop(0, alpha(accent, 0.34))
+    fill.addColorStop(1, alpha(accent, 0.02))
     ctx.fillStyle = fill
     ctx.fill(path)
 
-    ctx.strokeStyle = red
+    ctx.strokeStyle = accent
     ctx.lineWidth = 1.6
     ctx.beginPath()
     for (let i = 0; i < SPECTRUM_COLUMNS; i++) {

@@ -38,7 +38,7 @@ func pass(t *testing.T, sessions *sessionsvc.Service) {
 
 	if _, err := sessions.Create(sessionsvc.NewSessionDTO{
 		Name:       "Morino",
-		Instrument: coresession.Instrument{Make: "Hohner", Model: "Morino", ReedCount: 3, A4: a4},
+		Instrument: coresession.Instrument{ReedCount: 3, A4: a4},
 	}); err != nil {
 		t.Fatal(err)
 	}
@@ -59,7 +59,7 @@ func passWithReeds(t *testing.T, sessions *sessionsvc.Service, count int) {
 
 	if _, err := sessions.Create(sessionsvc.NewSessionDTO{
 		Name:       "Morino",
-		Instrument: coresession.Instrument{Make: "Hohner", Model: "Morino", ReedCount: count, A4: a4},
+		Instrument: coresession.Instrument{ReedCount: count, A4: a4},
 	}); err != nil {
 		t.Fatal(err)
 	}

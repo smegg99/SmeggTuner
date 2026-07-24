@@ -43,8 +43,6 @@ func openInstrument(t *testing.T, sessions *sessionsvc.Service, i coresession.In
 // morino is a three-voice accordion whose ranks and switches are described.
 func morino() coresession.Instrument {
 	return coresession.Instrument{
-		Make:      "Hohner",
-		Model:     "Morino",
 		ReedCount: 3,
 		Banks:     banks(coresession.BankM1, coresession.BankM2, coresession.BankM3),
 		Registers: []coresession.Register{

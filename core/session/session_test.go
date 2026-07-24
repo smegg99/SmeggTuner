@@ -20,7 +20,7 @@ func reeds(n int) []dsp.ReedMeasure {
 
 func newTestSession(t *testing.T, reedCount int) *Session {
 	t.Helper()
-	s := New("Hohner Morino", Instrument{Make: "Hohner", Model: "Morino", ReedCount: reedCount}, 442)
+	s := New("Hohner Morino", Instrument{ReedCount: reedCount}, 442)
 	if err := s.Validate(); err != nil {
 		t.Fatalf("validate: %v", err)
 	}

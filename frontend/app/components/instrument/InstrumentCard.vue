@@ -18,10 +18,6 @@
 
     <div class="card__body">
       <span class="card__name">{{ title }}</span>
-      <span
-        v-if="instrument.name && made"
-        class="card__what"
-      >{{ made }}</span>
 
       <!-- Banks in card order: which rank each reading files under. -->
       <div class="card__banks">
@@ -85,13 +81,7 @@ const emit = defineEmits<{
 
 const { t } = useI18n()
 
-const made = computed(() => {
-  const i = props.instrument.instrument
-  return [i.make, i.model].filter(Boolean).join(' ')
-})
-
-// Heading falls back name -> make/model -> "not named"; the make/model line shows only when there's a distinct name above it.
-const title = computed(() => props.instrument.name || made.value || t('instrument.card.unnamed'))
+const title = computed(() => props.instrument.name || t('instrument.card.unnamed'))
 
 const banks = computed(() => props.instrument.instrument.banks ?? [])
 const registers = computed(() => props.instrument.instrument.registers?.length ?? 0)
@@ -147,14 +137,6 @@ const registers = computed(() => props.instrument.instrument.registers?.length ?
   color: rgb(var(--v-theme-ink));
   font-size: 1.7cqh;
   font-weight: 600;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.card__what {
-  color: rgb(var(--v-theme-ink3));
-  font-size: 1.45cqh;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

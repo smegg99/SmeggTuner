@@ -48,6 +48,11 @@ type RowDTO struct {
 	// Banks is which column each reed belongs in: Reeds[i] is bank Banks[i]. Empty
 	// when unmapped, and the table then numbers the reeds.
 	Banks []coresession.Bank `json:"banks,omitempty"`
+	// Bass says the row came from the bass side; it belongs to the table's bass section.
+	Bass bool `json:"bass,omitempty"`
+	// Cols is which table column each reed belongs in: Reeds[i] sits in column Cols[i]. Empty when
+	// the mapping is uncertain, and the row falls back to positions.
+	Cols []int `json:"cols,omitempty"`
 	// Take is the index into the session's readings, which is what an edit or removal aims at.
 	Take int       `json:"take"`
 	At   time.Time `json:"at"`
@@ -74,6 +79,10 @@ type TableDTO struct {
 	Tolerance     float64            `json:"tolerance"`
 	BeatTolerance float64            `json:"beatTolerance"`
 	Rows          []RowDTO           `json:"rows"`
+	// BassFeet is the bass section's columns - the machine's ranks by foot, largest first - and
+	// BassReedCount their number. Zero-valued when the instrument declares no bass machine.
+	BassFeet      []int `json:"bassFeet,omitempty"`
+	BassReedCount int   `json:"bassReedCount,omitempty"`
 }
 
 func init() {

@@ -11,7 +11,7 @@
   "report.mark.derived": "D",
   "report.mark.edited": "H",
   "report.mark.envelope": "e",
-  "report.facts.instrument": "Instrument",
+  "report.facts.instrument": "Accordion",
   "report.facts.reference": "Reference A4 (this pass)",
   "report.facts.curve": "Goal curve",
   "report.facts.tolerance": "Tolerance",
@@ -46,6 +46,7 @@
     "other": "{{.PluralCount}} notes came back merged and are reported by the beat."
   },
   "report.table.title": "Tuning table",
+  "report.table.bassTitle": "Bass tuning table",
   "report.table.note": "Note",
   "report.table.register": "Register",
   "report.table.curr": "Curr",

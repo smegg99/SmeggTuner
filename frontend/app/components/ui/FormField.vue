@@ -1,18 +1,21 @@
 <template>
   <div class="field">
+    <!-- The hint hovers on the label rather than taking a paragraph under every input. -->
     <label
       class="field__label"
+      :class="{ 'field__label--hinted': hint }"
       :for="id"
-    >{{ label }}</label>
+    >{{ label }}<v-tooltip
+      v-if="hint"
+      activator="parent"
+      location="top start"
+      max-width="340"
+      open-delay="300"
+    >{{ hint }}</v-tooltip></label>
 
     <div class="field__control">
       <slot :id="id" />
     </div>
-
-    <span
-      v-if="hint"
-      class="field__hint"
-    >{{ hint }}</span>
 
     <span
       v-if="error"
@@ -48,11 +51,12 @@ const id = useId()
   line-height: 1.2;
 }
 
-.field__hint {
-  color: rgb(var(--v-theme-ink2));
-  font-size: 1.4cqh;
-  line-height: 1.45;
-  max-width: 46ch;
+/* A dotted underline is the only sign there is more to read. */
+.field__label--hinted {
+  cursor: help;
+  text-decoration: underline dotted rgb(var(--v-theme-ink3));
+  text-underline-offset: 0.35cqh;
+  width: fit-content;
 }
 
 .field__control {

@@ -45,8 +45,6 @@ func TestSavingTheInstrumentOnTheBench(t *testing.T) {
 	if _, err := s.Create(NewSessionDTO{
 		Name: "Jan K.",
 		Instrument: coresession.Instrument{
-			Make:      "Hohner",
-			Model:     "Morino",
 			Serial:    "12345",
 			Banks:     []coresession.Bank{coresession.BankM1, coresession.BankM2, coresession.BankM3},
 			Registers: []coresession.Register{{Name: "MMM", Banks: []coresession.Bank{coresession.BankM1, coresession.BankM2, coresession.BankM3}}},

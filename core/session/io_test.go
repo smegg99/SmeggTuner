@@ -17,8 +17,6 @@ import (
 func recorded(t *testing.T, reedCount int) *Session {
 	t.Helper()
 	s := New("Hohner Morino - Jan K.", Instrument{
-		Make:      "Hohner",
-		Model:     "Morino",
 		Serial:    "12345",
 		ReedCount: reedCount,
 		Banks:     Banks[:reedCount],

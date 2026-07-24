@@ -59,6 +59,7 @@ config.json
 # skips unless SMEGGTUNER_SAMPLES points at a folder. The committed fixture set
 # is tests/fixtures/, which carries its own .expect.json goldens.
 /sounds/
+/scripts
 
 # Working notes. Written to hand a task over mid-flight, dated, and true only of
 # the day they were written. The durable parts belong in architecture.md and

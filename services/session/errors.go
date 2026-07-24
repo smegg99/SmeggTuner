@@ -33,6 +33,10 @@ var (
 	ErrInvalidInstrument = &ServiceError{Key: "session.error.invalidInstrument"}
 	// ErrNoRegister reports a register the instrument on the bench does not have.
 	ErrNoRegister = &ServiceError{Key: "session.error.noRegister"}
+	// ErrNoBassMachine reports a bench turned toward a bass side the instrument never declared.
+	ErrNoBassMachine = &ServiceError{Key: "session.error.noBassMachine"}
+	// ErrNoBassRegister reports a bass register the instrument does not have.
+	ErrNoBassRegister = &ServiceError{Key: "session.error.noBassRegister"}
 	// ErrInvalidNote reports a note outside the tuning range.
 	ErrInvalidNote = &ServiceError{Key: "session.error.invalidNote"}
 	// ErrInvalidReed reports a reed index the curve does not describe.

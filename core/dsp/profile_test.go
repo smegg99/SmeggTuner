@@ -51,9 +51,8 @@ func lmProfiled(r2 float64) EngineConfig {
 	return c
 }
 
-// The case phase cannot judge: an 8' tuned dead onto the 16's partial, zero beat, nothing rotating.
-// The calibrated voice can - the line stands far over what the partial alone could be - so the rank
-// is confirmed present. This is what the calibration sweep buys.
+// The case phase cannot judge: an 8' tuned dead onto the 16's partial, zero beat, nothing
+// rotating. The calibrated voice can: the line stands far over what the partial alone could be.
 func TestProfileConfirmsARankAtZeroBeat(t *testing.T) {
 	spec := audio.SynthSpec{
 		Duration: 8 * time.Second,

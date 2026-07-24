@@ -10,13 +10,13 @@
     "commit": "Build",
     "donate": "Support on Ko-fi",
     "help": {
-      "intro": "SmeggTuner listens to an accordion through the microphone and measures each reed against a reference pitch. Readings are filed into a session for one instrument, and that session's goal curve is what every reed is judged against.",
+      "intro": "SmeggTuner listens to an accordion through the microphone and measures each reed against a reference pitch. Readings are filed into a session for one accordion, and that session's goal curve is what every reed is judged against.",
       "rooms": {
         "title": "The three rooms",
         "tuneName": "Tune",
         "tune": "the microphone is open and the needle moves. Play a note to read its reeds and the beats between them.",
         "workshopName": "Workshop",
-        "workshop": "sessions, instruments and printed cards. Open or create a session here.",
+        "workshop": "sessions, accordions and printed cards. Open or create a session here.",
         "settingsName": "Settings",
         "settings": "the input device, the reading, the naming and the look of the app."
       },

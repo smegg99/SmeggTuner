@@ -20,8 +20,6 @@ func TestAnInstrumentSurvivesTheRoundTrip(t *testing.T) {
 	want := &Template{
 		Name: "Castagnari Tommy",
 		Instrument: Instrument{
-			Make:      "Castagnari",
-			Model:     "Tommy",
 			Banks:     []Bank{BankM1, BankM2},
 			Registers: []Register{{Name: "MM", Banks: []Bank{BankM1, BankM2}}},
 			ReedCount: 2,

@@ -43,11 +43,5 @@
     "vitest": "^4.1.10",
     "vuetify": "^4.0.1"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "@parcel/watcher",
-      "unrs-resolver"
-    ]
-  }
+  "packageManager": "pnpm@11.3.0"
 }
