@@ -87,6 +87,15 @@ func (e *Engine) Run(ctx context.Context, src audio.Source) error {
 	var steady bool
 	var clipped bool
 
+	// heartbeat is every emission that carries no fine result: state, level, equalizer - and the
+	// settle bar, which pictures held time the tracker is still counting. Without it the bar empties
+	// on each hop between readings and refills on the next, which reads as the lock restarting.
+	heartbeat := func() Measurement {
+		m := e.stateMeasurement(hopState(level, clipped), lastCoarse, refFloor, level, srcAt)
+		m.LockProgress = lock.Progress()
+		return m
+	}
+
 	// A seek shows up as a block that does not start where the last one ended. seamGap sits far above
 	// At's rounding and far below any real move, so playback never trips it and a seek always does.
 	seamGap := sr / 10
@@ -279,6 +288,7 @@ func (e *Engine) Run(ctx context.Context, src audio.Source) error {
 			}
 
 			measured := false
+			observed := false // did the lock see this hop; see the clock advance below
 
 			// The fine stage runs on the note that is sounding. Whether that is a READING or only a
 			// PICTURE is decided below: reeds, beats and the lock wait for `steady`; the spectrum does
@@ -309,7 +319,7 @@ func (e *Engine) Run(ctx context.Context, src audio.Source) error {
 
 				if zr.Valid && !full {
 					// The band and the note it is centred on, and nothing else: no number is read off a window too short to give one.
-					m := e.stateMeasurement(hopState(level, clipped), lastCoarse, refFloor, level, srcAt)
+					m := heartbeat()
 					m.Note = curNote
 					m.NoteName = curNote.Name(e.cfg.Scale)
 					m.ScalePitch = fc
@@ -326,7 +336,7 @@ func (e *Engine) Run(ctx context.Context, src audio.Source) error {
 					now := float64(consumed) / float64(sr)
 					if cf, ok := e.compoundAnalyze(zoom, ring, curNote, window, now); ok {
 						locked := lock.Observe(cf.freqs, now-lastFineAt)
-						lastFineAt = now
+						lastFineAt, observed = now, true
 						m := e.buildCompound(cf, lastCoarse, refFloor, level, locked, srcAt)
 						m.LockProgress = lock.Progress()
 						e.attachProfile(&m, zoom, ring, window)
@@ -336,7 +346,7 @@ func (e *Engine) Run(ctx context.Context, src audio.Source) error {
 						} else {
 							// Not trusted yet, but the meters still have to move.
 							lastShape = shape
-							e.publish(e.stateMeasurement(hopState(level, clipped), lastCoarse, refFloor, level, srcAt))
+							e.publish(heartbeat())
 						}
 						measured = true
 					}
@@ -363,7 +373,7 @@ func (e *Engine) Run(ctx context.Context, src audio.Source) error {
 					zoomHist = pushZoom(zoomHist, zr, now)
 
 					locked := lock.Observe(freqs, now-lastFineAt)
-					lastFineAt = now
+					lastFineAt, observed = now, true
 					m := e.buildMeasurement(curNote, fc, freqs, peaks, zr, lastCoarse, refFloor, level, locked, srcAt)
 					m.LockProgress = lock.Progress()
 					e.attachProfile(&m, zoom, ring, window)
@@ -377,16 +387,23 @@ func (e *Engine) Run(ctx context.Context, src audio.Source) error {
 					} else {
 						// Not trusted yet, but the meters still have to move.
 						lastShape = shape
-						e.publish(e.stateMeasurement(hopState(level, clipped), lastCoarse, refFloor, level, srcAt))
+						e.publish(heartbeat())
 					}
 					measured = true
 				}
 			}
 
+			// A hop the lock did not see is time it may not count. The tracker is handed the interval
+			// since the last reading, and a bellows swell that drops `steady` produces none at all -
+			// so without this the whole wobble is banked as hold the moment the note settles.
+			if hopped && !observed {
+				lastFineAt = float64(consumed) / float64(sr)
+			}
+
 			// A hop that produced no fine result still reports state, level and equalizer, or the engine
 			// goes silent in a quiet room and the UI cannot tell that from a dead engine.
 			if hopped && !measured {
-				e.publish(e.stateMeasurement(hopState(level, clipped), lastCoarse, refFloor, level, srcAt))
+				e.publish(heartbeat())
 			}
 		}
 	}

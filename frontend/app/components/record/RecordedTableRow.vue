@@ -29,9 +29,12 @@
       </td>
 
       <template v-else>
+        <!-- An empty cell says why when the engine's band accounting knows: a rank the register
+             sounds but nothing was heard from, or one heard as only the rank below's harmonic. -->
         <td
           class="num num--curr"
           :class="{ 'num--out': cell.present && !cell.inTol }"
+          :title="cell.blank ? t(`tuner.boxes.${cell.blank}`) : undefined"
         >
           {{ cell.curr }}
         </td>

@@ -24,6 +24,11 @@ type imposed struct {
 	// bassFeet is the sounding bass ladder ("32,16,8") while the bench faces the bass side; empty
 	// on the treble side. Like banks, a join keeps the struct comparable.
 	bassFeet string
+	// cardBanks and cardFeet are the instrument's own ranks - the goal curve's columns. A register
+	// that sounds only some of them is still judged against its own columns, so the reading needs
+	// both what sounds and where it belongs. Joined, like the two above.
+	cardBanks string
+	cardFeet  string
 	// profileRev fingerprints the calibrated rank voices, so a fresh take re-imposes them; the
 	// profile itself travels beside this struct (a slice cannot live in a comparable one).
 	profileRev int64
@@ -103,12 +108,17 @@ func bassProfilesFor(feet []int, profs []coresession.BassProfile) []dsp.RankProf
 	return out
 }
 
-// goal is the target a measurement is read against: curve, reference, and reed/beat windows. A nil curve is the empty curve.
+// goal is the target a measurement is read against: curve, reference, reed/beat windows, and which
+// card column each reed of the pulled register answers to. A nil curve is the empty curve.
 type goal struct {
 	curve   *target.Curve
 	a4      float64
 	tol     float64
 	beatTol float64
+	// What sounds and where it belongs, so a register short of the instrument's full one is judged
+	// against its own columns rather than the first few.
+	banks, cardBanks []coresession.Bank
+	feet, cardFeet   []int
 }
 
 // session returns what the active session imposes, its calibrated rank profile and the goal curve
@@ -128,6 +138,7 @@ func (s *Service) session() (imposed, []dsp.RankProfile, *target.Curve) {
 	}
 	return imposed{
 		a4: g.A4, reeds: g.Reeds, banks: joinBanks(g.Banks), bassFeet: joinFeet(g.BassFeet),
+		cardBanks: joinBanks(g.CardBanks), cardFeet: joinFeet(g.CardFeet),
 		profileRev: g.ProfileRev, tol: g.Tolerance, beatTol: g.BeatTolerance,
 	}, prof, g.Curve
 }
@@ -171,7 +182,12 @@ func (s *Service) adopt() (goal, rules) {
 		}
 		emitEvent(EventSettings, settingsDTO(cfg, p))
 	}
-	return goal{curve: curve, a4: cfg.A4, tol: tol, beatTol: beatTol}, rules{
+	g := goal{
+		curve: curve, a4: cfg.A4, tol: tol, beatTol: beatTol,
+		banks: splitBanks(p.banks), cardBanks: splitBanks(p.cardBanks),
+		feet: splitFeet(p.bassFeet), cardFeet: splitFeet(p.cardFeet),
+	}
+	return g, rules{
 		stopAfterLock:    tuner.StopAfterLock,
 		continuousManual: tuner.ContinuousUpdateManual,
 		manual:           manual,
@@ -201,9 +217,19 @@ func decorate(m dsp.Measurement, g goal) MeasurementDTO {
 	if len(m.Reeds) == 0 {
 		return dto
 	}
-	dto.ReedErrors = target.Errors(m, g.curve, g.a4, g.tol)
-	dto.BeatErrors = target.BeatErrors(m, g.curve, g.a4, g.beatTol)
+	cols := g.columns(m)
+	dto.ReedErrors = target.Errors(m, g.curve, g.a4, g.tol, cols)
+	dto.BeatErrors = target.BeatErrors(m, g.curve, g.a4, g.beatTol, cols)
 	return dto
+}
+
+// columns is the card column each of a reading's reeds answers to; nil when the mapping is
+// uncertain, and core/target falls back to the reeds' own positions.
+func (g goal) columns(m dsp.Measurement) []int {
+	if len(g.feet) > 0 {
+		return coresession.FootColumns(g.cardFeet, g.feet, m.Reeds)
+	}
+	return coresession.BankColumns(g.cardBanks, g.banks, m.Reeds)
 }
 
 // impose folds the active session over an engine config: its reference pitch becomes the engine's,

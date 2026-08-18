@@ -208,16 +208,22 @@ function buildSlotBoxes(input: BoxInput, ranks: readonly RankSlot[]): Box[] {
 
   const idle = input.reeds.length === 0
   const boxes: Box[] = []
+  // The beat is between the two ranks that sounded, not between neighbouring slots: on an LMMH
+  // register whose second 8' is silent, the reading the technician has is the 8'-to-4' beat, and
+  // pairing each slot with the one before it drops it. The empty slot keeps its own blank box so
+  // the row's geometry never moves.
+  let lastHeard = -1
   slots.forEach((slot, s) => {
     if (s > 0) {
-      const prev = slots[s - 1]!
-      const beat = prev.reed >= 0 && slot.reed >= 0
-        ? beatFor(input.beats, prev.reed, slot.reed)
+      const beat = lastHeard >= 0 && slot.reed >= 0
+        ? beatFor(input.beats, slots[lastHeard]!.reed, slot.reed)
         : undefined
-      boxes.push(beat ? beatBox(s, beat, input.beatTolerance) : blankBeat(s))
+      boxes.push(beat
+        ? { ...beatBox(s, beat, input.beatTolerance), rank: `${slots[lastHeard]!.name}-${slot.name}` }
+        : blankBeat(s))
     }
-
     if (slot.reed >= 0) {
+      lastHeard = s
       boxes.push({ ...reedBox(s, input.reeds[slot.reed]!, input.tolerance), rank: slot.name })
       return
     }

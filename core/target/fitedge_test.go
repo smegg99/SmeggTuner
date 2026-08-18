@@ -46,7 +46,7 @@ func TestFitAgreesWithErrorsOnWhatWasRecorded(t *testing.T) {
 	res := mustFit(t, instrument(), 3)
 	for n := fitLo; n <= fitHi; n++ {
 		m := measure(n, fitA4, -10, 0, ramp(n))
-		for _, e := range Errors(m, res.Curve, fitA4, 0) {
+		for _, e := range Errors(m, res.Curve, fitA4, 0, nil) {
 			if !e.InTol {
 				t.Fatalf("note %d reed %d: the instrument reads %.2f cents out of its "+
 					"own fitted curve", n, e.Reed+1, e.Error)

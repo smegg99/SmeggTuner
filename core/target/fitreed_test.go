@@ -50,7 +50,7 @@ func TestFitIsNotDraggedByOneBadReed(t *testing.T) {
 
 	// The neighbours are the real casualties of a fit that bends; they stay in tol.
 	for _, n := range []tuning.Note{bad - 1, bad + 1} {
-		e := Errors(measure(n, fitA4, -10, 0, ramp(n)), res.Curve, fitA4, 0)
+		e := Errors(measure(n, fitA4, -10, 0, ramp(n)), res.Curve, fitA4, 0, nil)
 		if !e[2].InTol {
 			t.Fatalf("note %d reed 3 reads %.2f cents out because of its bad neighbour",
 				n, e[2].Error)
@@ -86,7 +86,7 @@ func TestFitSurvivesADriftedBlock(t *testing.T) {
 
 	// The fine notes of that octave must keep reading as fine.
 	for n := tuning.Note(65); n <= 71; n++ {
-		e := Errors(measure(n, fitA4, -10, 0, ramp(n)), res.Curve, fitA4, 0)
+		e := Errors(measure(n, fitA4, -10, 0, ramp(n)), res.Curve, fitA4, 0, nil)
 		if !e[2].InTol {
 			t.Fatalf("note %d reed 3 is in tune and reads %.2f cents out", n, e[2].Error)
 		}

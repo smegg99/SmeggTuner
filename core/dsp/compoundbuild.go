@@ -93,7 +93,9 @@ func (e *Engine) buildCompound(cf compoundFine, ce CoarseResult,
 	prevLined := -1 // band index of the last band that put lines in the flat list
 	for bi, b := range cf.bands {
 		m.Bands = append(m.Bands, b.report)
-		if b.report.Found < b.report.Ranks {
+		// A rank the engine never heard does not turn the lines it did hear into lobes; the missing
+		// rank travels in Bands, where a reader can see it for what it is.
+		if b.unsplitPair() {
 			separated = false
 		}
 		n := len(b.genuine)
@@ -117,10 +119,12 @@ func (e *Engine) buildCompound(cf compoundFine, ce CoarseResult,
 				Cents: tuning.Cents(b.center+hz, b.center),
 			})
 		}
-		// A multi-rank band whose cluster would not split still beats; the envelope is the reading.
-		if n < b.req.Reeds && b.envOK && b.envDepth >= reedBeatDepth {
+		// A cluster that would not split still beats, and the envelope is the reading. Only one of the
+		// two ranks has a line, so the name's upper index points at the next band's first reed or past
+		// the end; HighUnheard is what says the rank meant is this band's own.
+		if b.unsplitPair() {
 			m.Beats = append(m.Beats, BeatMeasure{
-				Pair: pairName(fi - 1), Hz: b.envHz,
+				Pair: pairName(fi - 1), Hz: b.envHz, HighUnheard: true,
 				Cents:        tuning.Cents(b.center+b.envHz, b.center),
 				FromEnvelope: true, Depth: b.envDepth,
 			})
@@ -155,6 +159,15 @@ func (e *Engine) crossBeat(lo, hi compoundBand, fLo, fHi float64) (BeatMeasure, 
 		return BeatMeasure{}, false
 	}
 	if ehz, depth, ok := e.envelopeBeat(hi.zr); ok {
+		// The envelope measures how fast the two swing past each other, never which way - and which way
+		// is the filing instruction. So the sign comes from whatever did see it: the residual's
+		// rotation where it settled, else the two lines' own places. A 4' half a hertz under the 16's
+		// octave used to read sharp through this branch and flat through the spectrum, same reeds.
+		toward := hz
+		if hi.beatOK {
+			toward = hi.beatHz
+		}
+		ehz = math.Copysign(ehz, toward)
 		return BeatMeasure{
 			Hz: ehz, Cents: tuning.Cents(hi.center+ehz, hi.center),
 			FromEnvelope: true, Depth: depth,

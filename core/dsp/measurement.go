@@ -41,6 +41,11 @@ type BeatMeasure struct {
 	Pair  string  `json:"pair"` // "1-2", "2-3"
 	Hz    float64 `json:"hz"`
 	Cents float64 `json:"cents"` // beat expressed in cents at the note frequency
+	// HighUnheard marks the pair a band heard but could not split: only its lower rank has a line, so
+	// Pair's upper index points at whatever reed came next - the band above's, or none - and the rank
+	// meant is the next one of Low's own band. Without it an octave beat and a musette beat are the
+	// same number filed in the same column, and they are tuned differently.
+	HighUnheard bool `json:"highUnheard,omitempty"`
 	// FromEnvelope means the reeds sat too close to separate and the beat was read off the amplitude.
 	// Depth is the amplitude swing as a fraction of the carrier. Zero for a beat taken from peaks.
 	FromEnvelope bool    `json:"fromEnvelope"`
@@ -78,8 +83,8 @@ type Measurement struct {
 	// Bands is the per-octave accounting of a compound register, in ascending octave order. Empty in
 	// single-band mode. A band with Found < Ranks is a rank the engine did not hear; GhostOnly says
 	// the only thing there was the lower rank's harmonic.
-	Bands []BandReport `json:"bands,omitempty"`
-	Equalizer     []float32     `json:"equalizer"` // one dB-ish value per note, for the UI
+	Bands     []BandReport `json:"bands,omitempty"`
+	Equalizer []float32    `json:"equalizer"` // one dB-ish value per note, for the UI
 
 	// SourceAt is where in the recording this reading's audio came from, in seconds: the end of the
 	// window it was measured over. Zero for a microphone. The reading is latched, so the mark carries

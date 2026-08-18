@@ -66,10 +66,16 @@ type Goal struct {
 	// Banks is the pulled register's ranks in card order, or nil when none is pulled (or the
 	// instrument predates banks). The tuner maps these onto the engine's octave layout.
 	Banks []coresession.Bank `json:"banks"`
+	// CardBanks is the instrument's own ranks, which are the goal curve's columns. A register that
+	// sounds only some of them still has to be judged against its own columns, so a reader needs
+	// both lists: Banks says what is sounding, this says where each of those belongs.
+	CardBanks []coresession.Bank `json:"cardBanks"`
 
 	// BassFeet is what sounds when the bench faces the bass side, largest foot first; nil while it
 	// faces the treble. The tuner maps these onto the engine's octave layout the way Banks map.
 	BassFeet []int `json:"bassFeet"`
+	// CardFeet is the machine's whole ladder - the bass side's columns, as CardBanks is the treble's.
+	CardFeet []int `json:"cardFeet"`
 
 	// Profile is the rank voices this session's calibration takes taught (see Session.Profile),
 	// BassProfiles the bass side's (keyed by foot; the octave depends on the pulled register), and

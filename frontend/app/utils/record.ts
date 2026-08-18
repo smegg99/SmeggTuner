@@ -63,20 +63,38 @@ export function reedGroups(count: number): ReedGroup[] {
   }));
 }
 
-/** The adjacent pairs of an instrument of this many reeds. None at all below two. */
-export function beatGroups(count: number): BeatGroup[] {
+/** The two card columns a beat belongs between. Normally its two reeds' own; a band that heard a
+ * pair it could not split has one line for two ranks, so its `high` points at whatever reed came
+ * next and the rank meant is that band's next column. Mirrors core/report.beatColumns. */
+export function beatColumns(row: TakeRow, beat: BeatError): [number, number] {
+  const col = (i: number) => row.cols?.[i] ?? i;
+  const low = col(beat.low);
+  return beat.highUnheard ? [low, low + 1] : [low, col(beat.high)];
+}
+
+/** The adjacent pairs of an instrument of this many reeds, plus a column of its own for a beat
+ * whose two ranks are next to each other in the READING but not on the card - a register short a
+ * rank still beats across the gap, and that reading has nowhere else to go. None at all below two. */
+export function beatGroups(count: number, rows?: readonly TakeRow[]): BeatGroup[] {
   const out: BeatGroup[] = [];
+  const seen = new Set<string>();
+  const add = (low: number, high: number) => {
+    const key = `beat-${low}-${high}`;
+    if (low < 0 || high <= low || seen.has(key)) return;
+    seen.add(key);
+    out.push({ kind: "beat", key, pair: `${low + 1}-${high + 1}`, low, high });
+  };
   for (const reed of reedIndexes(count)) {
-    if (reed === 0) continue;
-    const low = reed - 1;
-    out.push({
-      kind: "beat",
-      key: `beat-${low}`,
-      pair: `${low + 1}-${reed + 1}`,
-      low,
-      high: reed,
-    });
+    if (reed > 0) add(reed - 1, reed);
   }
+  for (const row of rows ?? []) {
+    for (const beat of row.beats) {
+      if (beat.high !== beat.low + 1) continue;
+      const [low, high] = beatColumns(row, beat);
+      add(low, high);
+    }
+  }
+  out.sort((a, b) => a.low - b.low || a.high - b.high);
   return out;
 }
 
@@ -117,10 +135,6 @@ export function recordKeys(state: {
 
 export function reedOf(row: TakeRow, reed: number): ReedError | undefined {
   return row.reeds.find((candidate) => candidate.reed === reed);
-}
-
-export function beatOf(row: TakeRow, pair: string): BeatError | undefined {
-  return row.beats.find((candidate) => candidate.pair === pair);
 }
 
 // byNote sorts a pass into reading order (note, then register), matching the backend; it does not collapse a note played on two registers.

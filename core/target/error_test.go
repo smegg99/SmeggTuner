@@ -32,7 +32,7 @@ func musette(t *testing.T) *Curve {
 // No goal: the error is the deviation.
 func TestErrorsWithoutCurve(t *testing.T) {
 	m := measure(tuning.NoteA4, 440, -6.2, 0.4, 6.0)
-	got := Errors(m, nil, 440, 0)
+	got := Errors(m, nil, 440, 0, nil)
 	if len(got) != 3 {
 		t.Fatalf("got %d rows, want 3", len(got))
 	}
@@ -53,7 +53,7 @@ func TestErrorsWithoutCurve(t *testing.T) {
 	}
 
 	// An empty curve behaves the same as no curve.
-	empty := Errors(m, NewCurve("", 3), 440, 0)
+	empty := Errors(m, NewCurve("", 3), 440, 0, nil)
 	for i := range got {
 		if empty[i] != got[i] {
 			t.Fatalf("reed %d: empty curve %+v, no curve %+v", i, empty[i], got[i])
@@ -65,7 +65,7 @@ func TestErrorsAgainstCurve(t *testing.T) {
 	c := musette(t)
 	// Halfway between the anchors: reed 1 wants -9, reed 3 wants +9.
 	m := measure(72, 440, -6.2, 0.5, 11.0)
-	got := Errors(m, c, 440, 0)
+	got := Errors(m, c, 440, 0, nil)
 
 	almost(t, got[0].Goal, -9, 1e-9, "reed 1 goal")
 	almost(t, got[0].Curr, -6.2, 1e-9, "reed 1 curr")
@@ -83,7 +83,7 @@ func TestErrorsAgainstCurve(t *testing.T) {
 func TestBothConventionsAreTheSameNumbers(t *testing.T) {
 	c := musette(t)
 	m := measure(72, 440, -6.2, 0.5, 11.0)
-	for _, e := range Errors(m, c, 440, 0) {
+	for _, e := range Errors(m, c, 440, 0, nil) {
 		scaleShow, scaleDrive := e.Display(RefScale)
 		goalShow, goalDrive := e.Display(RefGoal)
 
@@ -104,7 +104,7 @@ func TestErrorsFiveReeds(t *testing.T) {
 	mustSet(t, c, 80, 4, 6, 440)
 
 	m := measure(60, 440, 0.2, -0.5, 0.9, 0.1, 2.9)
-	got := Errors(m, c, 440, 0)
+	got := Errors(m, c, 440, 0, nil)
 	if len(got) != 5 {
 		t.Fatalf("got %d rows, want 5", len(got))
 	}
@@ -126,7 +126,7 @@ func TestReedErrorCarriesHertz(t *testing.T) {
 	const a4 = 440
 	m := measure(69, a4, -6.0, 0.0, 6.0) // A4: scale pitch is exactly a4
 
-	for _, e := range Errors(m, c, a4, 0) {
+	for _, e := range Errors(m, c, a4, 0, nil) {
 		wantCurr := tuning.FreqAtCents(a4, e.Curr) - a4
 		wantGoal := tuning.FreqAtCents(a4, e.Goal) - a4
 		almost(t, e.CurrHz, wantCurr, 1e-9, "the reed's deviation in hertz")

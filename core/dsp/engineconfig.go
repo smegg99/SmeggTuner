@@ -51,7 +51,10 @@ type EngineConfig struct {
 
 	// LockHold is how long a reading must hold still before the engine reports a stable lock.
 	// LockEpsilonHz is how far any reed may drift, in Hz, between fine results and still count as the
-	// same reading.
+	// same reading. In hertz rather than cents on purpose: the measured tick-to-tick jitter does not
+	// scale with pitch - a median of 0.0004 to 0.003 Hz whether the reed sounds at 131 Hz or at
+	// 1051 Hz - so the same window is 0.4 cents wide at the bottom of the keyboard and 0.002 at the
+	// top, and a cents-relative one would be two hundred times looser up there than anything needs.
 	LockHold      time.Duration
 	LockEpsilonHz float64
 }
@@ -88,7 +91,11 @@ func (c *EngineConfig) fill() {
 		c.LockHold = 1250 * time.Millisecond
 	}
 	if c.LockEpsilonHz == 0 {
-		c.LockEpsilonHz = 0.1
+		// 0.3 Hz, not the 0.1 this once was: a hand-worked 16' reed wanders further than a tenth of a
+		// hertz between fine results, and at 0.1 nine of the 55 recordings in sounds/ never reached a
+		// lock at all - six of them 16' ranks. 0.3 recovers five of the nine and 0.5 two more; past
+		// that nothing changes but how settled the reading the lock is taken on has to be.
+		c.LockEpsilonHz = 0.3
 	}
 	// The compound stage walks bands lowest first and resolves the key against the lowest declared
 	// rank; both need the layout ascending, so it is normalized once here.

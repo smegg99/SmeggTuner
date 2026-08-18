@@ -16,6 +16,7 @@ func TakeFrom(m dsp.Measurement, at time.Time) Take {
 		At:            at,
 		Reeds:         m.Reeds,
 		Beats:         m.Beats,
+		Bands:         m.Bands,
 		ReedsMerged:   !m.ReedsSeparated,
 		ReedsFromBeat: m.ReedsFromBeat,
 	}
@@ -25,6 +26,7 @@ func TakeFrom(m dsp.Measurement, at time.Time) Take {
 func (s *Session) UpsertTake(t Take) {
 	t.Reeds = append([]dsp.ReedMeasure(nil), t.Reeds...)
 	t.Beats = append([]dsp.BeatMeasure(nil), t.Beats...)
+	t.Bands = append([]dsp.BandReport(nil), t.Bands...)
 
 	v := voiceOf(t)
 	for i := range s.Takes {

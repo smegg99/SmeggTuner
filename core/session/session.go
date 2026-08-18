@@ -78,6 +78,12 @@ type Take struct {
 
 	Reeds []dsp.ReedMeasure `json:"reeds"`
 	Beats []dsp.BeatMeasure `json:"beats,omitempty"`
+	// Bands is the compound register's per-octave accounting as it was measured (see
+	// dsp.Measurement.Bands); empty on a single-band reading and on takes recorded before it. It is
+	// the only thing that says WHY a rank column is empty - a rank not heard at all, or one heard
+	// as nothing but the harmonic of the rank below it - and without it a card and a sheet can only
+	// leave the cell blank and say nothing.
+	Bands []dsp.BandReport `json:"bands,omitempty"`
 	// ReedsMerged inverts dsp.Measurement.ReedsSeparated so the zero value is the ordinary case; when set (and ReedsFromBeat is not) the per-reed numbers are lobes of one merged peak.
 	ReedsMerged bool `json:"reedsMerged,omitempty"`
 	// ReedsFromBeat mirrors dsp.Measurement.ReedsFromBeat: reeds recovered from the beat; set only together with ReedsMerged.

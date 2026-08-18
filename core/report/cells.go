@@ -2,7 +2,6 @@ package report
 
 import (
 	"fmt"
-	"slices"
 	"sort"
 
 	"smegg.me/smeggtuner/core/session"
@@ -44,38 +43,27 @@ func reedCells(errs []target.ReedError, reedCount int, banks []session.Bank, int
 	return cells
 }
 
-// columnsFor maps each reed of a take to its card column: each reed claims a register bank in its
-// own octave (see session.AssignBanks), so a take short a rank still lands in the right columns.
-// Nil on any uncertain mapping so reeds fall back to positions. See services/record.banksOf for the
-// screen's copy.
+// columnsFor maps each reed of a take to its card column; nil on any uncertain mapping, so reeds
+// fall back to positions. See session.BankColumns for the claim.
 func columnsFor(i session.Instrument, t session.Take, reeds int) []int {
-	if len(i.Banks) == 0 || t.Register == "" || reeds == 0 {
+	if reeds == 0 {
 		return nil
 	}
-	r, ok := i.Register(t.Register)
-	if !ok {
-		return nil
-	}
-	assigned := session.AssignBanks(r.Banks, t.Reeds)
-	if assigned == nil {
-		return nil
-	}
-
-	into := make([]int, len(assigned))
-	for n, b := range assigned {
-		col := slices.Index(i.Banks, b)
-		if col < 0 {
-			return nil // a rank the instrument does not have
-		}
-		into[n] = col
-	}
-	return into
+	return session.BankColumns(i.Banks, i.TakeBanks(t), t.Reeds)
 }
 
-func beatCells(byPair map[string]target.BeatError, pairs []Pair) []BeatCell {
+// colOf is the column a reed answers to; an unmapped reed answers to its own position.
+func colOf(into []int, reed int) int {
+	if reed >= 0 && reed < len(into) {
+		return into[reed]
+	}
+	return reed
+}
+
+func beatCells(byCols map[[2]int]target.BeatError, pairs []Pair) []BeatCell {
 	cells := make([]BeatCell, len(pairs))
 	for i, p := range pairs {
-		b, ok := byPair[p.Key]
+		b, ok := byCols[[2]int{p.Low - 1, p.High - 1}]
 		if !ok {
 			continue
 		}
@@ -94,19 +82,28 @@ func beatCells(byPair map[string]target.BeatError, pairs []Pair) []BeatCell {
 	return cells
 }
 
-// pairsOf picks the beat columns: adjacent reed pairs plus any envelope-measured pair not among them, so a merged note's beat still gets a column.
-func pairsOf(reedCount int, beats []map[string]target.BeatError) []Pair {
-	seen := make(map[string]Pair)
-	for lo := 1; lo < reedCount; lo++ {
-		p := Pair{Key: fmt.Sprintf("%d-%d", lo, lo+1), Low: lo, High: lo + 1}
-		seen[p.Key] = p
+// pairsOf picks the beat columns: every pair of adjacent card columns, plus a column of its own for
+// a beat whose two ranks are next to each other in the TAKE but not on the card. A register short a
+// rank beats across that gap - an LMMH card with the second 8' unheard still has the 8'-to-4' beat -
+// and adjacency on the card is the only thing that gap breaks. Pairs that are adjacent in neither
+// are left out: an eight-reed instrument would otherwise be twenty-eight beat columns wide.
+func pairsOf(reedCount int, beats []map[[2]int]target.BeatError) []Pair {
+	seen := make(map[[2]int]Pair)
+	add := func(lo, hi int) {
+		if lo < 0 || hi <= lo {
+			return
+		}
+		seen[[2]int{lo, hi}] = Pair{Key: fmt.Sprintf("%d-%d", lo+1, hi+1), Low: lo + 1, High: hi + 1}
 	}
-	for _, byPair := range beats {
-		for key, b := range byPair {
-			if _, ok := seen[key]; ok || !b.FromEnvelope {
+	for lo := 0; lo+1 < reedCount; lo++ {
+		add(lo, lo+1)
+	}
+	for _, byCols := range beats {
+		for cols, b := range byCols {
+			if b.High != b.Low+1 {
 				continue
 			}
-			seen[key] = Pair{Key: key, Low: b.Low + 1, High: b.High + 1}
+			add(cols[0], cols[1])
 		}
 	}
 

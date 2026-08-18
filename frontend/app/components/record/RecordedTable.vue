@@ -77,10 +77,10 @@ const { t } = useI18n()
 const helpOpen = ref(false)
 const fmt = useRecordFormat()
 
-const rowViews = computed(() => buildRecordedRows(props.rows, props.reedCount, unit.value === 'hz', fmt))
+const rowViews = computed(() => buildRecordedRows(props.rows, props.reedCount, unit.value === 'hz', fmt, props.banks))
 
 const reedHeads = computed(() => reedGroups(props.reedCount).map(g => ({ key: g.key, label: headOf(g.reed) })))
-const beatHeads = computed(() => beatGroups(props.reedCount).map(g => ({ key: g.key, label: t('record.table.beat', { pair: g.pair }) })))
+const beatHeads = computed(() => beatGroups(props.reedCount, props.rows).map(g => ({ key: g.key, label: t('record.table.beat', { pair: g.pair }) })))
 
 // Use the rank's name only when banks line up with reedCount; otherwise the reed number.
 function headOf(reed: number): string {

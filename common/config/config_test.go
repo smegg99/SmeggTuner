@@ -76,7 +76,7 @@ func TestTunerDefaults(t *testing.T) {
 		t.Fatalf("report defaults: %+v", cfg.Report)
 	}
 	// Must mirror core/dsp.DefaultEngineConfig; the services boundary maps them onto it.
-	if cfg.Engine.FineWindowMs != 3000 || cfg.Engine.LockHoldMs != 1250 || cfg.Engine.LockEpsilonHz != 0.1 {
+	if cfg.Engine.FineWindowMs != 3000 || cfg.Engine.LockHoldMs != 1250 || cfg.Engine.LockEpsilonHz != 0.3 {
 		t.Fatalf("engine defaults: %+v", cfg.Engine)
 	}
 	if cfg.Tuner.ToneDurationMs != 10000 || cfg.Tuner.CalibrationCaptureMs != 2000 {

@@ -1,6 +1,7 @@
 package target
 
 import (
+	"math"
 	"testing"
 
 	"smegg.me/smeggtuner/core/dsp"
@@ -11,7 +12,7 @@ import (
 func TestBeatErrorsAgainstCurve(t *testing.T) {
 	c := musette(t) // at note 72 the goals are -9 / 0 / +9
 	m := measure(72, 440, -6.2, 0.5, 11.0)
-	got := BeatErrors(m, c, 440, 0)
+	got := BeatErrors(m, c, 440, 0, nil)
 
 	if len(got) != 3 {
 		t.Fatalf("three reeds beat in three pairs, got %d: %+v", len(got), got)
@@ -51,13 +52,13 @@ func TestBeatToleranceIsNotTheReedTolerance(t *testing.T) {
 	c := musette(t)
 	m := measure(72, 440, -6.2, 0.5, 11.0) // pair 1-2 lands 2.3 cents out
 
-	for _, b := range BeatErrors(m, c, 440, 0) {
+	for _, b := range BeatErrors(m, c, 440, 0, nil) {
 		if !b.InTol {
 			t.Fatalf("%s is %.2f cents out and inside the %v cent beat window",
 				b.Pair, b.Error, DefaultBeatTolerance)
 		}
 	}
-	if BeatErrors(m, c, 440, DefaultTolerance)[0].InTol {
+	if BeatErrors(m, c, 440, DefaultTolerance, nil)[0].InTol {
 		t.Fatal("2.3 cents is not inside a one cent window")
 	}
 }
@@ -77,7 +78,7 @@ func TestBeatErrorsMergedPair(t *testing.T) {
 		},
 	}
 
-	got := BeatErrors(m, c, 440, 0)
+	got := BeatErrors(m, c, 440, 0, nil)
 	if len(got) != 1 {
 		t.Fatalf("only the measured beat may be reported, got %+v", got)
 	}
@@ -96,7 +97,7 @@ func TestBeatErrorsMergedPair(t *testing.T) {
 // Nothing to aim at: the beat is its own error, exactly as a reed's is.
 func TestBeatErrorsWithoutCurve(t *testing.T) {
 	m := measure(tuning.NoteA4, 440, -6, 0, 6)
-	for _, b := range BeatErrors(m, nil, 440, 0) {
+	for _, b := range BeatErrors(m, nil, 440, 0, nil) {
 		if b.Goal != 0 || b.GoalHz != 0 {
 			t.Fatalf("%s: goal %v with no curve", b.Pair, b.Goal)
 		}
@@ -106,13 +107,52 @@ func TestBeatErrorsWithoutCurve(t *testing.T) {
 }
 
 func TestBeatErrorsReedCounts(t *testing.T) {
-	if got := BeatErrors(measure(tuning.NoteA4, 440, 2), nil, 440, 0); len(got) != 0 {
+	if got := BeatErrors(measure(tuning.NoteA4, 440, 2), nil, 440, 0, nil); len(got) != 0 {
 		t.Fatalf("one reed gave %d beats", len(got))
 	}
-	if got := BeatErrors(measure(60, 440, 0, 1, 2, 3, 4), nil, 440, 0); len(got) != 10 {
+	if got := BeatErrors(measure(60, 440, 0, 1, 2, 3, 4), nil, 440, 0, nil); len(got) != 10 {
 		t.Fatalf("five reeds gave %d beats, want 10", len(got))
 	}
-	if got := BeatErrors(dsp.Measurement{State: dsp.StateTooQuiet}, nil, 440, 0); len(got) != 0 {
+	if got := BeatErrors(dsp.Measurement{State: dsp.StateTooQuiet}, nil, 440, 0, nil); len(got) != 0 {
 		t.Fatalf("a heartbeat gave %d beats", len(got))
+	}
+}
+
+// A band that heard a pair but could not split it names only its lower rank; the upper index points
+// at whatever reed came next. The goal for such a pair is between the band's OWN two columns, and
+// the rate converts at the band's own octave - reading either off the reed the index landed on puts
+// an 8'-to-8' beat against a 4's goal, an octave up.
+func TestAnUnsplitPairIsScoredAgainstItsOwnBandsColumns(t *testing.T) {
+	// L, one 8' of two, and a 4': the M band could not split its pair.
+	m := dsp.Measurement{
+		Note:       tuning.NoteA4,
+		ScalePitch: tuning.NoteA4.Freq(440),
+		Reeds: []dsp.ReedMeasure{
+			{Freq: 220, Octave: -12}, {Freq: 440, Octave: 0}, {Freq: 880, Octave: 12},
+		},
+		Beats: []dsp.BeatMeasure{{Pair: "2-3", Hz: 2, HighUnheard: true, FromEnvelope: true}},
+	}
+	c := NewCurve("LMMH", 4)
+	for col, v := range []float64{-6, 0, 6, 12} {
+		if err := c.Set(tuning.NoteA4, col, v, 440); err != nil {
+			t.Fatal(err)
+		}
+	}
+
+	got := BeatErrors(m, c, 440, 0, []int{0, 1, 3})
+	if len(got) != 1 {
+		t.Fatalf("%d beats, want 1", len(got))
+	}
+	b := got[0]
+	if !b.HighUnheard {
+		t.Fatal("the reading lost the fact that its upper rank was never heard")
+	}
+	// M1 to M2, not M1 to H: 6 - 0, not 12 - 0.
+	if math.Abs(b.Goal-6) > 0.01 {
+		t.Errorf("goal %.2f cents, want 6: the pair was scored against the 4' column", b.Goal)
+	}
+	// 2 Hz at 440, not at 880.
+	if math.Abs(b.CurrHz-2) > 0.01 {
+		t.Errorf("rate %.3f Hz, want 2.000: it converted at the wrong octave", b.CurrHz)
 	}
 }

@@ -5,6 +5,7 @@ import (
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 
+	"smegg.me/smeggtuner/core/dsp"
 	coresession "smegg.me/smeggtuner/core/session"
 	"smegg.me/smeggtuner/core/target"
 	"smegg.me/smeggtuner/core/tuning"
@@ -65,6 +66,11 @@ type RowDTO struct {
 	ReedsFromBeat bool               `json:"reedsFromBeat"`
 	Reeds         []target.ReedError `json:"reeds"`
 	Beats         []target.BeatError `json:"beats"`
+	// Bands is the per-octave accounting of the register this reading came from, empty on a
+	// single-band one. It is what says whether an empty rank column was a rank not heard at all or
+	// one heard as nothing but the harmonic of the rank below it - the dial draws that distinction
+	// live, and without this the table cannot.
+	Bands []dsp.BandReport `json:"bands,omitempty"`
 }
 
 // TableDTO is a whole pass, read against the goal.

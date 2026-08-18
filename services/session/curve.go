@@ -4,6 +4,7 @@ import (
 	"math"
 
 	"smegg.me/smeggtuner/common/logger"
+	coresession "smegg.me/smeggtuner/core/session"
 	"smegg.me/smeggtuner/core/target"
 	"smegg.me/smeggtuner/core/tuning"
 )
@@ -21,7 +22,9 @@ func (s *Service) Goal() Goal {
 		A4:            s.active.A4,
 		Reeds:         bench.Reeds,
 		Banks:         bench.Banks,
+		CardBanks:     s.active.Instrument.Banks,
 		BassFeet:      bench.BassFeet,
+		CardFeet:      coresession.BassFeet(s.active.Instrument.BassReeds),
 		Profile:       s.active.Profile(),
 		BassProfiles:  s.active.BassProfiles(),
 		ProfileRev:    s.active.ProfileRev(),

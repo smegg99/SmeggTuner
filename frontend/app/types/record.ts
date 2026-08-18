@@ -45,6 +45,9 @@ export interface BeatError {
   inTol: boolean
   /** Beat read off the amplitude envelope, not the spectrum; on a merged note it's the only reliable reading. */
   fromEnvelope: boolean
+  /** `high` names no reed: the band heard this pair but could not split it, so the rank meant is
+   * the next column of the band `low` sits in. core/target.BeatError.HighUnheard. */
+  highUnheard?: boolean
 }
 
 /** One row of the tuning table. services/record.RowDTO. One reading per voice - replaying replaces it - so `take` is its index into the session's readings. */
@@ -71,6 +74,17 @@ export interface TakeRow {
   bass?: boolean
   /** Which table column each reed sits in: reeds[i] in column cols[i]. Absent when the mapping is uncertain; the row then falls back to positions. */
   cols?: number[]
+  /** The register's per-octave accounting, absent on a single-band reading. It says WHY a rank
+   * column is empty: a rank not heard, or one heard as nothing but the harmonic below it. */
+  bands?: BandReport[]
+}
+
+/** One octave band's accounting from the engine. dsp.BandReport. */
+export interface BandReport {
+  octave: number
+  ranks: number
+  found: number
+  ghostOnly: boolean
 }
 
 /** The session's readings, against the goal. services/record.TableDTO. */

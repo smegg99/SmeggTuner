@@ -72,49 +72,34 @@ func OctavesOfFeet(feet []int) []dsp.OctaveRequest {
 	return out
 }
 
-// TakeFeet names the foot each of a bass take's reeds landed in, mirroring AssignBanks: a reed's
-// octave counts up from the pulled register's largest foot. Nil when the machine is undeclared,
-// the take's switch is unknown, or a reed falls outside the ladder - the caller then numbers the
-// reeds rather than naming ranks it is not sure of.
+// TakeFeet names the foot each of a bass take's reeds landed in. Nil when the machine is
+// undeclared, the take's switch is unknown, or a reed falls outside the ladder - the caller then
+// numbers the reeds rather than naming ranks it is not sure of. See AssignFeet for the claim.
 func (i Instrument) TakeFeet(t Take) []int {
-	machine := BassFeet(i.BassReeds)
-	if machine == nil || !t.Bass {
+	sounding := i.SoundingFeet(t.Register)
+	if sounding == nil || !t.Bass {
 		return nil
 	}
-	sounding := machine
-	if t.Register != "" {
-		r, ok := i.BassRegister(t.Register)
-		if !ok {
-			return nil
-		}
-		sounding = append([]int(nil), r.Feet...)
-		sort.Sort(sort.Reverse(sort.IntSlice(sounding)))
-	}
+	return AssignFeet(sounding, t.Reeds)
+}
 
-	octaved := false
-	for _, r := range t.Reeds {
-		if r.Octave != 0 {
-			octaved = true
-			break
-		}
+// SoundingFeet is the ladder a bass register sounds, largest foot first; the whole machine when no
+// switch is named. Nil when the machine is undeclared or the switch is unknown.
+func (i Instrument) SoundingFeet(register string) []int {
+	machine := BassFeet(i.BassReeds)
+	if machine == nil {
+		return nil
 	}
-	if !octaved {
-		// A take from before octaves: positional, and only when the counts agree.
-		if len(t.Reeds) != len(sounding) {
-			return nil
-		}
-		return append([]int(nil), sounding...)
+	if register == "" {
+		return machine
 	}
-
-	out := make([]int, len(t.Reeds))
-	for n, r := range t.Reeds {
-		idx := r.Octave / 12
-		if r.Octave < 0 || r.Octave%12 != 0 || idx >= len(sounding) {
-			return nil
-		}
-		out[n] = sounding[idx]
+	r, ok := i.BassRegister(register)
+	if !ok {
+		return nil
 	}
-	return out
+	feet := append([]int(nil), r.Feet...)
+	sort.Sort(sort.Reverse(sort.IntSlice(feet)))
+	return feet
 }
 
 // BassProfile is one calibrated note of one bass rank (see Session.Profile): the rank by foot,

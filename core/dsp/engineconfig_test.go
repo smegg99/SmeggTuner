@@ -19,7 +19,7 @@ func TestDefaultEngineConfig(t *testing.T) {
 		{"ReedCount", c.ReedCount, 1},
 		{"FineWindow", c.FineWindow, 3 * time.Second},
 		{"LockHold", c.LockHold, 1250 * time.Millisecond},
-		{"LockEpsilonHz", c.LockEpsilonHz, 0.1},
+		{"LockEpsilonHz", c.LockEpsilonHz, 0.3},
 	}
 	for _, tc := range cases {
 		if tc.got != tc.want {

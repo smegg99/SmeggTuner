@@ -38,7 +38,7 @@ package config
 	// How far any reed may drift, in hertz, between fine results and still count
 	// as the same reading. Raise it to keep the lock through a wavering note;
 	// lower it to demand a stiller one.
-	lock_epsilon_hz: number & >0 & <=2 | *0.1 @go(LockEpsilonHz,type=float64)
+	lock_epsilon_hz: number & >0 & <=2 | *0.3 @go(LockEpsilonHz,type=float64)
 }
 
 // db_path defaults to a @{datadir:...} reference so one config file means the

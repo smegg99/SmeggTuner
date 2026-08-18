@@ -1,7 +1,6 @@
 package report
 
 import (
-	"slices"
 	"time"
 
 	"smegg.me/smeggtuner/core/dsp"
@@ -133,19 +132,10 @@ func allRows(r *Report) []Row {
 // uncertain mapping, and the reeds fall back to positions.
 func bassColumnsFor(i session.Instrument, feet []int) func(session.Take, int) []int {
 	return func(t session.Take, reeds int) []int {
-		tf := i.TakeFeet(t)
-		if len(tf) == 0 || len(feet) == 0 {
+		if !t.Bass {
 			return nil
 		}
-		into := make([]int, len(tf))
-		for n, f := range tf {
-			col := slices.Index(feet, f)
-			if col < 0 {
-				return nil
-			}
-			into[n] = col
-		}
-		return into
+		return session.FootColumns(feet, i.SoundingFeet(t.Register), t.Reeds)
 	}
 }
 
@@ -155,7 +145,9 @@ func buildRows(
 	intoFor func(session.Take, int) []int,
 ) ([]Row, []Pair) {
 	rows := make([]Row, 0, len(display))
-	beats := make([]map[string]target.BeatError, 0, len(display))
+	// Beats are keyed by the columns they join, not by the reeds: a take short a rank has reeds and
+	// columns that do not line up, and keying by reed puts an octave beat in the musette column.
+	beats := make([]map[[2]int]target.BeatError, 0, len(display))
 
 	for _, d := range display {
 		m := measurementOf(d.Take)
@@ -169,10 +161,14 @@ func buildRows(
 			Derived:  d.Take.ReedsMerged && d.Take.ReedsFromBeat,
 		}
 
+		// Which column each of this take's reeds answers to. The goal is read there too, or a
+		// register short of the instrument's full one is judged against another rank's goal.
+		into := intoFor(d.Take, len(m.Reeds))
+
 		// A merged take gets no per-reed cells: its figures are lobes of one peak.
 		if !row.Merged {
-			errs := target.Errors(m, c, a4, tol)
-			row.Reeds = reedCells(errs, reedCount, banks, intoFor(d.Take, len(errs)))
+			errs := target.Errors(m, c, a4, tol, into)
+			row.Reeds = reedCells(errs, reedCount, banks, into)
 			for _, cell := range row.Reeds {
 				if cell.Present && !cell.InTol {
 					row.OutOfTol++
@@ -180,11 +176,11 @@ func buildRows(
 			}
 		}
 
-		byPair := make(map[string]target.BeatError)
-		for _, b := range target.BeatErrors(m, c, a4, beatTol) {
-			byPair[b.Pair] = b
+		byCols := make(map[[2]int]target.BeatError)
+		for _, b := range target.BeatErrors(m, c, a4, beatTol, into) {
+			byCols[beatColumns(into, b)] = b
 		}
-		beats = append(beats, byPair)
+		beats = append(beats, byCols)
 		rows = append(rows, row)
 	}
 
@@ -206,6 +202,7 @@ func measurementOf(t session.Take) dsp.Measurement {
 		Note:           t.Note,
 		Reeds:          t.Reeds,
 		Beats:          t.Beats,
+		Bands:          t.Bands,
 		ReedsSeparated: !t.ReedsMerged,
 		ReedsFromBeat:  t.ReedsFromBeat,
 	}
@@ -223,4 +220,16 @@ func manyRegisters(rows []Row) bool {
 		}
 	}
 	return false
+}
+
+// beatColumns is the pair of card columns a beat belongs between: normally its two reeds' own. A
+// band that heard a beat it could not split has one line for two ranks, so its upper index points
+// at whatever reed came next - a reed of the band above, or none at all. The beat's own octaves say
+// it never left its band, and the rank it beats against is that band's next column.
+func beatColumns(into []int, b target.BeatError) [2]int {
+	lo := colOf(into, b.Low)
+	if b.HighUnheard {
+		return [2]int{lo, lo + 1}
+	}
+	return [2]int{lo, colOf(into, b.High)}
 }

@@ -12,16 +12,16 @@ import (
 func TestFewerReedsThanCurve(t *testing.T) {
 	c := musette(t)
 	m := measure(72, 440, -6.2)
-	got := Errors(m, c, 440, 0)
+	got := Errors(m, c, 440, 0, nil)
 	if len(got) != 1 {
 		t.Fatalf("got %d rows, want 1", len(got))
 	}
 	almost(t, got[0].Goal, -9, 1e-9, "reed 1 still gets its goal")
 
-	if rows := Errors(measure(72, 440), c, 440, 0); len(rows) != 0 {
+	if rows := Errors(measure(72, 440), c, 440, 0, nil); len(rows) != 0 {
 		t.Fatalf("a measurement with no reeds gave %d rows", len(rows))
 	}
-	if rows := Errors(dsp.Measurement{State: dsp.StateTooQuiet}, c, 440, 0); len(rows) != 0 {
+	if rows := Errors(dsp.Measurement{State: dsp.StateTooQuiet}, c, 440, 0, nil); len(rows) != 0 {
 		t.Fatalf("a heartbeat gave %d rows", len(rows))
 	}
 }
@@ -30,7 +30,7 @@ func TestMoreReedsThanCurve(t *testing.T) {
 	c := NewCurve("single", 1)
 	mustSet(t, c, tuning.NoteA4, 0, 2, 440)
 
-	got := Errors(measure(tuning.NoteA4, 440, 2.5, 3.0, 3.5), c, 440, 0)
+	got := Errors(measure(tuning.NoteA4, 440, 2.5, 3.0, 3.5), c, 440, 0, nil)
 	if len(got) != 3 {
 		t.Fatalf("got %d rows, want 3", len(got))
 	}
@@ -51,17 +51,17 @@ func TestTolerance(t *testing.T) {
 			{DevCents: 1.0}, {DevCents: -1.0}, {DevCents: 1.01},
 		},
 	}
-	got := Errors(m, nil, 440, 0)
+	got := Errors(m, nil, 440, 0, nil)
 	if !got[0].InTol || !got[1].InTol {
 		t.Fatal("one cent is inside the default one cent tolerance")
 	}
 	if got[2].InTol {
 		t.Fatal("1.01 cents is not")
 	}
-	if got := Errors(m, nil, 440, 3); !got[2].InTol {
+	if got := Errors(m, nil, 440, 3, nil); !got[2].InTol {
 		t.Fatal("1.01 cents is inside a 3 cent tolerance")
 	}
-	if got := Errors(m, nil, 440, 0.5); got[0].InTol {
+	if got := Errors(m, nil, 440, 0.5, nil); got[0].InTol {
 		t.Fatal("one cent is outside a half cent tolerance")
 	}
 }
@@ -73,13 +73,13 @@ func TestErrorsFromRebuiltTake(t *testing.T) {
 	live := measure(tuning.NoteA4, a4, 4.0)
 	rebuilt := dsp.Measurement{Note: tuning.NoteA4, Reeds: []dsp.ReedMeasure{{Freq: live.Reeds[0].Freq}}}
 
-	got := Errors(rebuilt, nil, a4, 0)
+	got := Errors(rebuilt, nil, a4, 0, nil)
 	if len(got) != 1 {
 		t.Fatalf("got %d rows", len(got))
 	}
 	almost(t, got[0].Curr, 4.0, 1e-9, "curr recovered from the frequency")
 
-	at440 := Errors(rebuilt, nil, 440, 0)
+	at440 := Errors(rebuilt, nil, 440, 0, nil)
 	almost(t, at440[0].Curr, 4.0+tuning.Cents(442, 440), 1e-9, "curr at the wrong A4")
 }
 
@@ -89,7 +89,7 @@ func TestManualCurrStandsAsTyped(t *testing.T) {
 		Note:  tuning.NoteA4,
 		Reeds: []dsp.ReedMeasure{{DevCents: -3.5}},
 	}
-	got := Errors(m, nil, 440, 0)
+	got := Errors(m, nil, 440, 0, nil)
 	almost(t, got[0].Curr, -3.5, 1e-12, "typed value")
 	almost(t, got[0].Error, -3.5, 1e-12, "and its error")
 	if math.IsNaN(got[0].Curr) {

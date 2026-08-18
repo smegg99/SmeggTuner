@@ -37,7 +37,7 @@ func main() {
 	synthPath := flag.String("synth", "", "SynthSpec JSON file")
 	a4 := flag.Float64("a4", 440, "A4 reference frequency")
 	noteName := flag.String("note", "", "manual note (e.g. A4); empty = auto")
-	reeds := flag.Int("reeds", 1, "reed count 1..3")
+	reeds := flag.Int("reeds", 1, "reed count; -banks and -bass set it themselves")
 	banks := flag.String("banks", "", "register banks (e.g. LM, LMMM, MH); sets the compound layout and the reed count")
 	bass := flag.Int("bass", 0, "bass machine voice count (2..6): tune the whole octave ladder")
 	ppm := flag.Float64("ppm", 0, "clock correction ppm")
@@ -48,9 +48,6 @@ func main() {
 
 	if (*wavPath == "") == (*synthPath == "") {
 		fail("exactly one of -wav or -synth is required")
-	}
-	if *reeds < 1 || *reeds > 3 {
-		fail("-reeds must be 1..3")
 	}
 
 	var octaves []dsp.OctaveRequest
@@ -69,6 +66,11 @@ func main() {
 		}
 		octaves = session.OctavesOfFeet(feet)
 		*reeds = len(feet)
+	}
+	// Checked after -banks and -bass, which overwrite it: what the engine runs with is what has to
+	// be in range, and a four-rank register (LMMH) or a six-rank bass ladder is a normal instrument.
+	if *reeds < session.MinReeds || *reeds > session.MaxReeds {
+		fail("-reeds must be %d..%d", session.MinReeds, session.MaxReeds)
 	}
 
 	var src audio.Source

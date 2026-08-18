@@ -66,9 +66,15 @@ func (e ReedError) Display(ref Reference) (show, drive float64) {
 // or a curve with no anchors, gives Goal 0 and Error == Curr. Reeds beyond the curve
 // get Goal 0. tol defaults to DefaultTolerance when not positive.
 //
+// cols is the curve column each reed answers to, cols[i] for reed i. A register that is not the
+// instrument's whole one leaves gaps in the card - a 16'+4' take sounds two reeds and they belong
+// in the L and H columns, not the first two - and without the map each rank would be judged against
+// another rank's goal. Nil falls back to the reed's position, which is the same answer whenever the
+// register sounds every bank.
+//
 // Nothing here consults m.ReedsSeparated/m.ReedsFromBeat: when both are false the rows
 // are lobes of one merged peak, not reeds, and the caller must check.
-func Errors(m dsp.Measurement, c *Curve, a4, tol float64) []ReedError {
+func Errors(m dsp.Measurement, c *Curve, a4, tol float64, cols []int) []ReedError {
 	tol, _ = Tolerances(tol, 0)
 	goal := c.At(m.Note)
 	ref := refPitch(m, a4)
@@ -77,7 +83,7 @@ func Errors(m dsp.Measurement, c *Curve, a4, tol float64) []ReedError {
 	for i, r := range m.Reeds {
 		rref := BandRef(ref, r.Octave)
 		curr := CurrCents(r, rref)
-		g := goalAt(goal, i)
+		g := goalAt(goal, colOf(cols, i))
 		err := curr - g
 		out = append(out, ReedError{
 			Reed:    i,
@@ -120,11 +126,20 @@ func refPitch(m dsp.Measurement, a4 float64) float64 {
 	return m.Note.Freq(a4)
 }
 
-func goalAt(goal []float64, reed int) float64 {
-	if reed < 0 || reed >= len(goal) {
+func goalAt(goal []float64, col int) float64 {
+	if col < 0 || col >= len(goal) {
 		return 0
 	}
-	return goal[reed]
+	return goal[col]
+}
+
+// colOf is the curve column a reed answers to. An unmapped reed answers to its own position, which
+// is what a register sounding every bank gives anyway.
+func colOf(cols []int, reed int) int {
+	if reed >= 0 && reed < len(cols) {
+		return cols[reed]
+	}
+	return reed
 }
 
 func hzAt(ref, cents float64) float64 { return tuning.FreqAtCents(ref, cents) - ref }

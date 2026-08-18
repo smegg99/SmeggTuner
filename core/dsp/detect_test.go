@@ -72,6 +72,34 @@ func TestDetectBassoonReedReadAsHarmonic(t *testing.T) {
 	}
 }
 
+// A 16' Bugari reed as the coarse map really sees it: the fundamental 24 dB under the loudest line,
+// the 7th partial invisible because it falls 33 cents off the note grid, and the NINTH partial
+// winning. One step down the series lands on the 3rd partial (A4) - the answer the tuner used to
+// give - so the walk has to keep going. Energies are per-note amplitudes over the loudest, and the
+// floor is the leak guard the engine applies.
+func TestDetectSixteenFootUnderItsNinthPartial(t *testing.T) {
+	const d3 = tuning.Note(50)
+	r := resultWith(map[tuning.Note]float64{
+		d3:      0.115, // fundamental
+		d3 + 12: 0.130, // 2nd
+		d3 + 19: 0.400, // 3rd, A4
+		d3 + 24: 0.430, // 4th, carrying the 4' rank as well
+		d3 + 28: 0.240, // 5th
+		d3 + 31: 0.480, // 6th
+		d3 + 34: 0.040, // 7th, off the tempered grid and all but gone
+		d3 + 36: 0.180, // 8th
+		d3 + 38: 1.000, // 9th, the loudest note in the map
+	})
+	var floor [tuning.NumNotes]float64
+	for i := range floor {
+		floor[i] = leakGuardRatio
+	}
+	n, ok := NewDetector().Detect(r, floor)
+	if !ok || n != d3 {
+		t.Fatalf("got %v (ok=%v), want D3 (%v): the walk stopped on a partial", n, ok, d3)
+	}
+}
+
 // The correction must not invent a fundamental under a note that has none: a clean high tone stays put.
 func TestDetectHighToneKeepsItsPitch(t *testing.T) {
 	const c6 = tuning.Note(84)

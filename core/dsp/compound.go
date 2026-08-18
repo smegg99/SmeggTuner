@@ -32,6 +32,14 @@ type compoundBand struct {
 	beatOK bool
 }
 
+// unsplitPair says the band heard two ranks beating and could not tell them apart: fewer lines than
+// it declares, and an amplitude swing deep enough to be a second voice rather than one reed
+// breathing. One line then carries two ranks, which is the only thing in a compound register that
+// makes a reported figure a lobe instead of a reed - a rank simply not sounding does not.
+func (b compoundBand) unsplitPair() bool {
+	return len(b.genuine) < b.req.Reeds && b.envOK && b.envDepth >= reedBeatDepth
+}
+
 // ghostTol is the half-window around a predicted partial within which a line is that partial.
 func ghostTol(f float64) float64 {
 	return math.Max(ghostFloorHz, f*ghostRelTol)
@@ -185,8 +193,10 @@ func (e *Engine) resolveBase(zoom *Zoom, ring *Ring, tracked tuning.Note, window
 			g := len(b.genuine)
 			score += float64(min(g, b.req.Reeds)) - 0.5*float64(max(0, g-b.req.Reeds))
 			// The envelope is multiplicity evidence the spectrum may lack: a band declared one rank
-			// does not beat itself, and a multi-rank band short of lines is still audibly several.
-			if deep := b.envOK && b.envDepth >= reedBeatDepth; deep && g < b.req.Reeds {
+			// does not beat itself, and a multi-rank band short of lines is still audibly several. A
+			// band holding no line at all has nothing for the envelope to vouch for - what swings
+			// there is the ghost the subtraction took away, or the room - so it earns nothing.
+			if deep := b.envOK && b.envDepth >= reedBeatDepth; deep && g > 0 && g < b.req.Reeds {
 				score += 0.5
 			} else if deep && b.req.Reeds == 1 && g <= 1 {
 				score -= 0.5
@@ -320,7 +330,7 @@ func soloCandidate(b *compoundBand, pred, lobe float64) (Peak, bool, bool) {
 type bandTrack struct {
 	at  [rotSpan]float64
 	ang [rotSpan]float64 // unwrapped
-	n   int // total samples ever; ring position is n % rotSpan
+	n   int              // total samples ever; ring position is n % rotSpan
 	// the last verdict, held between samples so a gated-out transient does not blank it
 	rate    float64
 	settled bool
