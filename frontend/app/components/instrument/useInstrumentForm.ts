@@ -7,12 +7,9 @@ import type { Bank, BassRegister, InstrumentTemplate, Register } from '~/types/s
 
 const TOL_MAX = 50
 
-type Props = { instrument?: InstrumentTemplate | null }
-type Emit = (e: 'submit', i: InstrumentTemplate) => void
-
-// Instrument-editor form state, validation, and emitted payload.
-export function useInstrumentForm(props: Props, emit: Emit, open: Ref<boolean>) {
-  const editing = ref(false)
+// The accordion editor's state, validation, and the template it hands back. Driven by
+// the accordion it is editing: a new one arrives, the form reloads from it.
+export function useInstrumentForm(source: Ref<InstrumentTemplate | null>) {
   const nameError = ref(false)
 
   const form = reactive({
@@ -46,13 +43,10 @@ export function useInstrumentForm(props: Props, emit: Emit, open: Ref<boolean>) 
   // Only a backwards range when both ends are set.
   const rangeError = computed(() => form.lo !== 0 && form.hi !== 0 && form.lo > form.hi)
 
-  watch(open, (isOpen) => {
-    if (!isOpen) return
-
+  function reload() {
     nameError.value = false
-    editing.value = Boolean(props.instrument)
 
-    const i = props.instrument
+    const i = source.value
     Object.assign(form, {
       id: i?.id ?? '',
       name: i?.name ?? '',
@@ -68,7 +62,11 @@ export function useInstrumentForm(props: Props, emit: Emit, open: Ref<boolean>) 
     registers.value = (i?.instrument.registers ?? []).map(r => ({ name: r.name, banks: [...r.banks] }))
     bassReeds.value = i?.instrument.bassReeds ?? 0
     bassRegisters.value = (i?.instrument.bassRegisters ?? []).map(r => ({ name: r.name, feet: [...r.feet] }))
-  })
+  }
+
+  // Identity, not deep equality: a re-fetch of the same accordion must not throw away
+  // edits in progress, and switching to another one must reload.
+  watch(() => source.value?.id, reload, { immediate: true })
 
   function commitA4() {
     const n = Math.round(Number(a4Draft.value))
@@ -91,23 +89,22 @@ export function useInstrumentForm(props: Props, emit: Emit, open: Ref<boolean>) 
     beatDraft.value = String(form.beatTolerance)
   }
 
-  function submit() {
-    commitA4()
-    commitTol()
-    commitBeat()
-
+  // The edited accordion, or null when it does not add up; the caller decides where to put it.
+  // It does NOT commit the number drafts: a draft commits when its own field is left, and forcing
+  // one mid-edit would clamp a half-typed 44 to the 430 floor under the cursor.
+  function collect(): InstrumentTemplate | null {
     const name = form.name.trim()
     nameError.value = name === ''
-    if (nameError.value || rangeError.value) return
+    if (nameError.value || rangeError.value) return null
 
-    emit('submit', {
+    return {
       id: form.id,
       name,
-      hasImage: props.instrument?.hasImage ?? false,
+      hasImage: source.value?.hasImage ?? false,
       instrument: {
         // The name on the instrument itself, so a session copy and a .stif export are self-describing.
         name,
-        serial: '', // serial belongs to a physical accordion, not the model
+        serial: source.value?.instrument.serial ?? '',
         reedCount: reedCount.value,
         banks: banks.value,
         registers: registers.value,
@@ -119,12 +116,11 @@ export function useInstrumentForm(props: Props, emit: Emit, open: Ref<boolean>) 
         tolerance: form.tolerance,
         beatTolerance: form.beatTolerance,
       },
-    })
+    }
   }
 
   return {
     form,
-    editing,
     nameError,
     a4Draft,
     tolDraft,
@@ -135,9 +131,10 @@ export function useInstrumentForm(props: Props, emit: Emit, open: Ref<boolean>) 
     banks,
     reedCount,
     rangeError,
+    reload,
     commitA4,
     commitTol,
     commitBeat,
-    submit,
+    collect,
   }
 }

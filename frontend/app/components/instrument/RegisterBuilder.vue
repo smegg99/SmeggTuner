@@ -1,98 +1,81 @@
 <template>
   <div class="build">
-    <div class="build__presets">
-      <button
-        v-for="p in PRESETS"
-        :key="p.name"
-        type="button"
-        class="preset"
-        :title="p.feet"
-        @click="emit('add', { name: p.name, banks: [...p.banks] })"
-      >
-        <span class="preset__sym"><InstrumentRegisterSymbol :banks="p.banks" /></span>
-        <span class="preset__feet">{{ p.feet }}</span>
-      </button>
-    </div>
+    <span class="build__h">{{ t('instrument.builder.title') }}</span>
 
-    <div class="build__custom">
-      <span class="build__custom-h">{{ t('instrument.builder.custom') }}</span>
+    <div class="build__body">
+      <span class="build__sym"><InstrumentRegisterSymbol :banks="banks" /></span>
 
-      <div class="build__body">
-        <span class="build__sym"><InstrumentRegisterSymbol :banks="banks" /></span>
-
-        <!-- Rows mirror the engraving top to bottom: 4' high, 8' middle, 16' low. -->
-        <div class="build__rows">
-          <div class="build__row">
-            <span class="build__label">{{ t('instrument.builder.high') }}</span>
-            <UiToolKey
-              :label="t(sym.high ? 'common.yes' : 'common.no')"
-              :active="sym.high"
-              @click="sym.high = !sym.high"
-            />
-          </div>
-
-          <div class="build__row">
-            <span class="build__label">{{ t('instrument.builder.middle') }}</span>
-            <UiToolGroup
-              :model-value="sym.middle"
-              :items="COUNTS"
-              :label="t('instrument.builder.middle')"
-              @update:model-value="n => sym.middle = n as number"
-            />
-          </div>
-
-          <div class="build__row">
-            <span class="build__label">{{ t('instrument.builder.low') }}</span>
-            <UiToolKey
-              :label="t(sym.low ? 'common.yes' : 'common.no')"
-              :active="sym.low"
-              @click="sym.low = !sym.low"
-            />
-          </div>
+      <!-- Rows mirror the engraving top to bottom: 4' high, 8' middle, 16' low. -->
+      <div class="build__rows">
+        <div class="build__row">
+          <span class="build__label">{{ t('instrument.builder.high') }}</span>
+          <UiToolKey
+            :label="t(sym.high ? 'common.yes' : 'common.no')"
+            :active="sym.high"
+            @click="sym.high = !sym.high"
+          />
         </div>
 
-        <UiToolKey
-          icon="mdi-plus"
-          :label="t('instrument.builder.add')"
-          :disabled="!banks.length"
-          @click="add"
-        />
+        <div class="build__row">
+          <span class="build__label">{{ t('instrument.builder.middle') }}</span>
+          <UiToolGroup
+            :model-value="sym.middle"
+            :items="COUNTS"
+            :label="t('instrument.builder.middle')"
+            @update:model-value="n => sym.middle = n as number"
+          />
+        </div>
+
+        <div class="build__row">
+          <span class="build__label">{{ t('instrument.builder.low') }}</span>
+          <UiToolKey
+            :label="t(sym.low ? 'common.yes' : 'common.no')"
+            :active="sym.low"
+            @click="sym.low = !sym.low"
+          />
+        </div>
       </div>
+
+      <UiToolKey
+        icon="mdi-plus"
+        :label="t('instrument.builder.add')"
+        :disabled="!canAdd"
+        :title="addHint"
+        @click="add"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, reactive } from 'vue'
-import { banksOfSymbol, canonicalName, feetOf } from '~/utils/feet'
+import { canAddRegister } from '~/utils/accordion'
+import { banksOfSymbol, canonicalName } from '~/utils/feet'
 import type { RegisterDots } from '~/utils/feet'
 import type { ToolItem } from '~/components/ui/ToolGroup.vue'
 import type { Bank, Register } from '~/types/session'
 
-// Emits a Register (banks + canonical name); picker and card share feet.ts so they cannot disagree.
+const props = defineProps<{ have: readonly Register[] }>()
+
 const emit = defineEmits<{ add: [register: Register] }>()
 
 const { t } = useI18n()
-
-const PRESETS = computed(() => (
-  [
-    ['L', 'M1', 'M2', 'H'], // 16+8+8+4
-    ['L', 'M1', 'M2', 'M3'], // 16+8+8+8
-    ['L', 'M1', 'M2'], // 16+8+8
-    ['M1', 'M2', 'M3'], // musette
-    ['L', 'M1'], // 16+8
-    ['M1'], // a lone 8
-  ] as Bank[][]
-).map(banks => ({ banks, name: canonicalName(banks), feet: feetOf(banks) })))
 
 const COUNTS: ToolItem[] = [0, 1, 2, 3, 4].map(n => ({ value: n, label: String(n) }))
 
 const sym = reactive<RegisterDots>({ high: false, middle: 0, low: false })
 
 const banks = computed<Bank[]>(() => banksOfSymbol(sym))
+const canAdd = computed(() => canAddRegister(props.have, banks.value))
+
+// Why the key is off, when it is off for a reason worth saying.
+const addHint = computed(() => {
+  if (canAdd.value || !banks.value.length) return ''
+  return t('instrument.builder.already')
+})
 
 function add() {
-  if (!banks.value.length) return
+  if (!canAdd.value) return
   emit('add', { name: canonicalName(banks.value), banks: [...banks.value] })
   sym.high = false
   sym.middle = 0
@@ -102,58 +85,16 @@ function add() {
 
 <style scoped>
 .build {
-  display: flex;
-  flex-direction: column;
-  gap: 1cqh;
-}
-
-.build__presets {
-  display: grid;
-  gap: 0.8cqh 0.8cqw;
-  grid-template-columns: repeat(auto-fill, minmax(11cqw, 1fr));
-}
-
-.preset {
-  align-items: center;
-  background: rgb(var(--v-theme-well));
-  border: 1px solid rgb(var(--v-theme-line));
-  border-radius: 2px;
-  color: rgb(var(--v-theme-ink));
-  cursor: pointer;
-  display: flex;
-  gap: 0.6cqw;
-  padding: 0.55cqh 0.7cqw;
-}
-
-.preset:hover {
-  border-color: rgb(var(--v-theme-ink2));
-}
-
-.preset__sym {
-  block-size: 4cqh;
-  flex: 0 0 auto;
-  inline-size: 4cqh;
-}
-
-.preset__feet {
-  font-family: var(--font-mono);
-  font-size: 1.7cqh;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.build__custom {
   border-top: 1px solid rgb(var(--v-theme-lineSoft));
   display: flex;
   flex-direction: column;
-  gap: 0.6cqh;
-  padding-top: 0.9cqh;
+  gap: 4.8px;
+  padding-top: 7.2px;
 }
 
-.build__custom-h {
+.build__h {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.35cqh;
+  font-size: 10.8px;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -162,32 +103,35 @@ function add() {
 .build__body {
   align-items: center;
   display: flex;
-  gap: 1.2cqw;
+  gap: 13.2px;
 }
 
 .build__sym {
-  block-size: 4cqh;
+  block-size: 32px;
   flex: 0 0 auto;
-  inline-size: 4cqh;
+  inline-size: 32px;
 }
 
+/* Capped: the panel this sits in is far wider than the dialog it came from, and a label
+   stretched across it reads as a gap rather than a row. */
 .build__rows {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  gap: 0.4cqh;
+  gap: 3.2px;
+  max-width: 286px;
   min-width: 0;
 }
 
 .build__row {
   align-items: center;
   display: flex;
-  gap: 0.8cqw;
+  gap: 8.8px;
 }
 
 .build__label {
   color: rgb(var(--v-theme-ink));
   flex: 1 1 auto;
-  font-size: 1.65cqh;
+  font-size: 13.2px;
 }
 </style>

@@ -37,7 +37,7 @@ const geometry = computed(() => {
 
 <style scoped>
 .dev {
-  height: 2.6cqh;
+  height: 20.8px;
   margin-top: auto;
   position: relative;
 }

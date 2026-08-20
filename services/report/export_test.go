@@ -129,16 +129,14 @@ func TestExportRefusals(t *testing.T) {
 		t.Errorf("Export(bad date) = %v, want ErrInvalidDate", err)
 	}
 
-	logo := filepath.Join(t.TempDir(), "logo.png")
-	if err := os.WriteFile(logo, []byte("not an image"), 0o600); err != nil {
-		t.Fatal(err)
-	}
-	appconfig.Global.Report = appconfig.Report{CompanyName: "Smegg", LogoPath: logo}
+	// The letterhead is words, and words alone: there is no image for a technician to put on the
+	// card, so nothing here can fail to load.
+	appconfig.Global.Report = appconfig.Report{CompanyName: "Smegg"}
 	t.Cleanup(func() { appconfig.Global.Report = appconfig.Report{} })
 
 	out, err := svc.Export(OptionsDTO{Format: FormatHTML})
 	if err != nil {
-		t.Errorf("Export with an unreadable logo = %v, want the card anyway", err)
+		t.Errorf("Export with a letterhead = %v, want the card", err)
 	} else if raw, readErr := os.ReadFile(out.Path); readErr == nil && !strings.Contains(string(raw), "Smegg") {
 		t.Error("the card went out without the letterhead it could still print")
 	}

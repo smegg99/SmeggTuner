@@ -57,7 +57,7 @@ const props = defineProps<{
   caret?: boolean
   /** the other faces this key can show; sized for all at once */
   sizeFor?: string | readonly string[]
-  /** an explicit width in cqw, for a label that is data */
+  /** an explicit width, in the same units the rest of the app was laid out in; see buildKeyStyle */
   fixed?: number
   /** colour tone: the mark at rest, the whole fill when active */
   tone?: KeyTone
@@ -77,14 +77,14 @@ const ghosts = computed(() => ghostFaces(props.sizeFor))
   display: inline-flex;
   flex: 0 0 auto;
   font-family: var(--font-sans);
-  font-size: 1.75cqh;
+  font-size: 14px;
   font-weight: 500;
-  gap: 0.45cqw;
-  height: 3.9cqh;
+  gap: 5px;
+  height: 31.2px;
   justify-content: center;
   line-height: 1;
   min-width: 0;
-  padding-inline: 0.85cqw;
+  padding-inline: 9.3px;
   white-space: nowrap;
 }
 
@@ -145,7 +145,7 @@ const ghosts = computed(() => ghostFaces(props.sizeFor))
 
 .key--icon {
   padding-inline: 0;
-  width: 3.9cqh;
+  width: 31.2px;
 }
 
 .key__label {
@@ -181,12 +181,12 @@ const ghosts = computed(() => ghostFaces(props.sizeFor))
 }
 
 .key__icon {
-  font-size: 2.2cqh;
+  font-size: 17.6px;
 }
 
 .key__caret {
-  font-size: 2cqh;
-  margin-inline-end: -0.25cqw;
+  font-size: 16px;
+  margin-inline-end: -2.8px;
   opacity: 0.7;
 }
 </style>

@@ -16,9 +16,9 @@
   display: flex;
   flex-direction: column;
   /* cap width so a long device name can't outgrow the window; rows ellipsise inside */
-  max-width: 42cqw;
-  min-width: 14cqw;
+  max-width: 462px;
+  min-width: 154px;
   overflow: hidden;
-  padding-block: 0.4cqh;
+  padding-block: 3.2px;
 }
 </style>

@@ -34,9 +34,6 @@
       :sure="!!heard"
       :status="status"
       :progress="lockProgress"
-      box-width="30cqw"
-      box-height="18cqh"
-      note-size="6cqh"
     />
 
     <div class="sw__keys">
@@ -118,17 +115,20 @@ watch(captured, (got) => {
 
 <style scoped>
 .sw {
+  --cr-h: 144px;
+  --cr-note: 48px;
+  --cr-w: 330px;
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 2cqh;
+  gap: 16px;
   justify-content: center;
   width: 100%;
 }
 
 .sw__prompt {
   color: rgb(var(--v-theme-ink));
-  font-size: 2.2cqh;
+  font-size: 17.6px;
   margin: 0;
   max-width: 44ch;
 }
@@ -137,14 +137,14 @@ watch(captured, (got) => {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 0.6cqh;
-  width: 44cqw;
+  gap: 4.8px;
+  width: 484px;
 }
 
 .sw__bar {
   background: rgb(var(--v-theme-well));
   border-radius: 999px;
-  height: 0.9cqh;
+  height: 7.2px;
   overflow: hidden;
   width: 100%;
 }
@@ -157,31 +157,31 @@ watch(captured, (got) => {
 
 .sw__count {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.4cqh;
+  font-size: 11.2px;
   font-variant-numeric: tabular-nums;
 }
 
 .sw__ask {
   align-items: baseline;
   display: flex;
-  gap: 1.2cqw;
+  gap: 13.2px;
   margin: 0;
 }
 
 .sw__asknote {
   color: rgb(var(--v-theme-ink));
   font-family: var(--font-mono);
-  font-size: 4.5cqh;
+  font-size: 36px;
   font-weight: 700;
 }
 
 .sw__keys {
   display: flex;
-  gap: 0.6cqw;
+  gap: 6.6px;
 }
 
 .sw__done-icon {
   color: rgb(var(--v-theme-goal));
-  font-size: 8cqh;
+  font-size: 64px;
 }
 </style>

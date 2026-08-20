@@ -47,19 +47,19 @@ const { view } = useShell()
   align-items: center;
   background: rgb(var(--v-theme-chrome2));
   border: 1px solid rgb(var(--v-theme-lineSoft));
-  border-radius: 0.45cqh;
+  border-radius: 3.6px;
   display: flex;
-  gap: 0.5cqw;
+  gap: 5.5px;
   min-width: 0;
   overflow: hidden;
-  padding: 0 0.65cqw;
+  padding: 0 7.2px;
 }
 
 .bar__divider {
   background: rgb(var(--v-theme-line));
   flex: 0 0 1px;
-  height: 2.5cqh;
-  margin: 0 0.35cqw;
+  height: 20px;
+  margin: 0 3.8px;
 }
 
 .bar__spacer {

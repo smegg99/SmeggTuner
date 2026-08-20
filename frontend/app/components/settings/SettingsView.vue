@@ -77,18 +77,18 @@ const { t } = useI18n()
 .settings__body {
   align-items: start;
   display: grid;
-  gap: 1.6cqh 2.2cqw;
+  gap: 12.8px 24.2px;
   grid-template-columns: repeat(3, 1fr);
   min-height: 0;
   /* Safety net for long translations; the layout is built to fit and this should never show. */
   overflow-y: auto;
-  padding: 1cqh 1.6cqw;
+  padding: 8px 17.6px;
 }
 
 .settings__col {
   display: flex;
   flex-direction: column;
-  gap: 2.8cqh;
+  gap: 22.4px;
   min-width: 0;
 }
 </style>

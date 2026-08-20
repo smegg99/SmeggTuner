@@ -102,6 +102,12 @@ export function useSessions() {
     return run(() => SessionService.SetA4(hz))
   }
 
+  // The note printed on the card. Allowed with readings present, unlike the reference
+  // pitch: the note describes the work, and the work is what produced them.
+  async function setNotes(text: string) {
+    return run(() => SessionService.SetNotes(text))
+  }
+
   // Every mutation already schedules a write; this is the explicit flush.
   async function save() {
     return run(() => SessionService.Save())
@@ -121,6 +127,7 @@ export function useSessions() {
     close,
     remove,
     setA4,
+    setNotes,
     save,
     setRegister,
     setBass,

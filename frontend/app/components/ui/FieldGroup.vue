@@ -37,22 +37,22 @@ defineProps<{
 .group {
   display: flex;
   flex-direction: column;
-  gap: 1.4cqh;
+  gap: 11.2px;
   min-width: 0;
 }
 
 .group--dense {
-  gap: 1cqh;
+  gap: 8px;
 }
 
 .group__title {
   border-bottom: 1px solid rgb(var(--v-theme-lineSoft));
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.4cqh;
+  font-size: 11.2px;
   font-weight: 700;
   letter-spacing: 0.06em;
   margin: 0;
-  padding-bottom: 0.6cqh;
+  padding-bottom: 4.8px;
   text-transform: uppercase;
 }
 
@@ -63,11 +63,11 @@ defineProps<{
 .group__fields {
   display: flex;
   flex-direction: column;
-  gap: 1.6cqh;
+  gap: 12.8px;
   min-width: 0;
 }
 
 .group--dense .group__fields {
-  gap: 0.9cqh;
+  gap: 7.2px;
 }
 </style>

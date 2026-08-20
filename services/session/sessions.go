@@ -156,3 +156,27 @@ func (s *Service) SetA4(hz float64) error {
 	s.emitActive()
 	return nil
 }
+
+// maxNotes bounds the note printed under the card's table. The dialog caps it too,
+// but this is where the guarantee has to hold.
+const maxNotes = 500
+
+// SetNotes rewrites the session's note. Unlike the reference pitch this stays open
+// with readings present: the note describes the work, and the work is what produced them.
+func (s *Service) SetNotes(text string) error {
+	if len(text) > maxNotes {
+		logger.Warn(logger.MsgSessionRejected, logger.Str("setting", "notes"), logger.Int("value", len(text)))
+		return ErrNotesTooLong
+	}
+	s.mu.Lock()
+	if s.active == nil {
+		s.mu.Unlock()
+		return ErrNoSession
+	}
+	s.active.Notes = text
+	s.mu.Unlock()
+
+	s.touch()
+	s.emitActive()
+	return nil
+}

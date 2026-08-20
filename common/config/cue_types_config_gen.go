@@ -122,8 +122,6 @@ type Report struct {
 	CompanyAddress string `json:"company_address"`
 
 	CompanyWebsite string `json:"company_website"`
-
-	LogoPath string `json:"logo_path"`
 }
 
 // db_path defaults to a @{datadir:...} reference so one config file means the

@@ -90,35 +90,50 @@ const instrumentName = computed(() => {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 2cqh;
+  gap: 16px;
   height: 100%;
   justify-content: center;
   min-height: 0;
-  padding: 3cqh 2cqw;
+  padding: 24px 22px;
   text-align: center;
 }
 
 .cal__body {
   display: flex;
   flex-direction: column;
-  gap: 2cqh;
+  gap: 16px;
   min-height: 0;
-  padding: 3cqh 2cqw;
+  overflow: hidden;
+  padding: 24px 22px;
 }
 
+/* Auto margins on the ends rather than justify-content: center. Centred content that outgrows the
+   pane overflows in BOTH directions, and the half above the top is unreachable - at the smallest
+   window that put the step circles behind the panel head and Capture on top of the input scope.
+   Auto margins collapse once the content is taller, so it degrades to scrolling from the top
+   rather than to overlap. It should not come to that: the rule at the bottom of this file trims
+   the step to fit the shortest window the app allows. */
 .cal__flow {
   align-items: center;
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  gap: 2cqh;
-  justify-content: center;
+  gap: 16px;
   min-height: 0;
+  overflow-y: auto;
   text-align: center;
 }
 
+.cal__flow > :first-child {
+  margin-block-start: auto;
+}
+
+.cal__flow > :last-child {
+  margin-block-end: auto;
+}
+
 .cal__input {
-  block-size: 24cqh;
+  block-size: 192px;
   flex: 0 0 auto;
   min-height: 0;
   text-align: start;
@@ -126,7 +141,44 @@ const instrumentName = computed(() => {
 
 .cal__lead {
   color: rgb(var(--v-theme-ink));
-  font-size: 2cqh;
+  font-size: 16px;
   margin: 0;
+}
+
+/* The window cannot go below 640 tall (internal/app/window.go). Everything above is sized for a
+   comfortable one; at a short one the step is trimmed to fit, because a calibration screen you
+   have to scroll to reach Capture is worse than a smaller note box. */
+@media (max-height: 780px) {
+  .cal__body {
+    gap: 10px;
+    padding: 12px 22px;
+  }
+
+  .cal__flow {
+    gap: 10px;
+  }
+
+  .cal__input {
+    block-size: 150px;
+  }
+
+  /* Reaches into the step components on purpose: this is the one place that knows how much room
+     the whole screen has. */
+  .cal__flow :deep(.rng),
+  .cal__flow :deep(.sw) {
+    gap: 10px;
+  }
+
+  .cal__flow :deep(.rng) {
+    --cr-h: 116px;
+    --cr-note: 40px;
+    --cr-w: 116px;
+  }
+
+  .cal__flow :deep(.sw) {
+    --cr-h: 96px;
+    --cr-note: 36px;
+    --cr-w: 260px;
+  }
 }
 </style>

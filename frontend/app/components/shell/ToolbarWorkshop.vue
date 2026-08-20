@@ -35,20 +35,9 @@
     </template>
 
     <template v-else>
-      <UiToolGroup
-        :model-value="section"
-        :items="SECTIONS"
-        :label="t('workshop.label')"
-        @update:model-value="s => setSection(s as Section)"
-      />
-
-      <span class="rule" />
-
-      <!-- size-for keeps the key as wide as the wider of its two labels, so flipping the shelf doesn't resize it. -->
       <UiToolKey
         icon="mdi-plus"
-        :label="onShelf ? t('instrument.new') : t('session.new')"
-        :size-for="onShelf ? t('session.new') : t('instrument.new')"
+        :label="t('session.new')"
         @click="ask('new')"
       />
       <UiToolKey
@@ -61,12 +50,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import type { ToolItem } from '~/components/ui/ToolGroup.vue'
 import { useShell } from '~/composables/useShell'
 import { useSessions } from '~/composables/useSessions'
 import { useWorkshop } from '~/composables/useWorkshop'
-import type { Section } from '~/composables/useShell'
 
 defineProps<{
   /** Notes in the recording on screen; print is disabled without them. */
@@ -74,7 +60,7 @@ defineProps<{
 }>()
 
 const { t } = useI18n()
-const { section, setSection, openSession, closeSession, setView } = useShell()
+const { openSession, closeSession, setView } = useShell()
 const { busy, close } = useSessions()
 const { ask } = useWorkshop()
 
@@ -83,20 +69,13 @@ async function back() {
   await close()
   closeSession()
 }
-
-const SECTIONS = computed<ToolItem[]>(() => [
-  { value: 'sessions', label: t('session.title'), icon: 'mdi-folder-music-outline' },
-  { value: 'instruments', label: t('instrument.title'), icon: 'mdi-piano' },
-])
-
-const onShelf = computed(() => section.value === 'instruments')
 </script>
 
 <style scoped>
 .rule {
   background: rgb(var(--v-theme-line));
   flex: 0 0 1px;
-  height: 2.5cqh;
-  margin: 0 0.35cqw;
+  height: 20px;
+  margin: 0 3.8px;
 }
 </style>

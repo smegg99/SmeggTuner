@@ -7,12 +7,14 @@
     <UiFormField
       v-slot="{ id }"
       :label="t('instrument.a4')"
-      :hint="t('instrument.a4Hint')"
+      :hint="a4Note || t('instrument.a4Hint')"
+      :error="a4Note"
     >
       <UiNumberInput
         :id="id"
         v-model="a4Draft"
         :suffix="t('settings.a4Unit')"
+        :disabled="a4Disabled"
         @commit="emit('commitA4')"
       />
     </UiFormField>
@@ -52,6 +54,10 @@ const a4Draft = defineModel<string>('a4Draft', { required: true })
 const tolDraft = defineModel<string>('tolDraft', { required: true })
 const beatDraft = defineModel<string>('beatDraft', { required: true })
 
+// The reference pitch freezes once the session has readings; the field says so rather
+// than offering a control the backend would refuse.
+defineProps<{ a4Disabled?: boolean, a4Note?: string }>()
+
 const emit = defineEmits<{ commitA4: [], commitTol: [], commitBeat: [] }>()
 
 const { t } = useI18n()
@@ -60,7 +66,7 @@ const { t } = useI18n()
 <style scoped>
 .form__row {
   display: grid;
-  gap: 1.2cqw;
+  gap: 13.2px;
   grid-template-columns: 1fr 1fr;
 }
 </style>

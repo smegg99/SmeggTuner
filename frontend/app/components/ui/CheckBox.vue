@@ -57,7 +57,7 @@ const emit = defineEmits<{ 'update:modelValue': [boolean] }>()
   align-items: flex-start;
   cursor: pointer;
   display: flex;
-  gap: 0.7cqw;
+  gap: 7.7px;
   min-width: 0;
 }
 
@@ -80,11 +80,11 @@ const emit = defineEmits<{ 'update:modelValue': [boolean] }>()
   border-radius: 2px;
   display: flex;
   flex: 0 0 auto;
-  height: 2.2cqh;
+  height: 17.6px;
   justify-content: center;
   /* it sits on the first line of the label beside it, not on the top of the block */
-  margin-block-start: 0.1cqh;
-  width: 2.2cqh;
+  margin-block-start: 0.8px;
+  width: 17.6px;
 }
 
 .check:hover .check__box {
@@ -115,19 +115,19 @@ const emit = defineEmits<{ 'update:modelValue': [boolean] }>()
 .check__text {
   display: flex;
   flex-direction: column;
-  gap: 0.15cqh;
+  gap: 1.2px;
   min-width: 0;
 }
 
 .check__label {
   color: rgb(var(--v-theme-ink));
-  font-size: 1.6cqh;
+  font-size: 12.8px;
 }
 
 /* ink2, not ink3: ink3 is barely 3:1 on a well, too faint to read */
 .check__hint {
   color: rgb(var(--v-theme-ink2));
-  font-size: 1.4cqh;
+  font-size: 11.2px;
   line-height: 1.45;
   max-width: 46ch;
 }

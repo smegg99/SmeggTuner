@@ -103,20 +103,20 @@ function visit(url: string) {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 2.4cqh;
-  padding: 1.6cqh 0 1cqh;
+  gap: 19.2px;
+  padding: 12.8px 0 8px;
   text-align: center;
 }
 
 .about__logo {
-  block-size: 24cqh;
+  block-size: 192px;
   inline-size: auto;
   max-inline-size: 66%;
 }
 
 .about__tagline {
   color: rgb(var(--v-theme-ink2));
-  font-size: 2.1cqh;
+  font-size: 16.8px;
   font-weight: 500;
   line-height: 1.4;
   margin: 0;
@@ -124,15 +124,15 @@ function visit(url: string) {
 
 .about__publisher {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.7cqh;
+  font-size: 13.6px;
   font-weight: 600;
-  margin: -1.2cqh 0 0;
+  margin: -9.6px 0 0;
 }
 
 .about__meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 1cqh 3cqw;
+  gap: 8px 33px;
   justify-content: center;
   margin: 0;
 }
@@ -140,12 +140,12 @@ function visit(url: string) {
 .about__meta-row {
   align-items: baseline;
   display: flex;
-  gap: 0.8cqw;
+  gap: 8.8px;
 }
 
 .about__meta-row dt {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.6cqh;
+  font-size: 12.8px;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -154,7 +154,7 @@ function visit(url: string) {
 .about__meta-row dd {
   color: rgb(var(--v-theme-ink));
   font-family: var(--font-mono);
-  font-size: 2cqh;
+  font-size: 16px;
   font-variant-numeric: tabular-nums;
   margin: 0;
 }
@@ -162,18 +162,18 @@ function visit(url: string) {
 .about__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 2.4cqw;
+  gap: 26.4px;
   justify-content: center;
-  padding-block-start: 0.6cqh;
+  padding-block-start: 4.8px;
 }
 
 .about__link {
   align-items: center;
   color: rgb(var(--v-theme-accent));
   display: flex;
-  font-size: 2cqh;
+  font-size: 16px;
   font-weight: 600;
-  gap: 0.6cqw;
+  gap: 6.6px;
   text-decoration: none;
 }
 
@@ -187,6 +187,6 @@ function visit(url: string) {
 }
 
 .about__link-icon {
-  font-size: 2.6cqh;
+  font-size: 20.8px;
 }
 </style>

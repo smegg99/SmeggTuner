@@ -87,13 +87,13 @@ const accentItems = computed<ToolItem[]>(() =>
 .accent {
   align-items: center;
   display: flex;
-  gap: 1cqw;
+  gap: 11px;
 }
 
-/* Square swatch at 3.9cqh to match UiToolKey height. */
+/* Square swatch at 31.2px to match UiToolKey height. */
 .accent__pick {
   aspect-ratio: 1;
-  block-size: 3.9cqh;
+  block-size: 31.2px;
   border: 1px solid rgb(var(--v-theme-line));
   border-radius: 2px;
   cursor: pointer;

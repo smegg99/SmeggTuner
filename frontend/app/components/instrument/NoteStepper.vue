@@ -59,7 +59,7 @@ function bump(delta: number) {
 .step {
   align-items: center;
   display: flex;
-  gap: 0.4cqw;
+  gap: 4.4px;
 }
 
 /* Same sunk readout as ToolbarNote: tabular figures, fixed width. */
@@ -72,13 +72,13 @@ function bump(delta: number) {
   display: flex;
   flex: 0 0 auto;
   font-family: var(--font-mono);
-  font-size: 1.75cqh;
+  font-size: 14px;
   font-variant-numeric: tabular-nums;
   font-weight: 600;
-  height: 3.9cqh;
+  height: 31.2px;
   justify-content: center;
   line-height: 1;
-  width: 5.5cqw;
+  width: 60.5px;
 }
 
 .step__note--unset {
@@ -91,8 +91,8 @@ function bump(delta: number) {
   align-items: center;
   display: flex;
   flex: 0 0 auto;
-  height: 3.9cqh;
+  height: 31.2px;
   justify-content: center;
-  width: 3.9cqh;
+  width: 31.2px;
 }
 </style>

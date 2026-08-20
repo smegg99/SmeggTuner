@@ -103,13 +103,13 @@ function step(delta: number) {
   display: flex;
   flex: 0 0 auto;
   font-family: var(--font-mono);
-  font-size: 1.75cqh;
+  font-size: 14px;
   font-variant-numeric: tabular-nums;
   font-weight: 600;
-  height: 3.9cqh;
+  height: 31.2px;
   justify-content: center;
   line-height: 1;
-  width: 5cqw;
+  width: 55px;
 }
 
 .note--auto {

@@ -30,7 +30,7 @@ defineProps<{ title?: string }>()
 .panel {
   background: rgb(var(--v-theme-well));
   border: 1px solid rgb(var(--v-theme-lineSoft));
-  border-radius: 0.45cqh;
+  border-radius: 3.6px;
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -46,10 +46,10 @@ defineProps<{ title?: string }>()
   display: flex;
   flex: 0 0 auto;
   flex-wrap: wrap; /* controls must wrap, not clip off the right edge */
-  gap: 0.5cqw;
-  min-height: 3.35cqh;
+  gap: 5.5px;
+  min-height: 26.8px;
   min-width: 0;
-  padding: 0.3cqh 0.75cqw;
+  padding: 2.4px 8.2px;
 }
 
 /* :slotted lends these to slot content (scoped CSS otherwise can't reach it) */
@@ -57,7 +57,7 @@ defineProps<{ title?: string }>()
 :slotted(.panel__title) {
   color: rgb(var(--v-theme-ink2));
   flex: 0 1 auto;
-  font-size: 1.6cqh;
+  font-size: 12.8px;
   font-weight: 600;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -73,7 +73,7 @@ defineProps<{ title?: string }>()
 :slotted(.panel__meta) {
   color: rgb(var(--v-theme-ink3));
   flex: 0 0 auto;
-  font-size: 1.55cqh;
+  font-size: 12.4px;
   white-space: nowrap;
 }
 

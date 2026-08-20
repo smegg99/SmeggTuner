@@ -38,21 +38,14 @@ func (s *Service) options(opts OptionsDTO) (corereport.Options, error) {
 	}
 
 	head := appconfig.Get().Report
-	if head.CompanyName == "" && head.CompanyAddress == "" && head.CompanyWebsite == "" && head.LogoPath == "" {
+	if head.CompanyName == "" && head.CompanyAddress == "" && head.CompanyWebsite == "" {
 		return out, nil
 	}
 
-	// A logo that will not load is logged and left out, not a reason to refuse the card.
-	logo, err := corereport.LoadLogo(head.LogoPath)
-	if err != nil {
-		logger.Warn(logger.MsgReportRejected, logger.Str("logo", head.LogoPath), logger.Err(err))
-		logo = ""
-	}
 	out.Letterhead = &corereport.Letterhead{
 		CompanyName:    head.CompanyName,
 		CompanyAddress: head.CompanyAddress,
 		CompanyWebsite: head.CompanyWebsite,
-		Logo:           logo,
 	}
 	return out, nil
 }

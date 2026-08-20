@@ -97,7 +97,9 @@ func TestHTMLWithoutACurve(t *testing.T) {
 	s.Curve = nil
 	out := text(t, sheet(t, s))
 
-	if !strings.Contains(out, "no goal curve") {
+	// Case-insensitive: the sentence may lead the phrase or follow one, and which it does is
+	// copy, not behaviour.
+	if !strings.Contains(strings.ToLower(out), "no goal curve") {
 		t.Error("the sheet does not say that there is no goal curve")
 	}
 	for _, col := range []string{">Curr<", ">Err<"} {

@@ -35,15 +35,15 @@ const file = computed(() => current.value.kind === 'file')
    size to their content (auto). */
 .tuner {
   display: grid;
-  gap: 0.85cqh;
+  gap: 6.8px;
   grid-template-areas:
     "input    input"
     "notes    notes"
     "spectrum note"
     "ruler    ruler"
     "boxes    boxes";
-  grid-template-columns: 1fr 24cqw;
-  grid-template-rows: 1fr 1fr 1fr 19cqh auto;
+  grid-template-columns: 1fr 264px;
+  grid-template-rows: 1fr 1fr 1fr 152px auto;
   min-height: 0;
   min-width: 0;
 }

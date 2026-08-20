@@ -157,7 +157,7 @@ async function clearAll() {
 <style scoped>
 .curve-editor {
   display: grid;
-  gap: 0.85cqh;
+  gap: 6.8px;
   grid-template-rows: minmax(0, 1fr) auto;
   min-height: 0;
 }
@@ -167,17 +167,17 @@ async function clearAll() {
   align-items: center;
   background: rgb(var(--v-theme-chrome2));
   border: 1px solid rgb(var(--v-theme-lineSoft));
-  border-radius: 0.45cqh;
+  border-radius: 3.6px;
   display: flex;
-  gap: 0.5cqw;
+  gap: 5.5px;
   min-width: 0;
   overflow: hidden;
-  padding: 0.55cqh 0.65cqw;
+  padding: 4.4px 7.2px;
 }
 
-/* Match the keys' 3.9cqh height so the row isn't crooked. */
+/* Match the keys' 31.2px height so the row isn't crooked. */
 .bar :deep(.num) {
-  height: 3.9cqh;
+  height: 31.2px;
 }
 
 .bar :deep(.num__input) {
@@ -186,7 +186,7 @@ async function clearAll() {
 
 .bar__value {
   flex: 0 0 auto;
-  width: 9cqw;
+  width: 99px;
 }
 
 .bar__sp {

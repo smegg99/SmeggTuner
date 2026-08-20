@@ -1,18 +1,28 @@
 <template>
   <div class="ident">
-    <span class="ident__pic">
+    <!-- The photograph is the picker, but only where the accordion is edited. Everywhere else it
+         is a plain span: no button, no tooltip, no hover, so nothing invites a click that would
+         do nothing. It also needs a shelf entry to hang the image on, so it waits for one. -->
+    <component
+      :is="canPick ? 'button' : 'span'"
+      class="ident__pic"
+      :class="{ 'ident__pic--live': canPick }"
+      :type="canPick ? 'button' : undefined"
+      :title="canPick ? t('instrument.photo') : undefined"
+      @click="pick"
+    >
       <img
-        v-if="src"
+        v-if="imageSrc"
         class="ident__img"
-        :src="src"
+        :src="imageSrc"
         :alt="instrument"
       >
       <v-icon
         v-else
-        icon="mdi-folder-music-outline"
+        :icon="canPick ? 'mdi-camera-outline' : 'mdi-folder-music-outline'"
         class="ident__none"
       />
-    </span>
+    </component>
 
     <span class="ident__m">
       <span class="ident__n">{{ session?.name }}</span>
@@ -28,46 +38,66 @@
       :label="t('session.title')"
     />
 
+    <!-- The accordion's own actions, beside the tab that edits it. Export and Remember never
+         apply at once: one wants a shelf entry, the other is how it gets one. -->
+    <UiToolKey
+      v-if="onAccordion && remembered"
+      class="ident__key"
+      icon="mdi-export"
+      :title="t('instrument.export')"
+      @click="exportIt"
+    />
+    <UiToolKey
+      v-else-if="onAccordion"
+      class="ident__key"
+      icon="mdi-bookmark-plus-outline"
+      :label="t('session.accordion.remember')"
+      :title="t('session.accordion.rememberHint')"
+      :disabled="busy"
+      @click="remember"
+    />
+
     <UiChip class="ident__chip">
       {{ t('session.card.a4', { hz: (session?.a4 ?? 0).toFixed(1) }) }}
-    </UiChip>
-
-    <UiChip
-      v-for="r in registers"
-      :key="r.name"
-      mono
-      class="ident__chip"
-    >
-      {{ r.name }}
     </UiChip>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useSessionAccordion } from '~/composables/useSessionAccordion'
 import type { ToolItem } from '~/components/ui/ToolGroup.vue'
 import type { SessionDTO } from '~~bindings/smegg.me/smeggtuner/services/session/models.js'
 
 const props = defineProps<{
   session: SessionDTO | null
-  src: string
   busy: boolean
 }>()
 
-const view = defineModel<'recorded' | 'curve'>('view', { required: true })
+const view = defineModel<'recorded' | 'curve' | 'accordion'>('view', { required: true })
 
 const { t } = useI18n()
+const { remembered, imageSrc, setPhoto, exportIt, remember } = useSessionAccordion()
+
+// The picker and the accordion key belong to the accordion, so they appear with its tab.
+const onAccordion = computed(() => view.value === 'accordion')
+
+// A photograph is stored on the shelf entry, so it can only be set once there is one.
+const canPick = computed(() => onAccordion.value && remembered.value)
+
+function pick() {
+  if (canPick.value) void setPhoto()
+}
 
 const instrument = computed(() => {
   const i = props.session?.instrument
   return i?.name ?? ''
 })
 
-const registers = computed(() => props.session?.instrument?.registers ?? [])
-
 const VIEWS = computed<ToolItem[]>(() => [
   { value: 'recorded', label: t('sessionPage.tabs.recorded'), icon: 'mdi-table' },
   { value: 'curve', label: t('sessionPage.tabs.curve'), icon: 'mdi-chart-bell-curve-cumulative' },
+  { value: 'accordion', label: t('sessionPage.tabs.accordion'), icon: 'mdi-piano' },
 ])
 </script>
 
@@ -76,21 +106,38 @@ const VIEWS = computed<ToolItem[]>(() => [
   align-items: center;
   border-bottom: 1px solid rgb(var(--v-theme-lineSoft));
   display: flex;
-  gap: 0.7cqw;
-  padding: 0.8cqh 0.9cqw;
+  gap: 7.7px;
+  padding: 6.4px 9.9px;
 }
 
 .ident__pic {
   align-items: center;
+  padding: 0;
   aspect-ratio: 4 / 3;
   background: rgb(var(--v-theme-sunk));
   border: 1px solid rgb(var(--v-theme-lineSoft));
   border-radius: 2px;
   display: flex;
   flex: 0 0 auto;
-  height: 5cqh;
+  height: 40px;
   justify-content: center;
   overflow: hidden;
+}
+
+.ident__pic--live {
+  cursor: pointer;
+}
+
+.ident__pic--live:hover {
+  border-color: rgb(var(--v-theme-ink2));
+}
+
+.ident__pic--live:hover .ident__none {
+  color: rgb(var(--v-theme-ink));
+}
+
+.ident__key {
+  flex: 0 0 auto;
 }
 
 .ident__img {
@@ -101,24 +148,34 @@ const VIEWS = computed<ToolItem[]>(() => [
 
 .ident__none {
   color: rgb(var(--v-theme-ink3));
-  font-size: 2.4cqh;
+  font-size: 19.2px;
 }
 
 .ident__m {
   display: flex;
+  flex: 0 1 auto;
   flex-direction: column;
-  gap: 0.1cqh;
+  gap: 0.8px;
   min-width: 0;
 }
 
+/* A session name is whatever the technician typed. It ellipsises rather than wrapping, or a long
+   one folds into a column one word wide and takes the whole header with it. */
+.ident__n,
+.ident__s {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .ident__n {
-  font-size: 1.8cqh;
+  font-size: 14.4px;
   font-weight: 600;
 }
 
 .ident__s {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.45cqh;
+  font-size: 11.6px;
 }
 
 .ident__sp {
@@ -133,11 +190,11 @@ const VIEWS = computed<ToolItem[]>(() => [
 .ident__chip {
   align-items: center;
   display: inline-flex;
-  font-size: 1.75cqh;
+  font-size: 14px;
   font-weight: 500;
-  height: 3.9cqh;
+  height: 31.2px;
   justify-content: center;
   line-height: 1;
-  padding: 0 0.85cqw;
+  padding: 0 9.3px;
 }
 </style>

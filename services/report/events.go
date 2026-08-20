@@ -12,8 +12,6 @@ var (
 	ErrInvalidFormat = &ServiceError{Key: "report.error.invalidFormat"}
 	// ErrInvalidDate reports a date that is not yyyy-mm-dd.
 	ErrInvalidDate = &ServiceError{Key: "report.error.invalidDate"}
-	// ErrLogoUnreadable reports a letterhead logo that would not open or is not an image.
-	ErrLogoUnreadable = &ServiceError{Key: "report.error.logoUnreadable"}
 	// ErrRenderFailed reports a report that would not render.
 	ErrRenderFailed = &ServiceError{Key: "report.error.renderFailed"}
 	// ErrWriteFailed reports a file that would not be written.

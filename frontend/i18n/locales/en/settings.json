@@ -12,6 +12,7 @@
     "audioDeviceRefresh": "Refresh the device list",
     "humFilterLabel": "Mains hum filter",
     "humFilterHint": "Notch out mains hum the microphone picks up: 50 Hz in Europe, 60 Hz in North America.",
+    "humFilterNone": "None",
     "humFilter50": "50 Hz",
     "humFilter60": "60 Hz",
     "clockPpmLabel": "Clock correction",
@@ -66,12 +67,7 @@
       "name": "Workshop name",
       "nameHint": "Printed at the head of a card, when you ask for a letterhead at export.",
       "address": "Address",
-      "website": "Website",
-      "logo": "Logo",
-      "logoHint": "Embedded in the card itself, so it survives being emailed and printed from anywhere.",
-      "pickLogo": "Choose",
-      "clearLogo": "Remove the logo",
-      "noLogo": "No logo"
+      "website": "Website"
     }
   }
 }

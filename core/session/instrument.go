@@ -1,6 +1,10 @@
 package session
 
-import "fmt"
+import (
+	"fmt"
+	"slices"
+	"strings"
+)
 
 // maxTolerance is the widest judging window, in cents; matches the app config schema.
 const maxTolerance = 50.0
@@ -37,7 +41,29 @@ func (i Instrument) validate() error {
 		}
 	}
 
+	if len(i.Registers) > MaxRegisters {
+		return fmt.Errorf("%w: %d", ErrTooManyRegisters, len(i.Registers))
+	}
+
+	// A switch IS the ranks it sounds, so both its name and its rank set must be its own.
+	seenName := make(map[string]bool, len(i.Registers))
+	seenBanks := make(map[string]bool, len(i.Registers))
+
 	for _, r := range i.Registers {
+		if len(r.Name) > MaxSwitchName {
+			return fmt.Errorf("%w: %q", ErrSwitchName, r.Name)
+		}
+		if seenName[r.Name] {
+			return fmt.Errorf("%w: %q", ErrDuplicateRegister, r.Name)
+		}
+		seenName[r.Name] = true
+
+		if key := bankKey(r.Banks); seenBanks[key] {
+			return fmt.Errorf("%w: %q sounds what another switch already does", ErrDuplicateRegister, r.Name)
+		} else {
+			seenBanks[key] = true
+		}
+
 		if err := validBanks(r.Banks); err != nil {
 			return fmt.Errorf("register %q: %w", r.Name, err)
 		}
@@ -73,6 +99,18 @@ func (i Instrument) validate() error {
 		}
 	}
 	return i.validateBass()
+}
+
+// bankKey identifies a switch by what it sounds, in card order, so the order it was typed in is
+// not part of its identity.
+func bankKey(banks []Bank) string {
+	ordered := make([]string, 0, len(banks))
+	for _, b := range Banks {
+		if slices.Contains(banks, b) {
+			ordered = append(ordered, string(b))
+		}
+	}
+	return strings.Join(ordered, " ")
 }
 
 // Tolerances returns this instrument's windows, or the given defaults where unset; the one place instrument-over-default precedence lives.

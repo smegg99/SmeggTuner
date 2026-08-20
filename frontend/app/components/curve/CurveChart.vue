@@ -148,14 +148,14 @@ const chartOptions = computed(() => {
 
 .panel__unit {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.5cqh;
+  font-size: 12px;
 }
 
 /* Chart.js sizes to its container, so the container is the one with a size. */
 .plot {
   height: 100%;
   min-height: 0;
-  padding: 0.8cqh 0.9cqw;
+  padding: 6.4px 9.9px;
   position: relative;
 }
 
@@ -163,7 +163,7 @@ const chartOptions = computed(() => {
   align-items: center;
   color: rgb(var(--v-theme-ink3));
   display: flex;
-  font-size: 1.6cqh;
+  font-size: 12.8px;
   inset: 0;
   justify-content: center;
   margin: 0;

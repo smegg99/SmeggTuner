@@ -42,13 +42,9 @@ var funcs = template.FuncMap{
 	// add and sub nudge already-computed graph labels; the template does no other math.
 	"add": func(a, b float64) float64 { return a + b },
 	"sub": func(a, b float64) float64 { return a - b },
-	// logo passes through only a data:image URI (already checked by LoadLogo); anything else is dropped.
-	"logo": func(s string) template.URL {
-		if !strings.HasPrefix(s, "data:image/") {
-			return ""
-		}
-		return template.URL(s)
-	},
+	// mascot inlines the app's own mark. It is one path with fill="currentColor", so the sheet
+	// stays self-contained and the mark prints in whatever ink the surrounding text does.
+	"mascot":    func() template.HTML { return template.HTML(mascotSVG) }, //nolint:gosec // our own embedded asset
 	"home":      func() template.URL { return template.URL(homeURL) },
 	"homeLabel": func() string { return strings.TrimPrefix(homeURL, "https://") },
 

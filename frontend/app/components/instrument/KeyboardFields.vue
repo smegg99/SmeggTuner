@@ -37,17 +37,17 @@ const { t } = useI18n()
 .form__range {
   align-items: center;
   display: flex;
-  gap: 1cqw;
+  gap: 11px;
 }
 
 .form__rangeto {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.6cqh;
+  font-size: 12.8px;
 }
 
 .form__warn {
   color: rgb(var(--v-theme-warn));
-  font-size: 1.5cqh;
+  font-size: 12px;
   line-height: 1.4;
   margin: 0;
 }

@@ -20,12 +20,13 @@ tags := "gtk3"
 # `just set-version 1.0.4`; packaging synchronizes generated platform metadata before building.
 version := `tr -d '\r\n' < VERSION`
 
-# What `just release` builds. linux/* go through wails3 (native, or the cross-compile image
-# `wails3 task setup:docker` for another arch). windows/* are built in a Windows VM via the test
-# lab (testlab/README.md) - CGO + WebView2 + NSIS do not cross-compile from Linux, so the VM is
-# the honest path. windows is off by default (it boots a VM); pass your own list to add it:
-#   just release "linux/amd64 linux/arm64 windows/amd64"
-release_targets := "linux/amd64 linux/arm64"
+# What `just release` builds: every platform there is a build path for. linux/* go through wails3
+# (native, or the cross-compile image `wails3 task setup:docker` for another arch). windows/* are
+# built in a Windows VM via the test lab (testlab/README.md) - CGO + WebView2 and NSIS do not
+# cross-compile from Linux, so the VM is the honest path, and a release run boots one. Pass your
+# own list to narrow it:
+#   just release "linux/amd64"
+release_targets := "linux/amd64 linux/arm64 windows/amd64"
 
 # The test-lab VM `just release` drives for windows/* targets (win10 or win11).
 windows_lab := "win11"
@@ -85,11 +86,12 @@ package: sync-version
 package-gtk4: sync-version
     VERSION="{{version}}" wails3 package
 
-# Build and package release artifacts for every target in release_targets, named the way a
-# release is: bin/release/<app>-<version>-<os>-<arch>.<ext>, plus the bare binary. A target that
-# fails (usually a missing cross toolchain) is reported and skipped; the others still build.
+# Build and package every release artifact, named the way the release page names them:
+# bin/release/<app>-<version>-<os>-<arch>[-installer].<ext>, plus the bare binary and its tarball.
+# One run produces the whole set to upload. A target that fails (usually a missing cross toolchain,
+# or a Windows VM that will not boot) is reported and skipped; the others still build.
 #   just release
-#   just release "linux/amd64 windows/amd64"
+#   just release "linux/amd64"
 release targets=release_targets: sync-version
     #!/usr/bin/env bash
     set -uo pipefail
@@ -100,6 +102,11 @@ release targets=release_targets: sync-version
     for target in {{targets}}; do
         os="${target%%/*}"; arch="${target##*/}"
         echo "==> {{app_name}} {{version}} :: ${os}/${arch}"
+        # Every artifact of this target is named from here, and last run's are cleared first: a
+        # stale one from an older version sitting in the folder gets uploaded with the rest.
+        name="{{app_name}}-{{version}}-${os}-${arch}"
+        rm -f "$out/{{app_name}}-"*"-${os}-${arch}" "$out/{{app_name}}-"*"-${os}-${arch}".* \
+              "$out/{{app_name}}-"*"-${os}-${arch}-installer".*
         case "$os" in
         linux)
             rm -f "{{bin_dir}}/{{app_name}}" "{{bin_dir}}/{{app_name}}".deb "{{bin_dir}}/{{app_name}}".rpm \
@@ -113,9 +120,13 @@ release targets=release_targets: sync-version
                         *.pkg.tar.zst) ext="pkg.tar.zst" ;;
                         *)             ext="${f##*.}" ;;
                     esac
-                    mv -f "$f" "$out/{{app_name}}-{{version}}-${os}-${arch}.${ext}"
+                    mv -f "$f" "$out/${name}.${ext}"
                 done
-                [ -e "{{bin_dir}}/{{app_name}}" ] && cp -f "{{bin_dir}}/{{app_name}}" "$out/{{app_name}}-{{version}}-${os}-${arch}"
+                if [ -e "{{bin_dir}}/{{app_name}}" ]; then
+                    cp -f "{{bin_dir}}/{{app_name}}" "$out/${name}"
+                    # The tarball holds the renamed binary and nothing else, as every release before it did.
+                    ( cd "$out" && tar -czf "${name}.tar.gz" "${name}" )
+                fi
                 built+=("${os}/${arch}")
             else
                 skipped+=("${os}/${arch}")
@@ -127,7 +138,7 @@ release targets=release_targets: sync-version
             if ./testlab/lab.sh sync "{{windows_lab}}" && ./testlab/lab.sh package "{{windows_lab}}"; then
                 for f in "{{bin_dir}}/lab-out/{{windows_lab}}"/*.exe; do
                     case "$f" in *installer*) sfx="-installer" ;; *) sfx="" ;; esac
-                    mv -f "$f" "$out/{{app_name}}-{{version}}-${os}-${arch}${sfx}.exe"
+                    mv -f "$f" "$out/${name}${sfx}.exe"
                 done
                 built+=("${os}/${arch}")
             else
@@ -226,6 +237,11 @@ test-frontend:
 # Headless measurement harness, e.g. just analyze -wav tests/fixtures/a-8.wav
 analyze *args:
     go run ./scripts/analyze {{args}}
+
+# Write an example tuning card from made-up readings, to see the export without recording a pass.
+# e.g. just example-card -shape musette -lang pl -out karta.html
+example-card *args:
+    go run ./scripts/examplecard {{args}}
 
 # ---- test lab -------------------------------------------------------------
 # Build and run the app on other distros and on Windows. See testlab/README.md.

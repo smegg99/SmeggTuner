@@ -20,13 +20,12 @@ var (
 	ErrNoReadings = errors.New("report: session holds no readings")
 )
 
-// Letterhead is the technician's own heading, off unless the caller asks for it.
+// Letterhead is the technician's own heading, off unless the caller asks for it. It carries
+// words and no artwork: the card is branded, and an image slot here is a place to paint over it.
 type Letterhead struct {
 	CompanyName    string
 	CompanyAddress string
 	CompanyWebsite string
-	// Logo is a data URI (see LoadLogo) so the sheet stays self-contained.
-	Logo string
 }
 
 // Options is everything the caller decides about a report.

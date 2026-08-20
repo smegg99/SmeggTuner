@@ -2,8 +2,6 @@
 package report
 
 import (
-	"github.com/wailsapp/wails/v3/pkg/application"
-
 	"smegg.me/smeggtuner/common/logger"
 	corereport "smegg.me/smeggtuner/core/report"
 	sessionsvc "smegg.me/smeggtuner/services/session"
@@ -12,9 +10,6 @@ import (
 // Native dialog strings; ASCII English until common/i18n carries keys for them.
 const (
 	saveTitle     = "Save the tuning report"
-	logoTitle     = "Choose a logo"
-	logoFilter    = "Images"
-	logoGlob      = "*.png;*.jpg;*.jpeg;*.gif;*.bmp;*.webp"
 	htmlFilter    = "HTML report"
 	htmlGlob      = "*.html"
 	pdfFilter     = "PDF report"
@@ -32,25 +27,6 @@ type Service struct {
 }
 
 func New(sessions *sessionsvc.Service) *Service { return &Service{sessions: sessions} }
-
-// PickLogo shows the native image picker and returns the chosen path, or "" if cancelled.
-func (s *Service) PickLogo() (string, error) {
-	app := application.Get()
-	if app == nil {
-		return "", nil // no main thread to dispatch onto (unit tests, headless tooling)
-	}
-	path, err := app.Dialog.OpenFile().
-		SetTitle(logoTitle).
-		CanChooseFiles(true).
-		CanChooseDirectories(false).
-		AddFilter(logoFilter, logoGlob).
-		PromptForSingleSelection()
-	if err != nil {
-		logger.Warn(logger.MsgReportRejected, logger.Err(err))
-		return "", ErrLogoUnreadable
-	}
-	return path, nil
-}
 
 // Export writes a pass of the active session to a file the user chooses; for HTML it also opens it in the browser.
 func (s *Service) Export(opts OptionsDTO) (*ResultDTO, error) {

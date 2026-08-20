@@ -142,18 +142,18 @@ watch(() => props.modelValue, (hex) => {
 .cp {
   display: flex;
   flex-direction: column;
-  gap: 1.4cqh;
+  gap: 11.2px;
 }
 
 .cp__top {
   align-items: stretch;
   display: flex;
-  gap: 1cqw;
+  gap: 11px;
 }
 
 .cp__preview {
   aspect-ratio: 1;
-  block-size: 6cqh;
+  block-size: 48px;
   border: 1px solid rgb(var(--v-theme-line));
   border-radius: 2px;
   flex: 0 0 auto;
@@ -167,18 +167,18 @@ watch(() => props.modelValue, (hex) => {
 .cp__row {
   align-items: center;
   display: flex;
-  gap: 1cqw;
+  gap: 11px;
 }
 
 .cp__name {
   color: rgb(var(--v-theme-ink2));
   flex: 0 0 auto;
-  font-size: 1.5cqh;
-  inline-size: 9cqw;
+  font-size: 12px;
+  inline-size: 99px;
 }
 
 .cp__slider {
-  block-size: 2.4cqh;
+  block-size: 19.2px;
   border: 1px solid rgb(var(--v-theme-line));
   border-radius: 2px;
   flex: 1 1 auto;
@@ -214,10 +214,10 @@ watch(() => props.modelValue, (hex) => {
 
 .cp__presets {
   display: grid;
-  gap: 0.6cqw;
+  gap: 6.6px;
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
-  padding-block-start: 0.4cqh;
+  padding-block-start: 3.2px;
 }
 
 .cp__swatch {

@@ -84,33 +84,33 @@ const KEYS = [
 .help {
   display: flex;
   flex-direction: column;
-  gap: 1.4cqh;
-  padding: 0.6cqh 0;
+  gap: 11.2px;
+  padding: 4.8px 0;
 }
 
 .help__lead {
   color: rgb(var(--v-theme-ink));
-  font-size: 2.1cqh;
+  font-size: 16.8px;
   line-height: 1.5;
   margin: 0;
 }
 
 .help__h {
   color: rgb(var(--v-theme-ink));
-  font-size: 2cqh;
+  font-size: 16px;
   font-weight: 700;
-  margin: 1cqh 0 0;
+  margin: 8px 0 0;
 }
 
 .help__rooms {
   color: rgb(var(--v-theme-ink2));
   display: flex;
   flex-direction: column;
-  font-size: 1.95cqh;
-  gap: 0.7cqh;
+  font-size: 15.6px;
+  gap: 5.6px;
   line-height: 1.5;
   margin: 0;
-  padding-inline-start: 1.8cqw;
+  padding-inline-start: 19.8px;
 }
 
 .help__rooms b {
@@ -120,9 +120,9 @@ const KEYS = [
 /* Two columns: one-per-row ran the dialog past the 640px minimum window. */
 .help__keys {
   display: grid;
-  gap: 0.9cqh 1.2cqw;
+  gap: 7.2px 13.2px;
   grid-template-columns: auto 1fr auto 1fr;
-  margin: 0.4cqh 0 0;
+  margin: 3.2px 0 0;
 }
 
 .help__key {
@@ -136,7 +136,7 @@ const KEYS = [
 .help__key dd {
   align-self: center;
   color: rgb(var(--v-theme-ink2));
-  font-size: 1.95cqh;
+  font-size: 15.6px;
   margin: 0;
 }
 
@@ -147,9 +147,9 @@ kbd {
   color: rgb(var(--v-theme-ink));
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 1.7cqh;
+  font-size: 13.6px;
   line-height: 1;
-  padding: 0.7cqh 0.7cqw;
+  padding: 5.6px 7.7px;
   white-space: nowrap;
 }
 </style>

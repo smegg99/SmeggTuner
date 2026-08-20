@@ -40,9 +40,9 @@ const updatedFull = computed(() => d(updatedAt.value, 'medium'))
   border-top: 1px solid rgb(var(--v-theme-lineSoft));
   color: rgb(var(--v-theme-ink3));
   display: flex;
-  font-size: 1.35cqh;
-  gap: 0.5cqw;
-  padding: 0.45cqh 0.7cqw;
+  font-size: 10.8px;
+  gap: 5.5px;
+  padding: 3.6px 7.7px;
 }
 
 .card__when {
@@ -55,7 +55,7 @@ const updatedFull = computed(() => d(updatedAt.value, 'medium'))
 .card__goal {
   color: rgb(var(--v-theme-goal));
   flex: 0 0 auto;
-  font-size: 1.7cqh;
+  font-size: 13.6px;
 }
 
 .card__sp {

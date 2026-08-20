@@ -39,7 +39,7 @@ const { t } = useI18n()
 <style scoped>
 .dialog-warn {
   color: rgb(var(--v-theme-ink2));
-  font-size: 1.65cqh;
+  font-size: 13.2px;
   line-height: 1.5;
   margin: 0;
 }

@@ -40,40 +40,40 @@ defineProps<{
 .shelf {
   min-height: 0;
   overflow-y: auto;
-  padding: 1cqh 0.8cqw;
+  padding: 8px 8.8px;
 }
 
 .shelf__grid {
   display: grid;
-  gap: 1cqh 0.8cqw;
-  grid-template-columns: repeat(auto-fill, minmax(14cqw, 1fr));
+  gap: 8px 8.8px;
+  grid-template-columns: repeat(auto-fill, minmax(154px, 1fr));
 }
 
 .shelf__empty {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 1cqh;
+  gap: 8px;
   justify-content: center;
-  min-height: 60cqh;
+  min-height: 480px;
   text-align: center;
 }
 
 .shelf__icon {
   color: rgb(var(--v-theme-ink3));
-  font-size: 7cqh;
+  font-size: 56px;
   opacity: 0.4;
 }
 
 .shelf__lead {
   color: rgb(var(--v-theme-ink));
-  font-size: 2.1cqh;
+  font-size: 16.8px;
   margin: 0;
 }
 
 .shelf__sub {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.6cqh;
+  font-size: 12.8px;
   line-height: 1.5;
   margin: 0;
   max-width: 48ch;

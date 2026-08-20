@@ -28,12 +28,16 @@ func cloneCurve(c *target.Curve) *target.Curve {
 	return &out
 }
 
-// cloneInstrument deep-copies down to banks so a snapshot never shares the live session's slices.
+// cloneInstrument deep-copies down to banks and feet so a snapshot never shares the live session's slices.
 func cloneInstrument(i coresession.Instrument) coresession.Instrument {
 	i.Banks = append([]coresession.Bank(nil), i.Banks...)
 	i.Registers = append([]coresession.Register(nil), i.Registers...)
 	for n := range i.Registers {
 		i.Registers[n].Banks = append([]coresession.Bank(nil), i.Registers[n].Banks...)
+	}
+	i.BassRegisters = append([]coresession.BassRegister(nil), i.BassRegisters...)
+	for n := range i.BassRegisters {
+		i.BassRegisters[n].Feet = append([]int(nil), i.BassRegisters[n].Feet...)
 	}
 	return i
 }

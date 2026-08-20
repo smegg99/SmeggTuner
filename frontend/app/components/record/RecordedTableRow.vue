@@ -122,7 +122,7 @@ const { t } = useI18n()
 }
 
 td {
-  padding: 0.55cqh 0.7cqw;
+  padding: 4.4px 7.7px;
   white-space: nowrap;
 }
 
@@ -140,7 +140,7 @@ td {
 
 .note__name {
   font-weight: 600;
-  margin-inline-end: 0.5cqw;
+  margin-inline-end: 5.5px;
 }
 
 .num {
@@ -157,7 +157,7 @@ td {
 .num__wrap {
   align-items: center;
   display: inline-flex;
-  gap: 0.3cqw;
+  gap: 3.3px;
   justify-content: flex-end;
 }
 
@@ -167,13 +167,13 @@ td {
 
 .merged {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.55cqh;
+  font-size: 12.4px;
   text-align: center;
 }
 
 .kill {
   text-align: right;
-  width: 3cqw;
+  width: 33px;
 }
 
 .kill__key {
@@ -183,7 +183,7 @@ td {
   color: rgb(var(--v-theme-ink3));
   cursor: pointer;
   opacity: 0;
-  padding: 0.1cqh 0.2cqw;
+  padding: 0.8px 2.2px;
 }
 
 .recorded-row:hover .kill__key,

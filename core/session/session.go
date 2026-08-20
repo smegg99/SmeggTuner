@@ -20,11 +20,25 @@ const (
 	MaxReeds = 8
 )
 
+// How long a switch list may get, and how long a switch may be called. The widest treble panel in
+// production is thirteen switches and the widest bass machine seven; these sit above both. They
+// are here to stop a list nobody can read, not to argue with an instrument.
+const (
+	MaxRegisters     = 16
+	MaxBassRegisters = 8
+	MaxSwitchName    = 24
+)
+
 var (
 	ErrBadID     = errors.New("session: invalid id")
 	ErrReedCount = fmt.Errorf("session: reed count outside %d..%d", MinReeds, MaxReeds)
 	ErrA4        = errors.New("session: a4 must be a positive frequency")
 	ErrNote      = errors.New("session: note outside the tuning range")
+	// ErrDuplicateRegister reports two switches that are the same switch: one name used twice, or
+	// two names over the same ranks. A card has a column per rank and no way to show them apart.
+	ErrDuplicateRegister = errors.New("session: that switch is already described")
+	ErrTooManyRegisters  = fmt.Errorf("session: more switches than %d", MaxRegisters)
+	ErrSwitchName        = fmt.Errorf("session: a switch name is longer than %d", MaxSwitchName)
 )
 
 // Register is one of the instrument's switches: its name, and which reed banks it sounds when pulled.

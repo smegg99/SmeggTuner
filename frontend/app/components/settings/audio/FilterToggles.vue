@@ -3,25 +3,18 @@
     :label="t('settings.humFilterLabel')"
     :hint="running ? t('settings.lockedWhileRunning') : t('settings.humFilterHint')"
   >
-    <div class="d-flex ga-1">
-      <UiToolKey
-        :label="t('settings.humFilter50')"
-        :active="hum50"
-        :disabled="running"
-        @click="hum50 = !hum50"
-      />
-      <UiToolKey
-        :label="t('settings.humFilter60')"
-        :active="hum60"
-        :disabled="running"
-        @click="hum60 = !hum60"
-      />
-    </div>
+    <UiToolGroup
+      v-model="hum"
+      :items="CHOICES"
+      :label="t('settings.humFilterLabel')"
+      :disabled="running"
+    />
   </UiFormField>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import type { ToolItem } from '~/components/ui/ToolGroup.vue'
 import { useConfigSync } from '~/composables/useConfigSync'
 import { useTuner } from '~/composables/useTuner'
 
@@ -30,21 +23,24 @@ const { config } = useConfigSync()
 // Locked while running: the notches are applied only at engine start.
 const { running } = useTuner()
 
-// A running engine picks changes up at its next start. 50 and 60 are mutually exclusive:
-// turning one on clears the other.
-const hum50 = computed<boolean>({
-  get: () => config.audio?.hum_filter_50 ?? false,
-  set: (on: boolean) => {
-    config.audio.hum_filter_50 = on
-    if (on) config.audio.hum_filter_60 = false
-  },
-})
+// One choice of three, not two switches: a mains supply is 50 or 60 Hz or the microphone is not
+// hearing it, and off used to be reachable only by turning the lit one back off.
+const CHOICES = computed<ToolItem[]>(() => [
+  { value: 0, label: t('settings.humFilterNone') },
+  { value: 50, label: t('settings.humFilter50') },
+  { value: 60, label: t('settings.humFilter60') },
+])
 
-const hum60 = computed<boolean>({
-  get: () => config.audio?.hum_filter_60 ?? false,
-  set: (on: boolean) => {
-    config.audio.hum_filter_60 = on
-    if (on) config.audio.hum_filter_50 = false
+// The config keeps a flag per frequency; this is the one place that knows they are alternatives.
+// A file with both set reads as 50 and normalises on the next change.
+const hum = computed<number>({
+  get: () => {
+    if (config.audio?.hum_filter_50) return 50
+    return config.audio?.hum_filter_60 ? 60 : 0
+  },
+  set: (hz: number) => {
+    config.audio.hum_filter_50 = hz === 50
+    config.audio.hum_filter_60 = hz === 60
   },
 })
 </script>

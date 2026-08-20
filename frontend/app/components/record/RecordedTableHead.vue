@@ -40,10 +40,10 @@ const { t } = useI18n()
 .head {
   background: rgb(var(--v-theme-chrome));
   color: rgb(var(--v-theme-ink2));
-  font-size: 1.5cqh;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  padding: 0.7cqh 0.7cqw;
+  padding: 5.6px 7.7px;
   position: sticky;
   text-transform: uppercase;
   top: 0;
@@ -55,7 +55,7 @@ const { t } = useI18n()
 }
 
 .head--kill {
-  width: 3cqw;
+  width: 33px;
 }
 
 .head--num {

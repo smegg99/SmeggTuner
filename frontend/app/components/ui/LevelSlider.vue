@@ -44,15 +44,15 @@ function onInput(event: Event) {
 <style scoped>
 .level {
   align-items: center;
-  block-size: 3.9cqh;
+  block-size: 31.2px;
   display: inline-flex;
-  inline-size: 6.5cqw;
+  inline-size: 71.5px;
   position: relative;
 }
 
 .level__track {
   background: rgb(var(--v-theme-sunk));
-  block-size: 0.75cqh;
+  block-size: 6px;
   border: 1px solid rgb(var(--v-theme-line));
   border-radius: 1px;
   display: block;

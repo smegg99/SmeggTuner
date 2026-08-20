@@ -38,7 +38,9 @@
       "csv": "CSV",
       "formatHint": "PDF is the card as one A4 page, laid out the way it prints. HTML is the same sheet as a web page. CSV is the table for a spreadsheet.",
       "date": "Date",
-      "export": "Export"
+      "export": "Export",
+      "notes": "Note on the card",
+      "notesHint": "Printed under the table. What was done, or what still needs doing."
     },
     "error": {
       "reedsMerged": "This note's reeds never separated, so there is no single reed to correct. What the tuner knows about it is the beat between them.",

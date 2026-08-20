@@ -114,7 +114,6 @@ package config
 	company_name:    string | *"" @go(CompanyName)
 	company_address: string | *"" @go(CompanyAddress)
 	company_website: string | *"" @go(CompanyWebsite)
-	logo_path:       string | *"" @go(LogoPath)
 }
 
 #LoggerConfig: {

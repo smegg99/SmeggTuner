@@ -72,7 +72,7 @@ func TestTunerDefaults(t *testing.T) {
 	if cfg.Tuner.Tolerance != 1.0 || cfg.Tuner.BeatTolerance != 3.0 {
 		t.Fatalf("tolerance defaults: %+v", cfg.Tuner)
 	}
-	if cfg.Report.CompanyName != "" || cfg.Report.CompanyAddress != "" || cfg.Report.CompanyWebsite != "" || cfg.Report.LogoPath != "" {
+	if cfg.Report.CompanyName != "" || cfg.Report.CompanyAddress != "" || cfg.Report.CompanyWebsite != "" {
 		t.Fatalf("report defaults: %+v", cfg.Report)
 	}
 	// Must mirror core/dsp.DefaultEngineConfig; the services boundary maps them onto it.

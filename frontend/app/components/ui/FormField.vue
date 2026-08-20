@@ -40,22 +40,21 @@ const id = useId()
 .field {
   display: flex;
   flex-direction: column;
-  gap: 0.5cqh;
+  gap: 4px;
   min-width: 0;
 }
 
 .field__label {
   color: rgb(var(--v-theme-ink));
-  font-size: 1.55cqh;
+  font-size: 12.4px;
   font-weight: 600;
   line-height: 1.2;
 }
 
-/* A dotted underline is the only sign there is more to read. */
+/* The help cursor is the whole affordance, as it is on a hinted UiFieldGroup title. A label is
+   not a link and a dotted rule under every second one turns a form into a ransom note. */
 .field__label--hinted {
   cursor: help;
-  text-decoration: underline dotted rgb(var(--v-theme-ink3));
-  text-underline-offset: 0.35cqh;
   width: fit-content;
 }
 
@@ -66,6 +65,6 @@ const id = useId()
 /* warn, not red: red is reserved for a measured reed */
 .field__error {
   color: rgb(var(--v-theme-warn));
-  font-size: 1.4cqh;
+  font-size: 11.2px;
 }
 </style>

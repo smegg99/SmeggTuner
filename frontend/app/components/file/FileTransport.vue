@@ -136,13 +136,13 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
   align-items: center;
   display: inline-flex;
   flex: 0 0 auto;
-  gap: 0.3cqw;
+  gap: 3.3px;
 }
 
 .rule {
   background: rgb(var(--v-theme-line));
-  block-size: 2.4cqh;
+  block-size: 19.2px;
   flex: 0 0 1px;
-  margin-inline: 0.45cqw;
+  margin-inline: 5px;
 }
 </style>

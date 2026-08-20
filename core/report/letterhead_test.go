@@ -2,11 +2,6 @@ package report
 
 import (
 	"html/template"
-	"image"
-	"image/color"
-	"image/png"
-	"os"
-	"path/filepath"
 	"strings"
 	"testing"
 )
@@ -19,17 +14,12 @@ func TestLetterheadIsOffByDefault(t *testing.T) {
 		t.Fatal("the letterhead printed without being asked for")
 	}
 
-	logo, err := LoadLogo(pngFile(t))
-	if err != nil {
-		t.Fatalf("LoadLogo: %v", err)
-	}
 	r, err := Build(s, Options{
 		Now: at,
 		Letterhead: &Letterhead{
 			CompanyName:    "Smegg Accordion Service",
 			CompanyAddress: "ul. Warsztatowa 1\n00-001 Warszawa",
 			CompanyWebsite: "smegg.me",
-			Logo:           logo,
 		},
 	})
 	if err != nil {
@@ -37,48 +27,33 @@ func TestLetterheadIsOffByDefault(t *testing.T) {
 	}
 	out := render(t, r)
 
-	for _, want := range []string{"Smegg Accordion Service", "ul. Warsztatowa 1", "smegg.me", `src="data:image/png;base64,`} {
+	for _, want := range []string{"Smegg Accordion Service", "ul. Warsztatowa 1", "smegg.me"} {
 		if !strings.Contains(out, want) {
 			t.Errorf("the letterhead is missing %q", want)
 		}
 	}
-	if strings.Contains(out, "ZgotmplZ") {
-		t.Error("the logo was filtered out of the img tag rather than embedded")
-	}
 }
 
-func TestLoadLogo(t *testing.T) {
-	if uri, err := LoadLogo(""); err != nil || uri != "" {
-		t.Errorf("LoadLogo(\"\") = %q, %v; want no logo and no error", uri, err)
-	}
-	if _, err := LoadLogo(filepath.Join(t.TempDir(), "gone.png")); err != ErrLogoUnreadable {
-		t.Errorf("a missing logo = %v, want ErrLogoUnreadable", err)
-	}
-
-	text := filepath.Join(t.TempDir(), "notes.txt")
-	if err := os.WriteFile(text, []byte("this is not a logo"), 0o600); err != nil {
-		t.Fatal(err)
-	}
-	if _, err := LoadLogo(text); err != ErrLogoNotImage {
-		t.Errorf("a text file as a logo = %v, want ErrLogoNotImage", err)
-	}
-}
-
-func pngFile(t *testing.T) string {
-	t.Helper()
-	img := image.NewRGBA(image.Rect(0, 0, 2, 2))
-	img.Set(0, 0, color.RGBA{R: 20, G: 30, B: 40, A: 255})
-
-	path := filepath.Join(t.TempDir(), "logo.png")
-	f, err := os.Create(path)
+// THE CARD'S OWN BRANDING IS NOT A SETTING.
+//
+// The letterhead used to carry an image the technician chose, which is a slot to paint over the
+// app's mark with. It carries words now, and the mascot prints whatever else is on the sheet.
+func TestTheLetterheadCarriesNoArtwork(t *testing.T) {
+	r, err := Build(musette(t), Options{
+		Now:        at,
+		Letterhead: &Letterhead{CompanyName: "Smegg Accordion Service"},
+	})
 	if err != nil {
-		t.Fatal(err)
+		t.Fatalf("Build: %v", err)
 	}
-	defer f.Close()
-	if err := png.Encode(f, img); err != nil {
-		t.Fatal(err)
+	out := render(t, r)
+
+	if strings.Contains(out, "<img") {
+		t.Error("the sheet carries an <img>: the letterhead can put a picture on the card again")
 	}
-	return path
+	if !strings.Contains(out, "mascot") {
+		t.Error("the app's mark is missing from a card that carries a letterhead")
+	}
 }
 
 // The footer carries the app's own site as a real link, so a PDF keeps it clickable.

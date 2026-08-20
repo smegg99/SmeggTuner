@@ -12,6 +12,7 @@
     "audioDeviceRefresh": "Odśwież listę urządzeń",
     "humFilterLabel": "Filtr przydźwięku sieciowego",
     "humFilterHint": "Wycina przydźwięk sieci zbierany przez mikrofon: 50 Hz w Europie, 60 Hz w Ameryce Północnej.",
+    "humFilterNone": "Brak",
     "humFilter50": "50 Hz",
     "humFilter60": "60 Hz",
     "clockPpmLabel": "Korekcja zegara",
@@ -66,12 +67,7 @@
       "name": "Nazwa warsztatu",
       "nameHint": "Drukowana w nagłówku karty, jeśli poprosisz o nagłówek przy eksporcie.",
       "address": "Adres",
-      "website": "Strona",
-      "logo": "Logo",
-      "logoHint": "Osadzone w samej karcie, więc przetrwa wysłanie mailem i wydruk gdziekolwiek.",
-      "pickLogo": "Wybierz",
-      "clearLogo": "Usuń logo",
-      "noLogo": "Brak logo"
+      "website": "Strona"
     }
   }
 }

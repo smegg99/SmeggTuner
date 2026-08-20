@@ -10,9 +10,6 @@
         :sure="!!heard"
         :status="status"
         :progress="lockProgress"
-        box-width="22cqh"
-        box-height="22cqh"
-        note-size="7cqh"
       />
 
       <div class="rng__keys">
@@ -95,40 +92,43 @@ async function onNext() {
 
 <style scoped>
 .rng {
+  --cr-h: 176px;
+  --cr-note: 56px;
+  --cr-w: 176px;
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 2cqh;
+  gap: 16px;
   justify-content: center;
 }
 
 .rng__prompt {
   color: rgb(var(--v-theme-ink));
-  font-size: 2.4cqh;
+  font-size: 19.2px;
   margin: 0;
   max-width: 40ch;
 }
 
 .rng__keys {
   display: flex;
-  gap: 0.6cqw;
+  gap: 6.6px;
 }
 
 .rng__range {
   align-items: center;
   display: flex;
-  gap: 1.5cqw;
+  gap: 16.5px;
 }
 
 .rng__end {
   display: flex;
   flex-direction: column;
-  gap: 0.4cqh;
+  gap: 3.2px;
 }
 
 .rng__endlabel {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.4cqh;
+  font-size: 11.2px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -136,19 +136,19 @@ async function onNext() {
 .rng__endnote {
   color: rgb(var(--v-theme-ink));
   font-family: var(--font-mono);
-  font-size: 4cqh;
+  font-size: 32px;
   font-variant-numeric: tabular-nums;
   font-weight: 600;
 }
 
 .rng__arrow {
   color: rgb(var(--v-theme-ink3));
-  font-size: 3cqh;
+  font-size: 24px;
 }
 
 .rng__warn {
   color: rgb(var(--v-theme-warn));
-  font-size: 1.6cqh;
+  font-size: 12.8px;
   margin: 0;
 }
 </style>

@@ -73,7 +73,7 @@ const { t } = useI18n()
 .marks {
   align-items: center;
   display: inline-flex;
-  gap: 0.4cqw;
+  gap: 4.4px;
 }
 
 .tag {
@@ -82,8 +82,8 @@ const { t } = useI18n()
   border-radius: 2px;
   color: rgb(var(--v-theme-ink3));
   flex: none;
-  font-size: 1.35cqh;
-  padding: 0 0.35cqw;
+  font-size: 10.8px;
+  padding: 0 3.8px;
 }
 
 .tag--mono {

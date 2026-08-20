@@ -13,8 +13,8 @@ import (
 func TestTheInstrumentLibrarySitsBesideTheSessions(t *testing.T) {
 	s := service(t)
 
-	create(t, s, "Bench", 3, 442)
-	if _, err := s.SaveInstrument("Mine"); err != nil {
+	dto := create(t, s, "Bench", 3, 442)
+	if _, err := s.AdoptInstrument(dto.ID, "Mine"); err != nil {
 		t.Fatal(err)
 	}
 
@@ -39,10 +39,11 @@ func TestAFreshBenchHasNoInstruments(t *testing.T) {
 	}
 }
 
-// Saving keeps the model - banks, registers - not the serial.
-func TestSavingTheInstrumentOnTheBench(t *testing.T) {
+// Remembering keeps the model - banks, registers - not the serial: a serial belongs to
+// one physical accordion, the description to every one built like it.
+func TestRememberingTheAccordionOnTheBench(t *testing.T) {
 	s := service(t)
-	if _, err := s.Create(NewSessionDTO{
+	dto, err := s.Create(NewSessionDTO{
 		Name: "Jan K.",
 		Instrument: coresession.Instrument{
 			Serial:    "12345",
@@ -50,11 +51,12 @@ func TestSavingTheInstrumentOnTheBench(t *testing.T) {
 			Registers: []coresession.Register{{Name: "MMM", Banks: []coresession.Bank{coresession.BankM1, coresession.BankM2, coresession.BankM3}}},
 			ReedCount: 3,
 		},
-	}); err != nil {
+	})
+	if err != nil {
 		t.Fatal(err)
 	}
 
-	got, err := s.SaveInstrument("Morino, as I set it up")
+	got, err := s.AdoptInstrument(dto.ID, "Morino, as I set it up")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -74,10 +76,10 @@ func TestSavingTheInstrumentOnTheBench(t *testing.T) {
 	}
 }
 
-func TestSavingAnInstrumentNeedsAnInstrument(t *testing.T) {
+func TestRememberingAnAccordionNeedsASessionToTakeItFrom(t *testing.T) {
 	s := service(t)
-	if _, err := s.SaveInstrument("Nothing"); !errors.Is(err, ErrNoSession) {
-		t.Fatalf("save = %v, want %v", err, ErrNoSession)
+	if _, err := s.AdoptInstrument("", "Nothing"); !errors.Is(err, ErrNotFound) {
+		t.Fatalf("remember = %v, want %v", err, ErrNotFound)
 	}
 }
 
@@ -117,8 +119,8 @@ func TestAnInstrumentCanBeTakenOffAnImportedSession(t *testing.T) {
 
 func TestAnInstrumentTravelsBetweenBenches(t *testing.T) {
 	s := service(t)
-	create(t, s, "Bench", 3, 442)
-	saved, err := s.SaveInstrument("Castagnari")
+	dto := create(t, s, "Bench", 3, 442)
+	saved, err := s.AdoptInstrument(dto.ID, "Castagnari")
 	if err != nil {
 		t.Fatal(err)
 	}

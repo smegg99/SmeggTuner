@@ -63,11 +63,11 @@ const current = computed(() => props.items.find(item => item.value === props.mod
   color: rgb(var(--v-theme-ink));
   display: flex;
   font-family: var(--font-sans);
-  font-size: 1.75cqh;
-  gap: 0.5cqw;
-  height: 4.4cqh;
+  font-size: 14px;
+  gap: 5.5px;
+  height: 35.2px;
   min-width: 0;
-  padding-inline: 0.7cqw;
+  padding-inline: 7.7px;
   text-align: start;
   width: 100%;
 }
@@ -97,6 +97,6 @@ const current = computed(() => props.items.find(item => item.value === props.mod
 .select__caret {
   color: rgb(var(--v-theme-ink3));
   flex: 0 0 auto;
-  font-size: 2cqh;
+  font-size: 16px;
 }
 </style>

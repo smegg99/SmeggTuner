@@ -57,11 +57,14 @@ export interface InstrumentTemplate {
 export const MIN_REEDS = 1
 export const MAX_REEDS = 8
 
+// Mirrors core/session. The widest treble panel in production is thirteen switches and the widest
+// bass machine seven; these sit above both, and the backend refuses anything past them.
+export const MAX_REGISTERS = 16
+export const MAX_BASS_REGISTERS = 8
+export const MAX_SWITCH_NAME = 24
+export const MAX_INSTRUMENT_NAME = 60
+
 // A4 range the schema allows (common/config: 430..450).
 export const A4_MIN = 430
 export const A4_MAX = 450
 export const A4_DEFAULT = 440
-
-export function emptyInstrument(): Instrument {
-  return { make: '', model: '', serial: '', reedCount: 1 }
-}

@@ -82,27 +82,27 @@ const { t } = useI18n()
 .dlg {
   display: flex;
   flex-direction: column;
-  max-height: 94cqh;
+  max-height: 752px;
   min-height: 0;
 }
 
 /* title and close key share --dlg-glyph so they're one size */
 .dlg__head {
-  --dlg-glyph: 2.6cqh;
+  --dlg-glyph: 20.8px;
 
   align-items: center;
   border-bottom: 1px solid rgb(var(--v-theme-lineSoft));
   display: flex;
   flex: 0 0 auto;
-  gap: 1cqw;
-  padding: 1.2cqh 1cqw 1.2cqh 1.4cqw;
+  gap: 11px;
+  padding: 9.6px 11px 9.6px 15.4px;
 }
 
 .dlg__what {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  gap: 0.3cqh;
+  gap: 2.4px;
   min-width: 0;
 }
 
@@ -117,7 +117,7 @@ const { t } = useI18n()
 
 .dlg__sub {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.5cqh;
+  font-size: 12px;
   line-height: 1.4;
   margin: 0;
 }
@@ -125,14 +125,14 @@ const { t } = useI18n()
 .dlg__close {
   align-items: center;
   background: none;
-  block-size: 4.6cqh;
+  block-size: 36.8px;
   border: 0;
   border-radius: 2px;
   color: rgb(var(--v-theme-ink3));
   cursor: pointer;
   display: flex;
   flex: 0 0 auto;
-  inline-size: 4.6cqh;
+  inline-size: 36.8px;
   justify-content: center;
 }
 
@@ -155,7 +155,7 @@ const { t } = useI18n()
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
-  padding: 1.6cqh 1.4cqw;
+  padding: 12.8px 15.4px;
 }
 
 .dlg__foot {
@@ -163,7 +163,7 @@ const { t } = useI18n()
   border-top: 1px solid rgb(var(--v-theme-lineSoft));
   display: flex;
   flex: 0 0 auto;
-  gap: 0.6cqw;
-  padding: 1.1cqh 1.4cqw;
+  gap: 6.6px;
+  padding: 8.8px 15.4px;
 }
 </style>

@@ -9,8 +9,6 @@ import type { StateDTO, TableDTO } from '~~bindings/smegg.me/smeggtuner/services
 const EVENT_STATE = 'record:state'
 const EVENT_TABLE = 'record:table'
 
-// A reading with no session open; the UI offers to create one rather than erroring.
-const ERROR_NO_SESSION = 'session.error.noSession'
 const ERROR_KEY_PATTERN = /(?:session|record)\.error\.[A-Za-z0-9]+/
 const ERROR_UNEXPECTED = 'record.error.unexpected'
 
@@ -110,8 +108,6 @@ export function useRecord() {
     error,
     // Armed, not merely open: a session opens in warm-up and saves nothing until the record key.
     recording: computed(() => sessionId.value !== '' && armed.value),
-    // The UI's cue to offer creating a session inline.
-    needsSession: computed(() => error.value === ERROR_NO_SESSION),
     load,
     show,
     undo,

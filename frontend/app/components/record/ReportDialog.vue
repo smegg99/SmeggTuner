@@ -34,6 +34,21 @@
           </template>
         </UiFormField>
 
+        <!-- The note is the one thing on the card that was not measured. It is written
+             here because here is where the card gets printed. -->
+        <UiFormField
+          v-slot="{ id }"
+          :label="t('record.report.notes')"
+          :hint="t('record.report.notesHint')"
+        >
+          <UiTextInput
+            :id="id"
+            v-model="notes"
+            :rows="3"
+            :maxlength="MAX_NOTES"
+          />
+        </UiFormField>
+
         <!-- Letterhead lives in Settings; only per-export fields here. -->
         <p
           v-if="error"
@@ -47,7 +62,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, watch } from 'vue'
+import { computed, reactive, ref, watch } from 'vue'
+import { MAX_NOTES } from '~/utils/accordion'
+import { useSessions } from '~/composables/useSessions'
 import type { ToolItem } from '~/components/ui/ToolGroup.vue'
 import type { ReportOptions } from '~/types/record'
 
@@ -66,6 +83,10 @@ const emit = defineEmits<{ export: [options: ReportOptions] }>()
 const open = defineModel<boolean>({ default: false })
 
 const { t } = useI18n()
+// The note rides on the session, not on the export: Go reads it off the session it holds.
+const { active, setNotes } = useSessions()
+
+const notes = ref('')
 
 // PDF first and default: same sheet as the HTML, laid out A4 by a headless browser on the backend.
 const FORMATS = computed<ToolItem[]>(() => [
@@ -83,12 +104,16 @@ function today() {
 
 const draft = reactive<ReportOptions>({ format: 'pdf', date: today() })
 
-// Seed the date on open, not on mount: a reopened dialog would otherwise send a stale date.
+// Seed on open, not on mount: a reopened dialog would otherwise send a stale date and
+// show a note that has since been rewritten.
 watch(open, (showing) => {
-  if (showing) draft.date = today()
+  if (!showing) return
+  draft.date = today()
+  notes.value = active.value?.notes ?? ''
 }, { immediate: true })
 
-function submit() {
+async function submit() {
+  await setNotes(notes.value)
   emit('export', { ...draft })
 }
 </script>
@@ -97,17 +122,17 @@ function submit() {
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1.6cqh;
+  gap: 12.8px;
 }
 
 /* Narrow on purpose: a date is only 8 characters. */
 .form__date {
-  max-width: 16cqw;
+  max-width: 176px;
 }
 
 .form__error {
   color: rgb(var(--v-theme-reed));
-  font-size: 1.6cqh;
+  font-size: 12.8px;
   margin: 0;
 }
 </style>

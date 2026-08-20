@@ -56,12 +56,6 @@ export function useInstruments() {
     return saved as unknown as InstrumentTemplate | null
   }
 
-  async function fromBench(name: string) {
-    const saved = await SessionService.SaveInstrument(name)
-    await refresh()
-    return saved as unknown as InstrumentTemplate | null
-  }
-
   async function remove(id: string) {
     await SessionService.DeleteInstrument(id)
     await refresh()
@@ -125,7 +119,6 @@ export function useInstruments() {
     imageOf,
     apply,
     save,
-    fromBench,
     remove,
     setImage,
     clearImage,

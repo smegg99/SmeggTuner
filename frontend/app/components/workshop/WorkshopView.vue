@@ -9,27 +9,7 @@
     <SessionDetail
       v-if="openSession"
       :id="openSession"
-      :src="activeSrc"
     />
-
-    <UiShelf
-      v-else-if="section === 'instruments'"
-      :empty="instruments.empty.value"
-      icon="mdi-piano"
-      :lead="t('instrument.empty')"
-      :hint="t('instrument.emptyHint')"
-    >
-      <InstrumentCard
-        v-for="i in instruments.list.value"
-        :key="i.id"
-        :instrument="i"
-        :src="instruments.imageOf(i)"
-        @edit="id => dialogs?.describe(id)"
-        @photo="instruments.setImage"
-        @export="exportInstrument"
-        @delete="id => dialogs?.askDeleteInstrument(id)"
-      />
-    </UiShelf>
 
     <UiShelf
       v-else
@@ -63,7 +43,7 @@ import { useShell } from '~/composables/useShell'
 import { useWorkshop } from '~/composables/useWorkshop'
 
 const { t } = useI18n()
-const { section, openSession, openSessionAt } = useShell()
+const { openSession, openSessionAt } = useShell()
 const { seq, last } = useWorkshop()
 const { list, active, load, open, importFile, exportFile } = useSessions()
 // Aliased: `load` is already this room's session list.
@@ -73,43 +53,34 @@ const instruments = useInstruments()
 const dialogs = ref<InstanceType<typeof WorkshopDialogs> | null>(null)
 
 // Load on mount, not top-level await: awaiting in setup suspends the room on re-entry and flashes the shelf.
+// The accordions come too: the cards show their photographs and the new-session picker lists them.
 onMounted(async () => {
   await load()
   await instruments.load()
   await loadRecorded()
 })
 
-const headTitle = computed(() => {
-  if (openSession.value) return active.value?.name ?? t('session.title')
-  return section.value === 'instruments' ? t('instrument.title') : t('session.title')
-})
+const headTitle = computed(() =>
+  openSession.value ? (active.value?.name ?? t('session.title')) : t('session.title'),
+)
 
-const headMeta = computed(() => {
-  if (openSession.value) return ''
-  return String(section.value === 'instruments' ? instruments.list.value.length : list.value.length)
-})
+const headMeta = computed(() => (openSession.value ? '' : String(list.value.length)))
 
-// A session's photo lives with its instrument; a deleted instrument just means no picture.
+// A session's photo lives with its accordion; a forgotten accordion just means no picture.
 function srcOf(instrumentId?: string): string {
   const i = instrumentId ? instruments.find(instrumentId) : undefined
   return i ? instruments.imageOf(i) : ''
 }
 
-const activeSrc = computed(() => srcOf(active.value?.instrumentId))
-
-// The shared toolbar raises a request; what it means depends on the current shelf.
+// The shared toolbar raises a request; this room is the only shelf now.
 watch(seq, () => {
-  const onShelf = section.value === 'instruments'
-
   switch (last.value) {
     case 'new':
-      if (onShelf) dialogs.value?.describe(null)
-      else dialogs.value?.openCreate()
+      dialogs.value?.openCreate()
       break
 
     case 'import':
-      if (onShelf) void instruments.importFile()
-      else void importFile()
+      void importFile()
       break
 
     case 'export':
@@ -126,11 +97,6 @@ async function openIt(id: string) {
 function exportSession(id: string) {
   const s = list.value.find(x => x.id === id)
   if (s) exportFile(s.id, s.name)
-}
-
-function exportInstrument(id: string) {
-  const i = instruments.find(id)
-  if (i) instruments.exportFile(i)
 }
 </script>
 

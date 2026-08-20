@@ -46,9 +46,9 @@ const emit = defineEmits<{
   border: 1px solid rgb(var(--v-theme-line));
   border-radius: 2px;
   display: flex;
-  gap: 0.5cqw;
+  gap: 5.5px;
   min-width: 0;
-  padding-inline: 0.7cqw;
+  padding-inline: 7.7px;
 }
 
 .num:focus-within {
@@ -65,9 +65,9 @@ const emit = defineEmits<{
   color: rgb(var(--v-theme-ink));
   flex: 1 1 auto;
   font-family: var(--font-mono);
-  font-size: 1.8cqh;
+  font-size: 14.4px;
   font-variant-numeric: tabular-nums;
-  height: 4.4cqh;
+  height: 35.2px;
   min-width: 0;
   outline: none;
   width: 100%;
@@ -76,6 +76,6 @@ const emit = defineEmits<{
 .num__suffix {
   color: rgb(var(--v-theme-ink3));
   flex: 0 0 auto;
-  font-size: 1.55cqh;
+  font-size: 12.4px;
 }
 </style>

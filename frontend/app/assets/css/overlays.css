@@ -1,20 +1,16 @@
-/* Vuetify teleports overlays into .v-overlay-container, outside .window, so cqh loses its
-   container context and Vuetify's px/rem sizing mismatches the cqh-sized app. Making
-   .v-application the size container fixes both. These rules are global/unscoped deliberately:
-   scoped styles can't reliably reach teleported content. */
-
-/* :root duplicates these because a v-dialog teleports into .v-overlay-container, outside
-   .v-application, and can't see them there; at :root cqw resolves against the viewport. */
+/* Dialog widths, global/unscoped deliberately: Vuetify teleports overlays into
+   .v-overlay-container, outside .v-application, and scoped styles can't reliably reach
+   teleported content. :root duplicates them for exactly that reason. */
 :root {
-  --dlg-sm: 40cqw;
-  --dlg-md: 58cqw;
-  --dlg-lg: 76cqw;
+  --dlg-sm: 440px;
+  --dlg-md: 638px;
+  --dlg-lg: 836px;
 }
 
 .v-application {
-  --dlg-sm: 40cqw;
-  --dlg-md: 58cqw;
-  --dlg-lg: 76cqw;
+  --dlg-sm: 440px;
+  --dlg-md: 638px;
+  --dlg-lg: 836px;
 
   container-type: size;
   height: 100dvh;
@@ -47,13 +43,13 @@
 }
 
 .v-overlay .v-btn {
-  font-size: 1.75cqh;
+  font-size: 14px;
   letter-spacing: 0;
   text-transform: none;
 }
 
 .v-overlay .v-icon {
-  font-size: 2.2cqh;
+  font-size: 17.6px;
 }
 
 /* The one Vuetify overlay still showing its own chrome; restyled to match the app's sheets.
@@ -63,9 +59,9 @@
   border: 1px solid rgb(var(--v-theme-line));
   border-radius: 2px;
   color: rgb(var(--v-theme-ink));
-  font-size: 1.6cqh;
+  font-size: 12.8px;
   font-weight: 500;
   line-height: 1.35;
-  max-width: 34cqw;
-  padding: 0.7cqh 0.9cqw;
+  max-width: 374px;
+  padding: 5.6px 9.9px;
 }

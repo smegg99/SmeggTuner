@@ -3,7 +3,6 @@
     <SessionIdent
       v-model:view="view"
       :session="active"
-      :src="src"
       :busy="busy"
     />
 
@@ -57,8 +56,15 @@
     </div>
 
     <CurveEditor
-      v-else
+      v-else-if="view === 'curve'"
       class="read__pane"
+    />
+
+    <!-- Tag must be SessionAccordionPanel: a bare AccordionPanel resolves to a native
+         element and silently renders nothing. -->
+    <SessionAccordionPanel
+      v-else
+      class="read__accordion"
     />
 
     <UiConfirmDialog
@@ -88,7 +94,6 @@ import type { ReportOptions, RecordUnit, TakeRow } from '~/types/record'
 
 const props = defineProps<{
   id: string
-  src: string
 }>()
 
 const { t } = useI18n()
@@ -104,7 +109,7 @@ const {
 
 const unit = ref<RecordUnit>('cent')
 const selectedNote = ref<number | null>(null)
-const view = ref<'recorded' | 'curve'>('recorded')
+const view = ref<'recorded' | 'curve' | 'accordion'>('recorded')
 const printing = ref(false)
 const killTake = ref<number | null>(null)
 
@@ -162,8 +167,8 @@ async function confirmDelete() {
 <style scoped>
 .read__bass-title {
   color: rgb(var(--v-theme-ink));
-  font-size: 1.9cqh;
-  margin: 1.2cqh 0 0.4cqh;
+  font-size: 15.2px;
+  margin: 9.6px 0 3.2px;
 }
 
 .read {
@@ -184,6 +189,14 @@ async function confirmDelete() {
   overflow: hidden;
 }
 
+/* The accordion panel scrolls itself, so it must NOT get read__pane's overflow clamp: both
+   classes land on the same element from two scoped stylesheets at equal specificity, and
+   whichever is injected last wins. It was the clamp, and the form below the fold - the
+   switch-name field - could not be reached. */
+.read__accordion {
+  min-height: 0;
+}
+
 /* Occupies the table's row when no recording is picked. */
 .read__empty {
   align-items: center;
@@ -194,7 +207,7 @@ async function confirmDelete() {
 
 .read__sub {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.6cqh;
+  font-size: 12.8px;
   margin: 0;
   max-width: 46ch;
 }

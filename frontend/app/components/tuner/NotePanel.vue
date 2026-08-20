@@ -9,7 +9,7 @@
     >
       <v-icon
         :icon="phase === 'quiet' ? 'mdi-hand-back-right' : 'mdi-play'"
-        size="6cqh"
+        size="48px"
       />
     </div>
     <div
@@ -119,11 +119,11 @@ const phase = computed<'quiet' | 'play' | 'normal'>(() => {
   align-items: center;
   background: rgb(var(--v-theme-chrome2));
   border: 1px solid rgb(var(--v-theme-lineSoft));
-  border-radius: 0.45cqh;
+  border-radius: 3.6px;
   display: flex;
-  gap: 1.3cqw;
+  gap: 14.3px;
   min-width: 0;
-  padding: 0 1.4cqw;
+  padding: 0 15.4px;
 }
 
 .note--quiet {
@@ -146,7 +146,7 @@ const phase = computed<'quiet' | 'play' | 'normal'>(() => {
 
 .note__cue {
   color: rgb(var(--v-theme-warn));
-  font-size: 1.9cqh;
+  font-size: 15.2px;
   font-weight: 700;
 }
 
@@ -159,7 +159,7 @@ const phase = computed<'quiet' | 'play' | 'normal'>(() => {
   color: rgb(var(--v-theme-ink));
   display: flex;
   flex: 0 0 auto;
-  font-size: 9.2cqh;
+  font-size: 73.6px;
   font-weight: 300;
   letter-spacing: -0.03em;
   line-height: 1;
@@ -176,7 +176,7 @@ const phase = computed<'quiet' | 'play' | 'normal'>(() => {
 .note__side {
   display: flex;
   flex-direction: column;
-  gap: 0.5cqh;
+  gap: 4px;
   min-width: 0;
 }
 
@@ -184,25 +184,25 @@ const phase = computed<'quiet' | 'play' | 'normal'>(() => {
   align-items: center;
   color: rgb(var(--v-theme-ink));
   display: flex;
-  font-size: 1.75cqh;
+  font-size: 14px;
   font-weight: 700;
-  gap: 0.4cqw;
+  gap: 4.4px;
 }
 
 .note__state {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.65cqh;
+  font-size: 13.2px;
 }
 
 .note__hz {
   color: rgb(var(--v-theme-ink));
   font-family: var(--font-mono);
-  font-size: 2.35cqh;
+  font-size: 18.8px;
   font-variant-numeric: tabular-nums;
 }
 
 .note__sub {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.65cqh;
+  font-size: 13.2px;
 }
 </style>

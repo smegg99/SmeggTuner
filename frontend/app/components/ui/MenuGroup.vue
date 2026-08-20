@@ -22,16 +22,16 @@ defineProps<{ label?: string }>()
 
 .group + .group {
   border-top: 1px solid rgb(var(--v-theme-lineSoft));
-  margin-top: 0.4cqh;
-  padding-top: 0.4cqh;
+  margin-top: 3.2px;
+  padding-top: 3.2px;
 }
 
 .group__label {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.25cqh;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.06em;
-  padding: 0.5cqh 0.9cqw 0.35cqh;
+  padding: 4px 9.9px 2.8px;
   text-transform: uppercase;
 }
 </style>

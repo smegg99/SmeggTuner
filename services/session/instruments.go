@@ -3,6 +3,7 @@ package session
 import (
 	"errors"
 	"os"
+	"slices"
 
 	"smegg.me/smeggtuner/common/logger"
 	coresession "smegg.me/smeggtuner/core/session"
@@ -16,21 +17,6 @@ func (s *Service) Instruments() ([]coresession.Template, error) {
 		return nil, ErrLoadFailed
 	}
 	return all, nil
-}
-
-// SaveInstrument keeps the active session's instrument as a named template, dropping the serial.
-func (s *Service) SaveInstrument(name string) (*coresession.Template, error) {
-	snap := s.Snapshot()
-	if snap == nil {
-		return nil, ErrNoSession
-	}
-
-	t := coresession.FromSession(snap, name)
-	if err := s.templates().Save(t); err != nil {
-		logger.Warn(logger.MsgSessionSaveFailed, logger.Err(err))
-		return nil, saveError(err)
-	}
-	return t, nil
 }
 
 // DeleteInstrument removes a saved instrument; shipped ones cannot be deleted.
@@ -61,7 +47,43 @@ func (s *Service) ExportInstrument(id, path string) error {
 	return nil
 }
 
-// SaveInstrumentSpec writes an instrument from the Instruments tab; empty id creates, an existing id edits in place.
+// SetInstrument rewrites the accordion on the bench. The card's columns - the ranks, the reed
+// count, the bass ladder - freeze once there are readings, because every reading was filed under
+// a column this would move and nobody re-measured them. Everything else stays open: a switch that
+// had not been described yet, a tolerance, the keyboard's ends, the name.
+func (s *Service) SetInstrument(i coresession.Instrument) error {
+	if err := coresession.ValidInstrument(i); err != nil {
+		logger.Warn(logger.MsgSessionRejected, logger.Str("setting", "instrument"), logger.Err(err))
+		return ErrInvalidInstrument
+	}
+
+	s.mu.Lock()
+	if s.active == nil {
+		s.mu.Unlock()
+		return ErrNoSession
+	}
+	if len(s.active.Takes) > 0 && columnsDiffer(s.active.Instrument, i) {
+		s.mu.Unlock()
+		logger.Warn(logger.MsgSessionRejected, logger.Str("setting", "instrument_columns"))
+		return ErrHasReadings
+	}
+	s.active.Instrument = cloneInstrument(i)
+	s.mu.Unlock()
+
+	s.touch()
+	s.emitActive()
+	return nil
+}
+
+// columnsDiffer reports whether two descriptions would print a different card.
+func columnsDiffer(a, b coresession.Instrument) bool {
+	if a.ReedCount != b.ReedCount || a.BassReeds != b.BassReeds {
+		return true
+	}
+	return !slices.Equal(a.Banks, b.Banks)
+}
+
+// SaveInstrumentSpec writes a remembered accordion; empty id creates one, an existing id edits it in place.
 func (s *Service) SaveInstrumentSpec(t coresession.Template) (*coresession.Template, error) {
 	if err := s.templates().Save(&t); err != nil {
 		logger.Warn(logger.MsgSessionSaveFailed, logger.Err(err))
@@ -99,12 +121,18 @@ func (s *Service) SetInstrumentImage(id, path string) error {
 	return nil
 }
 
-// AdoptInstrument saves the session's recorded instrument as a template; it has no photograph.
+// AdoptInstrument remembers a session's accordion as a template; it has no photograph.
+// The open session is taken as it stands, not as it was last written: the store is written
+// asynchronously (see touch and saver), so reading it back would remember whatever was
+// there before the last keystroke.
 func (s *Service) AdoptInstrument(sessionID, name string) (*coresession.Template, error) {
-	sn, err := s.sessions().Get(sessionID)
-	if err != nil {
-		logger.Warn(logger.MsgSessionLoadFailed, logger.Str("id", sessionID), logger.Err(err))
-		return nil, loadError(err)
+	sn := s.Snapshot()
+	if sn == nil || sn.ID != sessionID {
+		var err error
+		if sn, err = s.sessions().Get(sessionID); err != nil {
+			logger.Warn(logger.MsgSessionLoadFailed, logger.Str("id", sessionID), logger.Err(err))
+			return nil, loadError(err)
+		}
 	}
 
 	t := coresession.FromSession(sn, name)
@@ -113,11 +141,23 @@ func (s *Service) AdoptInstrument(sessionID, name string) (*coresession.Template
 		return nil, saveError(err)
 	}
 
-	// Link the session to the new template so it never offers to adopt again.
+	// Link the session to the new template so it never offers to adopt again. The open
+	// session is linked in memory as well, or the next flush writes the link back off.
 	sn.InstrumentID = t.ID
 	if err := s.sessions().Save(sn); err != nil {
 		logger.Warn(logger.MsgSessionSaveFailed, logger.Err(err))
 		return nil, saveError(err)
+	}
+
+	s.mu.Lock()
+	linked := s.active != nil && s.active.ID == sessionID
+	if linked {
+		s.active.InstrumentID = t.ID
+	}
+	s.mu.Unlock()
+
+	if linked {
+		s.emitActive()
 	}
 	return t, nil
 }

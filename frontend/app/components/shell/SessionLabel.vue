@@ -50,7 +50,7 @@ const inTune = computed(() => {
   align-items: baseline;
   display: flex;
   flex: 0 1 auto;
-  gap: 0.9cqw;
+  gap: 9.9px;
   min-width: 0;
   /* When too narrow, the name truncates and figures clip here rather than spilling over the keys. */
   overflow: hidden;
@@ -58,7 +58,7 @@ const inTune = computed(() => {
 
 .label__name {
   color: rgb(var(--v-theme-ink2));
-  font-size: 1.6cqh;
+  font-size: 12.8px;
   font-weight: 600;
   min-width: 0;
   overflow: hidden;
@@ -70,13 +70,13 @@ const inTune = computed(() => {
   color: rgb(var(--v-theme-ink3));
   flex: 0 0 auto;
   font-family: var(--font-mono);
-  font-size: 1.4cqh;
+  font-size: 11.2px;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
 .label__none {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.6cqh;
+  font-size: 12.8px;
 }
 </style>

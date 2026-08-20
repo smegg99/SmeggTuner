@@ -38,7 +38,9 @@
       "csv": "CSV",
       "formatHint": "PDF to karta na jednej stronie A4, złożona tak jak się drukuje. HTML to ten sam arkusz jako strona. CSV to tabela do arkusza kalkulacyjnego.",
       "date": "Data",
-      "export": "Eksportuj"
+      "export": "Eksportuj",
+      "notes": "Notatka na karcie",
+      "notesHint": "Drukowana pod tabelą. Co zrobiono albo co jeszcze zostało."
     },
     "error": {
       "reedsMerged": "Głosy tego dźwięku nie rozdzieliły się, więc nie ma pojedynczego głosu do poprawienia. Tuner wie o nim tyle, ile mówi dudnienie między nimi.",

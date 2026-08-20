@@ -42,10 +42,10 @@ defineProps<{
   cursor: pointer;
   display: flex;
   font-family: var(--font-sans);
-  font-size: 1.7cqh;
-  gap: 0.6cqw;
+  font-size: 13.6px;
+  gap: 6.6px;
   min-width: 0;
-  padding: 0.85cqh 0.9cqw;
+  padding: 6.8px 9.9px;
   text-align: start;
   width: 100%;
 }
@@ -80,12 +80,12 @@ defineProps<{
 .item__icon {
   color: rgb(var(--v-theme-ink3));
   flex: 0 0 auto;
-  font-size: 2cqh;
+  font-size: 16px;
 }
 
 .item__tick {
   color: rgb(var(--v-theme-ink2));
   flex: 0 0 auto;
-  font-size: 1.9cqh;
+  font-size: 15.2px;
 }
 </style>

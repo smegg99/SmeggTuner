@@ -112,9 +112,9 @@ const showRegister = computed(() => {
   align-items: center;
   color: rgb(var(--v-theme-ink3));
   display: flex;
-  font-size: 1.6cqh;
+  font-size: 12.8px;
   justify-content: center;
-  padding: 4cqh;
+  padding: 32px;
 }
 
 .scroll {
@@ -124,7 +124,7 @@ const showRegister = computed(() => {
 
 .table {
   border-collapse: collapse;
-  font-size: 1.75cqh;
+  font-size: 14px;
   width: 100%;
 }
 

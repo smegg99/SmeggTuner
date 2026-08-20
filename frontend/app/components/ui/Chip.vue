@@ -17,8 +17,8 @@ withDefaults(defineProps<{
   border-radius: 2px;
   color: rgb(var(--v-theme-ink2));
   flex: 0 0 auto;
-  font-size: 1.45cqh;
-  padding: 0.2cqh 0.45cqw;
+  font-size: 11.6px;
+  padding: 1.6px 5px;
 }
 
 .chip--mono {

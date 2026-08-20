@@ -53,19 +53,19 @@ const { draft: beatDraft, commit: commitBeat } = useDraftNumber(
 <style scoped>
 .tol {
   display: flex;
-  gap: 1.2cqw;
+  gap: 13.2px;
 }
 
 .tol__one {
   display: flex;
   flex: 1 1 0;
   flex-direction: column;
-  gap: 0.3cqh;
+  gap: 2.4px;
   min-width: 0;
 }
 
 .tol__cap {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.4cqh;
+  font-size: 11.2px;
 }
 </style>

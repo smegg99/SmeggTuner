@@ -3,7 +3,6 @@
     <InstrumentRegisterList
       :items="items"
       :empty="t('instrument.builder.none')"
-      height="10.5cqh"
       @remove="remove"
     >
       <template #symbol="{ index }">
@@ -11,12 +10,16 @@
       </template>
     </InstrumentRegisterList>
 
-    <InstrumentRegisterBuilder @add="add" />
+    <InstrumentRegisterBuilder
+      :have="registers"
+      @add="add"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { canAddRegister } from '~/utils/accordion'
 import { feetOf } from '~/utils/feet'
 import type { Register } from '~/types/session'
 
@@ -27,8 +30,10 @@ const { t } = useI18n()
 
 const items = computed(() => registers.value.map(r => ({ name: r.name, feet: feetOf(r.banks) })))
 
+// The builder disables what cannot be added; this is the same rule again, because a v-model can
+// be written from anywhere.
 function add(r: Register) {
-  if (registers.value.some(x => x.name === r.name)) return
+  if (!canAddRegister(registers.value, r.banks)) return
   registers.value = [...registers.value, r]
 }
 
@@ -41,6 +46,6 @@ function remove(i: number) {
 .regs {
   display: flex;
   flex-direction: column;
-  gap: 0.8cqh;
+  gap: 6.4px;
 }
 </style>

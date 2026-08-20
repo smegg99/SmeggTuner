@@ -25,6 +25,8 @@ var (
 	ErrInstrumentName = &ServiceError{Key: "session.error.instrumentName"}
 	// ErrInvalidName reports an empty session name.
 	ErrInvalidName = &ServiceError{Key: "session.error.invalidName"}
+	// ErrNotesTooLong reports a note longer than the printed card can hold.
+	ErrNotesTooLong = &ServiceError{Key: "session.error.notesTooLong"}
 	// ErrInvalidA4 reports a reference pitch outside 430..450 Hz.
 	ErrInvalidA4 = &ServiceError{Key: "session.error.invalidA4"}
 	// ErrInvalidReedCount reports a reed count outside 1..8.

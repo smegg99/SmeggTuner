@@ -36,15 +36,15 @@ const emit = defineEmits<{ help: [] }>()
   background: rgb(var(--v-theme-chrome));
   border-bottom: 1px solid rgb(var(--v-theme-lineSoft));
   display: flex;
-  gap: 0.7cqw;
+  gap: 7.7px;
   /* Fixed height so every panel's header lines up. */
-  min-height: 3.35cqh;
-  padding: 0.7cqh 0.9cqw;
+  min-height: 26.8px;
+  padding: 5.6px 9.9px;
 }
 
 .head__title {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.5cqh;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -62,7 +62,7 @@ const emit = defineEmits<{ help: [] }>()
   color: rgb(var(--v-theme-ink3));
   cursor: pointer;
   display: inline-flex;
-  padding: 0.2cqh 0.3cqw;
+  padding: 1.6px 3.3px;
 }
 
 .head__info:hover {

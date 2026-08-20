@@ -138,9 +138,9 @@ function tuningSpec(i: {
   cursor: pointer;
   display: flex;
   font: inherit;
-  gap: 0.6cqw;
+  gap: 6.6px;
   min-width: 0;
-  padding: 0.8cqh 0.7cqw;
+  padding: 6.4px 7.7px;
   text-align: start;
   width: 100%;
 }
@@ -161,8 +161,8 @@ function tuningSpec(i: {
   color: rgb(var(--v-theme-warn));
   opacity: 0.7;
   position: absolute;
-  right: 0.5cqw;
-  top: 0.5cqh;
+  right: 5.5px;
+  top: 4px;
   z-index: 2;
 }
 
@@ -174,7 +174,7 @@ function tuningSpec(i: {
   border-radius: 2px;
   display: flex;
   flex: 0 0 auto;
-  height: 5.4cqh;
+  height: 43.2px;
   justify-content: center;
   overflow: hidden;
 }
@@ -187,18 +187,18 @@ function tuningSpec(i: {
 
 .card__none {
   color: rgb(var(--v-theme-ink3));
-  font-size: 2.4cqh;
+  font-size: 19.2px;
 }
 
 .card__text {
   display: flex;
   flex-direction: column;
-  gap: 0.15cqh;
+  gap: 1.2px;
   min-width: 0;
 }
 
 .card__name {
-  font-size: 1.65cqh;
+  font-size: 13.2px;
   font-weight: 600;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -207,7 +207,7 @@ function tuningSpec(i: {
 
 .card__what {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.4cqh;
+  font-size: 11.2px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -221,8 +221,8 @@ function tuningSpec(i: {
   align-items: center;
   border-top: 1px solid rgb(var(--v-theme-lineSoft));
   display: flex;
-  gap: 0.25cqw;
-  padding: 0.4cqh 0.5cqw;
+  gap: 2.8px;
+  padding: 3.2px 5.5px;
   /* Above the stretched hit area: these are their own actions, not "open". */
   position: relative;
   z-index: 1;
@@ -230,9 +230,9 @@ function tuningSpec(i: {
 
 .card__count {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.35cqh;
+  font-size: 10.8px;
   overflow: hidden;
-  padding-inline-start: 0.2cqw;
+  padding-inline-start: 2.2px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }

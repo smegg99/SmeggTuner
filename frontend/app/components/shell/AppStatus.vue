@@ -70,8 +70,8 @@ const helpOpen = ref(false)
   align-items: center;
   border-top: 1px solid rgb(var(--v-theme-lineSoft));
   display: flex;
-  gap: 1.2cqw;
-  padding: 0.9cqh 1.1cqw;
+  gap: 13.2px;
+  padding: 7.2px 12.1px;
 }
 
 .status__logo {
@@ -92,7 +92,7 @@ const helpOpen = ref(false)
   color: rgb(var(--v-theme-ink3));
   flex: 0 0 auto;
   font-family: var(--font-mono);
-  font-size: 1.4cqh;
+  font-size: 11.2px;
   font-variant-numeric: tabular-nums;
 }
 
@@ -100,7 +100,7 @@ const helpOpen = ref(false)
   align-items: center;
   display: flex;
   flex: 0 0 auto;
-  gap: 0.4cqw;
+  gap: 4.4px;
 }
 
 /* Opens a panel, not a link: ink, not accent. */
@@ -112,10 +112,10 @@ const helpOpen = ref(false)
   color: rgb(var(--v-theme-ink2));
   cursor: pointer;
   display: flex;
-  font-size: 1.6cqh;
-  gap: 0.4cqw;
+  font-size: 12.8px;
+  gap: 4.4px;
   line-height: 1;
-  padding: 0.5cqh 0.7cqw;
+  padding: 4px 7.7px;
 }
 
 .status__action:hover {
@@ -129,6 +129,6 @@ const helpOpen = ref(false)
 }
 
 .status__action-icon {
-  font-size: 2cqh;
+  font-size: 16px;
 }
 </style>

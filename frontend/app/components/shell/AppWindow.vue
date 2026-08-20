@@ -24,7 +24,6 @@ import { useShell } from '~/composables/useShell'
 import { useShortcuts } from '~/composables/useShortcuts'
 import { windowTitle } from '~/utils/windowTitle'
 
-// Size container: inner dimensions are fractions of it (1px hairlines excepted).
 // Tuner is v-show, not v-if, so leaving and returning does not tear down its four canvases; workshop is v-if.
 const { view } = useShell()
 const { running, stop } = useTuner()
@@ -54,16 +53,18 @@ watch(view, (room) => {
 </script>
 
 <style scoped>
+/* container-type is kept for the containment, not for queries: nothing is sized as a fraction of
+   the window any more. */
 .window {
   background: rgb(var(--v-theme-bg));
   container-type: size;
   display: grid;
-  gap: 0.85cqh;
-  grid-template-rows: 5.3cqh 1fr 5.4cqh;
+  gap: 6.8px;
+  grid-template-rows: 42.4px 1fr 43.2px;
   height: 100dvh;
   overflow: hidden;
   /* status bar sits on the bottom edge, so almost no padding below it */
-  padding: 0.85cqh 0.85cqh 0.15cqh;
+  padding: 6.8px 6.8px 1.2px;
   width: 100vw;
 }
 

@@ -36,31 +36,31 @@ const { t } = useI18n()
 .help {
   display: flex;
   flex-direction: column;
-  gap: 1.4cqh;
+  gap: 11.2px;
 }
 
 .help__lead {
   color: rgb(var(--v-theme-ink));
-  font-size: 1.7cqh;
+  font-size: 13.6px;
   margin: 0;
 }
 
 .help__marks {
   display: flex;
   flex-direction: column;
-  gap: 1cqh;
+  gap: 8px;
   margin: 0;
 }
 
 .help__mark dt {
   color: rgb(var(--v-theme-ink));
-  font-size: 1.6cqh;
+  font-size: 12.8px;
   font-weight: 700;
 }
 
 .help__mark dd {
   color: rgb(var(--v-theme-ink2));
-  font-size: 1.6cqh;
-  margin: 0.2cqh 0 0;
+  font-size: 12.8px;
+  margin: 1.6px 0 0;
 }
 </style>

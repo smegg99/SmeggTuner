@@ -65,7 +65,7 @@ const boxes = computed(() => buildBoxes({
 <style scoped>
 .boxes {
   display: flex;
-  gap: 0.85cqh;
+  gap: 6.8px;
   min-height: 0;
 }
 </style>

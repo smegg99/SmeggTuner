@@ -106,21 +106,21 @@ const bassOptions = computed(() => {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 2cqh;
+  gap: 16px;
   justify-content: center;
   width: 100%;
 }
 
 .sw__prompt {
   color: rgb(var(--v-theme-ink));
-  font-size: 2.2cqh;
+  font-size: 17.6px;
   margin: 0;
   max-width: 44ch;
 }
 
 .sw__hint {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.7cqh;
+  font-size: 13.6px;
   margin: 0;
   max-width: 40ch;
 }
@@ -128,21 +128,21 @@ const bassOptions = computed(() => {
 .sw__registers {
   display: flex;
   flex-wrap: wrap;
-  gap: 1cqw;
+  gap: 11px;
   justify-content: center;
-  max-width: 60cqw;
+  max-width: 660px;
 }
 
 .sw__reg {
   align-items: center;
   background: rgb(var(--v-theme-raised));
   border: 1px solid rgb(var(--v-theme-line));
-  border-radius: 0.8cqh;
+  border-radius: 6.4px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 0.8cqh;
-  padding: 1.6cqh 1.6cqw;
+  gap: 6.4px;
+  padding: 12.8px 17.6px;
   transition: border-color 120ms, background 120ms;
 }
 
@@ -152,12 +152,12 @@ const bassOptions = computed(() => {
 }
 
 .sw__regsym {
-  height: 7cqh;
+  height: 56px;
 }
 
 .sw__regname {
   color: rgb(var(--v-theme-ink));
-  font-size: 1.6cqh;
+  font-size: 12.8px;
   font-weight: 600;
 }
 </style>

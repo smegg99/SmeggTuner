@@ -1,23 +1,17 @@
-<!-- Box/note/bar dimensions come in as props so each parent keeps its own sizing. -->
+<!-- Box, note and bar are sized by the parent through --cr-w / --cr-h / --cr-note rather than by
+     props: an inline style cannot be overridden, and a short window has to shrink this. -->
 <template>
-  <div
-    class="cr__note-wrap"
-    :style="{ width: boxWidth, height: boxHeight }"
-  >
+  <div class="cr__note-wrap">
     <output
       class="cr__note"
       :class="{ 'cr__note--sure': sure }"
-      :style="{ fontSize: noteSize }"
     >{{ note }}</output>
   </div>
 
   <p class="cr__status">
     {{ statusText }}
   </p>
-  <div
-    class="cr__bar"
-    :style="{ width: boxWidth }"
-  >
+  <div class="cr__bar">
     <div
       class="cr__bar-fill"
       :style="{ width: `${barPct}%` }"
@@ -34,9 +28,6 @@ const props = defineProps<{
   sure: boolean
   status: CaptureStatus
   progress: number
-  boxWidth: string
-  boxHeight: string
-  noteSize: string
 }>()
 
 const { t } = useI18n()
@@ -49,9 +40,11 @@ const barPct = computed(() => (props.status === 'holding' ? Math.round(props.pro
 <style scoped>
 .cr__note-wrap {
   align-items: center;
+  block-size: var(--cr-h);
+  inline-size: var(--cr-w);
   background: rgb(var(--v-theme-well));
   border: 1px solid rgb(var(--v-theme-line));
-  border-radius: 0.6cqh;
+  border-radius: 4.8px;
   display: flex;
   justify-content: center;
   transition: border-color 120ms;
@@ -60,6 +53,7 @@ const barPct = computed(() => (props.status === 'holding' ? Math.round(props.pro
 .cr__note {
   color: rgb(var(--v-theme-ink3));
   font-family: var(--font-mono);
+  font-size: var(--cr-note);
   font-variant-numeric: tabular-nums;
   font-weight: 600;
 }
@@ -70,15 +64,16 @@ const barPct = computed(() => (props.status === 'holding' ? Math.round(props.pro
 
 .cr__status {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.6cqh;
+  font-size: 12.8px;
   margin: 0;
-  min-height: 1.6cqh;
+  min-height: 12.8px;
 }
 
 .cr__bar {
   background: rgb(var(--v-theme-well));
   border-radius: 999px;
-  height: 0.7cqh;
+  height: 5.6px;
+  inline-size: var(--cr-w);
   overflow: hidden;
 }
 

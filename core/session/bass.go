@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"math/bits"
 	"sort"
+	"strconv"
+	"strings"
 
 	"smegg.me/smeggtuner/core/dsp"
 	"smegg.me/smeggtuner/core/tuning"
@@ -148,11 +150,47 @@ func (i Instrument) validateBass() error {
 	if i.BassReeds < MinBassReeds || i.BassReeds > MaxBassReeds {
 		return fmt.Errorf("%w: %d", ErrBassReeds, i.BassReeds)
 	}
+	if len(i.BassRegisters) > MaxBassRegisters {
+		return fmt.Errorf("%w: %d", ErrTooManyRegisters, len(i.BassRegisters))
+	}
+
 	machine := BassFeet(i.BassReeds)
+	// Same rule as the treble side: a bass switch is the feet it sounds, and two of them sounding
+	// the same feet are one switch written twice.
+	seenName := make(map[string]bool, len(i.BassRegisters))
+	seenFeet := make(map[string]bool, len(i.BassRegisters))
+
 	for _, r := range i.BassRegisters {
+		if len(r.Name) > MaxSwitchName {
+			return fmt.Errorf("%w: %q", ErrSwitchName, r.Name)
+		}
+		if seenName[r.Name] {
+			return fmt.Errorf("%w: %q", ErrDuplicateRegister, r.Name)
+		}
+		seenName[r.Name] = true
+
+		if key := feetKey(r.Feet); seenFeet[key] {
+			return fmt.Errorf("%w: %q sounds what another bass switch already does", ErrDuplicateRegister, r.Name)
+		} else {
+			seenFeet[key] = true
+		}
+
 		if err := validBassFeet(r.Feet, machine); err != nil {
 			return fmt.Errorf("bass register %q: %w", r.Name, err)
 		}
 	}
 	return nil
+}
+
+// feetKey identifies a bass switch by what it sounds, largest foot first, so the order it was
+// clicked in is not part of its identity.
+func feetKey(feet []int) string {
+	ordered := append([]int(nil), feet...)
+	sort.Sort(sort.Reverse(sort.IntSlice(ordered)))
+
+	parts := make([]string, len(ordered))
+	for i, f := range ordered {
+		parts[i] = strconv.Itoa(f)
+	}
+	return strings.Join(parts, "+")
 }

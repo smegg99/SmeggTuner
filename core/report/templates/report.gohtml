@@ -39,7 +39,7 @@ html, body {
 .sheet { margin: 0 auto; max-width: 210mm; padding: 10mm 8mm; }
 body.landscape .sheet { max-width: 297mm; }
 
-h1 { font-size: 15pt; margin: 0; }
+h1 { font-size: 14pt; font-weight: 700; margin: 2px 0 0; }
 h2 { font-size: 10.5pt; margin: 12px 0 4px; }
 
 /* The one rule that separates the letterhead from the card. */
@@ -50,11 +50,35 @@ h2 { font-size: 10.5pt; margin: 12px 0 4px; }
   margin-bottom: 10px;
   padding-bottom: 8px;
 }
-.letterhead img { max-height: 22mm; max-width: 60mm; object-fit: contain; }
 .letterhead .company { font-weight: 700; }
 .letterhead .lines { font-size: 9pt; white-space: pre-line; }
 
+/*
+ * THE MASTHEAD. Its own band across the top, ruled off from the card below it, so the mark is
+ * the sheet's letterhead rather than a caption stuck to the session title. The two used to sit
+ * on one line and fought: a tall piece of line art beside two lines of type, neither leading.
+ *
+ * The wordmark is set in the sheet's own type rather than pulled in as art - the app's logo
+ * file is live <text> in Noto Sans Display, which is not a font a printer has. The mascot is
+ * one path, so it needs no font at all.
+ */
+.mast {
+  align-items: center;
+  border-bottom: 1.5pt solid #000;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 9px;
+  padding-bottom: 6px;
+}
+/* A neutral grey, not the app's ink2 (#3f4653): that is a blue-grey, and this sheet is
+   grayscale by rule - TestTheSheetIsGrayscale enforces it. */
+.mast__name { color: #555; font-size: 19pt; letter-spacing: -0.6px; line-height: 1; }
+.mast__name b { color: #000; font-weight: 700; }
+/* Line art, not a solid silhouette, so it needs size to read as a cat at all. */
+.mascot { display: block; flex: 0 0 auto; height: 42px; width: auto; }
+
 .head { align-items: baseline; display: flex; gap: 12px; justify-content: space-between; }
+.head .when { flex: 0 0 auto; }
 
 /* The facts, as plain label-and-value pairs across the page. No panel, no tint. */
 .facts {
@@ -127,11 +151,13 @@ a { color: inherit; text-decoration: none; }
 </style>
 </head>
 <body class="{{.Layout.Class}}">
+
 <main class="sheet">
+
+<div class="mast">{{mascot}}<span class="mast__name"><b>Smegg</b>Tuner</span></div>
 
 {{with .Letterhead}}
 <div class="letterhead">
-  {{with logo .Logo}}<img src="{{.}}" alt="">{{end}}
   <div>
     {{with .CompanyName}}<div class="company">{{.}}</div>{{end}}
     {{with .CompanyAddress}}<div class="lines">{{.}}</div>{{end}}
@@ -214,9 +240,15 @@ a { color: inherit; text-decoration: none; }
   </p>
 </div>
 
+<!--
+  ONE LINE. It used to carry the session name, the pass's timestamp and the reference pitch as
+  well - all three already printed above it, in the title, the date and the facts. What is left
+  is the only thing the rest of the sheet does not say: when the card itself was made, and where
+  it came from.
+-->
 <footer>
-  <span>{{.Identity.Session}} - {{stamp .Session.At}} - {{Tf "report.footer.reference" "A4" (freq .Session.A4)}}</span>
-  <span>{{Tf "report.footer.generated" "At" (stamp .Generated) "App" "SmeggTuner"}} - <a href="{{home}}">{{homeLabel}}</a></span>
+  <span>{{Tf "report.footer.generated" "At" (stamp .Generated) "App" "SmeggTuner"}}</span>
+  <a href="{{home}}">{{homeLabel}}</a>
 </footer>
 
 </main>

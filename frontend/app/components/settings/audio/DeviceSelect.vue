@@ -77,7 +77,7 @@ const deviceItems = computed<SelectItem[]>(() =>
 .device {
   align-items: center;
   display: flex;
-  gap: 0.5cqw;
+  gap: 5.5px;
   min-width: 0;
 }
 

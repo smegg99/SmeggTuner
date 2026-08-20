@@ -6,7 +6,6 @@
     "emptyHint": "Create one for the accordion on the bench, or just open the tuner: it works without a session.",
     "card": {
       "a4": "A = {hz} Hz",
-      "reeds": "no reeds | {count} reed | {count} reeds",
       "hasCurve": "Goal curve set",
       "updated": "Updated {when}",
       "unnamedInstrument": "Accordion not named",
@@ -15,19 +14,15 @@
     },
     "dialog": {
       "newTitle": "New session",
-      "create": "Create",
       "name": "Session name",
       "nameHint": "Whatever you will recognise it by: the accordion, or whose it is",
-      "nameRequired": "Give the session a name",
-      "a4": "Reference pitch",
-      "a4Hint": "This accordion's own A. Measure it before you assume 440.",
-      "notes": "Notes",
       "instrument": "Accordion",
-      "instrumentNone": "Not described",
-      "instrumentHint": "Pick the accordion and its reed ranks are set for you. Leave it if you do not know: the tuner works either way.",
-      "namePlaceholder": "Whose accordion is this?",
-      "says": "Reed ranks {banks}, and {registers} register. Set for you: you never have to say which rank a reading came from. | Reed ranks {banks}, and {registers} registers. Set for you: you never have to say which rank a reading came from.",
-      "saysNothing": "No reed ranks named, so the tuning table numbers its columns instead of naming them. That is fine, and you can pick an accordion later."
+      "pickAccordion": "Which accordion?",
+      "describeNew": "Describe a new one...",
+      "loadAccordion": "Load from file...",
+      "forgetAccordion": "Forget this accordion",
+      "start": "Start",
+      "backToList": "Pick one already tuned"
     },
     "delete": "Delete",
     "footer": {
@@ -42,6 +37,7 @@
       "loadFailed": "Could not read the session.",
       "saveFailed": "Could not save the session. Your last takes may be lost if you close now.",
       "invalidName": "Give the session a name.",
+      "notesTooLong": "That note is longer than the card can hold. Shorten it to 500 characters.",
       "invalidA4": "The reference pitch must be between 430 and 450 Hz.",
       "invalidReedCount": "An accordion sounds between 1 and 8 reeds on a note.",
       "invalidNote": "That note is outside the range the tuner tracks.",
@@ -72,16 +68,23 @@
     "readings": {
       "empty": "Nothing recorded yet. Open the tuner and play the accordion: what you catch lands here.",
       "notes": "no notes | one note | {n} notes"
+    },
+    "accordion": {
+      "a4Locked": "Fixed: this session has already recorded against it.",
+      "columnsRefused": "That change moves the card’s ranks, and this session already recorded against them. It has not been saved; undo it, or start a new session for the rebuilt accordion.",
+      "frozen": "This session has readings. Its reference pitch and the card’s ranks are fixed, because every reading was measured against the one and filed under the other. A switch you had not described yet is still welcome.",
+      "remember": "Remember it",
+      "rememberHint": "This session carries its own copy of the accordion. Remember it and the next session can start from it."
     }
   },
   "sessionPage": {
     "tabs": {
       "curve": "Desired beatings",
-      "recorded": "Recorded tuning"
+      "recorded": "Recorded tuning",
+      "accordion": "Accordion"
     }
   },
   "instrument": {
-    "title": "Accordions",
     "sections": {
       "identity": "Identity",
       "reference": "Reference & tolerance",
@@ -89,15 +92,8 @@
       "voices": "Registers",
       "bass": "Bass machine"
     },
-    "new": "Describe one",
     "export": "Export",
-    "edit": "Edit",
-    "delete": "Delete",
     "photo": "Photograph",
-    "empty": "No accordions yet",
-    "emptyHint": "An accordion is described once and used for every session on it: its reed ranks and its switches. Import one somebody sent you, or describe the one on your bench.",
-    "newTitle": "Describe an accordion",
-    "editTitle": "Edit accordion",
     "name": "Name",
     "nameHint": "What you call this accordion. Yours to name; nothing translates it.",
     "namePlaceholder": "Hohner Morino V N",
@@ -105,13 +101,6 @@
     "registersHint": "Click the dots of each switch's symbol - the circle engraved on the accordion - or pick a common one. What it sounds is read straight off the dots.",
     "registersSubtitle": "The treble-side switches, and the ranks each one sounds.",
     "says": "Reed ranks {banks}. The widest switch sounds {reeds} reed. | Reed ranks {banks}. The widest switch sounds {reeds} reeds.",
-    "deleteTitle": "Delete this accordion?",
-    "deleteHint": "The description and its photograph go. Sessions already recorded on it are untouched: each one carries its own copy of the accordion and will still open, still print, and still mean what it meant.",
-    "card": {
-      "unnamed": "Not named",
-      "noBanks": "no ranks named",
-      "registers": "no registers | one register | {n} registers"
-    },
     "file": {
       "openTitle": "Select an accordion file",
       "exportTitle": "Export accordion",
@@ -120,13 +109,14 @@
       "imageFilter": "Images"
     },
     "builder": {
-      "high": "4' piccolo",
-      "middle": "8' reeds",
-      "low": "16' bass",
       "add": "Add",
+      "already": "That switch is already described",
+      "high": "4' piccolo",
+      "low": "16' bass",
+      "middle": "8' reeds",
+      "none": "No switches yet. Pick the ranks each one sounds, below.",
       "remove": "Remove this register",
-      "none": "No registers yet. Pick a common one, or build it on the dots.",
-      "custom": "Unusual switch"
+      "title": "Add a switch"
     },
     "range": {
       "label": "Keyboard range",
@@ -143,15 +133,16 @@
     "toleranceHint": "How many cents off a reed may be before it is called out of tune. This accordion's own; a concert box is held tighter than a folk one.",
     "beatTolerance": "Beat tolerance",
     "bass": {
-      "voices": "Bass voices",
-      "none": "None",
-      "hint": "Declare how many voices the bass sounds; most machines have four or five.",
+      "build": "Feet the next switch sounds",
       "fixed": "No bass registers: a fixed machine, every voice always sounds.",
-      "registerName": "Switch name"
+      "full": "A bass machine here carries at most {n} switches",
+      "hint": "Declare how many voices the bass sounds; most machines have four or five.",
+      "none": "None",
+      "registerName": "Switch name",
+      "voices": "Bass voices"
     }
   },
   "workshop": {
-    "label": "Workshop",
     "exit": "Exit session",
     "print": "Print card",
     "import": "Import",

@@ -51,6 +51,6 @@ async function halt() {
   align-items: center;
   display: inline-flex;
   flex: 0 0 auto;
-  gap: 0.25cqw;
+  gap: 2.8px;
 }
 </style>

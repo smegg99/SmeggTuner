@@ -74,7 +74,7 @@ function onEnter() {
   border-radius: 2px;
   display: flex;
   min-width: 0;
-  padding-inline: 0.7cqw;
+  padding-inline: 7.7px;
 }
 
 .text:focus-within {
@@ -96,18 +96,18 @@ function onEnter() {
   color: rgb(var(--v-theme-ink));
   flex: 1 1 auto;
   font-family: inherit;
-  font-size: 1.8cqh;
-  height: 4.4cqh;
+  font-size: 14.4px;
+  height: 35.2px;
   min-width: 0;
   outline: none;
   width: 100%;
 }
 
 .text__input--area {
-  font-size: 1.7cqh;
+  font-size: 13.6px;
   height: auto;
   line-height: 1.45;
-  padding-block: 1cqh;
+  padding-block: 8px;
   resize: none;
 }
 

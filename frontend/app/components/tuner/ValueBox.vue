@@ -75,13 +75,13 @@ function signed(value: number | null): string {
 .box {
   background: rgb(var(--v-theme-chrome2));
   border: 1px solid rgb(var(--v-theme-lineSoft));
-  border-radius: 0.45cqh;
+  border-radius: 3.6px;
   display: flex;
   flex: 1 1 0;
   flex-direction: column;
-  gap: 0.4cqh;
+  gap: 3.2px;
   min-width: 0;
-  padding: 0.65cqh 1.1cqw 0.65cqh;
+  padding: 5.2px 12.1px 5.2px;
 }
 
 .box--beat {
@@ -93,19 +93,19 @@ function signed(value: number | null): string {
   align-items: baseline;
   display: flex;
   flex: 0 0 auto;
-  gap: 0.5cqw;
-  height: 1.9cqh;
+  gap: 5.5px;
+  height: 15.2px;
 }
 
 .box__label {
   color: rgb(var(--v-theme-ink2));
-  font-size: 1.55cqh;
+  font-size: 12.4px;
   font-weight: 600;
 }
 
 .box__unit {
   color: rgb(var(--v-theme-ink3));
-  font-size: 1.4cqh;
+  font-size: 11.2px;
   margin-left: auto;
 }
 
@@ -115,11 +115,11 @@ function signed(value: number | null): string {
   display: flex;
   flex: 0 0 auto;
   font-family: var(--font-mono);
-  font-size: 3.5cqh;
+  font-size: 28px;
   font-variant-numeric: tabular-nums;
   font-weight: 500;
   /* Digit height reserved so the row doesn't jump when a note starts. */
-  height: 3.5cqh;
+  height: 28px;
   letter-spacing: -0.03em;
   line-height: 1;
   overflow: hidden;
@@ -133,7 +133,7 @@ function signed(value: number | null): string {
 .box__value--none {
   color: rgb(var(--v-theme-ink3));
   font-family: var(--font-sans);
-  font-size: 1.65cqh;
+  font-size: 13.2px;
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.25;
@@ -144,17 +144,17 @@ function signed(value: number | null): string {
   color: rgb(var(--v-theme-ink3));
   display: flex;
   flex: 0 0 auto;
-  font-size: 1.35cqh;
-  gap: 0.4cqw;
-  /* Fixed, not a minimum: the 1.75cqh <b> would otherwise push past a floor and grow the card. */
-  height: 2.05cqh;
+  font-size: 10.8px;
+  gap: 4.4px;
+  /* Fixed, not a minimum: the 14px <b> would otherwise push past a floor and grow the card. */
+  height: 16.4px;
   overflow: hidden;
 }
 
 .box__foot b {
   color: rgb(var(--v-theme-goal));
   font-family: var(--font-mono);
-  font-size: 1.75cqh;
+  font-size: 14px;
   font-variant-numeric: tabular-nums;
   font-weight: 600;
 }

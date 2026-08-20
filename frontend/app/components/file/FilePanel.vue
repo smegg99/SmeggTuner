@@ -59,7 +59,7 @@ onMounted(refresh)
 .file__name {
   color: rgb(var(--v-theme-ink2));
   flex: 0 1 auto;
-  font-size: 1.6cqh;
+  font-size: 12.8px;
   font-weight: 600;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -72,9 +72,9 @@ onMounted(refresh)
 
 .file__rule {
   background: rgb(var(--v-theme-line));
-  block-size: 2.4cqh;
+  block-size: 19.2px;
   flex: 0 0 1px;
-  margin-inline: 0.35cqw;
+  margin-inline: 3.8px;
 }
 
 .file__at,
@@ -82,7 +82,7 @@ onMounted(refresh)
   color: rgb(var(--v-theme-ink3));
   flex: 0 0 auto;
   font-family: var(--font-mono);
-  font-size: 1.45cqh;
+  font-size: 11.6px;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
@@ -94,7 +94,7 @@ onMounted(refresh)
 
 .file__body {
   display: grid;
-  grid-template-rows: 1fr 3.2cqh;
+  grid-template-rows: 1fr 25.6px;
   height: 100%;
   min-height: 0;
 }
