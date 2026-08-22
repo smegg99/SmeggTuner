@@ -1,8 +1,7 @@
+// backend/common/logger/api.go
 package logger
 
 import (
-	"os"
-
 	"github.com/smegg99/s99logger"
 )
 
@@ -26,18 +25,8 @@ func Error(id s99logger.MessageID, attrs ...s99logger.Attr) {
 	read().Error(s99logger.NewEvent(id, attrs...))
 }
 
-// Fatal logs id at error level and terminates the process.
-func Fatal(id s99logger.MessageID, attrs ...s99logger.Attr) {
-	read().Error(s99logger.NewEvent(id, attrs...))
-	_ = Close()
-	os.Exit(1)
-}
-
 // Attr is a re-exported structured log attribute.
 type Attr = s99logger.Attr
-
-// MessageID is a re-exported log event identifier.
-type MessageID = s99logger.MessageID
 
 // Attribute constructors, re-exported so callers depend only on this package.
 

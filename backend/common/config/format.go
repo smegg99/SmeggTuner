@@ -2,6 +2,7 @@ package config
 
 import (
 	"os"
+	"path"
 	"path/filepath"
 	"runtime"
 	"strings"
@@ -22,6 +23,7 @@ const (
 	FormatExe      Format = "exe"      // Windows portable executable
 	FormatMacApp   Format = "macapp"   // macOS .app bundle
 	FormatSystem   Format = "system"   // Linux system location (/usr); deb, rpm and the AUR are indistinguishable at runtime
+	FormatUser     Format = "user"     // Linux per-user install from the release archive (build/linux/install.sh)
 )
 
 const appName = "smeggtuner"
@@ -61,7 +63,18 @@ func detectFromPath() Format {
 	if resolved, err := filepath.EvalSymlinks(exe); err == nil {
 		exe = resolved
 	}
-	return formatForLocation(runtime.GOOS, exe, os.Getenv)
+	return formatForExecutable(runtime.GOOS, exe, os.Getenv)
+}
+
+// formatForExecutable recognizes the installer marker even outside standard install directories.
+func formatForExecutable(goos, exe string, env func(string) string) Format {
+	if goos == "windows" {
+		marker, err := os.ReadFile(filepath.Join(filepath.Dir(exe), "smeggtuner.install"))
+		if err == nil && strings.TrimSpace(string(marker)) == "nsis" {
+			return FormatNSIS
+		}
+	}
+	return formatForLocation(goos, exe, env)
 }
 
 // formatForLocation decides by path prefix alone (host filepath semantics would make it
@@ -79,6 +92,13 @@ func formatForLocation(goos, exe string, env func(string) string) Format {
 		if pathUnder(exe, "/usr") {
 			return FormatSystem
 		}
+		if home := env("HOME"); home != "" && pathUnder(exe, path.Join(home, ".local/lib", appName)) {
+			return FormatUser
+		}
+	case "darwin":
+		if strings.HasSuffix(path.Dir(exe), ".app/Contents/MacOS") {
+			return FormatMacApp
+		}
 	}
 	return FormatBinary
 }
@@ -92,7 +112,7 @@ func pathUnder(path, root string) bool {
 func (f Format) IsInstalled() bool {
 	switch f {
 	case FormatAppImage, FormatFlatpak, FormatSnap, FormatMacApp,
-		FormatDeb, FormatRPM, FormatAUR, FormatNSIS, FormatSystem:
+		FormatDeb, FormatRPM, FormatAUR, FormatNSIS, FormatSystem, FormatUser:
 		return true
 	default:
 		return false

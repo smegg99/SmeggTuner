@@ -1,0 +1,61 @@
+{
+  "preferences": {
+    "theme": "auto",
+    "accent_mode": "auto",
+    "accent_color": "#2563eb",
+    "language": "en",
+    "close_to_tray": true
+  },
+  "logger": {
+    "verbose": false,
+    "no_color": false,
+    "enable_files": false,
+    "dir": "./logs",
+    "prefix": "",
+    "level": "INFO",
+    "max_size_mb": 10,
+    "max_backups": 5,
+    "max_age_days": 30,
+    "log_name": "smeggtuner.log",
+    "compression": "zstd",
+    "local_time": true
+  },
+  "audio": {
+    "device_id": "",
+    "hum_filter_50": false,
+    "hum_filter_60": false,
+    "devices": {}
+  },
+  "tuner": {
+    "a4": 440.0,
+    "scale_naming": "cdefgab",
+    "error_reference": "scale",
+    "deviation_unit": "reference",
+    "beat_unit": "hz",
+    "detection": "balanced",
+    "stop_after_lock": false,
+    "continuous_update_manual": false,
+    "tolerance": 1.0,
+    "beat_tolerance": 3.0,
+    "lock_a4": false,
+    "transpose": 0,
+    "mode": "tones",
+    "reed_boxes": [
+      1
+    ],
+    "octave_offsets": [
+      12
+    ],
+    "tone_duration_ms": 43000,
+    "calibration_capture_ms": 2000
+  },
+  "report": {
+    "company_name": "",
+    "company_address": "",
+    "company_website": ""
+  },
+  "storage": {
+    "db_path": "@{datadir:smeggtuner.db}"
+  }
+}
+

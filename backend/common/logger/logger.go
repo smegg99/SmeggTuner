@@ -7,6 +7,8 @@ import (
 
 	"github.com/smegg99/s99logger"
 	"github.com/smegg99/s99logger/rotation"
+
+	"smegg.me/smeggtuner/backend/common/i18n"
 )
 
 const defaultService = "smeggtuner"
@@ -38,7 +40,7 @@ func newConsoleLogger(service string, noColor bool, level s99logger.Level) *s99l
 	if noColor {
 		console.WithColor(false)
 	}
-	return s99logger.New(console, s99logger.Options{Service: service, MinLevel: level})
+	return s99logger.New(console, s99logger.Options{Service: service, MinLevel: level, Translator: i18n.Translator()})
 }
 
 func parseLevel(level string, verbose bool) s99logger.Level {
@@ -111,8 +113,9 @@ func Configure(opts Options) error {
 	}
 
 	logger := s99logger.New(s99logger.MultiSink(sinks...), s99logger.Options{
-		Service:  service,
-		MinLevel: parseLevel(opts.Level, opts.Verbose),
+		Service:    service,
+		MinLevel:   parseLevel(opts.Level, opts.Verbose),
+		Translator: i18n.Translator(),
 	})
 
 	mu.Lock()

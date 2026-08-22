@@ -1,6 +1,5 @@
-// Package i18n holds the app's native-side translations, backed by the
-// s99wails locale package. The frontend keeps its own i18n; this covers Go
-// strings only (app metadata, tray menu).
+// backend/common/i18n/i18n.go
+// Package i18n loads S99Locale-generated native messages through S99Wails.
 package i18n
 
 import (
@@ -9,18 +8,26 @@ import (
 	"io/fs"
 	"sync/atomic"
 
-	"github.com/smegg99/s99wails/locale"
+	goi18n "github.com/nicksnyder/go-i18n/v2/i18n"
+	"github.com/smegg99/s99logger"
+	"github.com/smegg99/s99wails/v2/locale"
 )
 
 //go:embed locales/*.json
 var localeFS embed.FS
 
-const defaultLocale = "en"
+//go:generate go tool loc build -c ../../../i18n/config.cue
 
 var locales = mustLoad()
 
 // current mirrors the last SetLocale code, which the locale package does not itself retain.
 var current atomic.Pointer[string]
+
+// Localizer returns the active S99Wails localizer for generated accessors.
+func Localizer() *goi18n.Localizer { return locales.Current() }
+
+// Translator localizes log messages without changing stable event identifiers.
+func Translator() s99logger.Translator { return locales.Translator() }
 
 // mustLoad parses the embedded locale files; a failure is a build defect, so it panics.
 func mustLoad() *locale.Locales {
@@ -28,7 +35,7 @@ func mustLoad() *locale.Locales {
 	if err != nil {
 		panic(fmt.Sprintf("i18n: sub locales fs: %v", err))
 	}
-	l, err := locale.New(sub, defaultLocale)
+	l, err := locale.New(sub, DefaultLocale)
 	if err != nil {
 		panic(fmt.Sprintf("i18n: load locales: %v", err))
 	}
@@ -38,7 +45,7 @@ func mustLoad() *locale.Locales {
 // SetLocale switches the active locale; go-i18n matching handles region suffixes (pl-PL to pl) and falls back to English.
 func SetLocale(code string) {
 	if code == "" {
-		code = defaultLocale
+		code = DefaultLocale
 	}
 	current.Store(&code)
 	locales.SetLocale(code)
@@ -69,5 +76,5 @@ func Current() string {
 	if code := current.Load(); code != nil {
 		return *code
 	}
-	return defaultLocale
+	return DefaultLocale
 }
