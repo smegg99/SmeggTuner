@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"smegg.me/smeggtuner/core/datastore"
+	"smegg.me/smeggtuner/backend/core/datastore"
 )
 
 // Init points the shared datastore at a fresh temporary database and tears it down with the test.

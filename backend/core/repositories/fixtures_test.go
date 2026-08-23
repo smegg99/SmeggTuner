@@ -7,7 +7,7 @@ import (
 	"image/jpeg"
 	"testing"
 
-	"smegg.me/smeggtuner/core/session"
+	"smegg.me/smeggtuner/backend/core/session"
 )
 
 // photo returns a real JPEG run through PrepareImage, as a chosen file would be.

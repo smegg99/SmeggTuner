@@ -6,7 +6,7 @@ import (
 
 	"gorm.io/gorm"
 
-	"smegg.me/smeggtuner/core/datastore"
+	"smegg.me/smeggtuner/backend/core/datastore"
 )
 
 // ErrNotFound is returned when an id names nothing; callers match on this, not GORM's sentinel.

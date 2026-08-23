@@ -5,12 +5,12 @@ import (
 	"testing"
 	"time"
 
-	"smegg.me/smeggtuner/core/datastore/datastoretest"
-	"smegg.me/smeggtuner/core/dsp"
-	"smegg.me/smeggtuner/core/repositories"
-	"smegg.me/smeggtuner/core/session"
-	"smegg.me/smeggtuner/core/target"
-	"smegg.me/smeggtuner/core/tuning"
+	"smegg.me/smeggtuner/backend/core/datastore/datastoretest"
+	"smegg.me/smeggtuner/backend/core/dsp"
+	"smegg.me/smeggtuner/backend/core/repositories"
+	"smegg.me/smeggtuner/backend/core/session"
+	"smegg.me/smeggtuner/backend/core/target"
+	"smegg.me/smeggtuner/backend/core/tuning"
 )
 
 // recorded is a fully populated session, so a round trip that drops a JSON column has something to lose.
@@ -23,13 +23,14 @@ func recorded(t *testing.T) *session.Session {
 	}, 442)
 	s.Curve = &target.Curve{
 		ReedCount: 3,
-		Unit:      target.UnitCents,
+		Unit:      target.UnitReference,
 		Anchors:   []target.Anchor{{Note: tuning.Note(60), Reeds: []float64{0, -4, 4}}},
 	}
 	s.UpsertTake(session.Take{
 		Note:  tuning.Note(60),
 		At:    time.Now(),
-		Reeds: []dsp.ReedMeasure{{Freq: 261.6, DevCents: 0.4}},
+		Reeds: []dsp.ReedMeasure{{Present: true, Freq: 261.6, Dev: 0.4}, {Dev: -99}, {Present: true, Freq: 262.1, Dev: 3.5}},
+		Beats: []dsp.BeatMeasure{{Pair: "1-2"}, {Pair: "2-3"}},
 	})
 	return s
 }
@@ -56,8 +57,11 @@ func TestASessionSurvivesTheDatabase(t *testing.T) {
 	if got.Curve == nil || len(got.Curve.Anchors) != 1 {
 		t.Fatalf("the goal did not survive: %+v", got.Curve)
 	}
-	if len(got.Takes) != 1 || got.Takes[0].Reeds[0].Freq != 261.6 {
+	if len(got.Takes) != 1 || got.Takes[0].Reeds[0].Freq != 261.6 || got.Takes[0].Reeds[0].Dev != 0.4 {
 		t.Fatalf("the readings did not survive: %+v", got.Takes)
+	}
+	if r := got.Takes[0].Reeds; len(r) != 3 || r[1].Present || !r[2].Present || len(got.Takes[0].Beats) != 2 {
+		t.Fatalf("the slots did not keep their places: %+v", got.Takes[0])
 	}
 }
 
@@ -87,29 +91,25 @@ func TestTheListIsNewestFirst(t *testing.T) {
 	}
 }
 
-func TestSaveStampsUpdatedAndInsertDoesNot(t *testing.T) {
+func TestSaveStampsUpdated(t *testing.T) {
 	datastoretest.Init(t)
 	repo := repositories.GetSessionRepository()
 
-	old := recorded(t)
+	s := recorded(t)
 	then := time.Date(2024, 3, 1, 12, 0, 0, 0, time.UTC)
-	old.Created, old.Updated = then, then
-	if err := repo.Insert(old); err != nil {
+	s.Created, s.Updated = then, then
+	if err := repo.Save(s); err != nil {
 		t.Fatal(err)
 	}
-	got, err := repo.Get(old.ID)
+	saved, err := repo.Get(s.ID)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !got.Updated.Equal(then) {
-		t.Fatalf("Insert stamped Updated: %v", got.Updated)
-	}
-
-	if err := repo.Save(got); err != nil {
-		t.Fatal(err)
-	}
-	if saved, _ := repo.Get(old.ID); !saved.Updated.After(then) {
+	if !saved.Updated.After(then) {
 		t.Fatalf("Save did not stamp Updated: %v", saved.Updated)
+	}
+	if !saved.Created.Equal(then) {
+		t.Fatalf("Save touched Created: %v", saved.Created)
 	}
 }
 

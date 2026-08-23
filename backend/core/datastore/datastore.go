@@ -1,17 +1,21 @@
+// backend/core/datastore/datastore.go
 // Package datastore owns the single SQLite connection; the schema is built from the GORM models via AutoMigrate, not SQL migration files.
 package datastore
 
 import (
+	"database/sql"
 	"fmt"
+	"net/url"
 	"os"
 	"path/filepath"
+	"strings"
 	"sync"
 
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	gormlogger "gorm.io/gorm/logger"
 
-	"smegg.me/smeggtuner/core/session"
+	"smegg.me/smeggtuner/backend/core/session"
 )
 
 var (
@@ -36,38 +40,53 @@ func Initialize(path string) error {
 	if db != nil {
 		return fmt.Errorf("datastore: already initialised at %s", dbPath)
 	}
-	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
-		return fmt.Errorf("datastore: create %s: %w", filepath.Dir(path), err)
+	dsn, err := connectionDSN(path)
+	if err != nil {
+		return fmt.Errorf("datastore: open %s: %w", path, err)
+	}
+	diskPath, _, _ := strings.Cut(path, "?")
+	if strings.HasPrefix(diskPath, "file:") {
+		uri, err := url.Parse(diskPath)
+		if err != nil {
+			return fmt.Errorf("datastore: open %s: %w", path, err)
+		}
+		diskPath = uri.Path
+		if diskPath == "" {
+			diskPath = uri.Opaque
+		}
+	}
+	if err := os.MkdirAll(filepath.Dir(diskPath), 0o755); err != nil {
+		return fmt.Errorf("datastore: create %s: %w", filepath.Dir(diskPath), err)
 	}
 
-	gormDB, err := gorm.Open(sqlite.Open(path), &gorm.Config{
+	sqlDB, err := sql.Open(sqlite.DriverName, dsn)
+	if err != nil {
+		return fmt.Errorf("datastore: open %s: %w", path, err)
+	}
+	ready := false
+	defer func() {
+		if !ready {
+			_ = sqlDB.Close()
+		}
+	}()
+	sqlDB.SetMaxOpenConns(1)
+
+	gormDB, err := gorm.Open(sqlite.New(sqlite.Config{Conn: sqlDB}), &gorm.Config{
 		Logger: gormlogger.Default.LogMode(gormlogger.Silent),
 	})
 	if err != nil {
 		return fmt.Errorf("datastore: open %s: %w", path, err)
 	}
 
-	for _, pragma := range []string{
-		"PRAGMA journal_mode=WAL",
-		"PRAGMA foreign_keys=ON",
-		"PRAGMA busy_timeout=5000",
-	} {
-		if err := gormDB.Exec(pragma).Error; err != nil {
-			return fmt.Errorf("datastore: %s: %w", pragma, err)
-		}
+	if err := gormDB.Exec("PRAGMA journal_mode=WAL").Error; err != nil {
+		return fmt.Errorf("datastore: PRAGMA journal_mode=WAL: %w", err)
 	}
-
-	// SQLite supports a single writer; one open connection avoids SQLITE_BUSY.
-	sqlDB, err := gormDB.DB()
-	if err != nil {
-		return fmt.Errorf("datastore: %w", err)
-	}
-	sqlDB.SetMaxOpenConns(1)
 
 	if err := gormDB.AutoMigrate(allModels()...); err != nil {
 		return fmt.Errorf("datastore: migrate: %w", err)
 	}
 
+	ready = true
 	db = gormDB
 	dbPath = path
 	return nil
@@ -113,4 +132,18 @@ func Ping() error {
 		return err
 	}
 	return sqlDB.Ping()
+}
+
+// connectionDSN reapplies connection-local pragmas when database/sql replaces a connection.
+func connectionDSN(path string) (string, error) {
+	base, query, _ := strings.Cut(path, "?")
+	values, err := url.ParseQuery(query)
+	if err != nil {
+		return "", err
+	}
+	values.Del("_fk")
+	values.Del("_timeout")
+	values.Set("_foreign_keys", "on")
+	values.Set("_busy_timeout", "5000")
+	return base + "?" + values.Encode(), nil
 }

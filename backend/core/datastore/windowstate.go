@@ -1,11 +1,9 @@
 package datastore
 
 import (
-	"encoding/json"
 	"errors"
-	"os"
 
-	"github.com/smegg99/s99wails/windowstate"
+	"github.com/smegg99/s99wails/v2/shell/windowstate"
 	"gorm.io/gorm"
 )
 
@@ -44,22 +42,6 @@ func (WindowStore) Load() (windowstate.State, bool, error) {
 		Height:    row.Height,
 		Maximised: row.Maximised,
 	}, true, nil
-}
-
-// ImportLegacyWindowState seeds geometry from the pre-database windowstate.json once; an existing row wins over the file, and a missing or unparseable file means no saved state.
-func ImportLegacyWindowState(path string) error {
-	if _, ok, err := (WindowStore{}).Load(); err != nil || ok {
-		return err
-	}
-	data, err := os.ReadFile(path)
-	if err != nil {
-		return nil
-	}
-	var state windowstate.State
-	if err := json.Unmarshal(data, &state); err != nil {
-		return nil
-	}
-	return (WindowStore{}).Save(state)
 }
 
 // Save writes the geometry, replacing any previous one.

@@ -4,9 +4,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	"smegg.me/smeggtuner/core/datastore/datastoretest"
-	"smegg.me/smeggtuner/core/repositories"
-	"smegg.me/smeggtuner/core/session"
+	"smegg.me/smeggtuner/backend/core/datastore/datastoretest"
+	"smegg.me/smeggtuner/backend/core/repositories"
+	"smegg.me/smeggtuner/backend/core/session"
 )
 
 // An imported instrument always gets a NEW id, so it can't overwrite an existing one.

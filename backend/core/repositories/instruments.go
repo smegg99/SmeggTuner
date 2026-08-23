@@ -6,10 +6,10 @@ import (
 	"sort"
 	"time"
 
-	"smegg.me/smeggtuner/core/session"
+	"smegg.me/smeggtuner/backend/core/session"
 )
 
-// InstrumentRepository owns the templates table; every read except Image omits the image blob, which is served separately (services/session/images.go).
+// InstrumentRepository owns the templates table; every read except Image omits the image blob, which is served separately (backend/services/session/images.go).
 type InstrumentRepository struct{ *Repository[session.Template] }
 
 func GetInstrumentRepository() *InstrumentRepository {

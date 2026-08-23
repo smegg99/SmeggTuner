@@ -4,9 +4,9 @@ import (
 	"errors"
 	"testing"
 
-	"smegg.me/smeggtuner/core/datastore/datastoretest"
-	"smegg.me/smeggtuner/core/repositories"
-	"smegg.me/smeggtuner/core/session"
+	"smegg.me/smeggtuner/backend/core/datastore/datastoretest"
+	"smegg.me/smeggtuner/backend/core/repositories"
+	"smegg.me/smeggtuner/backend/core/session"
 )
 
 func TestAnInstrumentKeepsItsPhotograph(t *testing.T) {

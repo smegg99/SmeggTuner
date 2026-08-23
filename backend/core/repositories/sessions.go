@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"smegg.me/smeggtuner/core/session"
+	"smegg.me/smeggtuner/backend/core/session"
 )
 
 // SessionRepository owns the sessions table.
@@ -47,17 +47,21 @@ func (r *SessionRepository) Save(s *session.Session) error {
 	return db().Save(s).Error
 }
 
-// Insert writes a session preserving its timestamps (unlike Save), which the legacy import needs.
-func (r *SessionRepository) Insert(s *session.Session) error {
-	if err := s.Validate(); err != nil {
-		return err
-	}
-	return r.Create(s)
-}
-
 func (r *SessionRepository) Delete(id string) error {
 	if !session.ValidID(id) {
 		return fmt.Errorf("%w: %q", ErrNotFound, id)
 	}
 	return r.Repository.Delete(id)
+}
+
+// LinkInstrument updates only the shelf link, never upserting a stale session snapshot.
+func (r *SessionRepository) LinkInstrument(id, instrumentID string) error {
+	res := db().Model(&session.Session{}).Where("id = ?", id).Update("instrument_id", instrumentID)
+	if res.Error != nil {
+		return res.Error
+	}
+	if res.RowsAffected == 0 {
+		return ErrNotFound
+	}
+	return nil
 }
