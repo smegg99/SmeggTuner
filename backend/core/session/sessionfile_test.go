@@ -3,12 +3,14 @@ package session
 import (
 	"archive/zip"
 	"encoding/json"
+	"errors"
 	"path/filepath"
 	"strings"
 	"testing"
 
-	"smegg.me/smeggtuner/core/target"
-	"smegg.me/smeggtuner/core/tuning"
+	"smegg.me/smeggtuner/backend/core/dsp"
+	"smegg.me/smeggtuner/backend/core/target"
+	"smegg.me/smeggtuner/backend/core/tuning"
 )
 
 func stsfPath(t *testing.T, name string) string {
@@ -19,12 +21,12 @@ func stsfPath(t *testing.T, name string) string {
 // A session, out to a .stsf and back in, with everything a report is written from intact.
 func TestASessionSurvivesTheRoundTrip(t *testing.T) {
 	s := recorded(t, 5)
-	s.Takes[1].ReedsMerged = true
+	s.Takes[1].Reeds[3] = dsp.ReedMeasure{Dev: -99}
 	s.Curve = &target.Curve{
 		Name:      "musette",
 		ReedCount: 5,
 		RefReed:   1,
-		Unit:      target.UnitCents,
+		Unit:      target.UnitReference,
 		Anchors: []target.Anchor{
 			{Note: 53, Reeds: []float64{-3, 0, 3, 6, 9}},
 			{Note: 89, Reeds: []float64{-9, 0, 9, 18, 27}},
@@ -58,10 +60,9 @@ func TestASessionSurvivesTheRoundTrip(t *testing.T) {
 			t.Fatalf("reading %d carries %d reeds", i, len(got.Takes[i].Reeds))
 		}
 	}
-	// A merged pair has to survive the trip: it is the flag the report checks before a per-reed row.
-	if got.Takes[0].ReedsMerged || !got.Takes[1].ReedsMerged {
-		t.Fatalf("merged flags came back as %v / %v",
-			got.Takes[0].ReedsMerged, got.Takes[1].ReedsMerged)
+	// A silent slot has to survive the trip in its place: slot identity is positional.
+	if got.Takes[1].Reeds[3].Present || !got.Takes[1].Reeds[4].Present || got.Takes[1].Reeds[4].Dev != 4 {
+		t.Fatalf("slots came back as %+v", got.Takes[1].Reeds)
 	}
 	if got.Curve == nil {
 		t.Fatal("the goal curve did not survive the round trip")
@@ -78,24 +79,11 @@ func TestASessionSurvivesTheRoundTrip(t *testing.T) {
 	}
 }
 
-// ReadSessionAny takes either format: the .stsf now, or the bare legacy JSON it used to.
-func TestReadSessionAnyTakesBothFormats(t *testing.T) {
-	s := recorded(t, 3)
-
-	stsf := stsfPath(t, "morino")
-	if err := WriteSessionFile(stsf, s); err != nil {
-		t.Fatal(err)
-	}
-	legacy := writeLegacy(t, s)
-
-	for _, path := range []string{stsf, legacy} {
-		got, err := ReadSessionAny(path)
-		if err != nil {
-			t.Fatalf("read %s: %v", path, err)
-		}
-		if got.ID != s.ID || len(got.Takes) != 2 {
-			t.Fatalf("%s came back as %+v", path, got)
-		}
+// A .stsf of another version is refused at the manifest, never half-read.
+func TestAnotherSessionFileVersionIsRefused(t *testing.T) {
+	_, err := ReadSessionFile(writeStsf(t, SessionFileVersion+1, body(t, recorded(t, 3))))
+	if !errors.Is(err, ErrSessionFileVer) {
+		t.Fatalf("read = %v, want ErrSessionFileVer", err)
 	}
 }
 
@@ -111,7 +99,7 @@ func TestTheFileIsVersionedAndReadable(t *testing.T) {
 	if err != nil {
 		t.Fatalf("it is not a zip: %v", err)
 	}
-	defer z.Close()
+	defer func() { _ = z.Close() }()
 
 	data, err := readEntry(&z.Reader, entrySession, 16<<20)
 	if err != nil {

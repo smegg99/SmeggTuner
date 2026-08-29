@@ -3,6 +3,7 @@ package session
 import (
 	"archive/zip"
 	"encoding/json"
+	"fmt"
 	"io"
 	"io/fs"
 	"os"
@@ -43,10 +44,17 @@ func readEntry(z *zip.Reader, name string, limit int64) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 
 	// Limited against a zip bomb; nothing legitimate is near these limits.
-	return io.ReadAll(io.LimitReader(f, limit))
+	body, err := io.ReadAll(io.LimitReader(f, limit+1))
+	if err != nil {
+		return nil, err
+	}
+	if int64(len(body)) > limit {
+		return nil, fmt.Errorf("session: archive entry %q exceeds %d bytes", name, limit)
+	}
+	return body, nil
 }
 
 // suggestBase flattens a name into a filesystem-safe base, or fallback if nothing survives.
@@ -89,10 +97,10 @@ func writeFileAtomic(path string, data []byte) error {
 		return err
 	}
 	name := tmp.Name()
-	defer os.Remove(name)
+	defer func() { _ = os.Remove(name) }()
 
 	if _, err := tmp.Write(data); err != nil {
-		tmp.Close()
+		_ = tmp.Close()
 		return err
 	}
 	if err := tmp.Close(); err != nil {

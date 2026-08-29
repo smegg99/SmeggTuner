@@ -160,3 +160,21 @@ func TestAnInstrumentFileKeepsItsReferencePitch(t *testing.T) {
 		t.Fatalf("A4 came back as %v", back.Instrument.A4)
 	}
 }
+
+func TestFromSessionOwnsBassRegistersAndFeet(t *testing.T) {
+	s := &Session{Instrument: Instrument{BassRegisters: []BassRegister{
+		{Name: "full", Feet: []int{16, 8, 4, 2}},
+		{Name: "low", Feet: []int{16, 8}},
+	}}}
+	tpl := FromSession(s, "Bass")
+	tpl.Instrument.BassRegisters[0].Name = "changed"
+	tpl.Instrument.BassRegisters[0].Feet[0] = 32
+	if got := s.Instrument.BassRegisters[0]; got.Name != "full" || got.Feet[0] != 16 {
+		t.Fatalf("template mutation reached session: %+v", got)
+	}
+	s.Instrument.BassRegisters[1].Name = "session"
+	s.Instrument.BassRegisters[1].Feet[0] = 32
+	if got := tpl.Instrument.BassRegisters[1]; got.Name != "low" || got.Feet[0] != 16 {
+		t.Fatalf("session mutation reached template: %+v", got)
+	}
+}

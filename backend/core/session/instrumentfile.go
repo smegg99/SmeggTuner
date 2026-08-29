@@ -9,7 +9,7 @@ import (
 )
 
 // The .stif (SmeggTuner Instrument File) packs an accordion and its photo into one zip. The on-disk
-// library is plain .json + .jpg (see template.go); .stif is only the import/export format.
+// library uses the database; .stif is only the import/export format.
 
 // InstrumentFileVersion is stamped into every .stif; an unknown version is refused.
 const InstrumentFileVersion = 1
@@ -75,7 +75,7 @@ func ReadInstrumentFile(path string) (*Template, []byte, error) {
 	if err != nil {
 		return nil, nil, fmt.Errorf("%w: %w", ErrNotInstrumentFile, err)
 	}
-	defer z.Close()
+	defer func() { _ = z.Close() }()
 
 	man, err := readEntry(&z.Reader, entryManifest, 4<<10)
 	if err != nil {
@@ -104,7 +104,7 @@ func ReadInstrumentFile(path string) (*Template, []byte, error) {
 		t.HasImage = false
 		return t, nil, nil
 	}
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 
 	jpg, err := PrepareImage(f)
 	if err != nil {

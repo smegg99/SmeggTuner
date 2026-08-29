@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"os"
 	"slices"
 	"strings"
 )
@@ -52,19 +51,6 @@ func (t *Template) Validate() error {
 	return validReeds(t.Instrument.ReedCount)
 }
 
-// ReadTemplate loads an instrument description from a legacy JSON file.
-func ReadTemplate(path string) (*Template, error) {
-	data, err := os.ReadFile(path)
-	if err != nil {
-		return nil, err
-	}
-	t, err := decodeTemplate(data)
-	if err != nil {
-		return nil, fmt.Errorf("read %s: %w", path, err)
-	}
-	return t, nil
-}
-
 func decodeTemplate(data []byte) (*Template, error) {
 	var f templateFile
 	if err := json.Unmarshal(data, &f); err != nil {
@@ -73,7 +59,7 @@ func decodeTemplate(data []byte) (*Template, error) {
 	if f.V != TemplateVersion {
 		return nil, fmt.Errorf("%w: %d", ErrTemplateVersion, f.V)
 	}
-	if err := f.Template.Validate(); err != nil {
+	if err := f.Validate(); err != nil {
 		return nil, err
 	}
 
@@ -95,6 +81,10 @@ func FromSession(s *Session, name string) *Template {
 		i.Registers[n].Banks = slices.Clone(i.Registers[n].Banks)
 	}
 
-	// No NameKey: this is the technician's own instrument.
+	i.BassRegisters = slices.Clone(i.BassRegisters)
+	for n := range i.BassRegisters {
+		i.BassRegisters[n].Feet = slices.Clone(i.BassRegisters[n].Feet)
+	}
+
 	return &Template{Name: name, Instrument: i}
 }

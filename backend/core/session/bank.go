@@ -3,9 +3,10 @@ package session
 import (
 	"errors"
 	"fmt"
+	"slices"
 	"strings"
 
-	"smegg.me/smeggtuner/core/dsp"
+	"smegg.me/smeggtuner/backend/core/dsp"
 )
 
 // Bank is a rank of reeds.
@@ -31,7 +32,7 @@ var (
 	ErrRange     = errors.New("session: the keyboard runs low to high")
 	ErrRegister  = errors.New("session: the instrument has no such register")
 	ErrNoBanks   = errors.New("session: the instrument sounds no reed banks")
-	ErrTolerance = errors.New("session: a tolerance is a positive number of cents")
+	ErrTolerance = errors.New("session: a tolerance is a positive number of reference units")
 )
 
 func (b Bank) Valid() bool {
@@ -53,40 +54,21 @@ func (b Bank) Octave() int {
 	return 0
 }
 
-// AssignBanks names the bank each of a take's reeds landed in: a reed claims the register's first
-// unclaimed bank in its own octave, in card order. A take from before octaves (every reed at zero)
-// claims positionally when the counts match - the old contract. Nil when any claim fails; the
-// caller then numbers the reeds instead of naming ranks it is not sure of.
-func AssignBanks(register []Bank, reeds []dsp.ReedMeasure) []Bank {
-	if len(register) == 0 || len(reeds) == 0 {
+// SlotBanks is the bank each of a reading's slots measured: the register's banks in card order,
+// which is the order the engine numbers its slots. Nil when the register does not sound exactly
+// that many banks; the caller then numbers the slots instead of naming ranks it is not sure of.
+func SlotBanks(register []Bank, slots int) []Bank {
+	if slots == 0 || len(register) != slots {
 		return nil
 	}
-	octaved := false
-	for _, r := range reeds {
-		if r.Octave != 0 {
-			octaved = true
-			break
+	out := make([]Bank, 0, slots)
+	for _, b := range Banks {
+		if slices.Contains(register, b) {
+			out = append(out, b)
 		}
 	}
-	if !octaved {
-		if len(reeds) != len(register) {
-			return nil
-		}
-		return append([]Bank(nil), register...)
-	}
-	used := make([]bool, len(register))
-	out := make([]Bank, len(reeds))
-	for i, r := range reeds {
-		claimed := false
-		for j, b := range register {
-			if !used[j] && b.Octave() == r.Octave {
-				used[j], out[i], claimed = true, b, true
-				break
-			}
-		}
-		if !claimed {
-			return nil
-		}
+	if len(out) != slots {
+		return nil
 	}
 	return out
 }

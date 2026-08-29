@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// maxTolerance is the widest judging window, in cents; matches the app config schema.
+// maxTolerance is the widest judging window, in reference units; matches the app config schema.
 const maxTolerance = 50.0
 
 // Has reports whether the instrument sounds this bank.
@@ -34,7 +34,7 @@ func (r Register) ReedCount() int { return len(r.Banks) }
 
 // validate checks the instrument's internal consistency.
 func (i Instrument) validate() error {
-	// No banks named is a pre-banks instrument: it still loads and tunes, it just cannot print a per-bank card.
+	// An instrument nobody has described names no banks: it tunes, it just cannot print a per-bank card.
 	if len(i.Banks) > 0 {
 		if err := validBanks(i.Banks); err != nil {
 			return err

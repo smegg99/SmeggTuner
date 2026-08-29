@@ -9,9 +9,9 @@ import (
 
 	"github.com/google/uuid"
 
-	"smegg.me/smeggtuner/core/dsp"
-	"smegg.me/smeggtuner/core/target"
-	"smegg.me/smeggtuner/core/tuning"
+	"smegg.me/smeggtuner/backend/core/dsp"
+	"smegg.me/smeggtuner/backend/core/target"
+	"smegg.me/smeggtuner/backend/core/tuning"
 )
 
 // Reeds sounding per note; the range is deliberate: nothing may assume the musette three.
@@ -19,6 +19,9 @@ const (
 	MinReeds = 1
 	MaxReeds = 8
 )
+
+// MaxTranspose is the highest transposition: the instrument's C sounds as B.
+const MaxTranspose = 11
 
 // How long a switch list may get, and how long a switch may be called. The widest treble panel in
 // production is thirteen switches and the widest bass machine seven; these sit above both. They
@@ -34,6 +37,7 @@ var (
 	ErrReedCount = fmt.Errorf("session: reed count outside %d..%d", MinReeds, MaxReeds)
 	ErrA4        = errors.New("session: a4 must be a positive frequency")
 	ErrNote      = errors.New("session: note outside the tuning range")
+	ErrTranspose = fmt.Errorf("session: transposition outside 0..%d", MaxTranspose)
 	// ErrDuplicateRegister reports two switches that are the same switch: one name used twice, or
 	// two names over the same ranks. A card has a column per rank and no way to show them apart.
 	ErrDuplicateRegister = errors.New("session: that switch is already described")
@@ -71,7 +75,7 @@ type Instrument struct {
 	// A4 is this accordion's reference pitch; zero means unspecified and falls back to the app default.
 	A4 float64 `json:"a4,omitempty"`
 
-	// Tolerance and BeatTolerance are how tight this accordion is judged, in cents; zero means unspecified.
+	// Tolerance and BeatTolerance are how tight this accordion is judged, in reference units; zero means unspecified.
 	Tolerance     float64 `json:"tolerance,omitempty"`
 	BeatTolerance float64 `json:"beatTolerance,omitempty"`
 
@@ -84,24 +88,17 @@ type Take struct {
 	Note tuning.Note `json:"note"`
 	At   time.Time   `json:"at"`
 
-	// Register is the switch pulled when this note was played. Empty on a session recorded before the instrument had registers.
+	// Register is the switch pulled when this note was played. Empty on a take recorded without one.
 	Register string `json:"register,omitempty"`
 	// Bass says the take came from the bass side; Register then names a bass register (or nothing,
 	// on a fixed machine). Kept apart from the treble registers so their names cannot collide.
 	Bass bool `json:"bass,omitempty"`
 
+	// Reeds is one entry per slot the engine measured, a slot that did not sound not Present; slot
+	// i is the register's i-th bank in card order, or on the bass side its i-th foot largest first.
 	Reeds []dsp.ReedMeasure `json:"reeds"`
+	// Beats is the measured beat of each adjacent slot pair, absent where either slot is.
 	Beats []dsp.BeatMeasure `json:"beats,omitempty"`
-	// Bands is the compound register's per-octave accounting as it was measured (see
-	// dsp.Measurement.Bands); empty on a single-band reading and on takes recorded before it. It is
-	// the only thing that says WHY a rank column is empty - a rank not heard at all, or one heard
-	// as nothing but the harmonic of the rank below it - and without it a card and a sheet can only
-	// leave the cell blank and say nothing.
-	Bands []dsp.BandReport `json:"bands,omitempty"`
-	// ReedsMerged inverts dsp.Measurement.ReedsSeparated so the zero value is the ordinary case; when set (and ReedsFromBeat is not) the per-reed numbers are lobes of one merged peak.
-	ReedsMerged bool `json:"reedsMerged,omitempty"`
-	// ReedsFromBeat mirrors dsp.Measurement.ReedsFromBeat: reeds recovered from the beat; set only together with ReedsMerged.
-	ReedsFromBeat bool `json:"reedsFromBeat,omitempty"`
 	// Manual marks a take whose measured values were hand-edited.
 	Manual bool `json:"manual,omitempty"`
 }
@@ -117,8 +114,11 @@ type Session struct {
 	// InstrumentID is a soft link to the shelf entry: nothing here reads it; the app uses it to rejoin the two to show the photograph.
 	InstrumentID string `json:"instrumentId,omitempty" gorm:"index"`
 
-	A4    float64       `json:"a4" gorm:"column:a4"`
-	Curve *target.Curve `json:"curve,omitempty" gorm:"serializer:json"`
+	A4 float64 `json:"a4" gorm:"column:a4"`
+	// Transpose is how many semitones above its key the instrument sounds (0..MaxTranspose). Like A4
+	// it is what every take was measured against, and it may not change once there are any.
+	Transpose int           `json:"transpose,omitempty"`
+	Curve     *target.Curve `json:"curve,omitempty" gorm:"serializer:json"`
 
 	// Takes is one reading per voice: playing a note again replaces it. A4 may not change once there are any, since it is the reference they were all measured against.
 	Takes []Take `json:"takes,omitempty" gorm:"serializer:json"`
@@ -150,6 +150,9 @@ func (s *Session) Validate() error {
 	// Only a usable number matters here; the practical 432..442 range belongs to the config schema.
 	if math.IsNaN(s.A4) || math.IsInf(s.A4, 0) || s.A4 <= 0 {
 		return ErrA4
+	}
+	if s.Transpose < 0 || s.Transpose > MaxTranspose {
+		return ErrTranspose
 	}
 	if err := validReeds(s.Instrument.ReedCount); err != nil {
 		return err

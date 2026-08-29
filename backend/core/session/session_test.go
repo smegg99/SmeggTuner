@@ -5,15 +5,15 @@ import (
 	"testing"
 	"time"
 
-	"smegg.me/smeggtuner/core/dsp"
-	"smegg.me/smeggtuner/core/target"
-	"smegg.me/smeggtuner/core/tuning"
+	"smegg.me/smeggtuner/backend/core/dsp"
+	"smegg.me/smeggtuner/backend/core/target"
+	"smegg.me/smeggtuner/backend/core/tuning"
 )
 
 func reeds(n int) []dsp.ReedMeasure {
 	out := make([]dsp.ReedMeasure, n)
 	for i := range out {
-		out[i] = dsp.ReedMeasure{Freq: 440 + float64(i), DevCents: float64(i)}
+		out[i] = dsp.ReedMeasure{Present: true, Freq: 440 + float64(i), Dev: float64(i)}
 	}
 	return out
 }
@@ -53,9 +53,11 @@ func TestValidate(t *testing.T) {
 			s.Instrument.Registers = []Register{{Name: "Musette", Banks: []Bank{BankM1, BankM2, BankM3}}}
 			s.UpsertTake(Take{Note: tuning.MinNote, Reeds: reeds(3), Register: "Bandoneon"})
 		}, ErrRegister},
-		"zero a4":         {func(s *Session) { s.A4 = 0 }, ErrA4},
-		"no id":           {func(s *Session) { s.ID = "" }, ErrBadID},
-		"id with a slash": {func(s *Session) { s.ID = "../etc/passwd" }, ErrBadID},
+		"zero a4":              {func(s *Session) { s.A4 = 0 }, ErrA4},
+		"transposed down":      {func(s *Session) { s.Transpose = -1 }, ErrTranspose},
+		"transposed an octave": {func(s *Session) { s.Transpose = MaxTranspose + 1 }, ErrTranspose},
+		"no id":                {func(s *Session) { s.ID = "" }, ErrBadID},
+		"id with a slash":      {func(s *Session) { s.ID = "../etc/passwd" }, ErrBadID},
 		"note out of range": {func(s *Session) {
 			s.UpsertTake(Take{Note: tuning.MaxNote + 1, Reeds: reeds(3)})
 		}, ErrNote},

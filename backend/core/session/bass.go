@@ -8,8 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"smegg.me/smeggtuner/core/dsp"
-	"smegg.me/smeggtuner/core/tuning"
+	"smegg.me/smeggtuner/backend/core/dsp"
 )
 
 // The bass machine: reed ranks stacked in pure octaves, four to six of them on most instruments,
@@ -74,17 +73,6 @@ func OctavesOfFeet(feet []int) []dsp.OctaveRequest {
 	return out
 }
 
-// TakeFeet names the foot each of a bass take's reeds landed in. Nil when the machine is
-// undeclared, the take's switch is unknown, or a reed falls outside the ladder - the caller then
-// numbers the reeds rather than naming ranks it is not sure of. See AssignFeet for the claim.
-func (i Instrument) TakeFeet(t Take) []int {
-	sounding := i.SoundingFeet(t.Register)
-	if sounding == nil || !t.Bass {
-		return nil
-	}
-	return AssignFeet(sounding, t.Reeds)
-}
-
 // SoundingFeet is the ladder a bass register sounds, largest foot first; the whole machine when no
 // switch is named. Nil when the machine is undeclared or the switch is unknown.
 func (i Instrument) SoundingFeet(register string) []int {
@@ -102,16 +90,6 @@ func (i Instrument) SoundingFeet(register string) []int {
 	feet := append([]int(nil), r.Feet...)
 	sort.Sort(sort.Reverse(sort.IntSlice(feet)))
 	return feet
-}
-
-// BassProfile is one calibrated note of one bass rank (see Session.Profile): the rank by foot,
-// because which octave a rank occupies depends on which register is pulled, so the engine-facing
-// offset is resolved only at impose time.
-type BassProfile struct {
-	Foot int         `json:"foot"`
-	Note tuning.Note `json:"note"`
-	R2   float64     `json:"r2"`
-	R4   float64     `json:"r4"`
 }
 
 // validBassFeet checks a rank selection against the declared machine.

@@ -5,10 +5,9 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"strings"
 )
 
-// A .stsf (SmeggTuner Session File) is a zip, on the same terms as the .stif; import also accepts the bare legacy .session.json.
+// A .stsf (SmeggTuner Session File) is a zip, on the same terms as the .stif.
 
 // SessionFileVersion is stamped into every .stsf; an unknown version is refused.
 const SessionFileVersion = 1
@@ -59,7 +58,7 @@ func ReadSessionFile(path string) (*Session, error) {
 	if err != nil {
 		return nil, fmt.Errorf("%w: %w", ErrNotSessionFile, err)
 	}
-	defer z.Close()
+	defer func() { _ = z.Close() }()
 
 	man, err := readEntry(&z.Reader, entryManifest, 4<<10)
 	if err != nil {
@@ -83,14 +82,6 @@ func ReadSessionFile(path string) (*Session, error) {
 		return nil, fmt.Errorf("read %s: %w", path, err)
 	}
 	return s, nil
-}
-
-// ReadSessionAny reads a session from either format: the .stsf or the bare legacy JSON.
-func ReadSessionAny(path string) (*Session, error) {
-	if strings.HasSuffix(strings.ToLower(path), SessionFileExt) {
-		return ReadSessionFile(path)
-	}
-	return Read(path)
 }
 
 // SuggestSessionFileName is the suggested filename for an exported session.

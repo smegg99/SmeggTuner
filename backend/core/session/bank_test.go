@@ -5,7 +5,7 @@ import (
 	"slices"
 	"testing"
 
-	"smegg.me/smeggtuner/core/tuning"
+	"smegg.me/smeggtuner/backend/core/tuning"
 )
 
 func TestARegistersNameSaysWhatItSounds(t *testing.T) {
@@ -19,8 +19,6 @@ func TestARegistersNameSaysWhatItSounds(t *testing.T) {
 		"M2":   {BankM2},
 		"LM2":  {BankL, BankM2},
 		"M1M3": {BankM1, BankM3},
-
-		" lmmm ": {BankL, BankM1, BankM2, BankM3},
 	}
 
 	for name, want := range cases {
@@ -33,6 +31,14 @@ func TestARegistersNameSaysWhatItSounds(t *testing.T) {
 				t.Fatalf("ParseBanks(%q) = %v, want %v", name, got, want)
 			}
 		})
+	}
+}
+
+// A typed name arrives with its spaces and in any case; the notation is read through them.
+func TestATypedNameIsReadThroughSpaceAndCase(t *testing.T) {
+	got, err := ParseBanks(" lmmm ")
+	if want := []Bank{BankL, BankM1, BankM2, BankM3}; err != nil || !slices.Equal(got, want) {
+		t.Fatalf("ParseBanks(\" lmmm \") = %v, %v; want %v", got, err, want)
 	}
 }
 
@@ -100,7 +106,7 @@ func TestATakeCannotNameARegisterTheInstrumentHasNotGot(t *testing.T) {
 		t.Fatalf("a register the instrument has was refused: %v", err)
 	}
 
-	// A take from before there were registers names none, and still loads.
+	// A take recorded with no register pulled names none, and is valid.
 	if err := i.validTake(Take{Note: 60}); err != nil {
 		t.Fatalf("a take with no register was refused: %v", err)
 	}

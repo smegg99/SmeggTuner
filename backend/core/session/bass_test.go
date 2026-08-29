@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"smegg.me/smeggtuner/core/dsp"
+	"smegg.me/smeggtuner/backend/core/dsp"
 )
 
 func TestBassFeetNamesTheLadder(t *testing.T) {
@@ -65,26 +65,18 @@ func TestBassValidation(t *testing.T) {
 	}
 }
 
-// A bass take of a solo-rank switch calibrates that rank by its foot; the same note's treble take
-// stays out of it, and a bass take never collides with a treble take of the same note.
-func TestBassProfilesKeyOnTheFoot(t *testing.T) {
+// A bass take never collides with a treble take of the same note: the two sides are different voices.
+func TestABassTakeIsItsOwnVoice(t *testing.T) {
 	s := &Session{Instrument: Instrument{
 		BassReeds:     5,
 		BassRegisters: []BassRegister{{Name: "Solo16", Feet: []int{16}}},
 	}}
 	s.UpsertTake(Take{Note: 45, Bass: true, Register: "Solo16", At: time.Unix(1, 0),
-		Reeds: []dsp.ReedMeasure{{Freq: 110, Harmonics: []float64{0.4, 0.1}}}})
+		Reeds: []dsp.ReedMeasure{{Present: true, Freq: 110}}})
 	s.UpsertTake(Take{Note: 45, Register: "", At: time.Unix(2, 0),
-		Reeds: []dsp.ReedMeasure{{Freq: 110}}})
+		Reeds: []dsp.ReedMeasure{{Present: true, Freq: 110}}})
 
 	if len(s.Takes) != 2 {
 		t.Fatalf("a bass and a treble take of one note are different voices, got %d takes", len(s.Takes))
-	}
-	p := s.BassProfiles()
-	if len(p) != 1 || p[0].Foot != 16 || p[0].Note != 45 || p[0].R2 != 0.4 {
-		t.Errorf("bass profile %+v, want foot 16 at note 45 with R2 0.4", p)
-	}
-	if s.Profile() != nil {
-		t.Error("a bass take must not enter the treble profile")
 	}
 }

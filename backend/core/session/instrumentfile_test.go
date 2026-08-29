@@ -82,7 +82,7 @@ func TestTheFileIsAZipAnybodyCanOpen(t *testing.T) {
 	if err != nil {
 		t.Fatalf("it is not a zip: %v", err)
 	}
-	defer z.Close()
+	defer func() { _ = z.Close() }()
 
 	var names []string
 	for _, f := range z.File {

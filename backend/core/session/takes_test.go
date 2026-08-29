@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"smegg.me/smeggtuner/core/dsp"
-	"smegg.me/smeggtuner/core/tuning"
+	"smegg.me/smeggtuner/backend/core/dsp"
+	"smegg.me/smeggtuner/backend/core/tuning"
 )
 
 // Capture order is the order the technician worked in, not the display order, and must not be sorted.
@@ -32,9 +32,9 @@ func TestReplayingANoteReplacesIt(t *testing.T) {
 	s := newTestSession(t, 3)
 	now := time.Now()
 	first := take(60, 3, now)
-	first.Reeds[0].DevCents = -4
+	first.Reeds[0].Dev = -4
 	second := take(60, 3, now.Add(time.Second))
-	second.Reeds[0].DevCents = 7
+	second.Reeds[0].Dev = 7
 	s.UpsertTake(first)
 	s.UpsertTake(take(62, 3, now.Add(2*time.Second)))
 	s.UpsertTake(second)
@@ -54,8 +54,8 @@ func TestReplayingANoteReplacesIt(t *testing.T) {
 	if rows[0].Note != 60 || rows[1].Note != 62 {
 		t.Fatalf("rows out of note order: %d, %d", rows[0].Note, rows[1].Note)
 	}
-	if rows[0].Take.Reeds[0].DevCents != 7 {
-		t.Fatalf("row 60 kept the older reading: %v", rows[0].Take.Reeds[0].DevCents)
+	if rows[0].Take.Reeds[0].Dev != 7 {
+		t.Fatalf("row 60 kept the older reading: %v", rows[0].Take.Reeds[0].Dev)
 	}
 }
 
@@ -129,10 +129,10 @@ func TestAppendTakeCopiesMeasurement(t *testing.T) {
 	}
 	s.UpsertTake(TakeFrom(m, time.Now()))
 
-	m.Reeds[0].DevCents = 999
+	m.Reeds[0].Dev = 999
 	m.Beats[0].Hz = 999
 
-	if got := s.Takes[0].Reeds[0].DevCents; got != 0 {
+	if got := s.Takes[0].Reeds[0].Dev; got != 0 {
 		t.Fatalf("take aliased the measurement's reeds: %v", got)
 	}
 	if got := s.Takes[0].Beats[0].Hz; got != 3.1 {
@@ -140,18 +140,18 @@ func TestAppendTakeCopiesMeasurement(t *testing.T) {
 	}
 }
 
-// Only the engine knows whether the peaks were reeds or one merged pair, so the take has to carry it.
-func TestTakeFromCarriesMergedReeds(t *testing.T) {
-	now := time.Now()
-	m := dsp.Measurement{Note: 69, Reeds: reeds(3), ReedsSeparated: true}
+// A slot that did not sound stays in its place: slot identity is positional.
+func TestTakeFromKeepsSlotPositions(t *testing.T) {
+	m := dsp.Measurement{Note: 69, Frame: dsp.FrameMeasured, Reeds: []dsp.ReedMeasure{
+		{Present: true, Dev: -3, Freq: 439}, {Dev: -99}, {Present: true, Dev: 4, Freq: 441},
+	}, Beats: []dsp.BeatMeasure{{Pair: "1-2"}, {Pair: "2-3"}}}
 
-	if TakeFrom(m, now).ReedsMerged {
-		t.Fatal("separated reeds came back as a merged pair")
+	got := TakeFrom(m, time.Now())
+	if len(got.Reeds) != 3 || got.Reeds[1].Present || !got.Reeds[2].Present || got.Reeds[2].Dev != 4 {
+		t.Fatalf("slots came back as %+v, want three with the middle one silent", got.Reeds)
 	}
-	m.ReedsSeparated = false
-	if !TakeFrom(m, now).ReedsMerged {
-		t.Fatal("a merged pair came back as separated reeds, which is the reading " +
-			"a technician would act on")
+	if len(got.Beats) != 2 || got.Beats[0].Present || got.Beats[1].Present {
+		t.Fatalf("beats %+v, want both pairs around the silent slot absent", got.Beats)
 	}
 }
 
@@ -162,20 +162,19 @@ func TestPassReadings(t *testing.T) {
 
 	s.UpsertTake(take(69, 3, now))
 	second := take(69, 3, now.Add(time.Second))
-	second.Reeds[0].DevCents = 7.5
+	second.Reeds[0].Dev = 7.5
+	second.Beats = []dsp.BeatMeasure{{Pair: "1-2", Present: true, Hz: 1.5}}
 	s.UpsertTake(second)
-	merged := take(60, 3, now.Add(2*time.Second))
-	merged.ReedsMerged = true
-	s.UpsertTake(merged)
+	s.UpsertTake(take(60, 3, now.Add(2*time.Second)))
 
-	got := s.Readings()
+	got := s.Readings(3)
 	if len(got) != 2 {
 		t.Fatalf("three takes of two notes gave %d readings", len(got))
 	}
-	if got[0].Note != 60 || !got[0].ReedsMerged {
-		t.Fatalf("the merged take lost its flag on the way to the fit: %+v", got[0])
+	if got[0].Note != 60 {
+		t.Fatalf("readings out of note order: %+v", got[0])
 	}
-	if got[1].Note != 69 || got[1].Reeds[0].DevCents != 7.5 {
+	if got[1].Note != 69 || got[1].Reeds[0].Dev != 7.5 {
 		t.Fatalf("the second take of a note is the one that counts: %+v", got[1])
 	}
 }

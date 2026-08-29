@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"os"
 	"time"
 )
 
@@ -12,9 +11,6 @@ import (
 const Version = 1
 
 const (
-	// LegacyFileExt is the pre-datastore session format (bare JSON); import reads it, nothing writes it.
-	LegacyFileExt = ".session.json"
-
 	filePerm = 0o644
 	dirPerm  = 0o755
 )
@@ -36,7 +32,8 @@ type Summary struct {
 	InstrumentID string  `json:"instrumentId,omitempty"`
 	A4           float64 `json:"a4"`
 	// Readings is how many takes the session holds.
-	Readings int       `json:"readings"`
+	Readings int `json:"readings"`
+	// HasCurve says the session holds a goal with anchors: one ImportCurve can load as a beat list.
 	HasCurve bool      `json:"hasCurve"`
 	Created  time.Time `json:"created"`
 	Updated  time.Time `json:"updated"`
@@ -51,23 +48,10 @@ func (s *Session) Summarize() Summary {
 		InstrumentID: s.InstrumentID,
 		A4:           s.A4,
 		Readings:     len(s.Takes),
-		HasCurve:     s.Curve != nil,
+		HasCurve:     s.Curve != nil && len(s.Curve.Anchors) > 0,
 		Created:      s.Created,
 		Updated:      s.Updated,
 	}
-}
-
-// Read loads a bare legacy session file (a pre-datastore import).
-func Read(path string) (*Session, error) {
-	data, err := os.ReadFile(path)
-	if err != nil {
-		return nil, err
-	}
-	s, err := decodeSession(data)
-	if err != nil {
-		return nil, fmt.Errorf("read %s: %w", path, err)
-	}
-	return s, nil
 }
 
 func decodeSession(data []byte) (*Session, error) {

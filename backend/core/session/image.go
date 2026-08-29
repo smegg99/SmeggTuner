@@ -23,6 +23,9 @@ const ImageQuality = 85
 // ImageMaxBytes is the largest input file accepted, guarding against a RAW file or video picked by mistake.
 const ImageMaxBytes = 32 << 20
 
+// ImageMaxPixels bounds decoded allocation even for highly compressed input.
+const ImageMaxPixels = 64 << 20
+
 var (
 	ErrNotAnImage = errors.New("session: that file is not an image")
 	ErrImageHuge  = errors.New("session: that image is too large")
@@ -41,6 +44,13 @@ func PrepareImage(r io.Reader) ([]byte, error) {
 		return nil, fmt.Errorf("%w: over %d bytes", ErrImageHuge, ImageMaxBytes)
 	}
 
+	info, _, err := image.DecodeConfig(bytes.NewReader(raw))
+	if err != nil {
+		return nil, fmt.Errorf("%w: %w", ErrNotAnImage, err)
+	}
+	if info.Width <= 0 || info.Height <= 0 || info.Width > ImageMaxPixels/info.Height {
+		return nil, ErrImageHuge
+	}
 	src, _, err := image.Decode(bytes.NewReader(raw))
 	if err != nil {
 		return nil, fmt.Errorf("%w: %w", ErrNotAnImage, err)
@@ -68,7 +78,7 @@ func fit(src image.Image) image.Image {
 		scale = float64(ImageMaxEdge) / float64(h)
 	}
 
-	dst := image.NewRGBA(image.Rect(0, 0, int(float64(w)*scale), int(float64(h)*scale)))
+	dst := image.NewRGBA(image.Rect(0, 0, max(1, int(float64(w)*scale)), max(1, int(float64(h)*scale))))
 	// CatmullRom: runs once per import, so favor quality.
 	draw.CatmullRom.Scale(dst, dst.Bounds(), src, b, draw.Src, nil)
 	return dst
