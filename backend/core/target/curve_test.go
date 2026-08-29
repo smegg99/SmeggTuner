@@ -5,7 +5,7 @@ import (
 	"math"
 	"testing"
 
-	"smegg.me/smeggtuner/core/tuning"
+	"smegg.me/smeggtuner/backend/core/tuning"
 )
 
 func almost(t *testing.T, got, want, tol float64, msg string) {
@@ -15,9 +15,9 @@ func almost(t *testing.T, got, want, tol float64, msg string) {
 	}
 }
 
-func mustSet(t *testing.T, c *Curve, note tuning.Note, reed int, value, a4 float64) {
+func mustSet(t *testing.T, c *Curve, note tuning.Note, reed int, value float64) {
 	t.Helper()
-	if err := c.Set(note, reed, value, a4); err != nil {
+	if err := c.Set(note, reed, value); err != nil {
 		t.Fatalf("Set(%d,%d,%v): %v", note, reed, value, err)
 	}
 }
@@ -25,7 +25,7 @@ func mustSet(t *testing.T, c *Curve, note tuning.Note, reed int, value, a4 float
 func TestSetKeepsSortOrder(t *testing.T) {
 	c := NewCurve("sorted", 2)
 	for _, n := range []tuning.Note{84, 60, 120, 16, 72, 60} {
-		mustSet(t, c, n, 0, float64(n), 440)
+		mustSet(t, c, n, 0, float64(n))
 	}
 	want := []tuning.Note{16, 60, 72, 84, 120}
 	if len(c.Anchors) != len(want) {
@@ -56,18 +56,18 @@ func TestSetKeepsSortOrder(t *testing.T) {
 
 func TestReedCounts(t *testing.T) {
 	one := NewCurve("clarinet", 1)
-	mustSet(t, one, tuning.NoteA4, 0, 3, 440)
-	if got := one.At(60); len(got) != 1 || got[0] != 3 {
+	mustSet(t, one, tuning.NoteA4, 0, 3)
+	if got := one.At(tuning.NoteA4); len(got) != 1 || got[0] != 3 {
 		t.Fatalf("1-reed At = %v", got)
 	}
-	if err := one.Set(tuning.NoteA4, 1, 0, 440); err == nil {
+	if err := one.Set(tuning.NoteA4, 1, 0); err == nil {
 		t.Fatal("reed 1 of a 1-reed curve must be an error")
 	}
 
 	five := NewCurve("bass", 5)
 	five.RefReed = 2
-	mustSet(t, five, 40, 4, -2, 440)
-	mustSet(t, five, 80, 4, 6, 440)
+	mustSet(t, five, 40, 4, -2)
+	mustSet(t, five, 80, 4, 6)
 	got := five.At(60)
 	if len(got) != 5 {
 		t.Fatalf("5-reed At gave %d values", len(got))
@@ -76,50 +76,54 @@ func TestReedCounts(t *testing.T) {
 	if err := five.Validate(); err != nil {
 		t.Fatalf("5-reed validate: %v", err)
 	}
-	if err := five.Set(60, 5, 0, 440); err == nil {
+	if err := five.Set(60, 5, 0); err == nil {
 		t.Fatal("reed 5 of a 5-reed curve must be an error")
 	}
 }
 
 func TestOutOfRangeIsErrorNotPanic(t *testing.T) {
 	c := NewCurve("range", 3)
-	if err := c.Set(tuning.MaxNote+1, 0, 1, 440); err == nil {
+	if err := c.Set(tuning.MaxNote+1, 0, 1); err == nil {
 		t.Fatal("note above the range must be an error")
 	}
-	if err := c.Set(tuning.MinNote-1, 0, 1, 440); err == nil {
+	if err := c.Set(tuning.MinNote-1, 0, 1); err == nil {
 		t.Fatal("note below the range must be an error")
 	}
-	if err := c.Set(tuning.NoteA4, -1, 1, 440); err == nil {
+	if err := c.Set(tuning.NoteA4, -1, 1); err == nil {
 		t.Fatal("negative reed must be an error")
 	}
 	if len(c.Anchors) != 0 {
 		t.Fatalf("a rejected Set must not anchor anything: %v", c.Anchors)
 	}
 
-	// A note outside the range still answers flat rather than panicking.
-	mustSet(t, c, tuning.NoteA4, 1, 5, 440)
-	almost(t, c.At(200)[1], 5, 1e-12, "above the range")
-	almost(t, c.At(0)[1], 5, 1e-12, "below the range")
+	// A note outside the range answers with no goal rather than panicking.
+	mustSet(t, c, tuning.NoteA4, 1, 5)
+	noGoal(t, c, 200, "above the range")
+	noGoal(t, c, 0, "below the range")
 
+	// The reference's empty marker is not a goal, in any unit.
+	if err := c.Set(tuning.NoteA4, 0, -99); err == nil {
+		t.Fatal("-99 units must be an error")
+	}
 	c.Unit = UnitHz
-	if err := c.Set(tuning.NoteA4, 0, -1000, 440); err == nil {
+	if err := c.Set(tuning.NoteA4, 0, -1000); err == nil {
 		t.Fatal("-1000 Hz at A4 must be an error")
 	}
 }
 
 func TestValidate(t *testing.T) {
 	bad := []*Curve{
-		{ReedCount: 0, RefReed: NoRefReed, Unit: UnitCents},
-		{ReedCount: MaxReeds + 1, RefReed: NoRefReed, Unit: UnitCents},
-		{ReedCount: 3, RefReed: 3, Unit: UnitCents},
-		{ReedCount: 3, RefReed: -2, Unit: UnitCents},
+		{ReedCount: 0, RefReed: NoRefReed, Unit: UnitReference},
+		{ReedCount: MaxReeds + 1, RefReed: NoRefReed, Unit: UnitReference},
+		{ReedCount: 3, RefReed: 3, Unit: UnitReference},
+		{ReedCount: 3, RefReed: -2, Unit: UnitReference},
 		{ReedCount: 3, RefReed: NoRefReed, Unit: "semitone"},
-		{ReedCount: 3, RefReed: NoRefReed, Unit: UnitCents, Anchors: []Anchor{{Note: 200}}},
-		{ReedCount: 2, RefReed: NoRefReed, Unit: UnitCents,
+		{ReedCount: 3, RefReed: NoRefReed, Unit: UnitReference, Anchors: []Anchor{{Note: 200}}},
+		{ReedCount: 2, RefReed: NoRefReed, Unit: UnitReference,
 			Anchors: []Anchor{{Note: 60, Reeds: []float64{0, 0, 0}}}},
-		{ReedCount: 2, RefReed: NoRefReed, Unit: UnitCents,
+		{ReedCount: 2, RefReed: NoRefReed, Unit: UnitReference,
 			Anchors: []Anchor{{Note: 72}, {Note: 60}}},
-		{ReedCount: 2, RefReed: NoRefReed, Unit: UnitCents,
+		{ReedCount: 2, RefReed: NoRefReed, Unit: UnitReference,
 			Anchors: []Anchor{{Note: 60}, {Note: 60}}},
 	}
 	for i, c := range bad {
@@ -129,7 +133,7 @@ func TestValidate(t *testing.T) {
 	}
 
 	// Sort fixes an out-of-order list; the duplicate below stays an error.
-	c := &Curve{ReedCount: 2, RefReed: NoRefReed, Unit: UnitCents,
+	c := &Curve{ReedCount: 2, RefReed: NoRefReed, Unit: UnitReference,
 		Anchors: []Anchor{{Note: 84}, {Note: 60}, {Note: 72}}}
 	c.Sort()
 	if err := c.Validate(); err != nil {
@@ -140,32 +144,8 @@ func TestValidate(t *testing.T) {
 	}
 }
 
-// The three flags default to true; a file written before they existed decodes with them on.
-func TestFlagsDefaultTrueOnDecode(t *testing.T) {
-	var old Curve
-	if err := json.Unmarshal([]byte(`{
-		"name": "musette",
-		"reedCount": 3,
-		"refReed": 1,
-		"unit": "cent",
-		"anchors": [
-			{"note": 60, "reeds": [-4, 0, 4]},
-			{"note": 72, "reeds": [-8, 0, 8]}
-		]
-	}`), &old); err != nil {
-		t.Fatalf("decode: %v", err)
-	}
-	if !old.Interpolate || !old.ExtrapolateLeft || !old.ExtrapolateRight {
-		t.Fatalf("an old curve came back with the flags off: %+v", old)
-	}
-	if old.Asymmetry != 0 {
-		t.Fatalf("asymmetry = %v, want 0", old.Asymmetry)
-	}
-	almost(t, old.At(66)[2], 6, 1e-12, "an old curve still interpolates")
-	almost(t, old.At(30)[2], 4, 1e-12, "an old curve still holds flat below")
-	almost(t, old.At(100)[2], 8, 1e-12, "an old curve still holds flat above")
-
-	// A written false survives the round-trip.
+// Written flags and asymmetry survive the JSON round trip, false included.
+func TestFlagsSurviveTheRoundTrip(t *testing.T) {
 	off := NewCurve("off", 3)
 	off.Interpolate, off.ExtrapolateLeft, off.ExtrapolateRight = false, false, false
 	off.Asymmetry = -25

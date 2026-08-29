@@ -65,12 +65,31 @@ func TestNearest(t *testing.T) {
 	}
 }
 
-func TestTransposeClamp(t *testing.T) {
-	if MaxNote.Transpose(5) != MaxNote || MinNote.Transpose(-3) != MinNote {
-		t.Fatal("transpose must clamp")
+func TestManualStepRules(t *testing.T) {
+	cases := []struct {
+		from  Note
+		steps int
+		want  Note
+	}{
+		{0, 1, NoteA4}, {0, -12, NoteA4}, {NoteA4, 1, 70}, {NoteA4, -12, 57},
+		{MinNote, -1, MinNote}, {MinNote + 5, -12, MinNote}, {MaxNote, 1, MaxNote}, {MaxNote - 5, 12, MaxNote},
+		{24, -1, 23},
 	}
-	if NoteA4.Transpose(1) != Note(70) {
-		t.Fatal("A4+1 != A#4")
+	for _, c := range cases {
+		if got := c.from.Step(c.steps); got != c.want {
+			t.Errorf("Note(%d).Step(%d) = %d, want %d", c.from, c.steps, got, c.want)
+		}
+	}
+	if ManualStart(0) != NoteA4 || ManualStart(MaxNote+1) != NoteA4 || ManualStart(40) != 40 {
+		t.Fatal("entering manual pins the shown note, else A4")
+	}
+}
+
+func TestPitchNameHasNoOctave(t *testing.T) {
+	for s, want := range map[ScaleNaming]string{NamingCDEFGAB: "A#", NamingCDEFGAH: "B", NamingDoReMi: "La#", NamingPolish: "Ais"} {
+		if got := Note(70).PitchName(s); got != want {
+			t.Errorf("naming %d: %q, want %q", s, got, want)
+		}
 	}
 }
 

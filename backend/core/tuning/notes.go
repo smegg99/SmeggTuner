@@ -53,36 +53,44 @@ func (n Note) Freq(a4 float64) float64 {
 
 func (n Note) Octave() int { return int(n)/12 - 1 }
 
-func (n Note) Name(s ScaleNaming) string {
+func (n Note) Name(s ScaleNaming) string { return fmt.Sprintf("%s%d", n.PitchName(s), n.Octave()) }
+
+// PitchName is the pitch-class name without an octave, as a chord root is written.
+func (n Note) PitchName(s ScaleNaming) string {
 	pc := int(n) % 12
 	switch s {
 	case NamingCDEFGAH:
 		// German convention: B natural is H, A# is written B.
-		name := sharpNames[pc]
-		if pc == 11 {
-			name = "H"
-		} else if pc == 10 {
-			name = "B"
+		switch pc {
+		case 11:
+			return "H"
+		case 10:
+			return "B"
 		}
-		return fmt.Sprintf("%s%d", name, n.Octave())
+		return sharpNames[pc]
 	case NamingDoReMi:
-		return fmt.Sprintf("%s%d", doReMi[pc], n.Octave())
+		return doReMi[pc]
 	case NamingPolish:
-		return fmt.Sprintf("%s%d", polishNames[pc], n.Octave())
+		return polishNames[pc]
 	default:
-		return fmt.Sprintf("%s%d", sharpNames[pc], n.Octave())
+		return sharpNames[pc]
 	}
 }
 
-func (n Note) Transpose(semitones int) Note {
-	t := n + Note(semitones)
-	if t < MinNote {
-		return MinNote
+// ManualStart is the note manual selection pins on entry: the shown note, else A4.
+func ManualStart(shown Note) Note {
+	if shown.Valid() {
+		return shown
 	}
-	if t > MaxNote {
-		return MaxNote
+	return NoteA4
+}
+
+// Step moves a manual note by semitones (12 an octave) within MinNote..MaxNote; an unset note pins A4 instead.
+func (n Note) Step(semitones int) Note {
+	if !n.Valid() {
+		return NoteA4
 	}
-	return t
+	return min(MaxNote, max(MinNote, n+Note(semitones)))
 }
 
 func Cents(f, ref float64) float64 { return 1200 * math.Log2(f/ref) }

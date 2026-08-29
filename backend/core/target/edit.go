@@ -2,29 +2,25 @@ package target
 
 import (
 	"fmt"
-	"math"
 	"slices"
 
-	"smegg.me/smeggtuner/core/tuning"
+	"smegg.me/smeggtuner/backend/core/tuning"
 )
 
-// Set gives one reed of one note a goal, keeping the anchors sorted. value is in
-// the curve's authoring unit; storage stays canonical in cents.
-func (c *Curve) Set(note tuning.Note, reed int, value, a4 float64) error {
+// Set gives one slot of one note a goal, keeping the anchors sorted. value is in the curve's
+// authoring unit (Hz as ToGoal reads it); storage stays in reference units.
+func (c *Curve) Set(note tuning.Note, reed int, value float64) error {
 	if !note.Valid() {
 		return fmt.Errorf("note %d out of range %d..%d", note, tuning.MinNote, tuning.MaxNote)
 	}
 	if reed < 0 || reed >= c.ReedCount {
 		return fmt.Errorf("reed %d out of range 0..%d", reed, c.ReedCount-1)
 	}
-	cents := value
-	if c.Unit == UnitHz {
-		cents = CentsFromHz(note, value, a4)
+	d := c.Unit.ToGoal(value, note)
+	if !isGoal(d) {
+		return fmt.Errorf("value %g is not a goal at note %d", value, note)
 	}
-	if math.IsNaN(cents) || math.IsInf(cents, 0) {
-		return fmt.Errorf("value %g is not a pitch at note %d", value, note)
-	}
-	c.anchor(note).Reeds[reed] = cents
+	c.anchor(note).Reeds[reed] = d
 	return nil
 }
 

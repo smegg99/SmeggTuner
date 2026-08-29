@@ -4,20 +4,11 @@ package target
 
 import (
 	"cmp"
-	"encoding/json"
 	"fmt"
 	"math"
 	"slices"
 
-	"smegg.me/smeggtuner/core/tuning"
-)
-
-// Unit is what a value was authored in. Storage is always cents.
-type Unit string
-
-const (
-	UnitCents Unit = "cent"
-	UnitHz    Unit = "hz"
+	"smegg.me/smeggtuner/backend/core/tuning"
 )
 
 // MinReeds..MaxReeds bound how many reeds a curve may describe.
@@ -29,19 +20,18 @@ const (
 // NoRefReed is RefReed when no reed is defined as being at pitch.
 const NoRefReed = -1
 
-// MaxAsymmetry bounds Curve.Asymmetry either way; at the bound the whole beating lies on one side.
+// MaxAsymmetry bounds Curve.Asymmetry either way: -100 stills beat 2-3, +100 doubles it.
 const MaxAsymmetry = 100.0
 
-// Anchor is one note the curve is pinned at. Reeds holds cents from that note's
-// scale pitch, index 0 for reed 1, and may be shorter than ReedCount.
+// Anchor is one note the curve is pinned at. Reeds holds reference units from that note's
+// scale pitch, index 0 for slot 1; it may be shorter than ReedCount, and a reed past its end reads 0.
 type Anchor struct {
 	Note  tuning.Note `json:"note"`
 	Reeds []float64   `json:"reeds"`
 }
 
-// Curve is the goal: a sparse set of anchors, interpolated between and held
-// flat outside. Zero anchors is legal and gives a pure indicator (zero for
-// every reed of every note).
+// Curve is the goal: a sparse set of anchors, interpolated between, with no goal outside them
+// unless an end extrapolates. Zero anchors is legal and gives a pure indicator (no goal anywhere).
 type Curve struct {
 	Name      string `json:"name"`
 	ReedCount int    `json:"reedCount"` // MinReeds..MaxReeds
@@ -49,15 +39,15 @@ type Curve struct {
 	// Only SetBeating reads it; nothing anywhere may assume which reed it names.
 	RefReed int      `json:"refReed"`
 	Anchors []Anchor `json:"anchors"` // sorted by Note, at most one per note
-	// Unit the anchors were authored in; a display choice - the anchors are always cents.
+	// Unit the anchors are typed in (see ToGoal); a display choice, the anchors are always reference units.
 	Unit Unit `json:"unit"`
 
-	// Asymmetry, in percent (-MaxAsymmetry..MaxAsymmetry), moves the reference
-	// reed inside the tremolo without changing the width SetBeating was given.
+	// Asymmetry, in percent (-MaxAsymmetry..MaxAsymmetry), makes each pair SetBeating writes beat
+	// 1 + Asymmetry/100 times the pair below it.
 	Asymmetry float64 `json:"asymmetry"`
 
-	// Interpolate, ExtrapolateLeft and ExtrapolateRight control At between and beyond
-	// the anchors. All three default to true; see NewCurve and UnmarshalJSON.
+	// Interpolate, ExtrapolateLeft and ExtrapolateRight control At between and beyond the anchors.
+	// NewCurve interpolates and does not extrapolate, as the reference beat list does.
 	Interpolate      bool `json:"interpolate"`
 	ExtrapolateLeft  bool `json:"extrapolateLeft"`
 	ExtrapolateRight bool `json:"extrapolateRight"`
@@ -65,35 +55,12 @@ type Curve struct {
 
 func NewCurve(name string, reedCount int) *Curve {
 	return &Curve{
-		Name:             name,
-		ReedCount:        reedCount,
-		RefReed:          NoRefReed,
-		Unit:             UnitCents,
-		Interpolate:      true,
-		ExtrapolateLeft:  true,
-		ExtrapolateRight: true,
+		Name:        name,
+		ReedCount:   reedCount,
+		RefReed:     NoRefReed,
+		Unit:        UnitReference,
+		Interpolate: true,
 	}
-}
-
-// UnmarshalJSON defaults the three interpolation flags to true when absent: on a
-// curve saved before those fields existed, missing means "not asked" (yes), not false.
-func (c *Curve) UnmarshalJSON(data []byte) error {
-	// raw avoids recursion; the pointer fields distinguish a missing flag from a written false.
-	type raw Curve
-	aux := struct {
-		*raw
-		Interpolate      *bool `json:"interpolate"`
-		ExtrapolateLeft  *bool `json:"extrapolateLeft"`
-		ExtrapolateRight *bool `json:"extrapolateRight"`
-	}{raw: (*raw)(c)}
-
-	if err := json.Unmarshal(data, &aux); err != nil {
-		return err
-	}
-	c.Interpolate = aux.Interpolate == nil || *aux.Interpolate
-	c.ExtrapolateLeft = aux.ExtrapolateLeft == nil || *aux.ExtrapolateLeft
-	c.ExtrapolateRight = aux.ExtrapolateRight == nil || *aux.ExtrapolateRight
-	return nil
 }
 
 func (c *Curve) Validate() error {
@@ -106,7 +73,7 @@ func (c *Curve) Validate() error {
 	if c.RefReed < NoRefReed || c.RefReed >= c.ReedCount {
 		return fmt.Errorf("ref reed %d out of range %d..%d", c.RefReed, NoRefReed, c.ReedCount-1)
 	}
-	if c.Unit != UnitCents && c.Unit != UnitHz {
+	if !c.Unit.Valid() {
 		return fmt.Errorf("unknown unit %q", c.Unit)
 	}
 	if math.IsNaN(c.Asymmetry) || c.Asymmetry < -MaxAsymmetry || c.Asymmetry > MaxAsymmetry {

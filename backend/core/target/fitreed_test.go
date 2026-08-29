@@ -4,7 +4,7 @@ import (
 	"math"
 	"testing"
 
-	"smegg.me/smeggtuner/core/tuning"
+	"smegg.me/smeggtuner/backend/core/tuning"
 )
 
 // scatter gives the instrument the spread of a real accordion, so a fit is not
@@ -24,7 +24,7 @@ func scattered(drift func(tuning.Note) float64) []Reading {
 	return rs
 }
 
-// A badly tuned reed must not drag the curve towards itself: bend it ten cents
+// A badly tuned reed must not drag the curve towards itself: bend it ten units
 // and the app would report the bad reed thirty out and its neighbours ten out.
 func TestFitIsNotDraggedByOneBadReed(t *testing.T) {
 	const bad = tuning.Note(60)
@@ -52,7 +52,7 @@ func TestFitIsNotDraggedByOneBadReed(t *testing.T) {
 	for _, n := range []tuning.Note{bad - 1, bad + 1} {
 		e := Errors(measure(n, fitA4, -10, 0, ramp(n)), res.Curve, fitA4, 0, nil)
 		if !e[2].InTol {
-			t.Fatalf("note %d reed 3 reads %.2f cents out because of its bad neighbour",
+			t.Fatalf("note %d reed 3 reads %.2f units out because of its bad neighbour",
 				n, e[2].Error)
 		}
 	}
@@ -81,20 +81,20 @@ func TestFitSurvivesADriftedBlock(t *testing.T) {
 		if o.Note != bad[i] || o.Reed != 2 {
 			t.Fatalf("outlier %d is note %d reed %d", i, o.Note, o.Reed)
 		}
-		almost(t, o.Error, 12, 1, "and each of them is twelve cents sharp")
+		almost(t, o.Error, 12, 1, "and each of them is twelve units sharp")
 	}
 
 	// The fine notes of that octave must keep reading as fine.
 	for n := tuning.Note(65); n <= 71; n++ {
 		e := Errors(measure(n, fitA4, -10, 0, ramp(n)), res.Curve, fitA4, 0, nil)
 		if !e[2].InTol {
-			t.Fatalf("note %d reed 3 is in tune and reads %.2f cents out", n, e[2].Error)
+			t.Fatalf("note %d reed 3 is in tune and reads %.2f units out", n, e[2].Error)
 		}
 	}
 }
 
 // A third of one rank drifted sharp, spread across the keyboard but under half of
-// every octave. Measured on this pass: an average bends 3.2 cents and reports 17
+// every octave. Measured on this pass: an average bends 3.2 units and reports 17
 // bad reeds when 13 are; the median bends 1.4 and reports the 13.
 func TestFitSurvivesAWidelyDriftedRank(t *testing.T) {
 	drifted := func(n tuning.Note) bool { return int(n)%3 == 0 }
@@ -147,5 +147,5 @@ func TestFitThinOctaveCannotDefineTheCurve(t *testing.T) {
 	if o := res.Outliers[0]; o.Note != fitHi || o.Reed != 2 {
 		t.Fatalf("outlier is note %d reed %d", o.Note, o.Reed+1)
 	}
-	almost(t, res.Outliers[0].Error, 25, 2, "and it is twenty five cents sharp")
+	almost(t, res.Outliers[0].Error, 25, 2, "and it is twenty five units sharp")
 }

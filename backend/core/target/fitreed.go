@@ -5,7 +5,7 @@ import (
 	"math"
 	"slices"
 
-	"smegg.me/smeggtuner/core/tuning"
+	"smegg.me/smeggtuner/backend/core/tuning"
 )
 
 // fitRounds is how many times the fit is redone after throwing out what the last
@@ -173,8 +173,8 @@ func anchorNotes(fits [][]knot, lo, hi tuning.Note) []tuning.Note {
 }
 
 // evalKnots reads one reed's fitted value at a note: linear between the knots and
-// along the outermost segment past the ends. Linear here but flat in Curve.At,
-// because it is only asked inside the recorded range, where the trend is evidence.
+// along the outermost segment past the ends. It is only asked inside the recorded
+// range, where the trend is evidence; past the anchors Curve.At sets no goal.
 func evalKnots(ks []knot, n tuning.Note) float64 {
 	switch len(ks) {
 	case 0:
