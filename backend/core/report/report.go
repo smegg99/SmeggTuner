@@ -1,16 +1,15 @@
 // Package report renders a recording pass as the bench sheet: per note and reed, the
-// reading, the goal, the difference, and the beat between reed pairs. Its one judgement
-// is which rows may print per-reed numbers (see Build).
+// reading, the goal, the difference, and the beat between neighbouring ranks.
 package report
 
 import (
 	"errors"
-	"fmt"
 	"time"
 
-	"smegg.me/smeggtuner/common/i18n"
-	"smegg.me/smeggtuner/core/session"
-	"smegg.me/smeggtuner/core/tuning"
+	"smegg.me/smeggtuner/backend/common/i18n"
+	"smegg.me/smeggtuner/backend/core/session"
+	"smegg.me/smeggtuner/backend/core/target"
+	"smegg.me/smeggtuner/backend/core/tuning"
 )
 
 var (
@@ -18,6 +17,8 @@ var (
 	ErrNoSession = errors.New("report: no session")
 	// ErrNoReadings reports a session with nothing recorded in it.
 	ErrNoReadings = errors.New("report: session holds no readings")
+	// ErrUnit reports a sheet asked for in a unit it cannot print deviations in.
+	ErrUnit = errors.New("report: deviations print in reference units or cents")
 )
 
 // Letterhead is the technician's own heading, off unless the caller asks for it. It carries
@@ -37,10 +38,12 @@ type Options struct {
 	Now time.Time
 	// Naming is the note-name convention the tuner screen is set to.
 	Naming tuning.ScaleNaming
-	// Tolerance and BeatTolerance are the judging windows; not positive means core/target
-	// defaults, and InTol travels as computed, never re-derived here.
+	// Tolerance and BeatTolerance are the judging windows in reference units; not positive means
+	// core/target defaults, and InTol travels as computed, never re-derived here.
 	Tolerance     float64
 	BeatTolerance float64
+	// Unit is what the sheet prints deviations in: target.UnitReference (the default) or target.UnitCents.
+	Unit target.Unit
 }
 
 // Identity is the instrument the sheet is about.
@@ -57,21 +60,26 @@ type Identity struct {
 	CurveReeds int
 }
 
-// SessionInfo is what the sheet says about the sitting. A4 is the pass's own frozen
-// reference, not the session's current one.
+// SessionInfo is what the sheet says about the sitting. A4 and Transpose are the pass's own
+// frozen reference: the instrument's C sounded as C+Transpose.
 type SessionInfo struct {
-	At       time.Time
-	A4       float64
-	Readings int
+	At        time.Time
+	A4        float64
+	Transpose int
+	// Key and Sounds name a transposition on the sheet: the instrument's C and the pitch it sounded as.
+	Key, Sounds string
+	Readings    int
 }
 
-// ReedCell is one reed of one note; Present is false where the take had no such reed,
-// and the cell prints absent rather than as zero.
+// ReedCell is one rank of one note in the sheet's unit; Present is false where the take had no
+// such slot or it did not sound, and the cell prints absent rather than as zero.
 type ReedCell struct {
 	Reed int // 1-based, as it prints
 	// Bank is the rank this column stands for; empty when columns are numbered.
 	Bank    session.Bank
 	Present bool
+	// HasGoal is false where the curve sets no goal; Goal is then 0 and prints blank.
+	HasGoal bool
 	Curr    float64
 	Goal    float64
 	Error   float64
@@ -85,17 +93,17 @@ type Pair struct {
 	High int
 }
 
-// BeatCell is one reed pair of one note; cents and Hz both travel unconverted.
+// BeatCell is one rank pair of one note: Curr, Goal and Error in the sheet's unit, the rest in Hz.
 type BeatCell struct {
-	Present      bool
-	Curr         float64
-	Goal         float64
-	Error        float64
-	CurrHz       float64
-	GoalHz       float64
-	ErrorHz      float64
-	InTol        bool
-	FromEnvelope bool
+	Present bool
+	HasGoal bool
+	Curr    float64
+	Goal    float64
+	Error   float64
+	CurrHz  float64
+	GoalHz  float64
+	ErrorHz float64
+	InTol   bool
 }
 
 // Row is one note of the pass.
@@ -107,12 +115,8 @@ type Row struct {
 	At       time.Time
 	// Manual marks a row whose value was typed rather than heard.
 	Manual bool
-	// Merged marks a row whose reeds did not separate: Reeds is empty, Beats is not.
-	Merged bool
-	// Derived marks reeds recovered from the measured beat; they print, marked.
-	Derived bool
-	Reeds   []ReedCell
-	Beats   []BeatCell
+	Reeds  []ReedCell
+	Beats  []BeatCell
 	// OutOfTol counts this row's cells the backend judged out of tolerance.
 	OutOfTol int
 }
@@ -124,15 +128,13 @@ type Summary struct {
 	ReedsOut  int
 	Beats     int
 	BeatsOut  int
-	Merged    int // notes with no per-reed reading, reported by their beat
-	Derived   int
 	Manual    int
 	NotesOut  int // notes with at least one cell out of tolerance
 	MinNote   tuning.Note
 	MaxNote   tuning.Note
 	MinName   string
 	MaxName   string
-	Tolerance float64
+	Tolerance float64 // in the sheet's unit, as printed
 	BeatTol   float64
 }
 
@@ -143,6 +145,8 @@ type Report struct {
 	Letterhead *Letterhead
 	Date       time.Time
 	Generated  time.Time
+	// Unit is what every deviation on the sheet is printed in.
+	Unit target.Unit
 
 	// Reeds is the columns: 1..Identity.ReedCount.
 	Reeds []int
@@ -174,38 +178,6 @@ func (r *Report) Columns() int {
 	return max(main, 1+r.Bass.VoiceColumns()+3*len(r.Bass.Reeds)+3*len(r.Bass.Pairs))
 }
 
-// BassPart is the bass side of the sheet. It exposes the same surface the table templates read off
-// the Report, so "wide" and "grouped" render either without knowing which keyboard they hold.
-type BassPart struct {
-	// Feet names the columns (32', 16'...), largest first; empty when the machine was never
-	// declared and the columns are numbered instead.
-	Feet []int
-	// Reeds is the columns: 1..the machine's voice count.
-	Reeds         []int
-	MultiRegister bool
-	Pairs         []Pair
-	Rows          []Row
-}
-
-// Head is a rank column's heading: the foot, or the translated reed number.
-func (p *BassPart) Head(i int) string {
-	if i >= 0 && i < len(p.Feet) {
-		return fmt.Sprintf("%d'", p.Feet[i])
-	}
-	return i18n.Tf("report.head.reed", map[string]any{"Index": i + 1})
-}
-
-// ReedSpan is how far a merged row's "reeds did not separate" cell reaches.
-func (p *BassPart) ReedSpan() int { return 2 * len(p.Reeds) }
-
-// VoiceColumns is the columns needed to label a reading, zero unless multi-register.
-func (p *BassPart) VoiceColumns() int {
-	if p.MultiRegister {
-		return 1
-	}
-	return 0
-}
-
 // VoiceColumns is the columns needed to label a reading, zero unless multi-register.
 func (r *Report) VoiceColumns() int {
 	n := 0
@@ -220,8 +192,5 @@ func (r *Report) Head(i int) string {
 	if i >= 0 && i < len(r.Banks) {
 		return string(r.Banks[i])
 	}
-	return i18n.Tf("report.head.reed", map[string]any{"Index": i + 1})
+	return i18n.ReportHeadReed(i18n.Localizer(), i18n.ReportHeadReedParams{Index: i + 1})
 }
-
-// ReedSpan is how far a merged row's "reeds did not separate" cell reaches.
-func (r *Report) ReedSpan() int { return 2 * len(r.Reeds) }

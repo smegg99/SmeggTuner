@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"smegg.me/smeggtuner/core/session"
-	"smegg.me/smeggtuner/core/tuning"
+	"smegg.me/smeggtuner/backend/core/session"
+	"smegg.me/smeggtuner/backend/core/tuning"
 )
 
 func bank(b ...session.Bank) []session.Bank { return b }
@@ -59,7 +59,7 @@ func TestAReadingIsPrintedUnderTheRankItCameFrom(t *testing.T) {
 		}
 	}
 	if got := cells[2]; got.Curr < 6 || got.Curr > 8 {
-		t.Fatalf("the M2 column reads %v cents, want the reading that was taken", got.Curr)
+		t.Fatalf("the M2 column reads %v units, want the reading that was taken", got.Curr)
 	}
 }
 

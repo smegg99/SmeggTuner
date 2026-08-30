@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"sort"
 
-	"smegg.me/smeggtuner/core/session"
-	"smegg.me/smeggtuner/core/target"
+	"smegg.me/smeggtuner/backend/core/session"
+	"smegg.me/smeggtuner/backend/core/target"
 )
 
-// reedCells lays a take's reeds against the instrument's columns; a reed the take does not carry is absent, not zero.
-func reedCells(errs []target.ReedError, reedCount int, banks []session.Bank, into []int) []ReedCell {
+// reedCells lays a take's slots against the instrument's columns in unit; a slot that did not sound is absent, not zero.
+func reedCells(errs []target.ReedError, reedCount int, banks []session.Bank, into []int, unit target.Unit) []ReedCell {
 	cells := make([]ReedCell, reedCount)
 	for i := range cells {
 		cells[i] = ReedCell{Reed: i + 1}
@@ -19,6 +19,7 @@ func reedCells(errs []target.ReedError, reedCount int, banks []session.Bank, int
 	}
 
 	for _, e := range errs {
+		e = e.In(unit)
 		col := e.Reed
 		if into != nil {
 			if e.Reed < 0 || e.Reed >= len(into) {
@@ -27,13 +28,14 @@ func reedCells(errs []target.ReedError, reedCount int, banks []session.Bank, int
 			col = into[e.Reed]
 		}
 		if col < 0 || col >= reedCount {
-			continue // the take carries more reeds than the instrument declares
+			continue // the take carries more slots than the instrument declares
 		}
 
 		cells[col] = ReedCell{
 			Reed:    col + 1,
 			Bank:    cells[col].Bank,
 			Present: true,
+			HasGoal: e.HasGoal,
 			Curr:    e.Curr,
 			Goal:    e.Goal,
 			Error:   e.Error,
@@ -43,21 +45,12 @@ func reedCells(errs []target.ReedError, reedCount int, banks []session.Bank, int
 	return cells
 }
 
-// columnsFor maps each reed of a take to its card column; nil on any uncertain mapping, so reeds
-// fall back to positions. See session.BankColumns for the claim.
-func columnsFor(i session.Instrument, t session.Take, reeds int) []int {
-	if reeds == 0 {
-		return nil
+// colOf is the column a slot answers to; an unmapped slot answers to its own position.
+func colOf(into []int, slot int) int {
+	if slot >= 0 && slot < len(into) {
+		return into[slot]
 	}
-	return session.BankColumns(i.Banks, i.TakeBanks(t), t.Reeds)
-}
-
-// colOf is the column a reed answers to; an unmapped reed answers to its own position.
-func colOf(into []int, reed int) int {
-	if reed >= 0 && reed < len(into) {
-		return into[reed]
-	}
-	return reed
+	return slot
 }
 
 func beatCells(byCols map[[2]int]target.BeatError, pairs []Pair) []BeatCell {
@@ -68,25 +61,25 @@ func beatCells(byCols map[[2]int]target.BeatError, pairs []Pair) []BeatCell {
 			continue
 		}
 		cells[i] = BeatCell{
-			Present:      true,
-			Curr:         b.Curr,
-			Goal:         b.Goal,
-			Error:        b.Error,
-			CurrHz:       b.CurrHz,
-			GoalHz:       b.GoalHz,
-			ErrorHz:      b.ErrorHz,
-			InTol:        b.InTol,
-			FromEnvelope: b.FromEnvelope,
+			Present: true,
+			HasGoal: b.HasGoal,
+			Curr:    b.Curr,
+			Goal:    b.Goal,
+			Error:   b.Error,
+			CurrHz:  b.CurrHz,
+			GoalHz:  b.GoalHz,
+			ErrorHz: b.ErrorHz,
+			InTol:   b.InTol,
 		}
 	}
 	return cells
 }
 
 // pairsOf picks the beat columns: every pair of adjacent card columns, plus a column of its own for
-// a beat whose two ranks are next to each other in the TAKE but not on the card. A register short a
-// rank beats across that gap - an LMMH card with the second 8' unheard still has the 8'-to-4' beat -
-// and adjacency on the card is the only thing that gap breaks. Pairs that are adjacent in neither
-// are left out: an eight-reed instrument would otherwise be twenty-eight beat columns wide.
+// a beat whose two slots are neighbours in the TAKE but not on the card. A register short a rank
+// beats across that gap (an LH switch on an LMMH card beats 16' against 4'), and adjacency on the
+// card is the only thing that gap breaks. Pairs that are adjacent in neither are left out: an
+// eight-reed instrument would otherwise be twenty-eight beat columns wide.
 func pairsOf(reedCount int, beats []map[[2]int]target.BeatError) []Pair {
 	seen := make(map[[2]int]Pair)
 	add := func(lo, hi int) {

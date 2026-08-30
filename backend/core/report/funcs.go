@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"smegg.me/smeggtuner/common/i18n"
+	"smegg.me/smeggtuner/backend/common/i18n"
 )
 
 // Localization is read at call time so the template parses once; CSV is deliberately not localized (a decimal comma would break its columns).
@@ -20,8 +20,8 @@ func decimal(s string) string {
 }
 
 var funcs = template.FuncMap{
-	// cents keeps its sign even for zero.
-	"cents": func(v float64) string { return decimal(fmt.Sprintf("%+.1f", v)) },
+	// dev prints a deviation in the sheet's unit and keeps its sign even for zero.
+	"dev":   func(v float64) string { return decimal(fmt.Sprintf("%+.1f", v)) },
 	"hz":    func(v float64) string { return decimal(fmt.Sprintf("%+.2f", v)) },
 	"freq":  func(v float64) string { return decimal(fmt.Sprintf("%.1f", v)) },
 	"tol":   func(v float64) string { return decimal(fmt.Sprintf("%.1f", v)) },
@@ -29,7 +29,7 @@ var funcs = template.FuncMap{
 	"stamp": func(t time.Time) string { return t.Format("2006-01-02 15:04") },
 
 	// lang sets the document language for hyphenation and screen readers.
-	"lang": func() string { return i18n.Current() },
+	"lang": i18n.Current,
 
 	// T/Tn/Tf translate; a key missing from the active language falls back to English.
 	"T": i18n.T,

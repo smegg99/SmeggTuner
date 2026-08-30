@@ -96,9 +96,6 @@ h2 { font-size: 10.5pt; margin: 12px 0 4px; }
 table { border-collapse: collapse; font-size: 9pt; table-layout: fixed; width: 100%; }
 caption { font-weight: 700; padding: 6px 0 2px; text-align: left; }
 th, td { padding: 2px 4px; text-align: right; white-space: nowrap; }
-/* The merged note's sentence is prose, and prose wraps. Nowrap on every cell is what let it
-   run out of its own colspan and across the beat columns. */
-.merged { text-align: left; white-space: normal; }
 th { border-bottom: 1pt solid #000; font-size: 8.5pt; }
 td { border-bottom: 0.4pt solid #999; }
 .note, th.note { text-align: left; white-space: nowrap; }
@@ -114,7 +111,7 @@ td { border-bottom: 0.4pt solid #999; }
  */
 .out { font-weight: 700; }
 
-/* The row marks - merged, derived, edited - are letters, set small beside the note. */
+/* The row mark for an edited row is a letter, set small beside the note. */
 .mark { font-size: 7.5pt; padding-left: 2px; vertical-align: super; }
 .hz { display: block; font-size: 7.5pt; }
 
@@ -182,9 +179,15 @@ a { color: inherit; text-decoration: none; }
     <dt>{{T "report.facts.reference"}}</dt>
     <dd>{{freq .Session.A4}} Hz</dd>
   </div>
+  {{if .Session.Transpose}}
+  <div>
+    <dt>{{T "report.facts.transpose"}}</dt>
+    <dd>{{Tf "report.facts.transposeValue" "Key" .Session.Key "Sounds" .Session.Sounds}}</dd>
+  </div>
+  {{end}}
   <div>
     <dt>{{T "report.facts.tolerance"}}</dt>
-    <dd>{{Tf "report.facts.toleranceValue" "Reed" (tol .Summary.Tolerance) "Beat" (tol .Summary.BeatTol)}}</dd>
+    <dd>{{Tf "report.facts.toleranceValue" "Reed" (tol .Summary.Tolerance) "Beat" (tol .Summary.BeatTol) "Unit" .UnitSymbol}}</dd>
   </div>
   <div>
     <dt>{{T "report.facts.curve"}}</dt>
@@ -202,15 +205,14 @@ a { color: inherit; text-decoration: none; }
       "Reeds" (Tn "report.summary.reedsShort" .Summary.ReedsOut)
       "Beats" (Tn "report.summary.beats" .Summary.BeatsOut)}}
   {{else}}{{T "report.summary.allIn"}}{{end}}
-  {{if .Summary.Merged}}{{Tn "report.summary.merged" .Summary.Merged}}{{end}}
 </p>
 
 {{with .Identity.Notes}}<p class="notes">{{.}}</p>{{end}}
 
-<h2>{{T "report.table.title"}}</h2>
+<h2>{{Tf "report.table.title" "Unit" .UnitName}}</h2>
 {{if .Layout.Grouped}}{{template "grouped" .}}{{else}}{{template "wide" .}}{{end}}
 {{with .Bass}}
-<h2>{{T "report.table.bassTitle"}}</h2>
+<h2>{{Tf "report.table.bassTitle" "Unit" $.UnitName}}</h2>
 {{if $.Layout.Grouped}}{{template "grouped" .}}{{else}}{{template "wide" .}}{{end}}
 {{end}}
 
@@ -218,24 +220,21 @@ a { color: inherit; text-decoration: none; }
   <!--
     A KEY, NOT AN ESSAY.
 
-    This was seven paragraphs and it took a third of the page - a full explanation of what a
-    merged reed is, printed on every card, for a technician who knows what a merged reed is.
-    The marks are what a reader actually needs looking up, so it is the marks, one line each,
-    and the sentence that says what Error means because that is the number he files by.
+    This was seven paragraphs and it took a third of the page, printed on every card for a
+    technician who knows his instrument. The marks are what a reader actually needs looking up,
+    so it is the marks, one line each, and the sentence that says what Error means because that
+    is the number he files by.
   -->
-  <p><span class="key">{{T "report.legend.error.key"}}</span> {{Tf "report.legend.error.body" "A4" (freq .Session.A4)}}
+  <p><span class="key">{{T "report.legend.error.key"}}</span> {{if .InCents}}{{Tf "report.legend.error.cents" "A4" (freq .Session.A4)}}{{else}}{{Tf "report.legend.error.reference" "A4" (freq .Session.A4)}}{{end}}
   {{if not .Identity.HasCurve}}{{T "report.legend.error.noCurve"}}{{end}}</p>
   <!--
     Each mark and its meaning as ONE phrase, not a styled glyph followed by prose. A span
-    between the mark and its dash splits the line into two text nodes, so "M - reeds merged"
+    between the mark and its dash splits the line into two text nodes, so "! - outside tolerance"
     stops being a thing anyone - a reader, a search, a test - can find in the document.
   -->
   <p class="keys">
     <span>{{T "report.mark.out"}} - {{T "report.legend.out.short"}}</span>
-    {{if .Summary.Merged}}<span>{{Tf "report.graph.merged" "Mark" (T "report.mark.merged")}}</span>{{end}}
-    {{if .Summary.Derived}}<span>{{Tf "report.graph.derived" "Mark" (T "report.mark.derived")}}</span>{{end}}
     {{if .Summary.Manual}}<span>{{Tf "report.graph.edited" "Mark" (T "report.mark.edited")}}</span>{{end}}
-    {{if .Summary.Beats}}<span>{{T "report.mark.envelope"}} - {{T "report.legend.envelope.short"}}</span>{{end}}
     <span>{{T "report.legend.takes.key"}} - {{T "report.legend.takes.short"}}</span>
   </p>
 </div>
@@ -276,24 +275,20 @@ a { color: inherit; text-decoration: none; }
     <tr>
       <td class="note">{{$row.Name}}{{template "marks" $row}}</td>
       {{if $.MultiRegister}}<td class="note">{{if $row.Register}}{{$row.Register}}{{else}}-{{end}}</td>{{end}}
-      {{if $row.Merged}}
-      <td class="merged sep" colspan="{{$.ReedSpan}}">{{T "report.table.mergedWide"}}</td>
-      {{else}}
-        {{range $i, $reed := $.Reeds}}
-          {{$c := cell $row.Reeds $i}}
-          {{if $c.Present}}
-          <td class="sep{{if not $c.InTol}} out{{end}}">{{cents $c.Curr}}{{if not $c.InTol}}&#160;{{T "report.mark.out"}}{{end}}</td>
-          <td{{if not $c.InTol}} class="out"{{end}}>{{cents $c.Error}}</td>
-          {{else}}
-          <td class="sep absent">-</td><td class="absent">-</td>
-          {{end}}
+      {{range $i, $reed := $.Reeds}}
+        {{$c := cell $row.Reeds $i}}
+        {{if $c.Present}}
+        <td class="sep{{if not $c.InTol}} out{{end}}">{{dev $c.Curr}}{{if not $c.InTol}}&#160;{{T "report.mark.out"}}{{end}}</td>
+        <td{{if not $c.InTol}} class="out"{{end}}>{{dev $c.Error}}</td>
+        {{else}}
+        <td class="sep absent">-</td><td class="absent">-</td>
         {{end}}
       {{end}}
       {{range $i, $pair := $.Pairs}}
         {{$b := beat $row.Beats $i}}
         {{if $b.Present}}
-        <td class="sep{{if not $b.InTol}} out{{end}}">{{cents $b.Curr}}{{if not $b.InTol}}&#160;{{T "report.mark.out"}}{{end}}{{if $b.FromEnvelope}}<span class="mark">{{T "report.mark.envelope"}}</span>{{end}}<span class="hz">{{hz $b.CurrHz}}</span></td>
-        <td{{if not $b.InTol}} class="out"{{end}}>{{cents $b.Error}}</td>
+        <td class="sep{{if not $b.InTol}} out{{end}}">{{dev $b.Curr}}{{if not $b.InTol}}&#160;{{T "report.mark.out"}}{{end}}<span class="hz">{{hz $b.CurrHz}}</span></td>
+        <td{{if not $b.InTol}} class="out"{{end}}>{{dev $b.Error}}</td>
         {{else}}
         <td class="sep absent">-</td><td class="absent">-</td>
         {{end}}
@@ -318,16 +313,12 @@ a { color: inherit; text-decoration: none; }
     {{range $row := $.Rows}}
     <tr>
       <td class="note">{{$row.Name}}{{template "marks" $row}}</td>
-      {{if $row.Merged}}
-      <td class="merged" colspan="2">{{T "report.table.mergedNarrow"}}</td>
+      {{$c := cell $row.Reeds $i}}
+      {{if $c.Present}}
+      <td{{if not $c.InTol}} class="out"{{end}}>{{dev $c.Curr}}{{if not $c.InTol}}&#160;{{T "report.mark.out"}}{{end}}</td>
+      <td{{if not $c.InTol}} class="out"{{end}}>{{dev $c.Error}}</td>
       {{else}}
-        {{$c := cell $row.Reeds $i}}
-        {{if $c.Present}}
-        <td{{if not $c.InTol}} class="out"{{end}}>{{cents $c.Curr}}{{if not $c.InTol}}&#160;{{T "report.mark.out"}}{{end}}</td>
-        <td{{if not $c.InTol}} class="out"{{end}}>{{cents $c.Error}}</td>
-        {{else}}
-        <td class="absent">-</td><td class="absent">-</td>
-        {{end}}
+      <td class="absent">-</td><td class="absent">-</td>
       {{end}}
     </tr>
     {{end}}
@@ -346,8 +337,8 @@ a { color: inherit; text-decoration: none; }
       <td class="note">{{$row.Name}}{{template "marks" $row}}</td>
       {{$b := beat $row.Beats $i}}
       {{if $b.Present}}
-      <td{{if not $b.InTol}} class="out"{{end}}>{{cents $b.Curr}}{{if not $b.InTol}}&#160;{{T "report.mark.out"}}{{end}}{{if $b.FromEnvelope}}<span class="mark">{{T "report.mark.envelope"}}</span>{{end}}<span class="hz">{{hz $b.CurrHz}}</span></td>
-      <td{{if not $b.InTol}} class="out"{{end}}>{{cents $b.Error}}</td>
+      <td{{if not $b.InTol}} class="out"{{end}}>{{dev $b.Curr}}{{if not $b.InTol}}&#160;{{T "report.mark.out"}}{{end}}<span class="hz">{{hz $b.CurrHz}}</span></td>
+      <td{{if not $b.InTol}} class="out"{{end}}>{{dev $b.Error}}</td>
       {{else}}
       <td class="absent">-</td><td class="absent">-</td>
       {{end}}
@@ -360,7 +351,5 @@ a { color: inherit; text-decoration: none; }
 {{end}}
 
 {{define "marks"}}
-{{- if .Merged}}<span class="mark">{{T "report.mark.merged"}}</span>{{end -}}
-{{- if .Derived}}<span class="mark">{{T "report.mark.derived"}}</span>{{end -}}
 {{- if .Manual}}<span class="mark">{{T "report.mark.edited"}}</span>{{end -}}
 {{end}}

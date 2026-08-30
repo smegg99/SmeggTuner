@@ -9,12 +9,6 @@ func summarize(rows []Row, tol, beatTol float64) Summary {
 		if i == 0 || r.Note > s.MaxNote {
 			s.MaxNote, s.MaxName = r.Note, r.Name
 		}
-		if r.Merged {
-			s.Merged++
-		}
-		if r.Derived {
-			s.Derived++
-		}
 		if r.Manual {
 			s.Manual++
 		}

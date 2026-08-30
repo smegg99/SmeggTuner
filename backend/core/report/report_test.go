@@ -2,52 +2,20 @@ package report
 
 import "testing"
 
-// A merged note has no per-reed cells and prints its beat, the one thing measured.
-func TestMergedRowCarriesNoReedCells(t *testing.T) {
+// A slot that did not sound prints absent, and takes both its beats with it.
+func TestASilentSlotPrintsAbsent(t *testing.T) {
 	r := sheet(t, musette(t))
 	m := row(t, r, 64)
 
-	if !m.Merged {
-		t.Fatal("the merged note is not marked merged")
+	if len(m.Reeds) != 3 {
+		t.Fatalf("the row carries %d reed cells, want one per reed the instrument sounds", len(m.Reeds))
 	}
-	if len(m.Reeds) != 0 {
-		t.Fatalf("the merged note carries %d reed cells: %+v", len(m.Reeds), m.Reeds)
+	if !m.Reeds[0].Present || m.Reeds[1].Present || !m.Reeds[2].Present {
+		t.Fatalf("cells %+v, want the middle one absent and the others read", m.Reeds)
 	}
-	if m.Derived {
-		t.Fatal("a merged note whose reeds were not recovered is not derived")
-	}
-
-	var beats int
-	for _, b := range m.Beats {
+	for i, b := range m.Beats {
 		if b.Present {
-			beats++
-			if !b.FromEnvelope {
-				t.Error("the beat of a merged note has to come off the envelope")
-			}
-		}
-	}
-	if beats == 0 {
-		t.Fatal("the merged note lost its beat, which is the only reading it has")
-	}
-}
-
-// Reeds recovered from the measured beat are real readings: they print, marked derived.
-func TestDerivedRowKeepsItsReeds(t *testing.T) {
-	r := sheet(t, musette(t))
-	d := row(t, r, 65)
-
-	if d.Merged {
-		t.Fatal("a note whose reeds were recovered is not a merged row")
-	}
-	if !d.Derived {
-		t.Fatal("recovered reeds are not marked as derived")
-	}
-	if len(d.Reeds) != 3 {
-		t.Fatalf("derived row has %d reed cells, want 3", len(d.Reeds))
-	}
-	for _, c := range d.Reeds {
-		if !c.Present {
-			t.Fatalf("reed %d of a derived row is absent", c.Reed)
+			t.Errorf("beat column %s printed %+v next to a slot that did not sound", r.Pairs[i].Key, b)
 		}
 	}
 }
@@ -103,7 +71,7 @@ func TestErrorsAgainstTheGoal(t *testing.T) {
 		}
 	}
 	if c.OutOfTol == 0 {
-		t.Error("a row with a reed 4.5 cents out is not counted as out of tolerance")
+		t.Error("a row with a reed 4.5 units out is not counted as out of tolerance")
 	}
 }
 
@@ -128,7 +96,7 @@ func TestNoCurveIsOrdinary(t *testing.T) {
 	}
 }
 
-// The pass's frozen reference is what every number was measured from; the session's current A4 has moved.
+// The pass's frozen reference is what every number was measured from: the beat converts at its pitch.
 func TestPassReferenceIsThePassesOwn(t *testing.T) {
 	s := musette(t)
 	r := sheet(t, s)
@@ -136,7 +104,7 @@ func TestPassReferenceIsThePassesOwn(t *testing.T) {
 	if r.Session.A4 != s.A4 {
 		t.Fatalf("report quotes A4 %.1f, want the session's %.1f", r.Session.A4, s.A4)
 	}
-	if got := row(t, r, 60).Reeds[0].Curr; !near(got, -8.4, 0.05) {
-		t.Errorf("Curr = %.2f, want -8.40: the take was read against the wrong reference", got)
+	if got := row(t, r, 60).Beats[0].Curr; !near(got, 0.3 - -8.4, 0.01) {
+		t.Errorf("beat 1-2 = %.3f units, want 8.70: the beat was read against the wrong reference", got)
 	}
 }

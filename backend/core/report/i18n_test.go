@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"smegg.me/smeggtuner/common/i18n"
+	"smegg.me/smeggtuner/backend/common/i18n"
 )
 
 // The locale is process-global, so every test here restores it.

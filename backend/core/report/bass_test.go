@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"smegg.me/smeggtuner/core/dsp"
-	"smegg.me/smeggtuner/core/session"
+	"smegg.me/smeggtuner/backend/core/dsp"
+	"smegg.me/smeggtuner/backend/core/session"
 )
 
 func bassSession() *session.Session {
@@ -26,14 +26,13 @@ func bassSession() *session.Session {
 	s.Takes = []session.Take{
 		// A treble take, so both tables print.
 		{Note: 69, Register: "MM", At: time.Unix(1, 0),
-			Reeds: []dsp.ReedMeasure{{Freq: 439.5}, {Freq: 441.5}}},
+			Reeds: []dsp.ReedMeasure{slot(69, 0, -2), slot(69, 0, 3)}},
 		// The whole ladder on the F button.
 		{Note: 29, Bass: true, At: time.Unix(2, 0), Reeds: []dsp.ReedMeasure{
-			{Freq: 43.7}, {Freq: 87.5, Octave: 12}, {Freq: 174.8, Octave: 24},
-			{Freq: 349.7, Octave: 36}, {Freq: 699.2, Octave: 48}}},
+			slot(29, 0, 1), slot(29, 12, -1), slot(29, 24, 2), slot(29, 36, 0), slot(29, 48, -3)}},
 		// A partial switch: its 16' and 8' must land under those columns, not the first two.
 		{Note: 45, Bass: true, Register: "Soft", At: time.Unix(3, 0), Reeds: []dsp.ReedMeasure{
-			{Freq: 110.1}, {Freq: 220.3, Octave: 12}}},
+			slot(45, 0, 1), slot(45, 12, 2)}},
 	}
 	return s
 }
@@ -96,7 +95,7 @@ func TestBassTableRendersAndExports(t *testing.T) {
 	if err := CSV(&csv, rep); err != nil {
 		t.Fatal(err)
 	}
-	if !strings.Contains(csv.String(), "bass_32ft_curr_cents") {
+	if !strings.Contains(csv.String(), "bass_32ft_curr_ref") {
 		t.Error("the spreadsheet must carry the bass block keyed by foot")
 	}
 }

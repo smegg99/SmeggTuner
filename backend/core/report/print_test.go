@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"smegg.me/smeggtuner/core/session"
+	"smegg.me/smeggtuner/backend/core/session"
 )
 
 // Printed sheet: nothing may be fetched, nothing may run off the paper.
@@ -98,10 +98,10 @@ func TestHTMLTurnsThePageForWiderInstruments(t *testing.T) {
 func bench(t *testing.T, reedCount int) *session.Session {
 	t.Helper()
 	s := session.New("Bench", session.Instrument{ReedCount: reedCount}, passA4)
-	cents := make([]float64, reedCount)
-	for i := range cents {
-		cents[i] = float64(i) * 4
+	devs := make([]float64, reedCount)
+	for i := range devs {
+		devs[i] = float64(i) * 4
 	}
-	s.UpsertTake(reeds(60, cents...))
+	s.UpsertTake(reeds(60, devs...))
 	return s
 }

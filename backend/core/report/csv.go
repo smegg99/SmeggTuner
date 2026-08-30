@@ -6,14 +6,17 @@ import (
 	"io"
 	"strconv"
 	"strings"
+
+	"smegg.me/smeggtuner/backend/core/target"
 )
 
-// CSV writes the table as a spreadsheet with a leading key/value metadata block; a merged note has empty reed cells, never zeros.
+// CSV writes the table as a spreadsheet with a leading key/value metadata block; a slot that did not sound has empty cells, never zeros.
 func CSV(w io.Writer, r *Report) error {
 	if r == nil {
 		return ErrNoSession
 	}
 	out := csv.NewWriter(w)
+	unit := unitSuffix(r)
 
 	meta := [][]string{
 		{"session", r.Identity.Session},
@@ -23,9 +26,11 @@ func CSV(w io.Writer, r *Report) error {
 		{"reed_banks", banksList(r)},
 		{"recorded", r.Session.At.Format("2006-01-02 15:04:05")},
 		{"reference_a4_hz", fmt.Sprintf("%.2f", r.Session.A4)},
+		{"transpose_semitones", strconv.Itoa(r.Session.Transpose)},
 		{"goal_curve", curveName(r)},
-		{"tolerance_cents", fmt.Sprintf("%.2f", r.Summary.Tolerance)},
-		{"beat_tolerance_cents", fmt.Sprintf("%.2f", r.Summary.BeatTol)},
+		{"deviation_unit", unitMeta(r)},
+		{"tolerance_" + unit, fmt.Sprintf("%.2f", r.Summary.Tolerance)},
+		{"beat_tolerance_" + unit, fmt.Sprintf("%.2f", r.Summary.BeatTol)},
 		{"generated", r.Generated.Format("2006-01-02 15:04:05")},
 		{},
 	}
@@ -35,21 +40,17 @@ func CSV(w io.Writer, r *Report) error {
 		}
 	}
 
-	// Reed columns are named after the rank (m2_curr_cents) when known, else the position (reed2_curr_cents).
-	header := []string{"note", "note_name", "register", "reeds", "manual"}
+	// Reed columns are named after the rank (m2_curr_ref) when known, else the position (reed2_curr_ref).
+	header := []string{"note", "note_name", "register", "manual"}
 	for i, reed := range r.Reeds {
 		key := fmt.Sprintf("reed%d", reed)
 		if i < len(r.Banks) {
 			key = strings.ToLower(string(r.Banks[i]))
 		}
-		header = append(header,
-			key+"_curr_cents", key+"_goal_cents", key+"_error_cents", key+"_in_tol")
+		header = append(header, deviationColumns(key, unit)...)
 	}
 	for _, p := range r.Pairs {
-		key := fmt.Sprintf("beat%d_%d", p.Low, p.High)
-		header = append(header,
-			key+"_curr_cents", key+"_goal_cents", key+"_error_cents",
-			key+"_curr_hz", key+"_goal_hz", key+"_in_tol", key+"_source")
+		header = append(header, beatColumns(fmt.Sprintf("beat%d_%d", p.Low, p.High), unit)...)
 	}
 	if err := out.Write(header); err != nil {
 		return err
@@ -65,20 +66,16 @@ func CSV(w io.Writer, r *Report) error {
 		if err := out.Write(nil); err != nil {
 			return err
 		}
-		header := []string{"note", "note_name", "register", "reeds", "manual"}
+		header := []string{"note", "note_name", "register", "manual"}
 		for i, reed := range r.Bass.Reeds {
 			key := fmt.Sprintf("bass_reed%d", reed)
 			if i < len(r.Bass.Feet) {
 				key = fmt.Sprintf("bass_%dft", r.Bass.Feet[i])
 			}
-			header = append(header,
-				key+"_curr_cents", key+"_goal_cents", key+"_error_cents", key+"_in_tol")
+			header = append(header, deviationColumns(key, unit)...)
 		}
 		for _, p := range r.Bass.Pairs {
-			key := fmt.Sprintf("bass_beat%d_%d", p.Low, p.High)
-			header = append(header,
-				key+"_curr_cents", key+"_goal_cents", key+"_error_cents",
-				key+"_curr_hz", key+"_goal_hz", key+"_in_tol", key+"_source")
+			header = append(header, beatColumns(fmt.Sprintf("bass_beat%d_%d", p.Low, p.High), unit)...)
 		}
 		if err := out.Write(header); err != nil {
 			return err
@@ -98,7 +95,6 @@ func writeRows(out *csv.Writer, rows []Row, reeds, pairs int) error {
 			strconv.Itoa(int(row.Note)),
 			row.Name,
 			row.Register,
-			reedState(row),
 			yesNo(row.Manual),
 		}
 		for i := 0; i < reeds; i++ {
@@ -107,11 +103,11 @@ func writeRows(out *csv.Writer, rows []Row, reeds, pairs int) error {
 				c = row.Reeds[i]
 			}
 			if !c.Present {
-				// Empty, never zero: a merged or unsounded reed has no reading at all.
+				// Empty, never zero: a slot that did not sound has no reading at all.
 				rec = append(rec, "", "", "", "")
 				continue
 			}
-			rec = append(rec, num(c.Curr), num(c.Goal), num(c.Error), yesNo(c.InTol))
+			rec = append(rec, num(c.Curr), goalNum(c.Goal, c.HasGoal), num(c.Error), yesNo(c.InTol))
 		}
 		for i := 0; i < pairs; i++ {
 			b := BeatCell{}
@@ -119,12 +115,12 @@ func writeRows(out *csv.Writer, rows []Row, reeds, pairs int) error {
 				b = row.Beats[i]
 			}
 			if !b.Present {
-				rec = append(rec, "", "", "", "", "", "", "")
+				rec = append(rec, "", "", "", "", "", "")
 				continue
 			}
 			rec = append(rec,
-				num(b.Curr), num(b.Goal), num(b.Error),
-				num(b.CurrHz), num(b.GoalHz), yesNo(b.InTol), beatSource(b))
+				num(b.Curr), goalNum(b.Goal, b.HasGoal), num(b.Error),
+				num(b.CurrHz), goalNum(b.GoalHz, b.HasGoal), yesNo(b.InTol))
 		}
 		if err := out.Write(rec); err != nil {
 			return err
@@ -133,23 +129,28 @@ func writeRows(out *csv.Writer, rows []Row, reeds, pairs int) error {
 	return nil
 }
 
-// reedState is the spreadsheet's version of the M and D marks on the printed sheet.
-func reedState(row Row) string {
-	switch {
-	case row.Merged:
-		return "merged"
-	case row.Derived:
-		return "from_beat"
-	default:
-		return "measured"
+// unitSuffix names the deviation columns' unit: ref for reference units, cents for cents.
+func unitSuffix(r *Report) string {
+	if r.Unit == target.UnitCents {
+		return "cents"
 	}
+	return "ref"
 }
 
-func beatSource(b BeatCell) string {
-	if b.FromEnvelope {
-		return "envelope"
+func unitMeta(r *Report) string {
+	if r.Unit == target.UnitCents {
+		return "cents"
 	}
-	return "spectrum"
+	return "reference (1 = 0.06% of the note frequency)"
+}
+
+func deviationColumns(key, unit string) []string {
+	return []string{key + "_curr_" + unit, key + "_goal_" + unit, key + "_error_" + unit, key + "_in_tol"}
+}
+
+func beatColumns(key, unit string) []string {
+	return []string{key + "_curr_" + unit, key + "_goal_" + unit, key + "_error_" + unit,
+		key + "_curr_hz", key + "_goal_hz", key + "_in_tol"}
 }
 
 func curveName(r *Report) string {
@@ -163,6 +164,14 @@ func curveName(r *Report) string {
 }
 
 func num(v float64) string { return strconv.FormatFloat(v, 'f', 2, 64) }
+
+// goalNum prints a goal cell, empty where the curve sets none.
+func goalNum(v float64, has bool) string {
+	if !has {
+		return ""
+	}
+	return num(v)
+}
 
 func yesNo(v bool) string {
 	if v {

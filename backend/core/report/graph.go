@@ -7,8 +7,9 @@ import (
 	"math"
 	"strings"
 
-	"smegg.me/smeggtuner/core/target"
-	"smegg.me/smeggtuner/core/tuning"
+	"smegg.me/smeggtuner/backend/core/dsp/meter"
+	"smegg.me/smeggtuner/backend/core/target"
+	"smegg.me/smeggtuner/backend/core/tuning"
 )
 
 // Plot dimensions in SVG user units (aspect ratio only, scaled by the stylesheet).
@@ -19,7 +20,7 @@ const (
 	padRight    = 10.0
 	padTop      = 12.0
 	padBottom   = 26.0
-	// minSpan stops a well-tuned instrument's cent of noise being magnified to full height.
+	// minSpan stops a well-tuned instrument's unit of noise being magnified to full height.
 	minSpan = 20.0
 )
 
@@ -34,7 +35,7 @@ type Dot struct {
 	X, Y  float64
 	InTol bool
 	Note  string
-	Cents float64
+	Value float64 // in the sheet's unit
 }
 
 // Series is one reed: the goal across the range and what was measured.
@@ -54,7 +55,7 @@ type Tick struct {
 	Label string
 }
 
-// Graph is the plot: notes across, cents up.
+// Graph is the plot: notes across, deviation up in the sheet's unit.
 type Graph struct {
 	Width, Height            float64
 	Left, Right, Top, Bottom float64
@@ -63,11 +64,9 @@ type Graph struct {
 	XTicks                   []Tick
 	YTicks                   []Tick
 	HasCurve                 bool
-	// MergedNotes counts notes with no dots (reeds never separated) so the caption can explain the gap.
-	MergedNotes int
 }
 
-// graph plots the pass against the curve, or nil when there is nothing to draw; merged notes contribute no dots but are counted.
+// graph plots the pass against the curve, or nil when there is nothing to draw.
 func graph(r *Report, c *target.Curve) *Graph {
 	if len(r.Rows) == 0 || len(r.Reeds) == 0 {
 		return nil
@@ -91,6 +90,10 @@ func graph(r *Report, c *target.Curve) *Graph {
 	if c != nil {
 		for n := lo; n <= hi; n++ {
 			for _, v := range c.At(n) {
+				if v <= meter.Missing {
+					continue
+				}
+				v = r.Unit.FromReference(v, 0)
 				minC, maxC = math.Min(minC, v), math.Max(maxC, v)
 			}
 		}
@@ -115,8 +118,8 @@ func graph(r *Report, c *target.Curve) *Graph {
 		f := (n - float64(lo)) / float64(hi-lo)
 		return g.Left + f*(g.Right-g.Left)
 	}
-	y := func(cents float64) float64 {
-		f := (cents - minC) / (maxC - minC)
+	y := func(v float64) float64 {
+		f := (v - minC) / (maxC - minC)
 		return g.Bottom - f*(g.Bottom-g.Top)
 	}
 	g.ZeroY = y(0)
@@ -131,10 +134,10 @@ func graph(r *Report, c *target.Curve) *Graph {
 			var pts []string
 			for n := lo; n <= hi; n++ {
 				goal := c.At(n)
-				if reed-1 >= len(goal) {
+				if reed-1 >= len(goal) || goal[reed-1] <= meter.Missing {
 					continue
 				}
-				pts = append(pts, fmt.Sprintf("%.1f,%.1f", x(float64(n)), y(goal[reed-1])))
+				pts = append(pts, fmt.Sprintf("%.1f,%.1f", x(float64(n)), y(r.Unit.FromReference(goal[reed-1], 0))))
 			}
 			s.Line = strings.Join(pts, " ")
 		}
@@ -151,16 +154,10 @@ func graph(r *Report, c *target.Curve) *Graph {
 				Y:     y(cell.Curr),
 				InTol: cell.InTol,
 				Note:  row.Name,
-				Cents: cell.Curr,
+				Value: cell.Curr,
 			})
 		}
 		g.Series = append(g.Series, s)
-	}
-
-	for _, row := range r.Rows {
-		if row.Merged {
-			g.MergedNotes++
-		}
 	}
 
 	// One X label per octave (each C), plus the range ends when too short to hold one.

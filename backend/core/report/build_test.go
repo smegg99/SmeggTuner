@@ -3,8 +3,8 @@ package report
 import (
 	"testing"
 
-	"smegg.me/smeggtuner/core/session"
-	"smegg.me/smeggtuner/core/target"
+	"smegg.me/smeggtuner/backend/core/session"
+	"smegg.me/smeggtuner/backend/core/target"
 )
 
 func TestReedCounts(t *testing.T) {
@@ -21,11 +21,11 @@ func TestReedCounts(t *testing.T) {
 		{reeds: 8, wantPairs: []string{"1-2", "2-3", "3-4", "4-5", "5-6", "6-7", "7-8"}, grouped: true},
 	} {
 		s := session.New("Bench", session.Instrument{ReedCount: tc.reeds}, passA4)
-		cents := make([]float64, tc.reeds)
-		for i := range cents {
-			cents[i] = float64(i) * 4
+		devs := make([]float64, tc.reeds)
+		for i := range devs {
+			devs[i] = float64(i) * 4
 		}
-		s.UpsertTake(reeds(60, cents...))
+		s.UpsertTake(reeds(60, devs...))
 
 		r := sheet(t, s)
 		if len(r.Reeds) != tc.reeds {
@@ -48,9 +48,10 @@ func TestReedCounts(t *testing.T) {
 	}
 }
 
+// A take with more slots than the instrument declares still has its measured beat printed.
 func TestMeasuredPairAlwaysHasAColumn(t *testing.T) {
 	s := session.New("Bench", session.Instrument{ReedCount: 1}, passA4)
-	s.UpsertTake(mergedTake(60))
+	s.UpsertTake(reeds(60, -1, 1))
 
 	r := sheet(t, s)
 	if len(r.Pairs) != 1 || r.Pairs[0].Key != "1-2" {
@@ -59,8 +60,8 @@ func TestMeasuredPairAlwaysHasAColumn(t *testing.T) {
 	if !r.Rows[0].Beats[0].Present {
 		t.Fatal("the measured beat has no cell to print in")
 	}
-	if len(r.Rows[0].Reeds) != 0 {
-		t.Fatal("a merged row printed reed cells")
+	if len(r.Rows[0].Reeds) != 1 {
+		t.Fatalf("a one-reed card printed %d reed cells", len(r.Rows[0].Reeds))
 	}
 }
 
@@ -85,12 +86,16 @@ func TestSummary(t *testing.T) {
 	if s.Notes != 5 {
 		t.Errorf("notes = %d, want 5", s.Notes)
 	}
-	if s.Merged != 1 || s.Derived != 1 || s.Manual != 1 {
-		t.Errorf("merged/derived/manual = %d/%d/%d, want 1/1/1", s.Merged, s.Derived, s.Manual)
+	if s.Manual != 1 {
+		t.Errorf("manual = %d, want 1", s.Manual)
 	}
-	// Four rows of reeds: three full, one missing its third; the merged row contributes none.
-	if s.Reeds != 11 {
-		t.Errorf("reed readings = %d, want 11", s.Reeds)
+	// Three full rows and two each missing a slot; a silent slot is not a reading.
+	if s.Reeds != 13 {
+		t.Errorf("reed readings = %d, want 13", s.Reeds)
+	}
+	// Two beats on each full row, one beside the silent third, none around the silent middle.
+	if s.Beats != 7 {
+		t.Errorf("beats = %d, want 7", s.Beats)
 	}
 	if s.MinName == "" || s.MaxName == "" {
 		t.Error("the range is not named")
