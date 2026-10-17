@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	audiosvc "smegg.me/smeggtuner/services/audio"
+	audiosvc "smegg.me/smeggtuner/backend/services/audio"
 )
 
 func TestStartStopOnFileSource(t *testing.T) {
@@ -59,7 +59,7 @@ func TestStartStopOnFileSource(t *testing.T) {
 }
 
 func TestSettersValidate(t *testing.T) {
-	s := New(audiosvc.New(), nil, nil)
+	s := New(audiosvc.NewTunerInput(audiosvc.New()), nil, nil)
 	if err := s.SetA4(429); err == nil {
 		t.Fatal("A4 429 must be rejected")
 	}
@@ -79,7 +79,7 @@ func TestSettersValidate(t *testing.T) {
 
 // A rejected setter reports an i18n-keyed ServiceError, the one error shape the frontend understands.
 func TestSetterErrorsAreKeyed(t *testing.T) {
-	s := New(audiosvc.New(), nil, nil)
+	s := New(audiosvc.NewTunerInput(audiosvc.New()), nil, nil)
 	var se *ServiceError
 	if err := s.SetA4(400); !errors.As(err, &se) || se.Key != "tuner.error.invalidA4" {
 		t.Fatalf("err = %v, want a keyed ServiceError", err)
@@ -146,7 +146,7 @@ func TestStartReportsUnbuildableSource(t *testing.T) {
 	// A file valid at selection time can vanish before Start.
 	dir := t.TempDir()
 	path := filepath.Join(dir, "gone.wav")
-	src := filepath.Join("..", "..", "tests", "fixtures", "a-8.wav")
+	src := filepath.Join("..", "..", "..", "tests", "fixtures", "a-8.wav")
 	data, err := os.ReadFile(src)
 	if err != nil {
 		t.Skipf("fixture missing: %v", err)
@@ -161,7 +161,7 @@ func TestStartReportsUnbuildableSource(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	s := New(as, nil, nil)
+	s := New(audiosvc.NewTunerInput(as), nil, nil)
 	if err := s.Start(); err == nil {
 		t.Fatal("Start on a vanished file must fail")
 	}

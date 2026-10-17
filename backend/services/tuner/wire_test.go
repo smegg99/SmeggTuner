@@ -7,24 +7,31 @@ import (
 	"strings"
 	"testing"
 
-	"smegg.me/smeggtuner/core/dsp"
+	"smegg.me/smeggtuner/backend/core/dsp"
 )
 
 // These tests pin the three pictures to bytes on the wire; if one reverts to a float
 // array the app gets slow quietly (Wails compiles each event as JS ~12/s), so it fails here.
 
-// sampleMeasurement is a full (non-heartbeat) measurement, as the engine emits.
-func sampleMeasurement() dsp.Measurement {
-	m := dsp.Measurement{
-		Note:       69,
-		NoteName:   "A4",
-		Locked:     true,
-		ScalePitch: 442,
-		Reeds:      []dsp.ReedMeasure{{Freq: 442.3}},
-		Spectrum:   make([]float32, dsp.SpectrumColumns),
-		Waveform:   make([]float32, dsp.WaveformPoints),
-		Equalizer:  make([]float32, 105),
+// screen is the reference display state every measurement carries, sized for the widest register the engine resolves.
+func screen(m *dsp.Measurement) {
+	for i := range 2*maxReeds - 1 {
+		m.Panels = append(m.Panels, dsp.Panel{Value: -12.3, Target: -99, Signed: true, Decimals: 1, Dimmed: i%2 == 1})
 	}
+	for range maxReeds {
+		m.Needles = append(m.Needles, dsp.Needle{Dev: -12.34567, Freq: 442.123456, Valid: true})
+	}
+	m.Lock = dsp.Lock{Visible: true, Internal: true, Acquired: true, Countdown: 3}
+}
+
+// sampleMeasurement is a measured analysis of the widest register, as the engine emits it.
+func sampleMeasurement() dsp.Measurement {
+	m := measured(69, -12.345678, -0.123456, 4.567891, 9.876543, 13.24680, 17.97531)
+	m.NoteName = "A4"
+	m.Spectrum = make([]float32, dsp.SpectrumColumns)
+	m.Waveform = make([]float32, dsp.WaveformPoints)
+	m.Equalizer = make([]float32, 105)
+	screen(&m)
 	for i := range m.Spectrum {
 		m.Spectrum[i] = float32(i) / float32(len(m.Spectrum)-1) // 0..1
 	}
@@ -40,7 +47,7 @@ func sampleMeasurement() dsp.Measurement {
 // The pictures must reach the frontend as base64, not float arrays; the packed fields
 // shadow the embedded []float32 by being one level shallower in MeasurementDTO.
 func TestPicturesGoOverAsBytes(t *testing.T) {
-	b, err := json.Marshal(decorate(sampleMeasurement(), goal{}))
+	b, err := json.Marshal(decorate(sampleMeasurement(), goal{a4: 440}))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -75,15 +82,15 @@ func TestPicturesGoOverAsBytes(t *testing.T) {
 	}
 }
 
-// Size is the bottleneck: 6.1 kB was 91% pictures, each byte compiled by WebKit ~12/s.
+// Size is the bottleneck: 6.1 kB was 91% pictures, each byte compiled by WebKit on every event.
 func TestMeasurementStaysSmall(t *testing.T) {
-	b, err := json.Marshal(decorate(sampleMeasurement(), goal{}))
+	b, err := json.Marshal(decorate(sampleMeasurement(), goal{a4: 440}))
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	// Well under the ~6.1 kB it was, with room for reed and beat rows.
-	const budget = 2000
+	// A six-slot analysis with its rows and the screen state measured 4627 bytes (2026-10-24); twice a second.
+	const budget = 5000
 	if len(b) > budget {
 		t.Errorf("measurement is %d bytes, budget is %d - the transport is the "+
 			"bottleneck, so this is a performance regression", len(b), budget)
@@ -143,19 +150,23 @@ func TestSilenceDecodesToExactlyZero(t *testing.T) {
 	}
 }
 
-// A heartbeat carries no picture (a spectrum needs ~0.5s of audio); it must not become zeroes on the wire.
+// A heartbeat carries the screen state but no spectrum; it must not become zeroes on the wire, and at ~20/s it stays small.
 func TestHeartbeatCarriesNoPicture(t *testing.T) {
-	dto := decorate(dsp.Measurement{Note: 69, NoteName: "A4"}, goal{})
+	m := dsp.Measurement{State: dsp.StateRunning, Reeds: []dsp.ReedMeasure{}, Beats: []dsp.BeatMeasure{},
+		Spectrum: []float32{}, Equalizer: []float32{}, Waveform: make([]float32, dsp.WaveformPoints), InputLevel: 0.2}
+	screen(&m)
 
-	b, err := json.Marshal(dto)
+	b, err := json.Marshal(decorate(m, goal{}))
 	if err != nil {
 		t.Fatal(err)
 	}
 	if !strings.Contains(string(b), `"spectrum":""`) {
 		t.Errorf("an empty spectrum should send as \"\", got:\n%s", b)
 	}
-	if len(b) > 300 {
-		t.Errorf("a heartbeat is %d bytes; it carries no picture and should be tiny", len(b))
+	// Six slots of panels and needles plus the waveform measured 1866 bytes (2026-10-24); twenty a second.
+	const budget = 2000
+	if len(b) > budget {
+		t.Errorf("a heartbeat is %d bytes, budget is %d", len(b), budget)
 	}
 	t.Logf("heartbeat on the wire: %d bytes", len(b))
 }

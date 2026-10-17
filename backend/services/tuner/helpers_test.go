@@ -1,6 +1,7 @@
 package tuner
 
 import (
+	"fmt"
 	"math"
 	"os"
 	"path/filepath"
@@ -12,8 +13,11 @@ import (
 	goaudio "github.com/go-audio/audio"
 	"github.com/go-audio/wav"
 
-	appconfig "smegg.me/smeggtuner/common/config"
-	audiosvc "smegg.me/smeggtuner/services/audio"
+	appconfig "smegg.me/smeggtuner/backend/common/config"
+	"smegg.me/smeggtuner/backend/core/dsp"
+	"smegg.me/smeggtuner/backend/core/dsp/meter"
+	"smegg.me/smeggtuner/backend/core/tuning"
+	audiosvc "smegg.me/smeggtuner/backend/services/audio"
 )
 
 const fixtureName = "a-8.wav"
@@ -21,7 +25,7 @@ const fixtureName = "a-8.wav"
 // fixtureService returns a tuner already pointed at the a-8 fixture, so no test needs a microphone.
 func fixtureService(t *testing.T) *Service {
 	t.Helper()
-	path := filepath.Join("..", "..", "tests", "fixtures", fixtureName)
+	path := filepath.Join("..", "..", "..", "tests", "fixtures", fixtureName)
 	if _, err := os.Stat(path); err != nil {
 		t.Skipf("fixture missing: %v", err)
 	}
@@ -29,7 +33,7 @@ func fixtureService(t *testing.T) *Service {
 	if err := as.SelectFile(path, true); err != nil {
 		t.Fatal(err)
 	}
-	return New(as, nil, nil)
+	return New(audiosvc.NewTunerInput(as), nil, nil)
 }
 
 // capturedEvent is one event as the frontend would receive it.
@@ -64,19 +68,34 @@ func (l *eventLog) all() []capturedEvent {
 	return append([]capturedEvent(nil), l.events...)
 }
 
-// cadences counts the two measurement cadences: a heartbeat (empty Reeds) and a fine result.
-func (l *eventLog) cadences() (heartbeats, fine int) {
+// cadences counts the two measurement cadences: heartbeats between analyses, and the analyses themselves.
+func (l *eventLog) cadences() (heartbeats, analyses int) {
 	for _, e := range l.all() {
 		if e.name != EventMeasurement {
 			continue
 		}
-		if len(e.meas.Reeds) == 0 {
+		if e.meas.Frame == dsp.FrameNone {
 			heartbeats++
 		} else {
-			fine++
+			analyses++
 		}
 	}
-	return heartbeats, fine
+	return heartbeats, analyses
+}
+
+// measured is an analysis of note with every slot sounding at the given reference-unit deviations and the visible lock on.
+func measured(note tuning.Note, devs ...float64) dsp.Measurement {
+	ref := note.Freq(440)
+	m := dsp.Measurement{State: dsp.StateRunning, Frame: dsp.FrameMeasured, Note: note, ScalePitch: ref,
+		Lock: dsp.Lock{Visible: true, Internal: true, Acquired: true}}
+	for _, d := range devs {
+		m.Reeds = append(m.Reeds, dsp.ReedMeasure{Present: true, Freq: meter.FrequencyHz(ref, d), Dev: d})
+	}
+	for i := 1; i < len(m.Reeds); i++ {
+		m.Beats = append(m.Beats, dsp.BeatMeasure{Pair: fmt.Sprintf("%d-%d", i, i+1), Present: true,
+			Hz: meter.HarmonicBeat(m.Reeds[i-1].Freq, m.Reeds[i].Freq, ref, true)})
+	}
+	return m
 }
 
 // captureEvents swaps the emit seam for the duration of a test.
@@ -130,7 +149,7 @@ func shortWav(t *testing.T) string {
 	if err != nil {
 		t.Fatal(err)
 	}
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 
 	enc := wav.NewEncoder(f, rate, 16, 1, 1)
 	buf := &goaudio.IntBuffer{

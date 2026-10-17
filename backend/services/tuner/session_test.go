@@ -5,10 +5,11 @@ import (
 	"testing"
 	"time"
 
-	"smegg.me/smeggtuner/core/datastore/datastoretest"
-	"smegg.me/smeggtuner/core/dsp"
-	coresession "smegg.me/smeggtuner/core/session"
-	sessionsvc "smegg.me/smeggtuner/services/session"
+	appconfig "smegg.me/smeggtuner/backend/common/config"
+	"smegg.me/smeggtuner/backend/core/datastore/datastoretest"
+	"smegg.me/smeggtuner/backend/core/dsp"
+	coresession "smegg.me/smeggtuner/backend/core/session"
+	sessionsvc "smegg.me/smeggtuner/backend/services/session"
 )
 
 // sessionService returns a tuner wired to a session service over a throwaway database, on the a-8 fixture.
@@ -161,4 +162,24 @@ func TestRunningEngineAdoptsASessionOpenedUnderIt(t *testing.T) {
 	if err := s.Stop(); err != nil {
 		t.Fatal(err)
 	}
+}
+
+// With a session open the mode is the register's and the transpose the session's, frozen like A4 once it holds readings.
+func TestSessionFreezesModeAndTranspose(t *testing.T) {
+	initConfig(t)
+	s, sessions := sessionService(t)
+	openSession(t, sessions, 2, 440)
+
+	wantErr(t, s.SetMode("chords"), ErrSessionDecides)
+	mustOK(t, s.SetTranspose(2))
+	if c := s.snapshot(); c.Transpose != 2 || sessions.Goal().Transpose != 2 {
+		t.Fatalf("transpose = engine %d / session %d, want the session's 2", c.Transpose, sessions.Goal().Transpose)
+	}
+	if got := appconfig.Get().Tuner.Transpose; got != 0 {
+		t.Fatalf("config transpose = %d, want the app's own 0 untouched", got)
+	}
+	if err := sessions.UpsertTake(coresession.TakeFrom(dsp.Measurement{Note: 69, ScalePitch: 440}, time.Now())); err != nil {
+		t.Fatal(err)
+	}
+	wantErr(t, s.SetTranspose(3), sessionsvc.ErrHasReadings)
 }

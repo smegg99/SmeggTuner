@@ -3,9 +3,12 @@ package tuner
 import (
 	"context"
 
-	"smegg.me/smeggtuner/common/logger"
-	coreaudio "smegg.me/smeggtuner/core/audio"
-	"smegg.me/smeggtuner/core/dsp"
+	"smegg.me/smeggtuner/backend/common/i18n"
+
+	"smegg.me/smeggtuner/backend/common/logger"
+	coreaudio "smegg.me/smeggtuner/backend/core/audio"
+	"smegg.me/smeggtuner/backend/core/dsp"
+	"smegg.me/smeggtuner/backend/core/dsp/meter"
 )
 
 // start runs with opMu held.
@@ -23,44 +26,62 @@ func (s *Service) start() error {
 
 	src, isMic, err := s.audio.Build()
 	if err != nil {
-		logger.Warn(logger.MsgTunerStartFailed, logger.Err(err))
+		logger.Warn(i18n.KeyLogTunerStartFailed, logger.Err(err))
 		return err
 	}
 
-	cfg := s.refresh()
-	cfg.CalibSecs = fileCalibSecs
-	if isMic {
-		cfg.CalibSecs = micCalibSecs
-	}
-
-	s.mu.Lock()
-	frozen := s.frozen
-	s.mu.Unlock()
-
+	p := s.session()
 	ctx, cancel := context.WithCancel(context.Background())
 	r := &run{
-		cancel: cancel,
-		events: make(chan dsp.Measurement, emitQueue),
-		done:   make(chan struct{}),
-		isMic:  isMic,
-		source: s.audio.Current().Name,
+		cancel:       cancel,
+		ctx:          ctx,
+		observations: make(chan dsp.Measurement, emitQueue),
+		events:       make(chan dsp.Measurement, emitQueue),
+		done:         make(chan struct{}),
+		isMic:        isMic,
+		source:       s.audio.SourceName(),
 	}
-	r.engine = dsp.NewEngine(cfg, r.offer)
+	s.shown.Store(autoNote)
 
-	// The engine emits from its DSP goroutine and must never be blocked by it, so the Wails call happens here, one goroutine removed; the hook is read per measurement so a test that sets it after Start still sees this run's stream.
+	// The config, the run and the re-asserted controls are one step under the locks, so a setter lands either before (in cfg) or after (as a control).
+	s.persistMu.Lock()
+	s.mu.Lock()
+	cfg := s.refreshLocked(p)
+	// A microphone learns the room's background first, once: later runs on it start from what it learned. A
+	// file starts mid-note and learns nothing.
+	cfg.LearnOnStart = isMic
+	r.engine = dsp.NewEngine(cfg, r.offer)
+	if isMic {
+		r.engine.Seed(s.learned[r.source])
+	}
+	s.run = r
+	// Freeze and recording are not part of EngineConfig, so Run cannot restore them: re-assert them.
+	if s.frozen {
+		r.engine.Freeze(true)
+	}
+	if s.recording {
+		r.engine.SetRecording(true)
+	}
+	s.mu.Unlock()
+	s.persistMu.Unlock()
+
+	// UI delivery is lossy and independent of the ordered recording/input-interval observer.
 	drained := make(chan struct{})
 	go func() {
 		defer close(drained)
-		var hold holder
 		for m := range r.events {
-			g, rl := s.adopt()
-			emitEvent(EventMeasurement, decorate(hold.filter(m, rl), g))
-			// The recorder reads the engine's stream, not the screen's.
-			s.observe(m)
+			emitEvent(EventMeasurement, decorate(m, s.adopt()))
+			s.noteShown(m)
 			if hook := s.hook(); hook != nil {
 				hook()
 			}
 		}
+	}()
+
+	observed := make(chan struct{})
+	go func() {
+		defer close(observed)
+		r.observe(s.observe)
 	}()
 
 	// The needle is driven from here, not the measurement stream, because a paused file emits nothing and a seeked one must still move; it is waited for like the emitter, so it cannot outlive the terminal EventState.
@@ -74,25 +95,26 @@ func (s *Service) start() error {
 		close(playhead) // a microphone has no playhead
 	}
 
-	s.mu.Lock()
-	s.run = r
-	s.mu.Unlock()
-
-	// Freeze is not part of EngineConfig, so Run cannot restore it: re-assert it.
-	if frozen {
-		r.engine.Freeze(true)
-	}
-
 	// Announce the run before the goroutine can end it, or a device that dies as it opens races its own "running" event.
-	logger.Info(logger.MsgTunerStarted,
+	logger.Info(i18n.KeyLogTunerStarted,
 		logger.Str("source", r.source), logger.Bool("mic", isMic),
 		logger.Any("a4", cfg.A4), logger.Int("reeds", cfg.ReedCount))
 	emitEvent(EventState, StateDTO{Running: true, Source: r.source})
 
 	go func() {
 		runErr := r.engine.Run(ctx, src)
+		if l := r.engine.Learned(); isMic && l != nil {
+			s.mu.Lock()
+			if s.learned == nil {
+				s.learned = map[string]*meter.Learned{}
+			}
+			s.learned[r.source] = l
+			s.mu.Unlock()
+		}
 		// Run has returned, so nothing can call offer any more: closing the queue is safe.
 		close(r.events)
+		close(r.observations)
+		<-observed
 		<-drained
 		cancel()
 		<-playhead // the needle stops before the engine announces that it has stopped
@@ -118,15 +140,15 @@ func (s *Service) finish(r *run, runErr error) {
 	r.dead.Store(true)
 
 	if dropped := r.drops.Load(); dropped > 0 {
-		logger.Debug(logger.MsgTunerEventsDropped, logger.Int64("dropped", dropped))
+		logger.Debug(i18n.KeyLogTunerEventsDropped, logger.Int64("dropped", dropped))
 	}
 
 	state := StateDTO{Running: false, Source: r.source}
 	if runErr != nil {
 		state.Error = r.errorKey(runErr)
-		logger.Warn(logger.MsgTunerRunFailed, logger.Err(runErr), logger.Str("key", state.Error))
+		logger.Warn(i18n.KeyLogTunerRunFailed, logger.Err(runErr), logger.Str("key", state.Error))
 	} else {
-		logger.Info(logger.MsgTunerStopped)
+		logger.Info(i18n.KeyLogTunerStopped)
 	}
 	emitEvent(EventState, state)
 

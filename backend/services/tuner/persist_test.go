@@ -6,8 +6,8 @@ import (
 	"sync"
 	"testing"
 
-	appconfig "smegg.me/smeggtuner/common/config"
-	audiosvc "smegg.me/smeggtuner/services/audio"
+	appconfig "smegg.me/smeggtuner/backend/common/config"
+	audiosvc "smegg.me/smeggtuner/backend/services/audio"
 )
 
 // These tests initialize common/config, which is process-global state.
@@ -15,7 +15,7 @@ import (
 // Wails runs SetA4 and SetFilters concurrently; persist once read/mutated/wrote a copy with no lock, so the last writer committed a copy that never saw the other setter's field and a setting silently reverted on disk.
 func TestConcurrentSettersDoNotLoseConfigFields(t *testing.T) {
 	initConfig(t)
-	s := New(audiosvc.New(), nil, nil)
+	s := New(audiosvc.NewTunerInput(audiosvc.New()), nil, nil)
 
 	var wg sync.WaitGroup
 	for i := 0; i < 8; i++ {
@@ -51,7 +51,7 @@ func TestFailedPersistDoesNotRevert(t *testing.T) {
 		t.Skip("root writes read-only files, so the config write cannot be made to fail")
 	}
 	initConfig(t)
-	s := New(audiosvc.New(), nil, nil)
+	s := New(audiosvc.NewTunerInput(audiosvc.New()), nil, nil)
 
 	if err := s.SetA4(445); err != nil {
 		t.Fatal(err)
@@ -108,7 +108,7 @@ func TestFailedPersistDoesNotRevert(t *testing.T) {
 // snapshot is a read: PlayTone calls it, and a reference tone must not move the service's idea of the engine config.
 func TestSnapshotDoesNotWrite(t *testing.T) {
 	initConfig(t)
-	s := New(audiosvc.New(), nil, nil)
+	s := New(audiosvc.NewTunerInput(audiosvc.New()), nil, nil)
 	if err := s.SetA4(447); err != nil {
 		t.Fatal(err)
 	}

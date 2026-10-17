@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	coreaudio "smegg.me/smeggtuner/core/audio"
+	coreaudio "smegg.me/smeggtuner/backend/core/audio"
 )
 
 const playheadHz = 30

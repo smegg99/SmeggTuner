@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	coreaudio "smegg.me/smeggtuner/core/audio"
-	audiosvc "smegg.me/smeggtuner/services/audio"
+	coreaudio "smegg.me/smeggtuner/backend/core/audio"
+	audiosvc "smegg.me/smeggtuner/backend/services/audio"
 )
 
 // The event contract the frontend is built against: two event names, both cadences, a state event on either side.
@@ -27,13 +27,13 @@ func TestEventContract(t *testing.T) {
 	s.setEmitHookForTest(func() { ticks.Add(1) })
 
 	ok := waitFor(8*time.Second, func() bool {
-		heartbeats, fine := log.cadences()
-		return heartbeats > 0 && fine > 0 && ticks.Load() > 0
+		heartbeats, analyses := log.cadences()
+		return heartbeats > 0 && analyses > 0 && ticks.Load() > 0
 	})
 	if !ok {
-		heartbeats, fine := log.cadences()
-		t.Fatalf("both cadences must reach the frontend: %d heartbeats, %d fine results, %d hook ticks",
-			heartbeats, fine, ticks.Load())
+		heartbeats, analyses := log.cadences()
+		t.Fatalf("both cadences must reach the frontend: %d heartbeats, %d analyses, %d hook ticks",
+			heartbeats, analyses, ticks.Load())
 	}
 
 	if err := s.Stop(); err != nil {
@@ -123,7 +123,7 @@ func TestSpontaneousEndOrdersBeforeNextStart(t *testing.T) {
 	if err := as.SelectFile(shortWav(t), false); err != nil {
 		t.Fatal(err)
 	}
-	s := New(as, nil, nil)
+	s := New(audiosvc.NewTunerInput(as), nil, nil)
 	log := captureEvents(t, s)
 
 	const runs = 4

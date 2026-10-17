@@ -8,39 +8,45 @@ import (
 	"sync"
 	"sync/atomic"
 
-	coreaudio "smegg.me/smeggtuner/core/audio"
-	"smegg.me/smeggtuner/core/dsp"
-	audiosvc "smegg.me/smeggtuner/services/audio"
-	sessionsvc "smegg.me/smeggtuner/services/session"
+	"smegg.me/smeggtuner/backend/core/dsp"
+	"smegg.me/smeggtuner/backend/core/dsp/meter"
 )
 
 // Service owns the engine lifecycle. Bound to the frontend by Wails.
 type Service struct {
-	audio *audiosvc.Service
+	audio Input
 	// sessions is the active session, read on every measurement; nil reads as no session open.
-	sessions *sessionsvc.Service
+	sessions Sessions
 	record   Recorder
 
 	// opMu serializes Start/Stop/Restart; never held while reading a lock-free field, never taken by a setter.
 	opMu sync.Mutex
 
+	// persistMu serializes setters and the config file's read-modify-write (Wails dispatches setters
+	// concurrently); taken before mu, never while holding it.
+	persistMu sync.Mutex
+
 	// mu guards the stored config and the run; never held while calling the session service (emit reads session first).
 	mu sync.Mutex
-	// cfg is the base config; what the engine runs on is this imposed upon by the active session.
-	cfg      dsp.EngineConfig
-	imposed  imposed // what the session last made the engine adopt
-	frozen   bool    // user intent, re-asserted after every Start
-	run      *run
-	emitHook func()
+	// cfg is the base config; what the engine runs on is this imposed upon by the session or the panel.
+	cfg       dsp.EngineConfig
+	panel     panel        // what is measured while no session is open
+	imposed   imposed      // what the session last made the engine adopt
+	file      fileSettings // what the config file last made the engine adopt
+	frozen    bool         // user intent, re-asserted after every Start
+	recording bool         // a record pass is armed in a session; re-asserted after every Start
+	run       *run
+	emitHook  func()
+	// learned is each microphone's room background from its last run, so a new run does not learn it again.
+	learned map[string]*meter.Learned
 
-	// persistMu serializes the config file's read-modify-write; Wails dispatches setters concurrently.
-	persistMu sync.Mutex
+	// shown is the key of the last analysis that named one; manual selection starts there.
+	shown atomic.Int64
 
 	// persistFailed: a config write failed, so the in-memory config is the truth for our fields until it succeeds.
 	persistFailed atomic.Bool
 
-	toneMu sync.Mutex
-	tone   *coreaudio.TonePlayer
+	toneDevice
 
 	// toneVolBits is the tone level 0..1 as Float64bits; not persisted, resets to full each launch.
 	toneVolBits atomic.Uint64
@@ -50,16 +56,14 @@ type Service struct {
 }
 
 // New builds the service; nothing is opened here, and sessions and record may be nil.
-func New(audio *audiosvc.Service, sessions *sessionsvc.Service, record Recorder) *Service {
+func New(audio Input, sessions Sessions, record Recorder) *Service {
 	s := &Service{
-		audio:    audio,
-		sessions: sessions,
-		record:   record,
-		cfg: dsp.EngineConfig{
-			A4:        defaultA4,
-			ReedCount: minReeds,
-			Highpass:  lowCutAlways,
-		},
+		audio:      nilIfTypedNil(audio),
+		sessions:   nilIfTypedNil(sessions),
+		record:     record,
+		cfg:        dsp.EngineConfig{A4: defaultA4, ReedCount: minReeds},
+		panel:      defaultPanel,
+		toneDevice: newToneDevice(),
 	}
 	s.toneVolBits.Store(math.Float64bits(1))
 	return s
@@ -98,23 +102,22 @@ func (s *Service) IsRunning() bool {
 // current returns the live run, or nil when stopped or retiring; callers needing a retiring run read s.run directly.
 func (s *Service) current() *run {
 	s.mu.Lock()
-	r := s.run
-	s.mu.Unlock()
-	if r == nil || r.dead.Load() {
+	defer s.mu.Unlock()
+	return s.liveLocked()
+}
+
+// liveLocked is current for a caller holding mu, so a control it sends is ordered with the state it changed.
+func (s *Service) liveLocked() *run {
+	if s.run == nil || s.run.dead.Load() {
 		return nil
 	}
-	return r
+	return s.run
 }
 
 // ServiceShutdown is the Wails lifecycle hook: it stops the engine and releases the tone device. Idempotent.
 func (s *Service) ServiceShutdown() error {
 	_ = s.Stop()
-	s.toneMu.Lock()
-	if s.tone != nil {
-		s.tone.Close()
-		s.tone = nil
-	}
-	s.toneMu.Unlock()
+	s.closeTone()
 	return nil
 }
 
