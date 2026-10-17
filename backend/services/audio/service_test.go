@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	coreaudio "smegg.me/smeggtuner/core/audio"
+	coreaudio "smegg.me/smeggtuner/backend/core/audio"
 )
 
 func TestSelectFileValidates(t *testing.T) {
@@ -46,7 +46,7 @@ func TestSelectFileRejectsNonWav(t *testing.T) {
 }
 
 func TestSelectFileAcceptsWav(t *testing.T) {
-	wav := filepath.Join("..", "..", "tests", "fixtures", "a-8.wav")
+	wav := filepath.Join("..", "..", "..", "tests", "fixtures", "a-8.wav")
 	if _, err := os.Stat(wav); err != nil {
 		t.Skipf("fixture missing: %v", err)
 	}
@@ -89,7 +89,7 @@ func TestBuildReturnsAFreshMic(t *testing.T) {
 
 // A file is not single-Start: Build hands back the same transport, playhead and selection intact.
 func TestBuildKeepsTheFileTheUserHasBeenSteering(t *testing.T) {
-	wav := filepath.Join("..", "..", "tests", "fixtures", "a-8.wav")
+	wav := filepath.Join("..", "..", "..", "tests", "fixtures", "a-8.wav")
 	if _, err := os.Stat(wav); err != nil {
 		t.Skipf("fixture missing: %v", err)
 	}

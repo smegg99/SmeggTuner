@@ -1,8 +1,9 @@
 package audio
 
 import (
-	"smegg.me/smeggtuner/common/logger"
-	coreaudio "smegg.me/smeggtuner/core/audio"
+	"smegg.me/smeggtuner/backend/common/i18n"
+	"smegg.me/smeggtuner/backend/common/logger"
+	coreaudio "smegg.me/smeggtuner/backend/core/audio"
 )
 
 // sinkOrNil keeps a typed nil out of the Sink interface: a (*Speaker)(nil) in a Sink is not a nil Sink and panics on Write.
@@ -23,7 +24,7 @@ func (s *Service) speakerLocked() *coreaudio.Speaker {
 	sp, err := coreaudio.NewSpeaker()
 	if err != nil {
 		// Warn only: playback is optional, measuring still works without a speaker.
-		logger.Warn(logger.MsgAudioSpeakerUnavailable, logger.Err(err))
+		logger.Warn(i18n.KeyLogAudioSpeakerUnavailable, logger.Err(err))
 		return nil
 	}
 	s.speaker = sp

@@ -3,7 +3,7 @@ package audio
 import (
 	"time"
 
-	coreaudio "smegg.me/smeggtuner/core/audio"
+	coreaudio "smegg.me/smeggtuner/backend/core/audio"
 )
 
 // TransportDTO is the file transport state the view draws; Available is false for a mic, times in seconds not samples.
