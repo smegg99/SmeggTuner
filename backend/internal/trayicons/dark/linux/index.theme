@@ -1,0 +1,36 @@
+[Icon Theme]
+Name=S99Wails Tray
+Directories=scalable/status,32x32/status,22x22/status,24x24/status,48x48/status,64x64/status
+
+[scalable/status]
+Size=32
+Type=Scalable
+MinSize=1
+MaxSize=512
+Context=Status
+
+[32x32/status]
+Size=32
+Type=Fixed
+Context=Status
+
+[22x22/status]
+Size=22
+Type=Fixed
+Context=Status
+
+[24x24/status]
+Size=24
+Type=Fixed
+Context=Status
+
+[48x48/status]
+Size=48
+Type=Fixed
+Context=Status
+
+[64x64/status]
+Size=64
+Type=Fixed
+Context=Status
+

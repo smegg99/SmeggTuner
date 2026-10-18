@@ -1,6 +1,6 @@
 {
   "fill": {
-    "automatic-gradient": "extended-gray:1.00000,1.00000"
+    "solid": "srgb:0.07843,0.07059,0.09412,1.00000"
   },
   "groups": [
     {
@@ -20,8 +20,8 @@
               }
             }
           ],
-          "image-name": "smeggtuner_icon.svg",
-          "name": "smeggtuner_icon",
+          "image-name": "smeggtuner-cat.svg",
+          "name": "smeggtuner-cat",
           "position": {
             "scale": 1.0,
             "translation-in-points": [

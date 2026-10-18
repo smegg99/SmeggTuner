@@ -1,0 +1,13 @@
+<!-- assets/keycap-light.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="28">
+  <title>Classic mechanical keycap</title>
+  <!-- No viewBox: corners stay fixed when the CSS background grows for a label. -->
+  <rect x=".5" y=".5" width="42" height="27" rx="4" fill="#cfc7d6" stroke="#a49baa" style="width:calc(100% - 1px)"/>
+  <rect x="3.5" y="1" width="36" height="5" rx="2" fill="#e6dfed" style="width:calc(100% - 7px)"/>
+  <path d="M1 4 4 5v13l-3 6Z" fill="#c4bccb"/>
+  <svg x="100%" width="1" height="28" overflow="visible">
+    <path d="M-1 4-4 5v13l3 6Z" fill="#c4bccb"/>
+  </svg>
+  <rect x="3.5" y="2.5" width="36" height="17" rx="2" fill="#f9f6fc" stroke="#e6dfed" style="width:calc(100% - 7px)"/>
+  <rect x="5" y="20" width="33" height="1" fill="#a49baa" style="width:calc(100% - 10px)"/>
+</svg>
