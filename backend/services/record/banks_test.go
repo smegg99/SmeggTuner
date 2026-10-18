@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	coresession "smegg.me/smeggtuner/core/session"
+	coresession "smegg.me/smeggtuner/backend/core/session"
 )
 
 // A row's reeds land in the columns of the register they were played on, low to high.

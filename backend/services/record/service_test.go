@@ -4,7 +4,8 @@ import (
 	"errors"
 	"testing"
 
-	sessionsvc "smegg.me/smeggtuner/services/session"
+	"smegg.me/smeggtuner/backend/core/dsp"
+	sessionsvc "smegg.me/smeggtuner/backend/services/session"
 )
 
 func TestPlayingWithNoSessionRecordsNothing(t *testing.T) {
@@ -20,7 +21,7 @@ func TestPlayingWithNoSessionRecordsNothing(t *testing.T) {
 	}
 }
 
-func TestEachLockIsAReading(t *testing.T) {
+func TestEachTakeIsAReading(t *testing.T) {
 	s, sessions := services(t)
 	open(t, sessions, 3)
 	s.SetArmed(true)
@@ -34,7 +35,7 @@ func TestEachLockIsAReading(t *testing.T) {
 		t.Fatal(err)
 	}
 	if len(table.Rows) != 3 {
-		t.Fatalf("rows = %d, want three takes from three locks", len(table.Rows))
+		t.Fatalf("rows = %d, want three readings from three takes", len(table.Rows))
 	}
 	if table.Rows[0].Note != 60 || table.Rows[2].Note != 64 {
 		t.Fatalf("rows = %+v, want the three notes that were played", table.Rows)
@@ -44,20 +45,47 @@ func TestEachLockIsAReading(t *testing.T) {
 	}
 }
 
-// A heartbeat carries no note or lock; reading one as an unlock would re-record the held note.
-func TestHeartbeatsDoNotDuplicateAReading(t *testing.T) {
+// Only the analysis the engine took is a reading: a held lock, a heartbeat or a lock the engine did not take is not.
+func TestOnlyTheEnginesTakeIsAReading(t *testing.T) {
 	s, sessions := services(t)
 	open(t, sessions, 3)
 	s.SetArmed(true)
 
+	seen := capture(t)
 	s.OnMeasurement(fine(60, true, -8, 0, 8))
 	for i := 0; i < 5; i++ {
 		s.OnMeasurement(heartbeat())
-		s.OnMeasurement(fine(60, true, -8, 0, 8)) // the note is still being held
+		s.OnMeasurement(fine(60, false, -8, 0, 8)) // the note is still held, the engine inhibits it
 	}
+	locked := fine(62, false, -8, 0, 8)
+	locked.Lock = dsp.Lock{Visible: true, Internal: true, Acquired: true}
+	s.OnMeasurement(locked)
 
 	if got := s.State().Readings; got != 1 {
-		t.Fatalf("readings = %d, want 1: one note held is one reading", got)
+		t.Fatalf("readings = %d, want 1: one take is one reading", got)
+	}
+	tables := 0
+	for _, e := range *seen {
+		if e.name == EventTable {
+			tables++
+		}
+	}
+	if tables != 1 {
+		t.Fatalf("published %d tables, want one for the one take", tables)
+	}
+}
+
+// Chords are never recorded, whatever a frame says.
+func TestAChordFrameIsNeverATake(t *testing.T) {
+	s, sessions := services(t)
+	open(t, sessions, 3)
+	s.SetArmed(true)
+
+	chord := fine(60, true, -1, 0, 1)
+	chord.Label = "Cm"
+	s.OnMeasurement(chord)
+	if got := s.State().Readings; got != 0 {
+		t.Fatalf("readings = %d after a chord frame, want 0", got)
 	}
 }
 
@@ -84,6 +112,7 @@ func TestTwoLocksOnOneNoteReplaceIt(t *testing.T) {
 	}
 }
 
+// Undo is Backspace: the last take goes, and with none left it leaves record mode.
 func TestUndoAndClear(t *testing.T) {
 	s, sessions := services(t)
 	open(t, sessions, 3)
@@ -102,14 +131,17 @@ func TestUndoAndClear(t *testing.T) {
 	if _, err := s.Undo(); err != nil {
 		t.Fatal(err)
 	}
-	// Undo on an empty pass does nothing.
+	if !s.Armed() {
+		t.Fatal("removing the last take keeps record mode on")
+	}
 	if _, err := s.Undo(); err != nil {
 		t.Fatalf("undo on an empty pass: %v", err)
 	}
-	if got := s.State().Readings; got != 0 {
-		t.Fatalf("takes = %d, want 0", got)
+	if got := s.State().Readings; got != 0 || s.Armed() {
+		t.Fatalf("takes = %d, armed %v: undo on an empty pass leaves record mode", got, s.Armed())
 	}
 
+	s.SetArmed(true)
 	lock(s, 60, 0)
 	table, err = s.Clear()
 	if err != nil {

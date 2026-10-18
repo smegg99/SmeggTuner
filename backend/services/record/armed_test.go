@@ -119,3 +119,25 @@ func TestSetArmedPublishesTheState(t *testing.T) {
 		}
 	}
 }
+
+// Backspace on an empty pass leaves record mode and says so, which is what turns the engine's recording off.
+func TestUndoOnAnEmptyPassPublishesTheDisarm(t *testing.T) {
+	svc, sessions := services(t)
+	open(t, sessions, 2)
+	svc.SetArmed(true)
+
+	seen := capture(t)
+	if _, err := svc.Undo(); err != nil {
+		t.Fatal(err)
+	}
+	var last *StateDTO
+	for _, e := range *seen {
+		if e.name == EventState {
+			state := e.data.(StateDTO)
+			last = &state
+		}
+	}
+	if last == nil || last.Armed || last.SessionID == "" {
+		t.Fatalf("last EventState = %+v, want the open session disarmed", last)
+	}
+}

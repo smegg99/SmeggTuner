@@ -4,7 +4,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	corereport "smegg.me/smeggtuner/core/report"
+	corereport "smegg.me/smeggtuner/backend/core/report"
+	"smegg.me/smeggtuner/backend/internal/documents"
 )
 
 func defaultName(rep *corereport.Report, format string) string {
@@ -50,6 +51,9 @@ func extension(format string) string {
 
 // withExtension adds the format's suffix if missing, so the browser renders rather than downloads.
 func withExtension(path, format string) string {
+	if documents.IsURI(path) {
+		return path
+	}
 	if strings.EqualFold(filepath.Ext(path), extension(format)) {
 		return path
 	}

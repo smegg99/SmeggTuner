@@ -1,7 +1,7 @@
 package report
 
 import (
-	audiosvc "smegg.me/smeggtuner/services/audio"
+	audiosvc "smegg.me/smeggtuner/backend/services/audio"
 )
 
 // ServiceError is the i18n-keyed error all services share (aliased from audio) so errors.As reaches every service's keys.
@@ -39,9 +39,11 @@ type OptionsDTO struct {
 
 // ResultDTO is where the report went.
 type ResultDTO struct {
-	// Path is where it was written; empty means the user cancelled.
+	// Path is where it was written; native print jobs do not return a file path.
 	Path   string `json:"path"`
 	Format string `json:"format"`
 	// Opened says the HTML sheet was handed to the browser; only the HTML is.
 	Opened bool `json:"opened"`
+	// Printing says Android accepted the report into its print UI, before the user saves or cancels.
+	Printing bool `json:"printing"`
 }

@@ -2,9 +2,10 @@
 package report
 
 import (
-	"smegg.me/smeggtuner/common/logger"
-	corereport "smegg.me/smeggtuner/core/report"
-	sessionsvc "smegg.me/smeggtuner/services/session"
+	"smegg.me/smeggtuner/backend/common/i18n"
+	"smegg.me/smeggtuner/backend/common/logger"
+	corereport "smegg.me/smeggtuner/backend/core/report"
+	sessionsvc "smegg.me/smeggtuner/backend/services/session"
 )
 
 // Native dialog strings; ASCII English until common/i18n carries keys for them.
@@ -31,7 +32,7 @@ func New(sessions *sessionsvc.Service) *Service { return &Service{sessions: sess
 // Export writes a pass of the active session to a file the user chooses; for HTML it also opens it in the browser.
 func (s *Service) Export(opts OptionsDTO) (*ResultDTO, error) {
 	if opts.Format != FormatHTML && opts.Format != FormatPDF && opts.Format != FormatCSV {
-		logger.Warn(logger.MsgReportRejected, logger.Str("format", opts.Format))
+		logger.Warn(i18n.KeyLogReportRejected, logger.Str("format", opts.Format))
 		return nil, ErrInvalidFormat
 	}
 
@@ -46,41 +47,43 @@ func (s *Service) Export(opts OptionsDTO) (*ResultDTO, error) {
 	}
 	rep, err := corereport.Build(snap, options)
 	if err != nil {
-		logger.Warn(logger.MsgReportRejected, logger.Err(err))
+		logger.Warn(i18n.KeyLogReportRejected, logger.Err(err))
 		return nil, buildError(err)
 	}
+	return exportReport(rep, opts.Format)
+}
 
-	path, err := saveDialog(defaultName(rep, opts.Format), opts.Format)
+func exportFile(rep *corereport.Report, format string) (*ResultDTO, error) {
+	path, err := saveDialog(defaultName(rep, format), format)
 	if err != nil {
 		return nil, err
 	}
 	if path == "" {
-		return &ResultDTO{Format: opts.Format}, nil // cancelled
+		return &ResultDTO{Format: format}, nil // cancelled
 	}
-	path = withExtension(path, opts.Format)
+	path = withExtension(path, format)
 
-	if err := write(path, rep, opts.Format); err != nil {
-		logger.Error(logger.MsgReportFailed, logger.Str("path", path), logger.Err(err))
+	if err := write(path, rep, format); err != nil {
+		logger.Error(i18n.KeyLogReportFailed, logger.Str("path", path), logger.Err(err))
 		return nil, err
 	}
-	logger.Info(logger.MsgReportWritten,
-		logger.Str("path", path), logger.Str("format", opts.Format),
-		logger.Int("notes", rep.Summary.Notes),
-		logger.Int("merged", rep.Summary.Merged))
+	logger.Info(i18n.KeyLogReportWritten,
+		logger.Str("path", path), logger.Str("format", format),
+		logger.Int("notes", rep.Summary.Notes))
 
-	out := &ResultDTO{Path: path, Format: opts.Format}
-	if opts.Format != FormatHTML {
+	out := &ResultDTO{Path: path, Format: format}
+	if format != FormatHTML {
 		return out, nil
 	}
 	// On an open failure the path still travels back, so the file stays findable.
 	opened, err := openInBrowser(path)
 	if err != nil {
-		logger.Warn(logger.MsgReportOpenFailed, logger.Str("path", path), logger.Err(err))
+		logger.Warn(i18n.KeyLogReportOpenFailed, logger.Str("path", path), logger.Err(err))
 		return out, ErrOpenFailed
 	}
 	out.Opened = opened
 	if opened {
-		logger.Debug(logger.MsgReportOpened, logger.Str("path", path))
+		logger.Debug(i18n.KeyLogReportOpened, logger.Str("path", path))
 	}
 	return out, nil
 }

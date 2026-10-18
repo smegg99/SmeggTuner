@@ -1,4 +1,6 @@
-// PDF output reuses core/report's HTML printed by a headless Chrome, to stay in step with the browser.
+//go:build !android
+
+// backend/services/report/pdf_desktop.go
 package report
 
 import (
@@ -9,20 +11,15 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/chromedp/cdproto/page"
+	"smegg.me/smeggtuner/backend/common/i18n"
+
 	"github.com/chromedp/chromedp"
 
-	"smegg.me/smeggtuner/common/logger"
+	"smegg.me/smeggtuner/backend/common/logger"
 )
 
 // printTimeout bounds the browser run; the page fetches nothing, so a slow run means Chrome will not start, not a big document.
 const printTimeout = 15 * time.Second
-
-// A4 in inches, Chrome's print unit; landscape is chosen by the report layout, not here.
-const (
-	paperWidthIn  = 8.27
-	paperHeightIn = 11.69
-)
 
 // pdf loads the HTML from a temp file over file:// rather than SetContent, because a megabyte-scale logo data URI breaks the debugging protocol.
 func pdf(html []byte, landscape bool) ([]byte, error) {
@@ -30,7 +27,7 @@ func pdf(html []byte, landscape bool) ([]byte, error) {
 	if err != nil {
 		return nil, ErrWriteFailed
 	}
-	defer os.RemoveAll(dir)
+	defer func() { _ = os.RemoveAll(dir) }()
 
 	src := filepath.Join(dir, "card.html")
 	if err := os.WriteFile(src, html, filePerm); err != nil {
@@ -50,39 +47,32 @@ func pdf(html []byte, landscape bool) ([]byte, error) {
 	ctx, cancelTimeout := context.WithTimeout(ctx, printTimeout)
 	defer cancelTimeout()
 
-	var out []byte
-	err = chromedp.Run(ctx,
-		chromedp.Navigate("file://"+src),
-		chromedp.WaitReady("body"),
-		chromedp.ActionFunc(func(ctx context.Context) error {
-			var err error
-			out, _, err = page.PrintToPDF().
-				WithPrintBackground(true).
-				// Prefer the sheet's own @page rule; the explicit size is its fallback.
-				WithPreferCSSPageSize(true).
-				WithPaperWidth(paperWidthIn).
-				WithPaperHeight(paperHeightIn).
-				WithLandscape(landscape).
-				// Margins are in the stylesheet; Chrome's defaults would add half an inch.
-				WithMarginTop(0).WithMarginBottom(0).
-				WithMarginLeft(0).WithMarginRight(0).
-				Do(ctx)
-			return err
-		}),
-	)
+	if err := chromedp.Do(ctx, chromedp.Navigate("file://"+src), chromedp.WaitReady("body")); err != nil {
+		return nil, failed(err)
+	}
+	// The sheet's own @page rule wins; A4 is its fallback. Margins are in the stylesheet.
+	layout := []chromedp.PDFOption{chromedp.PDFPrintBackground(), chromedp.PDFPreferCSSPageSize(),
+		chromedp.PDFPaper(chromedp.PaperA4), chromedp.PDFMargin(0)}
+	if landscape {
+		layout = append(layout, chromedp.PDFLandscape())
+	}
+	out, err := chromedp.Run(ctx, chromedp.PrintToPDF(layout...))
 	if err != nil {
-		// Distinguish a missing browser (user-fixable) from a run that failed.
-		if isMissingBrowser(err) {
-			logger.Error(logger.MsgReportFailed, logger.Err(err))
-			return nil, ErrNoBrowser
-		}
-		logger.Error(logger.MsgReportFailed, logger.Err(err))
-		return nil, ErrRenderFailed
+		return nil, failed(err)
 	}
 	if len(out) == 0 {
 		return nil, ErrRenderFailed
 	}
 	return out, nil
+}
+
+// failed logs a browser run's error and tells a missing browser (user-fixable) from a run that failed.
+func failed(err error) error {
+	logger.Error(i18n.KeyLogReportFailed, logger.Err(err))
+	if isMissingBrowser(err) {
+		return ErrNoBrowser
+	}
+	return ErrRenderFailed
 }
 
 // isMissingBrowser detects no-Chrome: chromedp wraps an *exec.Error on launch failure.

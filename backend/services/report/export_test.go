@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	appconfig "smegg.me/smeggtuner/common/config"
-	sessionsvc "smegg.me/smeggtuner/services/session"
+	appconfig "smegg.me/smeggtuner/backend/common/config"
+	sessionsvc "smegg.me/smeggtuner/backend/services/session"
 )
 
 func TestExportHTML(t *testing.T) {
@@ -32,14 +32,12 @@ func TestExportHTML(t *testing.T) {
 	}
 	body := string(raw)
 
-	// The merged pair's lobes are not reeds and must not reach the file.
-	for _, lobe := range []string{"-33.7", "39.1"} {
-		if strings.Contains(body, lobe) {
-			t.Fatalf("the merged pair's lobe %s reached the report", lobe)
-		}
+	// The reed that did not sound prints absent, never as its -99 sentinel.
+	if strings.Contains(body, "-99") {
+		t.Fatal("the silent reed's sentinel reached the report as a number")
 	}
-	if !strings.Contains(body, "Reeds not separated") {
-		t.Error("the merged note does not say why it has no reeds")
+	if !strings.Contains(body, `class="absent"`) {
+		t.Error("the silent reed does not print as absent")
 	}
 	if !strings.Contains(body, "440.0 Hz") {
 		t.Error("the report does not quote the pass's reference")
@@ -70,10 +68,29 @@ func TestExportCSV(t *testing.T) {
 	if !strings.Contains(body, "reference_a4_hz,440.00") {
 		t.Error("the CSV does not carry the reference the numbers were measured from")
 	}
-	for _, lobe := range []string{"-33.7", "39.1"} {
-		if strings.Contains(body, lobe) {
-			t.Fatalf("the merged pair's lobe %s reached the spreadsheet", lobe)
-		}
+	if strings.Contains(body, "-99") {
+		t.Fatal("the silent reed's sentinel reached the spreadsheet as a number")
+	}
+	if !strings.Contains(body, "tolerance_ref,") {
+		t.Error("the CSV does not say its deviations are reference units by default")
+	}
+}
+
+// The sheet prints in the unit the tuner screen is set to; storage stays reference units.
+func TestExportFollowsTheDeviationUnit(t *testing.T) {
+	svc, sessions, _ := services(t)
+	pass(t, sessions)
+
+	appconfig.Global.Tuner.DeviationUnit = "cents"
+	t.Cleanup(func() { appconfig.Global.Tuner.DeviationUnit = "" })
+
+	out := export(t, svc, OptionsDTO{Format: FormatCSV})
+	raw, err := os.ReadFile(out.Path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if body := string(raw); !strings.Contains(body, "tolerance_cents,") || strings.Contains(body, "tolerance_ref,") {
+		t.Fatalf("a cents setting must print a cents sheet:\n%s", body)
 	}
 }
 

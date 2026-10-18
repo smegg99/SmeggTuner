@@ -4,9 +4,12 @@ package report
 import (
 	"path/filepath"
 
+	"smegg.me/smeggtuner/backend/common/i18n"
+
 	"github.com/wailsapp/wails/v3/pkg/application"
 
-	"smegg.me/smeggtuner/common/logger"
+	"smegg.me/smeggtuner/backend/common/logger"
+	"smegg.me/smeggtuner/backend/internal/documents"
 )
 
 var (
@@ -26,17 +29,11 @@ func realSaveDialog(name, format string) (string, error) {
 	case FormatPDF:
 		filter, glob = pdfFilter, pdfGlob
 	}
-	// The save dialog has no SetTitle in the builder, only in its options struct.
-	dialog := app.Dialog.SaveFile()
-	dialog.SetOptions(&application.SaveFileDialogOptions{
-		Title:                saveTitle,
-		Filename:             name,
-		CanCreateDirectories: true,
-		Filters:              []application.FileFilter{{DisplayName: filter, Pattern: glob}},
+	path, err := documents.SaveFile(documents.SaveOptions{
+		Name: name, Title: saveTitle, Filter: filter, Pattern: glob, MIME: mimeType(format),
 	})
-	path, err := dialog.PromptForSingleSelection()
 	if err != nil {
-		logger.Warn(logger.MsgReportFailed, logger.Err(err))
+		logger.Warn(i18n.KeyLogReportFailed, logger.Err(err))
 		return "", ErrWriteFailed
 	}
 	return path, nil
@@ -48,11 +45,25 @@ func realOpenInBrowser(path string) (bool, error) {
 		return false, nil
 	}
 	abs, err := filepath.Abs(path)
+	if documents.IsURI(path) {
+		abs, err = path, nil
+	}
 	if err != nil {
 		return false, err
 	}
-	if err := app.Browser.OpenURL("file://" + abs); err != nil {
+	if err := documents.Open(abs, "text/html"); err != nil {
 		return false, err
 	}
 	return true, nil
+}
+
+func mimeType(format string) string {
+	switch format {
+	case FormatCSV:
+		return "text/csv"
+	case FormatPDF:
+		return "application/pdf"
+	default:
+		return "text/html"
+	}
 }

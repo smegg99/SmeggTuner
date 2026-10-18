@@ -1,6 +1,6 @@
 package record
 
-// Armed reports whether locks are being saved.
+// Armed reports whether takes are being saved.
 func (s *Service) Armed() bool {
 	s.mu.Lock()
 	defer s.mu.Unlock()
@@ -8,7 +8,8 @@ func (s *Service) Armed() bool {
 }
 
 // SetArmed turns recording on and off. It stamps the session the arm was made in
-// so the next session:active does not disarm it.
+// so the next session:active does not disarm it. The engine records while the state
+// says armed with a session; the composition root passes EventState on to it.
 func (s *Service) SetArmed(on bool) {
 	s.mu.Lock()
 	s.armed = on

@@ -6,25 +6,32 @@ import (
 	"os"
 	"path/filepath"
 
-	"smegg.me/smeggtuner/common/logger"
-	corereport "smegg.me/smeggtuner/core/report"
+	"smegg.me/smeggtuner/backend/common/i18n"
+
+	"smegg.me/smeggtuner/backend/common/logger"
+	corereport "smegg.me/smeggtuner/backend/core/report"
+	"smegg.me/smeggtuner/backend/internal/documents"
 )
 
 // write renders to a temp file beside the target then renames it over, so a failed write never clobbers the previous report.
 func write(path string, rep *corereport.Report, format string) error {
+	return documents.Write(path, func(local string) error { return writeLocal(local, rep, format) })
+}
+
+func writeLocal(path string, rep *corereport.Report, format string) error {
 	tmp, err := os.CreateTemp(filepath.Dir(path), ".report-*")
 	if err != nil {
 		return ErrWriteFailed
 	}
 	name := tmp.Name()
-	defer os.Remove(name) // a no-op once the rename below has taken it away
+	defer func() { _ = os.Remove(name) }() // a no-op once the rename below has taken it away
 
 	if err := renderTo(tmp, rep, format); err != nil {
-		tmp.Close()
+		_ = tmp.Close()
 		return err
 	}
 	if err := tmp.Sync(); err != nil {
-		tmp.Close()
+		_ = tmp.Close()
 		return ErrWriteFailed
 	}
 	if err := tmp.Close(); err != nil {
@@ -43,7 +50,7 @@ func write(path string, rep *corereport.Report, format string) error {
 func renderTo(w io.Writer, rep *corereport.Report, format string) error {
 	if format == FormatCSV {
 		if err := corereport.CSV(w, rep); err != nil {
-			logger.Error(logger.MsgReportFailed, logger.Err(err))
+			logger.Error(i18n.KeyLogReportFailed, logger.Err(err))
 			return ErrRenderFailed
 		}
 		return nil
@@ -51,7 +58,7 @@ func renderTo(w io.Writer, rep *corereport.Report, format string) error {
 
 	var html bytes.Buffer
 	if err := corereport.HTML(&html, rep); err != nil {
-		logger.Error(logger.MsgReportFailed, logger.Err(err))
+		logger.Error(i18n.KeyLogReportFailed, logger.Err(err))
 		return ErrRenderFailed
 	}
 	if format != FormatPDF {
