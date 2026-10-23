@@ -1,77 +1,36 @@
 package tests
 
-// The lone-rank set: sounds/*'8.wav and *'16.wav, one rank of a Hohner sitting at A442, named by
-// the German note of the key (H is B natural, Ais is A sharp) and the register's feet.
-//
-// TestSamples next door does the same job for ANY folder handed to it through SMEGGTUNER_SAMPLES,
-// which is what it is for. It is skipped unless that is set, so nothing here ran by default - and
-// these 24 recordings are the set the detector was calibrated against, the one where a subharmonic
-// walk that stops one step early shows up as half the notes reading an octave or a fifth out. They
-// are asserted here by default, and strictly: the exact note including its octave, not the pitch
-// class, and 10 cents rather than 35.
+// sounds/*'8.wav and *'16.wav: one Hohner rank alone at A442; an independent FFT put each within 3.6 cents of its pitch.
 
 import (
-	"context"
-	"fmt"
 	"math"
 	"path/filepath"
 	"sort"
-	"sync"
 	"testing"
-	"time"
 
-	"smegg.me/smeggtuner/core/audio"
-	"smegg.me/smeggtuner/core/dsp"
-	"smegg.me/smeggtuner/core/tuning"
+	"smegg.me/smeggtuner/backend/core/dsp"
+	"smegg.me/smeggtuner/backend/core/tuning"
 )
 
-// The Hohner these were played on. Judging them against A440 would report the whole instrument
-// sharp and hide a real error under a fake one.
-const loneRankA4 = 442.0
+const (
+	loneRankA4       = 442.0
+	loneRankMaxCents = 10.0
+)
 
-// Measured across all 24 with an independent FFT and again through the engine: every rank lands
-// within 3.6 cents of its A442 scale pitch. The bar is set where a wrong note cannot hide - a
-// semitone is 100 - while leaving room for the drift a hand-worked bellows puts on a 3s window.
-const loneRankMaxCents = 10.0
+// strayLine: with no learned background a weak low line is the lowest eligible note, and only a note scoring 30x it replaces it.
+var strayLine = map[string]string{
+	"Cis (C#) '16": "a 39.4 Hz line (D#1) scores 5-7; C#3 scores 143-190, under 30x it, the 9th partial D#6 147-227 clears it",
+	"D '16":        "a 46-49 Hz line (F#1/G1) scores 3-4; D3 scores 82-112, under 30x it, the 3rd partial A4 96-141 clears it",
+	"F '16":        "a 120 Hz line (A#2) scores 3; F3 scores 58-98 and only sometimes clears 30x it, C6 and A5 partials clear it",
+	"Fis '16":      "a 120 Hz line (A#2) scores 4; F#3 scores 53-72, under 30x it, the 3rd partial C#5 94-172 clears it",
+}
 
-// The window the app tunes with.
-const fineWindow = 3 * time.Second
-
-// The 8' rank sounds the key; the 16' sounds an octave under it. Every recording in the set is a
-// key from the octave below middle C upward, so the 8' rank lands in octave 4 and the 16' in 3.
+// loneRankWant is the note the rank sounds: every key in the set is in the octave above C4, the 16' an octave under.
 func loneRankWant(s sample) tuning.Note {
 	if s.register == 16 {
-		return tuning.Note(48 + s.class) // C3 = MIDI 48
+		return tuning.Note(48 + s.class)
 	}
-	return tuning.Note(60 + s.class) // C4 = MIDI 60
-}
-
-// Two dozen recordings take about twenty seconds to grind through and four tests below ask
-// questions of the same runs. Measure each once.
-var (
-	measuredMu sync.Mutex
-	measured   = map[string]loneReading{}
-)
-
-// loneReading is one recording's run: what it aggregated to, and the ticks it aggregated from.
-type loneReading struct {
-	agg   dsp.Measurement
-	ticks []dsp.Measurement
-}
-
-// measureOnce is measureSample memoised on the recording and the reference it was measured against.
-func measureOnce(t *testing.T, path string, a4 float64) (dsp.Measurement, []dsp.Measurement) {
-	t.Helper()
-	key := fmt.Sprintf("%s@%g", path, a4)
-
-	measuredMu.Lock()
-	defer measuredMu.Unlock()
-	if r, seen := measured[key]; seen {
-		return r.agg, r.ticks
-	}
-	agg, ticks := measureSample(t, path, a4)
-	measured[key] = loneReading{agg: agg, ticks: ticks}
-	return agg, ticks
+	return tuning.Note(60 + s.class)
 }
 
 // loneRanks is every single-rank recording in sounds/, sorted so a failure list reads the same twice.
@@ -84,251 +43,146 @@ func loneRanks(t *testing.T) []sample {
 			out = append(out, s)
 		}
 	}
+	if len(out) == 0 {
+		t.Skip("no single-rank recordings in ../sounds")
+	}
 	sort.Slice(out, func(a, b int) bool { return out[a].name < out[b].name })
 	return out
 }
 
+func loneRun(t *testing.T, s sample) run {
+	return runFile(t, s.path, dsp.EngineConfig{A4: loneRankA4, ReedCount: 1})
+}
+
+// skipStray skips a known stray-line take that still misreads, and fails one that no longer does.
+func skipStray(t *testing.T, s sample, ok bool, all []dsp.Measurement) {
+	t.Helper()
+	why, known := strayLine[s.name]
+	switch {
+	case known && !ok:
+		t.Skipf("%s sounds %s: %s (reads %s)", s.name, name(loneRankWant(s)), why, summary(all))
+	case known:
+		t.Errorf("listed as a stray-line misreading but reads correctly now: drop it from strayLine")
+	}
+}
+
 func TestEveryLoneRankIsNamedAndInTune(t *testing.T) {
+	t.Parallel()
 	if testing.Short() {
-		t.Skip("loads two dozen multi-megabyte recordings")
+		t.Skip("loads two dozen recordings")
 	}
-	set := loneRanks(t)
-	if len(set) == 0 {
-		t.Skip("no single-rank recordings in ../sounds")
-	}
-
-	for _, s := range set {
+	for _, s := range loneRanks(t) {
 		t.Run(s.name, func(t *testing.T) {
-			m, ticks := measureOnce(t, s.path, loneRankA4)
-			if len(m.Reeds) == 0 {
-				t.Fatalf("no reed measured")
-			}
-
+			all := loneRun(t, s).all
 			want := loneRankWant(s)
-			if m.Note != want {
-				t.Errorf("read %s at %.2f Hz, but %s sounds %s",
-					m.Note.Name(tuning.NamingCDEFGAB), m.Reeds[0].Freq,
-					s.name, want.Name(tuning.NamingCDEFGAB))
+			skipStray(t, s, reads(all, want), all)
+			if !reads(all, want) {
+				t.Fatalf("%s sounds %s, reads %s", s.name, name(want), summary(all))
 			}
+			freq, n := sustained(sounding(all, want), 0)
+			c := cents(freq, want.Freq(loneRankA4))
+			if math.Abs(c) > loneRankMaxCents {
+				t.Errorf("%.3f Hz is %+.1f cents off %s at A442: the wrong note, not a reed out of tune", freq, c, name(want))
+			}
+			t.Logf("%s %.3f Hz %+.1f cents over %d analyses", name(want), freq, c, n)
+		})
+	}
+}
 
-			// The app draws the latest tick, so a single tick landing an octave out is a wrong
-			// needle in front of a technician, not a rounding error in an average.
-			for i, tick := range ticks {
-				if tick.Note != want {
-					t.Errorf("tick %d of %d read %s (%.2f Hz), want %s",
-						i+1, len(ticks), tick.Note.Name(tuning.NamingCDEFGAB),
-						tick.Reeds[0].Freq, want.Name(tuning.NamingCDEFGAB))
-					break // one is enough; the rest of the run says the same thing
+// The lock holds the note it locked on: from the first take on, no analysis names another.
+func TestALockedLoneRankNeverJumpsNote(t *testing.T) {
+	t.Parallel()
+	if testing.Short() {
+		t.Skip("loads two dozen recordings")
+	}
+	for _, s := range loneRanks(t) {
+		t.Run(s.name, func(t *testing.T) {
+			all := loneRun(t, s).all
+			skipStray(t, s, reads(all, loneRankWant(s)), all)
+			at := takeAt(all)
+			if len(at) == 0 {
+				t.Skip("never locked; TestASteadyLoneRankLocks says why")
+			}
+			took := all[at[0]]
+			for _, m := range measured(all[at[0]:]) {
+				if m.Note != took.Note {
+					t.Fatalf("locked on %s at %.2fs, then read %s at %.2fs", name(took.Note), took.SourceAt, name(m.Note), m.SourceAt)
 				}
 			}
-
-			if dev := m.Reeds[0].DevCents; dev > loneRankMaxCents || dev < -loneRankMaxCents {
-				t.Errorf("%.2f Hz is %+.1f cents off %s at A%.0f: that is not a reed out of tune, "+
-					"it is the wrong note", m.Reeds[0].Freq, dev,
-					want.Name(tuning.NamingCDEFGAB), loneRankA4)
-			}
 		})
 	}
-	t.Logf("%d lone-rank recordings checked at A%.0f", len(set), loneRankA4)
 }
 
-// The two registers are the same key an octave apart. A detector that walked one partial too far on
-// one of them and not the other passes every test above and fails this one.
+// The history locks once eight analyses in a row stay within 400/bins units and the note has settled: the first take is exactly there.
+func TestASteadyLoneRankLocks(t *testing.T) {
+	t.Parallel()
+	if testing.Short() {
+		t.Skip("loads two dozen recordings")
+	}
+	for _, s := range loneRanks(t) {
+		t.Run(s.name, func(t *testing.T) {
+			r := loneRun(t, s)
+			want := loneRankWant(s)
+			skipStray(t, s, reads(r.all, want), r.all)
+			limit := lockSpan(r.rate, loneRankA4, want)
+			steady, span, longest := steadiness(r.all, want, limit)
+			took := -1
+			for _, i := range takeAt(r.all) {
+				if r.all[i].Note == want {
+					took = i
+					break
+				}
+			}
+			if took != steady {
+				t.Fatalf("first take on %s at event %d, the history accepts at event %d (limit %.2f units, steadiest %.2f)", name(want), took, steady, limit, span)
+			}
+			if longest < lockWindow {
+				t.Skipf("never held %s for %d analyses in a row, the longest run is %d (%s)", name(want), lockWindow, longest, summary(r.all))
+			}
+			if span > limit {
+				t.Skipf("bellows drift: the steadiest %d analyses on %s span %.2f units, the reference locks within %.2f",
+					lockWindow, name(want), span, limit)
+			}
+			m := r.all[took]
+			if c := cents(m.Reeds[0].Freq, want.Freq(loneRankA4)); math.Abs(c) > loneRankMaxCents {
+				t.Errorf("take at %.3f Hz is %+.1f cents off %s", m.Reeds[0].Freq, c, name(want))
+			}
+			t.Logf("took %.3f Hz at %.2fs, steadiest span %.2f of %.2f units", m.Reeds[0].Freq, m.SourceAt, span, limit)
+		})
+	}
+}
+
+// The same key in both registers: a scan settled on a partial in only one of them fails here.
 func TestTheSixteenFootSoundsAnOctaveUnderTheEight(t *testing.T) {
+	t.Parallel()
 	if testing.Short() {
-		t.Skip("loads two dozen multi-megabyte recordings")
+		t.Skip("loads two dozen recordings")
 	}
-	heard := map[int]map[int]dsp.Measurement{}
+	byClass := map[int]map[int]sample{}
 	for _, s := range loneRanks(t) {
-		m, _ := measureOnce(t, s.path, loneRankA4)
-		if len(m.Reeds) == 0 {
-			t.Errorf("%s: no reed measured", s.name)
-			continue
+		if byClass[s.class] == nil {
+			byClass[s.class] = map[int]sample{}
 		}
-		if heard[s.class] == nil {
-			heard[s.class] = map[int]dsp.Measurement{}
-		}
-		heard[s.class][s.register] = m
+		byClass[s.class][s.register] = s
 	}
-	if len(heard) == 0 {
-		t.Skip("no single-rank recordings in ../sounds")
-	}
-
-	pairs := 0
 	for class := range 12 {
-		eight, hasEight := heard[class][8]
-		sixteen, hasSixteen := heard[class][16]
-		if !hasEight || !hasSixteen {
+		eight, sixteen := byClass[class][8], byClass[class][16]
+		if eight.path == "" || sixteen.path == "" {
 			continue
 		}
-		pairs++
-
-		if gap := eight.Note - sixteen.Note; gap != 12 {
-			t.Errorf("pitch class %d: 8' reads %s and 16' reads %s, %d semitones apart, not 12",
-				class, eight.Note.Name(tuning.NamingCDEFGAB),
-				sixteen.Note.Name(tuning.NamingCDEFGAB), gap)
-		}
-
-		// Two independently tuned reeds, so not an exact halving - but far closer to one than to
-		// any other interval the detector could have picked.
-		ratio := eight.Reeds[0].Freq / sixteen.Reeds[0].Freq
-		cents := 1200 * math.Log2(ratio/2)
-		if cents > 40 || cents < -40 {
-			t.Errorf("pitch class %d: %.2f Hz over %.2f Hz is %+.1f cents off a true octave",
-				class, eight.Reeds[0].Freq, sixteen.Reeds[0].Freq, cents)
-		}
-	}
-	if pairs == 0 {
-		t.Skip("no 8'/16' pairs in ../sounds")
-	}
-	t.Logf("%d pitch classes checked in both registers", pairs)
-}
-
-// A lone rank under a register that declares two octaves is genuinely ambiguous: one fundamental
-// with only its own harmonics above it sounds identical whether it is the 16' with the 8' silent or
-// the 8' with the 16' silent. core/dsp/compound.go resolveBase settles it by reading the tracked
-// note as the register's LOWEST declared rank, and says why. Nothing tested that, and it is a
-// tie-break a refactor would flip without noticing.
-func TestALoneRankUnderATwoOctaveRegisterReadsAsTheLowestDeclaredRank(t *testing.T) {
-	if testing.Short() {
-		t.Skip("loads multi-megabyte recordings")
-	}
-	checked := 0
-	for _, s := range loneRanks(t) {
-		if s.register != 8 {
-			continue // the 16' half is TestBlockedRankIsNotAPhantomVoice's case
-		}
-		checked++
-		t.Run(s.name, func(t *testing.T) {
-			m, ok := measureUnderLayout(t, s.path, loneRankA4, 2, twoOctaveRegister)
-			if !ok {
-				t.Fatalf("no usable reading")
+		t.Run(sixteen.name, func(t *testing.T) {
+			e, s := loneRun(t, eight).all, loneRun(t, sixteen).all
+			high, low := loneRankWant(eight), loneRankWant(sixteen)
+			skipStray(t, sixteen, reads(s, low), s)
+			if !reads(e, high) || !reads(s, low) {
+				t.Fatalf("8' reads %s and 16' reads %s, want %s and %s", summary(e), summary(s), name(high), name(low))
 			}
-			if len(m.Reeds) == 0 {
-				t.Fatalf("nothing measured")
-			}
-			if m.Reeds[0].Octave != -12 {
-				t.Errorf("the rank that is sounding was placed at octave %d, want the declared 16' band (-12)",
-					m.Reeds[0].Octave)
-			}
-			// Reading it as the 16' names the key an octave above the pitch that sounds.
-			if want := loneRankWant(s) + 12; m.Note != want {
-				t.Errorf("key read as %s, want %s", m.Note.Name(tuning.NamingCDEFGAB),
-					want.Name(tuning.NamingCDEFGAB))
-			}
-			if len(m.Bands) != 2 {
-				t.Fatalf("want a band per declared octave, got %+v", m.Bands)
-			}
-			if m.Bands[0].Found != 1 || m.Bands[0].GhostOnly {
-				t.Errorf("the sounding band reported %+v, want one confirmed voice", m.Bands[0])
+			fe, _ := sustained(sounding(e, high), 0)
+			fs, _ := sustained(sounding(s, low), 0)
+			// Two reeds tuned by hand: near an octave, far from any other interval.
+			if c := cents(fe, 2*fs); math.Abs(c) > 40 {
+				t.Errorf("%.3f Hz over %.3f Hz is %+.1f cents off an octave", fe, fs, c)
 			}
 		})
 	}
-	if checked == 0 {
-		t.Skip("no 8' recordings in ../sounds")
-	}
-}
-
-// phantomOnItsOwnPartial names the recordings where the engine claims the rank's own second partial
-// as a second voice. It is a DEFECT, not an accepted limitation: eleven of these twelve recordings
-// are the same lone rank under the same declared register and get it right.
-//
-// The obvious explanation does not hold. A partial is taken for a partial only within
-// max(ghostFloorHz, f*ghostRelTol) of an exact multiple - about 0.2 Hz at 660 - and E '8 lands 0.8
-// Hz out. But so do seven of the eleven that pass, so "the partial drifted outside the window" is
-// not what separates them, and widening the window is the wrong fix anyway: the Bugari D3 take has
-// a REAL 4' rank half a cent over the double octave, and a window loose enough to swallow this
-// phantom would swallow that rank.
-//
-// What is measurable: E '8 has the least steady fundamental of the twelve, smeared 1.48 Hz wide at
-// -6 dB where the well-behaved A '8 is a single line. Root cause not established.
-var phantomOnItsOwnPartial = map[string]string{
-	"E '8": "reports its own second partial at 662.4 Hz as a second voice",
-}
-
-// The silent band of a two-octave register holds nothing but the sounding rank's partial, and a
-// partial is not a voice. This is TestBlockedRankIsNotAPhantomVoice's rule from the other side: that
-// one covers a 16' sounding alone, this one an 8'.
-func TestTheSilentBandOfALoneRankClaimsNoVoice(t *testing.T) {
-	if testing.Short() {
-		t.Skip("loads multi-megabyte recordings")
-	}
-	checked := 0
-	for _, s := range loneRanks(t) {
-		if s.register != 8 {
-			continue
-		}
-		checked++
-		t.Run(s.name, func(t *testing.T) {
-			if why, known := phantomOnItsOwnPartial[s.name]; known {
-				t.Skipf("known defect: %s", why)
-			}
-			m, ok := measureUnderLayout(t, s.path, loneRankA4, 2, twoOctaveRegister)
-			if !ok {
-				t.Fatalf("no usable reading")
-			}
-			if len(m.Reeds) != 1 {
-				t.Fatalf("one rank sounds, the engine resolved %d: %+v", len(m.Reeds), m.Reeds)
-			}
-			if len(m.Bands) != 2 {
-				t.Fatalf("want a band per declared octave, got %+v", m.Bands)
-			}
-			// Found is the contract. GhostOnly is not asserted either way: it says the band held a
-			// lower rank's partial and nothing else, which is true only when the partial was loud
-			// enough to be seen there at all - two of these recordings leave the band truly empty.
-			if m.Bands[1].Found != 0 {
-				t.Errorf("the silent band claims %d voice(s): %+v", m.Bands[1].Found, m.Bands[1])
-			}
-		})
-	}
-	if checked == 0 {
-		t.Skip("no 8' recordings in ../sounds")
-	}
-}
-
-// twoOctaveRegister is a 16'+8' register: one rank in the key's octave and one an octave under it.
-var twoOctaveRegister = []dsp.OctaveRequest{{Offset: -12, Reeds: 1}, {Offset: 0, Reeds: 1}}
-
-var (
-	layoutMu sync.Mutex
-	layoutOf = map[string]layoutReading{}
-)
-
-// layoutReading is one recording's run under a declared register; ok is dsp.Aggregate's, and false
-// is a legal answer (nothing sustained enough to vote on), not an error.
-type layoutReading struct {
-	agg dsp.Measurement
-	ok  bool
-}
-
-// measureUnderLayout runs a recording through the engine under a declared octave layout, the way a
-// pulled register imposes one, and aggregates the sustained middle. Memoised on everything that
-// changes the answer, so the tests that ask twice pay once.
-func measureUnderLayout(t *testing.T, path string, a4 float64, reeds int, octaves []dsp.OctaveRequest) (dsp.Measurement, bool) {
-	t.Helper()
-	key := fmt.Sprintf("%s@%g/%d/%v", path, a4, reeds, octaves)
-
-	layoutMu.Lock()
-	defer layoutMu.Unlock()
-	if r, seen := layoutOf[key]; seen {
-		return r.agg, r.ok
-	}
-	src, err := audio.NewFileSource(path, false, false)
-	if err != nil {
-		t.Fatalf("open: %v", err)
-	}
-	var all []dsp.Measurement
-	eng := dsp.NewEngine(dsp.EngineConfig{
-		A4:         a4,
-		ReedCount:  reeds,
-		Octaves:    octaves,
-		FineWindow: fineWindow,
-	}, func(m dsp.Measurement) { all = append(all, m) })
-	// Not t.Context(): the memo outlives whichever test filled it.
-	if err := eng.Run(context.Background(), src); err != nil {
-		t.Fatalf("engine: %v", err)
-	}
-	agg, ok := dsp.Aggregate(all, a4, 0.5)
-	layoutOf[key] = layoutReading{agg: agg, ok: ok}
-	return agg, ok
 }

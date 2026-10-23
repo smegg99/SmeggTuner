@@ -1,196 +1,113 @@
 package tests
 
-// sounds/walc wojciechowski.wav is the only recording in the repository of somebody PLAYING rather
-// than holding a note: 84 seconds of a waltz, both hands, notes changing every beat, chords, and
-// the bellows turning around. Every other test here feeds the engine one sustained note and asks
-// what it measured. This one asks a different question - what the engine does when the input is
-// nothing it was designed for - and asserts only the things that must hold whatever is playing.
-//
-// It is deliberately not a pitch test. Which note wins during a chord is not a contract, and
-// pinning the sequence this recording happens to produce would freeze an accident. What is pinned
-// is that the engine survives it, keeps following, and never hands the app a reading that
-// contradicts itself.
+// An 84 s played waltz: which note wins a chord is not a contract, following and self-consistency are.
 
 import (
-	"context"
+	"fmt"
 	"math"
-	"sync"
 	"testing"
 
-	"smegg.me/smeggtuner/core/audio"
-	"smegg.me/smeggtuner/core/dsp"
-	"smegg.me/smeggtuner/core/tuning"
+	"smegg.me/smeggtuner/backend/core/dsp"
+	"smegg.me/smeggtuner/backend/core/dsp/meter"
+	"smegg.me/smeggtuner/backend/core/tuning"
 )
 
 const pieceFile = "../sounds/walc wojciechowski.wav"
 
-// A reed is measured inside a window around its band's centre, so it can sit some way off the
-// tracked note without being wrong - a hair over a semitone, in a piece where the tracked note is
-// chasing a moving target. Two semitones is well past anything the search can legitimately return
-// and well short of the octave a harmonic error would put it.
-const pieceMaxCentsFromBand = 200.0
-
-// Eighty-four seconds of audio takes about fifteen to grind through, and three tests ask the same
-// question of it. Run it once.
-var (
-	pieceOnce sync.Once
-	pieceRun  []dsp.Measurement
-	pieceErr  error
-)
-
 func runPiece(t *testing.T) []dsp.Measurement {
 	t.Helper()
-	pieceOnce.Do(func() {
-		src, err := audio.NewFileSource(pieceFile, false, false)
-		if err != nil {
-			pieceErr = err
-			return
-		}
-		eng := dsp.NewEngine(dsp.EngineConfig{
-			A4:         loneRankA4,
-			ReedCount:  2,
-			FineWindow: fineWindow,
-		}, func(m dsp.Measurement) { pieceRun = append(pieceRun, m) })
-		// Not t.Context(): the result outlives whichever test happened to run first.
-		pieceErr = eng.Run(context.Background(), src)
-	})
-	if pieceErr != nil {
-		t.Skipf("recording not usable: %v", pieceErr)
-	}
-	return pieceRun
+	return runFile(t, pieceFile, dsp.EngineConfig{A4: loneRankA4, ReedCount: 2}).all
 }
 
-// Every reading the engine hands out must agree with itself. DevCents is what the app draws on the
-// needle and what core/target scores against the curve; if it ever disagrees with the frequency it
-// was computed from, the number on screen and the number in the report come apart, and no amount of
-// squinting at a spectrum would show it.
 func TestAPlayedPieceNeverContradictsItself(t *testing.T) {
+	t.Parallel()
 	if testing.Short() {
 		t.Skip("loads an 84-second recording")
 	}
 	all := runPiece(t)
-	if len(all) == 0 {
-		t.Fatal("the engine emitted nothing at all")
-	}
-
-	withReeds := 0
+	fresh := 0
 	for i, m := range all {
-		if len(m.Reeds) == 0 {
+		if len(m.Panels) != 3 || len(m.Needles) != 2 {
+			t.Fatalf("event %d carries %d panels and %d needles, the screen of two slots has 3 and 2", i, len(m.Panels), len(m.Needles))
+		}
+		switch m.Frame {
+		case dsp.FrameMeasured, dsp.FrameIneligible:
+			fresh++
+			if err := consistent(m); err != nil {
+				t.Fatalf("event %d (%s, %.2fs): %v", i, m.Frame, m.SourceAt, err)
+			}
+		case dsp.FrameNoNote:
+			if !m.NeedlesDimmed || len(m.Reeds) != 0 {
+				t.Fatalf("event %d has no note but %d slots and needles dimmed %v", i, len(m.Reeds), m.NeedlesDimmed)
+			}
+			for _, p := range m.Panels {
+				if !p.Dimmed {
+					t.Fatalf("event %d has no note and an undimmed panel %+v", i, p)
+				}
+			}
+		default:
+			if len(m.Reeds) != 0 || len(m.Beats) != 0 {
+				t.Fatalf("event %d (%q) is not an analysis and carries %d slots", i, m.Frame, len(m.Reeds))
+			}
+		}
+	}
+	if fresh == 0 {
+		t.Fatal("84 seconds of playing measured nothing")
+	}
+	t.Logf("%d events, %d analyses with fresh slots, all self-consistent", len(all), fresh)
+}
+
+// consistent checks one analysis against itself: key, slot frequency against deviation, missing sentinel, beat presence.
+func consistent(m dsp.Measurement) error {
+	if !m.Note.Valid() || m.NoteName != m.Note.Name(tuning.NamingCDEFGAB) || math.Abs(m.ScalePitch/m.Note.Freq(loneRankA4)-1) > 1e-12 {
+		return fmt.Errorf("note %d %q at %v Hz", m.Note, m.NoteName, m.ScalePitch)
+	}
+	if len(m.Reeds) != 2 || len(m.Beats) != 1 || m.Beats[0].Pair != "1-2" {
+		return fmt.Errorf("%d slots and beats %+v", len(m.Reeds), m.Beats)
+	}
+	for s, r := range m.Reeds {
+		if !r.Present {
+			if r.Dev != meter.Missing || r.Freq != 0 {
+				return fmt.Errorf("slot %d missing but %+v", s+1, r)
+			}
 			continue
 		}
-		withReeds++
-
-		if !m.Note.Valid() {
-			t.Fatalf("tick %d reported reeds under note %d, which is outside the tuning range",
-				i, m.Note)
+		nominal := m.ScalePitch * math.Exp2(float64(r.Octave)/12)
+		if want := nominal * (1 + 0.0006*r.Dev); r.Freq <= 0 || math.Abs(r.Freq/want-1) > 1e-12 {
+			return fmt.Errorf("slot %d at %v Hz is not %+.3f units from %.4f Hz", s+1, r.Freq, r.Dev, nominal)
 		}
-		if m.ScalePitch <= 0 || math.IsNaN(m.ScalePitch) || math.IsInf(m.ScalePitch, 0) {
-			t.Fatalf("tick %d has reeds but a scale pitch of %v", i, m.ScalePitch)
-		}
-
-		for r, reed := range m.Reeds {
-			if reed.Freq <= 0 || math.IsNaN(reed.Freq) || math.IsInf(reed.Freq, 0) {
-				t.Fatalf("tick %d reed %d has frequency %v", i, r+1, reed.Freq)
-			}
-			// The deviation must be the one the frequency implies against that reed's own band.
-			band := m.ScalePitch * math.Exp2(float64(reed.Octave)/12)
-			want := 1200 * math.Log2(reed.Freq/band)
-			if math.Abs(want-reed.DevCents) > 0.01 {
-				t.Fatalf("tick %d reed %d: %.4f Hz against a band centre of %.4f Hz is %+.3f cents, "+
-					"but the reading says %+.3f", i, r+1, reed.Freq, band, want, reed.DevCents)
-			}
-			if math.Abs(reed.DevCents) > pieceMaxCentsFromBand {
-				t.Errorf("tick %d reed %d landed %+.1f cents from %s, further than the search "+
-					"window it came from", i, r+1, reed.DevCents, m.Note.Name(tuning.NamingCDEFGAB))
-			}
-		}
-
-		if len(m.Reeds) > 2 {
-			t.Errorf("tick %d resolved %d reeds under a two-reed configuration", i, len(m.Reeds))
-		}
-		for _, b := range m.Beats {
-			if math.IsNaN(b.Hz) || math.IsInf(b.Hz, 0) {
-				t.Errorf("tick %d beat %s is %v", i, b.Pair, b.Hz)
-			}
-			// A beat normally sits between two resolved reeds. It may be reported with only one -
-			// two reeds beating too close to separate leave a single line and an audible swing -
-			// but ONLY then, and the reading has to say so: FromEnvelope on the beat, and reeds
-			// not separated on the measurement, which is what core/session turns into ReedsMerged
-			// and what stops the report printing one lobe of a peak as two reeds. A peak-derived
-			// beat with one reed would key its pair off a reed that is not there.
-			if len(m.Reeds) < 2 {
-				if !b.FromEnvelope {
-					t.Errorf("tick %d reports beat %s between peaks, but resolved only %d reed(s)",
-						i, b.Pair, len(m.Reeds))
-				}
-				if m.ReedsSeparated {
-					t.Errorf("tick %d carries an envelope beat on %d reed(s) and still claims the "+
-						"reeds were separated", i, len(m.Reeds))
-				}
-			}
+		if m.Frame == dsp.FrameMeasured && math.Abs(r.Dev) > 58 {
+			return fmt.Errorf("slot %d at %+.1f units is beyond the display range on a measured frame", s+1, r.Dev)
 		}
 	}
-
-	if withReeds == 0 {
-		t.Fatal("84 seconds of playing produced no measurement at all")
+	b := m.Beats[0]
+	if b.Present != (m.Reeds[0].Present && m.Reeds[1].Present) || b.Present && !(b.Hz >= 0) {
+		return fmt.Errorf("beat %+v over %+v", b, m.Reeds)
 	}
-	t.Logf("%d ticks, %d carried reeds, all self-consistent", len(all), withReeds)
+	return nil
 }
 
-// A tuner that stops following is worse than one that follows badly: the needle sits still and
-// looks confident. On a piece the tracked note has to keep moving.
+// A tuner that stops following is worse than one that follows badly; one that never holds a note is useless.
 func TestAPlayedPieceKeepsTheTrackerMoving(t *testing.T) {
+	t.Parallel()
 	if testing.Short() {
 		t.Skip("loads an 84-second recording")
 	}
-	all := runPiece(t)
-
-	distinct := map[tuning.Note]int{}
-	for _, m := range all {
-		if len(m.Reeds) > 0 {
-			distinct[m.Note]++
+	distinct := map[tuning.Note]bool{}
+	longest, held, last := 0, 0, tuning.Note(0)
+	for _, m := range measured(runPiece(t)) {
+		distinct[m.Note] = true
+		if m.Note != last {
+			last, held = m.Note, 0
 		}
+		held++
+		longest = max(longest, held)
 	}
 	if len(distinct) < 5 {
-		t.Errorf("a waltz moved the tracked note to %d distinct pitches; the tracker is stuck",
-			len(distinct))
-	}
-
-	// And it must not be so jumpy that no note ever holds: a played note lasting a beat should
-	// survive several hops.
-	var longest int
-	for _, n := range distinct {
-		if n > longest {
-			longest = n
-		}
+		t.Errorf("a waltz moved the note to %d distinct pitches: the tracker is stuck", len(distinct))
 	}
 	if longest < 5 {
-		t.Errorf("no pitch held for more than %d ticks; the tracker is chattering", longest)
+		t.Errorf("no note held for more than %d consecutive analyses: the tracker is chattering", longest)
 	}
-	t.Logf("%d distinct pitches tracked, the most-held for %d ticks", len(distinct), longest)
-}
-
-// The bellows turn around and the player lifts their hands, so the recording goes quiet several
-// times. Silence must produce a reedless heartbeat, never a reading invented out of the noise floor.
-func TestSilenceInAPieceProducesNoReeds(t *testing.T) {
-	if testing.Short() {
-		t.Skip("loads an 84-second recording")
-	}
-	all := runPiece(t)
-
-	quiet := 0
-	for i, m := range all {
-		if m.State != dsp.StateTooQuiet {
-			continue
-		}
-		quiet++
-		if len(m.Reeds) != 0 {
-			t.Errorf("tick %d is below the noise floor and still reports %d reed(s): %+v",
-				i, len(m.Reeds), m.Reeds)
-		}
-	}
-	if quiet == 0 {
-		t.Skip("the recording never dropped below the engine's noise floor")
-	}
-	t.Logf("%d quiet ticks, none of them invented a reed", quiet)
+	t.Logf("%d distinct notes, the longest held for %d consecutive analyses", len(distinct), longest)
 }

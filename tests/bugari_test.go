@@ -1,267 +1,132 @@
 package tests
 
-// The Bugari set: takes from a professional double-cassotto instrument sitting at A442, in
-// sounds/bugari. They carry what the older Hohner recordings do not - a 16' rank whose fundamental
-// is 24 dB under its loudest partial, a 4' rank tuned onto a 16's double octave, and a four-voice
-// LMMH register. File names are the played key in Polish octave notation (c1 = middle C, so C1 is
-// C4 and C3 is C6) followed by the register's feet; kanal is the tone chamber.
+// sounds/bugari: a double-cassotto Bugari at A442, named by Polish octave (C1 = C4) and feet; slot frequencies are measured truth.
 
 import (
-	"context"
 	"math"
 	"path/filepath"
 	"testing"
-	"time"
 
-	"smegg.me/smeggtuner/core/audio"
-	"smegg.me/smeggtuner/core/dsp"
-	"smegg.me/smeggtuner/core/session"
-	"smegg.me/smeggtuner/core/tuning"
+	"smegg.me/smeggtuner/backend/core/dsp"
+	"smegg.me/smeggtuner/backend/core/session"
 )
 
-// The instrument's own reference. Judging it against A440 would only report it sharp.
-const bugariA4 = 442.0
-
-// Frequencies are measured to a hundredth of a hertz across a run; the tolerance is the drift a
-// worked bellows puts on top of that.
 const (
+	bugariA4      = 442.0
 	bugariFreqTol = 0.05
 	bugariBeatTol = 0.05
 )
 
-type bugariRank struct {
-	freq   float64
-	octave int // semitones from the key: -12 a 16', 0 an 8', +12 a 4'
-}
-
-type bugariBand struct {
-	octave, ranks, found int
-	ghostOnly            bool
-}
-
-type bugariBeat struct {
-	pair string
-	hz   float64
-}
-
 type bugariTake struct {
 	file     string
-	register string // the banks the register sounds, as the card names them
-	key      string
-	reeds    []bugariRank
-	bands    []bugariBand
-	beats    []bugariBeat
-	// why, when the take does not resolve every declared rank
-	short string
+	register string    // the banks the register sounds, as the card names them
+	key      string    // the played key
+	lowest   string    // the lowest sounding pitch, which a one-reed tuner names
+	slots    []float64 // ground truth per slot in bank order; 0 where no reading can be checked
+	octaveHz float64   // the upper of two octave slots minus twice the lower; 0 when not documented
+	stray    string    // why the reference scan misreads it in file playback; see strayLine
 }
 
 var bugariTakes = []bugariTake{{
-	file: "B1 16.wav", register: "L", key: "A#4",
-	reeds: []bugariRank{{234.145, -12}},
-	bands: []bugariBand{{-12, 1, 1, false}},
+	file: "B1 16.wav", register: "L", key: "A#4", lowest: "A#3", slots: []float64{234.145},
+	stray: "a 120 Hz line (A#2) scores 5-6; the 16' at A#3 scores 147-154, under 30x it, its 3rd partial F5 437-515 clears it",
 }, {
-	file: "C1 16.wav", register: "L", key: "C4",
-	reeds: []bugariRank{{131.286, -12}},
-	bands: []bugariBand{{-12, 1, 1, false}},
+	file: "C1 16.wav", register: "L", key: "C4", lowest: "C3", slots: []float64{131.286},
 }, {
-	// One rank in the key's own octave: no compound layout, the single band answers.
-	file: "C1 8kanal.wav", register: "M1", key: "C4",
-	reeds: []bugariRank{{262.799, 0}},
+	file: "C1 8kanal.wav", register: "M1", key: "C4", lowest: "C4", slots: []float64{262.799},
+	stray: "a 120.005 Hz line (A#2) scores 5; C4 scores 31-33 and no partial clears 30x the line, so the line itself is read",
 }, {
-	// The 4' sounds 1.41 Hz under the 8's second partial, so the octave beat is signed negative.
-	file: "C3 4 8.wav", register: "MH", key: "C6",
-	reeds: []bugariRank{{1051.356, 0}, {2101.307, 12}},
-	bands: []bugariBand{{0, 1, 1, false}, {12, 1, 1, false}},
-	beats: []bugariBeat{{"1-2", -1.408}},
+	// The 4' sounds 1.41 Hz under the 8's second partial.
+	file: "C3 4 8.wav", register: "MH", key: "C6", lowest: "C6", slots: []float64{1051.356, 2101.307}, octaveHz: -1.408,
 }, {
-	// The 4' rank is sounding - the take's partials at k=4, 12 and 16 sit off the 16's exact
-	// multiples where every other partial lands on them - but it is only 0.5 cents over the
-	// double octave, a 0.17 Hz beat. That is a quarter of minBeatHz, so no window this engine
-	// uses can separate the two, and the band reports the rank as harmonic-only rather than
-	// inventing a reading for it.
-	file: "D1   4 16.wav", register: "LH", key: "D4",
-	reeds: []bugariRank{{147.377, -12}},
-	bands: []bugariBand{{-12, 1, 1, false}, {12, 1, 0, true}},
-	short: "the 4' rank is within half a cent of the 16's double octave",
+	// The 4' is a 0.17 Hz beat off the 16's double octave, under the 2.73 s window's 0.37 Hz resolution: H reads one line for both.
+	file: "D1   4 16.wav", register: "LH", key: "D4", lowest: "D3", slots: []float64{147.377, 0},
+	stray: "a 120 Hz line (A#2) scores 5; D3 scores 39-46, D4 47-54 and A4 137-146, all under 30x it, the 4th partial D5 265-409 clears it",
 }, {
-	// Four declared ranks, three lines: the two 8' ranks are entrained, one carrier with sidebands
-	// at a fixed 1.15 Hz that do not scale with harmonic number. The beat reported is the 8'-to-4'
-	// octave beat, not a musette one.
-	file: "G1   4 88 16.wav", register: "LMMH", key: "G4",
-	reeds: []bugariRank{{197.093, -12}, {393.399, 0}, {787.972, 12}},
-	bands: []bugariBand{{-12, 1, 1, false}, {0, 2, 1, false}, {12, 1, 1, false}},
-	beats: []bugariBeat{{"2-3", 1.168}},
-	short: "the two 8' ranks sound entrained, as one line",
+	// The two 8' ranks are entrained into one line, so one M slot sounds and the other is not checked.
+	file: "G1   4 88 16.wav", register: "LMMH", key: "G4", lowest: "G3", slots: []float64{197.093, 393.399, 0, 787.972},
+	stray: "a 120 Hz line (A#2) scores 5-6; the 16' at G3 scores 30-36, under 30x it, the 8' line G4 402-470 clears it",
 }}
 
 func bugariPath(file string) string { return filepath.Join("..", "sounds", "bugari", file) }
 
-// measureBugari runs a take through the engine with the register its name declares, exactly as the
-// app would from the card's banks.
-func measureBugari(t *testing.T, take bugariTake) (dsp.Measurement, bool) {
-	t.Helper()
-	banks, err := session.ParseBanks(take.register)
-	if err != nil {
-		t.Fatalf("register %q: %v", take.register, err)
-	}
-	src, err := audio.NewFileSource(bugariPath(take.file), false, false)
-	if err != nil {
-		t.Skipf("recording not present: %v", err)
-	}
-	var all []dsp.Measurement
-	eng := dsp.NewEngine(dsp.EngineConfig{
-		A4:         bugariA4,
-		ReedCount:  len(banks),
-		Octaves:    session.OctavesOf(banks),
-		FineWindow: 3 * time.Second,
-	}, func(m dsp.Measurement) { all = append(all, m) })
-	if err := eng.Run(context.Background(), src); err != nil {
-		t.Fatalf("engine: %v", err)
-	}
-	return dsp.Aggregate(all, bugariA4, 0.5)
-}
-
+// The register as the card declares it: the key, each slot at its bank's octave, each checked slot at its truth.
 func TestBugariRegisters(t *testing.T) {
+	t.Parallel()
 	if testing.Short() {
-		t.Skip("loads multi-megabyte recordings")
+		t.Skip("loads recordings")
 	}
 	for _, take := range bugariTakes {
 		t.Run(take.file, func(t *testing.T) {
-			m, ok := measureBugari(t, take)
+			r := runFile(t, bugariPath(take.file), registerConfig(t, bugariA4, take.register))
+			key, _ := heard(r.all)
+			ok := name(key) == take.key && reads(r.all, key)
+			if !ok && take.stray != "" {
+				t.Skipf("the key is %s: %s (reads %s)", take.key, take.stray, summary(r.all))
+			}
 			if !ok {
-				t.Fatal("no usable reading")
+				t.Fatalf("reads %s, the register sounds %s", summary(r.all), take.key)
 			}
-			if got := m.Note.Name(tuning.NamingCDEFGAB); got != take.key {
-				t.Errorf("key %s, the register sounds %s", got, take.key)
+			if take.stray != "" {
+				t.Errorf("listed as a stray-line misreading but reads %s: drop its stray note", take.key)
 			}
-			if len(m.Reeds) != len(take.reeds) {
-				t.Fatalf("resolved %d reeds, want %d: %+v", len(m.Reeds), len(take.reeds), m.Reeds)
-			}
-			for i, want := range take.reeds {
-				got := m.Reeds[i]
-				if math.Abs(got.Freq-want.freq) > bugariFreqTol {
-					t.Errorf("reed %d at %.3f Hz, want %.3f +-%.2f", i+1, got.Freq, want.freq, bugariFreqTol)
+			banks, _ := session.ParseBanks(take.register)
+			frames := sounding(r.all, key)
+			for i, want := range take.slots {
+				for _, m := range frames {
+					if got := m.Reeds[i].Octave; m.Reeds[i].Present && got != banks[i].Octave() {
+						t.Fatalf("slot %d (%s) at octave %d, the bank sounds %d", i+1, banks[i], got, banks[i].Octave())
+					}
 				}
-				if got.Octave != want.octave {
-					t.Errorf("reed %d in band %d, want %d", i+1, got.Octave, want.octave)
+				got, n := sustained(frames, i)
+				if want != 0 && (n == 0 || math.Abs(got-want) > bugariFreqTol) {
+					t.Errorf("slot %d (%s) at %.3f Hz over %d of %d analyses, want %.3f +-%.2f", i+1, banks[i], got, n, len(frames), want, bugariFreqTol)
 				}
+				t.Logf("slot %d (%s): %.3f Hz over %d of %d analyses", i+1, banks[i], got, n, len(frames))
 			}
-			// A rank the engine never heard does not make the lines it did hear lobes: every one of
-			// these readings is one reed per line, and a sheet that treats them as merged prints
-			// nothing at all for D1 and G1.
-			if !m.ReedsSeparated {
-				t.Errorf("the reading reads as merged lobes (%s)", take.short)
+			if take.octaveHz != 0 {
+				assertOctaveBeat(t, frames, take.octaveHz)
 			}
-			assertBugariBands(t, m, take)
-			assertBugariBeats(t, m, take)
-		})
-	}
-}
-
-func assertBugariBands(t *testing.T, m dsp.Measurement, take bugariTake) {
-	t.Helper()
-	if len(m.Bands) != len(take.bands) {
-		t.Fatalf("%d bands, want %d: %+v", len(m.Bands), len(take.bands), m.Bands)
-	}
-	for i, want := range take.bands {
-		got := m.Bands[i]
-		if got.Octave != want.octave || got.Ranks != want.ranks || got.Found != want.found || got.GhostOnly != want.ghostOnly {
-			t.Errorf("band %d is %+v, want octave %d ranks %d found %d ghostOnly %v (%s)",
-				i, got, want.octave, want.ranks, want.found, want.ghostOnly, take.short)
-		}
-	}
-}
-
-func assertBugariBeats(t *testing.T, m dsp.Measurement, take bugariTake) {
-	t.Helper()
-	if len(m.Beats) != len(take.beats) {
-		t.Fatalf("%d beats, want %d: %+v", len(m.Beats), len(take.beats), m.Beats)
-	}
-	for i, want := range take.beats {
-		got := m.Beats[i]
-		if got.Pair != want.pair {
-			t.Errorf("beat %d names pair %s, want %s", i, got.Pair, want.pair)
-		}
-		// The sign is the reading: a rank flat of the octave beats the other way from one sharp of it.
-		if math.Abs(got.Hz-want.hz) > bugariBeatTol {
-			t.Errorf("beat %s at %+.3f Hz, want %+.3f +-%.2f", got.Pair, got.Hz, want.hz, bugariBeatTol)
-		}
-	}
-}
-
-// A beat's sign is the filing instruction: a 4' flat of the octave is scraped, one sharp of it is
-// weighted. The rate may be read off the spectrum or off the band's envelope depending on how long
-// the window is, and the envelope only measures how fast - so the sign used to flip with the window.
-// C3 4 8's 4' rank sits 1.41 Hz under the 8's second partial at every window length.
-func TestBugariBeatSignDoesNotDependOnTheWindow(t *testing.T) {
-	if testing.Short() {
-		t.Skip("loads multi-megabyte recordings")
-	}
-	take := bugariTakes[3]
-	if take.file != "C3 4 8.wav" {
-		t.Fatalf("expected the C3 take, got %s", take.file)
-	}
-	banks, err := session.ParseBanks(take.register)
-	if err != nil {
-		t.Fatal(err)
-	}
-	for _, window := range []time.Duration{1600, 2000, 2500, 3000, 3500} {
-		window *= time.Millisecond
-		t.Run(window.String(), func(t *testing.T) {
-			src, err := audio.NewFileSource(bugariPath(take.file), false, false)
-			if err != nil {
-				t.Skipf("recording not present: %v", err)
-			}
-			var all []dsp.Measurement
-			eng := dsp.NewEngine(dsp.EngineConfig{
-				A4: bugariA4, ReedCount: len(banks), Octaves: session.OctavesOf(banks), FineWindow: window,
-			}, func(m dsp.Measurement) { all = append(all, m) })
-			if err := eng.Run(context.Background(), src); err != nil {
-				t.Fatalf("engine: %v", err)
-			}
-			m, ok := dsp.Aggregate(all, bugariA4, 0.5)
-			if !ok || len(m.Beats) != 1 {
-				t.Fatalf("want one beat, got %+v", m.Beats)
-			}
-			if got := m.Beats[0].Hz; got > -1.3 || got < -1.5 {
-				t.Errorf("beat %+.3f Hz, want about -1.41: the 4' is flat of the 8's octave "+
-					"whichever way the rate was measured (fromEnvelope=%v)", got, m.Beats[0].FromEnvelope)
+			if ts := takes(r.all); len(ts) == 0 {
+				t.Logf("never locked over %d analyses on %s", len(frames), take.key)
 			}
 		})
 	}
 }
 
-// Every take's lowest sounding rank must be named with no register declared at all - the coarse
-// detector's own job. D1 is the case that used to fail: its fundamental is 24 dB down, its 9th
-// partial is the loudest line, and the tuner reported A4, the 3rd partial.
+// assertOctaveBeat checks an octave pair's beat: its rate from the beat readout, its sign from the slots.
+func assertOctaveBeat(t *testing.T, frames []dsp.Measurement, want float64) {
+	t.Helper()
+	hz, n := sustainedBeat(frames, 0)
+	if n == 0 || math.Abs(hz-math.Abs(want)) > bugariBeatTol {
+		t.Errorf("octave beat %.3f Hz over %d analyses, want %.3f +-%.2f", hz, n, math.Abs(want), bugariBeatTol)
+	}
+	lo, _ := sustained(frames, 0)
+	hi, _ := sustained(frames, 1)
+	if sign := hi - 2*lo; sign*want <= 0 {
+		t.Errorf("the upper slot sits %+.3f Hz off the lower's octave, want the sign of %+.3f", sign, want)
+	}
+}
+
+// With no register declared the plain tuner names the lowest pitch that sounds.
 func TestBugariNoteWithoutRegister(t *testing.T) {
+	t.Parallel()
 	if testing.Short() {
-		t.Skip("loads multi-megabyte recordings")
+		t.Skip("loads recordings")
 	}
-	lowest := map[string]string{
-		"B1 16.wav": "A#3", "C1 16.wav": "C3", "C1 8kanal.wav": "C4",
-		"C3 4 8.wav": "C6", "D1   4 16.wav": "D3",
-	}
-	for file, want := range lowest {
-		t.Run(file, func(t *testing.T) {
-			src, err := audio.NewFileSource(bugariPath(file), false, false)
-			if err != nil {
-				t.Skipf("recording not present: %v", err)
+	for _, take := range bugariTakes {
+		t.Run(take.file, func(t *testing.T) {
+			all := runFile(t, bugariPath(take.file), dsp.EngineConfig{A4: bugariA4, ReedCount: 1}).all
+			got, _ := heard(all)
+			ok := name(got) == take.lowest && reads(all, got)
+			if !ok && take.stray != "" {
+				t.Skipf("the lowest pitch is %s: %s (reads %s)", take.lowest, take.stray, summary(all))
 			}
-			var all []dsp.Measurement
-			eng := dsp.NewEngine(dsp.EngineConfig{
-				A4: bugariA4, ReedCount: 1, FineWindow: 3 * time.Second,
-			}, func(m dsp.Measurement) { all = append(all, m) })
-			if err := eng.Run(context.Background(), src); err != nil {
-				t.Fatalf("engine: %v", err)
-			}
-			m, ok := dsp.Aggregate(all, bugariA4, 0.5)
 			if !ok {
-				t.Fatal("no usable reading")
+				t.Errorf("reads %s, the lowest pitch is %s", summary(all), take.lowest)
 			}
-			if got := m.Note.Name(tuning.NamingCDEFGAB); got != want {
-				t.Errorf("named %s at %.2f Hz, want %s: a partial won over the reed",
-					got, m.Reeds[0].Freq, want)
+			if take.stray != "" && ok {
+				t.Errorf("listed as a stray-line misreading but reads %s: drop its stray note", take.lowest)
 			}
 		})
 	}

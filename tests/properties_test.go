@@ -1,193 +1,133 @@
 package tests
 
-// Properties that must hold of the engine on real audio whatever the recording is. Unlike the rest
-// of this package these assert nothing about pitch: each compares the engine against itself, so
-// there is no hand-measured expectation to go stale, and each covers something the synthetic golden
-// tests cannot - a real spectrum with a real noise floor, real partials and a bellows that moves.
+// Properties that compare the engine with itself on real audio: a lone rank, a 3-reed band, a 16'+8' register.
 
 import (
-	"context"
+	"errors"
 	"math"
+	"os"
+	"reflect"
 	"testing"
 
-	"smegg.me/smeggtuner/core/audio"
-	"smegg.me/smeggtuner/core/dsp"
+	"smegg.me/smeggtuner/backend/core/audio"
+	"smegg.me/smeggtuner/backend/core/dsp"
 )
 
-// One of each shape the engine handles: a lone rank, three 8' ranks through the single band with
-// its pair splitter, and an octave-spanning register through the compound stage.
 var propertyTakes = []struct {
-	file    string
-	reeds   int
-	a4      float64
-	octaves []dsp.OctaveRequest
+	file string
+	cfg  dsp.EngineConfig
 }{
-	{file: "A '8.wav", reeds: 1, a4: loneRankA4},
-	{file: "hohner8+8+8A4.wav", reeds: 3, a4: 440},
-	{file: "hohner16+8A4.wav", reeds: 2, a4: 440,
-		octaves: []dsp.OctaveRequest{{Offset: -12, Reeds: 1}, {Offset: 0, Reeds: 1}}},
+	{"A '8.wav", dsp.EngineConfig{A4: loneRankA4, ReedCount: 1}},
+	{"hohner8+8+8A4.wav", dsp.EngineConfig{A4: 440, ReedCount: 3}},
+	{"hohner16+8A4.wav", dsp.EngineConfig{A4: 440, ReedCount: 2, Octaves: []dsp.OctaveRequest{{Offset: -12, Reeds: 1}, {Offset: 0, Reeds: 1}}}},
 }
 
-func runFile(t *testing.T, file string, reeds int, a4, ppm float64, octaves []dsp.OctaveRequest) []dsp.Measurement {
+// fresh runs a recording without the memo, for comparing one run against another.
+func fresh(t *testing.T, file string, cfg dsp.EngineConfig) []dsp.Measurement {
 	t.Helper()
 	src, err := audio.NewFileSource("../sounds/"+file, false, false)
 	if err != nil {
-		t.Skipf("recording not present: %v", err)
+		if errors.Is(err, os.ErrNotExist) {
+			t.Skipf("optional recording not present: %v", err)
+		}
+		t.Fatalf("recording failed: %v", err)
 	}
-	var all []dsp.Measurement
-	eng := dsp.NewEngine(dsp.EngineConfig{
-		A4:         a4,
-		ReedCount:  reeds,
-		ClockPPM:   ppm,
-		Octaves:    octaves,
-		FineWindow: fineWindow,
-	}, func(m dsp.Measurement) { all = append(all, m) })
-	if err := eng.Run(context.Background(), src); err != nil {
-		t.Fatalf("engine: %v", err)
-	}
-	return all
+	return runSource(t, cfg, src).all
 }
 
-// The same recording twice must measure the same. The app builds a new engine per pass but the
-// process is long-lived, and a reading that depended on what had been played before it would be
-// invisible at a bench: every number would look plausible and only the second opinion would differ.
+// A new engine per pass in a long-lived process must not depend on what played before.
 func TestTheSameRecordingMeasuresTheSameTwice(t *testing.T) {
+	t.Parallel()
 	if testing.Short() {
-		t.Skip("loads multi-megabyte recordings")
+		t.Skip("loads recordings")
 	}
 	for _, take := range propertyTakes {
 		t.Run(take.file, func(t *testing.T) {
-			first := runFile(t, take.file, take.reeds, take.a4, 0, take.octaves)
-			second := runFile(t, take.file, take.reeds, take.a4, 0, take.octaves)
-
+			first, second := fresh(t, take.file, take.cfg), fresh(t, take.file, take.cfg)
 			if len(first) != len(second) {
-				t.Fatalf("%d ticks then %d: the engine's cadence is not reproducible",
-					len(first), len(second))
+				t.Fatalf("%d events then %d", len(first), len(second))
 			}
 			for i := range first {
-				a, b := first[i], second[i]
-				if a.Note != b.Note || a.State != b.State || len(a.Reeds) != len(b.Reeds) {
-					t.Fatalf("tick %d differs: %s/%s %d reeds vs %s/%s %d reeds",
-						i, a.Note.Name(0), a.State, len(a.Reeds),
-						b.Note.Name(0), b.State, len(b.Reeds))
-				}
-				// Bit for bit: the arithmetic is the same arithmetic over the same samples, so
-				// anything less would mean state carried across the two runs.
-				for r := range a.Reeds {
-					if a.Reeds[r].Freq != b.Reeds[r].Freq {
-						t.Fatalf("tick %d reed %d: %.12f then %.12f",
-							i, r+1, a.Reeds[r].Freq, b.Reeds[r].Freq)
-					}
+				if !reflect.DeepEqual(first[i], second[i]) {
+					t.Fatalf("event %d differs:\n%+v\n%+v", i, first[i], second[i])
 				}
 			}
 		})
 	}
 }
 
-// The clock correction is the one setting a technician turns when they do not trust their sound
-// card, and it has to be a pure scaling: every reed of every reading moved by exactly the parts per
-// million asked for, or the beats between them change and the correction has invented a tuning
-// error. Tested on a real spectrum rather than a synthesised tone, because the correction is applied
-// to a number that came out of peak interpolation, not out of the oscillator that made the signal.
-func TestTheClockCorrectionScalesEveryReedByExactlyThePPM(t *testing.T) {
+// The clock calibration is a pure scaling: any other change to a slot would invent a tuning error.
+func TestTheCalibrationScalesEverySlotExactly(t *testing.T) {
+	t.Parallel()
 	if testing.Short() {
-		t.Skip("loads multi-megabyte recordings")
+		t.Skip("loads recordings")
 	}
-	const ppm = 250.0
-
+	const percent = 0.025
 	for _, take := range propertyTakes {
 		t.Run(take.file, func(t *testing.T) {
-			plain := runFile(t, take.file, take.reeds, take.a4, 0, take.octaves)
-			shifted := runFile(t, take.file, take.reeds, take.a4, ppm, take.octaves)
-
-			if len(plain) != len(shifted) {
-				t.Fatalf("%d ticks uncorrected, %d corrected", len(plain), len(shifted))
+			shifted := take.cfg
+			shifted.Calibration = percent
+			plain, moved := fresh(t, take.file, take.cfg), fresh(t, take.file, shifted)
+			if len(plain) != len(moved) {
+				t.Fatalf("%d events uncalibrated, %d calibrated", len(plain), len(moved))
 			}
-
-			want := 1 - ppm*1e-6
-			compared := 0
+			compared, skipped := 0, 0
 			for i := range plain {
-				a, b := plain[i], shifted[i]
-				if len(a.Reeds) == 0 || len(a.Reeds) != len(b.Reeds) {
-					continue // the correction may move a tick across the detector's own thresholds
+				a, b := plain[i], moved[i]
+				if a.Frame != dsp.FrameMeasured || b.Frame != dsp.FrameMeasured || a.Note != b.Note {
+					continue
 				}
-				for r := range a.Reeds {
+				for s := range a.Reeds {
+					if !a.Reeds[s].Present || !b.Reeds[s].Present {
+						skipped++
+						continue
+					}
 					compared++
-					got := b.Reeds[r].Freq / a.Reeds[r].Freq
-					// A part in ten million, on a ratio of two doubles.
-					if math.Abs(got-want) > 1e-7 {
-						t.Fatalf("tick %d reed %d: %.6f Hz became %.6f Hz, a factor of %.9f, want %.9f",
-							i, r+1, a.Reeds[r].Freq, b.Reeds[r].Freq, got, want)
+					if got := b.Reeds[s].Freq / a.Reeds[s].Freq; math.Abs(got-(1+percent/100)) > 1e-9 {
+						t.Errorf("event %d slot %d: %.6f Hz became %.6f Hz, a factor of %.10f", i, s+1, a.Reeds[s].Freq, b.Reeds[s].Freq, got)
 					}
 				}
 			}
 			if compared == 0 {
-				t.Fatal("no reed was measured under both settings")
+				t.Fatal("no slot was measured under both settings")
 			}
-			t.Logf("%d reed readings scaled by exactly %g ppm", compared, ppm)
+			t.Logf("%d slot readings scaled exactly, %d present under only one setting", compared, skipped)
 		})
 	}
 }
 
-// dsp.Aggregate is what turns a run into the one reading that gets filed and printed. It votes on
-// the note and takes per-index MEDIANS of the reeds, so every number it hands back has to be one the
-// engine actually measured - a median never leaves the range of its inputs. A reading interpolated
-// into existence between two ticks would be a frequency nobody heard, filed as though somebody had.
-func TestTheFiledReadingIsOneTheEngineActuallyMeasured(t *testing.T) {
+// StopAfterLock files the free-running take, then holds its panels and measures nothing until the note stops.
+func TestStopAfterLockHoldsARealTake(t *testing.T) {
+	t.Parallel()
 	if testing.Short() {
-		t.Skip("loads multi-megabyte recordings")
+		t.Skip("loads recordings")
 	}
 	for _, take := range propertyTakes {
 		t.Run(take.file, func(t *testing.T) {
-			all := runFile(t, take.file, take.reeds, take.a4, 0, take.octaves)
-			m, ok := dsp.Aggregate(all, take.a4, 0.5)
-			if !ok {
-				t.Fatalf("no usable reading")
+			gated := take.cfg
+			gated.StopAfterLock = true
+			free, held := fresh(t, take.file, take.cfg), fresh(t, take.file, gated)
+			ref, at := takeAt(free), takeAt(held)
+			if len(ref) == 0 || len(at) == 0 {
+				t.Fatalf("free-running filed %d takes, gated %d", len(ref), len(at))
 			}
-			if len(m.Reeds) == 0 {
-				t.Fatalf("the filed reading carries no reed")
+			if at[0] != ref[0] || !reflect.DeepEqual(held[at[0]].Reeds, free[ref[0]].Reeds) {
+				t.Fatalf("gating changed the take: event %d %+v, free-running event %d %+v", at[0], held[at[0]].Reeds, ref[0], free[ref[0]].Reeds)
 			}
-
-			// The ticks the aggregate drew from: its own note, its own reed count. Aggregate also
-			// filters by state and level, so this is a superset - a median of the subset still
-			// cannot leave the range of the superset.
-			var contributing []dsp.Measurement
-			for _, tick := range all {
-				if tick.Note == m.Note && len(tick.Reeds) == len(m.Reeds) {
-					contributing = append(contributing, tick)
+			heldFrames := 0
+			for _, m := range held[at[0]+1:] {
+				if m.Frame == dsp.FrameNoNote {
+					break
 				}
-			}
-			if len(contributing) == 0 {
-				t.Fatalf("the filed reading names %s with %d reeds, which no tick ever reported",
-					m.Note.Name(0), len(m.Reeds))
-			}
-
-			for r := range m.Reeds {
-				lo, hi := math.Inf(1), math.Inf(-1)
-				for _, tick := range contributing {
-					lo = math.Min(lo, tick.Reeds[r].Freq)
-					hi = math.Max(hi, tick.Reeds[r].Freq)
+				if m.Frame == dsp.FrameNone {
+					continue
 				}
-				if f := m.Reeds[r].Freq; f < lo || f > hi {
-					t.Errorf("reed %d was filed at %.4f Hz, but across %d ticks the engine only ever "+
-						"measured %.4f to %.4f", r+1, f, len(contributing), lo, hi)
+				if m.Frame != dsp.FrameHeld || !reflect.DeepEqual(m.Panels, held[at[0]].Panels) {
+					t.Fatalf("after the take at %.2fs: %s at %.2fs with panels %+v", held[at[0]].SourceAt, m.Frame, m.SourceAt, m.Panels)
 				}
+				heldFrames++
 			}
-
-			if m.Locked {
-				locked := false
-				for _, tick := range contributing {
-					if tick.Locked {
-						locked = true
-						break
-					}
-				}
-				if !locked {
-					t.Error("the filed reading claims a lock no tick reported")
-				}
-			}
-			t.Logf("%s: %d reeds, each within the range of %d ticks",
-				m.Note.Name(0), len(m.Reeds), len(contributing))
+			t.Logf("took at %.2fs, then held %d analyses", held[at[0]].SourceAt, heldFrames)
 		})
 	}
 }

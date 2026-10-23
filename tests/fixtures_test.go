@@ -1,17 +1,15 @@
 package tests
 
 import (
-	"context"
 	"encoding/json"
 	"math"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 	"testing"
-	"time"
 
-	"smegg.me/smeggtuner/core/audio"
-	"smegg.me/smeggtuner/core/dsp"
+	"smegg.me/smeggtuner/backend/core/dsp"
 )
 
 type expect struct {
@@ -24,69 +22,74 @@ type expect struct {
 	BeatTol float64   `json:"beatTol"`
 }
 
+func readExpect(t *testing.T, path string) expect {
+	t.Helper()
+	raw, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatalf("fixture has no expect file: %v", err)
+	}
+	ex := expect{A4: 440, FreqTol: 0.1, BeatTol: 0.1}
+	if err := json.Unmarshal(raw, &ex); err != nil {
+		t.Fatal(err)
+	}
+	return ex
+}
+
+// sustainedBeat is a pair's median beat over frames where both of its slots sounded.
+func sustainedBeat(frames []dsp.Measurement, pair int) (float64, int) {
+	var hz []float64
+	for _, m := range frames {
+		if pair < len(m.Beats) && m.Beats[pair].Present {
+			hz = append(hz, m.Beats[pair].Hz)
+		}
+	}
+	if len(hz) == 0 {
+		return 0, 0
+	}
+	sort.Float64s(hz)
+	return hz[len(hz)/2], len(hz)
+}
+
+// Each fixtures/<name>.wav is held to its expect.json; see fixtures/README.md for the reduction.
 func TestFixtures(t *testing.T) {
+	t.Parallel()
 	paths, _ := filepath.Glob("fixtures/*.wav")
 	if len(paths) == 0 {
-		t.Skip("no WAV fixtures present yet")
+		t.Fatal("required WAV fixtures are missing")
 	}
-	for _, wavPath := range paths {
-		name := strings.TrimSuffix(filepath.Base(wavPath), ".wav")
-		t.Run(name, func(t *testing.T) {
-			raw, err := os.ReadFile(strings.TrimSuffix(wavPath, ".wav") + ".expect.json")
-			if err != nil {
-				t.Fatalf("fixture %s has no expect file: %v", name, err)
+	expectations, _ := filepath.Glob("fixtures/*.expect.json")
+	for _, path := range expectations {
+		wav := strings.TrimSuffix(path, ".expect.json") + ".wav"
+		if _, err := os.Stat(wav); err != nil {
+			t.Fatalf("fixture %s: %v", wav, err)
+		}
+	}
+	for _, wav := range paths {
+		t.Run(strings.TrimSuffix(filepath.Base(wav), ".wav"), func(t *testing.T) {
+			ex := readExpect(t, strings.TrimSuffix(wav, ".wav")+".expect.json")
+			all := runFile(t, wav, dsp.EngineConfig{A4: ex.A4, ReedCount: ex.Reeds}).all
+			note, _ := heard(all)
+			if ex.Note != "" && (name(note) != ex.Note || !reads(all, note)) {
+				t.Fatalf("reads %s, want %s", summary(all), ex.Note)
 			}
-			var ex expect
-			if err := json.Unmarshal(raw, &ex); err != nil {
-				t.Fatal(err)
-			}
-			if ex.A4 == 0 {
-				ex.A4 = 440
-			}
-			if ex.FreqTol == 0 {
-				ex.FreqTol = 0.1
-			}
-			if ex.BeatTol == 0 {
-				ex.BeatTol = 0.1
-			}
-			src, err := audio.NewFileSource(wavPath, false, false)
-			if err != nil {
-				t.Fatal(err)
-			}
-			var all []dsp.Measurement
-			eng := dsp.NewEngine(dsp.EngineConfig{
-				A4: ex.A4, ReedCount: ex.Reeds,
-				FineWindow: 3 * time.Second,
-			}, func(m dsp.Measurement) {
-				all = append(all, m)
-			})
-			if err := eng.Run(context.Background(), src); err != nil {
-				t.Fatal(err)
-			}
-			// Real recordings never lock (bellows drift) and end in silence, so aggregate the whole stream.
-			m, ok := dsp.Aggregate(all, ex.A4, 0.5)
-			if !ok {
-				t.Fatal("no usable measurements in recording")
-			}
-			if ex.Note != "" && m.NoteName != ex.Note {
-				t.Errorf("note = %s want %s", m.NoteName, ex.Note)
-			}
-			if len(m.Reeds) != len(ex.Freqs) {
-				t.Fatalf("reeds = %d want %d (%+v)", len(m.Reeds), len(ex.Freqs), m.Reeds)
-			}
+			frames := sounding(all, note)
 			for i, want := range ex.Freqs {
-				if math.Abs(m.Reeds[i].Freq-want) > ex.FreqTol {
-					t.Errorf("reed %d = %v want %v +-%v", i+1, m.Reeds[i].Freq, want, ex.FreqTol)
+				got, n := sustained(frames, i)
+				if n == 0 || math.Abs(got-want) > ex.FreqTol {
+					t.Errorf("slot %d at %.4f Hz over %d analyses, want %.4f +-%.2f", i+1, got, n, want, ex.FreqTol)
 				}
+				t.Logf("slot %d: %.4f Hz over %d sounding analyses (%+.4f)", i+1, got, n, got-want)
 			}
 			for i, want := range ex.Beats {
-				if i >= len(m.Beats) {
-					t.Errorf("missing beat %d", i)
-					continue
+				got, n := sustainedBeat(frames, i)
+				if n == 0 || math.Abs(got-want) > ex.BeatTol {
+					t.Errorf("beat %d at %.4f Hz over %d analyses, want %.4f +-%.2f", i+1, got, n, want, ex.BeatTol)
 				}
-				if math.Abs(m.Beats[i].Hz-want) > ex.BeatTol {
-					t.Errorf("beat %d = %v want %v +-%v", i, m.Beats[i].Hz, want, ex.BeatTol)
-				}
+			}
+			if ts := takes(all); len(ts) == 0 {
+				t.Errorf("never locked: %s", summary(all))
+			} else {
+				t.Logf("take at %.2fs: %.4f Hz", ts[0].SourceAt, ts[0].Reeds[0].Freq)
 			}
 		})
 	}
