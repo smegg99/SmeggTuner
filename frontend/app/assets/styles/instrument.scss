@@ -1,0 +1,292 @@
+@use './instrument-fields';
+
+// SmeggTuner's instrument face, applied to the shared controls and surfaces.
+// The graphite workbench uses Goptivum's spacing and outlined surfaces.
+@font-face {
+  font-family: 'Tuner Overpass';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('@fontsource-variable/overpass/files/overpass-latin-wght-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Tuner Overpass';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('@fontsource-variable/overpass/files/overpass-latin-ext-wght-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root:root {
+  // One spacing scale for the whole app, equal on all sides of a block: tight inside a control,
+  // the standard gap between and around blocks, wide for a large separation.
+  --gap-tight: 2px;
+  --gap: 8px;
+  --gap-wide: 8px;
+  --font-sans: 'Tuner Overpass', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', 'Cascadia Code', menlo, consolas, monospace;
+  --s99ab-font-sans: var(--font-sans);
+  --s99ab-font-size: 14px;
+  --s99ab-control-h: 30px;
+  --s99ab-control-h-dense: 26px;
+  --s99ab-control-gap: 6px;
+  --s99ab-pad-tight: 8px;
+  --s99ab-radius: 4px;
+  --s99ab-chip-radius: 3px;
+  --app-radius-panel: 6px;
+  --s99ab-strip-h: 34px;
+  --s99ab-strip-pad-y: 4px;
+  --s99ab-strip-pad-x: 8px;
+  --s99ab-label-size: 12px;
+  --s99ab-label-track: 0;
+  --s99ab-label-case: none;
+  --s99ab-meta-size: 12px;
+  --s99ab-tex-gain: 0;
+  --s99ab-icon: 15.5px;
+}
+
+// The shared reset zeroes native buttons; the instrument's own buttons were laid out on WebKit's default padding.
+:where(.v-application, .v-overlay-container) :where(button:not(.v-btn)) {
+  appearance: auto;
+  padding: 2px 5px 2.5px;
+}
+
+// The original keys switched instantly and never wrapped their label.
+.v-application.v-application .key, .v-overlay-container.v-overlay-container .key {
+  transition: none;
+  white-space: nowrap;
+}
+
+.v-application.v-application, .v-overlay-container.v-overlay-container {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  --s99ab-tex-gain: 0;
+}
+
+.v-application.v-application .panel {
+  border-color: rgb(var(--v-theme-line));
+  border-radius: var(--app-radius-panel);
+}
+.v-application.v-application .panel__head {
+  min-height: var(--s99ab-strip-h);
+  padding: var(--s99ab-strip-pad-y) var(--s99ab-strip-pad-x);
+  border-color: rgb(var(--v-theme-line));
+}
+.v-application.v-application .panel__title {
+  color: rgb(var(--v-theme-ink2));
+  font-size: var(--s99ab-label-size);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.v-application.v-application .panel__meta { font-size: 11px; font-variant-numeric: normal; }
+
+.v-application.v-application .key, .v-overlay-container.v-overlay-container .key,
+.v-application.v-application .v-btn:not(.v-tab), .v-overlay-container.v-overlay-container .v-btn:not(.v-tab) {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  height: var(--s99ab-control-h);
+  min-height: var(--s99ab-control-h);
+  min-width: 0;
+  border-radius: var(--s99ab-radius);
+  padding-inline: 8px;
+  gap: var(--gap);
+  line-height: 1;
+  padding-block: 2px 2.5px;
+}
+.v-application.v-application .key--icon, .v-overlay-container.v-overlay-container .key--icon,
+.v-application.v-application .v-btn--icon, .v-overlay-container.v-overlay-container .v-btn--icon {
+  width: var(--s99ab-control-h);
+  padding-inline: 0;
+}
+.v-application.v-application .key__icon, .v-overlay-container.v-overlay-container .key__icon,
+.v-application.v-application .v-btn .v-icon, .v-overlay-container.v-overlay-container .v-btn .v-icon {
+  font-size: 15.5px;
+}
+.v-application.v-application .key--active, .v-overlay-container.v-overlay-container .key--active {
+  border-color: transparent;
+}
+.v-application.v-application .key:disabled, .v-overlay-container.v-overlay-container .key:disabled,
+.v-application.v-application .v-btn--disabled, .v-overlay-container.v-overlay-container .v-btn--disabled { opacity: 0.38; }
+
+.v-application.v-application .tuner-small, .v-overlay-container.v-overlay-container .tuner-small {
+  --s99ab-control-h: var(--s99ab-control-h-dense);
+  --s99ab-icon-size: var(--s99ab-control-h-dense);
+}
+.v-application.v-application .tuner-small.key, .v-application.v-application .tuner-small .key,
+.v-application.v-application .tuner-small.v-btn {
+  font-size: 11px;
+  padding-inline: 6px;
+  min-width: 0;
+}
+
+.v-application.v-application .tone-key.v-btn, .v-overlay-container.v-overlay-container .tone-key.v-btn {
+  color: var(--key-tone);
+}
+.v-application.v-application .tone-key[aria-pressed='true'], .v-overlay-container.v-overlay-container .tone-key[aria-pressed='true'] {
+  color: rgb(var(--v-theme-bg));
+  background: var(--key-tone);
+  border-color: transparent;
+}
+.v-application.v-application .v-btn:not(.v-tab) > .v-btn__prepend,
+.v-application.v-application .v-btn:not(.v-tab) > .v-btn__append {
+  margin-inline: 0;
+}
+.v-application.v-application .v-btn__append:has(> .mdi-menu-down) { margin-inline: 0; }
+.v-application.v-application .v-btn__append > .mdi-menu-down {
+  font-size: 14px !important;
+  width: 14px !important;
+  height: 14px !important;
+  margin-inline-end: -2.8px;
+  opacity: 0.7;
+}
+
+.v-application.v-application .tuner-small.key--icon, .v-application.v-application .tuner-small.v-btn--icon {
+  width: var(--s99ab-control-h-dense);
+  padding-inline: 0;
+}
+.v-application.v-application .tuner-small .key__icon, .v-application.v-application .tuner-small.v-btn .v-icon {
+  font-size: 12.5px;
+}
+.v-application.v-application .key .key__icon,
+.v-overlay-container.v-overlay-container .key .key__icon { font-size: 15.5px !important; width: 15.5px !important; height: 15.5px !important; opacity: 1; }
+
+// UiToolKey declares its icon size inline; the instrument uses the original 17.6px glyph.
+.v-application.v-application .v-btn[aria-expanded='true']:not(:hover) > .v-btn__overlay { opacity: 0; }
+.v-application.v-application .v-btn--variant-flat:not([class*='bg-']).v-btn--disabled { border-color: rgb(var(--v-theme-edge)); }
+.v-application.v-application .v-btn--disabled .v-btn__overlay,
+.v-overlay-container.v-overlay-container .v-btn--disabled .v-btn__overlay { opacity: 0; }
+.v-application.v-application .v-btn--disabled:not([class*='bg-']) { background: rgb(var(--v-theme-raised)); }
+.v-application.v-application .v-btn.v-btn--icon { padding-inline: 0; }
+.v-overlay-container.v-overlay-container .v-overlay__scrim { opacity: 0.32; }
+// Dialogs share one inset and keep actions outside the scrolling body.
+.v-overlay-container.v-overlay-container .v-dialog > .v-overlay__content {
+  margin: 16px;
+  max-width: calc(100% - 32px);
+  max-height: calc(100% - 32px);
+}
+.v-overlay-container.v-overlay-container .dlg__body .dialog-warn {
+  color: rgb(var(--v-theme-ink2)); font-size: 13px; line-height: 1.5; margin: 0;
+}
+.v-overlay-container.v-overlay-container .dlg__foot .v-btn {
+  height: auto; min-height: 32px; min-width: 88px;
+  border: 1px solid rgb(var(--v-theme-line)); padding: 6px 14px; line-height: 1.35;
+  white-space: normal;
+}
+.v-overlay-container.v-overlay-container .dlg__foot .v-btn:not([class*='bg-']) {
+  background: rgb(var(--v-theme-raised)); color: rgb(var(--v-theme-ink));
+}
+.v-overlay-container.v-overlay-container .v-tooltip > .v-overlay__content {
+  background: rgb(var(--v-theme-chrome)); border: 1px solid rgb(var(--v-theme-line));
+  border-radius: 2px; color: rgb(var(--v-theme-ink)); font-size: 11px;
+  font-weight: 500; line-height: 1.35; max-width: 327px; padding: 5px 8.5px;
+}
+.v-application.v-application .shelf .s99ab-state {
+  min-height: 420px; padding: 0; gap: var(--gap); flex: 0 0 auto;
+}
+.v-application.v-application .shelf .s99ab-state__icon {
+  font-size: 49px; width: 49px; height: 49px; margin: 0; color: rgb(var(--v-theme-ink3)); opacity: 0.4;
+}
+.v-application.v-application .shelf .s99ab-state__body { display: flex; flex-direction: column; gap: var(--gap); align-items: center; }
+.v-application.v-application .shelf .s99ab-state__title { font-size: 14.5px; font-weight: 400; line-height: 1.5; }
+.v-application.v-application .shelf .s99ab-state__text {
+  font-size: 11px; line-height: 1.5; max-width: 48ch; margin: 0; color: rgb(var(--v-theme-ink3));
+}
+
+.v-overlay-container.v-overlay-container .v-menu > .v-overlay__content:has(.tuner-menu) {
+  background: transparent; border: 0; box-shadow: none;
+}
+.v-overlay-container.v-overlay-container .tuner-menu {
+  background: rgb(var(--v-theme-chrome)); border: 1px solid rgb(var(--v-theme-line));
+  border-radius: 2px; padding-block: 3px; box-shadow: none;
+}
+.v-overlay-container.v-overlay-container .tuner-menu .v-list-item {
+  min-height: 0; padding: 6px 8.5px; color: rgb(var(--v-theme-ink2));
+}
+.v-overlay-container.v-overlay-container .tuner-menu .v-list-item-title {
+  font-size: 12px; line-height: 1.5; letter-spacing: normal; font-weight: 400;
+}
+.v-overlay-container.v-overlay-container .tuner-menu .v-list-item__prepend { min-width: 0; width: auto; }
+.v-overlay-container.v-overlay-container .tuner-menu .v-list-item__prepend .v-icon { font-size: 14px; color: rgb(var(--v-theme-ink3)); opacity: 1; }
+.v-overlay-container.v-overlay-container .tuner-menu .v-list-item__prepend > .v-list-item__spacer { width: 6px; }
+.v-application.v-application .v-chip,
+.v-overlay-container.v-overlay-container .v-chip {
+  background: rgb(var(--v-theme-raised)); border: 1px solid rgb(var(--v-theme-line));
+  border-radius: 2px; color: rgb(var(--v-theme-ink2));
+  font-size: 11px; height: auto; padding: 1.6px 4.5px;
+}
+.v-application.v-application .v-chip.ident__chip {
+  font-size: 12px; height: var(--s99ab-control-h); padding-inline: 8px;
+}
+.v-application.v-application :is(.record-panel, .curve-panel) > .panel__head {
+  background: rgb(var(--v-theme-chrome)); padding: var(--gap); gap: var(--gap);
+}
+.v-application.v-application :is(.record-panel, .curve-panel) > .panel__head .panel__title {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; color: rgb(var(--v-theme-ink3));
+}
+.v-application.v-application :is(.record-panel, .curve-panel) {
+  border-color: rgb(var(--v-theme-line)); border-radius: 2px;
+}
+.v-application.v-application .record-panel .empty { flex: 1 1 auto; }
+.v-application.v-application .panel-help.key {
+  background: none; border: 0; width: auto; height: 20.5px; min-height: 0;
+  padding: 1.6px 3px; color: rgb(var(--v-theme-ink3));
+}
+.v-application.v-application .panel-help.key .key__icon {
+  font-size: 17.5px !important; width: 17.5px !important; height: 17.5px !important;
+}
+.v-application.v-application .curve-editor .panel__actions { gap: var(--gap); }
+
+// The waveform carries full-size transport controls in its header.
+.v-application.v-application .file > .panel__head { --s99ab-control-h: 27px; }
+
+.v-overlay-container.v-overlay-container .tuner-menu .v-list-item--active { color: rgb(var(--v-theme-ink)); background: rgb(var(--v-theme-chrome2)); }
+.v-overlay-container.v-overlay-container .tuner-menu .v-list-item--disabled { color: rgb(var(--v-theme-ink3)); opacity: 1; }
+.v-overlay-container.v-overlay-container .tuner-menu .v-list-item:focus-visible {
+  outline: 2px solid rgb(var(--v-theme-ink)); outline-offset: -2px;
+}
+.v-overlay-container.v-overlay-container .tuner-menu .v-list-item::after { display: none; }
+// A select hands focus to its list when it opens; only the keyboard gets a ring for that.
+html[data-input='pointer'] .v-overlay-container.v-overlay-container .tuner-menu .v-list-item:focus-visible { outline: none; }
+.v-overlay-container.v-overlay-container .tuner-menu .v-list-item--active > .v-list-item__overlay { opacity: 0; }
+.v-overlay-container.v-overlay-container .tuner-menu .v-list-item__append .v-icon { font-size: 13.5px; color: rgb(var(--v-theme-ink2)); }
+.v-overlay-container.v-overlay-container .tuner-menu .v-list-item__append > .v-list-item__spacer { width: 6px; }
+.v-overlay-container.v-overlay-container .tuner-menu .v-list-subheader {
+  min-height: 0; padding: 3.5px 8.5px 2.5px; font-size: 11px; font-weight: 600; line-height: 1.5;
+  letter-spacing: 0.06em; text-transform: uppercase; color: rgb(var(--v-theme-ink3));
+}
+.v-overlay-container.v-overlay-container .tuner-menu > div + div:has(.v-list-item) {
+  border-top: 1px solid rgb(var(--v-theme-lineSoft)); margin-top: 3px; padding-top: 3px;
+}
+
+.v-application.v-application .key:focus-visible,
+.v-overlay-container.v-overlay-container .key:focus-visible {
+  outline: 2px solid rgb(var(--v-theme-ink));
+  outline-offset: 1px;
+}
+
+// Fixed mobile screens use explicit tabs/pages; never a scrollable window.
+@media (max-width: 959px), (max-height: 559px) {
+  :root:root {
+    --gap: 6px;
+    --s99ab-control-h: 40px;
+    --s99ab-control-h-dense: 32px;
+    --s99ab-strip-h: 30px;
+  }
+  .v-application.v-application .shelf .s99ab-state { min-height: 0; height: 100%; }
+  .v-application.v-application .panel__head { flex-wrap: nowrap; }
+  .v-application.v-application .panel__meta {
+    min-width: 0;
+    flex: 0 1 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

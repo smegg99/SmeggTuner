@@ -1,0 +1,205 @@
+// Compact instrument fields on Vuetify controls.
+
+// Vuetify owns focus, validation and input behaviour; these measurements match the instrument's fields.
+.v-application.v-application .v-input, .v-overlay-container.v-overlay-container .v-input { font-size: 12.5px; }
+
+.v-application.v-application .v-field, .v-overlay-container.v-overlay-container .v-field {
+  --v-input-control-height: 31px;
+  --v-field-padding-start: 6.5px;
+  --v-field-padding-end: 6.5px;
+  --v-field-input-padding-top: 0px;
+  --v-field-input-padding-bottom: 0px;
+  --s99ab-field-line-focus: rgb(var(--v-theme-ink2));
+  background: rgb(var(--v-theme-well));
+  font-size: 12.5px;
+}
+
+.v-application.v-application .v-field__input, .v-overlay-container.v-overlay-container .v-field__input {
+  min-height: 31px;
+  font-size: inherit;
+  color: rgb(var(--v-theme-ink));
+}
+
+.v-application.v-application .v-field__outline, .v-overlay-container.v-overlay-container .v-field__outline {
+  --v-field-border-width: 1px;
+}
+
+.v-application.v-application .v-field__append-inner > .v-icon,
+.v-overlay-container.v-overlay-container .v-field__append-inner > .v-icon {
+  font-size: 14px;
+  color: rgb(var(--v-theme-ink3));
+}
+
+.v-application.v-application .v-text-field__suffix, .v-overlay-container.v-overlay-container .v-text-field__suffix {
+  font-size: 11px;
+  color: rgb(var(--v-theme-ink3));
+  opacity: 1;
+}
+
+.v-application.v-application .v-textarea textarea, .v-overlay-container.v-overlay-container .v-textarea textarea {
+  font-size: 12px;
+  line-height: 1.45;
+  padding-block: var(--gap);
+  resize: none;
+}
+
+.v-application.v-application .form-section__head { margin-bottom: var(--gap); }
+
+.v-application.v-application .form-section__title {
+  display: block;
+  border-bottom: 1px solid rgb(var(--v-theme-lineSoft));
+  color: rgb(var(--v-theme-ink3));
+  line-height: 1.5;
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding-bottom: var(--gap);
+  text-transform: uppercase;
+}
+
+.v-application.v-application .form-section + .form-section { margin-top: 0; }
+
+.v-application.v-application .form-section.tuner-section > .form-section__grid { gap: var(--gap); }
+
+.v-application.v-application .v-checkbox .v-selection-control,
+.v-overlay-container.v-overlay-container .v-checkbox .v-selection-control {
+  min-height: 16.5px;
+  align-items: flex-start;
+  gap: var(--gap);
+}
+
+.v-application.v-application .v-checkbox .v-selection-control__wrapper,
+.v-overlay-container.v-overlay-container .v-checkbox .v-selection-control__wrapper {
+  width: 15.5px;
+  height: 15.5px;
+  margin-top: 0.8px;
+}
+
+.v-application.v-application .v-checkbox .v-selection-control__input,
+.v-overlay-container.v-overlay-container .v-checkbox .v-selection-control__input { width: 15.5px; height: 15.5px; }
+
+.v-application.v-application .v-checkbox .v-icon, .v-overlay-container.v-overlay-container .v-checkbox .v-icon { font-size: 17.5px; }
+
+.v-application.v-application .v-checkbox .v-label, .v-overlay-container.v-overlay-container .v-checkbox .v-label {
+  font-size: 11px;
+  height: 16.5px;
+  opacity: 1;
+}
+
+.v-application.v-application .v-checkbox .v-input__details,
+.v-overlay-container.v-overlay-container .v-checkbox .v-input__details {
+  min-height: 0;
+  // The hint starts under the label: the box plus the gap.
+  padding: 1.2px 0 0 calc(15.5px + var(--gap));
+  color: rgb(var(--v-theme-ink2));
+}
+
+.v-application.v-application .v-checkbox .v-messages, .v-overlay-container.v-overlay-container .v-checkbox .v-messages {
+  font-size: 11px;
+  line-height: 1.45;
+  max-width: 46ch;
+  opacity: 1;
+}
+
+.v-application.v-application .v-checkbox + .v-checkbox { margin-top: 0; }
+
+.v-application.v-application .settings .form-section__head { margin-bottom: var(--gap); }
+
+.v-application.v-application .settings .form-section.tuner-section > .form-section__grid { gap: var(--gap); }
+
+.v-application.v-application .v-checkbox .v-messages__message,
+.v-overlay-container.v-overlay-container .v-checkbox .v-messages__message { line-height: 1.45; }
+
+.v-application.v-application .v-text-field:where(:not(.v-select):not(.v-textarea)) .v-field__input,
+.v-overlay-container.v-overlay-container .v-text-field:where(:not(.v-select):not(.v-textarea)) .v-field__input { min-height: 32.5px; }
+
+.v-application.v-application .v-textarea .v-field__input,
+.v-overlay-container.v-overlay-container .v-textarea .v-field__input { min-height: auto; padding-block: 7px; }
+
+.v-application.v-application .v-checkbox .v-selection-control__input,
+.v-overlay-container.v-overlay-container .v-checkbox .v-selection-control__input {
+  background: rgb(var(--v-theme-raised));
+  border: 1px solid rgb(var(--v-theme-line));
+  border-radius: 2px;
+}
+
+.v-application.v-application .v-checkbox .v-selection-control--dirty .v-selection-control__input,
+.v-overlay-container.v-overlay-container .v-checkbox .v-selection-control--dirty .v-selection-control__input {
+  background: rgb(var(--v-theme-ink2));
+  border-color: rgb(var(--v-theme-ink2));
+}
+
+// The tick is CheckTick (plugins/vuetify.ts), sized as the original's: 80% of the box.
+.v-application.v-application .v-checkbox .v-selection-control__input > .v-icon,
+.v-overlay-container.v-overlay-container .v-checkbox .v-selection-control__input > .v-icon {
+  width: 80%; height: 80%; min-width: 0;
+  font-size: inherit;
+  color: rgb(var(--v-theme-bg));
+  opacity: 1;
+}
+
+.v-application.v-application .v-checkbox .check-tick,
+.v-overlay-container.v-overlay-container .v-checkbox .check-tick { display: block; width: 100%; height: 100%; }
+
+.v-application.v-application .v-checkbox .v-messages__message,
+.v-overlay-container.v-overlay-container .v-checkbox .v-messages__message { letter-spacing: normal; }
+
+.v-application.v-application .v-field, .v-overlay-container.v-overlay-container .v-field { letter-spacing: normal; }
+
+.v-application.v-application :is(.v-select__selection-text, .v-label, .v-field__input),
+.v-overlay-container.v-overlay-container :is(.v-select__selection-text, .v-label, .v-field__input) { letter-spacing: normal; }
+
+// The original inputs were native ones inside a bordered box: the 1px edge plus the input's own 1px (2px in a textarea).
+.v-application.v-application .v-text-field:not(.v-select) .v-field,
+.v-overlay-container.v-overlay-container .v-text-field:not(.v-select) .v-field { --v-field-padding-start: 8.5px; }
+
+.v-application.v-application .v-textarea.v-text-field .v-field,
+.v-overlay-container.v-overlay-container .v-textarea.v-text-field .v-field { --v-field-padding-start: 9.5px; }
+
+.v-application.v-application .v-text-field__suffix,
+.v-overlay-container.v-overlay-container .v-text-field__suffix { min-height: 0; align-self: stretch; padding-block: 0; padding-inline-end: 7.5px; }
+
+.v-application.v-application .v-select .v-field,
+.v-overlay-container.v-overlay-container .v-select .v-field { font-size: 12px; padding-inline-end: 7.5px; padding-bottom: 1px; }
+
+// The original select was a bordered button: value and caret sit inside the 1px edge.
+.v-application.v-application .v-select .v-field__input,
+.v-overlay-container.v-overlay-container .v-select .v-field__input { min-height: 30px; padding-inline-start: 7.5px; }
+
+.v-application.v-application .v-select .v-field__append-inner,
+.v-overlay-container.v-overlay-container .v-select .v-field__append-inner { align-items: center; padding: 0; }
+
+.v-application.v-application .v-select .v-field__append-inner > .v-icon,
+.v-overlay-container.v-overlay-container .v-select .v-field__append-inner > .v-icon { margin: 0; transform: none; }
+
+// Opening the menu does not mark the field; only keyboard focus does.
+.v-application.v-application .v-select .v-field { --s99ab-field-line-focus: var(--s99ab-field-line); }
+html[data-input='keyboard'] .v-application .v-select:not(.v-select--active-menu) .v-field--focused { --s99ab-field-line-focus: rgb(var(--v-theme-ink2)); }
+
+.v-application.v-application .v-textarea .v-field,
+.v-overlay-container.v-overlay-container .v-textarea .v-field { padding-block: 1px; }
+
+.v-application.v-application .section-hint { cursor: help; }
+
+.v-application.v-application .v-field input::placeholder,
+.v-overlay-container.v-overlay-container .v-field input::placeholder { color: rgb(var(--v-theme-ink3)); opacity: 1; }
+
+.v-application.v-application .curve-editor .bar .v-field__input { min-height: var(--s99ab-control-h); }
+
+.v-application.v-application .v-text-field__suffix,
+.v-overlay-container.v-overlay-container .v-text-field__suffix { font-family: var(--font-sans); }
+
+// A checkbox is two stacked parts; Vuetify's grid keeps a row's old height in WebKitGTK when a
+// resize rewraps the hint, so the hint ran over the next checkbox. Block layout follows the text.
+.v-application.v-application .v-checkbox.v-input,
+.v-overlay-container.v-overlay-container .v-checkbox.v-input { display: block; }
+
+// Wrapped hints must size the row at the current window width in WebKitGTK.
+.v-application.v-application .v-checkbox .v-input__details,
+.v-overlay-container.v-overlay-container .v-checkbox .v-input__details {
+  display: block;
+  overflow: visible;
+  height: auto;
+  transition: none;
+}

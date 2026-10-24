@@ -1,0 +1,43 @@
+// frontend/app/assets/styles/_controls.scss
+// SVG moulding applies to every key cap, S99AB's UiKbd included, teleported dialogs too.
+kbd.kbd.kbd {
+  min-width: 28px;
+  padding: 1px 9px 9px;
+  border: 0;
+  border-radius: 4px;
+  background: url('../../../../assets/keycap.svg') center / 100% 100% no-repeat;
+  color: rgb(var(--v-theme-ink));
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.v-theme--light kbd.kbd.kbd {
+  background-image: url('../../../../assets/keycap-light.svg');
+}
+
+// A disabled button takes no pointer events in WebKit; let them reach its parent, where the app's one
+// tooltip (shell/AppTooltip) finds the button under the pointer and still says what it does.
+button:disabled {
+  pointer-events: none;
+}
+
+// One gap between separate keys anywhere in the app; a segmented group keeps its shared borders.
+.key-row {
+  align-items: center;
+  display: flex;
+  gap: var(--s99ab-control-gap);
+}
+
+// The rule between groups of keys: short and faint, the same in every bar.
+.group-rule {
+  align-self: center;
+  background: rgb(var(--v-theme-line));
+  flex: 0 0 1px;
+  height: 14px;
+  margin-inline: var(--gap-tight);
+  opacity: 0.6;
+}

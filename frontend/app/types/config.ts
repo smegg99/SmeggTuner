@@ -1,4 +1,4 @@
-/** The theme the user asked for. Older config files may hold high-contrast names; those normalize back to their base (see themeMode). */
+/** The theme the user asked for. */
 export const THEME_MODE = {
   AUTO: 'auto',
   LIGHT: 'light',
@@ -19,14 +19,12 @@ export const THEME_MODES: { value: ThemeMode, icon: string, labelKey: string }[]
   { value: THEME_MODE.DARK, icon: 'mdi-moon-waning-crescent', labelKey: 'settings.themes.dark' },
 ]
 
-/** themeMode reads the config's theme field, tolerating whatever it holds. */
+/** themeMode reads the config's theme field; before the config arrives it is undefined. */
 export function themeMode(value: string | undefined): ThemeMode {
   switch (value) {
     case THEME_MODE.LIGHT:
-    case 'lightHighContrast':
       return THEME_MODE.LIGHT
     case THEME_MODE.DARK:
-    case 'darkHighContrast':
       return THEME_MODE.DARK
     case THEME_MODE.AUTO:
       return THEME_MODE.AUTO
@@ -74,6 +72,6 @@ export type ErrorReference = typeof ERROR_REFERENCE[keyof typeof ERROR_REFERENCE
 
 export const DEFAULT_ERROR_REFERENCE: ErrorReference = ERROR_REFERENCE.SCALE
 
-/** Reed/beat windows in cents (common/config schema defaults = core/target Default*Tolerance). Used only before config loads; every inTol verdict is the backend's, these just size the gauge's in-tune band. */
+/** Reed/beat windows in reference units (common/config schema defaults = core/target Default*Tolerance). Used only before config loads; every inTol verdict is the backend's, these just size the gauge's in-tune band. */
 export const DEFAULT_TOLERANCE = 1.0
 export const DEFAULT_BEAT_TOLERANCE = 3.0

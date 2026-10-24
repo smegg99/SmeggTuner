@@ -1,4 +1,7 @@
-export type LocaleCode = 'en' | 'pl'
+// app/types/locale.ts
+import { defaultLocale, locales } from '../../i18n/generated/keys.gen'
+
+export type LocaleCode = typeof locales[number]
 
 export interface LocaleInfo {
   code: LocaleCode
@@ -7,6 +10,6 @@ export interface LocaleInfo {
   files: string[]
 }
 
-export const LOCALE_CODES = ['en', 'pl'] as const satisfies readonly LocaleCode[]
+export const LOCALE_CODES = locales
 
-export const DEFAULT_LOCALE: LocaleCode = 'en'
+export const DEFAULT_LOCALE: LocaleCode = defaultLocale

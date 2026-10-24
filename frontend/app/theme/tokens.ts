@@ -1,3 +1,5 @@
+import { palette, type WritableTheme } from '@smegg99/s99ab/theme'
+
 // Vuetify and the canvases both read these names (via useTheme), so DOM and canvas colours can't drift. See docs/architecture.md.
 
 /** The three semantic hues; nothing else may borrow them. */
@@ -15,7 +17,7 @@ export type TokenName
 
 export type Tokens = Record<TokenName, string>
 
-export const LIGHT: Tokens = {
+const instrumentLight: Tokens = {
   bg: '#c4c9d2',
   chrome: '#e5e8ee',
   chrome2: '#dadee6',
@@ -41,7 +43,7 @@ export const LIGHT: Tokens = {
   accent: '#2563eb',
 }
 
-export const DARK: Tokens = {
+const instrumentDark: Tokens = {
   bg: '#111317',
   chrome: '#1c1f24',
   chrome2: '#23272c',
@@ -67,4 +69,40 @@ export const DARK: Tokens = {
   accent: '#5b8cf5',
 }
 
+// The same graphite surfaces as Goptivum; instrument traces retain their meaning.
+function graphite(dark: boolean, instrument: Tokens): Tokens {
+  const shared = palette({ name: 'graphite', dark, chroma: 0 })
+  return Object.fromEntries(Object.entries(instrument).map(([key, value]) => [
+    key, SEMANTIC.includes(key as SemanticName) ? value : shared[key] ?? value,
+  ])) as Tokens
+}
+
+export const LIGHT = graphite(false, instrumentLight)
+export const DARK = graphite(true, instrumentDark)
 export const TOKENS: Record<'light' | 'dark', Tokens> = { light: LIGHT, dark: DARK }
+
+/** Map the instrument palette onto the shared controls without changing its surfaces. */
+export function instrumentColors(name: 'light' | 'dark', accent = TOKENS[name].accent) {
+  const t = TOKENS[name]
+  return {
+    ...t, accent,
+    'background': t.bg, 'surface': t.chrome,
+    'surface-bright': t.raised, 'surface-light': t.chrome2, 'surface-variant': t.sunk,
+    'on-background': t.ink, 'on-surface': t.ink,
+    'primary': t.ink2, 'secondary': t.ink3, 'edge': t.line,
+    'error': t.reed, 'danger': t.reed, 'danger-lit': t.reed,
+    'success': t.goal, 'ok': t.goal, 'ok-lit': t.goal,
+    'warning': t.warn, 'warn-lit': t.warn, 'info': t.ink2, 'info-lit': t.ink2,
+  }
+}
+
+/** Supply raw colours so Vuetify derives every on-colour from the instrument palette. */
+export function applyInstrumentTheme(theme: WritableTheme, name: 'light' | 'dark', accent = TOKENS[name].accent) {
+  theme.colors = instrumentColors(name, accent)
+  Object.assign(theme.variables, {
+    'border-color': TOKENS[name].line,
+    'border-opacity': 1,
+    'high-emphasis-opacity': 1,
+    'medium-emphasis-opacity': 1,
+  })
+}

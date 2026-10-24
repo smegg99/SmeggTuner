@@ -1,0 +1,47 @@
+// frontend/app/assets/styles/app.scss
+@use 'controls';
+
+:root {
+  --dlg-sm: 400px;
+  --dlg-md: 560px;
+  --dlg-lg: 760px;
+}
+
+.tuner-panel {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.tuner-panel > .panel__body {
+  position: relative;
+}
+
+.tuner-panel > .panel__body > * {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.form-section.tuner-section > .form-section__grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-section.tuner-section > .form-section__grid > * {
+  width: 100%;
+}
+
+.tuner-menu {
+  min-width: 135px;
+  max-width: min(404px, 95vw);
+}
+
+.tuner-menu .v-list-item-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tuner-number {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
