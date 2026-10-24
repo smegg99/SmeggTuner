@@ -1,0 +1,1 @@
+{"title":{"count":"{room} {name} ({done})","progress":"{room} {name} {done}/{total}","room":{"calibrate":"calibration","settings":"settings","soundcard":"sound card","tune":"tuning","workshop":"workshop"},"session":"{room} {name}","uncalibrated":"{title} (sound card not calibrated)"}}

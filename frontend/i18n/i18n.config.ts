@@ -1,15 +1,16 @@
 // i18n/i18n.config.ts
-import { polishPlural } from './plurals'
+import { withS99ab } from '@smegg99/s99ab/i18n'
+import { pluralRules } from './generated/plurals.gen'
 
 export default defineI18nConfig(() => ({
   legacy: false,
+  messages: withS99ab({ en: {}, pl: {} }),
   fallbackLocale: 'en',
 
   missingWarn: import.meta.dev,
   fallbackWarn: import.meta.dev,
 
-  // English keeps vue-i18n's own rule; only Polish needs telling.
-  pluralRules: { pl: polishPlural },
+  pluralRules,
 
   datetimeFormats: {
     en: {
