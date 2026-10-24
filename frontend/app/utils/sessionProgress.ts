@@ -1,5 +1,4 @@
-import type { TakeRow } from '~/types/record'
-import { reedsUsable } from '~/utils/record'
+import type { RowDTO } from '~~bindings/smegg.me/smeggtuner/backend/services/record/models.js'
 
 // The footer's session label. The in-tune verdict is the backend's (inTol); this only counts it.
 
@@ -20,7 +19,7 @@ export type SessionProgress
 
 export function sessionProgress(
   session: ProgressSession | null,
-  rows: TakeRow[],
+  rows: RowDTO[],
   recording: boolean,
 ): SessionProgress {
   if (!session) return { kind: 'none' }
@@ -37,7 +36,7 @@ export function sessionProgress(
 }
 
 // Distinct notes; the same key on two registers counts once.
-function distinctNotes(rows: TakeRow[]): number {
+function distinctNotes(rows: RowDTO[]): number {
   return new Set(rows.map(row => row.note)).size
 }
 
@@ -54,8 +53,8 @@ function hasGoalCurve(session: ProgressSession): boolean {
 }
 
 // A note is in tune only when every row it holds is (both registers, if taken twice).
-function notesInTune(rows: TakeRow[]): number {
-  const byNote = new Map<number, TakeRow[]>()
+function notesInTune(rows: RowDTO[]): number {
+  const byNote = new Map<number, RowDTO[]>()
   for (const row of rows) {
     const list = byNote.get(row.note)
     if (list) list.push(row)
@@ -69,8 +68,7 @@ function notesInTune(rows: TakeRow[]): number {
   return count
 }
 
-// A row is in tune when its trusted readings are all in tolerance (reeds when usable, else the beat); an empty set is not a pass.
-function rowInTune(row: TakeRow): boolean {
-  if (reedsUsable(row)) return row.reeds.length > 0 && row.reeds.every(reed => reed.inTol)
-  return row.beats.length > 0 && row.beats.every(beat => beat.inTol)
+// A row is in tune when every slot that sounded is in tolerance; a row with none heard is not a pass.
+function rowInTune(row: RowDTO): boolean {
+  return row.reeds.length > 0 && row.reeds.every(reed => reed.inTol)
 }

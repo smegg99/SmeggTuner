@@ -1,5 +1,5 @@
-import { BANKS } from '~/types/session'
-import type { Bank, Register } from '~/types/session'
+import { Bank, BANKS } from '~/types/session'
+import type { Register } from '~/types/session'
 
 // banksOfRegister reads a register's bank list from its engraved notation (LMMM, MMM, M2). Must agree EXACTLY with core/session.ParseBanks, which decides the card's columns. An unreadable name returns null, never a guess.
 export function banksOfRegister(name: string): Bank[] | null {
@@ -13,11 +13,11 @@ export function banksOfRegister(name: string): Bank[] | null {
     const c = s[i]
 
     if (c === 'L') {
-      out.push('L')
+      out.push(Bank.BankL)
       continue
     }
     if (c === 'H') {
-      out.push('H')
+      out.push(Bank.BankH)
       continue
     }
     if (c !== 'M') return null

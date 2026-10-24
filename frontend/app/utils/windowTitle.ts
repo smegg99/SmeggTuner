@@ -4,7 +4,13 @@ import type { View } from '~/composables/useShell'
 // The window title without the app name (the Go side prepends it); t is injected so the rules are testable.
 export type Translate = (key: string, params?: Record<string, unknown>) => string
 
-export function windowTitle(view: View, progress: SessionProgress, t: Translate): string {
+// An uncalibrated mic says so in every room, so the title keeps asking for the calibration.
+export function windowTitle(view: View, progress: SessionProgress, t: Translate, uncalibrated = false): string {
+  const title = roomTitle(view, progress, t)
+  return uncalibrated ? t('title.uncalibrated', { title }) : title
+}
+
+function roomTitle(view: View, progress: SessionProgress, t: Translate): string {
   const room = t(`title.room.${view}`)
 
   if (progress.kind === 'none' || !progress.name) return room

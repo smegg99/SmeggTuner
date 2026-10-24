@@ -1,8 +1,7 @@
-import { BANKS } from '~/types/session'
-import type { Bank } from '~/types/session'
+import { Bank, BANKS } from '~/types/session'
 
 // Feet notation over banks: L is 16', M1..M4 the 8' musette ranks, H is 4'. What's engraved on the instrument.
-const FEET: Record<Bank, string> = {
+const FEET: Partial<Record<Bank, string>> = {
   L: '16\'',
   M1: '8\'',
   M2: '8\'',
@@ -53,20 +52,20 @@ export interface RegisterDots {
 
 export function symbolOf(banks: readonly Bank[]): RegisterDots {
   return {
-    high: banks.includes('H'),
+    high: banks.includes(Bank.BankH),
     middle: (['M1', 'M2', 'M3', 'M4'] as Bank[]).filter(m => banks.includes(m)).length,
-    low: banks.includes('L'),
+    low: banks.includes(Bank.BankL),
   }
 }
 
 // banksOfSymbol maps clicked dots back to banks; the middle count fills M1,M2,M3,M4 in order so picker and card agree on which rank is which.
 export function banksOfSymbol(sym: RegisterDots): Bank[] {
   const out: Bank[] = []
-  if (sym.low) out.push('L')
+  if (sym.low) out.push(Bank.BankL)
   for (let i = 0; i < Math.min(4, Math.max(0, sym.middle)); i++) {
     out.push(`M${i + 1}` as Bank)
   }
-  if (sym.high) out.push('H')
+  if (sym.high) out.push(Bank.BankH)
   return out
 }
 

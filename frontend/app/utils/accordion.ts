@@ -1,5 +1,5 @@
 import { canonicalName } from '~/utils/feet'
-import { MAX_BASS_REGISTERS, MAX_REGISTERS } from '~/types/session'
+import { BANKS, MAX_BASS_REGISTERS, MAX_REGISTERS } from '~/types/session'
 import type { Bank, BassRegister, Register } from '~/types/session'
 
 // The name a session is offered. The date alone still identifies it, so an
@@ -14,7 +14,7 @@ export function sessionNameFor(accordion: string, date: string): string {
 // keeps the two from drifting apart.
 export const MAX_NOTES = 500
 
-// Mirrors services/session. A reading is cents from the reference pitch it was
+// Mirrors services/session. A reading is a deviation from the reference pitch it was
 // measured against, filed under a card column; once one exists the backend refuses
 // to move either (SetA4 and SetInstrument, both ErrHasReadings). The panel disables
 // those controls rather than offering ones that silently fail.
@@ -25,10 +25,8 @@ export function frozenByReadings(readings: number): boolean {
 // A switch IS what it sounds, so the ranks it sounds are its identity and the order they were
 // picked in is not. Mirrors core/session bankKey.
 function ranksOf(banks: readonly Bank[]): string {
-  return BANK_ORDER.filter(b => banks.includes(b)).join(' ')
+  return BANKS.filter(b => banks.includes(b)).join(' ')
 }
-
-const BANK_ORDER: readonly Bank[] = ['L', 'M1', 'M2', 'M3', 'M4', 'H']
 
 // Mirrors core/session feetKey: largest foot first, so clicking 8 then 16 is the same switch as
 // clicking 16 then 8.

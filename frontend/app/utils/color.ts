@@ -45,15 +45,9 @@ export function hsvToHex({ h, s, v }: Hsv): string {
   const x = c * (1 - Math.abs(((h / 60) % 2) - 1))
   const m = val - c
 
-  let r = 0
-  let g = 0
-  let b = 0
-  if (h < 60) [r, g, b] = [c, x, 0]
-  else if (h < 120) [r, g, b] = [x, c, 0]
-  else if (h < 180) [r, g, b] = [0, c, x]
-  else if (h < 240) [r, g, b] = [0, x, c]
-  else if (h < 300) [r, g, b] = [x, 0, c]
-  else [r, g, b] = [c, 0, x]
+  // One 60-degree sector of the hue circle each; 360 falls in the last.
+  const sectors = [[c, x, 0], [x, c, 0], [0, c, x], [0, x, c], [x, 0, c], [c, 0, x]] as const
+  const [r, g, b] = sectors[Math.min(5, Math.max(0, Math.floor(h / 60)))]!
 
   const byte = (n: number) => Math.round((n + m) * 255).toString(16).padStart(2, '0')
   return `#${byte(r)}${byte(g)}${byte(b)}`

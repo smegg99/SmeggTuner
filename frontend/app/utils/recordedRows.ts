@@ -1,18 +1,25 @@
-import type { TakeRow } from '~/types/record'
-import type { Bank } from '~/types/session'
-import { BANKS } from '~/types/session'
-import { octaveOf } from '~/utils/feet'
-import { beatColumns, beatGroups, byNote, reedGroups, reedOf, reedsDerived, reedsUsable } from '~/utils/record'
+import type { RowDTO } from '~~bindings/smegg.me/smeggtuner/backend/services/record/models.js'
+import { restate } from '~/utils/deviation'
+import type { DeviationUnit } from '~/utils/deviation'
+import { beatColumns, beatGroups, byNote, reedGroups } from '~/utils/record'
+import { rowKey } from '~/utils/recordOverview'
 
-// Row models for the recorded table. Numbers are the backend's, carried in both units; this picks a unit and formats. A merged note without a beat carries no per-reed numbers (reedsUsable).
+// Row models for the recorded table. Numbers are the backend's, in reference units; this restates them in the display unit and formats.
 
 /** How a number is written, from useRecordFormat. Passed in so this stays pure. */
 export interface RecordFormat {
-  cents: (v: number) => string
-  signedCents: (v: number) => string
-  hertz: (v: number) => string
-  signedHertz: (v: number) => string
+  deviation: (v: number) => string
+  signedDeviation: (v: number) => string
+  /** a beat in hertz, unsigned, two decimals as the reference prints it */
+  hz: (v: number) => string
   EMPTY: string
+}
+
+export interface RowOptions {
+  /** beats in hertz (tuner.beat_unit), else in the deviation unit */
+  beatsInHz?: boolean
+  /** the take captured last (TableDTO.latest): the one Backspace removes */
+  latest?: number
 }
 
 export interface ReedCell {
@@ -20,18 +27,16 @@ export interface ReedCell {
   reed: number
   /** The measurement carries this reed; absent is not zero. */
   present: boolean
-  /** Merged and not recovered from the beat: no numbers may be printed. */
-  merged: boolean
-  /** Why an empty cell is empty, when the engine's per-band accounting says: the register sounds
-   * this rank and it was not heard, or all that was heard there was the rank below's harmonic.
-   * Absent when nothing knows - an older reading, or a single-band one. */
-  blank?: 'notHeard' | 'harmonicOnly'
+  /** Why an empty cell is empty: the take measured a slot in this column and it did not sound. */
+  blank?: 'notHeard'
   curr: string
   goal: string
   error: string
   inTol: boolean
   /** The raw Curr, in the unit shown, so a cell can open its editor on it. */
   raw: number
+  /** the take's slot this column reads, for RecordService.EditReed; -1 when none */
+  slot: number
 }
 
 export interface BeatCell {
@@ -41,7 +46,6 @@ export interface BeatCell {
   goal: string
   error: string
   inTol: boolean
-  fromEnvelope: boolean
 }
 
 export interface RecordedRow {
@@ -52,42 +56,41 @@ export interface RecordedRow {
   register?: string
   take: number
   manual: boolean
-  merged: boolean
-  derived: boolean
+  /** this row holds the take captured last */
+  latest: boolean
   reedCells: ReedCell[]
   beatCells: BeatCell[]
 }
 
 export function buildRecordedRows(
-  rows: TakeRow[],
+  rows: RowDTO[],
   reedCount: number,
-  asHz: boolean,
+  unit: DeviationUnit,
   fmt: RecordFormat,
-  banks?: readonly string[],
+  opts: RowOptions = {},
 ): RecordedRow[] {
   const reeds = reedGroups(reedCount)
   const beats = beatGroups(reedCount, rows)
 
   return byNote(rows).map((row) => {
-    const usable = reedsUsable(row)
-    // A row that knows its columns places each reed there; without the mapping, by position.
+    // A row that knows its columns places each slot there; without the mapping, by position.
     const colOf = (i: number) => row.cols?.[i] ?? i
+    const measured = new Set(Array.from({ length: row.slots ?? 0 }, (_, slot) => colOf(slot)))
 
     const reedCells = reeds.map<ReedCell>((group) => {
-      const reed = row.cols
-        ? row.reeds.find(r => colOf(r.reed) === group.reed)
-        : reedOf(row, group.reed)
+      const reed = row.reeds.find(r => colOf(r.reed) === group.reed)
+      const shown = reed ? restate(reed, unit) : undefined
       return {
         key: group.key,
         reed: group.reed,
-        present: usable && reed !== undefined,
-        merged: !usable,
-        blank: reed === undefined ? blankOf(row, banks?.[group.reed]) : undefined,
-        curr: reed ? (asHz ? fmt.signedHertz(reed.currHz) : fmt.signedCents(reed.curr)) : fmt.EMPTY,
-        goal: reed ? (asHz ? fmt.hertz(reed.goalHz) : fmt.cents(reed.goal)) : fmt.EMPTY,
-        error: reed ? (asHz ? fmt.signedHertz(reed.errorHz) : fmt.signedCents(reed.error)) : fmt.EMPTY,
+        present: reed !== undefined,
+        blank: reed === undefined && measured.has(group.reed) ? 'notHeard' : undefined,
+        curr: shown ? fmt.signedDeviation(shown.curr) : fmt.EMPTY,
+        goal: shown ? fmt.deviation(shown.goal) : fmt.EMPTY,
+        error: shown ? fmt.signedDeviation(shown.error) : fmt.EMPTY,
         inTol: reed?.inTol ?? false,
-        raw: reed ? (asHz ? reed.currHz : reed.curr) : 0,
+        raw: shown?.curr ?? 0,
+        slot: reed?.reed ?? -1,
       }
     })
 
@@ -96,38 +99,28 @@ export function buildRecordedRows(
         const [low, high] = beatColumns(row, b)
         return low === group.low && high === group.high
       })
+      const shown = beat ? restate(beat, unit) : undefined
+      const curr = !beat ? fmt.EMPTY : opts.beatsInHz ? fmt.hz(beat.currHz) : fmt.signedDeviation(shown!.curr)
       return {
         key: group.key,
         present: beat !== undefined,
-        curr: beat ? (asHz ? fmt.signedHertz(beat.currHz) : fmt.signedCents(beat.curr)) : fmt.EMPTY,
-        goal: beat ? (asHz ? fmt.hertz(beat.goalHz) : fmt.cents(beat.goal)) : fmt.EMPTY,
-        error: beat ? (asHz ? fmt.signedHertz(beat.errorHz) : fmt.signedCents(beat.error)) : fmt.EMPTY,
+        curr,
+        goal: shown ? fmt.deviation(shown.goal) : fmt.EMPTY,
+        error: shown ? fmt.signedDeviation(shown.error) : fmt.EMPTY,
         inTol: beat?.inTol ?? false,
-        fromEnvelope: beat?.fromEnvelope ?? false,
       }
     })
 
     return {
-      key: `${row.note}:${row.register ?? ''}`,
+      key: rowKey(row),
       note: row.note,
       noteName: row.noteName,
       register: row.register,
       take: row.take,
       manual: row.manual,
-      merged: !usable,
-      derived: reedsDerived(row),
+      latest: row.take === opts.latest,
       reedCells,
       beatCells,
     }
   })
-}
-
-// blankOf is WHY a rank's cell is empty, read off the engine's per-band accounting the same way the
-// live dial reads it. Undefined when the reading carries no accounting, or the column is not a
-// treble rank - the bass side names feet, and its ladder has no bank to ask.
-function blankOf(row: TakeRow, column?: string): 'notHeard' | 'harmonicOnly' | undefined {
-  if (!row.bands?.length || !column || !BANKS.includes(column as Bank)) return undefined
-  const band = row.bands.find(b => b.octave === octaveOf(column as Bank))
-  if (!band) return undefined
-  return band.ghostOnly ? 'harmonicOnly' : 'notHeard'
 }

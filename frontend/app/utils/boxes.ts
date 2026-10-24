@@ -1,72 +1,67 @@
-import { liveReedsUsable } from '~/utils/tuning'
+import type { Panel } from '~~bindings/smegg.me/smeggtuner/backend/core/dsp/models.js'
+import type { BeatError, ReedError } from '~~bindings/smegg.me/smeggtuner/backend/core/target/models.js'
+import { MISSING, shownDeviation, shownResidual } from '~/utils/deviation'
+import type { DeviationUnit } from '~/utils/deviation'
 
-// Values and verdicts come from the DTO as-is; the only number produced here is `frac` (drawing geometry).
-
-/** One reed's or one beat's reading, as core/target computed it. */
-export interface Reading {
-  curr: number
-  goal: number
-  error: number
-  inTol: boolean
-  /** 0-based measurement-reed indices of a beat's pair; absent on reeds and in older fixtures */
-  low?: number
-  high?: number
-}
+// Values come from the engine's screen state and verdicts from core/target; the only number produced here is `frac` (drawing geometry) and the unit restatement.
 
 /** One rank of the register being tuned: its display name and the octave it sounds at. The treble
- * side names banks (L, M1, H), the bass side feet (32', 16'); the boxes care only about octaves. */
+ * side names banks (L, M1, H), the bass side feet (32', 16'). */
 export interface RankSlot {
   name: string
   octave: number
 }
 
-/** One octave band's accounting from the engine, for a register that spans octaves. */
-export interface BandInfo {
-  octave: number
-  ranks: number
-  found: number
-  ghostOnly: boolean
-}
-
 export interface BoxInput {
-  /** did the spectrum split the reeds */
-  separated: boolean
-  /** or were they recovered from the beat between them */
-  fromBeat: boolean
-  reeds: Reading[]
-  beats: Reading[]
-  /** technician's windows, for the bar's scale only */
+  /** The reference readouts, reed, pair, reed, ... (dsp.Measurement.Panels). */
+  panels: readonly Panel[]
+  /** The last measured slots against the goal: the verdict and the bar. */
+  reedErrors: readonly ReedError[]
+  beatErrors: readonly BeatError[]
+  /** technician's windows in reference units, for the bar's scale only */
   tolerance: number
   beatTolerance: number
-  /** reeds the engine looks for; drives box count so the row is stable */
+  /** slots the bench declares; drives box count so the row is stable */
   reedCount: number
-  /** the pulled register's ranks in order; a register spanning octaves maps boxes onto them */
+  /** the pulled register's ranks in slot order; a register spanning octaves names its boxes by them */
   slots?: readonly RankSlot[]
-  /** each measurement reed's octave, aligned with `reeds`; the compound engine sets them */
+  unit: DeviationUnit
+  /** the reference reed box of each slot (dsp.ReedMeasure.Reed); labels number by it */
+  ids?: readonly number[]
+  /** each slot's semitones from the key, to tell an octave pair from a gap between boxes */
   octaves?: readonly number[]
-  /** the engine's per-band accounting, for saying WHY a rank's box is empty */
-  bands?: readonly BandInfo[]
+  /** chords: the slots are the tones of a chord */
+  tones?: boolean
+  /** pair readouts are beats in Hz (tuner.beat_unit), not deviation units */
+  beatsInHz: boolean
+  /** readouts are deviation minus target (tuner.error_reference goal) */
+  relative: boolean
 }
 
 /** Why a box has no number. Never "it is zero". */
 export type Blank
   /** nothing is sounding: no reading yet */
   = | 'idle'
-  /** the spectrum could not split the pair, so those figures are lobes, not reeds */
-    | 'merged'
-  /** the register sounds this rank but the engine did not hear it */
+  /** the register sounds this slot but the engine did not hear it */
     | 'notHeard'
-  /** all the engine heard in this rank's octave is the lower rank's harmonic - a blocked rank shows exactly this */
-    | 'harmonicOnly'
+  /** an octave pair: the reference reads its beat only in Hz */
+    | 'hzOnly'
+
+export type BoxUnit = DeviationUnit | 'hz'
 
 export interface Box {
   kind: 'reed' | 'beat'
-  /** which reed or pair, zero based; the label is composed via i18n elsewhere */
+  /** which slot or pair, zero based; the label is composed via i18n elsewhere */
   index: number
-  unit: 'cent' | 'Hz'
+  unit: BoxUnit
   /** null when there is no honest number. NEVER a fallback. */
   value: number | null
   goal: number | null
+  /** the readout's own precision and sign convention */
+  decimals: number
+  signed: boolean
+  /** no note: the numbers are the last ones, dimmed as the reference dims them */
+  dimmed: boolean
   /** set exactly when value is null, and it says WHY. */
   blank: Blank | null
   /** the backend's verdict, never re-derived here */
@@ -75,9 +70,16 @@ export interface Box {
   frac: number | null
   /** the rank this box stands for, when the pulled register names one */
   rank?: string
+  /** the reed box (or chord tone) a reed box is labelled with, and the two a beat is between */
+  number?: number
+  pair?: [number, number]
+  /** a chord tone */
+  tone?: boolean
+  /** the readout's own annotation: the tone's note name in chords */
+  text?: string
 }
 
-// Track is four tolerances wide, so cents and hertz read identically and the notches sit in the same place whatever the technician sets.
+// Track is four tolerances wide, so the notches sit in the same place whatever the technician sets.
 const TRACK_TOLERANCES = 4
 
 const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v))
@@ -85,155 +87,78 @@ const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v
 // Goal is track centre, bar length the error. Zero tolerance would divide by zero and a NaN width vanishes, so centre it.
 function fraction(error: number, tolerance: number): number {
   if (!(tolerance > 0)) return 0.5
-
   return clamp(0.5 + (error / (tolerance * TRACK_TOLERANCES)) * 0.5, 0, 1)
 }
 
-const blankReed = (i: number, why: Blank): Box => ({
-  kind: 'reed',
-  index: i,
-  unit: 'cent',
-  value: null,
-  goal: null,
-  blank: why,
-  // Unknown is not out of tolerance; the engine declined to give a verdict.
-  out: false,
-  frac: null,
-})
-
-const blankBeat = (i: number): Box => ({
-  kind: 'beat',
-  index: i,
-  unit: 'Hz',
-  value: null,
-  goal: null,
-  blank: 'idle',
-  out: false,
-  frac: null,
-})
-
-const beatBox = (i: number, beat: Reading, tolerance: number): Box => ({
-  kind: 'beat',
-  index: i,
-  unit: 'Hz',
-  value: beat.error,
-  goal: beat.goal,
-  blank: null,
-  out: !beat.inTol,
-  frac: fraction(beat.error, tolerance),
-})
-
-const reedBox = (i: number, reed: Reading, tolerance: number): Box => ({
-  kind: 'reed',
-  index: i,
-  unit: 'cent',
-  value: reed.error,
-  goal: reed.goal,
-  blank: null,
-  out: !reed.inTol,
-  frac: fraction(reed.error, tolerance),
-})
-
-// beatFor picks the beat between two measurement reeds by its pair indices; readings without pair
-// info (older fixtures) fall back to the positional slot.
-function beatFor(beats: readonly Reading[], lo: number, hi: number): Reading | undefined {
-  const named = beats.find(b => b.low === lo && b.high === hi)
-  if (named) return named
-  const positional = beats[lo]
-  return positional && positional.low === undefined ? positional : undefined
+// readout is the panel's number, or null where the reference prints "-".
+function readout(p: Panel | undefined): number | null {
+  return p && p.value > MISSING && p.shown !== '-' ? p.value : null
 }
 
-// The merged-pair rule lives in liveReedsUsable() (and record.ts), not duplicated here, so dial and report can't disagree.
+function targetOf(p: Panel | undefined): number | null {
+  return p && p.target > MISSING ? p.target : null
+}
 
-// buildBoxes: one box per configured reed always, so the row keeps its places as voices drop out; an unheard reed is empty and says which kind of empty.
-// A register spanning octaves maps each box onto its rank instead, so a missing 16' leaves the 16' box empty rather than shifting every reading one place left.
-export function buildBoxes(input: BoxInput): Box[] {
-  if (input.slots?.some(s => s.octave !== 0)) {
-    return buildSlotBoxes(input, input.slots)
+function box(
+  kind: Box['kind'], index: number, p: Panel | undefined, unit: BoxUnit, relative: boolean,
+  verdict: { error: number, inTol: boolean } | undefined, tolerance: number, blank: Blank,
+): Box {
+  const raw = readout(p)
+  const goal = targetOf(p)
+  const dimmed = p?.dimmed ?? false
+  const shell = { kind, index, unit, decimals: p?.decimals ?? 1, signed: p?.signed ?? true, dimmed, text: p?.text || undefined }
+  if (raw === null) {
+    // Unknown is not out of tolerance; the engine declined to give a verdict.
+    return { ...shell, value: null, goal: null, blank, out: false, frac: null }
   }
+  const deviation = unit !== 'hz'
+  const value = !deviation ? raw : relative && goal !== null ? shownResidual(raw, goal, unit) : shownDeviation(raw, unit)
+  return {
+    ...shell,
+    value,
+    goal: goal === null ? null : deviation ? shownDeviation(goal, unit) : goal,
+    blank: null,
+    out: !dimmed && verdict !== undefined && !verdict.inTol,
+    frac: verdict ? fraction(verdict.error, tolerance) : null,
+  }
+}
 
-  // Count is declared, not measured: the split count flickers each hop and would resize the flex row; only with nothing declared does the reading decide.
-  const count = input.reedCount > 0 ? input.reedCount : input.reeds.length
+// buildBoxes: one box per configured slot always, so the row keeps its places as voices drop out;
+// an unheard slot is empty and says which kind of empty. Slots are positional, in register order.
+export function buildBoxes(input: BoxInput): Box[] {
+  const named = input.slots?.some(s => s.octave !== 0) ? input.slots : undefined
+  // Count is declared, not measured; only with nothing declared does the engine's readout row decide.
+  const count = named?.length || input.reedCount || Math.ceil(input.panels.length / 2)
   if (count <= 0) return []
 
-  // Only meaningful once something is sounding.
-  const merged = input.reeds.length > 0
-    && !liveReedsUsable(input.separated, input.fromBeat)
+  const reedPanel = (i: number) => input.panels[2 * i]
+  const heard = Array.from({ length: count }, (_, i) => reedPanel(i))
+    .some(p => readout(p) !== null && !p!.dimmed)
+  const beatUnit: BoxUnit = input.beatsInHz ? 'hz' : input.unit
+  const id = (i: number) => input.ids?.[i] ?? i + 1
+  const tone = input.tones || undefined
 
   const boxes: Box[] = []
-
   for (let i = 0; i < count; i++) {
     if (i > 0) {
-      const beat = beatFor(input.beats, i - 1, i)
-      boxes.push(beat ? beatBox(i, beat, input.beatTolerance) : blankBeat(i))
+      const p = input.panels[2 * i - 1]
+      const verdict = input.beatErrors.find(b => b.low === i - 1 && b.high === i)
+      const beat = box('beat', i, p, beatUnit, input.relative, verdict, input.beatTolerance, 'idle')
+      const labelled: Box = { ...beat, pair: [id(i - 1), id(i)], rank: named ? `${named[i - 1]!.name}-${named[i]!.name}` : undefined }
+      // An absent pair has no box: reeds 1 and 3, chord tones. An octave pair in units says why it is empty.
+      if (!p?.absent) boxes.push(labelled)
+      else if (octavePair(input, i)) boxes.push({ ...labelled, value: null, goal: null, blank: 'hzOnly', out: false, frac: null })
     }
-
-    const reed = input.reeds[i]
-
-    if (!reed) {
-      boxes.push(blankReed(i, 'idle'))
-      continue
-    }
-
-    if (merged) {
-      boxes.push(blankReed(i, 'merged'))
-      continue
-    }
-
-    boxes.push(reedBox(i, reed, input.tolerance))
+    const verdict = input.reedErrors.find(r => r.reed === i)
+    const reed = box('reed', i, reedPanel(i), input.unit, input.relative, verdict, input.tolerance, heard ? 'notHeard' : 'idle')
+    boxes.push({ ...reed, number: id(i), tone, rank: named ? named[i]!.name : undefined })
   }
-
   return boxes
 }
 
-// buildSlotBoxes lays the row out by the register's ranks: each reed claims the first unclaimed
-// slot in its own octave (the same rule the card's columns follow), so every box keeps naming the
-// same rank as voices come and go. In compound mode a found reed is a band's own line, never a
-// merged lobe, so the merged blank does not apply; an empty box says notHeard, or harmonicOnly
-// when the engine heard only the rank below's partial there - the blocked-rank case.
-function buildSlotBoxes(input: BoxInput, ranks: readonly RankSlot[]): Box[] {
-  const octaves = input.octaves ?? []
-  const claimed = input.reeds.map(() => false)
-  const slots = ranks.map((rank) => {
-    let reed = -1
-    for (let i = 0; i < input.reeds.length; i++) {
-      if (!claimed[i] && (octaves[i] ?? 0) === rank.octave) {
-        claimed[i] = true
-        reed = i
-        break
-      }
-    }
-    return { ...rank, reed }
-  })
-
-  const idle = input.reeds.length === 0
-  const boxes: Box[] = []
-  // The beat is between the two ranks that sounded, not between neighbouring slots: on an LMMH
-  // register whose second 8' is silent, the reading the technician has is the 8'-to-4' beat, and
-  // pairing each slot with the one before it drops it. The empty slot keeps its own blank box so
-  // the row's geometry never moves.
-  let lastHeard = -1
-  slots.forEach((slot, s) => {
-    if (s > 0) {
-      const beat = lastHeard >= 0 && slot.reed >= 0
-        ? beatFor(input.beats, slots[lastHeard]!.reed, slot.reed)
-        : undefined
-      boxes.push(beat
-        ? { ...beatBox(s, beat, input.beatTolerance), rank: `${slots[lastHeard]!.name}-${slot.name}` }
-        : blankBeat(s))
-    }
-    if (slot.reed >= 0) {
-      lastHeard = s
-      boxes.push({ ...reedBox(s, input.reeds[slot.reed]!, input.tolerance), rank: slot.name })
-      return
-    }
-    boxes.push({ ...blankReed(s, idle ? 'idle' : bandBlank(slot.octave, input.bands)), rank: slot.name })
-  })
-  return boxes
-}
-
-// bandBlank is WHY a rank's box is empty while others read: the engine's per-band accounting says.
-function bandBlank(octave: number, bands?: readonly BandInfo[]): Blank {
-  const band = bands?.find(b => b.octave === octave)
-  return band?.ghostOnly ? 'harmonicOnly' : 'notHeard'
+// octavePair: the reference Bass mode hides an octave beat while beats are in units (core/dsp pairPanels).
+function octavePair(input: BoxInput, i: number): boolean {
+  const lo = input.octaves?.[i - 1]
+  const hi = input.octaves?.[i]
+  return !input.beatsInHz && lo !== undefined && hi !== undefined && Math.abs(hi - lo) === 12
 }
