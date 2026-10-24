@@ -7,13 +7,13 @@ import { Call as $Call, CancellablePromise as $CancellablePromise, Create as $Cr
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore: Unused imports
-import * as accent$0 from "../../accent/models.js";
+import * as accent$0 from "../../platform/accent/models.js";
 
 /**
  * GetTheme returns the current device theme info.
  */
 export function GetTheme(): $CancellablePromise<accent$0.Info> {
-    return $Call.ByID(550356952).then(($result: any) => {
+    return $Call.ByID(1335254703).then(($result: any) => {
         return $$createType0($result);
     });
 }

@@ -8,13 +8,13 @@ import { Create as $Create } from "@wailsio/runtime";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore: Unused imports
-import * as record$0 from "../../../../../smegg.me/smeggtuner/services/record/models.js";
+import * as record$0 from "../../../../../smegg.me/smeggtuner/backend/services/record/models.js";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore: Unused imports
-import * as session$0 from "../../../../../smegg.me/smeggtuner/services/session/models.js";
+import * as session$0 from "../../../../../smegg.me/smeggtuner/backend/services/session/models.js";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore: Unused imports
-import * as tuner$0 from "../../../../../smegg.me/smeggtuner/services/tuner/models.js";
+import * as tuner$0 from "../../../../../smegg.me/smeggtuner/backend/services/tuner/models.js";
 
 function configure() {
     Object.freeze(Object.assign($Create.Events, {

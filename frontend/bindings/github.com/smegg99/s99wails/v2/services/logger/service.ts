@@ -6,17 +6,17 @@
 import { Call as $Call, CancellablePromise as $CancellablePromise, Create as $Create } from "@wailsio/runtime";
 
 export function LogDebug(message: string, fields: { [_ in string]?: any }): $CancellablePromise<void> {
-    return $Call.ByID(4286452005, message, fields);
+    return $Call.ByID(2084915744, message, fields);
 }
 
 export function LogError(message: string, fields: { [_ in string]?: any }): $CancellablePromise<void> {
-    return $Call.ByID(1421587620, message, fields);
+    return $Call.ByID(2396444137, message, fields);
 }
 
 export function LogInfo(message: string, fields: { [_ in string]?: any }): $CancellablePromise<void> {
-    return $Call.ByID(336333530, message, fields);
+    return $Call.ByID(404100301, message, fields);
 }
 
 export function LogWarn(message: string, fields: { [_ in string]?: any }): $CancellablePromise<void> {
-    return $Call.ByID(1254306962, message, fields);
+    return $Call.ByID(3550313113, message, fields);
 }

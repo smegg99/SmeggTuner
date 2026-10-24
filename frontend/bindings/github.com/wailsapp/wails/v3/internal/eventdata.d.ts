@@ -7,17 +7,18 @@ import type { Events } from "@wailsio/runtime";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore: Unused imports
-import type * as record$0 from "../../../../../smegg.me/smeggtuner/services/record/models.js";
+import type * as record$0 from "../../../../../smegg.me/smeggtuner/backend/services/record/models.js";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore: Unused imports
-import type * as session$0 from "../../../../../smegg.me/smeggtuner/services/session/models.js";
+import type * as session$0 from "../../../../../smegg.me/smeggtuner/backend/services/session/models.js";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore: Unused imports
-import type * as tuner$0 from "../../../../../smegg.me/smeggtuner/services/tuner/models.js";
+import type * as tuner$0 from "../../../../../smegg.me/smeggtuner/backend/services/tuner/models.js";
 
 declare module "@wailsio/runtime" {
     namespace Events {
         interface CustomEvents {
+            "edit:key": string;
             "playback:position": tuner$0.PlaybackDTO;
             "record:state": record$0.StateDTO;
             "record:table": record$0.TableDTO;
