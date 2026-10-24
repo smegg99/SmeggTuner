@@ -18,13 +18,21 @@ const dir = path.dirname(fileURLToPath(import.meta.url))
 export default defineConfig({
   plugins: [vue()],
   resolve: {
+    dedupe: ['vue', 'vuetify'],
     alias: {
       '~': path.resolve(dir, 'app'),
+      '@s99ab': path.resolve(dir, '../../S99AB/web/src'),
       '~~bindings': path.resolve(dir, 'bindings'),
     },
   },
   test: {
+    // Keep native runtime startup timers in the same DOM context through teardown.
+    pool: 'vmForks',
+    // The runtime's bootstrap request at import is asserted, so mocks keep their calls across tests.
+    clearMocks: false,
     environment: 'happy-dom',
+    setupFiles: ['./tests/setup.ts'],
     include: ['tests/**/*.spec.ts'],
+    server: { deps: { inline: ['vuetify', '@material/material-color-utilities'] } },
   },
 })
