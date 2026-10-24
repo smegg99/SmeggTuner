@@ -1,0 +1,15 @@
+tabs.accordion:
+  value: Akordeon
+  description: 'sessionPage: tabs.accordion.'
+tabs.curve:
+  value: Żądane dudnienia
+  description: 'sessionPage: tabs.curve.'
+tabs.recorded:
+  value: Nagrane strojenie
+  description: 'sessionPage: tabs.recorded.'
+mobile.recorded:
+  value: Pomiary
+  description: Compact session readings tab.
+mobile.curve:
+  value: Cele
+  description: Compact target curve tab.

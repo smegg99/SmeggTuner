@@ -1,0 +1,44 @@
+accept:
+  value: Accept
+  description: 'shared controls: accept.'
+back:
+  value: Back
+  description: 'shared controls: back.'
+cancel:
+  value: Cancel
+  description: 'shared controls: cancel.'
+close:
+  value: Close
+  description: 'shared controls: close.'
+color.hue:
+  value: Hue
+  description: 'shared controls: color.hue.'
+color.saturation:
+  value: Saturation
+  description: 'shared controls: color.saturation.'
+color.value:
+  value: Value
+  description: 'shared controls: color.value.'
+delete:
+  value: Delete
+  description: 'shared controls: delete.'
+'no':
+  value: 'No'
+  description: 'shared controls: no.'
+save:
+  value: Save
+  description: 'shared controls: save.'
+website:
+  value: Website
+  description: 'shared controls: website.'
+'yes':
+  value: 'Yes'
+  description: 'shared controls: yes.'
+
+previous:
+  value: Previous
+  description: Navigate between fixed screen pages.
+
+next:
+  value: Next
+  description: Navigate between fixed screen pages.

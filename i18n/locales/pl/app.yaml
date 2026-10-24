@@ -1,0 +1,21 @@
+description:
+  value: Wolna i otwarta aplikacja do strojenia akordeonów.
+  description: 'native application metadata: description.'
+name:
+  value: SmeggTuner
+  description: 'native application metadata: name.'
+startupFailed.title:
+  value: Nie udało się uruchomić SmeggTunera
+  description: 'startup failure window: heading, shown when the app cannot start.'
+startupFailed.config:
+  value: 'Plik ustawień nie pasuje do tej wersji SmeggTunera. Popraw go albo usuń, a potem uruchom SmeggTunera ponownie.'
+  description: 'startup failure window: the settings file failed to load.'
+startupFailed.other:
+  value: 'Usuń przyczynę podaną niżej, a potem uruchom SmeggTunera ponownie.'
+  description: 'startup failure window: a failure other than the settings file (logging, database).'
+startupFailed.file:
+  value: 'Plik ustawień: {path}'
+  description: 'startup failure window: the path of the settings file. Parameters: path, the absolute file path.'
+  placeholders:
+    path:
+      type: string

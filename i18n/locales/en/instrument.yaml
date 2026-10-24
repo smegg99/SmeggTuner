@@ -1,0 +1,152 @@
+a4:
+  value: Reference pitch
+  description: 'accordion editor: a4.'
+a4Hint:
+  value: Reference frequency of A4 in hertz. New sessions for this instrument use this value.
+  description: 'accordion editor: a4Hint.'
+bass.build:
+  value: Feet the next switch sounds
+  description: 'accordion editor: bass.build.'
+bass.fixed:
+  value: 'No bass registers: a fixed machine, every voice always sounds.'
+  description: 'accordion editor: bass.fixed.'
+bass.full:
+  value: A bass machine here carries at most {n} switches
+  description: 'accordion editor: bass.full. Parameters: n.'
+  placeholders:
+    n:
+      type: string
+bass.hint:
+  value: Declare how many voices the bass sounds; most machines have four or five.
+  description: 'accordion editor: bass.hint.'
+bass.none:
+  value: None
+  description: 'accordion editor: bass.none.'
+bass.registerName:
+  value: Switch name
+  description: 'accordion editor: bass.registerName.'
+bass.voices:
+  value: Bass voices
+  description: 'accordion editor: bass.voices.'
+beatTolerance:
+  value: Beat tolerance
+  description: 'accordion editor: beatTolerance.'
+builder.add:
+  value: Add
+  description: 'accordion editor: builder.add.'
+builder.already:
+  value: That switch is already described
+  description: 'accordion editor: builder.already.'
+builder.high:
+  value: 4' piccolo
+  description: 'accordion editor: builder.high.'
+builder.low:
+  value: 16' bass
+  description: 'accordion editor: builder.low.'
+builder.middle:
+  value: 8' reeds
+  description: 'accordion editor: builder.middle.'
+builder.none:
+  value: No switches yet. Pick the ranks each one sounds, below.
+  description: 'accordion editor: builder.none.'
+builder.remove:
+  value: Remove this register
+  description: 'accordion editor: builder.remove.'
+builder.title:
+  value: Add a switch
+  description: 'accordion editor: builder.title.'
+export:
+  value: Export
+  description: 'accordion editor: export.'
+file.exportTitle:
+  value: Export accordion
+  description: 'accordion editor: file.exportTitle.'
+file.filterName:
+  value: smeggtuner accordion
+  description: 'accordion editor: file.filterName.'
+file.imageFilter:
+  value: Images
+  description: 'accordion editor: file.imageFilter.'
+file.imageTitle:
+  value: Select a photograph
+  description: 'accordion editor: file.imageTitle.'
+file.openTitle:
+  value: Select an accordion file
+  description: 'accordion editor: file.openTitle.'
+name:
+  value: Name
+  description: 'accordion editor: name.'
+nameHint:
+  value: Name shown in the instrument library and sessions.
+  description: 'accordion editor: nameHint.'
+namePlaceholder:
+  value: Hohner Morino V N
+  description: 'accordion editor: namePlaceholder.'
+nameRequired:
+  value: Enter an accordion name.
+  description: 'accordion editor: nameRequired.'
+photo:
+  value: Photograph
+  description: 'accordion editor: photo.'
+range.backwards:
+  value: The highest note must not be lower than the lowest note.
+  description: 'accordion editor: range.backwards.'
+range.clear:
+  value: Clear
+  description: 'accordion editor: range.clear.'
+range.down:
+  value: Lower
+  description: 'accordion editor: range.down.'
+range.hint:
+  value: Optional. The lowest and highest key. You can also set it by ear during calibration.
+  description: 'accordion editor: range.hint.'
+range.label:
+  value: Keyboard range
+  description: 'accordion editor: range.label.'
+range.to:
+  value: to
+  description: 'accordion editor: range.to.'
+range.up:
+  value: Higher
+  description: 'accordion editor: range.up.'
+registersHint:
+  value: Click the dots of each switch's symbol - the circle engraved on the accordion - or pick a common one. What
+    it sounds is read straight off the dots.
+  description: 'accordion editor: registersHint.'
+registersSubtitle:
+  value: The treble-side switches, and the ranks each one sounds.
+  description: 'accordion editor: registersSubtitle.'
+says:
+  plural:
+    argument: reeds
+    forms:
+      one: Reed ranks {banks}. The widest switch sounds {reeds} reed.
+      other: Reed ranks {banks}. The widest switch sounds {reeds} reeds.
+  description: 'accordion editor: says. Parameters: banks, reeds.'
+  placeholders:
+    banks:
+      type: string
+    reeds:
+      type: integer
+sections.bass:
+  value: Bass machine
+  description: 'accordion editor: sections.bass.'
+sections.identity:
+  value: Identity
+  description: 'accordion editor: sections.identity.'
+sections.keyboard:
+  value: Keyboard
+  description: 'accordion editor: sections.keyboard.'
+sections.reference:
+  value: Reference & tolerance
+  description: 'accordion editor: sections.reference.'
+sections.voices:
+  value: Registers
+  description: 'accordion editor: sections.voices.'
+tolerance:
+  value: Reed tolerance
+  description: 'accordion editor: tolerance.'
+toleranceHint:
+  value: Allowed reed deviation in units of 0.06% of the note frequency. Readings outside this range are marked
+    out of tune.
+  description: 'accordion editor: toleranceHint.'

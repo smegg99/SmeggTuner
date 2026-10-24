@@ -1,0 +1,108 @@
+aboutTitle:
+  value: About
+  description: 'About dialog: aboutTitle.'
+appName:
+  value: SmeggTuner
+  description: 'About dialog: appName.'
+commit:
+  value: Build
+  description: 'About dialog: commit.'
+donate:
+  value: Support on Ko-fi
+  description: 'About dialog: donate.'
+help.everywhere.arrows:
+  value: 'Step the pinned note (Tune)'
+  description: 'About dialog: help.everywhere.arrows.'
+help.everywhere.hold:
+  value: 'Hold or resume the reading'
+  description: 'About dialog: help.everywhere.hold.'
+help.everywhere.manual:
+  value: 'Auto or pinned note'
+  description: 'About dialog: help.everywhere.manual.'
+help.everywhere.record:
+  value: 'Start or stop recording'
+  description: 'About dialog: help.everywhere.record.'
+help.everywhere.rooms:
+  value: Tune, Workshop, Settings
+  description: 'About dialog: help.everywhere.rooms.'
+help.everywhere.step:
+  value: 'Step the pinned note'
+  description: 'About dialog: help.everywhere.step.'
+help.everywhere.takeNow:
+  value: 'Take the reading now'
+  description: 'About dialog: help.everywhere.takeNow.'
+help.everywhere.title:
+  value: Everywhere
+  description: 'About dialog: help.everywhere.title.'
+help.everywhere.undo:
+  value: 'Undo the last reading'
+  description: 'About dialog: help.everywhere.undo.'
+help.intro:
+  value: 'Measures accordion reeds against a reference pitch. A session keeps one accordion''s readings.'
+  description: 'About dialog: help.intro.'
+help.rooms.settings:
+  value: 'Microphone, readings and appearance.'
+  description: 'About dialog: help.rooms.settings.'
+help.rooms.settingsName:
+  value: Settings
+  description: 'About dialog: help.rooms.settingsName.'
+help.rooms.title:
+  value: Main views
+  description: 'About dialog: help.rooms.title.'
+help.rooms.tune:
+  value: 'Measure reeds and beats from a microphone or a WAV file.'
+  description: 'About dialog: help.rooms.tune.'
+help.rooms.tuneName:
+  value: Tune
+  description: 'About dialog: help.rooms.tuneName.'
+help.rooms.workshop:
+  value: 'Sessions, instruments and reports.'
+  description: 'About dialog: help.rooms.workshop.'
+help.rooms.workshopName:
+  value: Workshop
+  description: 'About dialog: help.rooms.workshopName.'
+help.shortcuts.fit:
+  value: 'Fit the file or the selection'
+  description: 'About dialog: help.shortcuts.fit.'
+help.shortcuts.homeEnd:
+  value: 'Jump to the selection start or end'
+  description: 'About dialog: help.shortcuts.homeEnd.'
+help.shortcuts.loop:
+  value: Loop the selection
+  description: 'About dialog: help.shortcuts.loop.'
+help.shortcuts.mute:
+  value: 'Mute the speakers'
+  description: 'About dialog: help.shortcuts.mute.'
+help.shortcuts.space:
+  value: Play or pause
+  description: 'About dialog: help.shortcuts.space.'
+help.shortcuts.title:
+  value: 'Playback keys (file open)'
+  description: 'About dialog: help.shortcuts.title.'
+help.shortcuts.zoom:
+  value: Zoom in or out
+  description: 'About dialog: help.shortcuts.zoom.'
+helpTitle:
+  value: Help
+  description: 'About dialog: helpTitle.'
+mascot:
+  value: A cat playing the accordion
+  description: 'About dialog: label of the mascot drawing above the name.'
+publisher:
+  value: By Smegg99
+  description: 'About dialog: publisher.'
+tagline:
+  value: Free and open source accordion tuning program.
+  description: 'About dialog: tagline.'
+untagged:
+  value: development build
+  description: 'About dialog: untagged.'
+version:
+  value: Version
+  description: 'About dialog: version.'
+help.introTuner:
+  value: 'Measures accordion reeds against a reference pitch.'
+  description: 'About dialog: help.introTuner.'
+help.everywhere.roomsTuner:
+  value: 'Tune, Settings'
+  description: 'About dialog: help.everywhere.roomsTuner.'

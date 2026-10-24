@@ -1,0 +1,15 @@
+tabs.accordion:
+  value: Accordion
+  description: 'sessionPage: tabs.accordion.'
+tabs.curve:
+  value: Desired beatings
+  description: 'sessionPage: tabs.curve.'
+tabs.recorded:
+  value: Recorded tuning
+  description: 'sessionPage: tabs.recorded.'
+mobile.recorded:
+  value: Readings
+  description: Compact session readings tab.
+mobile.curve:
+  value: Targets
+  description: Compact target curve tab.

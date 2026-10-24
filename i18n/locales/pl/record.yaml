@@ -1,0 +1,140 @@
+arm.hint:
+  value: Zapisuj odczyt przy każdej blokadzie (Enter zapisuje od razu)
+  description: 'recording controls and readings table: arm.hint.'
+arm.needsSession:
+  value: Otwórz sesję, aby nagrywać
+  description: 'recording controls and readings table: arm.needsSession.'
+arm.warmup:
+  value: 'Nagrywanie wyłączone: graj swobodnie, nic nie jest zapisywane. Naciśnij, aby rozpocząć nagrywanie.'
+  description: 'recording controls and readings table: arm.warmup.'
+error.takeNotFound:
+  value: Tego nagrania nie ma już w przebiegu.
+  description: 'recording controls and readings table: error.takeNotFound.'
+error.unexpected:
+  value: Operacja nie powiodła się. Szczegóły znajdziesz w dzienniku.
+  description: 'recording controls and readings table: error.unexpected.'
+report.csv:
+  value: CSV
+  description: 'recording controls and readings table: report.csv.'
+report.date:
+  value: Data
+  description: 'recording controls and readings table: report.date.'
+report.export:
+  value: Eksportuj
+  description: 'recording controls and readings table: report.export.'
+report.format:
+  value: Format
+  description: 'recording controls and readings table: report.format.'
+report.formatHint:
+  value: PDF to karta na jednej stronie A4, złożona tak jak się drukuje. HTML to ten sam arkusz jako strona. CSV
+    to tabela do arkusza kalkulacyjnego.
+  description: 'recording controls and readings table: report.formatHint.'
+report.html:
+  value: HTML
+  description: 'recording controls and readings table: report.html.'
+report.notes:
+  value: Notatka na karcie
+  description: 'recording controls and readings table: report.notes.'
+report.notesHint:
+  value: Drukowana pod tabelą. Co zrobiono albo co jeszcze zostało.
+  description: 'recording controls and readings table: report.notesHint.'
+report.pass:
+  value: 'Przebieg: {label}'
+  description: 'recording controls and readings table: report.pass. Parameters: label.'
+  placeholders:
+    label:
+      type: string
+report.pdf:
+  value: PDF
+  description: 'recording controls and readings table: report.pdf.'
+report.title:
+  value: Karta strojenia
+  description: 'recording controls and readings table: report.title.'
+table.bassTitle:
+  value: Basy
+  description: 'recording controls and readings table: table.bassTitle.'
+table.beat:
+  value: Dudnienie {pair}
+  description: 'recording controls and readings table: table.beat. Parameters: pair.'
+  placeholders:
+    pair:
+      type: string
+table.delete:
+  value: Usuń ten odczyt
+  description: 'recording controls and readings table: table.delete.'
+table.deleteHint:
+  value: Trwale usuń ten odczyt. Zagraj i nagraj nutę ponownie, aby go zastąpić.
+  description: 'recording controls and readings table: table.deleteHint.'
+table.deleteTitle:
+  value: Usunąć ten odczyt?
+  description: 'recording controls and readings table: table.deleteTitle.'
+table.editHint:
+  value: Kliknij lub naciśnij Enter, aby zmienić wartość
+  description: 'recording controls and readings table: table.editHint.'
+table.empty:
+  value: Włącz nagrywanie, a następnie graj dźwięki, aby zapisać odczyty.
+  description: 'recording controls and readings table: table.empty.'
+table.graph:
+  value: Wykres
+  description: 'recording controls and readings table: table.graph.'
+table.graphHint:
+  value: Porównaj każdy stroik z jego celem. Kliknij kolumnę, aby wybrać jej wiersz; kliknij ponownie, aby wybrać
+    następny rejestr.
+  description: 'recording controls and readings table: table.graphHint.'
+table.graphLabel:
+  value: Błędy głosów każdego nagranego dźwięku
+  description: 'recording controls and readings table: table.graphLabel.'
+table.helpTitle:
+  value: O tej tabeli
+  description: 'recording controls and readings table: table.helpTitle.'
+table.label:
+  value: Nagrane strojenie
+  description: 'recording controls and readings table: table.label.'
+table.latest:
+  value: 'Nagrany ostatnio: Backspace go usuwa'
+  description: 'recording controls and readings table: table.latest.'
+table.manual:
+  value: Edytowane
+  description: 'recording controls and readings table: table.manual.'
+table.manualHint:
+  value: Wartość w tym wierszu została wpisana ręcznie, a nie usłyszana.
+  description: 'recording controls and readings table: table.manualHint.'
+table.note:
+  value: Dźwięk
+  description: 'recording controls and readings table: table.note.'
+table.notes:
+  plural:
+    argument: count
+    forms:
+      one: jeden dźwięk
+      few: '{count} dźwięki'
+      many: '{count} dźwięków'
+      other: '{count} dźwięków'
+  description: 'recording controls and readings table: table.notes. Parameters: count.'
+  placeholders:
+    count:
+      type: integer
+table.reed:
+  value: Głos {index}
+  description: 'recording controls and readings table: table.reed. Parameters: index.'
+  placeholders:
+    index:
+      type: string
+table.unitHint:
+  value: Odchyłki stroików są podawane w jednostce wybranej w Ustawieniach. Dudnienia są podawane w hercach lub jednostce odchyłki, zgodnie z wyborem na pasku narzędzi.
+  description: 'recording controls and readings table: table.unitHint.'
+undo.hint:
+  value: Cofnij ostatnie nagranie
+  description: 'recording controls and readings table: undo.hint.'
+
+mobile.current:
+  value: Pomiar
+  description: Single voice reading column on a compact screen.
+
+mobile.goal:
+  value: Cel
+  description: Single voice reading column on a compact screen.
+
+mobile.error:
+  value: Odchyłka
+  description: Single voice reading column on a compact screen.

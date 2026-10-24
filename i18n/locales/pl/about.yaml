@@ -1,0 +1,108 @@
+aboutTitle:
+  value: O programie
+  description: 'About dialog: aboutTitle.'
+appName:
+  value: SmeggTuner
+  description: 'About dialog: appName.'
+commit:
+  value: Kompilacja
+  description: 'About dialog: commit.'
+donate:
+  value: Wesprzyj na Ko-fi
+  description: 'About dialog: donate.'
+help.everywhere.arrows:
+  value: 'Przesuń przypiętą nutę (Strojenie)'
+  description: 'About dialog: help.everywhere.arrows.'
+help.everywhere.hold:
+  value: 'Zatrzymaj lub wznów odczyt'
+  description: 'About dialog: help.everywhere.hold.'
+help.everywhere.manual:
+  value: 'Nuta automatyczna lub przypięta'
+  description: 'About dialog: help.everywhere.manual.'
+help.everywhere.record:
+  value: 'Włącz lub wyłącz nagrywanie'
+  description: 'About dialog: help.everywhere.record.'
+help.everywhere.rooms:
+  value: Strojenie, Warsztat, Ustawienia
+  description: 'About dialog: help.everywhere.rooms.'
+help.everywhere.step:
+  value: 'Przesuń przypiętą nutę'
+  description: 'About dialog: help.everywhere.step.'
+help.everywhere.takeNow:
+  value: 'Zapisz odczyt od razu'
+  description: 'About dialog: help.everywhere.takeNow.'
+help.everywhere.title:
+  value: Wszędzie
+  description: 'About dialog: help.everywhere.title.'
+help.everywhere.undo:
+  value: 'Cofnij ostatni odczyt'
+  description: 'About dialog: help.everywhere.undo.'
+help.intro:
+  value: 'Mierzy stroiki akordeonu względem stroju odniesienia. Sesja przechowuje odczyty jednego akordeonu.'
+  description: 'About dialog: help.intro.'
+help.rooms.settings:
+  value: 'Mikrofon, odczyty i wygląd.'
+  description: 'About dialog: help.rooms.settings.'
+help.rooms.settingsName:
+  value: Ustawienia
+  description: 'About dialog: help.rooms.settingsName.'
+help.rooms.title:
+  value: Główne widoki
+  description: 'About dialog: help.rooms.title.'
+help.rooms.tune:
+  value: 'Mierz stroiki i dudnienia z mikrofonu lub pliku WAV.'
+  description: 'About dialog: help.rooms.tune.'
+help.rooms.tuneName:
+  value: Strojenie
+  description: 'About dialog: help.rooms.tuneName.'
+help.rooms.workshop:
+  value: 'Sesje, instrumenty i raporty.'
+  description: 'About dialog: help.rooms.workshop.'
+help.rooms.workshopName:
+  value: Warsztat
+  description: 'About dialog: help.rooms.workshopName.'
+help.shortcuts.fit:
+  value: 'Dopasuj plik lub zaznaczenie'
+  description: 'About dialog: help.shortcuts.fit.'
+help.shortcuts.homeEnd:
+  value: 'Skok na początek lub koniec zaznaczenia'
+  description: 'About dialog: help.shortcuts.homeEnd.'
+help.shortcuts.loop:
+  value: Zapętl zaznaczenie
+  description: 'About dialog: help.shortcuts.loop.'
+help.shortcuts.mute:
+  value: 'Wycisz głośniki'
+  description: 'About dialog: help.shortcuts.mute.'
+help.shortcuts.space:
+  value: Odtwórz lub wstrzymaj
+  description: 'About dialog: help.shortcuts.space.'
+help.shortcuts.title:
+  value: 'Klawisze odtwarzania (otwarty plik)'
+  description: 'About dialog: help.shortcuts.title.'
+help.shortcuts.zoom:
+  value: Przybliż lub oddal
+  description: 'About dialog: help.shortcuts.zoom.'
+helpTitle:
+  value: Pomoc
+  description: 'About dialog: helpTitle.'
+mascot:
+  value: Kot grający na akordeonie
+  description: 'About dialog: label of the mascot drawing above the name.'
+publisher:
+  value: 'Autor: Smegg99'
+  description: 'About dialog: publisher.'
+tagline:
+  value: Wolny program do strojenia akordeonów o otwartym kodzie.
+  description: 'About dialog: tagline.'
+untagged:
+  value: wersja rozwojowa
+  description: 'About dialog: untagged.'
+version:
+  value: Wersja
+  description: 'About dialog: version.'
+help.introTuner:
+  value: 'Mierzy stroiki akordeonu względem stroju odniesienia.'
+  description: 'About dialog: help.introTuner.'
+help.everywhere.roomsTuner:
+  value: 'Strojenie, Ustawienia'
+  description: 'About dialog: help.everywhere.roomsTuner.'

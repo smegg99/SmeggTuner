@@ -1,0 +1,9 @@
+quit:
+  value: Quit
+  description: 'system tray menu: quit.'
+show:
+  value: Show
+  description: 'system tray menu: show.'
+tooltip:
+  value: SmeggTuner
+  description: 'system tray menu: tooltip.'

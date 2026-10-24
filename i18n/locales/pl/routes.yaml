@@ -1,0 +1,12 @@
+navigation:
+  value: Nawigacja główna
+  description: 'navigation: navigation.'
+settings:
+  value: Ustawienia
+  description: 'navigation: settings.'
+tune:
+  value: Strojenie
+  description: 'navigation: tune.'
+workshop:
+  value: Warsztat
+  description: 'navigation: workshop.'

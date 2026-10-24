@@ -1,0 +1,359 @@
+a4Unit:
+  value: Hz
+  description: 'application settings: a4Unit.'
+accent.auto:
+  value: Pulpit
+  description: 'application settings: accent.auto.'
+accent.custom:
+  value: Własny
+  description: 'application settings: accent.custom.'
+accent.hint:
+  value: 'Akcent pulpitu lub własny kolor'
+  description: 'application settings: accent.hint.'
+accent.label:
+  value: Akcent
+  description: 'application settings: accent.label.'
+accent.pick:
+  value: Wybierz kolor
+  description: 'application settings: accent.pick.'
+accent.pickTitle:
+  value: Kolor akcentu
+  description: 'application settings: accent.pickTitle.'
+audioDeviceHint:
+  value: 'Mikrofon do pomiaru'
+  description: 'application settings: audioDeviceHint.'
+audioDeviceLabel:
+  value: Urządzenie wejściowe
+  description: 'application settings: audioDeviceLabel.'
+audioDeviceRefresh:
+  value: Odśwież listę urządzeń
+  description: 'application settings: audioDeviceRefresh.'
+audioDeviceSystemDefault:
+  value: Domyślne urządzenie systemowe
+  description: 'application settings: audioDeviceSystemDefault.'
+autoVolume.hint:
+  value: 'Ustawia poziom mikrofonu podczas pomiaru'
+  description: 'application settings: autoVolume.hint.'
+autoVolume.label:
+  value: Automatyczna głośność wejścia
+  description: 'application settings: autoVolume.label.'
+autoVolume.unsupported:
+  value: Regulacja poziomu wejścia jest niedostępna dla tego urządzenia.
+  description: 'application settings: autoVolume.unsupported.'
+beatUnitHint:
+  value: 'Herce lub jednostki 0,06 % nuty'
+  description: 'application settings: beatUnitHint.'
+beatUnitLabel:
+  value: Jednostka dudnień
+  description: 'application settings: beatUnitLabel.'
+calibration.askBody:
+  value: 'Nieskalibrowany zegar próbkowania może powodować niewielki stały błąd pomiaru. Kalibracja trwa około minuty i nie wymaga dźwięku.'
+  description: 'application settings: calibration.askBody.'
+calibration.askCalibrate:
+  value: Kalibruj teraz
+  description: 'application settings: calibration.askCalibrate.'
+calibration.askContinue:
+  value: Kontynuuj bez korekcji
+  description: 'application settings: calibration.askContinue.'
+calibration.askTitle:
+  value: Ta karta dźwiękowa nie jest skalibrowana
+  description: 'application settings: calibration.askTitle.'
+calibration.cancel:
+  value: Anuluj
+  description: 'application settings: calibration.cancel.'
+calibration.hint:
+  value: 'Usuwa błąd zegara karty dźwiękowej. Około minuty, bez dźwięku.'
+  description: 'application settings: calibration.hint.'
+calibration.label:
+  value: Kalibracja karty dźwiękowej
+  description: 'application settings: calibration.label.'
+calibration.start:
+  value: Kalibruj
+  description: 'application settings: calibration.start.'
+calibration.startHint:
+  value: Zmierz zegar próbkowania wejścia
+  description: 'application settings: calibration.startHint.'
+calibration.status.calibrated:
+  value: Skalibrowana, {percent} %
+  description: 'application settings: calibration.status.calibrated. Parameters: percent.'
+  placeholders:
+    percent:
+      type: string
+calibration.status.calibrating:
+  value: Kalibracja, {seconds} s ({percent} %), ukończono {progress} %
+  description: 'application settings: calibration.status.calibrating. Parameters: percent, progress, seconds.'
+  placeholders:
+    percent:
+      type: string
+    progress:
+      type: string
+    seconds:
+      type: string
+calibration.status.preparing:
+  value: Przygotowanie
+  description: 'application settings: calibration.status.preparing.'
+calibration.status.uncalibrated:
+  value: Nieskalibrowana
+  description: 'application settings: calibration.status.uncalibrated.'
+calibration.status.unreliable:
+  value: Niepewna, odczyty nie są poprawiane
+  description: 'application settings: calibration.status.unreliable.'
+closeToTray:
+  value: Minimalizuj do zasobnika po zamknięciu okna
+  description: 'application settings: closeToTray.'
+closeToTrayHint:
+  value: 'Zamknięcie okna zostawia aplikację w zasobniku'
+  description: 'application settings: closeToTrayHint.'
+continuousManual:
+  value: Stale aktualizuj przypiętą nutę
+  description: 'application settings: continuousManual.'
+continuousManualHint:
+  value: 'Aktualizuj przypiętą nutę przed blokadą'
+  description: 'application settings: continuousManualHint.'
+detection.balanced:
+  value: Zrównoważone
+  description: 'application settings: detection.balanced.'
+detection.balancedHint:
+  value: 'Zmienia nutę w około pół sekundy'
+  description: 'application settings: detection.balancedHint.'
+detection.fast:
+  value: Szybkie
+  description: 'application settings: detection.fast.'
+detection.fastHint:
+  value: 'Najszybciej zmienia nutę; może zablokować złą'
+  description: 'application settings: detection.fastHint.'
+detection.steady:
+  value: Stabilne
+  description: 'application settings: detection.steady.'
+detection.steadyHint:
+  value: 'Pierwotne zachowanie; wolno zmienia nutę'
+  description: 'application settings: detection.steadyHint.'
+detectionLabel:
+  value: Wykrywanie nut
+  description: 'application settings: detectionLabel.'
+errorReference:
+  value: Punkt odniesienia odchyłki
+  description: 'application settings: errorReference.'
+errorReferenceGoal:
+  value: Cel
+  description: 'application settings: errorReferenceGoal.'
+errorReferenceHint:
+  value: Pokazuj odchyłkę od częstotliwości skali lub od celu strojenia. Po osiągnięciu celu odczyt względem celu
+    wynosi zero.
+  description: 'application settings: errorReferenceHint.'
+errorReferenceScale:
+  value: Skala
+  description: 'application settings: errorReferenceScale.'
+groups.appearance:
+  value: Wygląd
+  description: 'application settings: groups.appearance.'
+groups.report:
+  value: Dane warsztatu
+  description: 'application settings: groups.report.'
+humFilter50:
+  value: 50 Hz
+  description: 'application settings: humFilter50.'
+humFilter60:
+  value: 60 Hz
+  description: 'application settings: humFilter60.'
+humFilterHint:
+  value: 'Usuwa przydźwięk sieci: 50 Hz w Europie, 60 Hz w Ameryce'
+  description: 'application settings: humFilterHint.'
+humFilterLabel:
+  value: Filtr przydźwięku sieciowego
+  description: 'application settings: humFilterLabel.'
+humFilterNone:
+  value: Brak
+  description: 'application settings: humFilterNone.'
+languageHint:
+  value: 'Język interfejsu'
+  description: 'application settings: languageHint.'
+languageLabel:
+  value: Język
+  description: 'application settings: languageLabel.'
+lockA4:
+  value: Zablokuj wysokość dźwięku wzorcowego
+  description: 'application settings: lockA4.'
+lockA4Hint:
+  value: 'Blokuje zmianę A4 w tunerze'
+  description: 'application settings: lockA4Hint.'
+lockedWhileRunning:
+  value: Zatrzymaj tuner, aby zmienić wejście audio.
+  description: 'application settings: lockedWhileRunning.'
+report.address:
+  value: Adres
+  description: 'application settings: report.address.'
+report.name:
+  value: Nazwa warsztatu
+  description: 'application settings: report.name.'
+report.nameHint:
+  value: Widoczna w eksportowanych raportach po włączeniu nagłówka warsztatu.
+  description: 'application settings: report.nameHint.'
+report.website:
+  value: Strona
+  description: 'application settings: report.website.'
+scaleNamingHint:
+  value: 'Jak nazywane są nuty'
+  description: 'application settings: scaleNamingHint.'
+scaleNamingLabel:
+  value: Nazewnictwo dźwięków
+  description: 'application settings: scaleNamingLabel.'
+scaleNamings.cdefgab:
+  value: C D E F G A B (międzynarodowe, krzyżyki jako C#)
+  description: 'application settings: scaleNamings.cdefgab.'
+scaleNamings.cdefgah:
+  value: C D E F G A H (niemieckie, krzyżyki jako C#)
+  description: 'application settings: scaleNamings.cdefgah.'
+scaleNamings.doremi:
+  value: Do Re Mi (solmizacja)
+  description: 'application settings: scaleNamings.doremi.'
+scaleNamings.polish:
+  value: C Cis D Dis E F Fis G Gis A Ais H (polskie)
+  description: 'application settings: scaleNamings.polish.'
+stopAfterLock:
+  value: Zatrzymuj stabilne odczyty
+  description: 'application settings: stopAfterLock.'
+stopAfterLockHint:
+  value: 'Zachowaj zablokowany odczyt po ucichnięciu'
+  description: 'application settings: stopAfterLockHint.'
+themeHint:
+  value: 'Systemowy, jasny lub ciemny'
+  description: 'application settings: themeHint.'
+themeLabel:
+  value: Motyw
+  description: 'application settings: themeLabel.'
+themes.auto:
+  value: Systemowy
+  description: 'application settings: themes.auto.'
+themes.dark:
+  value: Ciemny
+  description: 'application settings: themes.dark.'
+themes.light:
+  value: Jasny
+  description: 'application settings: themes.light.'
+toleranceBeat:
+  value: Dudnienie
+  description: 'application settings: toleranceBeat.'
+toleranceHint:
+  value: 'Jak daleko stroik lub dudnienie może odbiegać, by liczyć się jako czyste'
+  description: 'application settings: toleranceHint.'
+toleranceLabel:
+  value: Tolerancje
+  description: 'application settings: toleranceLabel.'
+toleranceReed:
+  value: Głos
+  description: 'application settings: toleranceReed.'
+toleranceUnit:
+  value: j
+  description: 'application settings: toleranceUnit.'
+unitHint:
+  value: 'Centy lub jednostki 0,06 % nuty'
+  description: 'application settings: unitHint.'
+unitLabel:
+  value: Jednostka odchyłki
+  description: 'application settings: unitLabel.'
+calibration.saveFailed:
+  value: Nie udało się zapisać kalibracji. Tuner używa wcześniej zapisanego stanu.
+  description: Configuration persistence failure.
+autoVolume.saveFailed:
+  value: Nie udało się zapisać ustawienia głośności wejściowej.
+  description: Configuration persistence failure.
+
+calibration.screen.title:
+  value: 'Kalibracja karty dźwiękowej'
+  description: 'application settings: calibration.screen.title.'
+calibration.screen.steps.prepare:
+  value: 'Rozgrzewka'
+  description: 'application settings: calibration.screen.steps.prepare.'
+calibration.screen.steps.measure:
+  value: 'Pomiar'
+  description: 'application settings: calibration.screen.steps.measure.'
+calibration.screen.steps.done:
+  value: 'Gotowe'
+  description: 'application settings: calibration.screen.steps.done.'
+calibration.screen.lead:
+  value: 'Jeszcze nie skalibrowano'
+  description: 'application settings: calibration.screen.lead.'
+calibration.screen.how:
+  value: 'Odczyty mogą mieć mały stały błąd. Dźwięk niepotrzebny, około minuty.'
+  description: 'application settings: calibration.screen.how.'
+calibration.screen.preparing:
+  value: 'Rozgrzewanie wejścia'
+  description: 'application settings: calibration.screen.preparing.'
+calibration.screen.calibrating:
+  value: 'Pomiar zegara karty dźwiękowej'
+  description: 'application settings: calibration.screen.calibrating.'
+calibration.screen.calibrated:
+  value: 'Skalibrowano. Odczyty są korygowane o {percent} %.'
+  description: 'application settings: calibration.screen.calibrated. Parameters: percent.'
+  placeholders:
+    percent:
+      type: string
+calibration.screen.unreliable:
+  value: 'Zegar się nie ustabilizował'
+  description: 'application settings: calibration.screen.unreliable.'
+calibration.screen.retry:
+  value: 'Odczyty są bez korekty. Zamknij inne programy audio i spróbuj ponownie.'
+  description: 'calibration screen: the line under an unreliable outcome, what to do next.'
+calibration.screen.again:
+  value: 'Kalibruj ponownie'
+  description: 'application settings: calibration.screen.again.'
+calibration.screen.phase.preparing:
+  value: 'Wejście się stabilizuje, zanim zostanie zmierzony jego zegar.'
+  description: 'application settings: calibration.screen.phase.preparing.'
+calibration.screen.phase.settling:
+  value: 'Czekanie, aż odczyt zegara przestanie się zmieniać.'
+  description: 'application settings: calibration.screen.phase.settling.'
+calibration.screen.phase.confirming:
+  value: 'Odczyt jest stały. Sprawdzanie, czy taki pozostanie przez 20 s.'
+  description: 'application settings: calibration.screen.phase.confirming.'
+calibration.screen.bar.settling:
+  value: 'Stabilizacja'
+  description: 'application settings: calibration.screen.bar.settling.'
+calibration.screen.bar.confirming:
+  value: 'Potwierdzenie'
+  description: 'application settings: calibration.screen.bar.confirming.'
+calibration.screen.stat.offset:
+  value: 'Odchyłka zegara'
+  description: 'application settings: calibration.screen.stat.offset.'
+calibration.screen.stat.steadiness:
+  value: 'Stabilność'
+  description: 'application settings: calibration.screen.stat.steadiness.'
+calibration.screen.stat.rate:
+  value: 'Próbkowanie'
+  description: 'application settings: calibration.screen.stat.rate.'
+calibration.screen.stat.elapsed:
+  value: 'Czas'
+  description: 'application settings: calibration.screen.stat.elapsed.'
+calibration.screen.stat.dropouts:
+  value: 'Utracone bloki'
+  description: 'application settings: calibration.screen.stat.dropouts.'
+calibration.screen.traceEmpty:
+  value: 'Tu pojawi się przesunięcie zegara w trakcie pomiaru.'
+  description: 'calibration screen: shown in the clock offset plot before a run has measured anything.'
+calibration.screen.steadiness:
+  value: '{ppm} ppm, cel {target} ppm'
+  description: 'application settings: calibration.screen.steadiness. Parameters: ppm, target.'
+  placeholders:
+    ppm:
+      type: string
+    target:
+      type: string
+calibration.screen.pitch:
+  value: 'To {pitch} przy każdej nucie.'
+  description: 'application settings: calibration.screen.pitch. Parameters: pitch.'
+  placeholders:
+    pitch:
+      type: string
+calibration.screen.return:
+  value: 'Wróć'
+  description: 'application settings: calibration.screen.return.'
+groups.microphone:
+  value: 'Mikrofon'
+  description: 'application settings: groups.microphone.'
+groups.detection:
+  value: 'Wykrywanie'
+  description: 'application settings: group for how a note is found.'
+groups.readings:
+  value: 'Odczyty'
+  description: 'application settings: group for how a reading is shown.'

@@ -1,0 +1,12 @@
+navigation:
+  value: Main navigation
+  description: 'navigation: navigation.'
+settings:
+  value: Settings
+  description: 'navigation: settings.'
+tune:
+  value: Tune
+  description: 'navigation: tune.'
+workshop:
+  value: Workshop
+  description: 'navigation: workshop.'

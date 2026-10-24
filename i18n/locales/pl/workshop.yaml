@@ -1,0 +1,12 @@
+exit:
+  value: Wyjdź z sesji
+  description: 'workshop: exit.'
+import:
+  value: Importuj
+  description: 'workshop: import.'
+open:
+  value: Otwórz
+  description: 'workshop: open.'
+print:
+  value: Drukuj kartę
+  description: 'workshop: print.'

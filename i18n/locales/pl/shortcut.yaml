@@ -1,0 +1,9 @@
+key.minus:
+  value: '-'
+  description: 'Key cap: the minus key, zoom out on a recording'
+key.plus:
+  value: +
+  description: 'Key cap: the plus key, zoom in on a recording'
+or:
+  value: lub
+  description: 'Help dialog: the word between two keys that do the same, as in H or Space'

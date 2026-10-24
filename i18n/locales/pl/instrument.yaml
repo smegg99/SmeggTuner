@@ -1,0 +1,154 @@
+a4:
+  value: Wysokość odniesienia
+  description: 'accordion editor: a4.'
+a4Hint:
+  value: Częstotliwość wzorcowa A4 w hercach. Nowe sesje tego instrumentu używają tej wartości.
+  description: 'accordion editor: a4Hint.'
+bass.build:
+  value: Stopy, którymi gra następny rejestr
+  description: 'accordion editor: bass.build.'
+bass.fixed:
+  value: 'Bez rejestrów basowych: maszyna na sztywno, wszystkie głosy grają zawsze.'
+  description: 'accordion editor: bass.fixed.'
+bass.full:
+  value: Basy mieszczą tu najwyżej {n} rejestrów
+  description: 'accordion editor: bass.full. Parameters: n.'
+  placeholders:
+    n:
+      type: string
+bass.hint:
+  value: Podaj, iloma głosami grają basy; najczęściej cztery albo pięć.
+  description: 'accordion editor: bass.hint.'
+bass.none:
+  value: Brak
+  description: 'accordion editor: bass.none.'
+bass.registerName:
+  value: Nazwa przełącznika
+  description: 'accordion editor: bass.registerName.'
+bass.voices:
+  value: Głosy basowe
+  description: 'accordion editor: bass.voices.'
+beatTolerance:
+  value: Tolerancja dudnienia
+  description: 'accordion editor: beatTolerance.'
+builder.add:
+  value: Dodaj
+  description: 'accordion editor: builder.add.'
+builder.already:
+  value: Ten rejestr jest już opisany
+  description: 'accordion editor: builder.already.'
+builder.high:
+  value: 4 stopy (pikolo)
+  description: 'accordion editor: builder.high.'
+builder.low:
+  value: 16 stóp (bas)
+  description: 'accordion editor: builder.low.'
+builder.middle:
+  value: 8 stóp (głosy)
+  description: 'accordion editor: builder.middle.'
+builder.none:
+  value: Brak rejestrów. Wybierz poniżej chóry, którymi gra każdy z nich.
+  description: 'accordion editor: builder.none.'
+builder.remove:
+  value: Usuń ten rejestr
+  description: 'accordion editor: builder.remove.'
+builder.title:
+  value: Dodaj rejestr
+  description: 'accordion editor: builder.title.'
+export:
+  value: Eksportuj
+  description: 'accordion editor: export.'
+file.exportTitle:
+  value: Eksportuj akordeon
+  description: 'accordion editor: file.exportTitle.'
+file.filterName:
+  value: akordeon smeggtuner
+  description: 'accordion editor: file.filterName.'
+file.imageFilter:
+  value: Obrazy
+  description: 'accordion editor: file.imageFilter.'
+file.imageTitle:
+  value: Wybierz zdjęcie
+  description: 'accordion editor: file.imageTitle.'
+file.openTitle:
+  value: Wybierz plik akordeonu
+  description: 'accordion editor: file.openTitle.'
+name:
+  value: Nazwa
+  description: 'accordion editor: name.'
+nameHint:
+  value: Nazwa wyświetlana w bibliotece instrumentów i sesjach.
+  description: 'accordion editor: nameHint.'
+namePlaceholder:
+  value: Hohner Morino V N
+  description: 'accordion editor: namePlaceholder.'
+nameRequired:
+  value: Wpisz nazwę akordeonu.
+  description: 'accordion editor: nameRequired.'
+photo:
+  value: Zdjęcie
+  description: 'accordion editor: photo.'
+range.backwards:
+  value: Najwyższy dźwięk nie może być niższy od najniższego.
+  description: 'accordion editor: range.backwards.'
+range.clear:
+  value: Wyczyść
+  description: 'accordion editor: range.clear.'
+range.down:
+  value: Niżej
+  description: 'accordion editor: range.down.'
+range.hint:
+  value: Opcjonalne. Najniższy i najwyższy klawisz. Możesz też ustawić go słuchowo podczas kalibracji.
+  description: 'accordion editor: range.hint.'
+range.label:
+  value: Zakres klawiatury
+  description: 'accordion editor: range.label.'
+range.to:
+  value: do
+  description: 'accordion editor: range.to.'
+range.up:
+  value: Wyżej
+  description: 'accordion editor: range.up.'
+registersHint:
+  value: Klikaj kropki symbolu każdego rejestru - kółka wygrawerowanego na akordeonie - albo wybierz typowy. To,
+    co gra, odczytuje się prosto z kropek.
+  description: 'accordion editor: registersHint.'
+registersSubtitle:
+  value: Przełączniki strony dyskantowej i chóry, którymi grają.
+  description: 'accordion editor: registersSubtitle.'
+says:
+  plural:
+    argument: reeds
+    forms:
+      one: Chóry głosowe {banks}. Najszerszy rejestr uruchamia {reeds} głos.
+      few: Chóry głosowe {banks}. Najszerszy rejestr uruchamia {reeds} głosy.
+      many: Chóry głosowe {banks}. Najszerszy rejestr uruchamia {reeds} głosów.
+      other: Chóry głosowe {banks}. Najszerszy rejestr uruchamia {reeds} głosów.
+  description: 'accordion editor: says. Parameters: banks, reeds.'
+  placeholders:
+    banks:
+      type: string
+    reeds:
+      type: integer
+sections.bass:
+  value: Basy
+  description: 'accordion editor: sections.bass.'
+sections.identity:
+  value: Oznaczenie
+  description: 'accordion editor: sections.identity.'
+sections.keyboard:
+  value: Klawiatura
+  description: 'accordion editor: sections.keyboard.'
+sections.reference:
+  value: Odniesienie i tolerancja
+  description: 'accordion editor: sections.reference.'
+sections.voices:
+  value: Rejestry
+  description: 'accordion editor: sections.voices.'
+tolerance:
+  value: Tolerancja głosu
+  description: 'accordion editor: tolerance.'
+toleranceHint:
+  value: Dopuszczalna odchyłka stroika w jednostkach równych 0,06% częstotliwości nuty. Odczyty poza tym zakresem
+    są oznaczane jako rozstrojone.
+  description: 'accordion editor: toleranceHint.'

@@ -1,0 +1,252 @@
+appStarting:
+  value: Starting smeggtuner
+  description: 'Native diagnostic event: starting smeggtuner.'
+cleaningUp:
+  value: Cleaning up
+  description: 'Native diagnostic event: cleaning up.'
+loadingConfig:
+  value: Loading configuration
+  description: 'Native diagnostic event: loading configuration.'
+configLoaded:
+  value: Configuration loaded
+  description: 'Native diagnostic event: configuration loaded.'
+configLoadFailed:
+  value: Failed to load configuration
+  description: 'Native diagnostic event: failed to load configuration.'
+reinitLogger:
+  value: Reconfiguring logger from configuration
+  description: 'Native diagnostic event: reconfiguring logger from configuration.'
+loggerInitFailed:
+  value: Failed to configure logger
+  description: 'Native diagnostic event: failed to configure logger.'
+datastoreReady:
+  value: Datastore ready
+  description: 'Native diagnostic event: datastore ready.'
+datastoreInitFailed:
+  value: Failed to initialize datastore
+  description: 'Native diagnostic event: failed to initialize datastore.'
+configSaveFailed:
+  value: Failed to save configuration
+  description: 'Native diagnostic event: failed to save configuration.'
+audioDevicesListed:
+  value: Capture devices enumerated
+  description: 'Native diagnostic event: capture devices enumerated.'
+audioDeviceEnumFailed:
+  value: Failed to enumerate capture devices
+  description: 'Native diagnostic event: failed to enumerate capture devices.'
+audioNoDevices:
+  value: No capture devices available
+  description: 'Native diagnostic event: no capture devices available.'
+audioDeviceGone:
+  value: Selected capture device is no longer present
+  description: 'Native diagnostic event: selected capture device is no longer present.'
+audioSourceSelected:
+  value: Input source selected
+  description: 'Native diagnostic event: input source selected.'
+audioFileUnreadable:
+  value: Recording could not be opened
+  description: 'Native diagnostic event: recording could not be opened.'
+audioSpeakerUnavailable:
+  value: No output device, file playback will be silent
+  description: 'Native diagnostic event: no output device, file playback will be silent.'
+audioDialogUnavailable:
+  value: File dialog requested without a running application
+  description: 'Native diagnostic event: file dialog requested without a running application.'
+audioDialogFailed:
+  value: File dialog failed
+  description: 'Native diagnostic event: file dialog failed.'
+tunerStarted:
+  value: Measurement engine started
+  description: 'Native diagnostic event: measurement engine started.'
+tunerStopped:
+  value: Measurement engine stopped
+  description: 'Native diagnostic event: measurement engine stopped.'
+tunerStartFailed:
+  value: Failed to build the input source
+  description: 'Native diagnostic event: failed to build the input source.'
+tunerRunFailed:
+  value: Measurement engine stopped with an error
+  description: 'Native diagnostic event: measurement engine stopped with an error.'
+tunerEventsDropped:
+  value: Measurement events dropped, the frontend is behind
+  description: 'Native diagnostic event: measurement events dropped, the frontend is behind.'
+tunerSettingRejected:
+  value: Rejected an out-of-range setting
+  description: 'Native diagnostic event: rejected an out-of-range setting.'
+tunerTonePlaying:
+  value: Playing reference tone
+  description: 'Native diagnostic event: playing reference tone.'
+tunerTonePlayFailed:
+  value: Reference tone playback failed
+  description: 'Native diagnostic event: reference tone playback failed.'
+sessionCreated:
+  value: Session created
+  description: 'Native diagnostic event: session created.'
+sessionOpened:
+  value: Session opened
+  description: 'Native diagnostic event: session opened.'
+sessionClosed:
+  value: Session closed
+  description: 'Native diagnostic event: session closed.'
+sessionDeleted:
+  value: Session deleted
+  description: 'Native diagnostic event: session deleted.'
+sessionSaveFailed:
+  value: Failed to save the session
+  description: 'Native diagnostic event: failed to save the session.'
+sessionLoadFailed:
+  value: Failed to load the session
+  description: 'Native diagnostic event: failed to load the session.'
+sessionRejected:
+  value: Rejected an invalid session change
+  description: 'Native diagnostic event: rejected an invalid session change.'
+sessionReedsClamped:
+  value: Instrument sounds more reeds than the engine resolves, clamping the engine
+  description: 'Native diagnostic event: instrument sounds more reeds than the engine resolves, clamping the engine.'
+sessionCurveFitted:
+  value: Goal curve fitted from a pass
+  description: 'Native diagnostic event: goal curve fitted from a pass.'
+sessionCurveImported:
+  value: Goal curve imported
+  description: 'Native diagnostic event: goal curve imported.'
+sessionCurveDropped:
+  value: Goal curve dropped
+  description: 'Native diagnostic event: goal curve dropped.'
+recordTake:
+  value: Take recorded
+  description: 'Native diagnostic event: take recorded.'
+recordUndone:
+  value: Last take undone
+  description: 'Native diagnostic event: last take undone.'
+recordCleared:
+  value: Pass cleared
+  description: 'Native diagnostic event: pass cleared.'
+recordEdited:
+  value: Take edited by hand
+  description: 'Native diagnostic event: take edited by hand.'
+recordRejected:
+  value: Rejected a record request
+  description: 'Native diagnostic event: rejected a record request.'
+reportWritten:
+  value: Tuning report written
+  description: 'Native diagnostic event: tuning report written.'
+reportOpened:
+  value: Tuning report handed to the browser
+  description: 'Native diagnostic event: tuning report handed to the browser.'
+reportFailed:
+  value: Failed to write the tuning report
+  description: 'Native diagnostic event: failed to write the tuning report.'
+reportOpenFailed:
+  value: Failed to open the tuning report
+  description: 'Native diagnostic event: failed to open the tuning report.'
+reportRejected:
+  value: Rejected a report request
+  description: 'Native diagnostic event: rejected a report request.'
+secondInstance:
+  value: Second instance launched, focusing existing window
+  description: 'Native diagnostic event: second instance launched, focusing existing window.'
+trayIconFailed:
+  value: Failed to load tray icon
+  description: 'Native diagnostic event: failed to load tray icon.'
+windowStateLoadFailed:
+  value: Failed to load window state
+  description: 'Native diagnostic event: failed to load window state.'
+windowStateSaveFailed:
+  value: Failed to save window state
+  description: 'Native diagnostic event: failed to save window state.'
+runFailed:
+  value: Application run failed
+  description: 'Native diagnostic event: application run failed.'
+frontendError:
+  value: Unexpected application error
+  description: Unhandled frontend failure forwarded to the native logger.
+frontendRejection:
+  value: Application operation failed
+  description: Unhandled frontend failure forwarded to the native logger.
+micBlocksDropped:
+  value: Mic consumer stalled, dropping blocks
+  description: 'Audio diagnostic: mic consumer stalled, dropping blocks.'
+micDeviceLost:
+  value: Capture device stopped unexpectedly
+  description: 'Audio diagnostic: capture device stopped unexpectedly.'
+deviceStoreFailed:
+  value: Failed to store a capture device's settings
+  description: 'Audio diagnostic: failed to store a capture device''s settings.'
+calibrationStarted:
+  value: Sound card calibration started
+  description: 'Audio diagnostic: sound card calibration started.'
+calibrationFinished:
+  value: Sound card calibration finished
+  description: 'Audio diagnostic: sound card calibration finished.'
+calibrationAbandoned:
+  value: Sound card calibration abandoned
+  description: 'Audio diagnostic: sound card calibration abandoned.'
+calibrationNoDevice:
+  value: Sound card calibration could not open the device
+  description: 'Audio diagnostic: sound card calibration could not open the device.'
+volumeUnavailable:
+  value: Automatic volume cannot reach the device's input level
+  description: 'Audio diagnostic: automatic volume cannot reach the device''s input level.'
+volumeStepFailed:
+  value: Automatic volume could not set the input level
+  description: 'Audio diagnostic: automatic volume could not set the input level.'
+volumeRestore:
+  value: Automatic volume could not restore the input level
+  description: 'Audio diagnostic: automatic volume could not restore the input level.'
+frontendConfigSaveFailed:
+  value: Could not save configuration
+  description: 'Frontend diagnostic: Could not save configuration.'
+frontendConfigLoaded:
+  value: Configuration loaded
+  description: 'Frontend diagnostic: Configuration loaded.'
+frontendConfigLoadFailed:
+  value: Could not load configuration
+  description: 'Frontend diagnostic: Could not load configuration.'
+frontendTunerStateFailed:
+  value: Could not read tuner state
+  description: 'Frontend diagnostic: Could not read tuner state.'
+frontendTunerStartFailed:
+  value: Could not start the tuner
+  description: 'Frontend diagnostic: Could not start the tuner.'
+frontendTunerStopFailed:
+  value: Could not stop the tuner
+  description: 'Frontend diagnostic: Could not stop the tuner.'
+frontendTunerTonePlayFailed:
+  value: Could not play the reference tone
+  description: 'Frontend diagnostic: Could not play the reference tone.'
+frontendTunerToneStopFailed:
+  value: Could not stop the reference tone
+  description: 'Frontend diagnostic: Could not stop the reference tone.'
+frontendAudioCorrectionFailed:
+  value: Could not read sound card correction
+  description: 'Frontend diagnostic: Could not read sound card correction.'
+frontendAudioStateFailed:
+  value: Could not read audio device state
+  description: 'Frontend diagnostic: Could not read audio device state.'
+frontendAudioCalibrationFailed:
+  value: Could not start calibration
+  description: 'Frontend diagnostic: Could not start calibration.'
+frontendAudioCalibrationCancelFailed:
+  value: Could not cancel calibration
+  description: 'Frontend diagnostic: Could not cancel calibration.'
+frontendAudioVolumeFailed:
+  value: Could not change automatic volume control
+  description: 'Frontend diagnostic: Could not change automatic volume control.'
+frontendAudioListFailed:
+  value: Could not list audio devices
+  description: 'Frontend diagnostic: Could not list audio devices.'
+frontendAudioSelectFailed:
+  value: Could not select audio source
+  description: 'Frontend diagnostic: Could not select audio source.'
+frontendAudioDialogFailed:
+  value: Could not open the file dialog
+  description: 'Frontend diagnostic: Could not open the file dialog.'
+frontendCurveViewFailed:
+  value: Could not read curve view settings
+  description: 'Frontend diagnostic: Could not read curve view settings.'
+frontendSettingFailed:
+  value: Could not change tuner setting
+  description: Tuner setting command failed; setting identifier remains a structured log field.
+frontendResizeNotice:
+  value: 'Layout change deferred to the next frame (browser ResizeObserver notice)'
+  description: A benign browser notice kept out of the error log; logged once at debug level.

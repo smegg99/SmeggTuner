@@ -1,0 +1,12 @@
+exit:
+  value: Exit session
+  description: 'workshop: exit.'
+import:
+  value: Import
+  description: 'workshop: import.'
+open:
+  value: Open
+  description: 'workshop: open.'
+print:
+  value: Print card
+  description: 'workshop: print.'

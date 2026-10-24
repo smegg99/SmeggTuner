@@ -1,0 +1,75 @@
+experimental:
+  value: 'Experimental'
+  description: 'web edition: the label marking the browser version as experimental.'
+loadFailed:
+  value: 'The engine could not start in this browser.'
+  description: 'web edition: the engine failed to load.'
+mic.denied:
+  value: 'Microphone access was refused. Allow it in the browser settings and start the tuner again.'
+  description: 'web edition: microphone permission refused.'
+mic.none:
+  value: 'No microphone was found.'
+  description: 'web edition: no capture device.'
+mic.unsupported:
+  value: 'This browser cannot record audio.'
+  description: 'web edition: no getUserMedia.'
+mic.failed:
+  value: 'The microphone could not be opened.'
+  description: 'web edition: any other microphone failure.'
+mic.default:
+  value: 'Default microphone'
+  description: 'web edition: the device list entry that follows the system default.'
+notice.title:
+  value: 'Experimental web version'
+  description: 'web edition: first-open notice title.'
+notice.processing:
+  value: 'Your browser may apply echo cancellation, noise suppression, automatic gain or resampling to the microphone. Any of them can change the readings.'
+  description: 'web edition: first-open notice, audio processing.'
+notice.background:
+  value: 'A tab in the background may pause the audio.'
+  description: 'web edition: first-open notice, background tabs.'
+notice.native:
+  value: 'The installed app is the accurate one.'
+  description: 'web edition: first-open notice, pointing at the native app.'
+notice.ok:
+  value: 'Understood'
+  description: 'web edition: closes the first-open notice.'
+processingOn:
+  value: 'The browser kept these on: {list}. Readings may be off.'
+  description: 'web edition: shown next to the readings when processing could not be turned off. Parameters: list.'
+  placeholders:
+    list:
+      type: string
+processing.echoCancellation:
+  value: 'echo cancellation'
+  description: 'web edition: one browser audio processing stage.'
+processing.noiseSuppression:
+  value: 'noise suppression'
+  description: 'web edition: one browser audio processing stage.'
+processing.autoGainControl:
+  value: 'automatic gain'
+  description: 'web edition: one browser audio processing stage.'
+slow:
+  value: 'This device cannot keep up with the engine. Late audio is skipped so the readings stay current.'
+  description: 'web edition: the speed warning.'
+downloads.title:
+  value: 'Get the app'
+  description: 'web edition: the downloads panel title and button.'
+diagnostics.title:
+  value: 'Diagnostics'
+  description: 'web edition: settings section title.'
+diagnostics.copy:
+  value: 'Copy diagnostics'
+  description: 'web edition: copies the diagnostics as text.'
+diagnostics.copied:
+  value: 'Copied'
+  description: 'web edition: confirms the copy.'
+diagnostics.empty:
+  value: 'Start the tuner to see the microphone details.'
+  description: 'web edition: diagnostics before the microphone is open.'
+accent.default:
+  value: 'Default'
+  description: 'web edition: the accent option that uses the app colour (no system accent in a browser).'
+accent.hint:
+  value: 'The app''s own colour or yours'
+  description: 'web edition: hint under the accent setting.'

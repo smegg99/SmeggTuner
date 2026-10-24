@@ -1,0 +1,107 @@
+leave:
+  value: Wyjdź z kalibracji
+  description: 'calibration workflow: leave.'
+needsSession:
+  value: Otwórz sesję, aby skalibrować jej instrument.
+  description: 'calibration workflow: needsSession.'
+range.again:
+  value: Od nowa
+  description: 'calibration workflow: range.again.'
+range.backwards:
+  value: Najwyższy dźwięk nie może być niższy od najniższego. Zmierz zakres ponownie.
+  description: 'calibration workflow: range.backwards.'
+range.capture:
+  value: Zapisz
+  description: 'calibration workflow: range.capture.'
+range.highest:
+  value: Najwyższy
+  description: 'calibration workflow: range.highest.'
+range.lowest:
+  value: Najniższy
+  description: 'calibration workflow: range.lowest.'
+range.next:
+  value: Przejdź do kalibracji stroików
+  description: 'calibration workflow: range.next.'
+range.playHigh:
+  value: Teraz zagraj najwyższy klawisz.
+  description: 'calibration workflow: range.playHigh.'
+range.playLow:
+  value: Zagraj najniższy klawisz.
+  description: 'calibration workflow: range.playLow.'
+range.step:
+  value: Klawiatura
+  description: 'calibration workflow: range.step.'
+start:
+  value: Kalibruj
+  description: 'calibration workflow: start.'
+status.captured:
+  value: Zapisano
+  description: 'calibration workflow: status.captured.'
+status.holding:
+  value: Utrzymuj dźwięk
+  description: 'calibration workflow: status.holding.'
+status.listening:
+  value: Nasłuchiwanie
+  description: 'calibration workflow: status.listening.'
+status.loud:
+  value: Za głośno
+  description: 'calibration workflow: status.loud.'
+status.play:
+  value: Zagraj dźwięk
+  description: 'calibration workflow: status.play.'
+sweep.again:
+  value: Kalibruj ponownie
+  description: 'calibration workflow: sweep.again.'
+sweep.bassAll:
+  value: Basy - cała maszyna
+  description: 'calibration workflow: sweep.bassAll.'
+sweep.done:
+  plural:
+    argument: n
+    forms:
+      one: Zeskanowano. {n} odczyt na karcie.
+      few: Zeskanowano. {n} odczyty na karcie.
+      many: Zeskanowano. {n} odczytów na karcie.
+      other: Zeskanowano. {n} odczytów na karcie.
+  description: 'calibration workflow: sweep.done. Parameters: n.'
+  placeholders:
+    n:
+      type: integer
+sweep.noRegisters:
+  value: Ten akordeon nie ma opisanych rejestrów. Skan i tak działa; odczyty trafiają do numerowanych kolumn.
+  description: 'calibration workflow: sweep.noRegisters.'
+sweep.pickRegister:
+  value: Który rejestr kalibrujesz?
+  description: 'calibration workflow: sweep.pickRegister.'
+sweep.progress:
+  value: '{done} z {total}'
+  description: 'calibration workflow: sweep.progress. Parameters: done, total.'
+  placeholders:
+    done:
+      type: string
+    total:
+      type: string
+sweep.redoRange:
+  value: Popraw klawiaturę
+  description: 'calibration workflow: sweep.redoRange.'
+sweep.review:
+  value: Zobacz kartę
+  description: 'calibration workflow: sweep.review.'
+sweep.skip:
+  value: Pomiń
+  description: 'calibration workflow: sweep.skip.'
+sweep.soloTeaches:
+  value: Skan rejestru z jednym głosem uczy też aplikację brzmienia tego głosu.
+  description: 'calibration workflow: sweep.soloTeaches.'
+sweep.startPlain:
+  value: Zacznij skan
+  description: 'calibration workflow: sweep.startPlain.'
+sweep.step:
+  value: Głosy
+  description: 'calibration workflow: sweep.step.'
+sweep.stop:
+  value: Zatrzymaj
+  description: 'calibration workflow: sweep.stop.'
+title:
+  value: Kalibracja
+  description: 'calibration workflow: title.'

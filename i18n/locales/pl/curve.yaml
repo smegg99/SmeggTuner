@@ -1,0 +1,132 @@
+clearAll:
+  value: Wyczyść krzywą
+  description: 'target curve editor: clearAll.'
+clearAllConfirm:
+  value: Wszystkie punkty zostaną usunięte. Cel wróci do wysokości skali dla każdego dźwięku, a tuner stanie się
+    zwykłym wskaźnikiem.
+  description: 'target curve editor: clearAllConfirm.'
+clearAllHint:
+  value: Usuń wszystkie punkty i zostaw cel na wysokości skali.
+  description: 'target curve editor: clearAllHint.'
+clearAllTitle:
+  value: Wyczyścić całą krzywą?
+  description: 'target curve editor: clearAllTitle.'
+entryUnit:
+  value: Jednostka wpisu
+  description: 'target curve editor: entryUnit.'
+help.hz:
+  value: Hz wpisuje cel w hercach, liczony przy A4 = 440 Hz jak w liście dudnień oryginału, więc nie zmienia się
+    z A4 sesji. Nagrane kładzie odczyty tej sesji na listę, a Lista może dopasować do nich punkty albo skopiować
+    listę z innej sesji.
+  description: 'target curve editor: help.hz.'
+help.hzTitle:
+  value: Hz i odczyty
+  description: 'target curve editor: help.hzTitle.'
+help.interp:
+  value: Przy włączonej Interpolacji dźwięki między punktami idą po linii; wyłączona - każdy punkt obowiązuje aż
+    do następnego. Bez punktów celem jest wszędzie wysokość skali.
+  description: 'target curve editor: help.interp.'
+help.interpTitle:
+  value: Między punktami
+  description: 'target curve editor: help.interpTitle.'
+help.lead:
+  value: 'Cel, do którego stroisz: jak daleko każdy głos ma leżeć od swojej wysokości skali, dźwięk po dźwięku.
+    Nagrany głos jest oceniany względem tego celu, a nie względem czystego środka.'
+  description: 'target curve editor: help.lead.'
+help.set:
+  value: Wybierz dźwięk i wartość i naciśnij Ustaw, albo przeciągnij punkt na wykresie w górę lub w dół. Każdy chór
+    to osobna linia, a edytowany jest wyróżniony.
+  description: 'target curve editor: help.set.'
+help.setTitle:
+  value: Ustawianie punktu
+  description: 'target curve editor: help.setTitle.'
+helpTitle:
+  value: Żądane dudnienia
+  description: 'target curve editor: helpTitle.'
+interpolate:
+  value: Interpoluj
+  description: 'target curve editor: interpolate.'
+interpolateHint:
+  value: Prowadź linię między punktami. Wyłączone - każdy punkt obowiązuje aż do następnego.
+  description: 'target curve editor: interpolateHint.'
+menu.ends:
+  value: Poza punktami
+  description: 'target curve editor: menu.ends.'
+menu.extendHigh:
+  value: Przedłuż powyżej najwyższego
+  description: 'target curve editor: menu.extendHigh.'
+menu.extendLow:
+  value: Przedłuż poniżej najniższego
+  description: 'target curve editor: menu.extendLow.'
+menu.fit:
+  value: Dopasuj do odczytów tej sesji
+  description: 'target curve editor: menu.fit.'
+menu.fitBody:
+  plural:
+    argument: n
+    forms:
+      one: Punkty zostaną zastąpione krzywą dopasowaną do jednego odczytu.
+      few: Punkty zostaną zastąpione krzywą dopasowaną do {n} odczytów.
+      many: Punkty zostaną zastąpione krzywą dopasowaną do {n} odczytów.
+      other: Punkty zostaną zastąpione krzywą dopasowaną do {n} odczytów.
+  description: 'target curve editor: menu.fitBody. Parameters: n.'
+  placeholders:
+    n:
+      type: integer
+menu.fromFile:
+  value: Skopiuj z pliku sesji
+  description: 'target curve editor: menu.fromFile.'
+menu.fromSession:
+  value: Skopiuj z sesji
+  description: 'target curve editor: menu.fromSession.'
+menu.label:
+  value: Lista
+  description: 'target curve editor: menu.label.'
+menu.replace:
+  value: Zastąp listę
+  description: 'target curve editor: menu.replace.'
+menu.replaceBody:
+  value: Punkty zostaną zastąpione drugą listą, razem z jej ustawieniami.
+  description: 'target curve editor: menu.replaceBody.'
+menu.replaceConfirm:
+  value: Zastąp
+  description: 'target curve editor: menu.replaceConfirm.'
+menu.replaceTitle:
+  value: Zastąpić listę dudnień?
+  description: 'target curve editor: menu.replaceTitle.'
+rank:
+  value: Chór
+  description: 'target curve editor: rank.'
+recorded:
+  value: Nagrane
+  description: 'target curve editor: recorded.'
+recordedHint:
+  value: Pokaż odczyty tej sesji na wykresie
+  description: 'target curve editor: recordedHint.'
+remove:
+  value: Usuń
+  description: 'target curve editor: remove.'
+removeHint:
+  value: Usuń punkt tego dźwięku z krzywej.
+  description: 'target curve editor: removeHint.'
+scale:
+  value: Skala {v}
+  description: 'target curve editor: scale. Parameters: v.'
+  placeholders:
+    v:
+      type: string
+scaleAuto:
+  value: Skala auto
+  description: 'target curve editor: scaleAuto.'
+scaleHint:
+  value: Jak daleko w górę i w dół sięga wykres
+  description: 'target curve editor: scaleHint.'
+set:
+  value: Ustaw
+  description: 'target curve editor: set.'
+setHint:
+  value: Umieść punkt na tym dźwięku dla wybranego chóru.
+  description: 'target curve editor: setHint.'
+startHint:
+  value: Brak punktów. Celem jest wysokość skali dla każdego dźwięku.
+  description: 'target curve editor: startHint.'

@@ -1,0 +1,51 @@
+count:
+  value: '{room} {name} ({done})'
+  description: 'window title: count. Parameters: done, name, room.'
+  placeholders:
+    done:
+      type: string
+    name:
+      type: string
+    room:
+      type: string
+progress:
+  value: '{room} {name} {done}/{total}'
+  description: 'window title: progress. Parameters: done, name, room, total.'
+  placeholders:
+    done:
+      type: string
+    name:
+      type: string
+    room:
+      type: string
+    total:
+      type: string
+room.calibrate:
+  value: kalibracja
+  description: 'window title: room.calibrate.'
+room.settings:
+  value: ustawienia
+  description: 'window title: room.settings.'
+room.tune:
+  value: strojenie
+  description: 'window title: room.tune.'
+room.workshop:
+  value: warsztat
+  description: 'window title: room.workshop.'
+session:
+  value: '{room} {name}'
+  description: 'window title: session. Parameters: name, room.'
+  placeholders:
+    name:
+      type: string
+    room:
+      type: string
+room.soundcard:
+  value: 'karta dźwiękowa'
+  description: 'window title: room.soundcard.'
+uncalibrated:
+  value: '{title} (karta dźwiękowa nieskalibrowana)'
+  description: 'window title: uncalibrated. Parameters: title.'
+  placeholders:
+    title:
+      type: string

@@ -1,0 +1,226 @@
+accordion.a4Locked:
+  value: 'Fixed: this session has already recorded against it.'
+  description: 'session management: accordion.a4Locked.'
+accordion.columnsRefused:
+  value: This change would alter the reed ranks used by existing readings. The change was not saved. Restore the
+    previous ranks or create a new session.
+  description: 'session management: accordion.columnsRefused.'
+accordion.frozen:
+  value: The reference pitch and reed ranks cannot change after readings are recorded. You can still add registers
+    using the existing ranks.
+  description: 'session management: accordion.frozen.'
+accordion.remember:
+  value: Save to instrument library
+  description: 'session management: accordion.remember.'
+accordion.rememberHint:
+  value: Save this session's instrument to the library for use in future sessions.
+  description: 'session management: accordion.rememberHint.'
+card.a4:
+  value: A = {hz} Hz
+  description: 'session management: card.a4. Parameters: hz.'
+  placeholders:
+    hz:
+      type: string
+card.changed:
+  value: The accordion on the shelf has changed since this session was recorded.
+  description: 'session management: card.changed.'
+card.hasCurve:
+  value: Goal curve set
+  description: 'session management: card.hasCurve.'
+card.readings:
+  plural:
+    argument: count
+    forms:
+      one: '{count} reading'
+      other: '{count} readings'
+  description: 'session management: card.readings. Parameters: count.'
+  placeholders:
+    count:
+      type: integer
+card.unnamedInstrument:
+  value: Accordion not named
+  description: 'session management: card.unnamedInstrument.'
+card.updated:
+  value: Updated {when}
+  description: 'session management: card.updated. Parameters: when.'
+  placeholders:
+    when:
+      type: string
+delete:
+  value: Delete
+  description: 'session management: delete.'
+deleteHint:
+  value: Permanently delete this session, including all passes, readings and its tuning curve.
+  description: 'session management: deleteHint.'
+deleteTitle:
+  value: Delete this session?
+  description: 'session management: deleteTitle.'
+dialog.backToList:
+  value: Pick one already tuned
+  description: 'session management: dialog.backToList.'
+dialog.describeNew:
+  value: Describe a new one...
+  description: 'session management: dialog.describeNew.'
+dialog.forgetAccordion:
+  value: Forget this accordion
+  description: 'session management: dialog.forgetAccordion.'
+dialog.instrument:
+  value: Accordion
+  description: 'session management: dialog.instrument.'
+dialog.loadAccordion:
+  value: Load from file...
+  description: 'session management: dialog.loadAccordion.'
+dialog.name:
+  value: Session name
+  description: 'session management: dialog.name.'
+dialog.nameHint:
+  value: Use an instrument or customer name to identify the session.
+  description: 'session management: dialog.nameHint.'
+dialog.newTitle:
+  value: New session
+  description: 'session management: dialog.newTitle.'
+dialog.pickAccordion:
+  value: Which accordion?
+  description: 'session management: dialog.pickAccordion.'
+dialog.start:
+  value: Start
+  description: 'session management: dialog.start.'
+empty:
+  value: No sessions yet
+  description: 'session management: empty.'
+emptyHint:
+  value: Create a session to save measurements, or use the tuner without one.
+  description: 'session management: emptyHint.'
+error.fitFailed:
+  value: Could not fit a curve to that pass.
+  description: 'session management: error.fitFailed.'
+error.hasReadings:
+  value: 'This session already holds readings: they were all measured against its reference and reed count, so neither
+    can change now.'
+  description: 'session management: error.hasReadings.'
+error.imageUnreadable:
+  value: That photograph would not open.
+  description: 'session management: error.imageUnreadable.'
+error.instrumentName:
+  value: Give the accordion a name so you can find it again.
+  description: 'session management: error.instrumentName.'
+error.invalidA4:
+  value: The reference pitch must be between 430 and 450 Hz.
+  description: 'session management: error.invalidA4.'
+error.invalidInstrument:
+  value: 'That accordion cannot be used: a reed rank is named twice, or a register sounds a rank the accordion does
+    not have.'
+  description: 'session management: error.invalidInstrument.'
+error.invalidName:
+  value: Give the session a name.
+  description: 'session management: error.invalidName.'
+error.invalidNote:
+  value: That note is outside the range the tuner tracks.
+  description: 'session management: error.invalidNote.'
+error.invalidReed:
+  value: This accordion does not sound that reed.
+  description: 'session management: error.invalidReed.'
+error.invalidReedCount:
+  value: An accordion sounds between 1 and 8 reeds on a note.
+  description: 'session management: error.invalidReedCount.'
+error.invalidTranspose:
+  value: Transposition is 0 to 11 semitones.
+  description: 'session management: error.invalidTranspose.'
+error.invalidUnit:
+  value: Values are entered in units of 0.06 %, in cents or in hertz.
+  description: 'session management: error.invalidUnit.'
+error.invalidValue:
+  value: That value is not a number.
+  description: 'session management: error.invalidValue.'
+error.loadFailed:
+  value: Could not read the session.
+  description: 'session management: error.loadFailed.'
+error.noBassMachine:
+  value: This accordion declares no bass machine.
+  description: 'session management: error.noBassMachine.'
+error.noBassRegister:
+  value: The accordion has no such bass register.
+  description: 'session management: error.noBassRegister.'
+error.noCurve:
+  value: This session has no goal curve.
+  description: 'session management: error.noCurve.'
+error.noReadings:
+  value: Nothing has been recorded in this session yet.
+  description: 'session management: error.noReadings.'
+error.noRegister:
+  value: This accordion has no such register.
+  description: 'session management: error.noRegister.'
+error.noSession:
+  value: No session is open.
+  description: 'session management: error.noSession.'
+error.notAnImage:
+  value: That file is not a photograph.
+  description: 'session management: error.notAnImage.'
+error.notFound:
+  value: That session is gone.
+  description: 'session management: error.notFound.'
+error.notesTooLong:
+  value: Shorten the note to 500 characters.
+  description: 'session management: error.notesTooLong.'
+error.saveFailed:
+  value: Could not save the session. Your last takes may be lost if you close now.
+  description: 'session management: error.saveFailed.'
+error.takeNotFound:
+  value: That reading is gone.
+  description: 'session management: error.takeNotFound.'
+error.unexpected:
+  value: Something went wrong.
+  description: 'session management: error.unexpected.'
+export:
+  value: Export session
+  description: 'session management: export.'
+file.exportSessionTitle:
+  value: Export session
+  description: 'session management: file.exportSessionTitle.'
+file.openFilter:
+  value: smeggtuner session
+  description: 'session management: file.openFilter.'
+file.openTitle:
+  value: Select a session file
+  description: 'session management: file.openTitle.'
+footer.coverage:
+  value: '{done} / {total} notes'
+  description: 'session management: footer.coverage. Parameters: done, total.'
+  placeholders:
+    done:
+      type: string
+    total:
+      type: string
+footer.inTune:
+  value: '{done} / {total} in tune'
+  description: 'session management: footer.inTune. Parameters: done, total.'
+  placeholders:
+    done:
+      type: string
+    total:
+      type: string
+footer.none:
+  value: No session
+  description: 'session management: footer.none.'
+new:
+  value: New session
+  description: 'session management: new.'
+readings.empty:
+  value: Start recording, then play notes to save readings.
+  description: 'session management: readings.empty.'
+readings.notes:
+  plural:
+    argument: n
+    forms:
+      one: one note
+      other: '{n} notes'
+  description: 'session management: readings.notes. Parameters: n.'
+  placeholders:
+    n:
+      type: integer
+title:
+  value: Sessions
+  description: 'session management: title.'
+accordion.frozenShort:
+  value: Ranks locked
+  description: Compact trigger explaining why recorded ranks cannot change.

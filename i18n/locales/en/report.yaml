@@ -1,0 +1,230 @@
+error.invalidDate:
+  value: Enter a valid date in YYYY-MM-DD format.
+  description: 'tuning report and export: error.invalidDate.'
+error.invalidFormat:
+  value: That is not a format this report can be written in.
+  description: 'tuning report and export: error.invalidFormat.'
+error.noBrowser:
+  value: A PDF is laid out by a browser, and there is no Chrome or Chromium on this machine to do it with. Install
+    one, or export the card as HTML and print that.
+  description: 'tuning report and export: error.noBrowser.'
+error.openFailed:
+  value: The report was written, but no browser would open it. Open the file yourself.
+  description: 'tuning report and export: error.openFailed.'
+error.renderFailed:
+  value: The report could not be built. Nothing was written.
+  description: 'tuning report and export: error.renderFailed.'
+error.writeFailed:
+  value: The report could not be written there. The old file, if there was one, is untouched.
+  description: 'tuning report and export: error.writeFailed.'
+facts.curve:
+  value: Goal curve
+  description: 'tuning report and export: facts.curve.'
+facts.curveNone:
+  value: none
+  description: 'tuning report and export: facts.curveNone.'
+facts.curveUnnamed:
+  value: unnamed
+  description: 'tuning report and export: facts.curveUnnamed.'
+facts.empty:
+  value: '-'
+  description: 'tuning report and export: facts.empty.'
+facts.instrument:
+  value: Accordion
+  description: 'tuning report and export: facts.instrument.'
+facts.reference:
+  value: Reference A4 (this pass)
+  description: 'tuning report and export: facts.reference.'
+facts.tolerance:
+  value: Tolerance
+  description: 'tuning report and export: facts.tolerance.'
+facts.toleranceValue:
+  value: '{reed} {unit} reed / {beat} {unit} beat'
+  description: 'tuning report and export: facts.toleranceValue. Parameters: beat, reed, unit.'
+  placeholders:
+    beat:
+      type: string
+    reed:
+      type: string
+    unit:
+      type: string
+facts.transpose:
+  value: Transposition
+  description: 'tuning report and export: facts.transpose.'
+facts.transposeValue:
+  value: '{key} sounds as {sounds}'
+  description: 'tuning report and export: facts.transposeValue. Parameters: key, sounds.'
+  placeholders:
+    key:
+      type: string
+    sounds:
+      type: string
+footer.generated:
+  value: Generated {at} by {app}
+  description: 'tuning report and export: footer.generated. Parameters: app, at.'
+  placeholders:
+    app:
+      type: string
+    at:
+      type: string
+graph.edited:
+  value: '{mark} - hand-edited.'
+  description: 'tuning report and export: graph.edited. Parameters: mark.'
+  placeholders:
+    mark:
+      type: string
+head.beat:
+  value: Beat {pair}
+  description: 'tuning report and export: head.beat. Parameters: pair.'
+  placeholders:
+    pair:
+      type: string
+head.reed:
+  value: Reed {index}
+  description: Report column heading; index is the one-based reed number.
+  placeholders:
+    index:
+      type: integer
+legend.error.cents:
+  value: File toward zero. Cents from the tempered scale at {a4} Hz.
+  description: 'tuning report and export: legend.error.cents. Parameters: a4.'
+  placeholders:
+    a4:
+      type: string
+legend.error.key:
+  value: Error = Curr - Goal.
+  description: 'tuning report and export: legend.error.key.'
+legend.error.noCurve:
+  value: 'No goal curve: Goal is zero, Error is deviation from the scale.'
+  description: 'tuning report and export: legend.error.noCurve.'
+legend.error.reference:
+  value: File toward zero. Units of 0.06 % of the note frequency, from the tempered scale at {a4} Hz.
+  description: 'tuning report and export: legend.error.reference. Parameters: a4.'
+  placeholders:
+    a4:
+      type: string
+legend.out.short:
+  value: outside tolerance
+  description: 'tuning report and export: legend.out.short.'
+legend.takes.key:
+  value: xN
+  description: 'tuning report and export: legend.takes.key.'
+legend.takes.short:
+  value: recorded more than once, last take shown
+  description: 'tuning report and export: legend.takes.short.'
+mark.edited:
+  value: H
+  description: 'tuning report and export: mark.edited.'
+mark.out:
+  value: '!'
+  description: 'tuning report and export: mark.out.'
+summary.allIn:
+  value: All in tolerance.
+  description: 'tuning report and export: summary.allIn.'
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} beat'
+      other: '{pluralCount} beats'
+  description: 'tuning report and export: summary.beats. Parameters: pluralCount.'
+  placeholders:
+    pluralCount:
+      type: integer
+summary.line:
+  value: '{notes} ({min} to {max}), {reeds}, {beats}.'
+  description: 'tuning report and export: summary.line. Parameters: beats, max, min, notes, reeds.'
+  placeholders:
+    beats:
+      type: string
+    max:
+      type: string
+    min:
+      type: string
+    notes:
+      type: string
+    reeds:
+      type: string
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} note'
+      other: '{pluralCount} notes'
+  description: 'tuning report and export: summary.notes. Parameters: pluralCount.'
+  placeholders:
+    pluralCount:
+      type: integer
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} out of tolerance ({reeds}, {beats}).'
+      other: '{pluralCount} out of tolerance ({reeds}, {beats}).'
+  description: 'tuning report and export: summary.out. Parameters: beats, pluralCount, reeds.'
+  placeholders:
+    beats:
+      type: string
+    pluralCount:
+      type: integer
+    reeds:
+      type: string
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} reed reading'
+      other: '{pluralCount} reed readings'
+  description: 'tuning report and export: summary.reeds. Parameters: pluralCount.'
+  placeholders:
+    pluralCount:
+      type: integer
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} reed'
+      other: '{pluralCount} reeds'
+  description: 'tuning report and export: summary.reedsShort. Parameters: pluralCount.'
+  placeholders:
+    pluralCount:
+      type: integer
+table.bassTitle:
+  value: Bass tuning table ({unit})
+  description: 'tuning report and export: table.bassTitle. Parameters: unit.'
+  placeholders:
+    unit:
+      type: string
+table.curr:
+  value: Curr
+  description: 'tuning report and export: table.curr.'
+table.err:
+  value: Err
+  description: 'tuning report and export: table.err.'
+table.note:
+  value: Note
+  description: 'tuning report and export: table.note.'
+table.register:
+  value: Register
+  description: 'tuning report and export: table.register.'
+table.title:
+  value: Tuning table ({unit})
+  description: 'tuning report and export: table.title. Parameters: unit.'
+  placeholders:
+    unit:
+      type: string
+title:
+  value: Tuning report
+  description: 'tuning report and export: title.'
+unit.cents.name:
+  value: cents
+  description: 'tuning report and export: unit.cents.name.'
+unit.cents.symbol:
+  value: c
+  description: 'tuning report and export: unit.cents.symbol.'
+unit.reference.name:
+  value: units of 0.06 %
+  description: 'tuning report and export: unit.reference.name.'
+unit.reference.symbol:
+  value: u
+  description: 'tuning report and export: unit.reference.symbol.'

@@ -1,0 +1,137 @@
+arm.hint:
+  value: Record a take on every lock (Enter takes one now)
+  description: 'recording controls and readings table: arm.hint.'
+arm.needsSession:
+  value: Open a session to record
+  description: 'recording controls and readings table: arm.needsSession.'
+arm.warmup:
+  value: 'Not recording: play freely, nothing is saved. Press to start recording.'
+  description: 'recording controls and readings table: arm.warmup.'
+error.takeNotFound:
+  value: That take is no longer in the pass.
+  description: 'recording controls and readings table: error.takeNotFound.'
+error.unexpected:
+  value: The operation failed. See the log for details.
+  description: 'recording controls and readings table: error.unexpected.'
+report.csv:
+  value: CSV
+  description: 'recording controls and readings table: report.csv.'
+report.date:
+  value: Date
+  description: 'recording controls and readings table: report.date.'
+report.export:
+  value: Export
+  description: 'recording controls and readings table: report.export.'
+report.format:
+  value: Format
+  description: 'recording controls and readings table: report.format.'
+report.formatHint:
+  value: PDF is the card as one A4 page, laid out the way it prints. HTML is the same sheet as a web page. CSV is
+    the table for a spreadsheet.
+  description: 'recording controls and readings table: report.formatHint.'
+report.html:
+  value: HTML
+  description: 'recording controls and readings table: report.html.'
+report.notes:
+  value: Note on the card
+  description: 'recording controls and readings table: report.notes.'
+report.notesHint:
+  value: Printed under the table. What was done, or what still needs doing.
+  description: 'recording controls and readings table: report.notesHint.'
+report.pass:
+  value: 'Pass: {label}'
+  description: 'recording controls and readings table: report.pass. Parameters: label.'
+  placeholders:
+    label:
+      type: string
+report.pdf:
+  value: PDF
+  description: 'recording controls and readings table: report.pdf.'
+report.title:
+  value: Tuning card
+  description: 'recording controls and readings table: report.title.'
+table.bassTitle:
+  value: Bass
+  description: 'recording controls and readings table: table.bassTitle.'
+table.beat:
+  value: Beating {pair}
+  description: 'recording controls and readings table: table.beat. Parameters: pair.'
+  placeholders:
+    pair:
+      type: string
+table.delete:
+  value: Remove this reading
+  description: 'recording controls and readings table: table.delete.'
+table.deleteHint:
+  value: Permanently remove this reading. Play and record the note again to replace it.
+  description: 'recording controls and readings table: table.deleteHint.'
+table.deleteTitle:
+  value: Remove this reading?
+  description: 'recording controls and readings table: table.deleteTitle.'
+table.editHint:
+  value: Click or press Enter to edit the value
+  description: 'recording controls and readings table: table.editHint.'
+table.empty:
+  value: Start recording, then play notes to save readings.
+  description: 'recording controls and readings table: table.empty.'
+table.graph:
+  value: Graph
+  description: 'recording controls and readings table: table.graph.'
+table.graphHint:
+  value: Compare each reed with its target. Click a column to select its row; click again to select the next register.
+  description: 'recording controls and readings table: table.graphHint.'
+table.graphLabel:
+  value: Each recorded note's reed errors
+  description: 'recording controls and readings table: table.graphLabel.'
+table.helpTitle:
+  value: About this table
+  description: 'recording controls and readings table: table.helpTitle.'
+table.label:
+  value: Recorded tuning
+  description: 'recording controls and readings table: table.label.'
+table.latest:
+  value: 'Recorded last: Backspace removes it'
+  description: 'recording controls and readings table: table.latest.'
+table.manual:
+  value: Edited
+  description: 'recording controls and readings table: table.manual.'
+table.manualHint:
+  value: A value in this row was typed, not heard.
+  description: 'recording controls and readings table: table.manualHint.'
+table.note:
+  value: Note
+  description: 'recording controls and readings table: table.note.'
+table.notes:
+  plural:
+    argument: count
+    forms:
+      one: one note
+      other: '{count} notes'
+  description: 'recording controls and readings table: table.notes. Parameters: count.'
+  placeholders:
+    count:
+      type: integer
+table.reed:
+  value: Reed {index}
+  description: 'recording controls and readings table: table.reed. Parameters: index.'
+  placeholders:
+    index:
+      type: string
+table.unitHint:
+  value: Reed deviations use the unit selected in Settings. Beats use hertz or the deviation unit, as selected in the toolbar.
+  description: 'recording controls and readings table: table.unitHint.'
+undo.hint:
+  value: Undo the last take
+  description: 'recording controls and readings table: undo.hint.'
+
+mobile.current:
+  value: Measured
+  description: Single voice reading column on a compact screen.
+
+mobile.goal:
+  value: Target
+  description: Single voice reading column on a compact screen.
+
+mobile.error:
+  value: Deviation
+  description: Single voice reading column on a compact screen.

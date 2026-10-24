@@ -1,0 +1,52 @@
+clearSelection:
+  value: Zaznacz całe nagranie
+  description: 'file actions: clearSelection.'
+fit:
+  value: Pokaż całe nagranie
+  description: 'file actions: fit.'
+loop:
+  value: Zapętl zaznaczenie
+  description: 'file actions: loop.'
+mute:
+  value: Wycisz nagranie
+  description: 'file actions: mute.'
+openFilter:
+  value: Audio WAV
+  description: 'file actions: openFilter.'
+openTitle:
+  value: Wybierz nagranie WAV
+  description: 'file actions: openTitle.'
+pause:
+  value: Pauza
+  description: 'file actions: pause.'
+play:
+  value: Odtwarzaj
+  description: 'file actions: play.'
+stop:
+  value: Zatrzymaj i wróć na początek zaznaczenia
+  description: 'file actions: stop.'
+toEnd:
+  value: Na koniec zaznaczenia
+  description: 'file actions: toEnd.'
+toStart:
+  value: Na początek zaznaczenia
+  description: 'file actions: toStart.'
+unmute:
+  value: Włącz dźwięk nagrania
+  description: 'file actions: unmute.'
+volume:
+  value: Głośność odtwarzania
+  description: 'file actions: volume.'
+waveform:
+  value: Przebieg pliku {name}. Przeciągnij oś czasu, aby przesunąć głowicę, przeciągnij przebieg, aby zaznaczyć
+    fragment. Po zatrzymaniu odtwarzania jasna przerywana linia wskazuje dźwięk, z którego pochodzi odczyt na ekranie.
+  description: 'file actions: waveform. Parameters: name.'
+  placeholders:
+    name:
+      type: string
+zoomIn:
+  value: Powiększ
+  description: 'file actions: zoomIn.'
+zoomOut:
+  value: Pomniejsz
+  description: 'file actions: zoomOut.'

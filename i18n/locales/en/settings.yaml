@@ -1,0 +1,359 @@
+a4Unit:
+  value: Hz
+  description: 'application settings: a4Unit.'
+accent.auto:
+  value: Desktop
+  description: 'application settings: accent.auto.'
+accent.custom:
+  value: Custom
+  description: 'application settings: accent.custom.'
+accent.hint:
+  value: 'Desktop accent or your own colour'
+  description: 'application settings: accent.hint.'
+accent.label:
+  value: Accent
+  description: 'application settings: accent.label.'
+accent.pick:
+  value: Pick a colour
+  description: 'application settings: accent.pick.'
+accent.pickTitle:
+  value: Accent colour
+  description: 'application settings: accent.pickTitle.'
+audioDeviceHint:
+  value: 'The microphone to measure with'
+  description: 'application settings: audioDeviceHint.'
+audioDeviceLabel:
+  value: Input device
+  description: 'application settings: audioDeviceLabel.'
+audioDeviceRefresh:
+  value: Refresh the device list
+  description: 'application settings: audioDeviceRefresh.'
+audioDeviceSystemDefault:
+  value: System default
+  description: 'application settings: audioDeviceSystemDefault.'
+autoVolume.hint:
+  value: 'Sets the mic level while measuring'
+  description: 'application settings: autoVolume.hint.'
+autoVolume.label:
+  value: Automatic input volume
+  description: 'application settings: autoVolume.label.'
+autoVolume.unsupported:
+  value: Input level control is unavailable for this device.
+  description: 'application settings: autoVolume.unsupported.'
+beatUnitHint:
+  value: 'Hertz, or units of 0.06 % of the note'
+  description: 'application settings: beatUnitHint.'
+beatUnitLabel:
+  value: Beat unit
+  description: 'application settings: beatUnitLabel.'
+calibration.askBody:
+  value: 'An uncalibrated sample clock can cause a small fixed measurement error. Calibration takes about a minute and needs no sound.'
+  description: 'application settings: calibration.askBody.'
+calibration.askCalibrate:
+  value: Calibrate now
+  description: 'application settings: calibration.askCalibrate.'
+calibration.askContinue:
+  value: Continue uncorrected
+  description: 'application settings: calibration.askContinue.'
+calibration.askTitle:
+  value: This sound card is not calibrated
+  description: 'application settings: calibration.askTitle.'
+calibration.cancel:
+  value: Cancel
+  description: 'application settings: calibration.cancel.'
+calibration.hint:
+  value: 'Fixes the sound card clock error. About a minute, no sound needed.'
+  description: 'application settings: calibration.hint.'
+calibration.label:
+  value: Sound card calibration
+  description: 'application settings: calibration.label.'
+calibration.start:
+  value: Calibrate
+  description: 'application settings: calibration.start.'
+calibration.startHint:
+  value: Measure the input sample clock
+  description: 'application settings: calibration.startHint.'
+calibration.status.calibrated:
+  value: Calibrated, {percent} %
+  description: 'application settings: calibration.status.calibrated. Parameters: percent.'
+  placeholders:
+    percent:
+      type: string
+calibration.status.calibrating:
+  value: Calibrating, {seconds} s ({percent} %), {progress} % done
+  description: 'application settings: calibration.status.calibrating. Parameters: percent, progress, seconds.'
+  placeholders:
+    percent:
+      type: string
+    progress:
+      type: string
+    seconds:
+      type: string
+calibration.status.preparing:
+  value: Preparing
+  description: 'application settings: calibration.status.preparing.'
+calibration.status.uncalibrated:
+  value: Not calibrated
+  description: 'application settings: calibration.status.uncalibrated.'
+calibration.status.unreliable:
+  value: Unreliable, readings are not corrected
+  description: 'application settings: calibration.status.unreliable.'
+closeToTray:
+  value: Minimize to tray on close
+  description: 'application settings: closeToTray.'
+closeToTrayHint:
+  value: 'Closing the window keeps the app in the tray'
+  description: 'application settings: closeToTrayHint.'
+continuousManual:
+  value: Continuously update a pinned note
+  description: 'application settings: continuousManual.'
+continuousManualHint:
+  value: 'Update a pinned note before it locks'
+  description: 'application settings: continuousManualHint.'
+detection.balanced:
+  value: Balanced
+  description: 'application settings: detection.balanced.'
+detection.balancedHint:
+  value: 'Switches notes in about half a second'
+  description: 'application settings: detection.balancedHint.'
+detection.fast:
+  value: Fast
+  description: 'application settings: detection.fast.'
+detection.fastHint:
+  value: 'Switches notes fastest; may lock a wrong note'
+  description: 'application settings: detection.fastHint.'
+detection.steady:
+  value: Steady
+  description: 'application settings: detection.steady.'
+detection.steadyHint:
+  value: 'Original behaviour; slow to switch notes'
+  description: 'application settings: detection.steadyHint.'
+detectionLabel:
+  value: Note detection
+  description: 'application settings: detectionLabel.'
+errorReference:
+  value: Deviation reference
+  description: 'application settings: errorReference.'
+errorReferenceGoal:
+  value: Target
+  description: 'application settings: errorReferenceGoal.'
+errorReferenceHint:
+  value: Show deviation from the scale pitch or from the tuning target. At the target, the target-relative reading
+    is zero.
+  description: 'application settings: errorReferenceHint.'
+errorReferenceScale:
+  value: Scale
+  description: 'application settings: errorReferenceScale.'
+groups.appearance:
+  value: Appearance
+  description: 'application settings: groups.appearance.'
+groups.report:
+  value: Workshop details
+  description: 'application settings: groups.report.'
+humFilter50:
+  value: 50 Hz
+  description: 'application settings: humFilter50.'
+humFilter60:
+  value: 60 Hz
+  description: 'application settings: humFilter60.'
+humFilterHint:
+  value: 'Removes mains hum: 50 Hz in Europe, 60 Hz in America'
+  description: 'application settings: humFilterHint.'
+humFilterLabel:
+  value: Mains hum filter
+  description: 'application settings: humFilterLabel.'
+humFilterNone:
+  value: None
+  description: 'application settings: humFilterNone.'
+languageHint:
+  value: 'Interface language'
+  description: 'application settings: languageHint.'
+languageLabel:
+  value: Language
+  description: 'application settings: languageLabel.'
+lockA4:
+  value: Lock reference pitch
+  description: 'application settings: lockA4.'
+lockA4Hint:
+  value: 'Stops A4 being changed in the tuner'
+  description: 'application settings: lockA4Hint.'
+lockedWhileRunning:
+  value: Stop the tuner to change the audio input.
+  description: 'application settings: lockedWhileRunning.'
+report.address:
+  value: Address
+  description: 'application settings: report.address.'
+report.name:
+  value: Workshop name
+  description: 'application settings: report.name.'
+report.nameHint:
+  value: Shown in exported reports when the letterhead is enabled.
+  description: 'application settings: report.nameHint.'
+report.website:
+  value: Website
+  description: 'application settings: report.website.'
+scaleNamingHint:
+  value: 'How notes are named'
+  description: 'application settings: scaleNamingHint.'
+scaleNamingLabel:
+  value: Note naming
+  description: 'application settings: scaleNamingLabel.'
+scaleNamings.cdefgab:
+  value: C D E F G A B (international, sharps as C#)
+  description: 'application settings: scaleNamings.cdefgab.'
+scaleNamings.cdefgah:
+  value: C D E F G A H (German, sharps as C#)
+  description: 'application settings: scaleNamings.cdefgah.'
+scaleNamings.doremi:
+  value: Do Re Mi (solfege)
+  description: 'application settings: scaleNamings.doremi.'
+scaleNamings.polish:
+  value: C Cis D Dis E F Fis G Gis A Ais H (Polish)
+  description: 'application settings: scaleNamings.polish.'
+stopAfterLock:
+  value: Hold stable readings
+  description: 'application settings: stopAfterLock.'
+stopAfterLockHint:
+  value: 'Keep the locked reading after the sound stops'
+  description: 'application settings: stopAfterLockHint.'
+themeHint:
+  value: 'System, light or dark'
+  description: 'application settings: themeHint.'
+themeLabel:
+  value: Theme
+  description: 'application settings: themeLabel.'
+themes.auto:
+  value: System
+  description: 'application settings: themes.auto.'
+themes.dark:
+  value: Dark
+  description: 'application settings: themes.dark.'
+themes.light:
+  value: Light
+  description: 'application settings: themes.light.'
+toleranceBeat:
+  value: Beat
+  description: 'application settings: toleranceBeat.'
+toleranceHint:
+  value: 'How far off a reed or beat may be and still count as in tune'
+  description: 'application settings: toleranceHint.'
+toleranceLabel:
+  value: Tolerances
+  description: 'application settings: toleranceLabel.'
+toleranceReed:
+  value: Reed
+  description: 'application settings: toleranceReed.'
+toleranceUnit:
+  value: u
+  description: 'application settings: toleranceUnit.'
+unitHint:
+  value: 'Cents, or units of 0.06 % of the note'
+  description: 'application settings: unitHint.'
+unitLabel:
+  value: Deviation unit
+  description: 'application settings: unitLabel.'
+calibration.saveFailed:
+  value: Could not save calibration. The tuner is using the previously saved state.
+  description: Configuration persistence failure.
+autoVolume.saveFailed:
+  value: Could not save the input volume setting.
+  description: Configuration persistence failure.
+
+calibration.screen.title:
+  value: 'Sound card calibration'
+  description: 'application settings: calibration.screen.title.'
+calibration.screen.steps.prepare:
+  value: 'Warm up'
+  description: 'application settings: calibration.screen.steps.prepare.'
+calibration.screen.steps.measure:
+  value: 'Measure'
+  description: 'application settings: calibration.screen.steps.measure.'
+calibration.screen.steps.done:
+  value: 'Done'
+  description: 'application settings: calibration.screen.steps.done.'
+calibration.screen.lead:
+  value: 'Not calibrated yet'
+  description: 'application settings: calibration.screen.lead.'
+calibration.screen.how:
+  value: 'Readings may carry a small fixed pitch error. No sound needed, about a minute.'
+  description: 'application settings: calibration.screen.how.'
+calibration.screen.preparing:
+  value: 'Warming up the input'
+  description: 'application settings: calibration.screen.preparing.'
+calibration.screen.calibrating:
+  value: 'Measuring the sound card clock'
+  description: 'application settings: calibration.screen.calibrating.'
+calibration.screen.calibrated:
+  value: 'Calibrated. Readings are corrected by {percent} %.'
+  description: 'application settings: calibration.screen.calibrated. Parameters: percent.'
+  placeholders:
+    percent:
+      type: string
+calibration.screen.unreliable:
+  value: 'The clock never settled'
+  description: 'application settings: calibration.screen.unreliable.'
+calibration.screen.retry:
+  value: 'Readings stay uncorrected. Close other audio apps and try again.'
+  description: 'calibration screen: the line under an unreliable outcome, what to do next.'
+calibration.screen.again:
+  value: 'Calibrate again'
+  description: 'application settings: calibration.screen.again.'
+calibration.screen.phase.preparing:
+  value: 'Letting the input settle before its clock is measured.'
+  description: 'application settings: calibration.screen.phase.preparing.'
+calibration.screen.phase.settling:
+  value: 'Waiting for the clock reading to hold still.'
+  description: 'application settings: calibration.screen.phase.settling.'
+calibration.screen.phase.confirming:
+  value: 'The reading holds still. Checking that it stays that way for 20 s.'
+  description: 'application settings: calibration.screen.phase.confirming.'
+calibration.screen.bar.settling:
+  value: 'Settling'
+  description: 'application settings: calibration.screen.bar.settling.'
+calibration.screen.bar.confirming:
+  value: 'Confirming'
+  description: 'application settings: calibration.screen.bar.confirming.'
+calibration.screen.stat.offset:
+  value: 'Clock offset'
+  description: 'application settings: calibration.screen.stat.offset.'
+calibration.screen.stat.steadiness:
+  value: 'Steadiness'
+  description: 'application settings: calibration.screen.stat.steadiness.'
+calibration.screen.stat.rate:
+  value: 'Sample rate'
+  description: 'application settings: calibration.screen.stat.rate.'
+calibration.screen.stat.elapsed:
+  value: 'Elapsed'
+  description: 'application settings: calibration.screen.stat.elapsed.'
+calibration.screen.stat.dropouts:
+  value: 'Dropouts'
+  description: 'application settings: calibration.screen.stat.dropouts.'
+calibration.screen.traceEmpty:
+  value: 'The clock offset is drawn here while it is measured.'
+  description: 'calibration screen: shown in the clock offset plot before a run has measured anything.'
+calibration.screen.steadiness:
+  value: '{ppm} ppm, target {target} ppm'
+  description: 'application settings: calibration.screen.steadiness. Parameters: ppm, target.'
+  placeholders:
+    ppm:
+      type: string
+    target:
+      type: string
+calibration.screen.pitch:
+  value: 'That is {pitch} at every note.'
+  description: 'application settings: calibration.screen.pitch. Parameters: pitch.'
+  placeholders:
+    pitch:
+      type: string
+calibration.screen.return:
+  value: 'Return'
+  description: 'application settings: calibration.screen.return.'
+groups.microphone:
+  value: 'Microphone'
+  description: 'application settings: groups.microphone.'
+groups.detection:
+  value: 'Detection'
+  description: 'application settings: group for how a note is found.'
+groups.readings:
+  value: 'Readings'
+  description: 'application settings: group for how a reading is shown.'

@@ -1,0 +1,105 @@
+leave:
+  value: Leave calibration
+  description: 'calibration workflow: leave.'
+needsSession:
+  value: Open a session to calibrate its instrument.
+  description: 'calibration workflow: needsSession.'
+range.again:
+  value: Start over
+  description: 'calibration workflow: range.again.'
+range.backwards:
+  value: The highest note must not be lower than the lowest note. Measure the range again.
+  description: 'calibration workflow: range.backwards.'
+range.capture:
+  value: Capture
+  description: 'calibration workflow: range.capture.'
+range.highest:
+  value: Highest
+  description: 'calibration workflow: range.highest.'
+range.lowest:
+  value: Lowest
+  description: 'calibration workflow: range.lowest.'
+range.next:
+  value: Continue to reed calibration
+  description: 'calibration workflow: range.next.'
+range.playHigh:
+  value: Now play the highest key.
+  description: 'calibration workflow: range.playHigh.'
+range.playLow:
+  value: Play the lowest key.
+  description: 'calibration workflow: range.playLow.'
+range.step:
+  value: The keyboard
+  description: 'calibration workflow: range.step.'
+start:
+  value: Calibrate
+  description: 'calibration workflow: start.'
+status.captured:
+  value: Captured
+  description: 'calibration workflow: status.captured.'
+status.holding:
+  value: Keep the note steady
+  description: 'calibration workflow: status.holding.'
+status.listening:
+  value: Listening
+  description: 'calibration workflow: status.listening.'
+status.loud:
+  value: Too loud
+  description: 'calibration workflow: status.loud.'
+status.play:
+  value: Play a note
+  description: 'calibration workflow: status.play.'
+sweep.again:
+  value: Calibrate again
+  description: 'calibration workflow: sweep.again.'
+sweep.bassAll:
+  value: Bass - whole machine
+  description: 'calibration workflow: sweep.bassAll.'
+sweep.done:
+  plural:
+    argument: n
+    forms:
+      one: Swept. {n} reading on the card.
+      other: Swept. {n} readings on the card.
+  description: 'calibration workflow: sweep.done. Parameters: n.'
+  placeholders:
+    n:
+      type: integer
+sweep.noRegisters:
+  value: This accordion has no registers described. The sweep still runs; its readings land in numbered columns.
+  description: 'calibration workflow: sweep.noRegisters.'
+sweep.pickRegister:
+  value: Which register are you calibrating?
+  description: 'calibration workflow: sweep.pickRegister.'
+sweep.progress:
+  value: '{done} of {total}'
+  description: 'calibration workflow: sweep.progress. Parameters: done, total.'
+  placeholders:
+    done:
+      type: string
+    total:
+      type: string
+sweep.redoRange:
+  value: Redo the keyboard
+  description: 'calibration workflow: sweep.redoRange.'
+sweep.review:
+  value: See the card
+  description: 'calibration workflow: sweep.review.'
+sweep.skip:
+  value: Skip
+  description: 'calibration workflow: sweep.skip.'
+sweep.soloTeaches:
+  value: Sweeping a single-voice register also teaches the app that voice's sound.
+  description: 'calibration workflow: sweep.soloTeaches.'
+sweep.startPlain:
+  value: Start the sweep
+  description: 'calibration workflow: sweep.startPlain.'
+sweep.step:
+  value: The reeds
+  description: 'calibration workflow: sweep.step.'
+sweep.stop:
+  value: Stop
+  description: 'calibration workflow: sweep.stop.'
+title:
+  value: Calibrate
+  description: 'calibration workflow: title.'

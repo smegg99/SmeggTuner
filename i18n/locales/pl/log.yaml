@@ -1,0 +1,252 @@
+appStarting:
+  value: Uruchamianie SmeggTuner
+  description: 'Native diagnostic event: starting smeggtuner.'
+cleaningUp:
+  value: Zamykanie aplikacji
+  description: 'Native diagnostic event: cleaning up.'
+loadingConfig:
+  value: Wczytywanie konfiguracji
+  description: 'Native diagnostic event: loading configuration.'
+configLoaded:
+  value: Wczytano konfigurację
+  description: 'Native diagnostic event: configuration loaded.'
+configLoadFailed:
+  value: Nie udało się wczytać konfiguracji
+  description: 'Native diagnostic event: failed to load configuration.'
+reinitLogger:
+  value: Stosowanie ustawień dziennika
+  description: 'Native diagnostic event: reconfiguring logger from configuration.'
+loggerInitFailed:
+  value: Nie udało się skonfigurować dziennika
+  description: 'Native diagnostic event: failed to configure logger.'
+datastoreReady:
+  value: Baza danych gotowa
+  description: 'Native diagnostic event: datastore ready.'
+datastoreInitFailed:
+  value: Nie udało się otworzyć bazy danych
+  description: 'Native diagnostic event: failed to initialize datastore.'
+configSaveFailed:
+  value: Nie udało się zapisać konfiguracji
+  description: 'Native diagnostic event: failed to save configuration.'
+audioDevicesListed:
+  value: Odczytano listę urządzeń wejściowych
+  description: 'Native diagnostic event: capture devices enumerated.'
+audioDeviceEnumFailed:
+  value: Nie udało się odczytać listy urządzeń wejściowych
+  description: 'Native diagnostic event: failed to enumerate capture devices.'
+audioNoDevices:
+  value: Brak urządzeń wejściowych
+  description: 'Native diagnostic event: no capture devices available.'
+audioDeviceGone:
+  value: Wybrane urządzenie wejściowe nie jest już dostępne
+  description: 'Native diagnostic event: selected capture device is no longer present.'
+audioSourceSelected:
+  value: Wybrano źródło dźwięku
+  description: 'Native diagnostic event: input source selected.'
+audioFileUnreadable:
+  value: Nie udało się otworzyć nagrania
+  description: 'Native diagnostic event: recording could not be opened.'
+audioSpeakerUnavailable:
+  value: Brak urządzenia wyjściowego; odtwarzanie pliku będzie bez dźwięku
+  description: 'Native diagnostic event: no output device, file playback will be silent.'
+audioDialogUnavailable:
+  value: Nie można otworzyć okna wyboru pliku bez uruchomionej aplikacji
+  description: 'Native diagnostic event: file dialog requested without a running application.'
+audioDialogFailed:
+  value: Nie udało się otworzyć okna wyboru pliku
+  description: 'Native diagnostic event: file dialog failed.'
+tunerStarted:
+  value: Uruchomiono pomiary
+  description: 'Native diagnostic event: measurement engine started.'
+tunerStopped:
+  value: Zatrzymano pomiary
+  description: 'Native diagnostic event: measurement engine stopped.'
+tunerStartFailed:
+  value: Nie udało się przygotować źródła dźwięku
+  description: 'Native diagnostic event: failed to build the input source.'
+tunerRunFailed:
+  value: Pomiary przerwano z powodu błędu
+  description: 'Native diagnostic event: measurement engine stopped with an error.'
+tunerEventsDropped:
+  value: Pominięto zdarzenia pomiarowe; interfejs nie nadąża z ich odbiorem
+  description: 'Native diagnostic event: measurement events dropped, the frontend is behind.'
+tunerSettingRejected:
+  value: Odrzucono ustawienie spoza dozwolonego zakresu
+  description: 'Native diagnostic event: rejected an out-of-range setting.'
+tunerTonePlaying:
+  value: Odtwarzanie dźwięku wzorcowego
+  description: 'Native diagnostic event: playing reference tone.'
+tunerTonePlayFailed:
+  value: Nie udało się odtworzyć dźwięku wzorcowego
+  description: 'Native diagnostic event: reference tone playback failed.'
+sessionCreated:
+  value: Utworzono sesję
+  description: 'Native diagnostic event: session created.'
+sessionOpened:
+  value: Otwarto sesję
+  description: 'Native diagnostic event: session opened.'
+sessionClosed:
+  value: Zamknięto sesję
+  description: 'Native diagnostic event: session closed.'
+sessionDeleted:
+  value: Usunięto sesję
+  description: 'Native diagnostic event: session deleted.'
+sessionSaveFailed:
+  value: Nie udało się zapisać sesji
+  description: 'Native diagnostic event: failed to save the session.'
+sessionLoadFailed:
+  value: Nie udało się wczytać sesji
+  description: 'Native diagnostic event: failed to load the session.'
+sessionRejected:
+  value: Odrzucono nieprawidłową zmianę sesji
+  description: 'Native diagnostic event: rejected an invalid session change.'
+sessionReedsClamped:
+  value: Instrument ma więcej głosów niż obsługuje pomiar; ograniczono ich liczbę
+  description: 'Native diagnostic event: instrument sounds more reeds than the engine resolves, clamping the engine.'
+sessionCurveFitted:
+  value: Dopasowano krzywą docelową do przebiegu
+  description: 'Native diagnostic event: goal curve fitted from a pass.'
+sessionCurveImported:
+  value: Zaimportowano krzywą docelową
+  description: 'Native diagnostic event: goal curve imported.'
+sessionCurveDropped:
+  value: Usunięto krzywą docelową
+  description: 'Native diagnostic event: goal curve dropped.'
+recordTake:
+  value: Zapisano odczyt
+  description: 'Native diagnostic event: take recorded.'
+recordUndone:
+  value: Cofnięto ostatni odczyt
+  description: 'Native diagnostic event: last take undone.'
+recordCleared:
+  value: Wyczyszczono przebieg
+  description: 'Native diagnostic event: pass cleared.'
+recordEdited:
+  value: Ręcznie zmieniono odczyt
+  description: 'Native diagnostic event: take edited by hand.'
+recordRejected:
+  value: Odrzucono operację na odczytach
+  description: 'Native diagnostic event: rejected a record request.'
+reportWritten:
+  value: Zapisano raport strojenia
+  description: 'Native diagnostic event: tuning report written.'
+reportOpened:
+  value: Przekazano raport strojenia do przeglądarki
+  description: 'Native diagnostic event: tuning report handed to the browser.'
+reportFailed:
+  value: Nie udało się zapisać raportu strojenia
+  description: 'Native diagnostic event: failed to write the tuning report.'
+reportOpenFailed:
+  value: Nie udało się otworzyć raportu strojenia
+  description: 'Native diagnostic event: failed to open the tuning report.'
+reportRejected:
+  value: Odrzucono żądanie raportu
+  description: 'Native diagnostic event: rejected a report request.'
+secondInstance:
+  value: Uruchomiono drugą instancję; pokazano istniejące okno
+  description: 'Native diagnostic event: second instance launched, focusing existing window.'
+trayIconFailed:
+  value: Nie udało się wczytać ikony zasobnika
+  description: 'Native diagnostic event: failed to load tray icon.'
+windowStateLoadFailed:
+  value: Nie udało się wczytać położenia i rozmiaru okna
+  description: 'Native diagnostic event: failed to load window state.'
+windowStateSaveFailed:
+  value: Nie udało się zapisać położenia i rozmiaru okna
+  description: 'Native diagnostic event: failed to save window state.'
+runFailed:
+  value: Błąd działania aplikacji
+  description: 'Native diagnostic event: application run failed.'
+frontendError:
+  value: Nieoczekiwany błąd aplikacji
+  description: Unhandled frontend failure forwarded to the native logger.
+frontendRejection:
+  value: Operacja aplikacji nie powiodła się
+  description: Unhandled frontend failure forwarded to the native logger.
+micBlocksDropped:
+  value: Odbiorca nie nadąża za mikrofonem; pomijanie bloków
+  description: 'Audio diagnostic: mic consumer stalled, dropping blocks.'
+micDeviceLost:
+  value: Urządzenie wejściowe nieoczekiwanie zatrzymało przechwytywanie
+  description: 'Audio diagnostic: capture device stopped unexpectedly.'
+deviceStoreFailed:
+  value: Nie udało się zapisać ustawień urządzenia wejściowego
+  description: 'Audio diagnostic: failed to store a capture device''s settings.'
+calibrationStarted:
+  value: Rozpoczęto kalibrację karty dźwiękowej
+  description: 'Audio diagnostic: sound card calibration started.'
+calibrationFinished:
+  value: Zakończono kalibrację karty dźwiękowej
+  description: 'Audio diagnostic: sound card calibration finished.'
+calibrationAbandoned:
+  value: Anulowano kalibrację karty dźwiękowej
+  description: 'Audio diagnostic: sound card calibration abandoned.'
+calibrationNoDevice:
+  value: Nie udało się otworzyć urządzenia do kalibracji
+  description: 'Audio diagnostic: sound card calibration could not open the device.'
+volumeUnavailable:
+  value: Automatyczna regulacja nie ma dostępu do poziomu wejściowego urządzenia
+  description: 'Audio diagnostic: automatic volume cannot reach the device''s input level.'
+volumeStepFailed:
+  value: Nie udało się zmienić poziomu wejściowego
+  description: 'Audio diagnostic: automatic volume could not set the input level.'
+volumeRestore:
+  value: Nie udało się przywrócić poziomu wejściowego
+  description: 'Audio diagnostic: automatic volume could not restore the input level.'
+frontendConfigSaveFailed:
+  value: Nie udało się zapisać konfiguracji
+  description: 'Frontend diagnostic: Could not save configuration.'
+frontendConfigLoaded:
+  value: Wczytano konfigurację
+  description: 'Frontend diagnostic: Configuration loaded.'
+frontendConfigLoadFailed:
+  value: Nie udało się wczytać konfiguracji
+  description: 'Frontend diagnostic: Could not load configuration.'
+frontendTunerStateFailed:
+  value: Nie udało się odczytać stanu tunera
+  description: 'Frontend diagnostic: Could not read tuner state.'
+frontendTunerStartFailed:
+  value: Nie udało się uruchomić tunera
+  description: 'Frontend diagnostic: Could not start the tuner.'
+frontendTunerStopFailed:
+  value: Nie udało się zatrzymać tunera
+  description: 'Frontend diagnostic: Could not stop the tuner.'
+frontendTunerTonePlayFailed:
+  value: Nie udało się odtworzyć dźwięku wzorcowego
+  description: 'Frontend diagnostic: Could not play the reference tone.'
+frontendTunerToneStopFailed:
+  value: Nie udało się zatrzymać dźwięku wzorcowego
+  description: 'Frontend diagnostic: Could not stop the reference tone.'
+frontendAudioCorrectionFailed:
+  value: Nie udało się odczytać korekcji karty dźwiękowej
+  description: 'Frontend diagnostic: Could not read sound card correction.'
+frontendAudioStateFailed:
+  value: Nie udało się odczytać stanu urządzenia dźwiękowego
+  description: 'Frontend diagnostic: Could not read audio device state.'
+frontendAudioCalibrationFailed:
+  value: Nie udało się rozpocząć kalibracji
+  description: 'Frontend diagnostic: Could not start calibration.'
+frontendAudioCalibrationCancelFailed:
+  value: Nie udało się anulować kalibracji
+  description: 'Frontend diagnostic: Could not cancel calibration.'
+frontendAudioVolumeFailed:
+  value: Nie udało się zmienić ustawienia automatycznej regulacji poziomu
+  description: 'Frontend diagnostic: Could not change automatic volume control.'
+frontendAudioListFailed:
+  value: Nie udało się odczytać listy urządzeń dźwiękowych
+  description: 'Frontend diagnostic: Could not list audio devices.'
+frontendAudioSelectFailed:
+  value: Nie udało się wybrać źródła dźwięku
+  description: 'Frontend diagnostic: Could not select audio source.'
+frontendAudioDialogFailed:
+  value: Nie udało się otworzyć okna wyboru pliku
+  description: 'Frontend diagnostic: Could not open the file dialog.'
+frontendCurveViewFailed:
+  value: Nie udało się odczytać ustawień widoku krzywej
+  description: 'Frontend diagnostic: Could not read curve view settings.'
+frontendSettingFailed:
+  value: Nie udało się zmienić ustawienia tunera
+  description: Tuner setting command failed; setting identifier remains a structured log field.
+frontendResizeNotice:
+  value: 'Zmiana układu odłożona do następnej klatki (komunikat ResizeObserver przeglądarki)'
+  description: A benign browser notice kept out of the error log; logged once at debug level.

@@ -1,0 +1,52 @@
+clearSelection:
+  value: Select the whole recording
+  description: 'file actions: clearSelection.'
+fit:
+  value: Show the whole recording
+  description: 'file actions: fit.'
+loop:
+  value: Loop the selection
+  description: 'file actions: loop.'
+mute:
+  value: Mute the recording
+  description: 'file actions: mute.'
+openFilter:
+  value: WAV audio
+  description: 'file actions: openFilter.'
+openTitle:
+  value: Select a WAV recording
+  description: 'file actions: openTitle.'
+pause:
+  value: Pause
+  description: 'file actions: pause.'
+play:
+  value: Play
+  description: 'file actions: play.'
+stop:
+  value: Stop, and go back to the start of the selection
+  description: 'file actions: stop.'
+toEnd:
+  value: To the end of the selection
+  description: 'file actions: toEnd.'
+toStart:
+  value: To the start of the selection
+  description: 'file actions: toStart.'
+unmute:
+  value: Play the recording aloud
+  description: 'file actions: unmute.'
+volume:
+  value: Playback volume
+  description: 'file actions: volume.'
+waveform:
+  value: Waveform of {name}. Drag the timeline to move the playhead, drag the trace to select a fragment. When playback
+    stops, a pale dashed line marks the audio the reading on screen was measured from.
+  description: 'file actions: waveform. Parameters: name.'
+  placeholders:
+    name:
+      type: string
+zoomIn:
+  value: Zoom in
+  description: 'file actions: zoomIn.'
+zoomOut:
+  value: Zoom out
+  description: 'file actions: zoomOut.'

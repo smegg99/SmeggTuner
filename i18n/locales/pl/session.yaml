@@ -1,0 +1,230 @@
+accordion.a4Locked:
+  value: 'Zablokowane: sesja ma już odczyty zmierzone względem tej wysokości.'
+  description: 'session management: accordion.a4Locked.'
+accordion.columnsRefused:
+  value: Ta zmiana naruszyłaby układ głosów używany przez istniejące odczyty. Nie zapisano zmiany. Przywróć poprzedni
+    układ lub utwórz nową sesję.
+  description: 'session management: accordion.columnsRefused.'
+accordion.frozen:
+  value: Po zapisaniu odczytów nie można zmienić stroju odniesienia ani układu głosów. Nadal możesz dodawać rejestry
+    korzystające z istniejących głosów.
+  description: 'session management: accordion.frozen.'
+accordion.remember:
+  value: Zapisz w bibliotece instrumentów
+  description: 'session management: accordion.remember.'
+accordion.rememberHint:
+  value: Zapisz instrument z tej sesji w bibliotece, aby użyć go w kolejnych sesjach.
+  description: 'session management: accordion.rememberHint.'
+card.a4:
+  value: A = {hz} Hz
+  description: 'session management: card.a4. Parameters: hz.'
+  placeholders:
+    hz:
+      type: string
+card.changed:
+  value: Akordeon na półce zmienił się od nagrania tej sesji.
+  description: 'session management: card.changed.'
+card.hasCurve:
+  value: Krzywa docelowa ustawiona
+  description: 'session management: card.hasCurve.'
+card.readings:
+  plural:
+    argument: count
+    forms:
+      one: '{count} odczyt'
+      few: '{count} odczyty'
+      many: '{count} odczytów'
+      other: '{count} odczytów'
+  description: 'session management: card.readings. Parameters: count.'
+  placeholders:
+    count:
+      type: integer
+card.unnamedInstrument:
+  value: Akordeon bez nazwy
+  description: 'session management: card.unnamedInstrument.'
+card.updated:
+  value: Zmieniono {when}
+  description: 'session management: card.updated. Parameters: when.'
+  placeholders:
+    when:
+      type: string
+delete:
+  value: Usuń
+  description: 'session management: delete.'
+deleteHint:
+  value: Trwale usuń tę sesję wraz ze wszystkimi przebiegami, odczytami i krzywą strojenia.
+  description: 'session management: deleteHint.'
+deleteTitle:
+  value: Usunąć tę sesję?
+  description: 'session management: deleteTitle.'
+dialog.backToList:
+  value: Wybierz już strojony
+  description: 'session management: dialog.backToList.'
+dialog.describeNew:
+  value: Opisz nowy...
+  description: 'session management: dialog.describeNew.'
+dialog.forgetAccordion:
+  value: Zapomnij ten akordeon
+  description: 'session management: dialog.forgetAccordion.'
+dialog.instrument:
+  value: Akordeon
+  description: 'session management: dialog.instrument.'
+dialog.loadAccordion:
+  value: Wczytaj z pliku...
+  description: 'session management: dialog.loadAccordion.'
+dialog.name:
+  value: Nazwa sesji
+  description: 'session management: dialog.name.'
+dialog.nameHint:
+  value: Wpisz nazwę instrumentu lub klienta, aby rozpoznać sesję.
+  description: 'session management: dialog.nameHint.'
+dialog.newTitle:
+  value: Nowa sesja
+  description: 'session management: dialog.newTitle.'
+dialog.pickAccordion:
+  value: Który akordeon?
+  description: 'session management: dialog.pickAccordion.'
+dialog.start:
+  value: Zacznij
+  description: 'session management: dialog.start.'
+empty:
+  value: Brak sesji
+  description: 'session management: empty.'
+emptyHint:
+  value: Utwórz sesję, aby zapisywać pomiary, lub używaj tunera bez sesji.
+  description: 'session management: emptyHint.'
+error.fitFailed:
+  value: Nie udało się dopasować krzywej do tego przebiegu.
+  description: 'session management: error.fitFailed.'
+error.hasReadings:
+  value: 'Ta sesja ma już odczyty: wszystkie zmierzono względem jej odniesienia i liczby głosów, więc żadnego z
+    nich nie da się teraz zmienić.'
+  description: 'session management: error.hasReadings.'
+error.imageUnreadable:
+  value: Nie udało się otworzyć tego zdjęcia.
+  description: 'session management: error.imageUnreadable.'
+error.instrumentName:
+  value: Nadaj akordeonowi nazwę, żeby go potem znaleźć.
+  description: 'session management: error.instrumentName.'
+error.invalidA4:
+  value: Wysokość odniesienia musi mieścić się w zakresie 430-450 Hz.
+  description: 'session management: error.invalidA4.'
+error.invalidInstrument:
+  value: 'Tego akordeonu nie można użyć: chór głosowy nazwany dwa razy albo rejestr używa chóru, którego akordeon
+    nie ma.'
+  description: 'session management: error.invalidInstrument.'
+error.invalidName:
+  value: Nadaj sesji nazwę.
+  description: 'session management: error.invalidName.'
+error.invalidNote:
+  value: Ten dźwięk jest poza zakresem tunera.
+  description: 'session management: error.invalidNote.'
+error.invalidReed:
+  value: Ten akordeon nie ma takiego głosu.
+  description: 'session management: error.invalidReed.'
+error.invalidReedCount:
+  value: Akordeon gra od 1 do 8 głosów na jednym dźwięku.
+  description: 'session management: error.invalidReedCount.'
+error.invalidTranspose:
+  value: Transpozycja wynosi od 0 do 11 półtonów.
+  description: 'session management: error.invalidTranspose.'
+error.invalidUnit:
+  value: Wartości podaje się w jednostkach 0,06 %, w centach albo w hercach.
+  description: 'session management: error.invalidUnit.'
+error.invalidValue:
+  value: To nie jest liczba.
+  description: 'session management: error.invalidValue.'
+error.loadFailed:
+  value: Nie udało się odczytać sesji.
+  description: 'session management: error.loadFailed.'
+error.noBassMachine:
+  value: Ten akordeon nie deklaruje basów.
+  description: 'session management: error.noBassMachine.'
+error.noBassRegister:
+  value: Akordeon nie ma takiego rejestru basowego.
+  description: 'session management: error.noBassRegister.'
+error.noCurve:
+  value: Ta sesja nie ma krzywej docelowej.
+  description: 'session management: error.noCurve.'
+error.noReadings:
+  value: W tej sesji nic jeszcze nie nagrano.
+  description: 'session management: error.noReadings.'
+error.noRegister:
+  value: Ten akordeon nie ma takiego rejestru.
+  description: 'session management: error.noRegister.'
+error.noSession:
+  value: Żadna sesja nie jest otwarta.
+  description: 'session management: error.noSession.'
+error.notAnImage:
+  value: Ten plik nie jest zdjęciem.
+  description: 'session management: error.notAnImage.'
+error.notFound:
+  value: Nie ma takiej sesji.
+  description: 'session management: error.notFound.'
+error.notesTooLong:
+  value: Skróć notatkę do 500 znaków.
+  description: 'session management: error.notesTooLong.'
+error.saveFailed:
+  value: Nie udało się zapisać sesji. Jeśli teraz zamkniesz, ostatnie nagrania mogą przepaść.
+  description: 'session management: error.saveFailed.'
+error.takeNotFound:
+  value: Nie ma już tego odczytu.
+  description: 'session management: error.takeNotFound.'
+error.unexpected:
+  value: Coś poszło nie tak.
+  description: 'session management: error.unexpected.'
+export:
+  value: Eksportuj sesję
+  description: 'session management: export.'
+file.exportSessionTitle:
+  value: Eksportuj sesję
+  description: 'session management: file.exportSessionTitle.'
+file.openFilter:
+  value: sesja smeggtuner
+  description: 'session management: file.openFilter.'
+file.openTitle:
+  value: Wybierz plik sesji
+  description: 'session management: file.openTitle.'
+footer.coverage:
+  value: '{done} / {total} dźwięków'
+  description: 'session management: footer.coverage. Parameters: done, total.'
+  placeholders:
+    done:
+      type: string
+    total:
+      type: string
+footer.inTune:
+  value: '{done} / {total} nastrojonych'
+  description: 'session management: footer.inTune. Parameters: done, total.'
+  placeholders:
+    done:
+      type: string
+    total:
+      type: string
+footer.none:
+  value: Brak sesji
+  description: 'session management: footer.none.'
+new:
+  value: Nowa sesja
+  description: 'session management: new.'
+readings.empty:
+  value: Włącz nagrywanie, a następnie graj dźwięki, aby zapisać odczyty.
+  description: 'session management: readings.empty.'
+readings.notes:
+  plural:
+    argument: n
+    forms:
+      one: jeden dźwięk
+      few: '{n} dźwięki'
+      many: '{n} dźwięków'
+      other: '{n} dźwięków'
+  description: 'session management: readings.notes. Parameters: n.'
+  placeholders:
+    n:
+      type: integer
+title:
+  value: Sesje
+  description: 'session management: title.'
+accordion.frozenShort:
+  value: Głosy zablokowane
+  description: Compact trigger explaining why recorded ranks cannot change.

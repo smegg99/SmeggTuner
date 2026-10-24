@@ -1,0 +1,241 @@
+error.invalidDate:
+  value: Wpisz prawidłową datę w formacie RRRR-MM-DD.
+  description: 'tuning report and export: error.invalidDate.'
+error.invalidFormat:
+  value: W tym formacie raportu nie da się zapisać.
+  description: 'tuning report and export: error.invalidFormat.'
+error.noBrowser:
+  value: PDF składa przeglądarka, a na tym komputerze nie ma Chrome ani Chromium. Zainstaluj jedną z nich albo wyeksportuj
+    kartę jako HTML i wydrukuj ją.
+  description: 'tuning report and export: error.noBrowser.'
+error.openFailed:
+  value: Raport został zapisany, ale żadna przeglądarka go nie otworzyła. Otwórz plik samodzielnie.
+  description: 'tuning report and export: error.openFailed.'
+error.renderFailed:
+  value: Nie udało się zbudować raportu. Nic nie zostało zapisane.
+  description: 'tuning report and export: error.renderFailed.'
+error.writeFailed:
+  value: Nie udało się zapisać raportu w tym miejscu. Poprzedni plik, jeśli był, pozostał nietknięty.
+  description: 'tuning report and export: error.writeFailed.'
+facts.curve:
+  value: Krzywa docelowa
+  description: 'tuning report and export: facts.curve.'
+facts.curveNone:
+  value: brak
+  description: 'tuning report and export: facts.curveNone.'
+facts.curveUnnamed:
+  value: bez nazwy
+  description: 'tuning report and export: facts.curveUnnamed.'
+facts.empty:
+  value: '-'
+  description: 'tuning report and export: facts.empty.'
+facts.instrument:
+  value: Akordeon
+  description: 'tuning report and export: facts.instrument.'
+facts.reference:
+  value: Odniesienie A4 (ten przebieg)
+  description: 'tuning report and export: facts.reference.'
+facts.tolerance:
+  value: Tolerancja
+  description: 'tuning report and export: facts.tolerance.'
+facts.toleranceValue:
+  value: '{reed} {unit} na głosie / {beat} {unit} na dudnieniu'
+  description: 'tuning report and export: facts.toleranceValue. Parameters: beat, reed, unit.'
+  placeholders:
+    beat:
+      type: string
+    reed:
+      type: string
+    unit:
+      type: string
+facts.transpose:
+  value: Transpozycja
+  description: 'tuning report and export: facts.transpose.'
+facts.transposeValue:
+  value: '{key} brzmi jako {sounds}'
+  description: 'tuning report and export: facts.transposeValue. Parameters: key, sounds.'
+  placeholders:
+    key:
+      type: string
+    sounds:
+      type: string
+footer.generated:
+  value: Wygenerowano {at} przez {app}
+  description: 'tuning report and export: footer.generated. Parameters: app, at.'
+  placeholders:
+    app:
+      type: string
+    at:
+      type: string
+graph.edited:
+  value: '{mark} - edytowane ręcznie.'
+  description: 'tuning report and export: graph.edited. Parameters: mark.'
+  placeholders:
+    mark:
+      type: string
+head.beat:
+  value: Dud. {pair}
+  description: 'tuning report and export: head.beat. Parameters: pair.'
+  placeholders:
+    pair:
+      type: string
+head.reed:
+  value: Głos {index}
+  description: Report column heading; index is the one-based reed number.
+  placeholders:
+    index:
+      type: integer
+legend.error.cents:
+  value: Piłuj w stronę zera. Centy od skali równomiernie temperowanej przy {a4} Hz.
+  description: 'tuning report and export: legend.error.cents. Parameters: a4.'
+  placeholders:
+    a4:
+      type: string
+legend.error.key:
+  value: Poprawka = Jest - Cel.
+  description: 'tuning report and export: legend.error.key.'
+legend.error.noCurve:
+  value: 'Brak krzywej docelowej: Cel to zero, Poprawka to odchyłka od skali.'
+  description: 'tuning report and export: legend.error.noCurve.'
+legend.error.reference:
+  value: Piłuj w stronę zera. Jednostki 0,06 % częstotliwości dźwięku, od skali równomiernie temperowanej przy {a4}
+    Hz.
+  description: 'tuning report and export: legend.error.reference. Parameters: a4.'
+  placeholders:
+    a4:
+      type: string
+legend.out.short:
+  value: poza tolerancją
+  description: 'tuning report and export: legend.out.short.'
+legend.takes.key:
+  value: xN
+  description: 'tuning report and export: legend.takes.key.'
+legend.takes.short:
+  value: nagrane wielokrotnie, pokazano ostatnie
+  description: 'tuning report and export: legend.takes.short.'
+mark.edited:
+  value: R
+  description: 'tuning report and export: mark.edited.'
+mark.out:
+  value: '!'
+  description: 'tuning report and export: mark.out.'
+summary.allIn:
+  value: Wszystko w tolerancji.
+  description: 'tuning report and export: summary.allIn.'
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} dudnienie'
+      few: '{pluralCount} dudnienia'
+      many: '{pluralCount} dudnień'
+      other: '{pluralCount} dudnienia'
+  description: 'tuning report and export: summary.beats. Parameters: pluralCount.'
+  placeholders:
+    pluralCount:
+      type: integer
+summary.line:
+  value: '{notes} (od {min} do {max}), {reeds}, {beats}.'
+  description: 'tuning report and export: summary.line. Parameters: beats, max, min, notes, reeds.'
+  placeholders:
+    beats:
+      type: string
+    max:
+      type: string
+    min:
+      type: string
+    notes:
+      type: string
+    reeds:
+      type: string
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} dźwięk'
+      few: '{pluralCount} dźwięki'
+      many: '{pluralCount} dźwięków'
+      other: '{pluralCount} dźwięku'
+  description: 'tuning report and export: summary.notes. Parameters: pluralCount.'
+  placeholders:
+    pluralCount:
+      type: integer
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} poza tolerancją ({reeds}, {beats}).'
+      few: '{pluralCount} poza tolerancją ({reeds}, {beats}).'
+      many: '{pluralCount} poza tolerancją ({reeds}, {beats}).'
+      other: '{pluralCount} poza tolerancją ({reeds}, {beats}).'
+  description: 'tuning report and export: summary.out. Parameters: beats, pluralCount, reeds.'
+  placeholders:
+    beats:
+      type: string
+    pluralCount:
+      type: integer
+    reeds:
+      type: string
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} odczyt głosu'
+      few: '{pluralCount} odczyty głosów'
+      many: '{pluralCount} odczytów głosów'
+      other: '{pluralCount} odczytu głosów'
+  description: 'tuning report and export: summary.reeds. Parameters: pluralCount.'
+  placeholders:
+    pluralCount:
+      type: integer
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} głos'
+      few: '{pluralCount} głosy'
+      many: '{pluralCount} głosów'
+      other: '{pluralCount} głosu'
+  description: 'tuning report and export: summary.reedsShort. Parameters: pluralCount.'
+  placeholders:
+    pluralCount:
+      type: integer
+table.bassTitle:
+  value: Tabela strojenia basów ({unit})
+  description: 'tuning report and export: table.bassTitle. Parameters: unit.'
+  placeholders:
+    unit:
+      type: string
+table.curr:
+  value: Jest
+  description: 'tuning report and export: table.curr.'
+table.err:
+  value: Popr.
+  description: 'tuning report and export: table.err.'
+table.note:
+  value: Dźwięk
+  description: 'tuning report and export: table.note.'
+table.register:
+  value: Rejestr
+  description: 'tuning report and export: table.register.'
+table.title:
+  value: Tabela strojenia ({unit})
+  description: 'tuning report and export: table.title. Parameters: unit.'
+  placeholders:
+    unit:
+      type: string
+title:
+  value: Raport strojenia
+  description: 'tuning report and export: title.'
+unit.cents.name:
+  value: centy
+  description: 'tuning report and export: unit.cents.name.'
+unit.cents.symbol:
+  value: c
+  description: 'tuning report and export: unit.cents.symbol.'
+unit.reference.name:
+  value: jednostki 0,06 %
+  description: 'tuning report and export: unit.reference.name.'
+unit.reference.symbol:
+  value: j
+  description: 'tuning report and export: unit.reference.symbol.'

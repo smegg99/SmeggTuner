@@ -1,0 +1,44 @@
+accept:
+  value: Zatwierdź
+  description: 'shared controls: accept.'
+back:
+  value: Wstecz
+  description: 'shared controls: back.'
+cancel:
+  value: Anuluj
+  description: 'shared controls: cancel.'
+close:
+  value: Zamknij
+  description: 'shared controls: close.'
+color.hue:
+  value: Barwa
+  description: 'shared controls: color.hue.'
+color.saturation:
+  value: Nasycenie
+  description: 'shared controls: color.saturation.'
+color.value:
+  value: Jasność
+  description: 'shared controls: color.value.'
+delete:
+  value: Usuń
+  description: 'shared controls: delete.'
+'no':
+  value: Nie
+  description: 'shared controls: no.'
+save:
+  value: Zapisz
+  description: 'shared controls: save.'
+website:
+  value: Strona
+  description: 'shared controls: website.'
+'yes':
+  value: Tak
+  description: 'shared controls: yes.'
+
+previous:
+  value: Poprzednia
+  description: Navigate between fixed screen pages.
+
+next:
+  value: Następna
+  description: Navigate between fixed screen pages.

@@ -1,0 +1,21 @@
+description:
+  value: Free and open-source accordion tuner.
+  description: 'native application metadata: description.'
+name:
+  value: SmeggTuner
+  description: 'native application metadata: name.'
+startupFailed.title:
+  value: SmeggTuner could not start
+  description: 'startup failure window: heading, shown when the app cannot start.'
+startupFailed.config:
+  value: 'The settings file does not fit this version of SmeggTuner. Fix the file or delete it, then start SmeggTuner again.'
+  description: 'startup failure window: the settings file failed to load.'
+startupFailed.other:
+  value: 'Fix the cause below, then start SmeggTuner again.'
+  description: 'startup failure window: a failure other than the settings file (logging, database).'
+startupFailed.file:
+  value: 'Settings file: {path}'
+  description: 'startup failure window: the path of the settings file. Parameters: path, the absolute file path.'
+  placeholders:
+    path:
+      type: string
