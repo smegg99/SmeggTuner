@@ -1,7 +1,9 @@
 import { computed, ref } from 'vue'
-import * as SessionService from '~~bindings/smegg.me/smeggtuner/services/session/service.js'
+import * as RecordService from '~~bindings/smegg.me/smeggtuner/backend/services/record/service.js'
+import * as TunerService from '~~bindings/smegg.me/smeggtuner/backend/services/tuner/service.js'
 import { buildBassSteps, buildSteps, isRecorded, isRecordedBass, nextUndone } from '~/composables/calibrationSteps'
 import type { Step } from '~/composables/calibrationSteps'
+import { useCalibrationRange } from '~/composables/calibrationRange'
 import { captureStatus } from '~/composables/calibrationStatus'
 import { useCaptureLatch } from '~/composables/captureLatch'
 import { useRecord } from '~/composables/useRecord'
@@ -9,14 +11,8 @@ import { useSessions } from '~/composables/useSessions'
 import { AUTO_NOTE, useTuner } from '~/composables/useTuner'
 
 export type Stage = 'range' | 'setup' | 'sweep' | 'complete'
-export type RangePhase = 'low' | 'high' | 'done'
 
 const stage = ref<Stage>('range')
-
-const phase = ref<RangePhase>('low')
-const lo = ref(0)
-const hi = ref(0)
-const saving = ref(false)
 
 const register = ref('')
 // The sweep walks one keyboard at a time; a bass sweep steps the twelve buttons instead of keys.
@@ -27,50 +23,12 @@ const stepIndex = ref(0)
 export function useCalibration() {
   const { active } = useSessions()
   const sessions = useSessions()
-  const { setManualNote, state, inputLevel, note, reeds, locked, lockProgress } = useTuner()
+  const { setManualNote, state, inputLevel, note, reeds, lock } = useTuner()
   const record = useRecord()
   const { heard, shown, consume, resetLatch } = useCaptureLatch()
+  const { phase, lo, hi, saving, backwards, resetRange, capture, backRange, saveRange } = useCalibrationRange(heard, consume, resetLatch)
 
   const instrument = computed(() => active.value?.instrument)
-
-  function resetRange() {
-    phase.value = 'low'
-    lo.value = 0
-    hi.value = 0
-    resetLatch()
-  }
-
-  function capture() {
-    if (!heard.value) return
-    if (phase.value === 'low') {
-      lo.value = heard.value
-      phase.value = 'high'
-    }
-    else if (phase.value === 'high') {
-      hi.value = heard.value
-      phase.value = 'done'
-    }
-    consume()
-  }
-
-  const backwards = computed(() => lo.value > 0 && hi.value > 0 && lo.value > hi.value)
-
-  function backRange() {
-    if (phase.value === 'done') phase.value = 'high'
-    else if (phase.value === 'high') phase.value = 'low'
-  }
-
-  async function saveRange(): Promise<boolean> {
-    if (backwards.value || !lo.value || !hi.value) return false
-    saving.value = true
-    try {
-      await SessionService.SetKeyboardRange(lo.value, hi.value)
-      return true
-    }
-    finally {
-      saving.value = false
-    }
-  }
 
   // The range the sweep walks: learned now, or what the instrument already knew.
   const sweepLo = computed(() => lo.value || instrument.value?.lo || 0)
@@ -135,13 +93,28 @@ export function useCalibration() {
   const skip = advance
 
   async function finish() {
-    void setManualNote(AUTO_NOTE)
+    await leave()
     stage.value = 'complete'
   }
 
   // Hand the pinned note back on unmount; re-entry resumes from the readings on disk.
-  function leave() {
-    void setManualNote(AUTO_NOTE)
+  async function leave() {
+    await RecordService.SetArmed(false)
+    await TunerService.StopTone()
+    await TunerService.SetManualNote(AUTO_NOTE)
+  }
+
+  async function back(): Promise<boolean> {
+    if (stage.value === 'sweep' || stage.value === 'complete') {
+      await leave()
+      stage.value = 'setup'
+      return true
+    }
+    if (stage.value === 'range' && phase.value !== 'low') {
+      backRange()
+      return true
+    }
+    return false
   }
 
   // Start over: range if the keyboard is unknown, else the register pick.
@@ -163,20 +136,23 @@ export function useCalibration() {
     stage.value = 'range'
   }
 
-  const status = captureStatus({ stage, heard, reeds, locked, state, inputLevel, note })
+  // Holding means slots sound but the engine shows no lock yet (Lock.Visible), the edge a take is recorded on.
+  const sounding = computed(() => reeds.value.filter(r => r.present))
+  const locked = computed(() => lock.value.visible)
+  const status = captureStatus({ stage, heard, reeds: sounding, locked, state, inputLevel, note })
 
   return {
     instrument,
     stage: computed(() => stage.value),
 
-    phase: computed(() => phase.value),
-    lo: computed(() => lo.value),
-    hi: computed(() => hi.value),
+    phase,
+    lo,
+    hi,
     heard,
     shown,
     liveNote: note,
     backwards,
-    saving: computed(() => saving.value),
+    saving,
     capture,
     backRange,
     saveRange,
@@ -195,9 +171,9 @@ export function useCalibration() {
     finish,
     redoRange,
     leave,
+    back,
 
     status,
-    lockProgress,
     reset,
   }
 }

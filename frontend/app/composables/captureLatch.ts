@@ -1,4 +1,6 @@
+// app/composables/captureLatch.ts
 // Holds the settled reading capturable for a grace window past the lock drop; a consumed lock's tail must not re-arm Capture.
+// The lock is the engine's visible one (Lock.Visible): the same edge the recorder takes a reading on.
 import { computed, effectScope, ref, watch } from 'vue'
 import { useConfigSync } from '~/composables/useConfigSync'
 import { useTuner } from '~/composables/useTuner'
@@ -34,14 +36,15 @@ const scope = effectScope(true)
 let watching = false
 
 export function useCaptureLatch() {
-  const { note, locked } = useTuner()
+  const { note, lock } = useTuner()
+  const locked = computed(() => lock.value.visible)
   const { config } = useConfigSync()
   captureMs = () => config.tuner?.calibration_capture_ms || 2000
 
   if (!watching) {
     watching = true
     scope.run(() => {
-      watch(locked, (isLocked) => {
+      watch(() => lock.value.visible, (isLocked) => {
         if (isLocked) {
           clearGrace()
         }
@@ -50,7 +53,7 @@ export function useCaptureLatch() {
           consumedLock.value = false
         }
       })
-      watch([locked, note], ([isLocked, n]) => {
+      watch([() => lock.value.visible, note], ([isLocked, n]) => {
         if (isLocked && n) lastHeard.value = n
       })
     })
@@ -64,9 +67,9 @@ export function useCaptureLatch() {
   })
   const shown = computed(() => heard.value || lastHeard.value)
 
-  // Mark the lock consumed; the next step waits for a new note.
+  // Only a live lock has a release tail to suppress; consuming grace must not consume the next lock.
   function consume() {
-    consumedLock.value = true
+    consumedLock.value = locked.value
     clearGrace()
   }
 

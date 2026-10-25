@@ -1,4 +1,4 @@
-import type { RowDTO } from '~~bindings/smegg.me/smeggtuner/services/record/models.js'
+import type { RowDTO } from '~~bindings/smegg.me/smeggtuner/backend/services/record/models.js'
 
 export interface Step {
   note: number
