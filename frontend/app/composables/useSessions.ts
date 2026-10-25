@@ -1,9 +1,10 @@
 import { computed } from 'vue'
-import * as SessionService from '~~bindings/smegg.me/smeggtuner/services/session/service.js'
+import * as SessionService from '~~bindings/smegg.me/smeggtuner/backend/services/session/service.js'
 import { active, busy, ensureSubscribed, error, keyOf, list, loading, run } from '~/composables/sessionStore'
 import { useSessionCurve } from '~/composables/sessionCurve'
-import type { SessionDTO } from '~~bindings/smegg.me/smeggtuner/services/session/models.js'
-import type { SessionDraft } from '~/components/session/SessionDialog.vue'
+import { flushEdits } from './pendingEdits'
+import type { SessionDTO } from '~~bindings/smegg.me/smeggtuner/backend/services/session/models.js'
+import type { SessionDraft } from '~/types/session'
 
 export function useSessions() {
   // Native file dialogs have no language of their own: Go is handed the words.
@@ -32,6 +33,7 @@ export function useSessions() {
 
   // Create also opens the session (inline creation on Record); the draft carries the whole instrument.
   async function create(draft: SessionDraft): Promise<SessionDTO | undefined> {
+    if (!await flushEdits()) return undefined
     const created = await run(() => SessionService.Create({
       name: draft.name,
       notes: draft.notes,
@@ -85,11 +87,16 @@ export function useSessions() {
   }
 
   async function open(id: string) {
+    if (!await flushEdits()) return undefined
     return run(() => SessionService.Open(id))
   }
 
   async function close() {
-    return run(() => SessionService.Close())
+    if (!await flushEdits()) return false
+    return await run(async () => {
+      await SessionService.Close()
+      return true
+    }) === true
   }
 
   async function remove(id: string) {
@@ -104,8 +111,11 @@ export function useSessions() {
 
   // The note printed on the card. Allowed with readings present, unlike the reference
   // pitch: the note describes the work, and the work is what produced them.
-  async function setNotes(text: string) {
-    return run(() => SessionService.SetNotes(text))
+  async function setNotes(text: string): Promise<boolean> {
+    return await run(async () => {
+      await SessionService.SetNotes(text)
+      return true
+    }) === true
   }
 
   // Every mutation already schedules a write; this is the explicit flush.

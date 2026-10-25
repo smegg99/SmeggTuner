@@ -1,13 +1,13 @@
 // Leaf module: it never imports the sessions composable.
 import { ref, shallowRef } from 'vue'
 import { Events } from '@wailsio/runtime'
-import type { ActiveDTO, ErrorDTO, SessionDTO } from '~~bindings/smegg.me/smeggtuner/services/session/models.js'
-import type { Summary } from '~~bindings/smegg.me/smeggtuner/core/session/models.js'
+import type { ActiveDTO, ErrorDTO, SessionDTO } from '~~bindings/smegg.me/smeggtuner/backend/services/session/models.js'
+import type { Summary } from '~~bindings/smegg.me/smeggtuner/backend/core/session/models.js'
 
 const EVENT_ACTIVE = 'session:active'
 const EVENT_SAVE_FAILED = 'session:saveFailed'
 
-// Every backend error is an i18n key (services/session/events.go); anything else is a bug.
+// Every backend error is an i18n key (backend/services/session/events.go); anything else is a bug.
 const ERROR_KEY_PATTERN = /(?:session|record)\.error\.[A-Za-z0-9]+/
 const ERROR_UNEXPECTED = 'session.error.unexpected'
 

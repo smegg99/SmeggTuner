@@ -1,8 +1,8 @@
 import { computed, ref, shallowRef } from 'vue'
 import { Events } from '@wailsio/runtime'
-import * as RecordService from '~~bindings/smegg.me/smeggtuner/services/record/service.js'
-import * as SessionService from '~~bindings/smegg.me/smeggtuner/services/session/service.js'
-import type { StateDTO, TableDTO } from '~~bindings/smegg.me/smeggtuner/services/record/models.js'
+import * as RecordService from '~~bindings/smegg.me/smeggtuner/backend/services/record/service.js'
+import * as SessionService from '~~bindings/smegg.me/smeggtuner/backend/services/session/service.js'
+import type { StateDTO, TableDTO } from '~~bindings/smegg.me/smeggtuner/backend/services/record/models.js'
 
 // Holds the tuning table the backend pushes for the open session, plus the technician's edits to it.
 
@@ -58,9 +58,10 @@ export function useRecord() {
     })
   }
 
+  // Without an open session there is no table to read; asking would only fail and log an error.
   async function load() {
     applyState(await RecordService.State())
-    table.value = await run(() => RecordService.Table()) ?? null
+    table.value = sessionId.value ? await run(() => RecordService.Table()) ?? null : null
   }
 
   async function show() {

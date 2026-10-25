@@ -1,5 +1,5 @@
 import { computed, ref, shallowRef } from 'vue'
-import * as SessionService from '~~bindings/smegg.me/smeggtuner/services/session/service.js'
+import * as SessionService from '~~bindings/smegg.me/smeggtuner/backend/services/session/service.js'
 import type { Instrument, InstrumentTemplate } from '~/types/session'
 
 // The instrument library. Starts empty by design: no default instruments ship, so a session is never seeded with a plausible-but-wrong accordion.
@@ -16,7 +16,7 @@ export function useInstruments() {
     loading.value = true
     error.value = ''
     try {
-      list.value = (await SessionService.Instruments()) as unknown as InstrumentTemplate[]
+      list.value = await SessionService.Instruments()
       loaded = true
     }
     catch (err) {
@@ -37,9 +37,9 @@ export function useInstruments() {
     return list.value.find(i => i.id === id)
   }
 
-  // Returns a URL, not image data: embedding base64 over the binding would be megabytes per open. Served by the asset server (services/session/images.go).
+  // Returns a URL, not image data: embedding base64 over the binding would be megabytes per open. Served by the asset server (backend/services/session/images.go).
   function imageOf(i: InstrumentTemplate): string {
-    // The revision in the URL busts the webview cache: a replaced photo at the same src would paint the stale cached copy. See services/session/images.go.
+    // The revision in the URL busts the webview cache: a replaced photo at the same src would paint the stale cached copy. See backend/services/session/images.go.
     return i.hasImage ? `/instruments/${i.id}/image?v=${i.imageRev ?? 0}` : ''
   }
 
@@ -51,9 +51,9 @@ export function useInstruments() {
 
   // Empty id creates a new instrument; an existing id edits it in place.
   async function save(i: InstrumentTemplate) {
-    const saved = await SessionService.SaveInstrumentSpec(i as never)
+    const saved = await SessionService.SaveInstrumentSpec(i)
     await refresh()
-    return saved as unknown as InstrumentTemplate | null
+    return saved
   }
 
   async function remove(id: string) {
@@ -89,7 +89,7 @@ export function useInstruments() {
 
     const added = await SessionService.ImportInstrument(path)
     await refresh()
-    return (added ?? undefined) as unknown as InstrumentTemplate | undefined
+    return added ?? undefined
   }
 
   // exportFile writes a .stif, photograph and all.

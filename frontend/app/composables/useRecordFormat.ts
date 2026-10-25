@@ -1,9 +1,11 @@
 import { EMPTY } from '~/utils/record'
 
-// Central number formatting so every component rounds cents and beats identically.
+// Central number formatting so every component rounds deviations identically.
 
-// Cents to one decimal, beats to two: the engine resolves a beat to ~0.1 Hz.
-const CENT_DIGITS = 1
+// Deviations to one decimal, as the reference prints a reed.
+const DEVIATION_DIGITS = 1
+
+// Beats in hertz to two decimals, as the reference prints a beat box.
 const HZ_DIGITS = 2
 
 export function useRecordFormat() {
@@ -21,10 +23,9 @@ export function useRecordFormat() {
     return value > 0 ? `+${text}` : text
   }
 
-  const cents = (value: number) => fixed(value, CENT_DIGITS)
-  const signedCents = (value: number) => signed(value, CENT_DIGITS)
-  const hertz = (value: number) => fixed(value, HZ_DIGITS)
-  const signedHertz = (value: number) => signed(value, HZ_DIGITS)
+  const deviation = (value: number) => fixed(value, DEVIATION_DIGITS)
+  const signedDeviation = (value: number) => signed(value, DEVIATION_DIGITS)
+  const hz = (value: number) => fixed(value, HZ_DIGITS)
 
   /** Parse a typed number, accepting the locale's comma decimal separator. */
   function parse(text: string): number | null {
@@ -35,5 +36,5 @@ export function useRecordFormat() {
     return Number.isFinite(value) ? value : null
   }
 
-  return { cents, signedCents, hertz, signedHertz, parse, EMPTY }
+  return { deviation, signedDeviation, hz, parse, EMPTY }
 }

@@ -1,6 +1,6 @@
 // Leaf module: never imports the transport composable, so the mirror side can depend on it without a cycle.
 import { reactive } from 'vue'
-import type { TransportDTO } from '~~bindings/smegg.me/smeggtuner/services/audio/models.js'
+import type { TransportDTO } from '~~bindings/smegg.me/smeggtuner/backend/services/audio/models.js'
 
 /** The transport as Go last reported it. Seconds throughout. */
 export const state = reactive<TransportDTO>({

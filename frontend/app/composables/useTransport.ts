@@ -3,8 +3,8 @@ import { Events } from '@wailsio/runtime'
 import { usePlayhead } from '~/composables/usePlayhead'
 import { useTuner } from '~/composables/useTuner'
 import { fit, fitSelection, pan, scrollTo, state, view, zoom } from '~/composables/transportState'
-import * as AudioService from '~~bindings/smegg.me/smeggtuner/services/audio/service.js'
-import type { PeakDTO, TransportDTO } from '~~bindings/smegg.me/smeggtuner/services/audio/models.js'
+import * as AudioService from '~~bindings/smegg.me/smeggtuner/backend/services/audio/service.js'
+import type { PeakDTO, TransportDTO } from '~~bindings/smegg.me/smeggtuner/backend/services/audio/models.js'
 
 // Mirror of Go's file transport (FileSource owns playhead/selection/loop); the zoom window lives in transportState. Every command stores the state Go returns; the view never predicts.
 
@@ -12,6 +12,8 @@ const EVENT_PLAYBACK = 'playback:position'
 
 /** One min/max pair per column, refetched whenever the window or the width changes. */
 const peaks = shallowRef<PeakDTO[]>([])
+const sourceRevision = ref(0)
+let peakRequest = 0
 
 const dragging = ref(false)
 
@@ -32,10 +34,14 @@ function advancingNow(): boolean {
 }
 
 // The only place a Go reply is unpacked, so state never updates with a stale needle.
-function adopt(next: TransportDTO) {
+function adopt(next: TransportDTO, sourceChanged = false) {
   const wasAdvancing = advancingNow()
-  // A different name or length means a different file; compared before the assign overwrites it.
-  const changedFile = next.name !== state.name || next.duration !== state.duration
+  const changedFile = sourceChanged || next.name !== state.name || next.duration !== state.duration || next.available !== state.available
+
+  if (changedFile) {
+    peakRequest++
+    peaks.value = []
+  }
 
   Object.assign(state, next)
 
@@ -44,10 +50,16 @@ function adopt(next: TransportDTO) {
 
   // Fit only on a new file (or first, unset window); a seek/pause/loop/stop reply keeps the zoom.
   if (state.available && (changedFile || view.to <= view.from)) fit()
+  if (changedFile) sourceRevision.value++
 }
 
-async function refreshState() {
-  adopt(await AudioService.Transport())
+async function refreshState(sourceChanged = false) {
+  // Selection can replace samples without changing any display metadata.
+  if (sourceChanged) {
+    peakRequest++
+    peaks.value = []
+  }
+  adopt(await AudioService.Transport(), sourceChanged)
   muted.value = await AudioService.Muted()
   volume.value = await AudioService.Volume()
 }
@@ -124,17 +136,23 @@ export function useTransport() {
   })
 
   const loadPeaks = async (columns: number) => {
+    const request = ++peakRequest
     if (!state.available || columns <= 0) {
       peaks.value = []
       return
     }
-    peaks.value = await AudioService.Peaks(view.from, view.to, Math.round(columns))
+    const { from, to } = view
+    const result = await AudioService.Peaks(from, to, Math.round(columns))
+    if (request === peakRequest && state.available && view.from === from && view.to === to) {
+      peaks.value = result
+    }
   }
 
   return {
     state,
     view,
     peaks,
+    sourceRevision,
     dragging,
     hasSelection,
     muted,

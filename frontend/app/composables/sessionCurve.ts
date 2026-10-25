@@ -1,8 +1,8 @@
 // Split from useSessions; its return is spread back into that composable's API unchanged.
 import { computed } from 'vue'
-import * as SessionService from '~~bindings/smegg.me/smeggtuner/services/session/service.js'
+import * as SessionService from '~~bindings/smegg.me/smeggtuner/backend/services/session/service.js'
 import { active, run } from '~/composables/sessionStore'
-import type { FitDTO } from '~~bindings/smegg.me/smeggtuner/services/session/models.js'
+import type { FitDTO } from '~~bindings/smegg.me/smeggtuner/backend/services/session/models.js'
 
 export function useSessionCurve() {
   const { t } = useI18n()

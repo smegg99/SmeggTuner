@@ -1,5 +1,5 @@
 import { useTransport } from '~/composables/useTransport'
-import * as TunerService from '~~bindings/smegg.me/smeggtuner/services/tuner/service.js'
+import * as TunerService from '~~bindings/smegg.me/smeggtuner/backend/services/tuner/service.js'
 
 // One slider over two backend devices: file playback (services/audio) and the reference tone (services/tuner). Wraps useTransport so the two cannot drift.
 export function useOutputLevel() {

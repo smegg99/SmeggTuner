@@ -1,8 +1,8 @@
 import { ref, shallowRef } from 'vue'
-import * as AudioService from '~~bindings/smegg.me/smeggtuner/services/audio/service.js'
-import * as TunerService from '~~bindings/smegg.me/smeggtuner/services/tuner/service.js'
-import { SourceKind } from '~~bindings/smegg.me/smeggtuner/services/audio/models.js'
-import type { DeviceDTO, SourceDTO } from '~~bindings/smegg.me/smeggtuner/services/audio/models.js'
+import * as AudioService from '~~bindings/smegg.me/smeggtuner/backend/services/audio/service.js'
+import * as TunerService from '~~bindings/smegg.me/smeggtuner/backend/services/tuner/service.js'
+import { SourceKind } from '~~bindings/smegg.me/smeggtuner/backend/services/audio/models.js'
+import type { DeviceDTO, SourceDTO } from '~~bindings/smegg.me/smeggtuner/backend/services/audio/models.js'
 import { toErrorKey, useTuner } from '~/composables/useTuner'
 import { useTransport } from '~/composables/useTransport'
 
@@ -63,7 +63,7 @@ async function refresh(log: Logger) {
 
     devices.value = []
     error.value = toErrorKey(err)
-    log.error('audio: failed to list devices', { error: String(err) })
+    log.error('log.frontendAudioListFailed', { error: String(err) })
   }
   finally {
     if (seq === refreshSeq) loading.value = false
@@ -83,8 +83,8 @@ async function select(call: () => Promise<void>, log: Logger) {
     // Clear every reading: it was all measured from the replaced source and would otherwise read as the new one.
     useTuner().clearReading()
 
-    // Single choke point for source changes; ask Go whether a transport exists rather than inferring it from the path.
-    await useTransport().refresh()
+    // A successful selection replaces samples even when the filename and duration match.
+    await useTransport().refresh(true)
 
     if (await TunerService.IsRunning()) {
       await TunerService.Restart()
@@ -92,7 +92,7 @@ async function select(call: () => Promise<void>, log: Logger) {
   }
   catch (err) {
     error.value = toErrorKey(err)
-    log.error('audio: failed to select source', { error: String(err) })
+    log.error('log.frontendAudioSelectFailed', { error: String(err) })
   }
   finally {
     loading.value = false
@@ -113,7 +113,7 @@ async function pickFile(log: Logger, words: DialogWords) {
   }
   catch (err) {
     error.value = toErrorKey(err)
-    log.error('audio: file dialog failed', { error: String(err) })
+    log.error('log.frontendAudioDialogFailed', { error: String(err) })
     return
   }
 

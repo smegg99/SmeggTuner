@@ -1,5 +1,5 @@
 import { computed } from 'vue'
-import * as SessionService from '~~bindings/smegg.me/smeggtuner/services/session/service.js'
+import * as SessionService from '~~bindings/smegg.me/smeggtuner/backend/services/session/service.js'
 import { useInstruments } from '~/composables/useInstruments'
 import { useSessions } from '~/composables/useSessions'
 import type { InstrumentTemplate } from '~/types/session'
@@ -24,7 +24,7 @@ export function useSessionAccordion() {
       id: '',
       name: s.instrument?.name ?? '',
       hasImage: false,
-      instrument: (s.instrument ?? { serial: '', reedCount: 1 }) as InstrumentTemplate['instrument'],
+      instrument: s.instrument,
     }
   })
 

@@ -1,9 +1,9 @@
 import { ref } from 'vue'
-import * as ReportService from '~~bindings/smegg.me/smeggtuner/services/report/service.js'
-import type { OptionsDTO } from '~~bindings/smegg.me/smeggtuner/services/report/models.js'
+import * as ReportService from '~~bindings/smegg.me/smeggtuner/backend/services/report/service.js'
+import type { OptionsDTO } from '~~bindings/smegg.me/smeggtuner/backend/services/report/models.js'
 import type { ReportOptions } from '~/types/record'
 
-// Thin wrapper: the backend builds the card, shows the save dialog and writes the file. A cancelled save returns an empty path (not an error), so exportSession reports success only when a file was written.
+// Android PDF uses the system print UI; file exports return a path after writing.
 
 const ERROR_KEY_PATTERN = /(?:session|report)\.error\.[A-Za-z0-9]+/
 const ERROR_UNEXPECTED = 'report.error.renderFailed'
@@ -17,13 +17,13 @@ function keyOf(err: unknown): string {
 }
 
 export function useReport() {
-  /** Export the card (pdf/html/csv). True only when a file was written; false on cancel or failure, with `error` set. */
+  /** Close the report dialog after a file is written or Android accepts the print job. */
   async function exportSession(opts: ReportOptions): Promise<boolean> {
     busy.value = true
     error.value = ''
     try {
       const res = await ReportService.Export(opts as unknown as OptionsDTO)
-      return Boolean(res?.path)
+      return Boolean(res?.path || res?.printing)
     }
     catch (err) {
       error.value = keyOf(err)

@@ -1,25 +1,40 @@
+// app/composables/useShortcuts.ts
 import { onBeforeUnmount, onMounted } from 'vue'
-import { useNoteSounds } from '~/composables/useNoteSounds'
+import { useAudioDevices } from '~/composables/useAudioDevices'
+import { useTransport } from '~/composables/useTransport'
+import { useFileRun } from '~/composables/useFileRun'
+import { useOutputLevel } from '~/composables/useOutputLevel'
 import { useRecord } from '~/composables/useRecord'
 import { useShell } from '~/composables/useShell'
-import { AUTO_NOTE, NOTE_MAX, NOTE_MIN, useTuner } from '~/composables/useTuner'
+import { AUTO_NOTE, useTuner } from '~/composables/useTuner'
+import { shortcutFor } from '~/utils/shortcuts'
+import { WORKSHOP } from '~/utils/features'
+import type { View } from '~/composables/useShell'
 
-// Global keys; must not collide with keys owned elsewhere: FileTransport (space/home/end/L/M/F/S/zoom, only while a file is open), RecordControls (Enter/Backspace), the curve canvas (arrows).
+// The rooms 1, 2 and 3 open, in tab order; without the workshop, 2 is Settings.
+const ROOMS: View[] = WORKSHOP ? ['tune', 'workshop', 'settings'] : ['tune', 'settings']
 
-/** Default pinned note (A4) when the detector has nothing to hand over. */
-const DEFAULT_PIN = 69
+// The shell owns global keys once, including transport keys shared by both tuning rooms.
 
-/** A key pressed into a field is text, not a command. */
-function typing(target: EventTarget | null): boolean {
-  const el = target as HTMLElement | null
-  return Boolean(el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable))
+function controlOwnsKey(event: KeyboardEvent): boolean {
+  const el = event.target
+  if (!(el instanceof HTMLElement)) return false
+  if (el.isContentEditable || el.closest('input, textarea, select, [contenteditable="true"]')) return true
+  const control = el.closest('button, a[href], [role="button"], [role="slider"], [role="tab"]')
+  return Boolean(control && ['Enter', ' ', 'Home', 'End', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key))
 }
 
 export function useShortcuts() {
-  const { setView } = useShell()
-  const { note, manualNote, setManualNote, frozen, setFrozen, canFreeze } = useTuner()
-  const { enabled: sounds } = useNoteSounds()
-  const { sessionId, armed, readings, toggleRecording, undo } = useRecord()
+  const { view, setView } = useShell()
+  const { manualNote, setAuto, stepNote, frozen, setFrozen, canFreeze, takeNow } = useTuner()
+  const { playPause } = useFileRun()
+  const { sessionId, armed, readings, recording, toggleRecording, undo } = useRecord()
+  const { current } = useAudioDevices()
+
+  const transport = useTransport()
+  const { muted, setMuted } = useOutputLevel()
+
+  const manual = () => manualNote.value !== AUTO_NOTE
 
   // Needs a session, else the key would silently do nothing; the engine runs its own warm-up once armed.
   function toggleRecord() {
@@ -27,43 +42,65 @@ export function useShortcuts() {
     toggleRecording(!armed.value)
   }
 
+  // Removes the take captured last; with none left it leaves record mode (services/record.Undo).
   function undoTake() {
-    if (!sessionId.value || !readings.value) return
+    if (!sessionId.value || (!readings.value && !armed.value)) return
     void undo()
   }
 
-  function step(delta: number) {
-    if (manualNote.value === AUTO_NOTE) return // auto: the detector owns the note, not the keys
-    void setManualNote(Math.min(NOTE_MAX, Math.max(NOTE_MIN, manualNote.value + delta)))
+  function freeze() {
+    if (canFreeze.value) void setFrozen(!frozen.value)
   }
 
-  // Switching to manual pins whatever the detector is currently on.
-  function toggleManual() {
-    const manual = manualNote.value !== AUTO_NOTE
-    void setManualNote(manual ? AUTO_NOTE : (note.value || DEFAULT_PIN))
+  const actions: Record<string, () => void> = {
+    rooms1: () => setView(ROOMS[0]!),
+    rooms2: () => setView(ROOMS[1]!),
+    rooms3: () => { if (ROOMS[2]) void setView(ROOMS[2]) },
+    manual: () => void setAuto(manual()),
+    freeze,
+    record: toggleRecord,
+    undo: undoTake,
+    noteDown: () => { if (manual()) void stepNote(-1) },
+    noteUp: () => { if (manual()) void stepNote(1) },
+    takeNow: () => { if (recording.value) void takeNow() },
+  }
+
+  const centre = () => (transport.view.from + transport.view.to) / 2
+  const fileActions: Record<string, () => void> = {
+    ' ': () => void playPause(),
+    'Home': () => void transport.seek(transport.state.from),
+    'End': () => void transport.seek(transport.state.to),
+    'l': () => void transport.setLoop(!transport.state.loop),
+    'm': () => void setMuted(!muted.value),
+    'f': () => transport.fit(),
+    's': () => transport.fitSelection(),
+    '+': () => transport.zoom(0.5, centre()),
+    '=': () => transport.zoom(0.5, centre()),
+    '-': () => transport.zoom(2, centre()),
   }
 
   function onKey(event: KeyboardEvent) {
     // A modified key belongs to the desktop, not to us.
-    if (event.ctrlKey || event.metaKey || event.altKey) return
-    if (typing(event.target)) return
+    if (event.defaultPrevented || event.isComposing || event.ctrlKey || event.metaKey || event.altKey) return
+    if (controlOwnsKey(event)) return
+    if (document.querySelector('.v-overlay--active:not(.v-tooltip)')) return
 
-    const keys: Record<string, () => void> = {
-      '1': () => setView('tune'),
-      '2': () => setView('workshop'),
-      '3': () => setView('settings'),
-      'a': toggleManual,
-      'n': () => { sounds.value = !sounds.value },
-      // Freeze needs a reading on screen to hold (including one a stopped run left).
-      'h': () => { if (canFreeze.value) void setFrozen(!frozen.value) },
-      'r': toggleRecord,
-      'z': undoTake,
-      ',': () => step(-1),
-      '.': () => step(1),
+    const file = current.value.kind === 'file'
+    if (file && transport.state.available && (view.value === 'tune' || view.value === 'calibrate')) {
+      const key = event.key.length === 1 ? event.key.toLowerCase() : event.key
+      const run = fileActions[key]
+      if (run) {
+        if (event.repeat && !['+', '=', '-'].includes(key)) return
+        event.preventDefault()
+        run()
+        return
+      }
     }
 
-    const run = keys[event.key.length === 1 ? event.key.toLowerCase() : event.key]
+    const action = shortcutFor(event.key, { tune: view.value === 'tune', file })
+    const run = action && actions[action]
     if (!run) return
+    if (event.repeat && action !== 'noteDown' && action !== 'noteUp') return
 
     event.preventDefault()
     run()

@@ -1,136 +1,94 @@
-import { computed, effectScope, onMounted, shallowRef, watch } from 'vue'
-import type { Ref } from 'vue'
-import * as ThemeService from '~~bindings/github.com/smegg99/s99wails/services/theme/service.js'
-import { Info as ThemeInfo } from '~~bindings/github.com/smegg99/s99wails/accent/models.js'
-import { useTheme } from 'vuetify'
-import { useSystemTheme, type SystemThemeInfo } from '~/composables/s99wails'
-import { accentMode, resolveThemeName, themeMode } from '~/types/config'
-import { TOKENS } from '~/theme/tokens'
-import { resolveDesktopTheme, type DesktopTheme } from '~/composables/s99wails/resolveDesktopTheme'
+// app/composables/useThemeSync.ts
+import { computed, onMounted, onScopeDispose, watch } from 'vue'
+import { useLocale, useTheme } from 'vuetify'
+import { registerAppearanceSource, resetAppearanceSource, useAppearance } from '@smegg99/s99ab/appearance'
+import { themeState } from '@smegg99/s99ab/theme'
+import * as ThemeService from '~~bindings/github.com/smegg99/s99wails/v2/services/theme/service.js'
+import { resolveDesktopTheme, useSystemTheme, type SystemThemeInfo } from '~/composables/s99wails'
+import { applyInstrumentTheme, TOKENS } from '~/theme/tokens'
+import { accentMode, themeMode } from '~/types/config'
+import { WEB, WEB_ACCENT } from '~/utils/features'
 import type { LocaleCode } from '~/types/locale'
 import type { AccentMode, ThemeMode } from '~/types/config'
 
-// useSystemTheme registers a listener per call and five components use this, so it is consumed once in start() and mirrored into a module ref (also giving dark_mode a value before start() runs).
+// Called once by the root so the native listener and shared appearance have one owner.
+export function initializeThemeSync() {
+  const { config } = useConfigSync()
+  const { locale, setLocale } = useI18n()
+  const vuetifyLocale = useLocale()
+  watch(locale, (code) => {
+    vuetifyLocale.current.value = code
+  }, { immediate: true })
+  const log = useLogger()
+  const { theme } = useSystemTheme({
+    getTheme: async (): Promise<SystemThemeInfo> => {
+      try {
+        const info = await ThemeService.GetTheme()
+        return { ...info, scheme: info.scheme || 'no-preference' }
+      }
+      catch (error) {
+        log.error('log.frontendError', { error: String(error) })
+        return { accent_color: '', dark_mode: false, scheme: 'no-preference', accent_watch_supported: false }
+      }
+    },
+  })
 
-const systemTheme = shallowRef<SystemThemeInfo | null>(null)
-const darkMode = computed(() => systemTheme.value?.dark_mode ?? false)
-const scope = effectScope(true)
+  registerAppearanceSource({
+    dark: () => theme.value?.dark_mode,
+  })
+  onScopeDispose(resetAppearanceSource)
+  const appearance = useAppearance(() => ({ theme: 'smeggtuner.theme' }))
+  const vuetify = useTheme()
+  const desktop = resolveDesktopTheme({
+    system: theme,
+    mode: () => themeMode(config.preferences.theme),
+    accentMode: () => accentMode(config.preferences.accent_mode),
+    customAccent: () => config.preferences.accent_color,
+    fallbackAccent: dark => WEB ? WEB_ACCENT : TOKENS[dark ? 'dark' : 'light'].accent,
+  })
+  // S99Wails resolves the native preferences; this instrument keeps its established palette.
+  watch(() => [desktop.accentFor(false), desktop.accentFor(true), themeState().high], () => {
+    for (const name of ['light', 'dark'] as const) {
+      applyInstrumentTheme(vuetify.themes.value[name]!, name, desktop.accentFor(name === 'dark'))
+    }
+  }, { immediate: true, flush: 'post' })
 
-let started = false
-
-type LocaleSetter = (code: LocaleCode) => Promise<void> | void
-
-interface ThemeConfig {
-  preferences: {
-    theme: string
-    language: string
-    accent_mode: string
-    accent_color: string
-  }
-}
-
-// Route the accent through Vuetify's theme (not a raw --v-theme-accent) so genOnColors regenerates readable on-accent text.
-function applyVuetifyAccent(vuetifyTheme: ReturnType<typeof useTheme>, desktop: DesktopTheme) {
-  for (const name of ['light', 'dark'] as const) {
-    const theme = vuetifyTheme.themes.value[name]
-    if (theme) theme.colors.accent = desktop.accentFor(name === 'dark')
-  }
-}
-
-async function applyLocale(locale: Ref<string>, setLocale: LocaleSetter, code: LocaleCode) {
-  if (locale.value !== code) {
-    await setLocale(code)
-  }
-}
-
-function start(options: {
-  config: ThemeConfig
-  vuetifyTheme: ReturnType<typeof useTheme>
-  locale: Ref<string>
-  setLocale: LocaleSetter
-  log: ReturnType<typeof useLogger>
-}) {
-  if (started) return
-  started = true
-
-  // Module-scoped so the listener lives as long as the app, not the first component to mount.
-  const { theme } = scope.run(() =>
-    useSystemTheme({
-      // Not redundant: useSystemTheme does not handle a rejection, and this fails every time in browser dev (no Go side), so log and fall back to defaults.
-      getTheme: () => ThemeService.GetTheme().catch((err) => {
-        options.log.error('failed to load theme info', { error: String(err) })
-        return new ThemeInfo() as SystemThemeInfo
-      }),
-    }),
-  )!
-
-  scope.run(() => {
-    watch(theme, (info) => {
-      systemTheme.value = info
+  onMounted(() => {
+    watch(() => config.preferences.theme, (value) => {
+      const mode = themeMode(value)
+      appearance.setMode(mode === 'auto' ? 'system' : mode, undefined, 'none')
     }, { immediate: true })
-
-    watch(() => options.config.preferences.language, (language) => {
-      void applyLocale(options.locale, options.setLocale, (language || 'en') as LocaleCode)
+    watch(() => config.preferences.language, async (language) => {
+      const code = language === 'pl' ? 'pl' : 'en'
+      if (locale.value !== code) await setLocale(code)
     }, { immediate: true })
-
-    // The resolver's getters read preferences fresh: useConfigSync replaces the whole preferences object each sync, so a captured reference goes dead.
-    const desktop = resolveDesktopTheme({
-      system: systemTheme,
-      mode: () => themeMode(options.config.preferences.theme),
-      accentMode: () => accentMode(options.config.preferences.accent_mode),
-      customAccent: () => options.config.preferences.accent_color,
-      fallbackAccent: dark => TOKENS[dark ? 'dark' : 'light'].accent,
-    })
-    watch(desktop.themeName, (name) => {
-      options.vuetifyTheme.global.name.value = name
-    }, { immediate: true })
-    watch(desktop.accent, () => applyVuetifyAccent(options.vuetifyTheme, desktop), { immediate: true })
   })
 }
 
 export function useThemeSync() {
   const { config, saveConfigNow } = useConfigSync()
-  const vuetifyTheme = useTheme()
+  const theme = useTheme()
   const { locale, locales, setLocale } = useI18n()
-  const log = useLogger()
-
   const localeItems = computed(() =>
-    (locales.value as Array<{ code: string, name: string }>).map(l => ({
-      code: l.code as LocaleCode,
-      name: l.name,
-    })),
+    locales.value.map(item => ({ code: item.code as LocaleCode, name: item.name ?? item.code })),
   )
-
-  const prefs = computed(() => config.preferences)
-  const mode = computed<ThemeMode>(() => themeMode(config.preferences?.theme))
-  const isDark = computed(() => resolveThemeName(mode.value, darkMode.value) === 'dark')
-  const accent = computed<AccentMode>(() => accentMode(config.preferences?.accent_mode))
-  const accentColor = computed(() => config.preferences?.accent_color ?? '')
-
-  onMounted(() => {
-    start({ config, vuetifyTheme, locale, setLocale, log })
-  })
-
-  function setThemeMode(next: ThemeMode) {
-    config.preferences.theme = next
-  }
 
   async function setLanguage(code: LocaleCode) {
     config.preferences.language = code
-    await applyLocale(locale, setLocale, code)
+    if (locale.value !== code) await setLocale(code)
     await saveConfigNow()
   }
 
-  function setAccentMode(next: AccentMode) {
-    config.preferences.accent_mode = next
-  }
-
-  function setAccentColor(hex: string) {
-    config.preferences.accent_color = hex
-  }
-
   return {
-    prefs, mode, isDark, localeItems, setThemeMode, setLanguage,
-    accent, accentColor, setAccentMode, setAccentColor,
+    prefs: computed(() => config.preferences),
+    mode: computed(() => themeMode(config.preferences.theme)),
+    isDark: computed(() => theme.global.current.value.dark),
+    accent: computed(() => accentMode(config.preferences.accent_mode)),
+    accentColor: computed(() => config.preferences.accent_color),
+    localeItems,
+    setLanguage,
+    setThemeMode: (mode: ThemeMode) => { config.preferences.theme = mode },
+    setAccentMode: (mode: AccentMode) => { config.preferences.accent_mode = mode },
+    setAccentColor: (color: string) => { config.preferences.accent_color = color },
   }
 }
