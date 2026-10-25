@@ -4,36 +4,22 @@
     :label="t('tuner.spectrum.label')"
     :renderer="renderer"
   >
+    <!-- With a session open its register decides what is measured; the panel only says so. -->
     <template
-      v-if="reeds"
+      v-if="sessionReeds"
       #meta
     >
-      <b>{{ t('tuner.spectrum.reeds', { n: reeds }) }}</b>, {{ verdict }}
+      {{ t('tuner.panel.bySession', { n: reedCount }, reedCount) }}
     </template>
   </UiPanelCanvas>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import { useSpectrumRender } from '~/composables/render/useSpectrumRender'
 import { useTuner } from '~/composables/useTuner'
-import { liveReedsDerived, liveReedsUsable } from '~/utils/tuning'
 
-// Header states which of three cases the engine is in: separated, recovered from the beat, or
-// not split (per-reed figures are then lobes of one peak and shown nowhere).
 const { t } = useI18n()
-const { reeds: measured, reedsSeparated, reedsFromBeat } = useTuner()
+const { reedCount, sessionReeds } = useTuner()
 
 const renderer = useSpectrumRender()
-const reeds = computed(() => measured.value.length)
-
-const verdict = computed(() => {
-  if (!liveReedsUsable(reedsSeparated.value, reedsFromBeat.value)) {
-    return t('tuner.spectrum.notSplit')
-  }
-
-  return liveReedsDerived(reedsSeparated.value, reedsFromBeat.value)
-    ? t('tuner.spectrum.fromBeat')
-    : t('tuner.spectrum.separated')
-})
 </script>

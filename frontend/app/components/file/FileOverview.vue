@@ -3,9 +3,6 @@
     ref="strip"
     class="overview"
     @pointerdown="onDown"
-    @pointermove="onMove"
-    @pointerup="onUp"
-    @pointercancel="onUp"
   >
     <div
       v-if="hasSelection"
@@ -33,6 +30,7 @@
 </template>
 
 <script setup lang="ts">
+import { trackPointer } from '@smegg99/s99ab/browser'
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useTransport } from '~/composables/useTransport'
 
@@ -72,9 +70,13 @@ function centreOn(event: PointerEvent) {
   scrollTo(at - (view.to - view.from) / 2)
 }
 
+let stopPointer: (() => void) | undefined
+onBeforeUnmount(() => stopPointer?.())
+
 function onDown(event: PointerEvent) {
-  if (!state.available) return
-  ;(event.currentTarget as HTMLElement).setPointerCapture(event.pointerId)
+  if (!state.available || event.button !== 0) return
+  stopPointer?.()
+  stopPointer = trackPointer(event, { move: onMove, end: onUp })
   held = true
   centreOn(event)
 }

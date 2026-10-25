@@ -1,15 +1,24 @@
+<!-- app/components/file/FileTransport.vue -->
 <template>
   <span class="keys">
-    <UiToolKey
-      icon="mdi-skip-previous"
-      tone="accent"
+    <v-btn
+      variant="text"
       :title="t('file.toStart')"
+      :aria-label="t('file.toStart')"
+      class="tone-key"
+      style="--key-tone: rgb(var(--v-theme-accent))"
+      :icon="'mdi-skip-previous'"
+      :data-icon="'mdi-skip-previous'"
       @click="seek(state.from)"
     />
-    <UiToolKey
-      icon="mdi-skip-next"
-      tone="accent"
+    <v-btn
+      variant="text"
       :title="t('file.toEnd')"
+      :aria-label="t('file.toEnd')"
+      class="tone-key"
+      style="--key-tone: rgb(var(--v-theme-accent))"
+      :icon="'mdi-skip-next'"
+      :data-icon="'mdi-skip-next'"
       @click="seek(state.to)"
     />
     <UiToolKey
@@ -21,7 +30,7 @@
   </span>
 
   <template v-if="withVolume">
-    <span class="rule" />
+    <span class="group-rule" />
 
     <span class="keys">
       <UiLevelControl
@@ -36,7 +45,7 @@
     </span>
   </template>
 
-  <span class="rule" />
+  <span class="group-rule" />
 
   <span class="keys">
     <UiToolKey
@@ -64,8 +73,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted } from 'vue'
-import { useTuner } from '~/composables/useTuner'
+import { computed } from 'vue'
 import { useTransport } from '~/composables/useTransport'
 import { useOutputLevel } from '~/composables/useOutputLevel'
 
@@ -76,58 +84,15 @@ defineProps<{
 }>()
 
 const { t } = useI18n()
-const { running, starting, start } = useTuner()
 const {
   state, view, hasSelection,
-  seek, setPaused, setLoop, clearSelection,
-  zoom, fit, fitSelection,
+  seek, setLoop, clearSelection,
+  zoom, fit,
 } = useTransport()
 const { volume, muted, setVolume, setMuted } = useOutputLevel()
 
-/** Same as the play key in FileRun. */
-async function playPause() {
-  if (starting.value) return
-
-  if (!running.value) {
-    if (state.paused) await setPaused(false)
-    await start()
-    return
-  }
-  await setPaused(!state.paused)
-}
-
 // Button zoom has no pointer to anchor on, so it holds the window's middle still.
 const centre = computed(() => (view.from + view.to) / 2)
-
-function onKey(event: KeyboardEvent) {
-  if (!state.available) return
-
-  const el = event.target as HTMLElement | null
-  if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable)) return
-
-  const keys: Record<string, () => void> = {
-    // Space must start the engine if it is down, not just toggle a flag on a dead transport.
-    ' ': () => void playPause(),
-    'Home': () => void seek(state.from),
-    'End': () => void seek(state.to),
-    'l': () => void setLoop(!state.loop),
-    'm': () => void setMuted(!muted.value),
-    'f': () => fit(),
-    's': () => fitSelection(),
-    '+': () => zoom(0.5, centre.value),
-    '=': () => zoom(0.5, centre.value),
-    '-': () => zoom(2, centre.value),
-  }
-
-  const run = keys[event.key.length === 1 ? event.key.toLowerCase() : event.key]
-  if (!run) return
-
-  event.preventDefault() // space would otherwise scroll the page
-  run()
-}
-
-onMounted(() => window.addEventListener('keydown', onKey))
-onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
 </script>
 
 <style scoped>
@@ -136,13 +101,6 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
   align-items: center;
   display: inline-flex;
   flex: 0 0 auto;
-  gap: 3.3px;
-}
-
-.rule {
-  background: rgb(var(--v-theme-line));
-  block-size: 19.2px;
-  flex: 0 0 1px;
-  margin-inline: 5px;
+  gap: var(--s99ab-control-gap);
 }
 </style>

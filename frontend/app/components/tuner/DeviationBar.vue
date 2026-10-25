@@ -18,7 +18,7 @@
 import { computed } from 'vue'
 
 // Notches sit at 37.5% and 62.5% because the track is 4 tolerances wide (utils/boxes.ts),
-// which lets cents and hertz read on the same scale.
+// which lets deviation units and hertz read on the same scale.
 const props = defineProps<{
   // 0..1 along the track; null means no reading (not zero, which is a real reading at the flat end).
   frac: number | null
@@ -37,7 +37,7 @@ const geometry = computed(() => {
 
 <style scoped>
 .dev {
-  height: 20.8px;
+  height: 18px;
   margin-top: auto;
   position: relative;
 }

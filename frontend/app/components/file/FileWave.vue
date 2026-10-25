@@ -2,11 +2,11 @@
   <div
     ref="host"
     class="wave"
+    :style="{ cursor }"
     @wheel.prevent="onWheel"
     @pointerdown="onDown"
-    @pointermove="onMove"
-    @pointerup="onUp"
-    @pointercancel="onUp"
+    @pointermove="onHover"
+    @pointerleave="cursor = 'text'"
   >
     <canvas
       ref="canvas"
@@ -17,49 +17,76 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, watch } from 'vue'
+import { trackPointer } from '@smegg99/s99ab/browser'
+import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useTheme } from 'vuetify'
 import { useCanvas } from '~/composables/useCanvas'
 import { laneHeight, useWaveRender } from '~/composables/render/useWaveRender'
 import { useTransport } from '~/composables/useTransport'
+import { DRAG_SLOP_PX, outsideRange, pressKind } from '~/utils/waveGesture'
 
 // Range clamping lives in Go (core/audio), not here; the view only draws the result.
 const { t } = useI18n()
 const theme = useTheme()
-const { state, view, peaks, dragging, advancing, ghostAt, seek, select, zoom, pan, loadPeaks } = useTransport()
+const { state, view, peaks, sourceRevision, dragging, advancing, ghostAt, hasSelection, livePosition, seek, select, clearSelection, zoom, pan, loadPeaks } = useTransport()
 
 const { host, canvas, paint, redraw } = useCanvas(useWaveRender())
 
 function timeAt(event: PointerEvent | WheelEvent): number {
-  const rect = (event.currentTarget as HTMLElement).getBoundingClientRect()
+  const rect = host.value!.getBoundingClientRect()
   const frac = (event.clientX - rect.left) / Math.max(rect.width, 1)
   return view.from + frac * (view.to - view.from)
 }
 
 function onTimeline(event: PointerEvent): boolean {
-  const rect = (event.currentTarget as HTMLElement).getBoundingClientRect()
+  const rect = host.value!.getBoundingClientRect()
   return event.clientY - rect.top <= laneHeight(rect.height)
 }
 
-let mode: 'scrub' | 'select' | null = null
+let mode: 'scrub' | 'press' | 'select' | null = null
 let anchor = 0
+let downX = 0
+
+const cursor = ref('text')
+
+// Where the playhead is drawn, in client pixels, or null when it is off the visible window.
+function needleX(): number | null {
+  const at = livePosition()
+  if (at < view.from || at > view.to) return null
+  const rect = host.value!.getBoundingClientRect()
+  return rect.left + ((at - view.from) / Math.max(view.to - view.from, 1e-9)) * rect.width
+}
+
+// The playhead goes where it is pointed; a range it would be clamped into is dropped first.
+async function seekTo(at: number) {
+  if (hasSelection.value && outsideRange(at, state.from, state.to)) await clearSelection()
+  await seek(at)
+}
+
+function onHover(event: PointerEvent) {
+  if (mode || !state.available) return
+  cursor.value = pressKind(event.clientX, needleX(), onTimeline(event)) === 'scrub' ? 'ew-resize' : 'text'
+}
+
+let stopPointer: (() => void) | undefined
+onBeforeUnmount(() => stopPointer?.())
 
 function onDown(event: PointerEvent) {
-  if (!state.available) return
-  ;(event.currentTarget as HTMLElement).setPointerCapture(event.pointerId)
+  if (!state.available || event.button !== 0) return
+  stopPointer?.()
+  stopPointer = trackPointer(event, { move: onMove, end: onUp })
 
   const at = timeAt(event)
   dragging.value = true
 
-  if (onTimeline(event)) {
-    mode = 'scrub'
-    void seek(at)
+  mode = pressKind(event.clientX, needleX(), onTimeline(event))
+  if (mode === 'scrub') {
+    void seekTo(at)
     return
   }
 
-  // A click with no drag makes an empty range, which Go reads as "all of it".
-  mode = 'select'
   anchor = at
+  downX = event.clientX
 }
 
 function onMove(event: PointerEvent) {
@@ -67,13 +94,19 @@ function onMove(event: PointerEvent) {
 
   const at = timeAt(event)
   if (mode === 'scrub') {
-    void seek(at)
+    void seekTo(at)
     return
+  }
+  if (mode === 'press') {
+    if (Math.abs(event.clientX - downX) <= DRAG_SLOP_PX) return
+    mode = 'select'
   }
   void select(Math.min(anchor, at), Math.max(anchor, at))
 }
 
 function onUp() {
+  // A press that never travelled is a click: the playhead moves there.
+  if (mode === 'press') void seekTo(anchor)
   mode = null
   dragging.value = false
 }
@@ -107,7 +140,7 @@ onMounted(() => {
 
 onBeforeUnmount(() => observer.disconnect())
 
-watch(() => [view.from, view.to, state.available, state.duration], reload)
+watch(() => [view.from, view.to, state.available, state.duration, sourceRevision.value], reload)
 
 // The selection is drawn over unchanged samples, not fetched.
 watch(() => [state.from, state.to], paint)
@@ -145,7 +178,6 @@ defineExpose({ reload })
 
 <style scoped>
 .wave {
-  cursor: text;
   height: 100%;
   width: 100%;
 }
