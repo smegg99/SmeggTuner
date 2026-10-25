@@ -7,33 +7,24 @@ export interface Geometry {
   labelY: number
   scaleTop: number
   scaleBot: number
-  hzY: number
   fs: number
-  hzFs: number
-  needle: number
 }
 
-// Every size is a fraction of the panel so proportions hold at any size.
+// A thin strip: the numbers along the top, the scale and needles filling the rest. The app's 4px gap
+// above the numbers and below the scale, and room at the ends for the 50s, so nothing touches the frame.
+const GAP = 4
+
 export function geometry(view: CanvasView): Geometry {
-  const padX = view.width * 0.024
+  const fs = Math.max(9, Math.min(13, view.height * 0.24))
+  const padX = Math.round(fs * 1.5)
   const inner = view.width - padX * 2
-
-  const fs = Math.max(9, Math.min(26, view.height * 0.062))
-  const hzFs = Math.max(8, Math.min(20, view.height * 0.055))
-
-  // Floor the label lanes at half a glyph so short panels don't clip the top row / reading box.
-  const labelY = Math.max(view.height * 0.07, fs * 0.5 + 2)
-  const hzY = view.height - Math.max(view.height * 0.08, hzFs * 0.8 + 3)
 
   return {
     padX,
     xOf: (cent: number) => padX + centToFrac(cent) * inner,
-    labelY,
-    scaleTop: view.height * 0.145,
-    scaleBot: hzY - view.height * 0.085,
-    hzY,
+    labelY: GAP + fs / 2,
+    scaleTop: GAP + fs + GAP,
+    scaleBot: view.height - GAP,
     fs,
-    hzFs,
-    needle: Math.max(1.5, Math.min(5, view.height * 0.011)),
   }
 }

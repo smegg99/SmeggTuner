@@ -4,8 +4,8 @@ export const NOTE_BANDS = 105
 // core/dsp.EqualizerCeilingDB: the range the wire packs a band against.
 export const EQUALIZER_CEILING_DB = 60
 
-// core/dsp.EqualizerFullScaleDB: what the strip draws against, not the ceiling above; confusing the two caps the tallest bar at 47%.
-export const EQUALIZER_FULL_SCALE_DB = 27.9588
+// core/dsp.EqualizerFullScaleDB: what the strip draws against; the engine sets it to the ceiling.
+export const EQUALIZER_FULL_SCALE_DB = 60
 
 export const NOTE_MIN = 16
 export const NOTE_MAX = 120
@@ -15,6 +15,12 @@ export const AUTO_NOTE = 0
 export const SPECTRUM_COLUMNS = 256
 export const SPECTRUM_CENTS = 50
 
+// core/dsp.BandSpectrumColumns: one picture per band or chord tone, same span and scale.
+export const BAND_SPECTRUM_COLUMNS = 64
+
+// core/dsp: at most one picture per tone of a chord or band of a register.
+export const MAX_SPECTRA = 6
+
 // core/dsp.SpectrumFloorDB: the decibel depth the bottom of the spectrum panel means.
 export const SPECTRUM_FLOOR_DB = 60
 
@@ -23,12 +29,11 @@ export const WAVE_POINTS = 256
 
 export const ERROR_DEVICE_LOST = 'tuner.error.deviceLost'
 
-// Backend errors are i18n keys (services/audio/errors.go); anything else is a bug.
+// Backend errors are i18n keys (backend/services/audio/errors.go); anything else is a bug.
 const ERROR_KEY_PATTERN = /tuner\.error\.[A-Za-z0-9]+/
 const ERROR_UNEXPECTED = 'tuner.error.unexpected'
 
 export type EngineState = 'initializing' | 'running' | 'frozen' | 'tooLoud' | 'tooQuiet' | 'deviceLost' | 'stopped'
-export type TuningUnit = 'cent' | 'hz'
 
 const ENGINE_STATES: readonly string[] = [
   'initializing', 'running', 'frozen', 'tooLoud', 'tooQuiet', 'deviceLost', 'stopped',

@@ -3,7 +3,7 @@ import { centToFrac } from '~/utils/scale'
 
 export interface Geometry {
   padX: number
-  /** left edge of the plot, past the decibel gutter */
+  /** left edge of the plot */
   padL: number
   top: number
   base: number
@@ -13,15 +13,14 @@ export interface Geometry {
   xOf: (cent: number) => number
 }
 
-// The dB numbers get their own gutter; the plot begins to its right so no number is clipped.
+// The plot runs edge to edge; the dB numbers sit inside it at the left, on their gridlines.
 export function geometry(view: CanvasView): Geometry {
-  const padX = view.width * 0.018
+  const padX = 0
   const fs = Math.max(9, Math.min(13, view.height * 0.075))
-  const gutter = fs * 2.3 // wide enough for "-60"
-  const padL = padX + gutter
+  const padL = 0
   const lane = Math.max(12, Math.min(26, view.height * 0.15))
   const inner = view.width - padL - padX
-  const top = Math.max(view.height * 0.07, fs * 0.8) // room for the 0 dB label to sit on its line
+  const top = 2 // the 0 dB label hangs under the top line
 
   return {
     padX,

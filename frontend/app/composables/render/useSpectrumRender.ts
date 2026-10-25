@@ -2,7 +2,9 @@ import { useTheme } from 'vuetify'
 import { alpha, cssColor } from '~/composables/canvasColor'
 import type { CanvasOptions, CanvasView } from '~/composables/useCanvas'
 import { SPECTRUM_CENTS, SPECTRUM_COLUMNS, SPECTRUM_FLOOR_DB, live, useTuner } from '~/composables/useTuner'
+import { MISSING, toCents } from '~/utils/deviation'
 import { geometry, type Geometry } from './spectrumGeometry'
+import { drawPanes } from './spectrumPanes'
 
 // The backend already bins the spectrum into these columns, so there is no binning here.
 
@@ -10,12 +12,12 @@ import { geometry, type Geometry } from './spectrumGeometry'
 function drawDecibels(ctx: CanvasRenderingContext2D, view: CanvasView, g: Geometry, c: Record<string, unknown>) {
   const span = g.base - g.top
 
-  // 10 dB rungs when they fit, else 20, so labels don't collide.
-  const step = span / (SPECTRUM_FLOOR_DB / 10) >= g.fs * 1.9 ? 10 : 20
+  // The finest rung that keeps the labels apart: the 0 dB label hangs under the top line and each other
+  // label sits over its own, so two neighbours need two label heights and a gap between their lines.
+  const step = [10, 20, 30, SPECTRUM_FLOOR_DB].find(db => (span * db) / SPECTRUM_FLOOR_DB >= g.fs * 2 + 12) ?? SPECTRUM_FLOOR_DB
 
   ctx.font = `${g.fs}px ${view.font}`
-  ctx.textBaseline = 'middle'
-  ctx.textAlign = 'right'
+  ctx.textAlign = 'left'
 
   for (let db = 0; db >= -SPECTRUM_FLOOR_DB; db -= step) {
     const y = Math.round(g.base - (1 + db / SPECTRUM_FLOOR_DB) * span) + 0.5
@@ -30,14 +32,36 @@ function drawDecibels(ctx: CanvasRenderingContext2D, view: CanvasView, g: Geomet
       ctx.stroke()
     }
 
+    // Inside the plot: under the top edge for 0 dB, over its own line for the rest.
     ctx.fillStyle = cssColor(c.ink3)
-    ctx.fillText(`${db}`, g.padL - 4, y)
+    ctx.textBaseline = db === 0 ? 'top' : 'bottom'
+    ctx.fillText(`${db}`, g.padL + 3, db === 0 ? y + 2 : y - 2)
   }
 }
 
+// The needle's head, as the deviation scale and the audio preview draw it.
+const HEAD = 5.5
+
 export function useSpectrumRender(): CanvasOptions {
   const theme = useTheme()
-  const { reedErrors, scalePitch } = useTuner()
+  const { panels, scalePitch, needles, needlesDimmed } = useTuner()
+
+  // Each reed's reading on the curve, drawn as the deviation scale's needles; the axis is cents.
+  function drawNeedles(ctx: CanvasRenderingContext2D, g: Geometry, c: Record<string, unknown>) {
+    ctx.fillStyle = cssColor(needlesDimmed.value ? c.ink3 : c.reed)
+    for (const needle of needles.value) {
+      if (!needle.valid) continue
+      const x = Math.round(g.xOf(toCents(needle.dev)))
+      if (x < g.padL || x > g.padL + g.inner) continue
+      ctx.fillRect(x, g.top, 1, g.base - g.top)
+      ctx.beginPath()
+      ctx.moveTo(x - HEAD, g.top)
+      ctx.lineTo(x + HEAD + 1, g.top)
+      ctx.lineTo(x + 0.5, g.top + HEAD * 1.7)
+      ctx.closePath()
+      ctx.fill()
+    }
+  }
 
   function draw(ctx: CanvasRenderingContext2D, view: CanvasView) {
     const g = geometry(view)
@@ -49,6 +73,16 @@ export function useSpectrumRender(): CanvasOptions {
 
     // Nothing tracked: draw nothing, else a flat line reads as silence.
     if (!scalePitch.value || !live.hasSpectrum) return
+
+    // A chord or a register spanning octaves: one picture per tone or band, named when the readouts name them.
+    if (live.spectraCount > 1) {
+      drawDecibels(ctx, view, g, c)
+      const pictures = live.spectra.slice(0, live.spectraCount)
+      const reedPanels = panels.value.filter((_, i) => i % 2 === 0)
+      const labels = reedPanels.length === pictures.length ? reedPanels.map(p => p.text ?? '') : []
+      drawPanes(ctx, g, view.font, c, pictures, labels)
+      return
+    }
 
     ctx.strokeStyle = wellLine
     ctx.lineWidth = 1
@@ -71,8 +105,11 @@ export function useSpectrumRender(): CanvasOptions {
     ctx.setLineDash([4, 3])
     ctx.strokeStyle = green
     ctx.lineWidth = 1.5
-    for (const err of reedErrors.value) {
-      const x = g.xOf(err.goal)
+    // The goal of each slot, from its reed readout; the picture's axis is cents whatever the display unit.
+    for (let i = 0; i < panels.value.length; i += 2) {
+      const goal = panels.value[i]!.target
+      if (goal <= MISSING) continue
+      const x = g.xOf(toCents(goal))
       ctx.beginPath()
       ctx.moveTo(x, g.top)
       ctx.lineTo(x, g.base)
@@ -117,6 +154,8 @@ export function useSpectrumRender(): CanvasOptions {
       else ctx.lineTo(x, y)
     }
     ctx.stroke()
+
+    drawNeedles(ctx, g, c)
 
     const fs = g.fs
 

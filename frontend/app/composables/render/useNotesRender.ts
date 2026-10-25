@@ -6,16 +6,17 @@ import { useConfigSync } from '~/composables/useConfigSync'
 import { NOTE_BANDS, NOTE_MIN, live, useTuner } from '~/composables/useTuner'
 import { bandToFrac } from '~/utils/scale'
 import { noteName } from '~/utils/tuning'
-import { GUTTER, geometry, isSharp, type Geometry } from './notesGeometry'
+import { geometry, isSharp, type Geometry } from './notesGeometry'
 
 export { bandAt } from './notesGeometry'
 
-export function useNotesRender(hover: Ref<number>): CanvasOptions {
+// hover is the band under the pointer, held the band under a pressed pointer (-1 for none).
+export function useNotesRender(hover: Ref<number>, held: Ref<number>): CanvasOptions {
   const theme = useTheme()
   const { config } = useConfigSync()
   const { note, noteName: tracked } = useTuner()
 
-  // Naming tables live in utils/tuning.ts, in step with core/tuning/notes.go.
+  // Naming tables live in utils/tuning.ts, in step with backend/core/tuning/notes.go.
   const nameOf = (midi: number) => noteName(midi, config.tuner?.scale_naming)
 
   function drawBars(ctx: CanvasRenderingContext2D, g: Geometry, band: number, c: Record<string, unknown>) {
@@ -104,7 +105,7 @@ export function useNotesRender(hover: Ref<number>): CanvasOptions {
   }
 
   function draw(ctx: CanvasRenderingContext2D, view: CanvasView) {
-    const g = geometry(view, view.width * GUTTER)
+    const g = geometry(view)
     const c = theme.current.value.colors
     const neutral = cssColor(c.neutral)
     const band = note.value - NOTE_MIN
@@ -113,17 +114,25 @@ export function useNotesRender(hover: Ref<number>): CanvasOptions {
     ctx.lineWidth = 1
     for (let i = 0; i < NOTE_BANDS; i++) {
       if ((i + NOTE_MIN) % 12) continue
-      const x = Math.round(g.xOf(i)) + 0.5
+      const x = Math.round(g.xOf(i) + g.bw / 2) + 0.5
       ctx.beginPath()
       ctx.moveTo(x, 0)
       ctx.lineTo(x, g.base)
       ctx.stroke()
     }
 
-    if (hover.value >= 0 && hover.value !== band) {
+    if (hover.value >= 0 && hover.value !== band && hover.value !== held.value) {
       ctx.fillStyle = neutral
-      ctx.globalAlpha = 0.1
+      ctx.globalAlpha = 0.12
       ctx.fillRect(g.xOf(hover.value), 0, g.bw, g.base)
+      ctx.globalAlpha = 1
+    }
+
+    // The pressed band in the accent, so the note being picked is unmistakable while the pointer is down.
+    if (held.value >= 0) {
+      ctx.fillStyle = cssColor(c.accent)
+      ctx.globalAlpha = 0.3
+      ctx.fillRect(g.xOf(held.value), 0, g.bw, g.base)
       ctx.globalAlpha = 1
     }
 

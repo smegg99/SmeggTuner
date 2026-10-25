@@ -40,6 +40,8 @@ export function useCanvas(options: CanvasOptions) {
   let dirty = true
   let layerDirty = true
   let sizeDirty = false
+  // WebKitGTK drops a hidden canvas's pixels (the tuner view is v-show), so coming back must paint again.
+  let hidden = true
 
   /** paint asks for one more frame: the reading changed. */
   function paint() {
@@ -85,7 +87,12 @@ export function useCanvas(options: CanvasOptions) {
 
     const width = box.clientWidth
     const height = box.clientHeight
-    if (width <= 0 || height <= 0) return
+    if (width <= 0 || height <= 0) {
+      hidden = true
+      return
+    }
+    const shown = hidden
+    hidden = false
 
     const nextDpr = ratio()
     const bw = Math.round(width * nextDpr)
@@ -94,7 +101,10 @@ export function useCanvas(options: CanvasOptions) {
     // Nothing actually moved: a ResizeObserver fires for layout passes that left the
     // box where it was, and assigning width reallocates/clears the backing store and
     // invalidate() throws away an expensive background. Bail if the size is unchanged.
-    if (element.width === bw && element.height === bh && nextDpr === dpr) return
+    if (element.width === bw && element.height === bh && nextDpr === dpr) {
+      if (shown) invalidate()
+      return
+    }
 
     dpr = nextDpr
     element.width = bw
@@ -170,13 +180,20 @@ export function useCanvas(options: CanvasOptions) {
     if (!ctx) return
 
     readFont()
+    document.addEventListener('visibilitychange', onVisible)
     observer = new ResizeObserver(onResize)
     observer.observe(box)
     measure()
     addPainter(painter)
   })
 
+  // A window restored from the tray or a minimise changes no size; its pixels may be gone all the same.
+  function onVisible() {
+    if (!document.hidden) invalidate()
+  }
+
   onBeforeUnmount(() => {
+    document.removeEventListener('visibilitychange', onVisible)
     removePainter(painter)
     observer?.disconnect()
     observer = null

@@ -1,21 +1,25 @@
 import { useTheme } from 'vuetify'
 import { cssColor } from '~/composables/canvasColor'
 import type { CanvasOptions, CanvasView } from '~/composables/useCanvas'
+import { useDeviationUnit } from '~/composables/useDeviationUnit'
 import { useTuner } from '~/composables/useTuner'
+import { MISSING, shownDeviation } from '~/utils/deviation'
 import { RULER_CENTS } from '~/utils/scale'
-import { liveReedsUsable } from '~/utils/tuning'
 import { geometry, type Geometry } from './rulerGeometry'
 
 // Needles ease at display rate so they don't step.
 const EASE = 12 // higher is snappier
+// The needle's head, as the audio preview's playhead draws it.
+const HEAD = 5.5
 const SETTLED = 0.005 // below this a needle has arrived; without it it eases forever
 
 export function useRulerRender(): CanvasOptions {
   const theme = useTheme()
-  const { reeds, reedErrors, reedsSeparated, reedsFromBeat } = useTuner()
+  const { needles, needlesDimmed, panels } = useTuner()
+  const unit = useDeviationUnit()
 
-  // Where each needle currently is, not where its reading says it should be.
-  const shown: number[] = []
+  // Where each needle currently is, not where its reading says it should be; undefined for an invalid slot.
+  const shown: (number | undefined)[] = []
 
   const colors = () => theme.current.value.colors
 
@@ -27,7 +31,7 @@ export function useRulerRender(): CanvasOptions {
 
     ctx.lineWidth = 1
     for (let cent = -RULER_CENTS; cent <= RULER_CENTS; cent++) {
-      const x = Math.round(g.xOf(cent)) + 0.5
+      const x = Math.min(view.width - 0.5, Math.round(g.xOf(cent)) + 0.5)
       const ten = cent % 10 === 0
       const five = cent % 5 === 0
 
@@ -72,78 +76,43 @@ export function useRulerRender(): CanvasOptions {
     ctx.stroke()
   }
 
-  function drawNeedle(ctx: CanvasRenderingContext2D, view: CanvasView, g: Geometry, i: number) {
-    const reed = reeds.value[i]
+  // The audio preview's playhead: a 1 px line under a small head, so the scale stays readable round it.
+  function drawNeedle(ctx: CanvasRenderingContext2D, g: Geometry, i: number) {
+    const needle = needles.value[i]
     const cent = shown[i]
-    if (!reed || cent === undefined) return
+    if (!needle?.valid || cent === undefined) return
 
     const c = colors()
-    const red = cssColor(c.reed)
-    const x = g.xOf(cent)
-    const head = Math.max(5, Math.min(16, view.height * 0.045))
-
-    ctx.strokeStyle = red
-    ctx.lineWidth = g.needle
+    // The reference keeps the needles with no note and dims them.
+    ctx.fillStyle = cssColor(needlesDimmed.value ? c.ink3 : c.reed)
+    const x = Math.round(g.xOf(cent))
+    ctx.fillRect(x, g.scaleTop, 1, g.scaleBot - g.scaleTop)
     ctx.beginPath()
-    ctx.moveTo(x, g.scaleTop)
-    ctx.lineTo(x, g.scaleBot)
-    ctx.stroke()
-
-    // Filled head marks where the reed is; the bare goal rule is where it belongs.
-    ctx.fillStyle = red
-    ctx.beginPath()
-    ctx.moveTo(x - head * 0.6, g.scaleTop - 1)
-    ctx.lineTo(x + head * 0.6, g.scaleTop - 1)
-    ctx.lineTo(x, g.scaleTop + head)
+    ctx.moveTo(x - HEAD, g.scaleTop)
+    ctx.lineTo(x + HEAD + 1, g.scaleTop)
+    ctx.lineTo(x + 0.5, g.scaleTop + HEAD * 1.7)
     ctx.closePath()
     ctx.fill()
-
-    const label = reed.freq.toFixed(2)
-    ctx.font = `${g.hzFs}px ${view.font}`
-
-    const tw = ctx.measureText(label).width + g.hzFs
-    const bh = g.hzFs * 1.6
-    const bx = Math.max(2, Math.min(view.width - tw - 2, x - tw / 2))
-
-    ctx.fillStyle = cssColor(c.chrome2)
-    ctx.strokeStyle = red
-    ctx.lineWidth = 1
-    ctx.beginPath()
-    ctx.rect(Math.round(bx) + 0.5, Math.round(g.hzY - bh / 2) + 0.5, tw, bh)
-    ctx.fill()
-    ctx.stroke()
-
-    ctx.fillStyle = red
-    ctx.textAlign = 'center'
-    ctx.textBaseline = 'middle'
-    ctx.fillText(label, bx + tw / 2, g.hzY)
   }
 
   function draw(ctx: CanvasRenderingContext2D, view: CanvasView) {
     const g = geometry(view)
 
-    // Unsplit peaks are not reeds: hold the bare scale rather than draw needles.
-    if (!liveReedsUsable(reedsSeparated.value, reedsFromBeat.value)) {
-      return
+    // Reed readouts sit at the even panels; each carries its slot's target, or Missing.
+    for (let i = 0; i < panels.value.length; i += 2) {
+      const goal = panels.value[i]!.target
+      if (goal <= MISSING) continue
+      // The bare goal line is where a reed belongs; the needle's head marks where it is.
+      ctx.fillStyle = cssColor(colors().goal)
+      ctx.fillRect(Math.round(g.xOf(shownDeviation(goal, unit.value))), g.scaleTop, 1, g.scaleBot - g.scaleTop)
     }
 
-    ctx.strokeStyle = cssColor(colors().goal)
-    ctx.lineWidth = g.needle
-    for (const err of reedErrors.value) {
-      const x = g.xOf(err.goal)
-      ctx.beginPath()
-      ctx.moveTo(x, g.scaleTop)
-      ctx.lineTo(x, g.scaleBot)
-      ctx.stroke()
-    }
-
-    for (let i = 0; i < shown.length; i++) drawNeedle(ctx, view, g, i)
+    for (let i = 0; i < shown.length; i++) drawNeedle(ctx, g, i)
   }
 
   function advance(dt: number): boolean {
-    const target = reedErrors.value
+    const target = needles.value
 
-    // Drop needles for reeds that stopped sounding.
     if (shown.length !== target.length) shown.length = target.length
 
     // Frame-rate independent: same time at 60 or 144 Hz.
@@ -151,7 +120,12 @@ export function useRulerRender(): CanvasOptions {
     let moving = false
 
     for (let i = 0; i < target.length; i++) {
-      const want = target[i]!.curr
+      // An invalid slot has no needle; when it turns valid again it starts at its reading.
+      if (!target[i]!.valid) {
+        shown[i] = undefined
+        continue
+      }
+      const want = shownDeviation(target[i]!.dev, unit.value)
       const have = shown[i]
 
       if (have === undefined) {

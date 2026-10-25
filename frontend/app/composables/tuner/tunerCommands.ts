@@ -1,5 +1,5 @@
 import type { Ref } from 'vue'
-import * as TunerService from '~~bindings/smegg.me/smeggtuner/services/tuner/service.js'
+import * as TunerService from '~~bindings/smegg.me/smeggtuner/backend/services/tuner/service.js'
 import { toErrorKey } from './tunerProtocol'
 import { clearReading } from './tunerReducers'
 import type { TunerState } from './tunerReducers'
@@ -17,7 +17,19 @@ export async function apply<T>(s: TunerState, target: Ref<T>, next: T, call: () 
   catch (err) {
     if (target.value === next) target.value = previous
     s.error.value = toErrorKey(err)
-    log.error(`tuner: failed to set ${what}`, { error: String(err) })
+    log.error('log.frontendSettingFailed', { setting: what, error: String(err) })
+  }
+}
+
+// command runs a setter whose outcome arrives as tuner:settings; a refusal lands in error.
+export async function command<T>(s: TunerState, call: () => Promise<T>, log: Logger, what: string): Promise<T | undefined> {
+  try {
+    return await call()
+  }
+  catch (err) {
+    s.error.value = toErrorKey(err)
+    log.error('log.frontendSettingFailed', { setting: what, error: String(err) })
+    return undefined
   }
 }
 
@@ -27,7 +39,8 @@ export async function startEngine(s: TunerState, log: Logger) {
   s.starting.value = true
   clearReading(s)
   s.error.value = ''
-  s.state.value = 'initializing'
+  // Learning is the engine's to report: a file, or a microphone that already learned its room, never does.
+  s.state.value = 'running'
 
   try {
     await TunerService.Start()
@@ -37,7 +50,7 @@ export async function startEngine(s: TunerState, log: Logger) {
     s.running.value = false
     s.state.value = 'stopped'
     s.error.value = toErrorKey(err)
-    log.error('tuner: failed to start', { error: String(err) })
+    log.error('log.frontendTunerStartFailed', { error: String(err) })
   }
   finally {
     s.starting.value = false
@@ -50,7 +63,7 @@ export async function stopEngine(s: TunerState, log: Logger) {
   }
   catch (err) {
     s.error.value = toErrorKey(err)
-    log.error('tuner: failed to stop', { error: String(err) })
+    log.error('log.frontendTunerStopFailed', { error: String(err) })
     return
   }
 
@@ -66,7 +79,7 @@ export async function playTone(s: TunerState, toneNote: number, log: Logger) {
   }
   catch (err) {
     s.error.value = toErrorKey(err)
-    log.error('tuner: failed to play reference tone', { error: String(err) })
+    log.error('log.frontendTunerTonePlayFailed', { error: String(err) })
   }
 }
 
@@ -76,6 +89,6 @@ export async function stopTone(log: Logger) {
     await TunerService.StopTone()
   }
   catch (err) {
-    log.error('tuner: failed to stop reference tone', { error: String(err) })
+    log.error('log.frontendTunerToneStopFailed', { error: String(err) })
   }
 }

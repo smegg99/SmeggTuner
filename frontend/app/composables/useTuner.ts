@@ -1,19 +1,20 @@
-// Detached singleton for the tuner: reactive reading, hot draw buffers and engine subscriptions. The hot arrays never enter Vue; they land in `live` ~12/s and canvases subscribe via onData.
-import { computed, effectScope, ref, shallowRef, watch } from 'vue'
+// Detached singleton for the tuner: reactive reading, hot draw buffers and engine subscriptions. The hot arrays never enter Vue; they land in `live` ~20/s and canvases subscribe via onData.
+import { computed, effectScope, ref, shallowRef } from 'vue'
 import { Events } from '@wailsio/runtime'
-import * as TunerService from '~~bindings/smegg.me/smeggtuner/services/tuner/service.js'
-import type { MeasurementDTO, StateDTO, SettingsDTO } from '~~bindings/smegg.me/smeggtuner/services/tuner/models.js'
-import type { BandReport, BeatMeasure, ReedMeasure } from '~~bindings/smegg.me/smeggtuner/core/dsp/models.js'
-import type { Config } from '~~bindings/smegg.me/smeggtuner/common/config/models.js'
-import type { BeatError, ReedError } from '~/types/record'
+import * as TunerService from '~~bindings/smegg.me/smeggtuner/backend/services/tuner/service.js'
+import type { MeasurementDTO, StateDTO, SettingsDTO } from '~~bindings/smegg.me/smeggtuner/backend/services/tuner/models.js'
+import type { BeatMeasure, Lock, Needle, Panel, ReedMeasure } from '~~bindings/smegg.me/smeggtuner/backend/core/dsp/models.js'
+import type { BeatError, ReedError } from '~~bindings/smegg.me/smeggtuner/backend/core/target/models.js'
 import { AUTO_NOTE, EQUALIZER_CEILING_DB, EQUALIZER_FULL_SCALE_DB, NOTE_BANDS, NOTE_MAX, NOTE_MIN, SPECTRUM_CENTS, SPECTRUM_COLUMNS, SPECTRUM_FLOOR_DB, WAVE_POINTS, toErrorKey } from './tuner/tunerProtocol'
-import type { EngineState, TuningUnit } from './tuner/tunerProtocol'
-import { clearReading as clearReadingImpl, onMeasurement, onState } from './tuner/tunerReducers'
+import type { EngineState } from './tuner/tunerProtocol'
+import { NO_LOCK, clearReading as clearReadingImpl, onMeasurement, onState } from './tuner/tunerReducers'
 import type { LiveBuffers, TunerState } from './tuner/tunerReducers'
-import { apply, playTone, startEngine, stopEngine, stopTone } from './tuner/tunerCommands'
+import { apply, command, playTone, startEngine, stopEngine, stopTone } from './tuner/tunerCommands'
+import { applySettings, tunerSettings } from './tuner/tunerSettings'
+import type { PanelMode } from '~/utils/panel'
 
 export { AUTO_NOTE, EQUALIZER_CEILING_DB, EQUALIZER_FULL_SCALE_DB, NOTE_BANDS, NOTE_MAX, NOTE_MIN, SPECTRUM_CENTS, SPECTRUM_COLUMNS, SPECTRUM_FLOOR_DB, WAVE_POINTS, toErrorKey }
-export type { EngineState, TuningUnit }
+export type { EngineState }
 
 const EVENT_MEASUREMENT = 'tuner:measurement'
 const EVENT_STATE = 'tuner:state'
@@ -23,6 +24,8 @@ const EVENT_SETTINGS = 'tuner:settings'
 export const live: LiveBuffers = {
   spectrum: new Float32Array(SPECTRUM_COLUMNS),
   hasSpectrum: false,
+  spectra: [],
+  spectraCount: 0,
   bands: new Float32Array(NOTE_BANDS),
   wave: new Float32Array(WAVE_POINTS),
   waveLength: 0,
@@ -37,26 +40,27 @@ export function onData(fn: Listener) {
   return () => listeners.delete(fn)
 }
 
-// The reading, latched as a group with the reeds it belongs to.
+// The last measured analysis, latched as a group: one entry per configured slot, in register order.
 const note = ref(AUTO_NOTE)
 const noteName = ref('')
-const locked = ref(false)
-// The engine's settle toward a lock, 0..1; feeds the calibration capture bar.
-const lockProgress = ref(0)
 const scalePitch = ref(0)
+const label = ref('')
 const reeds = shallowRef<ReedMeasure[]>([])
 const beats = shallowRef<BeatMeasure[]>([])
-// The compound engine's per-octave accounting: which ranks were heard, and whether an empty band
-// held only the rank below's harmonic. Empty in single-band mode.
-const bands = shallowRef<BandReport[]>([])
-const reedsSeparated = ref(true)
-const reedsFromBeat = ref(false)
 
-// The reeds/beats scored against the session's goal curve; no session = plain scale deviation.
+// The sounding slots scored against the session's goal curve; no session = plain scale deviation.
 const reedErrors = shallowRef<ReedError[]>([])
 const beatErrors = shallowRef<BeatError[]>([])
 
+// The reference screen state, on every frame: readouts reed, pair, reed..., the retained needles and the lock latches.
+const panels = shallowRef<Panel[]>([])
+const needles = shallowRef<Needle[]>([])
+const needlesDimmed = ref(true)
+const lock = shallowRef<Lock>(NO_LOCK)
+
 const inputLevel = ref(0)
+const unreliable = ref(false)
+const blink = ref(false)
 const state = ref<EngineState>('stopped')
 const running = ref(false)
 
@@ -65,30 +69,17 @@ const readingAt = ref<number | null>(null)
 const starting = ref(false)
 const error = ref('')
 
-const a4 = ref(0)
-// Reeds the engine resolves per note: the pulled register's bank count, kept live by EVENT_SETTINGS.
-const reedCount = ref(1)
-const manualNote = ref(AUTO_NOTE)
-const transpose = ref(0)
+// What the engine measures with, kept live by EVENT_SETTINGS: never derived here.
+const settings = tunerSettings()
+const { a4, manualNote, transpose } = settings
 const frozen = ref(false)
 
 // Freeze needs a reading to hold: while running, or after a stop left its last note.
 const canFreeze = computed(() => running.value || note.value !== AUTO_NOTE)
 
-// unit is display-only and lives in the config; the holder covers its async arrival.
-const configRef = shallowRef<Config | null>(null)
-
-const unit = computed<TuningUnit>({
-  get: () => (configRef.value?.tuner.unit === 'hz' ? 'hz' : 'cent'),
-  set: (next) => {
-    const config = configRef.value
-    if (config) config.tuner.unit = next
-  },
-})
-
 const tunerState: TunerState = {
-  note, noteName, locked, lockProgress, scalePitch, reeds, beats, bands, reedsSeparated, reedsFromBeat,
-  reedErrors, beatErrors, inputLevel, state, running, readingAt, starting, error,
+  note, noteName, scalePitch, label, reeds, beats, reedErrors, beatErrors, panels, needles, needlesDimmed, lock,
+  inputLevel, unreliable, blink, state, running, readingAt, starting, error,
   live,
   notify: () => { for (const fn of listeners) fn() },
 }
@@ -98,13 +89,10 @@ const clearReading = () => clearReadingImpl(tunerState)
 
 const scope = effectScope(true)
 let started = false
-let seeded = false
 
 type Logger = ReturnType<typeof useLogger>
 
-function start(log: Logger, config: Config) {
-  configRef.value = config
-
+function start(log: Logger) {
   if (started) return
   started = true
 
@@ -116,7 +104,7 @@ function start(log: Logger, config: Config) {
       onState(ev.data, tunerState)
     })
     const offSettings = Events.On(EVENT_SETTINGS, (ev: { data: SettingsDTO }) => {
-      reedCount.value = ev.data.reedCount
+      applySettings(ev.data, settings)
     })
 
     // Detached scope: without this a hot reload leaks one listener set per edit.
@@ -129,18 +117,11 @@ function start(log: Logger, config: Config) {
         started = false
       })
     }
-
-    // Config loads async: seed the A4 control once, then the control owns it.
-    watch(() => config.tuner, (tuner) => {
-      if (seeded || !tuner.a4) return
-      seeded = true
-      a4.value = tuner.a4
-    }, { immediate: true, deep: true })
   })
 
-  // Catch a count the engine resolved before this listener was up.
+  // Catch settings the engine resolved before this listener was up.
   TunerService.Settings()
-    .then((s) => { reedCount.value = s.reedCount })
+    .then(s => applySettings(s, settings))
     .catch(() => {})
 
   TunerService.IsRunning()
@@ -149,29 +130,36 @@ function start(log: Logger, config: Config) {
       if (on) state.value = 'running'
     })
     .catch((err) => {
-      log.error('tuner: failed to read engine state', { error: String(err) })
+      log.error('log.frontendTunerStateFailed', { error: String(err) })
     })
+}
+
+// pin shows the key the service pinned at once; tuner:settings repeats it.
+async function pin(call: () => Promise<number>, log: Logger, what: string) {
+  const n = await command(tunerState, call, log, what)
+  if (n !== undefined) manualNote.value = n
 }
 
 export function useTuner() {
   const log = useLogger()
-  const { config } = useConfigSync()
-  start(log, config)
+  start(log)
 
   return {
     note,
     noteName,
-    locked,
-    lockProgress,
     scalePitch,
+    label,
     reeds,
     beats,
-    bands,
-    reedsSeparated,
-    reedsFromBeat,
     reedErrors,
     beatErrors,
+    panels,
+    needles,
+    needlesDimmed,
+    lock,
     inputLevel,
+    unreliable,
+    blink,
     state,
 
     running,
@@ -182,17 +170,21 @@ export function useTuner() {
     start: () => startEngine(tunerState, log),
     stop: () => stopEngine(tunerState, log),
 
-    a4,
-    reedCount,
-    manualNote,
-    transpose,
+    ...settings,
     frozen,
     canFreeze,
-    unit,
     setA4: (hz: number) => apply(tunerState, a4, hz, () => TunerService.SetA4(hz), log, 'a4'),
     setManualNote: (n: number) => apply(tunerState, manualNote, n, () => TunerService.SetManualNote(n), log, 'manual note'),
     setTranspose: (semitones: number) => apply(tunerState, transpose, semitones, () => TunerService.SetTranspose(semitones), log, 'transpose'),
     setFrozen: (on: boolean) => apply(tunerState, frozen, on, () => TunerService.Freeze(on), log, 'freeze'),
+    // The service picks the note (tuning.ManualStart, Note.Step); the answer is the pinned key.
+    setAuto: (on: boolean) => pin(() => TunerService.SetAuto(on), log, 'auto'),
+    stepNote: (delta: number) => pin(() => TunerService.StepNote(delta), log, 'note step'),
+    setMode: (mode: PanelMode) => command(tunerState, () => TunerService.SetMode(mode), log, 'mode'),
+    setReedBox: (box: number, on: boolean) => command(tunerState, () => TunerService.SetReedBox(box, on), log, 'reed box'),
+    setOctave: (offset: number, on: boolean) => command(tunerState, () => TunerService.SetOctave(offset, on), log, 'octave box'),
+    takeNow: () => command(tunerState, () => TunerService.TakeNow(), log, 'take now'),
+    relearn: () => command(tunerState, () => TunerService.Recalibrate(), log, 'relearn'),
     playTone: (n: number) => playTone(tunerState, n, log),
     stopTone: () => stopTone(log),
   }

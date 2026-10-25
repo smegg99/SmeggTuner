@@ -13,7 +13,7 @@ export function useInputRender(): CanvasOptions {
     const neutral = cssColor(c.neutral)
     const accent = cssColor(c.accent)
 
-    const padX = view.width * 0.011
+    const padX = 0
     const mid = view.height / 2
     const amp = view.height * 0.4
 
