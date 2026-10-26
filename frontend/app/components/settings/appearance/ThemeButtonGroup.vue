@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { ToolItem } from '~/components/ui/ToolGroup.vue'
+import type { ToolItem } from '@smegg99/s99ab/types'
 import { useThemeSync } from '~/composables/useThemeSync'
 import { THEME_MODES } from '~/types/config'
 

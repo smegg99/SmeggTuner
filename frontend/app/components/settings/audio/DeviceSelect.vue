@@ -6,12 +6,24 @@
     :error="errorMessage"
   >
     <div class="device">
-      <UiSelectInput
+      <v-select
         :id="id"
         v-model="deviceId"
         :items="deviceItems"
         :disabled="loading || running"
-      />
+        item-title="label"
+        item-value="value"
+        hide-details="auto"
+        :aria-label="t('settings.audioDeviceLabel')"
+        :list-props="{ class: 'tuner-menu' }"
+      >
+        <template #item="{ props: itemProps, item }">
+          <v-list-item
+            v-bind="itemProps"
+            :append-icon="(item.value === deviceId) ? 'mdi-check' : undefined"
+          />
+        </template>
+      </v-select>
 
       <UiToolKey
         icon="mdi-refresh"
@@ -24,7 +36,6 @@
 </template>
 
 <script setup lang="ts">
-import type { SelectItem } from '~/components/ui/SelectInput.vue'
 import { computed } from 'vue'
 import { useAudioDevices } from '~/composables/useAudioDevices'
 import type { AudioDeviceView } from '~/composables/useAudioDevices'
@@ -68,7 +79,7 @@ async function select(id: string) {
   }
 }
 
-const deviceItems = computed<SelectItem[]>(() =>
+const deviceItems = computed(() =>
   items.value.map(device => ({ value: device.id, label: device.name })),
 )
 </script>
@@ -77,7 +88,7 @@ const deviceItems = computed<SelectItem[]>(() =>
 .device {
   align-items: center;
   display: flex;
-  gap: 5.5px;
+  gap: var(--gap);
   min-width: 0;
 }
 

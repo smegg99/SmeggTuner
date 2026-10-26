@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { ToolItem } from '~/components/ui/ToolGroup.vue'
+import type { ToolItem } from '@smegg99/s99ab/types'
 import { useConfigSync } from '~/composables/useConfigSync'
 import { useTuner } from '~/composables/useTuner'
 

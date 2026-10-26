@@ -1,23 +1,37 @@
 <template>
   <UiFormField
+    v-slot="{ id }"
     :label="t('settings.toleranceLabel')"
     :hint="t('settings.toleranceHint')"
   >
     <div class="tol">
       <label class="tol__one">
         <span class="tol__cap">{{ t('settings.toleranceReed') }}</span>
-        <UiNumberInput
+        <v-text-field
+          :id="id"
           v-model="reedDraft"
           :suffix="t('settings.toleranceUnit')"
-          @commit="commitReed"
+          hide-details="auto"
+          autocomplete="off"
+          :aria-label="t('settings.toleranceLabel')"
+          inputmode="decimal"
+          class="tuner-number"
+          @blur="commitReed"
+          @keyup.enter="commitReed()"
         />
       </label>
       <label class="tol__one">
         <span class="tol__cap">{{ t('settings.toleranceBeat') }}</span>
-        <UiNumberInput
+        <v-text-field
           v-model="beatDraft"
           :suffix="t('settings.toleranceUnit')"
-          @commit="commitBeat"
+          hide-details="auto"
+          autocomplete="off"
+          :aria-label="t('settings.toleranceLabel')"
+          inputmode="decimal"
+          class="tuner-number"
+          @blur="commitBeat"
+          @keyup.enter="commitBeat()"
         />
       </label>
     </div>
@@ -30,7 +44,7 @@ import { useDraftNumber } from '~/composables/useDraftNumber'
 import { DEFAULT_BEAT_TOLERANCE, DEFAULT_TOLERANCE } from '~/types/config'
 
 // App-wide fallback tolerances, used when no session is open (a session instrument carries its
-// own, see core/session.Instrument). Bounds match the schema: above 0, no wider than 50 cents.
+// own, see core/session.Instrument). Bounds match the schema: above 0, no wider than 50 reference units.
 const TOL_MIN = 0.1
 const TOL_MAX = 50
 
@@ -53,19 +67,19 @@ const { draft: beatDraft, commit: commitBeat } = useDraftNumber(
 <style scoped>
 .tol {
   display: flex;
-  gap: 13.2px;
+  gap: var(--gap);
 }
 
 .tol__one {
   display: flex;
   flex: 1 1 0;
   flex-direction: column;
-  gap: 2.4px;
+  gap: var(--gap-tight);
   min-width: 0;
 }
 
 .tol__cap {
   color: rgb(var(--v-theme-ink3));
-  font-size: 11.2px;
+  font-size: 11px;
 }
 </style>

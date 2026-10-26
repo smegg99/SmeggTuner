@@ -1,94 +1,86 @@
+<!-- app/components/settings/SettingsView.vue -->
 <template>
-  <UiPanelCard class="settings">
-    <template #head>
-      <span class="panel__title">{{ t('routes.settings') }}</span>
-      <span class="panel__sp" />
-    </template>
-
-    <!-- Fixed 3-column grid, not auto-fit: columns are declared so groups can be placed to
-         balance heights and nothing scrolls. -->
+  <!-- Untitled: the main bar names the room. -->
+  <UiPanel
+    class="settings tuner-panel"
+    flush
+  >
+    <!-- Grouped by what each setting changes: the input, how a note is found, how a reading is shown, the app's
+         look. The columns wrap to two, then one, as the window narrows. -->
     <div class="settings__body">
-      <!-- Audio (tall) paired with the short Behaviour toggles so this column doesn't overflow. -->
-      <div class="settings__col">
-        <UiFieldGroup
-          dense
-          :title="t('settings.groups.audio')"
+      <div class="settings__column">
+        <UiFormSection
+          :title="t('settings.groups.microphone')"
+          class="tuner-section settings__section"
         >
           <SettingsAudioDeviceSelect />
-          <SettingsAudioClockPPMField />
           <SettingsAudioFilterToggles />
-        </UiFieldGroup>
-
-        <UiFieldGroup
-          dense
-          :title="t('settings.groups.behaviour')"
+          <SettingsAudioSoundCardCalibration v-if="!WEB" />
+          <SettingsAudioAutoVolumeToggle v-if="!WEB" />
+        </UiFormSection>
+        <UiFormSection
+          :title="t('settings.groups.detection')"
+          class="tuner-section settings__section"
         >
+          <SettingsTunerDetectionToggle />
+          <SettingsTunerTransposeField />
           <SettingsTunerBehaviourToggles />
-          <SettingsAppearanceTrayToggle />
-        </UiFieldGroup>
+          <SettingsTunerReadingToggles />
+        </UiFormSection>
       </div>
-
-      <!-- Reading is the heavy group, so it gets a column to itself. -->
-      <div class="settings__col">
-        <UiFieldGroup
-          dense
-          :title="t('settings.groups.reading')"
+      <div class="settings__column">
+        <UiFormSection
+          :title="t('settings.groups.readings')"
+          class="tuner-section settings__section"
         >
-          <SettingsTunerUnitToggle />
-          <SettingsTunerErrorReferenceToggle />
-          <SettingsTunerScaleNamingSelect />
           <SettingsTunerToleranceFields />
-        </UiFieldGroup>
-      </div>
-
-      <div class="settings__col">
-        <UiFieldGroup
-          dense
+          <SettingsTunerUnitToggle />
+          <SettingsTunerBeatUnitToggle />
+          <!-- A target is a session's goal curve; without the workshop there is none to read against. -->
+          <SettingsTunerErrorReferenceToggle v-if="WORKSHOP" />
+          <SettingsTunerScaleNamingSelect />
+        </UiFormSection>
+        <UiFormSection
+          v-if="WORKSHOP"
           :title="t('settings.groups.report')"
+          class="tuner-section settings__section"
         >
           <SettingsReportLetterhead />
-        </UiFieldGroup>
-
-        <UiFieldGroup
-          dense
+        </UiFormSection>
+      </div>
+      <div class="settings__column">
+        <UiFormSection
           :title="t('settings.groups.appearance')"
+          class="tuner-section settings__section"
         >
           <SettingsAppearanceThemeButtonGroup />
           <SettingsAppearanceAccentControl />
           <SettingsAppearanceLanguageSelect />
-        </UiFieldGroup>
+          <SettingsAppearanceTrayToggle v-if="!WEB" />
+        </UiFormSection>
+        <LazyWebDiagnostics v-if="WEB" />
       </div>
     </div>
-  </UiPanelCard>
+  </UiPanel>
 </template>
 
 <script setup lang="ts">
+import { WEB, WORKSHOP } from '~/utils/features'
+
 const { t } = useI18n()
 </script>
 
 <style scoped>
-.settings {
-  min-height: 0;
-  min-width: 0;
-}
-
-/* Fixed three columns (not auto-fit) so groups can be placed to balance the columns rather than
-   wrapping wherever the width breaks. */
+.settings { min-height: 0; min-width: 0; }
 .settings__body {
-  align-items: start;
   display: grid;
-  gap: 12.8px 24.2px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  align-items: start;
+  gap: 24px;
   min-height: 0;
-  /* Safety net for long translations; the layout is built to fit and this should never show. */
+  padding: 16px;
   overflow-y: auto;
-  padding: 8px 17.6px;
 }
-
-.settings__col {
-  display: flex;
-  flex-direction: column;
-  gap: 22.4px;
-  min-width: 0;
-}
+.settings__column { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.settings__section { min-width: 0; min-height: 0; }
 </style>

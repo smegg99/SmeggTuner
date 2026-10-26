@@ -4,11 +4,23 @@
     :label="t('settings.scaleNamingLabel')"
     :hint="t('settings.scaleNamingHint')"
   >
-    <UiSelectInput
+    <v-select
       :id="id"
       v-model="naming"
       :items="items"
-    />
+      item-title="label"
+      item-value="value"
+      hide-details="auto"
+      :aria-label="t('settings.scaleNamingLabel')"
+      :list-props="{ class: 'tuner-menu' }"
+    >
+      <template #item="{ props: itemProps, item }">
+        <v-list-item
+          v-bind="itemProps"
+          :append-icon="(item.value === naming) ? 'mdi-check' : undefined"
+        />
+      </template>
+    </v-select>
   </UiFormField>
 </template>
 

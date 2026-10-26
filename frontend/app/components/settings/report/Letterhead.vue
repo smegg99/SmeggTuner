@@ -4,9 +4,12 @@
     :label="t('settings.report.name')"
     :hint="t('settings.report.nameHint')"
   >
-    <UiTextInput
+    <v-text-field
       :id="id"
       v-model="name"
+      hide-details="auto"
+      autocomplete="off"
+      :aria-label="t('settings.report.name')"
     />
   </UiFormField>
 
@@ -14,10 +17,13 @@
     v-slot="{ id }"
     :label="t('settings.report.address')"
   >
-    <UiTextInput
+    <v-textarea
       :id="id"
       v-model="address"
       :rows="2"
+      hide-details="auto"
+      autocomplete="off"
+      :aria-label="t('settings.report.address')"
     />
   </UiFormField>
 
@@ -25,9 +31,12 @@
     v-slot="{ id }"
     :label="t('settings.report.website')"
   >
-    <UiTextInput
+    <v-text-field
       :id="id"
       v-model="website"
+      hide-details="auto"
+      autocomplete="off"
+      :aria-label="t('settings.report.website')"
     />
   </UiFormField>
 </template>

@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { ToolItem } from '~/components/ui/ToolGroup.vue'
+import type { ToolItem } from '@smegg99/s99ab/types'
 import { useConfigSync } from '~/composables/useConfigSync'
 import { DEFAULT_ERROR_REFERENCE, ERROR_REFERENCE } from '~/types/config'
 import type { ErrorReference } from '~/types/config'
@@ -29,7 +29,7 @@ const ITEMS = computed<ToolItem[]>(() => [
 ])
 
 const reference = computed<ErrorReference>({
-  get: () => config.tuner?.error_reference ?? DEFAULT_ERROR_REFERENCE,
+  get: () => config.tuner?.error_reference === ERROR_REFERENCE.GOAL ? ERROR_REFERENCE.GOAL : DEFAULT_ERROR_REFERENCE,
   set: (v: ErrorReference) => { config.tuner.error_reference = v },
 })
 </script>

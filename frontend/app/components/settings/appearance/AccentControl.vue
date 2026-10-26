@@ -1,7 +1,7 @@
 <template>
   <UiFormField
     :label="t('settings.accent.label')"
-    :hint="t('settings.accent.hint')"
+    :hint="t(WEB ? 'web.accent.hint' : 'settings.accent.hint')"
   >
     <div class="accent">
       <UiToolGroup
@@ -24,14 +24,12 @@
 
   <v-dialog
     v-model="open"
+    :aria-label="t('settings.accent.pickTitle')"
     width="var(--dlg-sm)"
   >
     <UiDialogCard
       :title="t('settings.accent.pickTitle')"
-      :confirm-label="t('common.accept')"
       @close="open = false"
-      @cancel="open = false"
-      @confirm="accept"
     >
       <!-- Bound to a draft; nothing on the app changes until Accept, Cancel drops it. -->
       <UiColorPicker
@@ -39,15 +37,28 @@
         :presets="ACCENT_PRESETS"
         @update:model-value="draft = $event"
       />
+      <template #actions>
+        <v-btn
+          @click="open = false"
+        >
+          {{ t('common.cancel') }}
+        </v-btn><v-btn
+          color="accent"
+          @click="accept"
+        >
+          {{ t('common.accept') }}
+        </v-btn>
+      </template>
     </UiDialogCard>
   </v-dialog>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import type { ToolItem } from '~/components/ui/ToolGroup.vue'
+import type { ToolItem } from '@smegg99/s99ab/types'
 import { useThemeSync } from '~/composables/useThemeSync'
 import { ACCENT_MODE, ACCENT_MODES } from '~/types/config'
+import { WEB } from '~/utils/features'
 
 const { t } = useI18n()
 const { accent, accentColor, setAccentMode, setAccentColor } = useThemeSync()
@@ -56,7 +67,6 @@ const open = ref(false)
 
 // Seeded from the live accent on open, committed only on Accept, so dragging previews in the picker.
 const draft = ref('')
-
 const ACCENT_PRESETS = [
   '#ef4444', '#f97316', '#f59e0b', '#eab308',
   '#22c55e', '#10b981', '#14b8a6', '#06b6d4',
@@ -78,8 +88,11 @@ function onSelect(value: unknown) {
   if (next) setAccentMode(next.value)
 }
 
+// The web edition cannot see the system accent, so "follow the system" is the app's own default colour there.
 const accentItems = computed<ToolItem[]>(() =>
-  ACCENT_MODES.map(m => ({ value: m.value, label: t(m.labelKey), icon: m.icon })),
+  ACCENT_MODES.map(m => WEB && m.value === ACCENT_MODE.AUTO
+    ? { value: m.value, label: t('web.accent.default'), icon: 'mdi-water-outline' }
+    : { value: m.value, label: t(m.labelKey), icon: m.icon }),
 )
 </script>
 
@@ -87,13 +100,13 @@ const accentItems = computed<ToolItem[]>(() =>
 .accent {
   align-items: center;
   display: flex;
-  gap: 11px;
+  gap: var(--gap);
 }
 
 /* Square swatch at 31.2px to match UiToolKey height. */
 .accent__pick {
   aspect-ratio: 1;
-  block-size: 31.2px;
+  block-size: var(--s99ab-control-h);
   border: 1px solid rgb(var(--v-theme-line));
   border-radius: 2px;
   cursor: pointer;
