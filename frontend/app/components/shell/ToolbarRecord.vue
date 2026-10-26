@@ -1,12 +1,15 @@
 <template>
-  <div class="d-flex align-center ga-1">
+  <div class="key-row">
     <!-- Warm-up: live but unlit until armed. Never lit and disabled at once; see recordKeys. -->
-    <UiToolKey
-      icon="mdi-record"
-      tone="error"
-      :active="keys.light.lit"
+    <v-btn
       :disabled="keys.light.disabled"
       :title="t(HINTS[keys.light.hint])"
+      :aria-label="t(HINTS[keys.light.hint])"
+      :aria-pressed="keys.light.lit"
+      class="tone-key"
+      style="--key-tone: rgb(var(--v-theme-reed))"
+      :icon="'mdi-record'"
+      :data-icon="'mdi-record'"
       @click="toggleRecording(!armed)"
     />
 

@@ -1,74 +1,84 @@
 <template>
-  <div class="d-flex align-center ga-1">
-    <UiToolGroup
-      :model-value="manual"
-      :items="MODES"
-      :label="t('tuner.mode.label')"
-      @update:model-value="onMode"
-    />
-
+  <div class="note-tools key-row">
+    <!-- Lit while the detector owns the note; the note key beside it pins one. -->
     <UiToolKey
-      icon="mdi-chevron-left"
-      :disabled="!manual"
-      :title="t('tuner.step.noteDown')"
-      @click="step(-1)"
+      :label="t('tuner.mode.auto')"
+      :title="t('tuner.mode.autoHint')"
+      :active="!manual"
+      :disabled="chords"
+      @click="manual && setAuto(true)"
     />
 
-    <!-- Readout, not a control: fixed width + tabular-nums so the note never shifts the chevrons. -->
-    <output
-      class="note"
-      :class="{ 'note--auto': !manual }"
-      :title="t(manual ? 'tuner.mode.manual' : 'tuner.mode.auto')"
-    >{{ pinnedName }}</output>
+    <div class="note-step">
+      <UiToolKey
+        icon="mdi-chevron-left"
+        :disabled="!manual"
+        :title="t('tuner.step.noteDown')"
+        @click="stepNote(-1)"
+      />
 
-    <UiToolKey
-      icon="mdi-chevron-right"
-      :disabled="!manual"
-      :title="t('tuner.step.noteUp')"
-      @click="step(1)"
-    />
+      <!-- The note on screen, as a toggle: pressed it pins that note and stays lit; pressed again the
+           detector takes over. Fixed width so the chevrons never move. -->
+      <UiToolKey
+        class="note"
+        :label="pinnedName"
+        :active="manual"
+        :title="t(manual ? 'tuner.mode.pinned' : 'tuner.mode.pinHint')"
+        :disabled="chords"
+        @click="setAuto(manual)"
+      />
 
-    <!-- Gate: whether pinning a note sounds a reference tone (opt-in), separate from the output level. -->
-    <UiToolKey
-      :icon="sounds ? 'mdi-music-note' : 'mdi-music-note-off'"
-      :title="t('tuner.sounds.hint')"
-      @click="sounds = !sounds"
-    />
+      <UiToolKey
+        icon="mdi-chevron-right"
+        :disabled="!manual"
+        :title="t('tuner.step.noteUp')"
+        @click="stepNote(1)"
+      />
+    </div>
 
-    <!-- The one output level: governs playback and the reference tone alike; there is no second slider. -->
-    <UiLevelControl
-      :model-value="volume"
-      :on="!muted"
-      :active="muted"
-      :title="t('tuner.output.volume')"
-      :toggle-title="muted ? t('tuner.output.unmute') : t('tuner.output.mute')"
-      @toggle="setMuted(!muted)"
-      @update:model-value="setVolume"
-    />
+    <!-- Wide windows carry the mode and reed keys here; compact ones give them a row of their own. -->
+    <template v-if="!compact && !sessionReeds">
+      <span class="group-rule" />
+      <TunerModePanel />
+      <span class="group-rule" />
+    </template>
+
+    <div
+      v-if="!WEB"
+      class="note-audio"
+    >
+      <!-- The app's own output level for file playback and every tone, the note strip's included; the key
+           mutes them all and keeps the level. -->
+      <UiLevelControl
+        :model-value="volume"
+        :on="!muted"
+        :active="muted"
+        :title="t('tuner.output.volume')"
+        :toggle-title="muted ? t('tuner.output.unmute') : t('tuner.output.mute')"
+        @toggle="setMuted(!muted)"
+        @update:model-value="setVolume"
+      />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { ToolItem } from '~/components/ui/ToolGroup.vue'
-import { AUTO_NOTE, NOTE_MAX, NOTE_MIN, useTuner } from '~/composables/useTuner'
+import { AUTO_NOTE, useTuner } from '~/composables/useTuner'
 import { useConfigSync } from '~/composables/useConfigSync'
-import { useNoteSounds } from '~/composables/useNoteSounds'
 import { useOutputLevel } from '~/composables/useOutputLevel'
 import { noteName } from '~/utils/tuning'
+import { WEB } from '~/utils/features'
 
-// Auto: the detector owns the note; manual: the arrows or the note ruler pin it.
-
-// Default pin (A4) when the detector has nothing to hand over.
-const DEFAULT_PIN = 69
-
+// Auto: the detector owns the note; manual: the arrows or the note ruler pin it. Chords picks its own notes.
 const { t } = useI18n()
 const { config } = useConfigSync()
-const { note, manualNote, setManualNote } = useTuner()
-const { enabled: sounds } = useNoteSounds()
+const { note, manualNote, mode, sessionReeds, setAuto, stepNote } = useTuner()
+const compact = useCompactLayout()
 const { volume, muted, setVolume, setMuted } = useOutputLevel()
 
 const manual = computed(() => manualNote.value !== AUTO_NOTE)
+const chords = computed(() => !sessionReeds.value && mode.value === 'chords')
 
 const pinnedName = computed(() => {
   const pinned = manual.value ? manualNote.value : note.value
@@ -76,44 +86,16 @@ const pinnedName = computed(() => {
 
   return noteName(pinned, config.tuner?.scale_naming)
 })
-
-const MODES = computed<ToolItem[]>(() => [
-  { value: false, label: t('tuner.mode.auto') },
-  { value: true, label: t('tuner.mode.manual') },
-])
-
-// Switching to manual pins whatever the detector is on.
-function onMode(next: string | number | boolean) {
-  void setManualNote(next ? (note.value || DEFAULT_PIN) : AUTO_NOTE)
-}
-
-function step(delta: number) {
-  if (!manual.value) return
-  void setManualNote(Math.min(NOTE_MAX, Math.max(NOTE_MIN, manualNote.value + delta)))
-}
 </script>
 
 <style scoped>
+.note-step, .note-audio { display: flex; align-items: center; gap: var(--s99ab-control-gap); flex: 0 0 auto; }
+
 .note {
-  align-items: center;
-  background: rgb(var(--v-theme-well));
-  border: 1px solid rgb(var(--v-theme-line));
-  border-radius: 2px;
-  color: rgb(var(--v-theme-ink));
-  display: flex;
-  flex: 0 0 auto;
   font-family: var(--font-mono);
-  font-size: 14px;
   font-variant-numeric: tabular-nums;
   font-weight: 600;
-  height: 31.2px;
   justify-content: center;
-  line-height: 1;
-  width: 55px;
-}
-
-.note--auto {
-  color: rgb(var(--v-theme-ink2));
-  font-weight: 500;
+  width: 48px;
 }
 </style>

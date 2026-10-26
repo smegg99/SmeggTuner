@@ -1,18 +1,25 @@
+<!-- frontend/app/components/shell/AboutDialog.vue -->
 <template>
   <v-dialog
     v-model="open"
-    width="var(--dlg-sm)"
+    :aria-label="t('about.aboutTitle')"
+    width="var(--dlg-md)"
   >
     <UiDialogCard
       :title="t('about.aboutTitle')"
       @close="open = false"
     >
       <div class="about">
-        <SmeggTunerStacked
-          class="about__logo"
-          role="img"
-          :aria-label="t('about.appName')"
+        <ShellAppMascot
+          class="about__mascot"
+          :label="t('about.mascot')"
         />
+        <h1 class="about__title">
+          <ShellAppLogo
+            class="about__logo"
+            :title="t('about.appName')"
+          />
+        </h1>
 
         <p class="about__tagline">
           {{ t('about.tagline') }}
@@ -37,37 +44,17 @@
 
         <div class="about__links">
           <a
+            v-for="link in links"
+            :key="link.url"
             class="about__link"
-            :href="REPO"
-            @click.prevent="visit(REPO)"
+            :href="link.url"
+            @click.prevent="visit(link.url)"
           >
             <v-icon
-              icon="mdi-github"
+              :icon="link.icon"
               class="about__link-icon"
             />
-            GitHub
-          </a>
-          <a
-            class="about__link"
-            :href="SITE"
-            @click.prevent="visit(SITE)"
-          >
-            <v-icon
-              icon="mdi-web"
-              class="about__link-icon"
-            />
-            {{ t('common.website') }}
-          </a>
-          <a
-            class="about__link"
-            :href="KOFI"
-            @click.prevent="visit(KOFI)"
-          >
-            <v-icon
-              icon="mdi-coffee-outline"
-              class="about__link-icon"
-            />
-            {{ t('about.donate') }}
+            {{ link.label }}
           </a>
         </div>
       </div>
@@ -76,15 +63,18 @@
 </template>
 
 <script setup lang="ts">
-import SmeggTunerStacked from '~/assets/smeggtuner-stacked.svg'
-import * as BrowserService from '~~bindings/github.com/smegg99/s99wails/services/browser/service.js'
-
-// External links open in the system browser via s99wails, never inside the webview.
-const REPO = 'https://github.com/smegg99/SmeggTuner'
-const SITE = 'https://smeggtuner.com'
-const KOFI = 'https://ko-fi.com/smegg99'
+import { computed } from 'vue'
+import * as BrowserService from '~~bindings/github.com/smegg99/s99wails/v2/services/browser/service.js'
 
 const { t } = useI18n()
+
+// External links open in the system browser via s99wails, never inside the webview.
+const links = computed(() => [
+  { url: 'https://qr2g.it/1R', icon: 'mdi-github', label: 'GitHub' },
+  { url: 'https://linkedin.smegg.me', icon: 'mdi-linkedin', label: 'LinkedIn' },
+  { url: 'https://smeggtuner.com', icon: 'mdi-web', label: t('common.website') },
+  { url: 'https://ko-fi.com/smegg99', icon: 'mdi-coffee-outline', label: t('about.donate') },
+])
 
 const open = defineModel<boolean>({ required: true })
 
@@ -103,20 +93,27 @@ function visit(url: string) {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 19.2px;
-  padding: 12.8px 0 8px;
+  gap: 16px;
+  padding: var(--gap);
   text-align: center;
 }
 
+.about__mascot {
+  --app-mascot-h: 128px;
+}
+
+.about__title {
+  margin: 0;
+  line-height: 0;
+}
+
 .about__logo {
-  block-size: 192px;
-  inline-size: auto;
-  max-inline-size: 66%;
+  --app-logo-h: 22px;
 }
 
 .about__tagline {
   color: rgb(var(--v-theme-ink2));
-  font-size: 16.8px;
+  font-size: 14.5px;
   font-weight: 500;
   line-height: 1.4;
   margin: 0;
@@ -124,15 +121,15 @@ function visit(url: string) {
 
 .about__publisher {
   color: rgb(var(--v-theme-ink3));
-  font-size: 13.6px;
+  font-size: 12px;
   font-weight: 600;
-  margin: -9.6px 0 0;
+  margin: 0;
 }
 
 .about__meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 33px;
+  gap: var(--gap) var(--gap-wide);
   justify-content: center;
   margin: 0;
 }
@@ -140,12 +137,12 @@ function visit(url: string) {
 .about__meta-row {
   align-items: baseline;
   display: flex;
-  gap: 8.8px;
+  gap: var(--gap);
 }
 
 .about__meta-row dt {
   color: rgb(var(--v-theme-ink3));
-  font-size: 12.8px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -154,7 +151,7 @@ function visit(url: string) {
 .about__meta-row dd {
   color: rgb(var(--v-theme-ink));
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: 14px;
   font-variant-numeric: tabular-nums;
   margin: 0;
 }
@@ -162,18 +159,18 @@ function visit(url: string) {
 .about__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 26.4px;
+  gap: 16px;
   justify-content: center;
-  padding-block-start: 4.8px;
+  padding-block-start: var(--gap);
 }
 
 .about__link {
   align-items: center;
   color: rgb(var(--v-theme-accent));
   display: flex;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
-  gap: 6.6px;
+  gap: var(--gap);
   text-decoration: none;
 }
 
@@ -187,6 +184,6 @@ function visit(url: string) {
 }
 
 .about__link-icon {
-  font-size: 20.8px;
+  font-size: 18px;
 }
 </style>

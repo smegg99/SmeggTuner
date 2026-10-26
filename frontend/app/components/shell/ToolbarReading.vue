@@ -1,11 +1,19 @@
 <template>
-  <div class="d-flex align-center ga-1">
+  <div class="key-row">
     <UiToolKey
       icon="mdi-snowflake"
       :active="frozen"
       :disabled="!canFreeze"
       :title="t('tuner.freeze.hint')"
       @click="setFrozen(!frozen)"
+    />
+
+    <!-- Relearns the room's background noise; a microphone learns it on its first run and keeps it after. -->
+    <UiToolKey
+      icon="mdi-ear-hearing"
+      :disabled="!running || file"
+      :title="t('tuner.input.relearnHint')"
+      @click="relearn"
     />
 
     <!-- Which keyboard the bench faces; only an instrument with a declared bass machine has two. -->
@@ -23,30 +31,34 @@
       :disabled="advancing || !bassRegisters.length"
     >
       <template #activator="{ props: menu }">
-        <UiToolKey
+        <v-btn
           v-bind="menu"
-          :label="bassLabel"
           :title="t('tuner.bassRegister.hint')"
-          :fixed="REGISTER_W"
           :disabled="advancing || !bassRegisters.length"
-          :caret="bassRegisters.length > 0"
-        />
+          :aria-label="t('tuner.bassRegister.hint')"
+          :width="(REGISTER_W) * 11"
+          append-icon="mdi-menu-down"
+        >
+          {{ bassLabel }}
+        </v-btn>
       </template>
 
-      <UiMenuSheet>
-        <UiMenuItem
-          :label="t('tuner.bassRegister.all')"
+      <v-list class="tuner-menu">
+        <v-list-item
           :active="!bench?.bassRegister"
+          :append-icon="(!bench?.bassRegister) ? 'mdi-check' : undefined"
+          :title="t('tuner.bassRegister.all')"
           @click="setBassRegister('')"
         />
-        <UiMenuItem
+        <v-list-item
           v-for="r in bassRegisters"
           :key="r.name"
-          :label="`${r.name} - ${r.feet.map(f => `${f}'`).join('+')}`"
           :active="r.name === bench?.bassRegister"
+          :append-icon="(r.name === bench?.bassRegister) ? 'mdi-check' : undefined"
+          :title="`${r.name} - ${r.feet.map(f => `${f}'`).join('+')}`"
           @click="setBassRegister(r.name)"
         />
-      </UiMenuSheet>
+      </v-list>
     </v-menu>
 
     <!-- The register can't be derived from audio; it's asked, and it also sets the reed count. -->
@@ -55,46 +67,55 @@
       :disabled="advancing"
     >
       <template #activator="{ props: menu }">
-        <UiToolKey
+        <v-btn
           v-bind="menu"
-          :label="registerLabel"
           :title="advancing ? t('tuner.register.lockedPlaying') : t('tuner.register.hint')"
-          :fixed="REGISTER_W"
           :disabled="advancing"
-          caret
-        />
+          :aria-label="advancing ? t('tuner.register.lockedPlaying') : t('tuner.register.hint')"
+          :width="(REGISTER_W) * 11"
+          append-icon="mdi-menu-down"
+        >
+          {{ registerLabel }}
+        </v-btn>
       </template>
 
-      <UiMenuSheet>
-        <UiMenuItem
+      <v-list class="tuner-menu">
+        <v-list-item
           v-for="r in registers"
           :key="r.name"
-          :label="`${r.name} - ${t('tuner.reeds.count', { n: r.banks.length })}`"
           :active="r.name === bench?.register"
+          :append-icon="(r.name === bench?.register) ? 'mdi-check' : undefined"
+          :title="`${r.name} - ${t('tuner.reeds.count', { n: r.banks.length })}`"
           @click="setRegister(r.name)"
         />
-      </UiMenuSheet>
+      </v-list>
     </v-menu>
 
     <!-- No registers described: keep the control disabled rather than let it vanish. -->
-    <UiToolKey
+    <v-btn
       v-else-if="active"
-      :label="registerLabel"
       :title="t('tuner.register.hint')"
-      :fixed="REGISTER_W"
       disabled
-    />
+      :aria-label="t('tuner.register.hint')"
+      :width="(REGISTER_W) * 11"
+    >
+      {{ registerLabel }}
+    </v-btn>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useAudioDevices } from '~/composables/useAudioDevices'
 import { useSessions } from '~/composables/useSessions'
 import { useTransport } from '~/composables/useTransport'
 import { useTuner } from '~/composables/useTuner'
 
 const { t } = useI18n()
-const { frozen, setFrozen, canFreeze, reedCount } = useTuner()
+const { frozen, setFrozen, canFreeze, reedCount, running, relearn } = useTuner()
+const { current } = useAudioDevices()
+// A recording has no room to learn: its background is never learned.
+const file = computed(() => current.value.kind === 'file')
 const { active, setRegister, setBass, setBassRegister } = useSessions()
 // A file records one register; the switch is locked mid-playback so its reeds aren't re-filed.
 const { advancing } = useTransport()
@@ -105,7 +126,7 @@ const hasBass = computed(() => (active.value?.instrument?.bassReeds ?? 0) > 0)
 const bassRegisters = computed(() => active.value?.instrument?.bassRegisters ?? [])
 
 // Declared width: a register name is arbitrary data, so it's bounded outright and ellipsised.
-const REGISTER_W = 9
+const REGISTER_W = 8
 
 // The pulled register, or the reed count the engine is resolving when none is described.
 const registerLabel = computed(() =>

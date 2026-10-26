@@ -17,7 +17,7 @@ defineProps<{ title?: string }>()
 /* Height is a CSS var so the parent bar can size it to the row. */
 .logo {
   display: block;
-  height: var(--app-logo-h, 16px);
+  height: var(--app-logo-h, 14px);
   width: auto;
 }
 </style>

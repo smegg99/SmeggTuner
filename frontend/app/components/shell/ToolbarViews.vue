@@ -1,6 +1,7 @@
 <template>
   <UiToolGroup
     class="views"
+    :class="{ 'views--marks': !labelled }"
     :model-value="view"
     :items="VIEWS"
     :label="t('routes.navigation')"
@@ -10,29 +11,35 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { ToolItem } from '~/components/ui/ToolGroup.vue'
+import type { ToolItem } from '@smegg99/s99ab/types'
 import { useShell } from '~/composables/useShell'
+import { WORKSHOP } from '~/utils/features'
 import type { View } from '~/composables/useShell'
 
 // The three rooms - not routes: engine, shelf and config live for the whole process.
+const { labelled = true } = defineProps<{
+  /** names beside the marks; the toolbar drops them when they do not fit */
+  labelled?: boolean
+}>()
+
 const { t } = useI18n()
 const { view, setView } = useShell()
 
-// Names by default, dropped to marks when the row is tight (see CSS); the name stays as title/aria-label.
+// The name stays as title/aria-label when only the mark shows.
 const VIEWS = computed<ToolItem[]>(() => [
   { value: 'tune', label: t('routes.tune'), icon: 'mdi-tune-vertical', title: t('routes.tune') },
   { value: 'workshop', label: t('routes.workshop'), icon: 'mdi-hammer-wrench', title: t('routes.workshop') },
   { value: 'settings', label: t('routes.settings'), icon: 'mdi-cog-outline', title: t('routes.settings') },
-])
+].filter(v => WORKSHOP || v.value !== 'workshop'))
 </script>
 
 <style scoped>
-/* Names collapse to marks when the row is tight. Measured threshold: 1180px clears Polish (the
-   wider, decisive language) with room; re-measure if a longer language or a tune-row key is added.
-   Hide the whole label, not just its text: UiToolKey ghosts every face to fix its width. */
-@container (max-width: 1180px) {
-  .views :deep(.key__label) {
-    display: none;
-  }
+.views--marks :deep(.key) {
+  width: auto;
+  padding-inline: 8px;
+}
+
+.views--marks :deep(.key__label) {
+  display: none;
 }
 </style>

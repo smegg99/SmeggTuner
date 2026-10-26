@@ -1,14 +1,19 @@
 <template>
-  <div class="d-flex align-center ga-1">
+  <div class="workshop-tools key-row">
     <!-- Open session: the toolbar becomes that session's, rather than stacking a second row. -->
     <template v-if="openSession">
-      <UiToolKey
-        icon="mdi-arrow-left"
-        :label="t('workshop.exit')"
-        tone="error"
+      <v-btn
         :disabled="busy"
+        :title="t('workshop.exit')"
+        :aria-label="t('workshop.exit')"
+        class="tone-key"
+        style="--key-tone: rgb(var(--v-theme-reed))"
+        prepend-icon="mdi-arrow-left"
+        :data-icon="'mdi-arrow-left'"
         @click="back"
-      />
+      >
+        <span class="exit-label">{{ t('workshop.exit') }}</span>
+      </v-btn>
 
       <span class="rule" />
 
@@ -16,6 +21,7 @@
       <UiToolKey
         icon="mdi-tune-vertical"
         :label="t('calibrate.start')"
+        :title="t('calibrate.start')"
         @click="setView('calibrate')"
       />
 
@@ -25,6 +31,7 @@
         icon="mdi-printer-outline"
         :label="t('workshop.print')"
         :disabled="!notes"
+        :title="t('workshop.print')"
         @click="ask('print')"
       />
       <UiToolKey
@@ -38,11 +45,13 @@
       <UiToolKey
         icon="mdi-plus"
         :label="t('session.new')"
+        :title="t('session.new')"
         @click="ask('new')"
       />
       <UiToolKey
         icon="mdi-import"
         :label="t('workshop.import')"
+        :title="t('workshop.import')"
         @click="ask('import')"
       />
     </template>
@@ -66,8 +75,7 @@ const { ask } = useWorkshop()
 
 // Back closes the session: leaving it open would keep swallowing readings with nothing on screen.
 async function back() {
-  await close()
-  closeSession()
+  if (await close()) closeSession()
 }
 </script>
 
@@ -75,7 +83,13 @@ async function back() {
 .rule {
   background: rgb(var(--v-theme-line));
   flex: 0 0 1px;
-  height: 20px;
-  margin: 0 3.8px;
+  height: 17.5px;
+  margin: 0 var(--gap-tight);
+}
+@media (max-width: 959px), (max-height: 559px) {
+  .rule { display: none; }
+  .workshop-tools { width: 100%; justify-content: space-between; }
+  .workshop-tools :deep(.key__label), .exit-label { display: none; }
+  .workshop-tools :deep(.v-btn__prepend) { margin: 0; }
 }
 </style>
