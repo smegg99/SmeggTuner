@@ -4,19 +4,39 @@
     :saving="busy"
     @submit="onCreate"
   />
-  <UiConfirmDialog
+  <v-dialog
     v-model="confirmingSessionDelete"
-    :title="t('session.deleteTitle')"
-    :body="t('session.deleteHint')"
-    @confirm="deleteSessionNow"
-  />
+    :aria-label="t('session.deleteTitle')"
+    width="var(--dlg-sm)"
+  >
+    <UiDialogCard
+      :title="t('session.deleteTitle')"
+      @close="confirmingSessionDelete = false"
+    >
+      <p class="dialog-warn">
+        {{ t('session.deleteHint') }}
+      </p>
+      <template #actions>
+        <v-btn
+          @click="confirmingSessionDelete = false"
+        >
+          {{ t('common.cancel') }}
+        </v-btn><v-btn
+          color="error"
+          @click="deleteSessionNow"
+        >
+          {{ t('common.delete') }}
+        </v-btn>
+      </template>
+    </UiDialogCard>
+  </v-dialog>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useSessions } from '~/composables/useSessions'
 import { useShell } from '~/composables/useShell'
-import type { SessionDraft } from '~/components/session/SessionDialog.vue'
+import type { SessionDraft } from '~/types/session'
 
 const { t } = useI18n()
 const { openSession, openSessionAt, closeSession } = useShell()
@@ -54,7 +74,7 @@ async function onCreate(draft: SessionDraft) {
   if (!made) return
 
   dialog.value = null
-  // Go already adopted it (services/session/sessions.go, Create -> adopt); the room has to follow,
+  // Go already adopted it (backend/services/session/sessions.go, Create -> adopt); the room has to follow,
   // or the session that is open records into a shelf nobody is looking at.
   openSessionAt(made.id)
 }

@@ -33,13 +33,16 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { NOTE_MAX, NOTE_MIN } from '~/composables/useTuner'
+import { useConfigSync } from '~/composables/useConfigSync'
 import { noteName } from '~/utils/tuning'
 
 // One end of the keyboard. MIDI note number; 0 means unset (core/session: Lo/Hi are 0 until set).
 const model = defineModel<number>({ required: true })
 
-defineProps<{ naming?: string }>()
+const { config } = useConfigSync()
+const naming = computed(() => config.tuner.scale_naming)
 
 const { t } = useI18n()
 
@@ -59,7 +62,7 @@ function bump(delta: number) {
 .step {
   align-items: center;
   display: flex;
-  gap: 4.4px;
+  gap: var(--s99ab-control-gap);
 }
 
 /* Same sunk readout as ToolbarNote: tabular figures, fixed width. */
@@ -72,13 +75,13 @@ function bump(delta: number) {
   display: flex;
   flex: 0 0 auto;
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: 12px;
   font-variant-numeric: tabular-nums;
   font-weight: 600;
-  height: 31.2px;
+  height: var(--s99ab-control-h);
   justify-content: center;
   line-height: 1;
-  width: 60.5px;
+  width: 53px;
 }
 
 .step__note--unset {
@@ -91,8 +94,8 @@ function bump(delta: number) {
   align-items: center;
   display: flex;
   flex: 0 0 auto;
-  height: 31.2px;
+  height: var(--s99ab-control-h);
   justify-content: center;
-  width: 31.2px;
+  width: var(--s99ab-control-h);
 }
 </style>

@@ -1,20 +1,24 @@
 <template>
-  <div class="panel">
-    <UiPanelHead
-      :title="t('sessionPage.tabs.curve')"
-      :help-title="t('curve.helpTitle')"
-      @help="emit('help')"
-    >
-      <span class="panel__unit">{{ t(unit === 'hz' ? 'record.table.hertz' : 'record.table.cent') }}</span>
-    </UiPanelHead>
+  <UiPanel
+    class="curve-panel"
+    :title="t('sessionPage.tabs.curve')"
+    flush
+  >
+    <template #actions>
+      <slot name="tools" />
+      <UiToolKey
+        icon="mdi-information-outline"
+        class="panel-help"
+        :title="t('curve.helpTitle')"
+        @click="emit('help')"
+      />
+    </template>
 
-    <!-- Capture the pointer on the way down so a drag off the canvas edge is still delivered. -->
     <div
       class="plot"
-      @pointerdown="capture"
     >
       <p
-        v-if="!anchors.length"
+        v-if="!range"
         class="plot__empty"
       >
         {{ t('curve.startHint') }}
@@ -25,14 +29,13 @@
         :options="chartOptions"
       />
     </div>
-  </div>
+  </UiPanel>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useTheme } from 'vuetify'
 import {
-  CategoryScale,
   Chart as ChartJS,
   Legend,
   LinearScale,
@@ -43,21 +46,31 @@ import {
 import { Line } from 'vue-chartjs'
 import dragData from 'chartjs-plugin-dragdata'
 import { curveChartOptions } from '~/utils/curveChart'
-import type { ToolItem } from '~/components/ui/ToolGroup.vue'
-import type { Anchor, CurveUnit } from '~/types/curve'
-import { noteName } from '~/utils/tuning'
+import { curveBounds } from '~/utils/curveUnits'
+import type { EntryUnit } from '~/utils/curveUnits'
+import { curveRange, curveSeries, seriesValues } from '~/utils/curveSeries'
+import type { ToolItem } from '@smegg99/s99ab/types'
+import type { Anchor } from '~~bindings/smegg.me/smeggtuner/backend/core/target/models.js'
+import type { GoalRowDTO, RecordedDTO } from '~~bindings/smegg.me/smeggtuner/backend/services/session/models.js'
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend, dragData)
+ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend, dragData)
 
 const props = defineProps<{
   anchors: Anchor[]
+  /** the goal line as the engine reads it (CurveView.goals) */
+  goals: GoalRowDTO[]
+  /** the pass's readings (CurveView.recorded); drawn only with showRecorded */
+  recorded: RecordedDTO[]
+  showRecorded: boolean
   rankItems: ToolItem[]
   reed: number
-  unit: CurveUnit
+  unit: EntryUnit
+  /** the graph's half height in the unit; 0 fits it to what is drawn */
+  scale: number
 }>()
 
 const emit = defineEmits<{
-  pick: [{ reed: number, note: number | undefined }]
+  pick: [{ reed: number | undefined, note: number }]
   commit: [{ note: number, reed: number, value: number }]
   help: []
 }>()
@@ -65,29 +78,17 @@ const emit = defineEmits<{
 const { t } = useI18n()
 const theme = useTheme()
 
-const reedCount = computed(() => props.rankItems.length)
-const rankLabel = (i: number) => String(props.rankItems[i]?.label ?? '')
+const series = computed(() => curveSeries({
+  anchors: props.anchors,
+  goals: props.goals,
+  recorded: props.recorded,
+  ranks: props.rankItems.length,
+  unit: props.unit,
+  showRecorded: props.showRecorded,
+}))
 
-// Pin (don't fit) the y axis: a fitted axis rescales mid-drag; bounds round outward, zero always in.
-const bounds = computed(() => {
-  const values = props.anchors.flatMap(a =>
-    Array.from({ length: reedCount.value }, (_, i) => a.reeds[i] ?? 0),
-  )
-  if (!values.length) return { min: -5, max: 5 }
-
-  const step = 5
-  const lo = Math.min(0, ...values)
-  const hi = Math.max(0, ...values)
-  return {
-    min: Math.floor((lo - 2) / step) * step,
-    max: Math.ceil((hi + 2) / step) * step,
-  }
-})
-
-function capture(event: PointerEvent) {
-  const el = event.target
-  if (el instanceof HTMLCanvasElement) el.setPointerCapture(event.pointerId)
-}
+const range = computed(() => curveRange(series.value))
+const bounds = computed(() => curveBounds(seriesValues(series.value), props.scale, props.unit))
 
 // Live Vuetify "r,g,b" theme triplets; fallback only on prerender (no document), never painted.
 function triplet(name: string, fallback: string): string {
@@ -101,23 +102,18 @@ const chartData = computed(() => {
   const ink = triplet('--v-theme-ink2', '63,70,83')
 
   return {
-    labels: props.anchors.map(a => noteName(a.note)),
-    datasets: Array.from({ length: reedCount.value }, (_, i) => {
+    datasets: series.value.map((s) => {
       // Edited rank is accent, the rest ink: red/green already mean out-of/in-tolerance here.
-      const mine = i === props.reed
+      const mine = s.reed === props.reed
       const color = mine ? `rgb(${accent})` : `rgba(${ink}, 0.55)`
-      return {
-        label: rankLabel(i),
-        data: props.anchors.map(a => a.reeds[i] ?? 0), // short of reedCount = reed never set = zero
-
-        borderColor: color,
-        backgroundColor: color,
-        borderWidth: mine ? 2.5 : 1.5,
-        pointRadius: mine ? 4 : 3,
-        pointHoverRadius: 7,
-        pointHitRadius: 14, // drawn small, grabbed large
-        tension: 0,
+      const label = String(props.rankItems[s.reed]?.label ?? '')
+      if (s.kind === 'goal') {
+        return { label, data: s.points, borderColor: color, backgroundColor: color, borderWidth: mine ? 2 : 1.2, pointRadius: 0, pointHitRadius: 0, spanGaps: false, tension: 0, dragData: false }
       }
+      if (s.kind === 'recorded') {
+        return { label, data: s.points, showLine: false, borderColor: color, backgroundColor: 'transparent', borderWidth: 1, pointRadius: 2.5, pointHoverRadius: 4, pointHitRadius: 4, dragData: false }
+      }
+      return { label, data: s.points, showLine: false, borderColor: color, backgroundColor: color, pointRadius: mine ? 4 : 3, pointHoverRadius: 7, pointHitRadius: 14 }
     }),
   }
 })
@@ -126,9 +122,11 @@ const chartOptions = computed(() => {
   void theme.global.name.value
   return curveChartOptions({
     bounds: bounds.value,
+    range: range.value,
     ink: triplet('--v-theme-ink3', '115,123,136'),
     line: triplet('--v-theme-wellLine', '220,224,232'),
-    anchors: props.anchors,
+    series: series.value,
+    round: props.unit === 'hz' ? 2 : 1,
     onPick: (reed, note) => emit('pick', { reed, note }),
     onCommit: (note, reed, value) => emit('commit', { note, reed, value }),
   })
@@ -136,26 +134,16 @@ const chartOptions = computed(() => {
 </script>
 
 <style scoped>
-.panel {
-  background: rgb(var(--v-theme-well));
-  border: 1px solid rgb(var(--v-theme-line));
-  border-radius: 2px;
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
+.curve-panel {
   min-height: 0;
   overflow: hidden;
-}
-
-.panel__unit {
-  color: rgb(var(--v-theme-ink3));
-  font-size: 12px;
 }
 
 /* Chart.js sizes to its container, so the container is the one with a size. */
 .plot {
   height: 100%;
   min-height: 0;
-  padding: 6.4px 9.9px;
+  padding: var(--gap);
   position: relative;
 }
 
@@ -163,7 +151,7 @@ const chartOptions = computed(() => {
   align-items: center;
   color: rgb(var(--v-theme-ink3));
   display: flex;
-  font-size: 12.8px;
+  font-size: 11px;
   inset: 0;
   justify-content: center;
   margin: 0;

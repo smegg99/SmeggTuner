@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { Summary } from '~~bindings/smegg.me/smeggtuner/core/session/models.js'
+import type { Summary } from '~~bindings/smegg.me/smeggtuner/backend/core/session/models.js'
 
 const props = defineProps<{
   session: Summary
@@ -40,9 +40,9 @@ const updatedFull = computed(() => d(updatedAt.value, 'medium'))
   border-top: 1px solid rgb(var(--v-theme-lineSoft));
   color: rgb(var(--v-theme-ink3));
   display: flex;
-  font-size: 10.8px;
-  gap: 5.5px;
-  padding: 3.6px 7.7px;
+  font-size: 11px;
+  gap: var(--gap);
+  padding: var(--gap);
 }
 
 .card__when {
@@ -55,7 +55,7 @@ const updatedFull = computed(() => d(updatedAt.value, 'medium'))
 .card__goal {
   color: rgb(var(--v-theme-goal));
   flex: 0 0 auto;
-  font-size: 13.6px;
+  font-size: 12px;
 }
 
 .card__sp {

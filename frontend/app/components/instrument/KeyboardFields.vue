@@ -1,7 +1,7 @@
 <template>
-  <UiFieldGroup
-    dense
+  <UiFormSection
     :title="t('instrument.sections.keyboard')"
+    class="tuner-section"
   >
     <UiFormField
       :label="t('instrument.range.label')"
@@ -20,7 +20,7 @@
     >
       {{ t('instrument.range.backwards') }}
     </p>
-  </UiFieldGroup>
+  </UiFormSection>
 </template>
 
 <script setup lang="ts">
@@ -37,18 +37,21 @@ const { t } = useI18n()
 .form__range {
   align-items: center;
   display: flex;
-  gap: 11px;
+  gap: var(--gap);
 }
 
 .form__rangeto {
   color: rgb(var(--v-theme-ink3));
-  font-size: 12.8px;
+  font-size: 11px;
 }
 
 .form__warn {
   color: rgb(var(--v-theme-warn));
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.4;
   margin: 0;
+}
+@media (max-width: 559px) {
+  .form__range { flex-wrap: wrap; }
 }
 </style>

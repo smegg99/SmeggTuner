@@ -30,13 +30,13 @@ const { t } = useI18n()
 .cal__steps {
   align-items: center;
   display: flex;
-  gap: 8.8px;
+  gap: var(--gap);
 }
 
 .cal__step {
   align-items: center;
   display: flex;
-  gap: 7.7px;
+  gap: var(--gap);
   opacity: 0.4;
 }
 
@@ -46,7 +46,7 @@ const { t } = useI18n()
 
 .cal__stepsep {
   background: rgb(var(--v-theme-line));
-  flex: 0 0 33px;
+  flex: 0 0 29px;
   height: 1px;
 }
 
@@ -59,16 +59,16 @@ const { t } = useI18n()
   color: rgb(var(--v-theme-bg));
   display: flex;
   flex: 0 0 auto;
-  font-size: 12.8px;
+  font-size: 11px;
   font-weight: 700;
-  height: 24px;
+  height: 21px;
   justify-content: center;
-  width: 24px;
+  width: 21px;
 }
 
 .cal__steplabel {
   color: rgb(var(--v-theme-ink3));
-  font-size: 11.2px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;

@@ -1,35 +1,51 @@
 <template>
   <!-- A4 and judging windows are per-instrument, never global. -->
-  <UiFieldGroup
-    dense
+  <UiFormSection
     :title="t('instrument.sections.reference')"
+    class="tuner-section"
   >
     <UiFormField
+      v-show="mode !== 'tolerance'"
       v-slot="{ id }"
       :label="t('instrument.a4')"
       :hint="a4Note || t('instrument.a4Hint')"
       :error="a4Note"
     >
-      <UiNumberInput
+      <v-text-field
         :id="id"
         v-model="a4Draft"
         :suffix="t('settings.a4Unit')"
         :disabled="a4Disabled"
-        @commit="emit('commitA4')"
+        hide-details="auto"
+        autocomplete="off"
+        :aria-label="t('instrument.a4')"
+        inputmode="decimal"
+        class="tuner-number"
+        @blur="emit('commitA4')"
+        @keyup.enter="emit('commitA4')"
       />
     </UiFormField>
 
-    <div class="form__row">
+    <div
+      v-show="mode !== 'pitch'"
+      class="form__row"
+    >
       <UiFormField
         v-slot="{ id }"
         :label="t('instrument.tolerance')"
         :hint="t('instrument.toleranceHint')"
       >
-        <UiNumberInput
+        <v-text-field
           :id="id"
           v-model="tolDraft"
           :suffix="t('settings.toleranceUnit')"
-          @commit="emit('commitTol')"
+          hide-details="auto"
+          autocomplete="off"
+          :aria-label="t('instrument.tolerance')"
+          inputmode="decimal"
+          class="tuner-number"
+          @blur="emit('commitTol')"
+          @keyup.enter="emit('commitTol')"
         />
       </UiFormField>
 
@@ -37,15 +53,21 @@
         v-slot="{ id }"
         :label="t('instrument.beatTolerance')"
       >
-        <UiNumberInput
+        <v-text-field
           :id="id"
           v-model="beatDraft"
           :suffix="t('settings.toleranceUnit')"
-          @commit="emit('commitBeat')"
+          hide-details="auto"
+          autocomplete="off"
+          :aria-label="t('instrument.beatTolerance')"
+          inputmode="decimal"
+          class="tuner-number"
+          @blur="emit('commitBeat')"
+          @keyup.enter="emit('commitBeat')"
         />
       </UiFormField>
     </div>
-  </UiFieldGroup>
+  </UiFormSection>
 </template>
 
 <script setup lang="ts">
@@ -56,7 +78,11 @@ const beatDraft = defineModel<string>('beatDraft', { required: true })
 
 // The reference pitch freezes once the session has readings; the field says so rather
 // than offering a control the backend would refuse.
-defineProps<{ a4Disabled?: boolean, a4Note?: string }>()
+withDefaults(defineProps<{
+  mode?: 'all' | 'pitch' | 'tolerance'
+  a4Disabled?: boolean
+  a4Note?: string
+}>(), { mode: 'all' })
 
 const emit = defineEmits<{ commitA4: [], commitTol: [], commitBeat: [] }>()
 
@@ -66,7 +92,7 @@ const { t } = useI18n()
 <style scoped>
 .form__row {
   display: grid;
-  gap: 13.2px;
+  gap: var(--gap);
   grid-template-columns: 1fr 1fr;
 }
 </style>

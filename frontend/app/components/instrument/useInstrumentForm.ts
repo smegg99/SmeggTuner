@@ -1,7 +1,7 @@
 import { computed, reactive, ref, watch } from 'vue'
 import type { Ref } from 'vue'
 import { banksOfRegisters } from '~/utils/banks'
-import { A4_DEFAULT, A4_MAX, A4_MIN } from '~/types/session'
+import { A4_DEFAULT, A4_MAX, A4_MIN } from '~/utils/reference'
 import { DEFAULT_BEAT_TOLERANCE, DEFAULT_TOLERANCE } from '~/types/config'
 import type { Bank, BassRegister, InstrumentTemplate, Register } from '~/types/session'
 
@@ -69,7 +69,7 @@ export function useInstrumentForm(source: Ref<InstrumentTemplate | null>) {
   watch(() => source.value?.id, reload, { immediate: true })
 
   function commitA4() {
-    const n = Math.round(Number(a4Draft.value))
+    const n = Number(a4Draft.value)
     form.a4 = Number.isFinite(n) ? Math.min(A4_MAX, Math.max(A4_MIN, n)) : A4_DEFAULT
     a4Draft.value = String(form.a4)
   }

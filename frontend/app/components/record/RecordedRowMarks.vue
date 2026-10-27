@@ -6,40 +6,6 @@
     >{{ row.register }}</span>
 
     <span
-      v-if="row.merged"
-      class="mark"
-    >
-      <v-icon
-        icon="mdi-sine-wave"
-        size="x-small"
-        class="mark--warn"
-        :aria-label="t('record.table.merged')"
-      />
-      <v-tooltip
-        activator="parent"
-        location="top"
-        max-width="360"
-        :text="t('record.table.mergedHint')"
-      />
-    </span>
-    <span
-      v-else-if="row.derived"
-      class="mark"
-    >
-      <v-icon
-        icon="mdi-waveform"
-        size="x-small"
-        :aria-label="t('record.table.derived')"
-      />
-      <v-tooltip
-        activator="parent"
-        location="top"
-        max-width="360"
-        :text="t('record.table.derivedHint')"
-      />
-    </span>
-
-    <span
       v-if="row.manual"
       class="mark"
     >
@@ -73,7 +39,7 @@ const { t } = useI18n()
 .marks {
   align-items: center;
   display: inline-flex;
-  gap: 4.4px;
+  gap: var(--gap-tight);
 }
 
 .tag {
@@ -82,8 +48,8 @@ const { t } = useI18n()
   border-radius: 2px;
   color: rgb(var(--v-theme-ink3));
   flex: none;
-  font-size: 10.8px;
-  padding: 0 3.8px;
+  font-size: 11px;
+  padding: var(--gap-tight);
 }
 
 .tag--mono {
@@ -94,9 +60,5 @@ const { t } = useI18n()
   align-items: center;
   color: rgb(var(--v-theme-ink3));
   display: inline-flex;
-}
-
-.mark--warn {
-  color: rgb(var(--v-theme-warn));
 }
 </style>

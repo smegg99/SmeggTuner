@@ -2,67 +2,52 @@
   <div class="curve-editor">
     <CurveChart
       :anchors="anchors"
+      :goals="view?.goals ?? []"
+      :recorded="view?.recorded ?? []"
+      :show-recorded="showRecorded"
       :rank-items="rankItems"
       :reed="reed"
-      :unit="unit"
+      :unit="entry"
+      :scale="scale"
       @pick="pick"
       @commit="commit"
       @help="helpOpen = true"
+    >
+      <template #tools>
+        <CurveTools
+          v-if="!compact"
+          v-model:recorded="showRecorded"
+          v-model:scale="scale"
+          v-model:hz="hz"
+          :unit="unit"
+        />
+      </template>
+    </CurveChart>
+
+    <CurveBar
+      v-model:reed="reed"
+      v-model:note="note"
+      v-model:value="value"
+      v-model:recorded="showRecorded"
+      v-model:scale="scale"
+      v-model:hz="hz"
+      :unit="unit"
+      :entry="entry"
+      :rank-items="rankItems"
+      :interpolate="interpolate"
+      :can-remove="hasAnchorHere"
+      :can-clear="anchors.length > 0"
+      :busy="busy"
+      @set="set"
+      @remove="remove"
+      @interpolate="setInterpolate"
+      @clear="confirmClear = true"
     />
 
-    <div class="bar">
-      <UiToolGroup
-        v-if="rankItems.length > 1"
-        :model-value="reed"
-        :items="rankItems"
-        :label="t('curve.rank')"
-        @update:model-value="v => reed = v as number"
-      />
-
-      <InstrumentNoteStepper v-model="note" />
-
-      <UiNumberInput
-        v-model="value"
-        class="bar__value"
-        :suffix="t(unit === 'hz' ? 'record.table.hertz' : 'record.table.cent')"
-      />
-
-      <UiToolKey
-        icon="mdi-check"
-        :label="t('curve.set')"
-        :disabled="!note || busy"
-        :title="t('curve.setHint')"
-        @click="set"
-      />
-      <UiToolKey
-        icon="mdi-close"
-        :label="t('curve.remove')"
-        :disabled="!hasAnchorHere || busy"
-        :title="t('curve.removeHint')"
-        @click="remove"
-      />
-
-      <span class="bar__sp" />
-
-      <UiToolKey
-        :label="t('curve.interpolate')"
-        :active="interpolate"
-        :title="t('curve.interpolateHint')"
-        @click="setInterpolate(!interpolate)"
-      />
-      <UiToolKey
-        icon="mdi-delete-outline"
-        :label="t('curve.clearAll')"
-        :disabled="!anchors.length || busy"
-        :title="t('curve.clearAllHint')"
-        @click="confirmClear = true"
-      />
-    </div>
-
-    <UiConfirmDialog
+    <ConfirmDialog
       v-model="confirmClear"
       :title="t('curve.clearAllTitle')"
-      :body="t('curve.clearAllConfirm')"
+      :message="t('curve.clearAllConfirm')"
       @confirm="clearAll"
     />
 
@@ -72,13 +57,22 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
+import CurveBar from './CurveBar.vue'
 import CurveChart from './CurveChart.vue'
 import CurveHelp from './CurveHelp.vue'
-import type { ToolItem } from '~/components/ui/ToolGroup.vue'
+import ConfirmDialog from '~/components/ui/ConfirmDialog.vue'
+import CurveTools from './CurveTools.vue'
+import type { ToolItem } from '@smegg99/s99ab/types'
+import { useCurveView } from '~/composables/useCurveView'
+import { useDeviationUnit } from '~/composables/useDeviationUnit'
 import { useSessions } from '~/composables/useSessions'
+import { anchorUnit, goalShown } from '~/utils/curveUnits'
+import type { EntryUnit } from '~/utils/curveUnits'
 
 // The chart reads the curve's own joined anchors; nothing here computes a goal (the backend does).
+// Anchors are stored in reference units and shown, typed and dragged in the entry unit; the backend converts.
 const { t } = useI18n()
+const compact = useCompactLayout()
 const {
   active,
   busy,
@@ -86,16 +80,28 @@ const {
   clearAnchor,
   setInterpolate,
 } = useSessions()
+const view = useCurveView()
 
 const reed = ref(0)
 const note = ref(0)
 const value = ref(0)
 const confirmClear = ref(false)
 const helpOpen = ref(false)
+const showRecorded = ref(false)
+const scale = ref(0)
 
 const curve = computed(() => active.value?.curve ?? null)
 const anchors = computed(() => [...(curve.value?.anchors ?? [])].sort((a, b) => a.note - b.note))
-const unit = computed(() => curve.value?.unit ?? 'cent')
+const unit = useDeviationUnit()
+
+// Hz entry is the reference beat list's other unit: read at A4 = 440 Hz, so it never moves with the session's A4.
+const hz = ref(false)
+const entry = computed<EntryUnit>(() => (hz.value ? 'hz' : unit.value))
+
+// A scale picked in one unit means nothing in the other, and the typed value restates.
+watch(entry, () => {
+  scale.value = 0
+})
 
 // Absent is TRUE: core/target defaults it on, and a pre-flag curve is not one with it off.
 const interpolate = computed(() => curve.value?.interpolate ?? true)
@@ -113,15 +119,18 @@ const rankItems = computed<ToolItem[]>(() =>
   Array.from({ length: reedCount.value }, (_, i) => ({ value: i, label: rankLabel(i) })),
 )
 
-const hasAnchorHere = computed(() => anchors.value.some(a => a.note === note.value))
+const selectedAnchor = computed(() => anchors.value.find(a => a.note === note.value))
+const selectedValue = computed(() => selectedAnchor.value?.reeds[reed.value])
+const hasAnchorHere = computed(() => Boolean(selectedAnchor.value))
 
-function pick(hit: { reed: number, note: number | undefined }) {
-  reed.value = hit.reed
-  if (hit.note !== undefined) note.value = hit.note
+// A click on the graph is a click on that note's row: it selects the note, and the rank of a point hit.
+function pick(hit: { reed: number | undefined, note: number }) {
+  if (hit.reed !== undefined) reed.value = hit.reed
+  note.value = hit.note
 }
 
 function commit(edit: { note: number, reed: number, value: number }) {
-  void setAnchor(edit.note, edit.reed, edit.value, unit.value)
+  void setAnchor(edit.note, edit.reed, edit.value, anchorUnit(entry.value))
 }
 
 watch([anchors, () => active.value?.instrument], () => {
@@ -133,14 +142,18 @@ watch([anchors, () => active.value?.instrument], () => {
 }, { immediate: true })
 
 // Picking a note that already has an anchor loads its value, so Set corrects rather than overwrites.
-watch([note, reed], () => {
-  const found = anchors.value.find(a => a.note === note.value)
-  if (found) value.value = found.reeds[reed.value] ?? 0
-})
+function load() {
+  const found = selectedAnchor.value
+  if (found) value.value = goalShown(found.reeds[reed.value] ?? 0, found.note, entry.value)
+}
+
+// Follow persisted edits (including a drag) without replacing a draft on unrelated session events.
+watch([note, reed, entry, selectedValue], load, { immediate: true })
 
 async function set() {
   if (!note.value) return
-  await setAnchor(note.value, reed.value, value.value, unit.value)
+  // The field hands back text once typed in; the binding takes a number.
+  await setAnchor(note.value, reed.value, Number(value.value), anchorUnit(entry.value))
 }
 
 async function remove() {
@@ -157,39 +170,8 @@ async function clearAll() {
 <style scoped>
 .curve-editor {
   display: grid;
-  gap: 6.8px;
+  gap: var(--gap);
   grid-template-rows: minmax(0, 1fr) auto;
   min-height: 0;
-}
-
-/* Matches ShellAppToolbar; no-wrap so Set/Remove never jump to a second line at some widths. */
-.bar {
-  align-items: center;
-  background: rgb(var(--v-theme-chrome2));
-  border: 1px solid rgb(var(--v-theme-lineSoft));
-  border-radius: 3.6px;
-  display: flex;
-  gap: 5.5px;
-  min-width: 0;
-  overflow: hidden;
-  padding: 4.4px 7.2px;
-}
-
-/* Match the keys' 31.2px height so the row isn't crooked. */
-.bar :deep(.num) {
-  height: 31.2px;
-}
-
-.bar :deep(.num__input) {
-  height: 100%;
-}
-
-.bar__value {
-  flex: 0 0 auto;
-  width: 99px;
-}
-
-.bar__sp {
-  flex: 1 1 auto;
 }
 </style>

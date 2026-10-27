@@ -9,7 +9,6 @@
         :note="readoutNote ? noteName(readoutNote) : '--'"
         :sure="!!heard"
         :status="status"
-        :progress="lockProgress"
       />
 
       <div class="rng__keys">
@@ -17,12 +16,14 @@
           v-if="phase === 'high'"
           icon="mdi-arrow-left"
           :label="t('common.back')"
+          :title="t('common.back')"
           @click="backRange"
         />
         <UiToolKey
           icon="mdi-check"
           :label="t('calibrate.range.capture')"
           :disabled="!heard"
+          :title="t('calibrate.range.capture')"
           @click="capture"
         />
       </div>
@@ -55,12 +56,14 @@
         <UiToolKey
           icon="mdi-refresh"
           :label="t('calibrate.range.again')"
+          :title="t('calibrate.range.again')"
           @click="reset"
         />
         <UiToolKey
           icon="mdi-arrow-right"
           :label="t('calibrate.range.next')"
           :disabled="backwards || saving"
+          :title="t('calibrate.range.next')"
           @click="onNext"
         />
       </div>
@@ -77,7 +80,7 @@ import { noteName as toNoteName } from '~/utils/tuning'
 
 const { t } = useI18n()
 const { config } = useConfigSync()
-const { phase, lo, hi, heard, shown, liveNote, status, lockProgress, backwards, saving, reset, capture, backRange, saveRange, toSetup } = useCalibration()
+const { phase, lo, hi, heard, shown, liveNote, status, backwards, saving, reset, capture, backRange, saveRange, toSetup } = useCalibration()
 
 const readoutNote = computed(() => heard.value || liveNote.value || shown.value)
 
@@ -92,43 +95,43 @@ async function onNext() {
 
 <style scoped>
 .rng {
-  --cr-h: 176px;
-  --cr-note: 56px;
-  --cr-w: 176px;
+  --cr-h: 154px;
+  --cr-note: 49px;
+  --cr-w: 154px;
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--gap-wide);
   justify-content: center;
 }
 
 .rng__prompt {
   color: rgb(var(--v-theme-ink));
-  font-size: 19.2px;
+  font-size: 17px;
   margin: 0;
   max-width: 40ch;
 }
 
 .rng__keys {
   display: flex;
-  gap: 6.6px;
+  gap: var(--gap);
 }
 
 .rng__range {
   align-items: center;
   display: flex;
-  gap: 16.5px;
+  gap: var(--gap-wide);
 }
 
 .rng__end {
   display: flex;
   flex-direction: column;
-  gap: 3.2px;
+  gap: var(--gap-tight);
 }
 
 .rng__endlabel {
   color: rgb(var(--v-theme-ink3));
-  font-size: 11.2px;
+  font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -136,19 +139,19 @@ async function onNext() {
 .rng__endnote {
   color: rgb(var(--v-theme-ink));
   font-family: var(--font-mono);
-  font-size: 32px;
+  font-size: 28px;
   font-variant-numeric: tabular-nums;
   font-weight: 600;
 }
 
 .rng__arrow {
   color: rgb(var(--v-theme-ink3));
-  font-size: 24px;
+  font-size: 21px;
 }
 
 .rng__warn {
   color: rgb(var(--v-theme-warn));
-  font-size: 12.8px;
+  font-size: 11px;
   margin: 0;
 }
 </style>

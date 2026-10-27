@@ -1,32 +1,12 @@
 <template>
   <div class="card">
     <!-- Whole card opens; the export/delete keys ride above the stretched hit area. -->
-    <button
-      type="button"
-      class="card__open"
-      :title="t('workshop.open')"
-      @click="emit('open', session.id)"
-    >
-      <span class="card__pic">
-        <img
-          v-if="src"
-          class="card__img"
-          :src="src"
-          :alt="instrument"
-          loading="lazy"
-        >
-        <v-icon
-          v-else
-          class="card__none"
-          icon="mdi-folder-music-outline"
-        />
-      </span>
-
-      <span class="card__text">
-        <span class="card__name">{{ session.name }}</span>
-        <span class="card__what">{{ instrument || t('session.card.unnamedInstrument') }}</span>
-      </span>
-    </button>
+    <SessionCardFace
+      :name="session.name"
+      :instrument="instrument"
+      :src="src"
+      @open="emit('open', session.id)"
+    />
 
     <v-tooltip
       v-if="changed"
@@ -64,9 +44,10 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import SessionCardFace from './SessionCardFace.vue'
 import SessionCardMeta from './SessionCardMeta.vue'
 import { useInstruments } from '~/composables/useInstruments'
-import type { Summary } from '~~bindings/smegg.me/smeggtuner/core/session/models.js'
+import type { Summary } from '~~bindings/smegg.me/smeggtuner/backend/core/session/models.js'
 
 const props = defineProps<{
   session: Summary
@@ -130,87 +111,14 @@ function tuningSpec(i: {
   outline-offset: 1px;
 }
 
-.card__open {
-  align-items: center;
-  background: none;
-  border: 0;
-  color: rgb(var(--v-theme-ink));
-  cursor: pointer;
-  display: flex;
-  font: inherit;
-  gap: 6.6px;
-  min-width: 0;
-  padding: 6.4px 7.7px;
-  text-align: start;
-  width: 100%;
-}
-
-/* Stretched over the card so any non-key area opens it. */
-.card__open::after {
-  content: "";
-  inset: 0;
-  position: absolute;
-}
-
-.card__open:focus-visible {
-  outline: none;
-}
-
 /* Above the open button (z-index 1), tucked in the corner so it never crowds the name. */
 .card__alert {
   color: rgb(var(--v-theme-warn));
   opacity: 0.7;
   position: absolute;
-  right: 5.5px;
-  top: 4px;
+  right: 5px;
+  top: 3.5px;
   z-index: 2;
-}
-
-.card__pic {
-  align-items: center;
-  aspect-ratio: 4 / 3;
-  background: rgb(var(--v-theme-sunk));
-  border: 1px solid rgb(var(--v-theme-lineSoft));
-  border-radius: 2px;
-  display: flex;
-  flex: 0 0 auto;
-  height: 43.2px;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.card__img {
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-}
-
-.card__none {
-  color: rgb(var(--v-theme-ink3));
-  font-size: 19.2px;
-}
-
-.card__text {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2px;
-  min-width: 0;
-}
-
-.card__name {
-  font-size: 13.2px;
-  font-weight: 600;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.card__what {
-  color: rgb(var(--v-theme-ink3));
-  font-size: 11.2px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .card__sp {
@@ -221,8 +129,8 @@ function tuningSpec(i: {
   align-items: center;
   border-top: 1px solid rgb(var(--v-theme-lineSoft));
   display: flex;
-  gap: 2.8px;
-  padding: 3.2px 5.5px;
+  gap: var(--gap-tight);
+  padding: 3px 5px;
   /* Above the stretched hit area: these are their own actions, not "open". */
   position: relative;
   z-index: 1;
@@ -230,9 +138,9 @@ function tuningSpec(i: {
 
 .card__count {
   color: rgb(var(--v-theme-ink3));
-  font-size: 10.8px;
+  font-size: 11px;
   overflow: hidden;
-  padding-inline-start: 2.2px;
+  padding-inline-start: var(--gap-tight);
   text-overflow: ellipsis;
   white-space: nowrap;
 }

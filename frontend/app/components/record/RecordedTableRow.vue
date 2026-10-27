@@ -1,10 +1,14 @@
 <template>
   <tr
+    ref="el"
     class="recorded-row"
-    :class="{ 'recorded-row--on': row.note === selectedNote }"
-    @click="emit('select-note', row.note)"
+    :class="{ 'recorded-row--on': selected, 'recorded-row--latest': row.latest }"
+    @click="emit('select', row.key)"
   >
-    <td class="note">
+    <td
+      class="note"
+      :title="row.latest ? t('record.table.latest') : undefined"
+    >
       <span class="note__name">{{ row.noteName }}</span>
       <RecordRecordedRowMarks
         :row="row"
@@ -12,34 +16,14 @@
       />
     </td>
 
-    <template
+    <!-- An empty cell says why when the take knows: a slot it measured that did not sound. -->
+    <RecordRecordedReedCell
       v-for="cell in row.reedCells"
       :key="cell.key"
-    >
-      <!-- Merged reeds show no value; the beat carries the reading. -->
-      <td
-        v-if="cell.merged"
-        class="merged"
-      >
-        <v-icon
-          icon="mdi-sine-wave"
-          size="x-small"
-        />
-        {{ t('record.table.merged') }}
-      </td>
-
-      <template v-else>
-        <!-- An empty cell says why when the engine's band accounting knows: a rank the register
-             sounds but nothing was heard from, or one heard as only the rank below's harmonic. -->
-        <td
-          class="num num--curr"
-          :class="{ 'num--out': cell.present && !cell.inTol }"
-          :title="cell.blank ? t(`tuner.boxes.${cell.blank}`) : undefined"
-        >
-          {{ cell.curr }}
-        </td>
-      </template>
-    </template>
+      :cell="cell"
+      :note-name="row.noteName"
+      @edit="value => emit('edit', { take: row.take, slot: cell.slot, value })"
+    />
 
     <template
       v-for="beat in row.beatCells"
@@ -51,22 +35,6 @@
       >
         <span class="num__wrap">
           {{ beat.curr }}
-          <!-- Envelope-derived reading, not spectrum. -->
-          <span
-            v-if="beat.fromEnvelope"
-            class="from-env"
-          >
-            <v-icon
-              icon="mdi-waveform"
-              size="x-small"
-            />
-            <v-tooltip
-              activator="parent"
-              location="top"
-              max-width="360"
-              :text="t('record.table.envelopeHint')"
-            />
-          </span>
         </span>
       </td>
     </template>
@@ -91,21 +59,31 @@
 
 <script setup lang="ts">
 // Out-of-tolerance (amber) is the backend's per-cell verdict, never re-judged here.
+import { computed, useTemplateRef, watch } from 'vue'
 import type { RecordedRow } from '~/utils/recordedRows'
 
-defineProps<{
+const props = defineProps<{
   row: RecordedRow
   removable: boolean
   showRegister: boolean
-  selectedNote?: number | null
+  selectedKey?: string | null
 }>()
 
 const emit = defineEmits<{
   'delete-take': [take: number]
-  'select-note': [note: number]
+  'select': [key: string]
+  'edit': [{ take: number, slot: number, value: number }]
 }>()
 
 const { t } = useI18n()
+
+const el = useTemplateRef<HTMLTableRowElement>('el')
+const selected = computed(() => props.row.key === props.selectedKey)
+
+// A row picked on the graph may be out of view.
+watch(selected, (on) => {
+  if (on) el.value?.scrollIntoView({ block: 'nearest' })
+})
 </script>
 
 <style scoped>
@@ -121,8 +99,13 @@ const { t } = useI18n()
   background: rgb(var(--v-theme-row));
 }
 
+/* The take captured last, the one Backspace removes: a rule down the note cell. */
+.recorded-row--latest .note {
+  box-shadow: inset 2px 0 0 rgb(var(--v-theme-accent));
+}
+
 td {
-  padding: 4.4px 7.7px;
+  padding: var(--gap);
   white-space: nowrap;
 }
 
@@ -140,7 +123,7 @@ td {
 
 .note__name {
   font-weight: 600;
-  margin-inline-end: 5.5px;
+  margin-inline-end: var(--gap);
 }
 
 .num {
@@ -157,23 +140,13 @@ td {
 .num__wrap {
   align-items: center;
   display: inline-flex;
-  gap: 3.3px;
+  gap: var(--gap-tight);
   justify-content: flex-end;
-}
-
-.from-env {
-  color: rgb(var(--v-theme-ink3));
-}
-
-.merged {
-  color: rgb(var(--v-theme-ink3));
-  font-size: 12.4px;
-  text-align: center;
 }
 
 .kill {
   text-align: right;
-  width: 33px;
+  width: 29px;
 }
 
 .kill__key {
@@ -183,7 +156,7 @@ td {
   color: rgb(var(--v-theme-ink3));
   cursor: pointer;
   opacity: 0;
-  padding: 0.8px 2.2px;
+  padding: 0.8px 2px;
 }
 
 .recorded-row:hover .kill__key,

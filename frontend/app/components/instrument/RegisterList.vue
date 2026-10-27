@@ -5,7 +5,7 @@
       class="list__grid"
     >
       <div
-        v-for="(it, i) in items"
+        v-for="{ item: it, index: i } in shown"
         :key="`${it.name}-${i}`"
         class="item"
       >
@@ -32,8 +32,14 @@
       </div>
     </div>
 
+    <UiPageStepper
+      v-if="compact && items.length > 1"
+      v-model="page"
+      :count="items.length"
+      :label="t('instrument.sections.voices')"
+    />
     <p
-      v-else
+      v-if="!items.length"
       class="list__empty"
     >
       {{ empty }}
@@ -42,8 +48,9 @@
 </template>
 
 <script setup lang="ts">
+import { computed, ref, watch } from 'vue'
 // One switch list for both keyboards: the treble section fills the symbol slot, the bass one doesn't.
-defineProps<{
+const props = defineProps<{
   items: { name: string, feet: string }[]
   empty: string
 }>()
@@ -51,6 +58,12 @@ defineProps<{
 const emit = defineEmits<{ remove: [index: number] }>()
 
 const { t } = useI18n()
+const compact = useCompactLayout()
+const page = ref(0)
+const shown = computed(() => props.items.map((item, index) => ({ item, index })).filter((_, index) => !compact.value || index === page.value))
+watch(() => props.items.length, (length) => {
+  page.value = Math.max(0, Math.min(page.value, length - 1))
+})
 </script>
 
 <style scoped>
@@ -63,7 +76,7 @@ const { t } = useI18n()
 .list__grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 4.8px 8.8px;
+  gap: var(--gap) var(--gap);
 }
 
 /* Metrics match InstrumentRegisterBuilder .preset: an added switch and an offered one are the
@@ -75,15 +88,15 @@ const { t } = useI18n()
   border: 1px solid rgb(var(--v-theme-lineSoft));
   border-radius: 2px;
   display: flex;
-  gap: 5.5px;
+  gap: var(--gap);
   min-width: 0;
-  padding: 4.4px 4.4px 4.4px 7.7px;
+  padding: 4px 4px 4px 6.5px;
 }
 
 .item__sym {
-  block-size: 32px;
+  block-size: 28px;
   flex: 0 0 auto;
-  inline-size: 32px;
+  inline-size: 28px;
 }
 
 /* The feet are the thing being read; they are never cut. */
@@ -91,7 +104,7 @@ const { t } = useI18n()
   color: rgb(var(--v-theme-ink));
   flex: 0 0 auto;
   font-family: var(--font-mono);
-  font-size: 13.6px;
+  font-size: 12px;
   white-space: nowrap;
 }
 
@@ -99,9 +112,9 @@ const { t } = useI18n()
 .item__name {
   color: rgb(var(--v-theme-ink3));
   flex: 0 1 auto;
-  max-width: 132px;
+  max-width: 115.5px;
   font-family: var(--font-mono);
-  font-size: 11.2px;
+  font-size: 11px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -115,7 +128,7 @@ const { t } = useI18n()
   cursor: pointer;
   display: flex;
   flex: 0 0 auto;
-  padding-inline: 3.3px;
+  padding-inline: 3px;
 }
 
 .item__kill:hover {
@@ -124,8 +137,17 @@ const { t } = useI18n()
 
 .list__empty {
   color: rgb(var(--v-theme-ink3));
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.5;
   margin: 0;
+}
+@media (max-width: 959px), (max-height: 559px) {
+  .list { display: flex; gap: 6px; min-width: 0; align-items: center; }
+  .list__grid { min-width: 0; flex: 1; }
+  .item { max-width: 100%; flex: 1; padding-block: 0; }
+  .item__name { flex: 1; }
+  .item__kill { min-height: 40px; min-width: 32px; justify-content: center; }
+  .list :deep(.pages) { flex: 0 0 auto; gap: 2px; }
+  .list :deep(.pages__label) { display: none; }
 }
 </style>

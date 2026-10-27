@@ -18,7 +18,7 @@
       </button>
     </template>
 
-    <UiMenuSheet>
+    <v-list class="tuner-menu">
       <!-- Not UiMenuItem: a row carries its own forget key, and a button cannot hold a button. -->
       <div
         v-for="i in items"
@@ -56,17 +56,17 @@
       />
 
       <!-- Their own events, not model values: the model only ever holds a real accordion. -->
-      <UiMenuItem
-        :label="t('session.dialog.describeNew')"
+      <v-list-item
         data-test="describe"
+        :title="t('session.dialog.describeNew')"
         @click="emit('describe')"
       />
-      <UiMenuItem
-        :label="t('session.dialog.loadAccordion')"
+      <v-list-item
         data-test="load"
+        :title="t('session.dialog.loadAccordion')"
         @click="emit('load')"
       />
-    </UiMenuSheet>
+    </v-list>
   </v-menu>
 </template>
 
@@ -107,11 +107,11 @@ const currentLabel = computed(() => {
   color: rgb(var(--v-theme-ink));
   display: flex;
   font-family: var(--font-sans);
-  font-size: 14px;
-  gap: 5.5px;
-  height: 35.2px;
+  font-size: 12px;
+  gap: var(--gap);
+  height: 31px;
   min-width: 0;
-  padding-inline: 7.7px;
+  padding-inline: 6.5px;
   text-align: start;
   width: 100%;
 }
@@ -135,7 +135,7 @@ const currentLabel = computed(() => {
 .pick__caret {
   color: rgb(var(--v-theme-ink3));
   flex: 0 0 auto;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .row {
@@ -158,10 +158,10 @@ const currentLabel = computed(() => {
   display: flex;
   flex: 1 1 auto;
   font-family: var(--font-sans);
-  font-size: 13.6px;
-  gap: 6.6px;
+  font-size: 12px;
+  gap: var(--gap);
   min-width: 0;
-  padding: 6.8px 9.9px;
+  padding: 6px 8.5px;
   text-align: start;
 }
 
@@ -182,7 +182,7 @@ const currentLabel = computed(() => {
   color: rgb(var(--v-theme-ink3));
   flex: 0 0 auto;
   font-family: var(--font-mono);
-  font-size: 11.6px;
+  font-size: 11px;
 }
 
 .row__forget {
@@ -193,7 +193,7 @@ const currentLabel = computed(() => {
   cursor: pointer;
   display: flex;
   flex: 0 0 auto;
-  padding-inline: 7.7px;
+  padding-inline: 6.5px;
 }
 
 .row__forget:hover {
@@ -203,6 +203,7 @@ const currentLabel = computed(() => {
 .rule {
   background: rgb(var(--v-theme-lineSoft));
   block-size: 1px;
-  margin-block: 2.8px;
+  display: block;
+  margin-block: var(--gap-tight);
 }
 </style>

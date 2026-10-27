@@ -1,77 +1,91 @@
 <template>
   <div class="sw sw--setup">
-    <p class="sw__prompt">
+    <p
+      v-if="!compact || options.length"
+      class="sw__prompt"
+    >
       {{ t('calibrate.sweep.pickRegister') }}
     </p>
 
-    <div
-      v-if="registers.length"
-      class="sw__registers"
-    >
-      <button
-        v-for="r in registers"
-        :key="r.name"
-        type="button"
-        class="sw__reg"
-        @click="emit('begin', r.name)"
-      >
-        <InstrumentRegisterSymbol
-          :banks="r.banks"
-          class="sw__regsym"
-        />
-        <span class="sw__regname">{{ r.name }}</span>
-      </button>
-    </div>
+    <CalibrationRegisterKeys
+      v-if="!compact"
+      :registers="registers"
+      :bass-options="bassOptions"
+      @begin="(name: string, bass?: boolean) => emit('begin', name, bass)"
+    />
 
-    <!-- The bass side sweeps its twelve buttons: the whole ladder, and each declared switch. -->
     <div
-      v-if="bassOptions.length"
-      class="sw__registers"
+      v-if="compact && options.length"
+      class="sw__choice"
     >
-      <button
-        v-for="b in bassOptions"
-        :key="`bass-${b.register}`"
-        type="button"
-        class="sw__reg"
-        @click="emit('begin', b.register, true)"
-      >
-        <span class="sw__regname">{{ b.label }}</span>
-      </button>
+      <v-select
+        v-model="choice"
+        :items="options"
+        item-title="label"
+        item-value="id"
+        :aria-label="t('calibrate.sweep.pickRegister')"
+        hide-details
+      />
+      <UiToolKey
+        icon="mdi-play"
+        :title="t('calibrate.sweep.startPlain')"
+        @click="startChoice"
+      />
     </div>
-
     <!-- A solo register's sweep doubles as calibration of that rank's voice: the app learns how
          loud its partials stand, and compound registers can then tell that rank tuned dead onto a
          partial from a rank not sounding at all. -->
     <p
-      v-if="hasSolo"
+      v-if="hasSolo && !compact"
       class="sw__hint"
     >
       {{ t('calibrate.sweep.soloTeaches') }}
     </p>
 
     <!-- No register described: sweep into numbered columns, like an undescribed session. -->
-    <template v-else>
+    <template v-if="!registers.length && !bassOptions.length">
       <p class="sw__hint">
         {{ t('calibrate.sweep.noRegisters') }}
       </p>
-      <UiToolKey
-        icon="mdi-play"
-        tone="success"
-        :label="t('calibrate.sweep.startPlain')"
+      <v-btn
+        :title="t('calibrate.sweep.startPlain')"
+        :aria-label="t('calibrate.sweep.startPlain')"
+        class="tone-key"
+        style="--key-tone: rgb(var(--v-theme-goal))"
+        prepend-icon="mdi-play"
+        :data-icon="'mdi-play'"
         @click="emit('begin', '')"
-      />
+      >
+        {{ t('calibrate.sweep.startPlain') }}
+      </v-btn>
     </template>
 
-    <UiToolKey
-      icon="mdi-arrow-left"
-      :label="t('calibrate.sweep.redoRange')"
-      @click="emit('redoRange')"
-    />
+    <div class="sw__actions">
+      <UiToolKey
+        icon="mdi-arrow-left"
+        :label="t('calibrate.sweep.redoRange')"
+        :title="t('calibrate.sweep.redoRange')"
+        @click="emit('redoRange')"
+      />
+      <v-menu v-if="compact && hasSolo">
+        <template #activator="{ props: menu }">
+          <UiToolKey
+            v-bind="menu"
+            icon="mdi-information-outline"
+            :title="t('calibrate.sweep.soloTeaches')"
+          />
+        </template>
+        <p class="sw__explanation">
+          {{ t('calibrate.sweep.soloTeaches') }}
+        </p>
+      </v-menu>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
+import CalibrationRegisterKeys from './CalibrationRegisterKeys.vue'
 import type { BassRegister, Register } from '~/types/session'
 
 const props = defineProps<{
@@ -99,6 +113,16 @@ const bassOptions = computed(() => {
   }
   return out
 })
+const compact = useCompactLayout()
+const choice = ref(0)
+const options = computed(() => [
+  ...props.registers.map(r => ({ register: r.name, label: r.name, bass: false })),
+  ...bassOptions.value.map(r => ({ ...r, bass: true })),
+].map((r, id) => ({ ...r, id })))
+function startChoice() {
+  const item = options.value[choice.value]
+  if (item) emit('begin', item.register, item.bass)
+}
 </script>
 
 <style scoped>
@@ -106,58 +130,32 @@ const bassOptions = computed(() => {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--gap-wide);
   justify-content: center;
   width: 100%;
 }
 
 .sw__prompt {
   color: rgb(var(--v-theme-ink));
-  font-size: 17.6px;
+  font-size: 15.5px;
   margin: 0;
   max-width: 44ch;
 }
 
 .sw__hint {
   color: rgb(var(--v-theme-ink3));
-  font-size: 13.6px;
+  font-size: 12px;
   margin: 0;
   max-width: 40ch;
 }
 
-.sw__registers {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 11px;
-  justify-content: center;
-  max-width: 660px;
+.sw__choice { display: flex; align-items: center; gap: 8px; width: 100%; max-width: 360px; }
+.sw__choice > .v-select { flex: 1; min-width: 0; }
+@media (max-width: 959px), (max-height: 559px) {
+  .sw { gap: 8px; }
+  .sw__prompt { font-size: 13px; }
+  .sw__hint { font-size: 11px; }
 }
-
-.sw__reg {
-  align-items: center;
-  background: rgb(var(--v-theme-raised));
-  border: 1px solid rgb(var(--v-theme-line));
-  border-radius: 6.4px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  gap: 6.4px;
-  padding: 12.8px 17.6px;
-  transition: border-color 120ms, background 120ms;
-}
-
-.sw__reg:hover {
-  background: rgb(var(--v-theme-chrome2));
-  border-color: rgb(var(--v-theme-ink3));
-}
-
-.sw__regsym {
-  height: 56px;
-}
-
-.sw__regname {
-  color: rgb(var(--v-theme-ink));
-  font-size: 12.8px;
-  font-weight: 600;
-}
+.sw__actions { display: flex; align-items: center; gap: 8px; }
+.sw__explanation { padding: 12px; max-width: min(320px, calc(100vw - 24px)); font-size: 12px; background: rgb(var(--v-theme-chrome)); border: 1px solid rgb(var(--v-theme-line)); border-radius: var(--app-radius-panel); }
 </style>

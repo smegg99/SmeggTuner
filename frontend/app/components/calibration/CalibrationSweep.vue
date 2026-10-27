@@ -33,21 +33,26 @@
       :note="readoutNote ? noteName(readoutNote) : '--'"
       :sure="!!heard"
       :status="status"
-      :progress="lockProgress"
     />
 
     <div class="sw__keys">
       <UiToolKey
         icon="mdi-debug-step-over"
         :label="t('calibrate.sweep.skip')"
+        :title="t('calibrate.sweep.skip')"
         @click="skip"
       />
-      <UiToolKey
-        icon="mdi-stop"
-        tone="error"
-        :label="t('calibrate.sweep.stop')"
+      <v-btn
+        :title="t('calibrate.sweep.stop')"
+        :aria-label="t('calibrate.sweep.stop')"
+        class="tone-key"
+        style="--key-tone: rgb(var(--v-theme-reed))"
+        prepend-icon="mdi-stop"
+        :data-icon="'mdi-stop'"
         @click="finish"
-      />
+      >
+        {{ t('calibrate.sweep.stop') }}
+      </v-btn>
     </div>
   </div>
 
@@ -66,11 +71,13 @@
       <UiToolKey
         icon="mdi-table"
         :label="t('calibrate.sweep.review')"
+        :title="t('calibrate.sweep.review')"
         @click="setView('workshop')"
       />
       <UiToolKey
         icon="mdi-refresh"
         :label="t('calibrate.sweep.again')"
+        :title="t('calibrate.sweep.again')"
         @click="reset"
       />
     </div>
@@ -91,7 +98,7 @@ const { t } = useI18n()
 const { setView } = useShell()
 const { config } = useConfigSync()
 const {
-  stage, registers, instrument, currentStep, heard, shown, liveNote, status, lockProgress,
+  stage, registers, instrument, currentStep, heard, shown, liveNote, status,
   captured, capturedCount, progress, begin, skip, finish, redoRange, reset,
 } = useCalibration()
 
@@ -115,20 +122,20 @@ watch(captured, (got) => {
 
 <style scoped>
 .sw {
-  --cr-h: 144px;
-  --cr-note: 48px;
-  --cr-w: 330px;
+  --cr-h: 126px;
+  --cr-note: 42px;
+  --cr-w: 289px;
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--gap-wide);
   justify-content: center;
   width: 100%;
 }
 
 .sw__prompt {
   color: rgb(var(--v-theme-ink));
-  font-size: 17.6px;
+  font-size: 15.5px;
   margin: 0;
   max-width: 44ch;
 }
@@ -137,14 +144,14 @@ watch(captured, (got) => {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 4.8px;
-  width: 484px;
+  gap: var(--gap);
+  width: 423.5px;
 }
 
 .sw__bar {
   background: rgb(var(--v-theme-well));
   border-radius: 999px;
-  height: 7.2px;
+  height: 6.5px;
   overflow: hidden;
   width: 100%;
 }
@@ -157,31 +164,31 @@ watch(captured, (got) => {
 
 .sw__count {
   color: rgb(var(--v-theme-ink3));
-  font-size: 11.2px;
+  font-size: 11px;
   font-variant-numeric: tabular-nums;
 }
 
 .sw__ask {
   align-items: baseline;
   display: flex;
-  gap: 13.2px;
+  gap: var(--gap);
   margin: 0;
 }
 
 .sw__asknote {
   color: rgb(var(--v-theme-ink));
   font-family: var(--font-mono);
-  font-size: 36px;
+  font-size: 31.5px;
   font-weight: 700;
 }
 
 .sw__keys {
   display: flex;
-  gap: 6.6px;
+  gap: var(--gap);
 }
 
 .sw__done-icon {
   color: rgb(var(--v-theme-goal));
-  font-size: 64px;
+  font-size: 56px;
 }
 </style>

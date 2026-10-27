@@ -1,7 +1,7 @@
 <template>
-  <UiFieldGroup
-    dense
+  <UiFormSection
     :title="t('instrument.sections.identity')"
+    class="tuner-section"
   >
     <UiFormField
       v-slot="{ id }"
@@ -9,16 +9,19 @@
       :hint="t('instrument.nameHint')"
       :error="nameError ? t('instrument.nameRequired') : ''"
     >
-      <UiTextInput
+      <v-text-field
         :id="id"
         v-model="name"
-        :invalid="nameError"
         :maxlength="MAX_INSTRUMENT_NAME"
         :placeholder="t('instrument.namePlaceholder')"
-        @enter="emit('submit')"
+        hide-details="auto"
+        autocomplete="off"
+        :aria-label="t('instrument.name')"
+        :error="nameError"
+        @keyup.enter="emit('submit')"
       />
     </UiFormField>
-  </UiFieldGroup>
+  </UiFormSection>
 </template>
 
 <script setup lang="ts">

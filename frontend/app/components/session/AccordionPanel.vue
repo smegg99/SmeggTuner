@@ -1,58 +1,81 @@
+<!-- app/components/session/AccordionPanel.vue -->
 <template>
-  <div class="acc">
+  <div
+    class="acc"
+    :class="{ 'acc--compact': compact }"
+  >
+    <v-select
+      v-if="compact"
+      v-model="section"
+      :items="sections"
+      item-title="label"
+      item-value="value"
+      :aria-label="t('sessionPage.tabs.accordion')"
+      hide-details
+    />
     <!-- Not saved by a key: every committed change is written. The one thing that cannot be
          written is called out, because the backend would refuse it. -->
     <p
-      v-if="frozen"
+      v-if="frozen && !compact"
       class="acc__frozen"
       :class="{ 'acc__frozen--refused': columnsMoved }"
     >
       {{ columnsMoved ? t('session.accordion.columnsRefused') : t('session.accordion.frozen') }}
     </p>
 
+    <v-menu v-if="compact && frozen">
+      <template #activator="{ props: menu }">
+        <UiToolKey
+          v-bind="menu"
+          class="acc__locked"
+          icon="mdi-lock-outline"
+          :label="t('session.accordion.frozenShort')"
+          :title="t('session.accordion.frozenShort')"
+        />
+      </template>
+      <p class="acc__explanation">
+        {{ columnsMoved ? t('session.accordion.columnsRefused') : t('session.accordion.frozen') }}
+      </p>
+    </v-menu>
     <div class="acc__form">
       <section class="acc__col">
         <InstrumentIdentityFields
+          v-show="visible('identity')"
           v-model:name="form.name"
           :name-error="nameError"
           @submit="save"
         />
         <InstrumentReferenceFields
+          v-show="visible('reference') || visible('tolerance')"
           v-model:a4-draft="a4Draft"
           v-model:tol-draft="tolDraft"
           v-model:beat-draft="beatDraft"
+          :mode="compact ? (section === 'reference' ? 'pitch' : 'tolerance') : 'all'"
           :a4-disabled="frozen"
           :a4-note="frozen ? t('session.accordion.a4Locked') : ''"
           @commit-a4="commitA4"
           @commit-tol="commitTol"
           @commit-beat="commitBeat"
         />
-        <UiFieldGroup
-          dense
-          :title="t('instrument.sections.bass')"
-          :hint="t('instrument.bass.hint')"
-        >
-          <InstrumentBassSection
-            v-model:reeds="bassReeds"
-            v-model:registers="bassRegisters"
-          />
-        </UiFieldGroup>
+        <InstrumentBassGroup
+          v-show="visible('bass') || visible('bassBuilder')"
+          v-model:reeds="bassReeds"
+          v-model:registers="bassRegisters"
+          :mode="compact ? (section === 'bass' ? 'list' : 'builder') : 'all'"
+        />
       </section>
 
       <section class="acc__col">
-        <UiFieldGroup
-          dense
-          :title="t('instrument.sections.voices')"
-          :hint="t('instrument.registersHint')"
-        >
-          <p class="acc__says">
-            {{ banks.length ? t('instrument.says', { banks: banks.join(' '), reeds: reedCount }, reedCount) : t('instrument.registersSubtitle') }}
-          </p>
-
-          <InstrumentRegisterSection v-model="registers" />
-        </UiFieldGroup>
+        <InstrumentVoicesGroup
+          v-show="visible('voices') || visible('registerBuilder')"
+          v-model="registers"
+          :banks="banks"
+          :reed-count="reedCount"
+          :mode="compact ? (section === 'voices' ? 'list' : 'builder') : 'all'"
+        />
 
         <InstrumentKeyboardFields
+          v-show="visible('keyboard')"
           v-model:lo="form.lo"
           v-model:hi="form.hi"
           :range-error="rangeError"
@@ -63,18 +86,24 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 import { useInstrumentForm } from '~/components/instrument/useInstrumentForm'
+import { useAccordionAutosave } from '~/components/session/useAccordionAutosave'
 import { useSessionAccordion } from '~/composables/useSessionAccordion'
 import { frozenByReadings } from '~/utils/accordion'
-import * as SessionService from '~~bindings/smegg.me/smeggtuner/services/session/service.js'
 
-// Long enough that typing a name is one write, short enough that leaving the tab never races it.
-const AUTOSAVE_MS = 600
+const compact = useCompactLayout()
+const section = ref('identity')
+const sections = computed(() => [
+  ...['identity', 'reference', 'voices', 'keyboard', 'bass'].map(value => ({ value, label: t(`instrument.sections.${value}`) })),
+  { value: 'registerBuilder', label: t('instrument.builder.title') },
+  { value: 'bassBuilder', label: t('instrument.bass.build') },
+  { value: 'tolerance', label: t('instrument.tolerance') },
+])
+const visible = (value: string) => !compact.value || section.value === value
 
 const { t } = useI18n()
-const { active, setA4, refresh } = useSessions()
-const library = useInstruments()
+const { active } = useSessions()
 const { source, remembered } = useSessionAccordion()
 
 const {
@@ -102,50 +131,19 @@ const edited = computed(() => JSON.stringify([
   registers.value, bassReeds.value, bassRegisters.value,
 ]))
 
-// What is already stored. Loading an accordion sets it, so arriving on the tab is not an edit.
-const stored = ref(edited.value)
-watch(() => source.value?.id, () => {
-  stored.value = edited.value
-}, { flush: 'post' })
-
-let timer: ReturnType<typeof setTimeout> | undefined
-
-watch(edited, (now) => {
-  if (now === stored.value) return
-  if (timer) clearTimeout(timer)
-  timer = setTimeout(() => void save(), AUTOSAVE_MS)
+const { save } = useAccordionAutosave({
+  edited,
+  sourceID: () => source.value?.id,
+  collect,
+  commitDrafts: () => {
+    commitA4()
+    commitTol()
+    commitBeat()
+  },
+  columnsMoved,
+  nameError,
+  libraryID: () => (remembered.value ? source.value?.id : undefined),
 })
-
-// Leaving the tab tears the panel down before a field can blur, so this is the one moment the
-// number drafts have to be forced in - and the one moment a pending write must go now, not never.
-onBeforeUnmount(() => {
-  commitA4()
-  commitTol()
-  commitBeat()
-  if (!timer) return
-  clearTimeout(timer)
-  void save()
-})
-
-async function save() {
-  timer = undefined
-  // A name it cannot be found by, or a backwards keyboard: the field says so, and nothing is
-  // written until it is fixed.
-  const next = collect()
-  if (!next) return
-  // The card's columns are frozen once there are readings and the backend refuses them outright,
-  // so the panel does not ask; the notice above says why.
-  if (columnsMoved.value) return
-
-  const was = edited.value
-  // Both copies, because they are the same accordion: the session keeps its own so an
-  // exported .stsf still means something on a machine that never saw this one.
-  await SessionService.SetInstrument(next.instrument as never)
-  if (remembered.value) await library.save({ ...next, id: source.value!.id })
-  if (!frozen.value) await setA4(form.a4)
-  await refresh()
-  stored.value = was
-}
 </script>
 
 <style scoped>
@@ -155,45 +153,52 @@ async function save() {
 .acc {
   align-content: start;
   display: grid;
-  gap: 9.6px;
+  gap: var(--gap);
   grid-template-rows: auto auto;
   min-height: 0;
   overflow-y: auto;
-  padding: 8px 11px;
+  padding: 7px 9.5px;
 }
 
 .acc__frozen {
   color: rgb(var(--v-theme-ink3));
   flex: 1 1 auto;
-  font-size: 11.6px;
+  font-size: 11px;
   margin: 0;
   max-width: 60ch;
 }
 
-.acc__sp {
-  flex: 1 1 auto;
-}
-
 .acc__form {
   display: grid;
-  gap: 14.4px 30.8px;
+  gap: var(--gap-wide) var(--gap-wide);
   grid-template-columns: 1fr 1.1fr;
+}
+
+@media (max-width: 720px) {
+  .acc__form { grid-template-columns: minmax(0, 1fr); }
 }
 
 .acc__col {
   display: flex;
   flex-direction: column;
-  gap: 9.6px;
+  gap: var(--gap);
   min-width: 0;
 }
 
-/* One line, reserved even when empty, so describing switches never reflows the pane below. */
-.acc__says {
-  color: rgb(var(--v-theme-ink2));
-  font-size: 11.6px;
-  height: 16.8px;
-  line-height: 16.8px;
-  margin: 0;
-  overflow: hidden;
+.acc--compact { display: flex; flex-direction: column; overflow: hidden; }
+.acc--compact > .v-select { flex: 0 0 auto; }
+.acc--compact .acc__form { display: block; min-height: 0; min-width: 0; }
+.acc--compact .acc__frozen { flex: 0 0 auto; }
+.acc--compact :deep(.form-section) { margin-top: 0; }
+.acc--compact .acc__col { display: contents; }
+.acc--compact :deep(.form-section__head) { display: none; }
+.acc--compact :deep(.acc__says) { display: none; }
+
+@media (max-height: 559px) and (min-width: 560px) {
+  .acc--compact { display: grid; grid-template-columns: 150px minmax(0, 1fr); grid-template-rows: auto 1fr; align-content: stretch; }
+  .acc--compact > .v-select { grid-column: 1; }
+  .acc--compact .acc__frozen, .acc--compact .acc__locked { grid-column: 1; grid-row: 2; align-self: start; }
+  .acc--compact .acc__form { grid-column: 2; grid-row: 1 / -1; }
 }
+.acc__explanation { max-width: min(340px, calc(100vw - 24px)); padding: 12px; background: rgb(var(--v-theme-chrome)); border: 1px solid rgb(var(--v-theme-line)); border-radius: var(--app-radius-panel); font-size: 12px; }
 </style>

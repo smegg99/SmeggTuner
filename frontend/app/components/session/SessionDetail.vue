@@ -1,59 +1,17 @@
 <template>
   <div class="read">
     <SessionIdent
-      v-model:view="view"
+      :view="view"
       :session="active"
       :busy="busy"
+      @update:view="selectView"
     />
 
-    <div
+    <SessionReadings
       v-if="view === 'recorded'"
-      class="read__recorded"
-    >
-      <div
-        v-if="!table"
-        class="read__empty"
-      >
-        <p class="read__sub">
-          {{ t('session.readings.empty') }}
-        </p>
-      </div>
-
-      <!-- One table per recording: mixing recordings would mix separate takes of the accordion. -->
-      <!-- Tag must be RecordRecordedTable, not RecordedTable: the short form resolves to a native element that silently renders nothing. -->
-      <template v-else>
-        <RecordRecordedTable
-          v-if="trebleRows.length || !bassRows.length"
-          v-model:unit="unit"
-          class="read__table"
-          :rows="trebleRows"
-          :reed-count="table.reedCount"
-          :banks="table.banks"
-          :removable="true"
-          :selected-note="selectedNote"
-          @select-note="(n: number) => selectedNote = n"
-          @delete-take="askDelete"
-        />
-
-        <!-- The bass side: its own columns, the machine's ranks by foot. -->
-        <template v-if="bassRows.length">
-          <h3 class="read__bass-title">
-            {{ t('record.table.bassTitle') }}
-          </h3>
-          <RecordRecordedTable
-            v-model:unit="unit"
-            class="read__table"
-            :rows="bassRows"
-            :reed-count="table.bassReedCount || bassReeds"
-            :banks="bassFeetLabels"
-            :removable="true"
-            :selected-note="selectedNote"
-            @select-note="(n: number) => selectedNote = n"
-            @delete-take="askDelete"
-          />
-        </template>
-      </template>
-    </div>
+      v-model:selected="selectedKey"
+      @delete-take="askDelete"
+    />
 
     <CurveEditor
       v-else-if="view === 'curve'"
@@ -67,10 +25,10 @@
       class="read__accordion"
     />
 
-    <UiConfirmDialog
+    <ConfirmDialog
       v-model="confirmingDelete"
       :title="t('record.table.deleteTitle')"
-      :body="t('record.table.deleteHint')"
+      :message="t('record.table.deleteHint')"
       @confirm="confirmDelete"
     />
 
@@ -86,11 +44,15 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import SessionIdent from './SessionIdent.vue'
+import SessionReadings from './SessionReadings.vue'
+import ConfirmDialog from '~/components/ui/ConfirmDialog.vue'
 import { useRecord } from '~/composables/useRecord'
 import { useReport } from '~/composables/useReport'
 import { useSessions } from '~/composables/useSessions'
 import { useWorkshop } from '~/composables/useWorkshop'
-import type { ReportOptions, RecordUnit, TakeRow } from '~/types/record'
+import type { ReportOptions } from '~/types/record'
+import { flushEdits } from '~/composables/pendingEdits'
+import { registerBackStep } from '~/composables/useBackNavigation'
 
 const props = defineProps<{
   id: string
@@ -98,7 +60,7 @@ const props = defineProps<{
 
 const { t } = useI18n()
 const { active, busy } = useSessions()
-const { table, deleteTake, show: showTable } = useRecord()
+const { deleteTake, show: showTable } = useRecord()
 const { seq, last } = useWorkshop()
 const {
   busy: reportBusy,
@@ -107,27 +69,22 @@ const {
   clearError,
 } = useReport()
 
-const unit = ref<RecordUnit>('cent')
-const selectedNote = ref<number | null>(null)
+const selectedKey = ref<string | null>(null)
 const view = ref<'recorded' | 'curve' | 'accordion'>('recorded')
+async function selectView(next: typeof view.value) {
+  if (await flushEdits()) view.value = next
+}
+registerBackStep(async () => {
+  if (view.value === 'recorded') return false
+  await selectView('recorded')
+  return true
+})
 const printing = ref(false)
 const killTake = ref<number | null>(null)
 
-const rows = computed<TakeRow[]>(() => (table.value?.rows ?? []) as unknown as TakeRow[])
-const trebleRows = computed(() => rows.value.filter(r => !r.bass))
-const bassRows = computed(() => rows.value.filter(r => r.bass))
-
-// The bass section's columns; a machine nobody declared falls back to the widest row.
-const bassReeds = computed(() =>
-  Math.max(1, ...bassRows.value.map(r => r.reeds.length)),
-)
-const bassFeetLabels = computed(() =>
-  (table.value?.bassFeet ?? []).map((f: number) => `${f}'`),
-)
-
 // Refetch per id: covers first paint and clears the stale selection when switching sessions.
 watch(() => props.id, () => {
-  selectedNote.value = null
+  selectedKey.value = null
   void showTable()
 }, { immediate: true })
 
@@ -165,22 +122,11 @@ async function confirmDelete() {
 </script>
 
 <style scoped>
-.read__bass-title {
-  color: rgb(var(--v-theme-ink));
-  font-size: 15.2px;
-  margin: 9.6px 0 3.2px;
-}
-
 .read {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
-  min-height: 0;
-}
-
-/* Table must fill the pane, not sit content-height at the top. */
-.read__recorded {
-  display: grid;
-  grid-template-rows: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
   min-height: 0;
 }
 
@@ -195,25 +141,5 @@ async function confirmDelete() {
    switch-name field - could not be reached. */
 .read__accordion {
   min-height: 0;
-}
-
-/* Occupies the table's row when no recording is picked. */
-.read__empty {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-
-.read__sub {
-  color: rgb(var(--v-theme-ink3));
-  font-size: 12.8px;
-  margin: 0;
-  max-width: 46ch;
-}
-
-.read__table {
-  min-height: 0;
-  overflow: hidden;
 }
 </style>

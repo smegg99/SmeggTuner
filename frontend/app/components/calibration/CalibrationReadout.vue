@@ -1,4 +1,4 @@
-<!-- Box, note and bar are sized by the parent through --cr-w / --cr-h / --cr-note rather than by
+<!-- Box and note are sized by the parent through --cr-w / --cr-h / --cr-note rather than by
      props: an inline style cannot be overridden, and a short window has to shrink this. -->
 <template>
   <div class="cr__note-wrap">
@@ -11,12 +11,6 @@
   <p class="cr__status">
     {{ statusText }}
   </p>
-  <div class="cr__bar">
-    <div
-      class="cr__bar-fill"
-      :style="{ width: `${barPct}%` }"
-    />
-  </div>
 </template>
 
 <script setup lang="ts">
@@ -27,14 +21,11 @@ const props = defineProps<{
   note: string
   sure: boolean
   status: CaptureStatus
-  progress: number
 }>()
 
 const { t } = useI18n()
 
 const statusText = computed(() => t(`calibrate.status.${props.status === 'idle' ? 'play' : props.status}`))
-// The bar only means anything mid-hold; empty otherwise.
-const barPct = computed(() => (props.status === 'holding' ? Math.round(props.progress * 100) : 0))
 </script>
 
 <style scoped>
@@ -64,22 +55,8 @@ const barPct = computed(() => (props.status === 'holding' ? Math.round(props.pro
 
 .cr__status {
   color: rgb(var(--v-theme-ink3));
-  font-size: 12.8px;
+  font-size: 11px;
   margin: 0;
-  min-height: 12.8px;
-}
-
-.cr__bar {
-  background: rgb(var(--v-theme-well));
-  border-radius: 999px;
-  height: 5.6px;
-  inline-size: var(--cr-w);
-  overflow: hidden;
-}
-
-.cr__bar-fill {
-  background: rgb(var(--v-theme-ink2));
-  height: 100%;
-  transition: width 160ms;
+  min-height: 11px;
 }
 </style>

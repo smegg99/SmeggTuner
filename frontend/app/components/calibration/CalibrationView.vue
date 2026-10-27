@@ -1,25 +1,11 @@
 <template>
-  <UiPanelCard class="cal">
-    <template #head>
-      <span class="panel__title">{{ t('calibrate.title') }}</span>
-      <span class="cal__sp" />
-      <span class="panel__meta">{{ instrumentName }}</span>
-    </template>
-
+  <UiPanel
+    class="cal tuner-panel"
+    flush
+  >
+    <!-- Untitled: the main bar names the room and the instrument. -->
     <!-- Calibration records onto a session's instrument, so it needs one open. -->
-    <div
-      v-if="!instrument"
-      class="cal__empty"
-    >
-      <p class="cal__lead">
-        {{ t('calibrate.needsSession') }}
-      </p>
-      <UiToolKey
-        icon="mdi-folder-music-outline"
-        :label="t('routes.workshop')"
-        @click="setView('workshop')"
-      />
-    </div>
+    <CalibrationNeedsSession v-if="!instrument" />
 
     <div
       v-else
@@ -44,22 +30,38 @@
         class="cal__input"
       />
     </div>
-  </UiPanelCard>
+  </UiPanel>
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted } from 'vue'
+import { computed, onBeforeUnmount, onMounted, onUnmounted, watchEffect } from 'vue'
+import CalibrationNeedsSession from './CalibrationNeedsSession.vue'
 import CalibrationSteps from './CalibrationSteps.vue'
 import { useAudioDevices } from '~/composables/useAudioDevices'
 import { useCalibration } from '~/composables/useCalibration'
 import { useShell } from '~/composables/useShell'
 import { useTuner } from '~/composables/useTuner'
+import { registerPendingEdit } from '~/composables/pendingEdits'
+import { registerBackStep } from '~/composables/useBackNavigation'
+import { error, keyOf } from '~/composables/sessionStore'
+import * as SessionService from '~~bindings/smegg.me/smeggtuner/backend/services/session/service.js'
 
 // The engine stays live across this view; AppWindow owns its lifecycle.
-const { t } = useI18n()
-const { setView } = useShell()
+const { pageMeta } = useShell()
 const { running, start } = useTuner()
-const { instrument, stage, reset, leave } = useCalibration()
+const { instrument, stage, reset, leave, back } = useCalibration()
+registerBackStep(back)
+const removePending = registerPendingEdit(async () => {
+  try {
+    await leave()
+    await SessionService.Save()
+    return true
+  }
+  catch (failure) {
+    error.value = keyOf(failure)
+    return false
+  }
+})
 
 const { current } = useAudioDevices()
 const file = computed(() => current.value.kind === 'file')
@@ -72,39 +74,28 @@ onMounted(() => {
 
 // Leaving (this view is a v-if) unpins the note and disarms a sweep; AppWindow stops the engine.
 onUnmounted(() => {
-  void leave()
+  removePending()
+  void leave().catch((failure) => {
+    error.value = keyOf(failure)
+  })
 })
 
-const instrumentName = computed(() => {
-  const i = instrument.value
-  return i?.name ?? ''
+watchEffect(() => {
+  pageMeta.value = instrument.value?.name ?? ''
+})
+onBeforeUnmount(() => {
+  pageMeta.value = ''
 })
 </script>
 
 <style scoped>
-.cal__sp {
-  flex: 1 1 auto;
-}
-
-.cal__empty {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  height: 100%;
-  justify-content: center;
-  min-height: 0;
-  padding: 24px 22px;
-  text-align: center;
-}
-
 .cal__body {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--gap-wide);
   min-height: 0;
   overflow: hidden;
-  padding: 24px 22px;
+  padding: var(--gap-wide);
 }
 
 /* Auto margins on the ends rather than justify-content: center. Centred content that outgrows the
@@ -118,7 +109,7 @@ const instrumentName = computed(() => {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--gap-wide);
   min-height: 0;
   overflow-y: auto;
   text-align: center;
@@ -133,52 +124,60 @@ const instrumentName = computed(() => {
 }
 
 .cal__input {
-  block-size: 192px;
+  block-size: 168px;
   flex: 0 0 auto;
   min-height: 0;
   text-align: start;
 }
 
-.cal__lead {
-  color: rgb(var(--v-theme-ink));
-  font-size: 16px;
-  margin: 0;
-}
-
-/* The window cannot go below 640 tall (internal/app/window.go). Everything above is sized for a
+/* The window cannot go below 640 tall (backend/internal/app/window.go). Everything above is sized for a
    comfortable one; at a short one the step is trimmed to fit, because a calibration screen you
    have to scroll to reach Capture is worse than a smaller note box. */
 @media (max-height: 780px) {
   .cal__body {
-    gap: 10px;
-    padding: 12px 22px;
+    gap: var(--gap);
+    padding: var(--gap-wide);
   }
 
   .cal__flow {
-    gap: 10px;
+    gap: var(--gap);
   }
 
   .cal__input {
-    block-size: 150px;
+    block-size: 131px;
   }
 
   /* Reaches into the step components on purpose: this is the one place that knows how much room
      the whole screen has. */
   .cal__flow :deep(.rng),
   .cal__flow :deep(.sw) {
-    gap: 10px;
+    gap: var(--gap);
   }
 
   .cal__flow :deep(.rng) {
-    --cr-h: 116px;
-    --cr-note: 40px;
-    --cr-w: 116px;
+    --cr-h: 101.5px;
+    --cr-note: 35px;
+    --cr-w: 101.5px;
   }
 
   .cal__flow :deep(.sw) {
-    --cr-h: 96px;
-    --cr-note: 36px;
-    --cr-w: 260px;
+    --cr-h: 84px;
+    --cr-note: 31.5px;
+    --cr-w: 227.5px;
   }
+}
+@media (max-width: 959px), (max-height: 559px) {
+  .cal__body { padding: 6px; gap: 6px; }
+  .cal__flow { overflow: hidden; }
+  .cal__input { flex: 1 1 90px; max-height: 160px; }
+}
+@media (max-height: 559px) and (min-width: 560px) {
+  .cal__body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .cal__flow { align-items: stretch; }
+  .cal__flow > :first-child, .cal__flow > :last-child { margin: 0; }
+  .cal__input { block-size: auto; max-height: none; }
+  .cal__flow :deep(.rng), .cal__flow :deep(.sw) { --cr-h: 52px; --cr-note: 25px; --cr-w: 100%; gap: 4px; }
+  .cal__flow :deep(.rng__prompt), .cal__flow :deep(.sw__prompt) { font-size: 12px; }
+  .cal__flow :deep(.sw__hint) { font-size: 10px; }
 }
 </style>

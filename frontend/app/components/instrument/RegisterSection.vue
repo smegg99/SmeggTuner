@@ -1,6 +1,7 @@
 <template>
   <div class="regs">
     <InstrumentRegisterList
+      v-show="mode !== 'builder'"
       :items="items"
       :empty="t('instrument.builder.none')"
       @remove="remove"
@@ -11,6 +12,7 @@
     </InstrumentRegisterList>
 
     <InstrumentRegisterBuilder
+      v-show="mode !== 'list'"
       :have="registers"
       @add="add"
     />
@@ -25,6 +27,8 @@ import type { Register } from '~/types/session'
 
 // Registers held as v-model data; a register with a duplicate name is not re-added.
 const registers = defineModel<Register[]>({ required: true })
+
+withDefaults(defineProps<{ mode?: 'all' | 'list' | 'builder' }>(), { mode: 'all' })
 
 const { t } = useI18n()
 
@@ -46,6 +50,6 @@ function remove(i: number) {
 .regs {
   display: flex;
   flex-direction: column;
-  gap: 6.4px;
+  gap: var(--gap);
 }
 </style>

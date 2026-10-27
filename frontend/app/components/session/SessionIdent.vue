@@ -1,28 +1,11 @@
 <template>
   <div class="ident">
-    <!-- The photograph is the picker, but only where the accordion is edited. Everywhere else it
-         is a plain span: no button, no tooltip, no hover, so nothing invites a click that would
-         do nothing. It also needs a shelf entry to hang the image on, so it waits for one. -->
-    <component
-      :is="canPick ? 'button' : 'span'"
-      class="ident__pic"
-      :class="{ 'ident__pic--live': canPick }"
-      :type="canPick ? 'button' : undefined"
-      :title="canPick ? t('instrument.photo') : undefined"
-      @click="pick"
-    >
-      <img
-        v-if="imageSrc"
-        class="ident__img"
-        :src="imageSrc"
-        :alt="instrument"
-      >
-      <v-icon
-        v-else
-        :icon="canPick ? 'mdi-camera-outline' : 'mdi-folder-music-outline'"
-        class="ident__none"
-      />
-    </component>
+    <SessionPhoto
+      :live="canPick"
+      :src="imageSrc"
+      :alt="instrument"
+      @pick="void setPhoto()"
+    />
 
     <span class="ident__m">
       <span class="ident__n">{{ session?.name }}</span>
@@ -57,17 +40,18 @@
       @click="remember"
     />
 
-    <UiChip class="ident__chip">
+    <v-chip class="ident__chip">
       {{ t('session.card.a4', { hz: (session?.a4 ?? 0).toFixed(1) }) }}
-    </UiChip>
+    </v-chip>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import SessionPhoto from './SessionPhoto.vue'
 import { useSessionAccordion } from '~/composables/useSessionAccordion'
-import type { ToolItem } from '~/components/ui/ToolGroup.vue'
-import type { SessionDTO } from '~~bindings/smegg.me/smeggtuner/services/session/models.js'
+import type { ToolItem } from '@smegg99/s99ab/types'
+import type { SessionDTO } from '~~bindings/smegg.me/smeggtuner/backend/services/session/models.js'
 
 const props = defineProps<{
   session: SessionDTO | null
@@ -77,6 +61,7 @@ const props = defineProps<{
 const view = defineModel<'recorded' | 'curve' | 'accordion'>('view', { required: true })
 
 const { t } = useI18n()
+const compact = useCompactLayout()
 const { remembered, imageSrc, setPhoto, exportIt, remember } = useSessionAccordion()
 
 // The picker and the accordion key belong to the accordion, so they appear with its tab.
@@ -85,18 +70,14 @@ const onAccordion = computed(() => view.value === 'accordion')
 // A photograph is stored on the shelf entry, so it can only be set once there is one.
 const canPick = computed(() => onAccordion.value && remembered.value)
 
-function pick() {
-  if (canPick.value) void setPhoto()
-}
-
 const instrument = computed(() => {
   const i = props.session?.instrument
   return i?.name ?? ''
 })
 
 const VIEWS = computed<ToolItem[]>(() => [
-  { value: 'recorded', label: t('sessionPage.tabs.recorded'), icon: 'mdi-table' },
-  { value: 'curve', label: t('sessionPage.tabs.curve'), icon: 'mdi-chart-bell-curve-cumulative' },
+  { value: 'recorded', label: t(compact.value ? 'sessionPage.mobile.recorded' : 'sessionPage.tabs.recorded'), icon: 'mdi-table' },
+  { value: 'curve', label: t(compact.value ? 'sessionPage.mobile.curve' : 'sessionPage.tabs.curve'), icon: 'mdi-chart-bell-curve-cumulative' },
   { value: 'accordion', label: t('sessionPage.tabs.accordion'), icon: 'mdi-piano' },
 ])
 </script>
@@ -106,56 +87,19 @@ const VIEWS = computed<ToolItem[]>(() => [
   align-items: center;
   border-bottom: 1px solid rgb(var(--v-theme-lineSoft));
   display: flex;
-  gap: 7.7px;
-  padding: 6.4px 9.9px;
-}
-
-.ident__pic {
-  align-items: center;
-  padding: 0;
-  aspect-ratio: 4 / 3;
-  background: rgb(var(--v-theme-sunk));
-  border: 1px solid rgb(var(--v-theme-lineSoft));
-  border-radius: 2px;
-  display: flex;
-  flex: 0 0 auto;
-  height: 40px;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.ident__pic--live {
-  cursor: pointer;
-}
-
-.ident__pic--live:hover {
-  border-color: rgb(var(--v-theme-ink2));
-}
-
-.ident__pic--live:hover .ident__none {
-  color: rgb(var(--v-theme-ink));
+  gap: var(--gap);
+  padding: var(--gap);
 }
 
 .ident__key {
   flex: 0 0 auto;
 }
 
-.ident__img {
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-}
-
-.ident__none {
-  color: rgb(var(--v-theme-ink3));
-  font-size: 19.2px;
-}
-
 .ident__m {
   display: flex;
   flex: 0 1 auto;
   flex-direction: column;
-  gap: 0.8px;
+  gap: var(--gap-tight);
   min-width: 0;
 }
 
@@ -169,13 +113,13 @@ const VIEWS = computed<ToolItem[]>(() => [
 }
 
 .ident__n {
-  font-size: 14.4px;
+  font-size: 12.5px;
   font-weight: 600;
 }
 
 .ident__s {
   color: rgb(var(--v-theme-ink3));
-  font-size: 11.6px;
+  font-size: 11px;
 }
 
 .ident__sp {
@@ -190,11 +134,25 @@ const VIEWS = computed<ToolItem[]>(() => [
 .ident__chip {
   align-items: center;
   display: inline-flex;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
-  height: 31.2px;
+  height: var(--s99ab-control-h);
   justify-content: center;
   line-height: 1;
-  padding: 0 9.3px;
+  padding: 0 8px;
+}
+/* Portrait: name and A4 on the first line, the three tabs on their own. */
+@media (max-width: 959px), (max-height: 559px) {
+  .ident { gap: 4px; }
+  .ident__views { flex: 1 1 auto; min-width: 0; }
+  .ident__views :deep(.key) { flex: 1 1 0; min-width: 0; padding-inline: 6px; }
+  .ident__views :deep(.key__icon) { display: none; }
+  .ident__m, .ident__sp, .ident__chip { display: none; }
+  .ident__views :deep(.key__label) { overflow: hidden; text-overflow: ellipsis; }
+  .ident :deep(.ident__pic:not(.ident__pic--live)) { display: none; }
+  .ident__key :deep(.key__label) { display: none; }
+}
+@media (max-height: 359px) and (min-width: 560px) {
+  .ident { padding-block: 2px; }
 }
 </style>

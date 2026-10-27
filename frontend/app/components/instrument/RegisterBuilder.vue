@@ -12,6 +12,7 @@
           <UiToolKey
             :label="t(sym.high ? 'common.yes' : 'common.no')"
             :active="sym.high"
+            :title="t(sym.high ? 'common.yes' : 'common.no')"
             @click="sym.high = !sym.high"
           />
         </div>
@@ -31,6 +32,7 @@
           <UiToolKey
             :label="t(sym.low ? 'common.yes' : 'common.no')"
             :active="sym.low"
+            :title="t(sym.low ? 'common.yes' : 'common.no')"
             @click="sym.low = !sym.low"
           />
         </div>
@@ -52,7 +54,7 @@ import { computed, reactive } from 'vue'
 import { canAddRegister } from '~/utils/accordion'
 import { banksOfSymbol, canonicalName } from '~/utils/feet'
 import type { RegisterDots } from '~/utils/feet'
-import type { ToolItem } from '~/components/ui/ToolGroup.vue'
+import type { ToolItem } from '@smegg99/s99ab/types'
 import type { Bank, Register } from '~/types/session'
 
 const props = defineProps<{ have: readonly Register[] }>()
@@ -88,13 +90,13 @@ function add() {
   border-top: 1px solid rgb(var(--v-theme-lineSoft));
   display: flex;
   flex-direction: column;
-  gap: 4.8px;
-  padding-top: 7.2px;
+  gap: var(--gap);
+  padding-top: var(--gap);
 }
 
 .build__h {
   color: rgb(var(--v-theme-ink3));
-  font-size: 10.8px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -103,13 +105,13 @@ function add() {
 .build__body {
   align-items: center;
   display: flex;
-  gap: 13.2px;
+  gap: var(--gap);
 }
 
 .build__sym {
-  block-size: 32px;
+  block-size: 28px;
   flex: 0 0 auto;
-  inline-size: 32px;
+  inline-size: 28px;
 }
 
 /* Capped: the panel this sits in is far wider than the dialog it came from, and a label
@@ -118,20 +120,32 @@ function add() {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  gap: 3.2px;
-  max-width: 286px;
+  gap: var(--gap-tight);
+  max-width: 250px;
   min-width: 0;
 }
 
 .build__row {
   align-items: center;
   display: flex;
-  gap: 8.8px;
+  gap: var(--gap);
 }
 
 .build__label {
   color: rgb(var(--v-theme-ink));
   flex: 1 1 auto;
-  font-size: 13.2px;
+  font-size: 11.5px;
+}
+@media (max-width: 959px), (max-height: 559px) {
+  .build__body { flex-wrap: wrap; }
+  .build__body > .key { flex-basis: 100%; }
+  .build__label { font-size: 11px; }
+  .build__rows { display: grid; grid-template-columns: 1fr 1fr; max-width: none; flex: 1; }
+  .build__row:nth-child(2) { grid-row: 2; grid-column: 1 / -1; }
+  .build__row:last-child { grid-row: 1; grid-column: 2; }
+  .build__sym { display: none; }
+}
+@media (max-height: 559px) and (min-width: 560px) {
+  .build__body > .key { flex-basis: auto; }
 }
 </style>
