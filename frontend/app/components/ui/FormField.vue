@@ -40,13 +40,13 @@ const id = useId()
 .field {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--gap-tight);
   min-width: 0;
 }
 
 .field__label {
   color: rgb(var(--v-theme-ink));
-  font-size: 12.4px;
+  font-size: 11px;
   font-weight: 600;
   line-height: 1.2;
 }
@@ -65,6 +65,6 @@ const id = useId()
 /* warn, not red: red is reserved for a measured reed */
 .field__error {
   color: rgb(var(--v-theme-warn));
-  font-size: 11.2px;
+  font-size: 11px;
 }
 </style>

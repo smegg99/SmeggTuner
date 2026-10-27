@@ -1,6 +1,19 @@
 <template>
-  <UiPanelCard :title="title">
-    <template #meta>
+  <UiPanel
+    :title="bare ? undefined : title"
+    flush
+    class="tuner-panel"
+  >
+    <template
+      v-if="$slots.head"
+      #head
+    >
+      <slot name="head" />
+    </template>
+    <template
+      v-if="!bare"
+      #meta
+    >
       <slot name="meta" />
     </template>
 
@@ -9,10 +22,8 @@
       class="surface"
       :class="{ 'surface--interactive': interactive }"
       @pointerdown="onDown"
-      @pointermove="emit('pointermove', $event)"
+      @pointermove="!tracking &amp;&amp; emit('pointermove', $event)"
       @pointerleave="emit('pointerleave', $event)"
-      @pointerup="emit('pointerup', $event)"
-      @pointercancel="emit('pointercancel', $event)"
       @click="emit('click', $event)"
     >
       <canvas
@@ -21,10 +32,11 @@
         :aria-label="label"
       />
     </div>
-  </UiPanelCard>
+  </UiPanel>
 </template>
 
 <script setup lang="ts">
+import { trackPointer } from '@smegg99/s99ab/browser'
 import { onBeforeUnmount, watch } from 'vue'
 import { useTheme } from 'vuetify'
 import { useCanvas } from '~/composables/useCanvas'
@@ -39,6 +51,8 @@ const props = defineProps<{
   renderer: CanvasOptions
   /** takes the pointer */
   interactive?: boolean
+  /** no head strip: the picture is the whole panel */
+  bare?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -50,11 +64,21 @@ const emit = defineEmits<{
   click: [MouseEvent]
 }>()
 
-// Capture the pointer so a release outside still delivers pointerup here, else a tone can sound forever.
-function onDown(event: PointerEvent) {
-  const target = event.currentTarget
-  if (target instanceof HTMLElement) target.setPointerCapture(event.pointerId)
+let tracking = false
+let stopPointer: (() => void) | undefined
+onBeforeUnmount(() => stopPointer?.())
 
+function onDown(event: PointerEvent) {
+  if (!props.interactive || event.button !== 0) return
+  stopPointer?.()
+  tracking = true
+  stopPointer = trackPointer(event, {
+    move: next => emit('pointermove', next),
+    end: () => {
+      tracking = false
+      emit('pointerup', event)
+    },
+  })
   emit('pointerdown', event)
 }
 

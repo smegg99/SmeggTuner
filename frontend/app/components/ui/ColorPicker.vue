@@ -5,43 +5,30 @@
         class="cp__preview"
         :style="{ background: current }"
       />
-      <UiTextInput
+      <v-text-field
         class="cp__hex"
         :model-value="hexDraft"
         :maxlength="7"
         placeholder="#rrggbb"
-        :invalid="hexDraft !== '' && normalizeHex(hexDraft) === null"
+        :error="hexDraft !== '' && normalizeHex(hexDraft) === null"
+        hide-details
+        autocomplete="off"
+        aria-label="#rrggbb"
         @update:model-value="onHex"
-        @commit="hexDraft = current"
+        @blur="hexDraft = current"
+        @keyup.enter="hexDraft = current"
       />
     </div>
 
-    <div
+    <UiColorChannel
       v-for="ch in channels"
       :key="ch.key"
-      class="cp__row"
-    >
-      <span class="cp__name">{{ ch.label }}</span>
-      <span
-        class="cp__slider"
-        :style="{ background: ch.track }"
-      >
-        <span
-          class="cp__thumb"
-          :style="{ insetInlineStart: `${(ch.value / ch.max) * 100}%` }"
-        />
-        <input
-          class="cp__input"
-          type="range"
-          min="0"
-          :max="ch.max"
-          step="1"
-          :value="ch.value"
-          :aria-label="ch.label"
-          @input="ch.set(Number(($event.target as HTMLInputElement).value))"
-        >
-      </span>
-    </div>
+      :label="ch.label"
+      :value="ch.value"
+      :max="ch.max"
+      :track="ch.track"
+      @set="ch.set"
+    />
 
     <div
       v-if="presets.length"
@@ -142,18 +129,18 @@ watch(() => props.modelValue, (hex) => {
 .cp {
   display: flex;
   flex-direction: column;
-  gap: 11.2px;
+  gap: var(--gap);
 }
 
 .cp__top {
   align-items: stretch;
   display: flex;
-  gap: 11px;
+  gap: var(--gap);
 }
 
 .cp__preview {
   aspect-ratio: 1;
-  block-size: 48px;
+  block-size: 42px;
   border: 1px solid rgb(var(--v-theme-line));
   border-radius: 2px;
   flex: 0 0 auto;
@@ -164,60 +151,14 @@ watch(() => props.modelValue, (hex) => {
   font-family: var(--font-mono);
 }
 
-.cp__row {
-  align-items: center;
-  display: flex;
-  gap: 11px;
-}
-
-.cp__name {
-  color: rgb(var(--v-theme-ink2));
-  flex: 0 0 auto;
-  font-size: 12px;
-  inline-size: 99px;
-}
-
-.cp__slider {
-  block-size: 19.2px;
-  border: 1px solid rgb(var(--v-theme-line));
-  border-radius: 2px;
-  flex: 1 1 auto;
-  position: relative;
-}
-
-/* mix-blend difference inverts the thumb line against any colour under it, so it reads on every band */
-.cp__thumb {
-  background: #fff;
-  block-size: 100%;
-  inline-size: 2px;
-  inset-block-start: 0;
-  mix-blend-mode: difference;
-  pointer-events: none;
-  position: absolute;
-  transform: translateX(-50%);
-}
-
-.cp__input {
-  block-size: 100%;
-  cursor: pointer;
-  inline-size: 100%;
-  inset: 0;
-  margin: 0;
-  opacity: 0;
-  position: absolute;
-}
-
-.cp__input:focus-visible {
-  outline: 2px solid rgb(var(--v-theme-ink));
-  outline-offset: 2px;
-}
+.cp .cp__hex :deep(.v-field__input) { min-height: 42px; }
 
 .cp__presets {
   display: grid;
-  gap: 6.6px;
+  gap: var(--gap);
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
-  padding-block-start: 3.2px;
+  padding-block-start: var(--gap-tight);
 }
 
 .cp__swatch {
