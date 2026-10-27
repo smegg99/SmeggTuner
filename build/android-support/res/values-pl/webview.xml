@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- build/android-support/res/values-pl/webview.xml -->
+<resources>
+    <string name="webview_title">Zaktualizuj Android WebView</string>
+    <string name="webview_required">SmeggTuner wymaga WebView w wersji %1$d lub nowszej. Obecny dostawca: %2$s.\n\nZaktualizuj lub włącz dostawcę WebView i spróbuj ponownie.</string>
+    <string name="webview_unavailable">niedostępny</string>
+    <string name="webview_update">Aktualizuj</string>
+    <string name="webview_retry">Spróbuj ponownie</string>
+    <string name="webview_close">Zamknij</string>
+</resources>

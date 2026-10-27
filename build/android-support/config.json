@@ -1,0 +1,22 @@
+{
+  "applicationId": "me.smegg.smeggtuner",
+  "minSdk": 21,
+  "webViewMinMajor": 95,
+  "targetSdk": 37,
+  "platform": "37.0",
+  "buildTools": "37.0.0",
+  "ndk": "28.2.13676358",
+  "agp": "9.2.1",
+  "gradle": "9.4.1",
+  "gradleSha256": "2ab2958f2a1e51120c326cad6f385153bb11ee93b3c216c5fccebfdfbb7ec6cb",
+  "devices": {
+    "smeggtuner-api21": "system-images;android-21;google_apis;x86_64",
+    "smeggtuner-api23": "system-images;android-23;google_apis;x86_64",
+    "smeggtuner-api28": "system-images;android-28;google_apis;x86_64",
+    "smeggtuner-api28-aosp": "system-images;android-28;default;x86_64",
+    "smeggtuner-api30": "system-images;android-30;google_apis;x86_64",
+    "smeggtuner-api35": "system-images;android-35;google_apis;x86_64",
+    "smeggtuner-api37": "system-images;android-37.0;google_apis;x86_64",
+    "smeggtuner-api37-16k": "system-images;android-37.2;google_apis_ps16k;x86_64"
+  }
+}
