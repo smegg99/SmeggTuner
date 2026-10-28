@@ -1,0 +1,10 @@
+{
+	"name": "smeggtuner-app",
+	"build": [
+		"bash deploy/app/fetch.sh",
+		"cd deploy/app && go build -trimpath -o ../../bin/smeggtuner-app ."
+	],
+	"run": ["bin/smeggtuner-app"],
+	"env": { "LISTEN_ADDR": "127.0.0.1:9270", "SITE_DIR": "deploy/app/site" },
+	"check": { "port": 9270, "path": "/", "timeout_seconds": 30 }
+}

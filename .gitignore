@@ -83,3 +83,7 @@ testlab
 
 # Python bytecode from the build helpers.
 __pycache__/
+
+# The web edition deploy/app/fetch.sh unpacks on the server.
+/deploy/app/site
+/deploy/app/site.old
