@@ -1,10 +1,13 @@
 [Desktop Entry]
 Type=Application
 Name=SmeggTuner
-Exec=smeggtuner
+GenericName=Accordion tuner
+GenericName[pl]=Strojenie akordeonów
+Keywords=tuner;accordion;reed;
+Keywords[pl]=stroik;akordeon;głosy;
 Icon=smeggtuner
-Categories=Utility;Audio;
+TryExec=smeggtuner
+Exec=smeggtuner
 Terminal=false
-Keywords=wails
-Version=1.0
-StartupNotify=false
+Categories=Utility;Audio;
+StartupWMClass=smeggtuner

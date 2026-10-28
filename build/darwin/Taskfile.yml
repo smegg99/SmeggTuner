@@ -39,7 +39,7 @@ tasks:
             ref: .DEV
       - task: common:generate:icons
     cmds:
-      - go build {{.BUILD_FLAGS}} -o {{.OUTPUT}}
+      - go build {{.BUILD_FLAGS}} -o {{.OUTPUT}} ./backend
     vars:
       BUILD_FLAGS: '{{if eq .DEV "true"}}{{if .EXTRA_TAGS}}-tags {{.EXTRA_TAGS}} {{end}}-buildvcs=false -gcflags=all="-l"{{else}}-tags production{{if .EXTRA_TAGS}},{{.EXTRA_TAGS}}{{end}} -trimpath -buildvcs=false -ldflags="-w -s"{{end}}'
       DEFAULT_OUTPUT: '{{.BIN_DIR}}/{{.APP_NAME}}'
@@ -64,34 +64,16 @@ tasks:
       - sh: docker image inspect {{.CROSS_IMAGE}} > /dev/null 2>&1
         msg: |
           Docker image '{{.CROSS_IMAGE}}' not found.
-          Build it first: wails3 task setup:docker
+          Create the Wails cross image first, or set CROSS_IMAGE to an available compatible image.
     cmds:
-      - docker run --rm -v "{{.ROOT_DIR}}:/app" {{.GO_CACHE_MOUNT}} {{.REPLACE_MOUNTS}} -e APP_NAME="{{.APP_NAME}}" {{if .EXTRA_TAGS}}-e EXTRA_TAGS="{{.EXTRA_TAGS}}"{{end}} {{.CROSS_IMAGE}} darwin {{.DOCKER_ARCH}}
-      - docker run --rm -v "{{.ROOT_DIR}}:/app" alpine chown -R $(id -u):$(id -g) /app/bin
+      - python3 scripts/cross_build.py --root "{{.ROOT_DIR}}" --image "{{.CROSS_IMAGE}}" --os darwin --arch "{{.DOCKER_ARCH}}" --app "{{.APP_NAME}}" --tags "{{.EXTRA_TAGS}}"
+      - docker run --rm -v "{{.ROOT_DIR}}:/app" alpine chown -R $(id -u):$(id -g) /app/backend/bin
       - mkdir -p {{.BIN_DIR}}
-      - mv "bin/{{.APP_NAME}}-darwin-{{.DOCKER_ARCH}}" "{{.OUTPUT}}"
+      - mv "backend/bin/{{.APP_NAME}}-darwin-{{.DOCKER_ARCH}}" "{{.OUTPUT}}"
     vars:
       DOCKER_ARCH: '{{if eq .ARCH "arm64"}}arm64{{else if eq .ARCH "amd64"}}amd64{{else}}arm64{{end}}'
       DEFAULT_OUTPUT: '{{.BIN_DIR}}/{{.APP_NAME}}'
       OUTPUT: '{{ .OUTPUT | default .DEFAULT_OUTPUT }}'
-      # Mount Go module cache for faster builds
-      GO_CACHE_MOUNT:
-        sh: 'echo "-v ${GOPATH:-$HOME/go}/pkg/mod:/go/pkg/mod"'
-      # Extract replace directives from go.mod and create -v mounts for each
-      # Handles both relative (=> ../) and absolute (=> /) paths
-      REPLACE_MOUNTS:
-        sh: |
-          grep -E '^replace .* => ' go.mod 2>/dev/null | while read -r line; do
-            path=$(echo "$line" | sed -E 's/^replace .* => //' | tr -d '\r')
-            # Convert relative paths to absolute
-            if [ "${path#/}" = "$path" ]; then
-              path="$(cd "$(dirname "$path")" 2>/dev/null && pwd)/$(basename "$path")"
-            fi
-            # Only mount if directory exists
-            if [ -d "$path" ]; then
-              echo "-v $path:$path:ro"
-            fi
-          done | tr '\n' ' '
 
   build:universal:
     summary: Builds darwin universal binary (arm64 + amd64)
@@ -115,10 +97,10 @@ tasks:
       - rm "{{.BIN_DIR}}/{{.APP_NAME}}-amd64" "{{.BIN_DIR}}/{{.APP_NAME}}-arm64"
 
   build:universal:lipo:go:
-    summary: Creates universal binary using wails3 tool lipo (Linux/Windows)
+    summary: Creates universal binary using go tool wails3 tool lipo (Linux/Windows)
     internal: true
     cmds:
-      - wails3 tool lipo -output "{{.BIN_DIR}}/{{.APP_NAME}}" -input "{{.BIN_DIR}}/{{.APP_NAME}}-amd64" -input "{{.BIN_DIR}}/{{.APP_NAME}}-arm64"
+      - go tool wails3 tool lipo -output "{{.BIN_DIR}}/{{.APP_NAME}}" -input "{{.BIN_DIR}}/{{.APP_NAME}}-amd64" -input "{{.BIN_DIR}}/{{.APP_NAME}}-arm64"
       - rm -f "{{.BIN_DIR}}/{{.APP_NAME}}-amd64" "{{.BIN_DIR}}/{{.APP_NAME}}-arm64"
 
   package:
@@ -184,7 +166,7 @@ tasks:
     deps:
       - task: package
     cmds:
-      - wails3 tool sign --input "{{.BIN_DIR}}/{{.APP_NAME}}.app" --identity "{{.SIGN_IDENTITY}}" {{if .ENTITLEMENTS}}--entitlements {{.ENTITLEMENTS}}{{end}}
+      - go tool wails3 tool sign --input "{{.BIN_DIR}}/{{.APP_NAME}}.app" --identity "{{.SIGN_IDENTITY}}" {{if .ENTITLEMENTS}}--entitlements {{.ENTITLEMENTS}}{{end}}
     preconditions:
       - sh: '[ -n "{{.SIGN_IDENTITY}}" ]'
         msg: "SIGN_IDENTITY is required. Set it in the vars section at the top of build/darwin/Taskfile.yml"
@@ -196,11 +178,11 @@ tasks:
       Configure SIGN_IDENTITY and KEYCHAIN_PROFILE in the vars section at the top of this file.
 
       Setup (one-time):
-        wails3 signing credentials --apple-id "you@email.com" --team-id "TEAMID" --password "app-specific-password" --profile "my-profile"
+        go tool wails3 signing credentials --apple-id "you@email.com" --team-id "TEAMID" --password "app-specific-password" --profile "my-profile"
     deps:
       - task: package
     cmds:
-      - wails3 tool sign --input "{{.BIN_DIR}}/{{.APP_NAME}}.app" --identity "{{.SIGN_IDENTITY}}" {{if .ENTITLEMENTS}}--entitlements {{.ENTITLEMENTS}}{{end}} --notarize --keychain-profile {{.KEYCHAIN_PROFILE}}
+      - go tool wails3 tool sign --input "{{.BIN_DIR}}/{{.APP_NAME}}.app" --identity "{{.SIGN_IDENTITY}}" {{if .ENTITLEMENTS}}--entitlements {{.ENTITLEMENTS}}{{end}} --notarize --keychain-profile {{.KEYCHAIN_PROFILE}}
     preconditions:
       - sh: '[ -n "{{.SIGN_IDENTITY}}" ]'
         msg: "SIGN_IDENTITY is required. Set it in the vars section at the top of build/darwin/Taskfile.yml"

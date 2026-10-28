@@ -1,4 +1,4 @@
-// Command analyze runs the measurement engine over a WAV or synth spec and prints one measurement as JSON; -last reports the raw last tick instead of aggregating.
+// Command analyze runs the measurement engine over a WAV or synth spec and prints its last locked measurement as JSON, or the last measured one when nothing locked.
 package main
 
 import (
@@ -7,12 +7,11 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"time"
 
-	"smegg.me/smeggtuner/core/audio"
-	"smegg.me/smeggtuner/core/dsp"
-	"smegg.me/smeggtuner/core/session"
-	"smegg.me/smeggtuner/core/tuning"
+	"smegg.me/smeggtuner/backend/core/audio"
+	"smegg.me/smeggtuner/backend/core/dsp"
+	"smegg.me/smeggtuner/backend/core/session"
+	"smegg.me/smeggtuner/backend/core/tuning"
 )
 
 func fail(format string, args ...any) {
@@ -40,10 +39,8 @@ func main() {
 	reeds := flag.Int("reeds", 1, "reed count; -banks and -bass set it themselves")
 	banks := flag.String("banks", "", "register banks (e.g. LM, LMMM, MH); sets the compound layout and the reed count")
 	bass := flag.Int("bass", 0, "bass machine voice count (2..6): tune the whole octave ladder")
-	ppm := flag.Float64("ppm", 0, "clock correction ppm")
-	window := flag.Float64("window", 3.0, "fine analysis window, seconds")
+	calibration := flag.Float64("calibration", 0, "sample-clock calibration, percent")
 	trace := flag.Bool("trace", false, "print every measurement to stderr")
-	last := flag.Bool("last", false, "report the last (locked if any) tick instead of aggregating")
 	flag.Parse()
 
 	if (*wavPath == "") == (*synthPath == "") {
@@ -97,50 +94,40 @@ func main() {
 		fail("%v", err)
 	}
 
-	var all []dsp.Measurement
+	var final, locked dsp.Measurement
 	emit := func(m dsp.Measurement) {
-		all = append(all, m)
+		// Heartbeats carry no slot values; retain only summary candidates.
+		if m.Frame == dsp.FrameMeasured {
+			final = m
+			if m.Lock.Visible {
+				locked = m
+			}
+		}
 		if *trace {
 			line, _ := json.Marshal(m)
 			fmt.Fprintln(os.Stderr, string(line))
 		}
 	}
 
+	// No LearnOnStart: recordings start mid-note, and learning would fold the tone into the background.
 	eng := dsp.NewEngine(dsp.EngineConfig{
-		A4:         *a4,
-		ReedCount:  *reeds,
-		ManualNote: manual,
-		ClockPPM:   *ppm,
-		Octaves:    octaves,
-		// CalibSecs 0: recordings start mid-note; calibrating would fold the tone into the noise floor.
-		FineWindow: time.Duration(*window * float64(time.Second)),
+		A4:          *a4,
+		ReedCount:   *reeds,
+		ManualNote:  manual,
+		Calibration: *calibration,
+		Octaves:     octaves,
+		Bass:        *bass != 0,
 	}, emit)
 
 	if err := eng.Run(context.Background(), src); err != nil {
 		fail("engine: %v", err)
 	}
 
-	var final dsp.Measurement
-	if *last {
-		// Skip the reedless heartbeats between results, or the fallback reports no reeds.
-		for _, m := range all {
-			if m.Locked {
-				final = m
-			}
-		}
-		if !final.Locked {
-			for _, m := range all {
-				if len(m.Reeds) > 0 {
-					final = m
-				}
-			}
-		}
-	} else {
-		agg, ok := dsp.Aggregate(all, *a4, 0.5)
-		if !ok {
-			fail("no usable measurements (empty or silent input)")
-		}
-		final = agg
+	if locked.Frame == dsp.FrameMeasured {
+		final = locked
+	}
+	if final.Frame != dsp.FrameMeasured {
+		fail("no measured frame (empty or silent input)")
 	}
 	out, err := json.MarshalIndent(final, "", "  ")
 	if err != nil {

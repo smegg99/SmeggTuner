@@ -5,15 +5,14 @@ includes:
   darwin: ./build/darwin/Taskfile.yml
   windows: ./build/windows/Taskfile.yml
   linux: ./build/linux/Taskfile.yml
+  android:
+    taskfile: ./build/android/Taskfile.yml
+    optional: true
 
 vars:
   APP_NAME: "smeggtuner"
   BIN_DIR: "bin"
-  VITE_PORT: '{{.WAILS_VITE_PORT | default 9245}}'
-  # GTK 3 (WebKitGTK 4.1) is the default, matching the justfile: the GTK 4 port
-  # reallocates the whole compositing surface on a window drag, which on this
-  # app - four canvases - is the difference between a smooth resize and a stall.
-  # `task ...:build-gtk4` / the justfile's -gtk4 recipes build the other one.
+  # GTK 3 (WebKitGTK 4.1) is the default: the GTK 4 port reallocates the whole compositing surface on a window drag.
   TAGS: '{{.WAILS_BUILD_TAGS | default "gtk3"}}'
 
 tasks:
@@ -35,10 +34,3 @@ tasks:
     summary: Runs the application
     cmds:
       - task: "{{OS}}:run"
-
-  dev:
-    summary: Runs the application in development mode
-    env:
-      WAILS_BUILD_TAGS: '{{.TAGS}}'
-    cmds:
-      - wails3 dev -config ./build/config.yml -port {{.VITE_PORT}}

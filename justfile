@@ -1,295 +1,89 @@
-web_dir := "frontend"
+# Daily commands; Android and lab operations share their existing runners.
+set shell := ["bash", "-euo", "pipefail", "-c"]
+set positional-arguments
+
 app_name := "smeggtuner"
-bin_dir := "bin"
-config_file := "./build/config.yml"
-vite_port := env("WAILS_VITE_PORT", "9245")
-
-# GTK 3 (WebKitGTK 4.1) is the DEFAULT, and it is not a fallback.
-#
-# Wails builds against GTK 4 / WebKitGTK 6.0 unless told otherwise. That port is
-# the newer one and it is the slower one here: its compositing path reallocates
-# and re-copies the whole surface on a window drag, which on this app - four
-# canvases, and a renderer that copies through the CPU whenever DMABUF is off -
-# is the difference between a resize that is smooth and one that seizes.
-#
-# So the plain recipes build GTK 3, and the -gtk4 recipes build the other one,
-# for the day that stops being true. Test both before believing either.
-tags := "gtk3"
-
-# The single manually controlled application version. Edit VERSION directly or use
-# `just set-version 1.0.4`; packaging synchronizes generated platform metadata before building.
+with_node := "python3 scripts/node_env.py"
 version := `tr -d '\r\n' < VERSION`
+release_targets := "linux/amd64 linux/arm64 windows/amd64 android/arm64 web"
 
-# What `just release` builds: every platform there is a build path for. linux/* go through wails3
-# (native, or the cross-compile image `wails3 task setup:docker` for another arch). windows/* are
-# built in a Windows VM via the test lab (testlab/README.md) - CGO + WebView2 and NSIS do not
-# cross-compile from Linux, so the VM is the honest path, and a release run boots one. Pass your
-# own list to narrow it:
-#   just release "linux/amd64"
-release_targets := "linux/amd64 linux/arm64 windows/amd64"
-
-# The test-lab VM `just release` drives for windows/* targets (win10 or win11).
-windows_lab := "win11"
-
-# List available commands
+[private]
 default:
-    @just --list
+    @just --list --unsorted
 
-# Set the central version and synchronize every generated platform metadata file
-set-version ver:
-    node scripts/sync-version.mjs "{{ver}}"
+# Generate everything and build bin/smeggtuner (production or debug).
+build mode="production":
+    bash scripts/build.sh "$1"
 
-# Synchronize generated Wails, macOS and Windows metadata from VERSION
-sync-version:
-    node scripts/sync-version.mjs
+# Build and open the app on your desktop.
+run mode="production": (build mode)
+    ./bin/smeggtuner
 
-# Fail when generated platform metadata does not match VERSION
-check-version:
-    node scripts/sync-version.mjs --check
-
-# Run the full Wails app in development mode (hot-reload, GTK 3)
+# Watch sources, rebuild and restart the debug app on your desktop.
 dev:
-    WAILS_BUILD_TAGS="{{tags}}" wails3 dev -config {{config_file}} -port {{vite_port}}
+    go tool wails3 tool watcher -config build/dev.yml
 
-# Dev mode against the GTK 4 / WebKitGTK 6.0 stack
-dev-gtk4:
-    wails3 dev -config {{config_file}} -port {{vite_port}}
+# Regenerate version, config types, locales, tray and app icons, bindings and Wails helpers.
+generate:
+    bash scripts/generate.sh
 
-# Start only the Nuxt frontend dev server
-dev-frontend:
-    cd {{web_dir}} && pnpm dev
+# Check generated drift, then build and run all repository checks.
+check:
+    bash scripts/check.sh
 
-# Production build (current platform, GTK 3)
-build: sync-version
-    wails3 build -tags {{tags}}
+# Build and run Go, frontend and build-tooling tests.
+test: build
+    CGO_ENABLED=1 go test -race -tags gtk3 -parallel 4 -timeout 25m ./...
+    {{ with_node }} pnpm --dir frontend test
+    python3 -B -m unittest discover -s scripts -p 'test_*.py'
 
-# Production build against the GTK 4 / WebKitGTK 6.0 stack
-build-gtk4: sync-version
-    wails3 build
+# Build the web edition (static site for app.smeggtuner.com) into dist/web.
+web:
+    bash scripts/web.sh dist/web
 
-# Development build (fast, unoptimised, GTK 3)
-build-dev: sync-version
-    wails3 build -tags {{tags}} DEV=true
+# Build the per-user Linux archive and checksum in dist/.
+package: build
+    scripts/package.sh bin/smeggtuner dist
 
-# Development build against the GTK 4 / WebKitGTK 6.0 stack
-build-dev-gtk4: sync-version
-    wails3 build DEV=true
-
-# `wails3 package` takes no -tags flag, so the tag goes in through the variable
-# the build tasks actually read (see build/linux/Taskfile.yml: EXTRA_TAGS).
-
-# Package the app for the current platform (GTK 3), stamped with the version
-package: sync-version
-    VERSION="{{version}}" EXTRA_TAGS="{{tags}}" wails3 package
-
-# Package against the GTK 4 / WebKitGTK 6.0 stack
-package-gtk4: sync-version
-    VERSION="{{version}}" wails3 package
-
-# Build and package every release artifact, named the way the release page names them:
-# bin/release/<app>-<version>-<os>-<arch>[-installer].<ext>, plus the bare binary and its tarball.
-# One run produces the whole set to upload. A target that fails (usually a missing cross toolchain,
-# or a Windows VM that will not boot) is reported and skipped; the others still build.
-#   just release
-#   just release "linux/amd64"
-release targets=release_targets: sync-version
+# Build the archive and install it for this user; KDE and GNOME take the taskbar icon from its menu entry.
+install: package
     #!/usr/bin/env bash
-    set -uo pipefail
-    shopt -s nullglob
-    out="{{bin_dir}}/release"
-    mkdir -p "$out"
-    built=(); skipped=()
-    for target in {{targets}}; do
-        os="${target%%/*}"; arch="${target##*/}"
-        echo "==> {{app_name}} {{version}} :: ${os}/${arch}"
-        # Every artifact of this target is named from here, and last run's are cleared first: a
-        # stale one from an older version sitting in the folder gets uploaded with the rest.
-        name="{{app_name}}-{{version}}-${os}-${arch}"
-        rm -f "$out/{{app_name}}-"*"-${os}-${arch}" "$out/{{app_name}}-"*"-${os}-${arch}".* \
-              "$out/{{app_name}}-"*"-${os}-${arch}-installer".*
-        case "$os" in
-        linux)
-            rm -f "{{bin_dir}}/{{app_name}}" "{{bin_dir}}/{{app_name}}".deb "{{bin_dir}}/{{app_name}}".rpm \
-                  "{{bin_dir}}/{{app_name}}".pkg.tar.zst "{{bin_dir}}/{{app_name}}"-*.AppImage
-            # CI=true: pnpm may decide to purge node_modules (e.g. after a pnpm major bump) and
-            # aborts without a TTY to confirm on; release runs must never hang on a prompt.
-            if VERSION="{{version}}" EXTRA_TAGS="{{tags}}" CI=true wails3 task "linux:package" ARCH="${arch}"; then
-                for f in "{{bin_dir}}/{{app_name}}".deb "{{bin_dir}}/{{app_name}}".rpm \
-                         "{{bin_dir}}/{{app_name}}".pkg.tar.zst "{{bin_dir}}/{{app_name}}"-*.AppImage; do
-                    case "$f" in
-                        *.pkg.tar.zst) ext="pkg.tar.zst" ;;
-                        *)             ext="${f##*.}" ;;
-                    esac
-                    mv -f "$f" "$out/${name}.${ext}"
-                done
-                if [ -e "{{bin_dir}}/{{app_name}}" ]; then
-                    cp -f "{{bin_dir}}/{{app_name}}" "$out/${name}"
-                    # The tarball holds the renamed binary and nothing else, as every release before it did.
-                    ( cd "$out" && tar -czf "${name}.tar.gz" "${name}" )
-                fi
-                built+=("${os}/${arch}")
-            else
-                skipped+=("${os}/${arch}")
-            fi
-            ;;
-        windows)
-            # Built in a Windows VM through the test lab; amd64 only (that is the VM's arch).
-            if [ "${arch}" != "amd64" ]; then echo "  no windows/${arch} VM"; skipped+=("${os}/${arch}"); continue; fi
-            if ./testlab/lab.sh sync "{{windows_lab}}" && ./testlab/lab.sh package "{{windows_lab}}"; then
-                for f in "{{bin_dir}}/lab-out/{{windows_lab}}"/*.exe; do
-                    case "$f" in *installer*) sfx="-installer" ;; *) sfx="" ;; esac
-                    mv -f "$f" "$out/${name}${sfx}.exe"
-                done
-                built+=("${os}/${arch}")
-            else
-                skipped+=("${os}/${arch}")
-            fi
-            ;;
-        *)
-            echo "  no build path wired for ${os}"; skipped+=("${os}/${arch}")
-            ;;
-        esac
-    done
-    echo
-    echo "release {{version}} -> $out"
-    ls -1sh "$out" 2>/dev/null || true
-    [ ${#built[@]}   -gt 0 ] && echo "built:   ${built[*]}"
-    [ ${#skipped[@]} -gt 0 ] && echo "skipped: ${skipped[*]}"
-    [ ${#built[@]}   -gt 0 ]
+    set -euo pipefail
+    stage=$(mktemp -d)
+    trap 'rm -rf -- "$stage"' EXIT
+    name="{{ app_name }}-{{ version }}-linux-$(go env GOARCH)"
+    tar --zstd -xf "dist/$name.tar.zst" -C "$stage"
+    "$stage/$name/install.sh"
 
-# Run the built application
-run:
-    ./{{bin_dir}}/{{app_name}}
+# Set the version everywhere it is stamped (VERSION, Wails, macOS, Windows), e.g. just bump 1.4.1.
+bump new:
+    {{ with_node }} node scripts/sync-version.mjs "$1"
 
-# Generate frontend bindings from Go services
-# Delete every build artefact and cache. Nothing here is source; all of it is regenerated.
-#
-# The Nuxt cache is the one that matters, and it is the one people miss: it does NOT live
-# in frontend/.nuxt, it lives in frontend/node_modules/.cache/nuxt. A stale one serves an
-# old bundle out of a fresh build and there is nothing on screen to say so.
-#
-# node_modules itself is NOT touched: reinstalling it takes minutes and is almost never
-# the problem. Use `just clean-deps` when it actually is.
-clean:
-    rm -rf {{bin_dir}}
-    rm -rf {{web_dir}}/dist {{web_dir}}/.output {{web_dir}}/.nuxt
-    rm -rf {{web_dir}}/node_modules/.cache {{web_dir}}/node_modules/.vite
-    rm -rf {{web_dir}}/bindings
-    go clean -cache -testcache
-    @echo "cleaned: binaries, frontend build, nuxt/vite caches, bindings, go caches"
+# Run every check, then build each target's release artifacts and SHA256SUMS into dist/release/VERSION.
+release targets=release_targets: check
+    bash scripts/release.sh {{ targets }}
 
-# Everything `clean` does, and the installed packages as well.
-clean-deps: clean
-    rm -rf {{web_dir}}/node_modules
-    @echo "cleaned: node_modules. run `just build` to reinstall."
+# Start an emulator; optional arguments are passed to the emulator.
+emulator name="smeggtuner-api37" *args:
+    bash build/android-support/android.sh emulator "$@"
 
-generate-bindings:
-    wails3 generate bindings -ts -clean=true
+# Build/install on ADB by default; also supports check, logs, build, setup and phone actions.
+android action="run" *args:
+    bash build/android-support/android.sh "$@"
 
-# Generate Go code from CUE schemas
-generate-cue:
-    go generate ./...
+# Run SDK adb (default: devices); ANDROID_SERIAL selects the device.
+adb *args="devices":
+    bash build/android-support/android.sh adb "$@"
 
-# Generate app icons from build/appicon.svg (the editable master; appicon.png is its render)
-#
-# -iconcomposerinput is not standalone: without -macassetdir wails3 refuses the whole
-# run with "mac asset directory is required" and nothing is written, not even the .ico.
-# The flags mirror build/Taskfile.yml, which runs from build/ and so uses relative paths.
-#
-# On Linux this regenerates icon.ico and icons.icns but NOT darwin/Assets.car - that
-# needs macOS actool, and wails3 skips it and still exits 0. The committed Assets.car
-# is the only copy, so refresh it on a Mac if appicon.icon ever changes.
-generate-icons:
-    rsvg-convert -w 2048 -h 2048 build/appicon.svg -o build/appicon.png
-    wails3 generate icons -input build/appicon.png -windowsfilename build/windows/icon.ico -iconcomposerinput build/appicon.icon -macfilename build/darwin/icons.icns -macassetdir build/darwin
-
-# Run the Go test suite with the race detector.
-#
-# The timeout is not decoration. core/dsp sweeps the merged-pair fit across notes,
-# beats, reed ratios, bellows strokes and drift, and under -race that alone runs
-# past Go's 10 minute default. The suite then dies with a timeout panic that reads
-# exactly like a test failure, and you go hunting for a bug that is not there.
-test:
-    go test ./... -race -timeout 25m
-
-# Check a folder of recordings against the notes in their file names.
-# Defaults to sounds/wav and the reference pitch the instrument was tuned to.
-#   just samples
-#   just samples sounds/wav 440
-#
-# sounds/ is NOT in the repository - it is ~85 MB of local reference recordings, and
-# nothing needs it to build or test. A fresh clone has no sounds/wav, so this recipe
-# needs a folder of your own. The committed fixtures (tests/fixtures/, with .expect.json
-# goldens) are what `just test` gates on.
-samples dir="sounds/wav" a4="442":
-    # go test runs in the package directory, so the folder has to be absolute.
-    SMEGGTUNER_SAMPLES="$(realpath {{dir}})" SMEGGTUNER_SAMPLES_A4="{{a4}}" \
-        go test ./tests/ -run TestSamples -v -count=1
-
-# Lint the frontend
-lint:
-    cd {{web_dir}} && pnpm lint
-
-# Run the frontend test suite
-test-frontend:
-    cd {{web_dir}} && pnpm test
-
-# Headless measurement harness, e.g. just analyze -wav tests/fixtures/a-8.wav
-analyze *args:
-    go run ./scripts/analyze {{args}}
-
-# Write an example tuning card from made-up readings, to see the export without recording a pass.
-# e.g. just example-card -shape musette -lang pl -out karta.html
-example-card *args:
-    go run ./scripts/examplecard {{args}}
-
-# ---- test lab -------------------------------------------------------------
-# Build and run the app on other distros and on Windows. See testlab/README.md.
-
-# List the lab targets
-lab-list:
-    ./testlab/lab.sh list
-
-# Build the whole lab from nothing (containers + Windows VMs). Unattended.
-lab-init:
-    ./testlab/lab.sh init
-
-# Push the working tree into a target
-lab-sync target:
-    ./testlab/lab.sh sync {{target}}
-
-# Build the app inside a target
-lab-build target:
-    ./testlab/lab.sh build {{target}}
-
-# Package the app in a VM target and pull the artifacts back to bin/lab-out/<target>
-# (sync first: `just lab-sync <target>`). `just release` uses this for windows/* targets.
-lab-package target:
-    ./testlab/lab.sh package {{target}}
-
-# Launch the app in a target, optionally inside a nested desktop (--de gnome)
-lab-run target *args:
-    ./testlab/lab.sh run {{target}} {{args}}
-
-# sync + build + run
-lab-test target *args:
-    ./testlab/lab.sh sync {{target}}
-    ./testlab/lab.sh build {{target}}
-    ./testlab/lab.sh run {{target}} {{args}}
-
-# Interactive shell inside a target
-lab-shell target:
-    ./testlab/lab.sh shell {{target}}
-
-lab-down target:
-    ./testlab/lab.sh down {{target}}
-
-# Feed a WAV fixture into every target's microphone
-mic file *args:
-    ./testlab/mic/vmic.sh play {{file}} {{args}}
-
-mic-up:
-    ./testlab/mic/vmic.sh up
-
-mic-down:
-    ./testlab/mic/vmic.sh down
+# Run a lab operation; test syncs, builds and runs a target.
+lab action="list" *args:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    if [[ "$1" == test ]]; then
+        shift
+        [[ $# -ge 1 ]] || { echo 'Usage: just lab test TARGET [options]' >&2; exit 2; }
+        ./testlab/lab.sh sync "$1"
+        ./testlab/lab.sh build "$1"
+        exec ./testlab/lab.sh run "$@"
+    fi
+    exec ./testlab/lab.sh "$@"

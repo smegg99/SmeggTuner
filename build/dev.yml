@@ -1,0 +1,16 @@
+# build/dev.yml
+dev_mode:
+  root_path: .
+  log_level: warn
+  debounce: 1000
+  # Ignore generated outputs to avoid rebuilding on the build's own writes.
+  ignore:
+    git: true
+    dir: [.git, node_modules, .nuxt, .output, _nuxt, bin, bindings, '*/.bindings-tmp-*', generated, public, s99wails, '*/internal/trayicons/*/*', android, sounds, reverse-engineering, testlab]
+    file: ['*.gen.go', '*_gen.go', '*.gen.ts', 'loc-manifest.json', 'appicon.png', 'icon.ico', 'icons.icns', 'Assets.car']
+    watched_extension: ['*.go', '*.vue', '*.ts', '*.scss', '*.json', '*.yaml', '*.cue', '*.svg', '*.py', '*.sh', '*.yml', '*.gohtml']
+  executes:
+    - cmd: just build debug
+      type: blocking
+    - cmd: ./bin/smeggtuner
+      type: primary

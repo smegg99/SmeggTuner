@@ -90,6 +90,16 @@ Section
     
     !insertmacro wails.files
 
+    # Marks custom install locations so application data goes to the user profile.
+    ClearErrors
+    FileOpen $0 "$INSTDIR\smeggtuner.install" w
+    IfErrors 0 +2
+        Abort "Could not mark the installation directory."
+    FileWrite $0 "nsis$\r$\n"
+    FileClose $0
+    IfErrors 0 +2
+        Abort "Could not write the installation marker."
+
     CreateShortcut "$SMPROGRAMS\${INFO_PRODUCTNAME}.lnk" "$INSTDIR\${PRODUCT_EXECUTABLE}"
     CreateShortCut "$DESKTOP\${INFO_PRODUCTNAME}.lnk" "$INSTDIR\${PRODUCT_EXECUTABLE}"
 
@@ -115,7 +125,9 @@ Section "uninstall"
 
     RMDir /r "$AppData\${PRODUCT_EXECUTABLE}" # Remove the WebView2 DataPath
 
-    RMDir /r $INSTDIR
+    # Remove only files owned by this installer; preserve user data and other files.
+    Delete "$INSTDIR\${PRODUCT_EXECUTABLE}"
+    Delete "$INSTDIR\smeggtuner.install"
 
     Delete "$SMPROGRAMS\${INFO_PRODUCTNAME}.lnk"
     Delete "$DESKTOP\${INFO_PRODUCTNAME}.lnk"
@@ -124,4 +136,5 @@ Section "uninstall"
     !insertmacro wails.unassociateCustomProtocols
 
     !insertmacro wails.deleteUninstaller
+    RMDir "$INSTDIR"
 SectionEnd

@@ -1,5 +1,5 @@
 # This file contains the configuration for this project.
-# When you update `info` or `fileAssociations`, run `wails3 task common:update:build-assets` to update the assets.
+# When you update `info` or `fileAssociations`, run `go tool wails3 task common:update:build-assets` to update the assets.
 # Note that this will overwrite any changes you have made to the assets.
 version: '3'
 
@@ -11,44 +11,7 @@ info:
   description: "Free and open-source accordion tuner." # The application description
   copyright: "Copyright (c) 2026 Smegg99" # Copyright text
   comments: "https://smeggtuner.com" # Project website
-  version: "1.3.0" # The application version
+  version: "1.4.0" # The application version
   # cfBundleIconName: "appicon" # The macOS icon name in Assets.car icon bundles (optional)
   #                               # Should match the name of your .icon file without the extension
   #                               # If not set and Assets.car exists, defaults to "appicon"
-
-# Dev mode configuration
-dev_mode:
-  root_path: .
-  log_level: warn
-  debounce: 200
-  ignore:
-    dir:
-      - .git
-      - node_modules
-      - frontend
-      - bin
-    file:
-      - .DS_Store
-      - .gitignore
-      - .gitkeep
-    watched_extension:
-      - "*.go"
-      - "*.js" # Watch for changes to JS/TS files included using the //wails:include directive.
-      - "*.ts" # The frontend directory will be excluded entirely by the setting above.
-    git_ignore: true
-  executes:
-    - cmd: wails3 task common:dev:preflight
-      type: blocking
-    - cmd: wails3 build ${WAILS_BUILD_TAGS:+-tags $WAILS_BUILD_TAGS} DEV=true
-      type: blocking
-    - cmd: wails3 task common:dev:frontend
-      type: background
-    - cmd: wails3 task common:dev:wait
-      type: blocking
-    - cmd: wails3 task run
-      type: primary
-
-# No file associations. The app's own files are .stsf and .stif, but a double
-# click has nowhere to land yet: opening a file on launch is not wired (main.go
-# only logs a second instance's args). Register .stsf/.stif here once it is,
-# not before - an association that does nothing is worse than none.

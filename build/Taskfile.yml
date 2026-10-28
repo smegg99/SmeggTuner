@@ -1,6 +1,11 @@
 version: '3'
 
 tasks:
+  generate:locales:
+    summary: Generate native and frontend locale catalogs
+    cmds:
+      - go tool loc build -c i18n/config.cue
+
   go:mod:tidy:
     summary: Runs `go mod tidy`
     internal: true
@@ -29,7 +34,7 @@ tasks:
       - "**/*"
       - exclude: node_modules/**/*
     generates:
-      - dist/**/*
+      - ../backend/frontend/public/**/*
     deps:
       - task: install:frontend:deps
       - task: generate:bindings
@@ -37,17 +42,19 @@ tasks:
           BUILD_FLAGS:
             ref: .BUILD_FLAGS
     cmds:
-      - pnpm run {{.BUILD_COMMAND}}
+      - pnpm run generate
+      - rm -rf ../backend/frontend/public
+      - mkdir -p ../backend/frontend/public
+      - cp -a .output/public/. ../backend/frontend/public/
     env:
       PRODUCTION: '{{if eq .DEV "true"}}false{{else}}true{{end}}'
-    vars:
-      BUILD_COMMAND: '{{if eq .DEV "true"}}build:dev{{else}}build{{end}}'
 
   generate:bindings:
     label: generate:bindings (BUILD_FLAGS={{.BUILD_FLAGS}})
     summary: Generates bindings for the frontend
     deps:
       - task: go:mod:tidy
+      - task: generate:locales
     sources:
       - "**/*.[jt]s"
       - exclude: frontend/**/*
@@ -57,85 +64,29 @@ tasks:
       - go.sum
     generates:
       - frontend/bindings/**/*
+      - frontend/app/composables/s99wails/**/*
     cmds:
-      - wails3 generate bindings -f '{{.BUILD_FLAGS}}' -clean=true -ts
+      - mkdir -p backend/frontend/public
+      - touch backend/frontend/public/.keep
+      - go tool frontendgen -out frontend/app/composables/s99wails -s99ab
+      - go tool wails3 generate bindings -f '{{.BUILD_FLAGS}}' -clean=true -ts -d frontend/bindings ./backend
 
   generate:icons:
-    summary: Generates Windows `.ico` and Mac `.icns` from an image; on macOS, `-iconcomposerinput appicon.icon -macassetdir darwin` also produces `Assets.car` from a `.icon` file (skipped on other platforms).
+    summary: Renders appicon.png from assets/smeggtuner-app-icon.svg, then Windows `.ico` and Mac `.icns` from it; on macOS, `-iconcomposerinput appicon.icon -macassetdir darwin` also produces `Assets.car` from a `.icon` file (skipped on other platforms).
     dir: build
     sources:
-      - "appicon.png"
+      - "../assets/smeggtuner-app-icon.svg"
       - "appicon.icon"
     generates:
+      - "appicon.png"
       - "darwin/icons.icns"
       - "windows/icon.ico"
     cmds:
-      - wails3 generate icons -input appicon.png -macfilename darwin/icons.icns -windowsfilename windows/icon.ico -iconcomposerinput appicon.icon -macassetdir darwin
-
-  dev:frontend:
-    summary: Runs the frontend in development mode
-    dir: frontend
-    deps:
-      - task: install:frontend:deps
-    cmds:
-      - pnpm run dev
-
-  dev:preflight:
-    summary: Fails if something already holds the frontend dev port
-    # Nuxt does not insist on the port it is given: if 9245 is taken it quietly
-    # moves to 3000 and says so in one line you will not read. Wails goes on
-    # proxying to 9245, reaches whatever stale server is squatting there, and
-    # you get a white window and no useful error. Usually the squatter is a dev
-    # session from earlier that never died.
-    #
-    # Every command here must succeed. Task's shell reports the script's status
-    # as that of the last command it ran, so a bare `grep -q` that matches
-    # nothing fails the whole task, and the check would fire exactly when the
-    # port is free.
-    cmds:
-      - cmd: |
-          port="${WAILS_VITE_PORT:-9245}"
-          listening=$(ss -tln 2>/dev/null || true)
-          case "$listening" in
-            *":${port} "*)
-              echo "port ${port} is taken, so Nuxt would fall back to another one and the" >&2
-              echo "app would proxy to the wrong server. Find and kill the stale session:" >&2
-              echo "  ss -tlnp | grep ${port}" >&2
-              exit 1
-              ;;
-          esac
-          exit 0
-
-  dev:wait:
-    summary: Waits for the frontend dev server to settle
-    # Nuxt binds the port, then restarts itself while Vite warms up (watch it
-    # print its banner twice). The window opens into that gap, the asset proxy
-    # is refused, and the app sits on a white screen forever, because nothing
-    # retries the failed initial load. One good response is not enough: the
-    # server has to still be answering a few seconds later.
-    cmds:
-      - cmd: |
-          port="${WAILS_VITE_PORT:-9245}"
-          streak=0
-          attempt=0
-          while [ "$attempt" -lt 240 ]; do
-            attempt=$((attempt + 1))
-            code=$(curl -s -o /dev/null -w '%{http_code}' "http://localhost:${port}/" 2>/dev/null || true)
-            if [ "$code" = "200" ]; then
-              streak=$((streak + 1))
-            else
-              streak=0
-            fi
-            if [ "$streak" -ge 6 ]; then
-              exit 0
-            fi
-            sleep 0.5
-          done
-          echo "frontend dev server never settled on port ${port}" >&2
-          exit 1
+      - rsvg-convert -w 1024 -h 1024 ../assets/smeggtuner-app-icon.svg -o appicon.png
+      - go tool wails3 generate icons -input appicon.png -macfilename darwin/icons.icns -windowsfilename windows/icon.ico -iconcomposerinput appicon.icon -macassetdir darwin
 
   update:build-assets:
     summary: Updates the build assets
     dir: build
     cmds:
-      - wails3 update build-assets -name "{{.APP_NAME}}" -binaryname "{{.APP_NAME}}" -config config.yml -dir .
+      - go tool wails3 update build-assets -name "{{.APP_NAME}}" -binaryname "{{.APP_NAME}}" -config config.yml -dir .

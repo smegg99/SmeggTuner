@@ -17,9 +17,9 @@
 		<key>CFBundlePackageType</key>
 		<string>APPL</string>
 		<key>CFBundleShortVersionString</key>
-		<string>1.3.0</string>
+		<string>1.4.0</string>
 		<key>CFBundleVersion</key>
-		<string>1.3.0</string>
+		<string>1.4.0</string>
 		<key>LSMinimumSystemVersion</key>
 		<string>12.0.0</string>
 		<key>NSAppTransportSecurity</key>
@@ -27,6 +27,8 @@
 			<key>NSAllowsLocalNetworking</key>
 			<true/>
 		</dict>
+		<key>NSMicrophoneUsageDescription</key>
+		<string>SmeggTuner uses the microphone to measure accordion reed frequencies.</string>
 		<key>NSHighResolutionCapable</key>
 		<string>true</string>
 		<key>NSHumanReadableCopyright</key>

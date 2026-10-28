@@ -4,7 +4,8 @@
 # The lines below are called `modelines`. See `:help modeline`
 
 name: "smeggtuner"
-arch: ${GOARCH}
+# Package target is independent of the host architecture running the Go tool.
+arch: ${PACKAGE_ARCH}
 platform: "linux"
 version: "${VERSION}"
 section: "default"
@@ -19,8 +20,8 @@ release: "1"
 contents:
   - src: "./bin/smeggtuner"
     dst: "/usr/local/bin/smeggtuner"
-  - src: "./build/appicon.png"
-    dst: "/usr/share/icons/hicolor/128x128/apps/smeggtuner.png"
+  - src: "./assets/smeggtuner-app-icon.svg"
+    dst: "/usr/share/icons/hicolor/scalable/apps/smeggtuner.svg"
   - src: "./build/linux/smeggtuner.desktop"
     dst: "/usr/share/applications/smeggtuner.desktop"
 
@@ -31,11 +32,12 @@ depends:
 
 # Distribution-specific overrides for different package formats and WebKit versions
 overrides:
-  # RPM packages for RHEL/CentOS/AlmaLinux/Rocky Linux (WebKit 4.0)
+  # RPM distributions name these packages differently (Fedora webkit2gtk4.1, openSUSE
+  # libwebkit2gtk-4_1-0); every one provides the libraries by soname.
   rpm:
     depends:
-      - gtk3
-      - webkit2gtk4.1
+      - libgtk-3.so.0()(64bit)
+      - libwebkit2gtk-4.1.so.0()(64bit)
   
   # Arch Linux packages (WebKit 4.1)  
   archlinux:
