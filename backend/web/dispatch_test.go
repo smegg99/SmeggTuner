@@ -25,7 +25,7 @@ func fakeID(method string) uint32 {
 func TestDispatcherIDsMatchGeneratedBindings(t *testing.T) {
 	d := NewDispatcher(tuner.New(nil, nil, nil))
 	// Values from frontend/bindings/smegg.me/smeggtuner/backend/services/tuner/service.ts.
-	for name, id := range map[string]uint32{"Freeze": 2505020343, "AdoptCorrection": 1447629746} {
+	for name, id := range map[string]uint32{"IsRunning": 1163859747, "AdoptCorrection": 1447629746} {
 		if !d.Has(id) {
 			t.Fatalf("%s: id %d not registered", name, id)
 		}
