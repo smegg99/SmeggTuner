@@ -7,7 +7,6 @@ type EngineState string
 const (
 	StateInitializing EngineState = "initializing"
 	StateRunning      EngineState = "running"
-	StateFrozen       EngineState = "frozen"
 	StateTooLoud      EngineState = "tooLoud" // the last level interval had a flat top
 	StateTooQuiet     EngineState = "tooQuiet"
 	StateDeviceLost   EngineState = "deviceLost"

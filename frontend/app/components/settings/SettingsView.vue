@@ -24,7 +24,6 @@
         >
           <SettingsTunerDetectionToggle />
           <SettingsTunerTransposeField />
-          <SettingsTunerBehaviourToggles />
           <SettingsTunerReadingToggles />
         </UiFormSection>
       </div>

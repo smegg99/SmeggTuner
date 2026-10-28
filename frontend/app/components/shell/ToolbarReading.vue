@@ -2,16 +2,15 @@
   <div class="key-row">
     <UiToolKey
       icon="mdi-snowflake"
-      :active="frozen"
-      :disabled="!canFreeze"
-      :title="t('tuner.freeze.hint')"
-      @click="setFrozen(!frozen)"
+      :active="hold"
+      :title="t('tuner.hold.hint')"
+      @click="setHold(!hold)"
     />
 
     <!-- Relearns the room's background noise; a microphone learns it on its first run and keeps it after. -->
     <UiToolKey
       icon="mdi-ear-hearing"
-      :disabled="!running || file"
+      :disabled="!running || file || learning"
       :title="t('tuner.input.relearnHint')"
       @click="relearn"
     />
@@ -112,7 +111,9 @@ import { useTransport } from '~/composables/useTransport'
 import { useTuner } from '~/composables/useTuner'
 
 const { t } = useI18n()
-const { frozen, setFrozen, canFreeze, reedCount, running, relearn } = useTuner()
+const { hold, setHold, reedCount, running, relearn, state } = useTuner()
+// The engine reports initializing while it learns the background; a second press would restart it.
+const learning = computed(() => state.value === 'initializing')
 const { current } = useAudioDevices()
 // A recording has no room to learn: its background is never learned.
 const file = computed(() => current.value.kind === 'file')

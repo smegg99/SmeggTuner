@@ -106,9 +106,9 @@ error.transposeMode:
 error.unexpected:
   value: Something went wrong. See the log for details.
   description: 'live tuner: error.unexpected.'
-freeze.hint:
-  value: Hold or resume the reading (H)
-  description: 'live tuner: freeze.hint.'
+hold.hint:
+  value: Hold stable readings (H)
+  description: 'live tuner: the toolbar key that holds each locked reading until the sound stops.'
 input.relearnHint:
   value: 'Relearn background noise (4 s of quiet)'
   description: 'live tuner: input.relearnHint.'
@@ -297,9 +297,6 @@ spectrum.title:
 state.deviceLost:
   value: Input lost
   description: 'live tuner: state.deviceLost.'
-state.frozen:
-  value: Frozen
-  description: 'live tuner: state.frozen.'
 state.initializing:
   value: Measuring the room
   description: 'live tuner: state.initializing.'

@@ -33,10 +33,10 @@ export const ERROR_DEVICE_LOST = 'tuner.error.deviceLost'
 const ERROR_KEY_PATTERN = /tuner\.error\.[A-Za-z0-9]+/
 const ERROR_UNEXPECTED = 'tuner.error.unexpected'
 
-export type EngineState = 'initializing' | 'running' | 'frozen' | 'tooLoud' | 'tooQuiet' | 'deviceLost' | 'stopped'
+export type EngineState = 'initializing' | 'running' | 'tooLoud' | 'tooQuiet' | 'deviceLost' | 'stopped'
 
 const ENGINE_STATES: readonly string[] = [
-  'initializing', 'running', 'frozen', 'tooLoud', 'tooQuiet', 'deviceLost', 'stopped',
+  'initializing', 'running', 'tooLoud', 'tooQuiet', 'deviceLost', 'stopped',
 ]
 
 // toErrorKey pulls the i18n key out of a Wails rejection's Go error message.

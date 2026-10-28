@@ -11,6 +11,7 @@ import { NO_LOCK, clearReading as clearReadingImpl, onMeasurement, onState } fro
 import type { LiveBuffers, TunerState } from './tuner/tunerReducers'
 import { apply, command, playTone, startEngine, stopEngine, stopTone } from './tuner/tunerCommands'
 import { applySettings, tunerSettings } from './tuner/tunerSettings'
+import { useConfigSync } from '~/composables/useConfigSync'
 import type { PanelMode } from '~/utils/panel'
 
 export { AUTO_NOTE, EQUALIZER_CEILING_DB, EQUALIZER_FULL_SCALE_DB, NOTE_BANDS, NOTE_MAX, NOTE_MIN, SPECTRUM_CENTS, SPECTRUM_COLUMNS, SPECTRUM_FLOOR_DB, WAVE_POINTS, toErrorKey }
@@ -72,10 +73,6 @@ const error = ref('')
 // What the engine measures with, kept live by EVENT_SETTINGS: never derived here.
 const settings = tunerSettings()
 const { a4, manualNote, transpose } = settings
-const frozen = ref(false)
-
-// Freeze needs a reading to hold: while running, or after a stop left its last note.
-const canFreeze = computed(() => running.value || note.value !== AUTO_NOTE)
 
 const tunerState: TunerState = {
   note, noteName, scalePitch, label, reeds, beats, reedErrors, beatErrors, panels, needles, needlesDimmed, lock,
@@ -143,6 +140,8 @@ async function pin(call: () => Promise<number>, log: Logger, what: string) {
 export function useTuner() {
   const log = useLogger()
   start(log)
+  // Hold is a config setting: services/tuner adopts tuner.stop_after_lock on the next frame.
+  const { config } = useConfigSync()
 
   return {
     note,
@@ -171,12 +170,11 @@ export function useTuner() {
     stop: () => stopEngine(tunerState, log),
 
     ...settings,
-    frozen,
-    canFreeze,
+    hold: computed(() => config.tuner?.stop_after_lock ?? false),
+    setHold: (on: boolean) => { config.tuner.stop_after_lock = on },
     setA4: (hz: number) => apply(tunerState, a4, hz, () => TunerService.SetA4(hz), log, 'a4'),
     setManualNote: (n: number) => apply(tunerState, manualNote, n, () => TunerService.SetManualNote(n), log, 'manual note'),
     setTranspose: (semitones: number) => apply(tunerState, transpose, semitones, () => TunerService.SetTranspose(semitones), log, 'transpose'),
-    setFrozen: (on: boolean) => apply(tunerState, frozen, on, () => TunerService.Freeze(on), log, 'freeze'),
     // The service picks the note (tuning.ManualStart, Note.Step); the answer is the pinned key.
     setAuto: (on: boolean) => pin(() => TunerService.SetAuto(on), log, 'auto'),
     stepNote: (delta: number) => pin(() => TunerService.StepNote(delta), log, 'note step'),

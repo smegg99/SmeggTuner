@@ -26,7 +26,7 @@ function controlOwnsKey(event: KeyboardEvent): boolean {
 
 export function useShortcuts() {
   const { view, setView } = useShell()
-  const { manualNote, setAuto, stepNote, frozen, setFrozen, canFreeze, takeNow } = useTuner()
+  const { manualNote, setAuto, stepNote, hold, setHold, takeNow } = useTuner()
   const { playPause } = useFileRun()
   const { sessionId, armed, readings, recording, toggleRecording, undo } = useRecord()
   const { current } = useAudioDevices()
@@ -48,16 +48,12 @@ export function useShortcuts() {
     void undo()
   }
 
-  function freeze() {
-    if (canFreeze.value) void setFrozen(!frozen.value)
-  }
-
   const actions: Record<string, () => void> = {
     rooms1: () => setView(ROOMS[0]!),
     rooms2: () => setView(ROOMS[1]!),
     rooms3: () => { if (ROOMS[2]) void setView(ROOMS[2]) },
     manual: () => void setAuto(manual()),
-    freeze,
+    hold: () => setHold(!hold.value),
     record: toggleRecord,
     undo: undoTake,
     noteDown: () => { if (manual()) void stepNote(-1) },

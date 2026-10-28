@@ -113,7 +113,7 @@ func takeAt(all []dsp.Measurement) []int {
 	var out []int
 	locked, note := false, tuning.Note(0)
 	for i, m := range all {
-		if m.Frame == dsp.FrameNone || m.State == dsp.StateFrozen {
+		if m.Frame == dsp.FrameNone {
 			continue
 		}
 		if m.Frame == dsp.FrameMeasured && m.Lock.Visible && (!locked || m.Note != note) && len(m.Reeds) > 0 {

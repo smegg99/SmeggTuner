@@ -14,7 +14,7 @@ help.everywhere.arrows:
   value: 'Przesuń przypiętą nutę (Strojenie)'
   description: 'About dialog: help.everywhere.arrows.'
 help.everywhere.hold:
-  value: 'Zatrzymaj lub wznów odczyt'
+  value: 'Włącz lub wyłącz zatrzymywanie stabilnych odczytów'
   description: 'About dialog: help.everywhere.hold.'
 help.everywhere.manual:
   value: 'Nuta automatyczna lub przypięta'

@@ -22,7 +22,7 @@ vi.mock('~/composables/useTuner', () => ({
     running: { get value() { return host.running } },
     starting: { get value() { return host.starting } },
     start: host.start, manualNote: ref(-1), setAuto: vi.fn(), stepNote: vi.fn(),
-    frozen: ref(false), setFrozen: vi.fn(), canFreeze: ref(false), takeNow: vi.fn(),
+    hold: ref(false), setHold: vi.fn(), takeNow: vi.fn(),
   }),
 }))
 vi.mock('~/composables/useRecord', () => ({

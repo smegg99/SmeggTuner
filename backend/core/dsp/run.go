@@ -12,14 +12,13 @@ import (
 // heartbeatsPerSecond paces the meter and waveform between the two analyses a second.
 const heartbeatsPerSecond = 20
 
-// Run blocks until ctx is cancelled or the source closes. Freeze does not survive a run.
+// Run blocks until ctx is cancelled or the source closes.
 func (e *Engine) Run(ctx context.Context, src audio.Source) error {
 	blocks, err := src.Start(ctx)
 	if err != nil {
 		return err
 	}
 	defer func() { _ = src.Stop() }()
-	e.frozen, e.latched = false, Measurement{}
 	_, timeline := src.(audio.Transport)
 	rate := src.Info().SampleRate
 	if !e.cfg.fits(rate) {
@@ -149,8 +148,7 @@ func (e *Engine) block(r *runner, b audio.Block) {
 	e.decimateWave(b.Samples)
 	r.sinceHop += len(b.Samples)
 	if r.cadence.EventPass(len(r.samples), true) {
-		// The reference stops capture while frozen, so a frozen engine records nothing.
-		r.analyzer.Recording = e.recording && !e.frozen
+		r.analyzer.Recording = e.recording
 		native := r.passes%r.every == 0
 		if r.analyzer.Gone(r.ring) {
 			r.analyzer.LetGo(r.ring)
@@ -164,12 +162,12 @@ func (e *Engine) block(r *runner, b audio.Block) {
 		}
 		r.passes++
 		r.cadence.HandlerCompleted()
-		e.publish(r.measurement(e, f))
+		e.emit(r.measurement(e, f))
 		r.endHop()
 		return
 	}
 	if r.sinceHop >= r.rate/heartbeatsPerSecond {
-		e.publish(r.heartbeat(e, r.state()))
+		e.emit(r.heartbeat(e, r.state()))
 		r.endHop()
 	}
 }

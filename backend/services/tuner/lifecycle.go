@@ -55,10 +55,7 @@ func (s *Service) start() error {
 		r.engine.Seed(s.learned[r.source])
 	}
 	s.run = r
-	// Freeze and recording are not part of EngineConfig, so Run cannot restore them: re-assert them.
-	if s.frozen {
-		r.engine.Freeze(true)
-	}
+	// Recording is not part of EngineConfig, so Run cannot restore it: re-assert it.
 	if s.recording {
 		r.engine.SetRecording(true)
 	}

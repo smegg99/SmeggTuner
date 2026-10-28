@@ -33,7 +33,6 @@ type Service struct {
 	panel     panel        // what is measured while no session is open
 	imposed   imposed      // what the session last made the engine adopt
 	file      fileSettings // what the config file last made the engine adopt
-	frozen    bool         // user intent, re-asserted after every Start
 	recording bool         // a record pass is armed in a session; re-asserted after every Start
 	run       *run
 	emitHook  func()
@@ -85,8 +84,7 @@ func (s *Service) Stop() error {
 	return nil
 }
 
-// Restart stops and starts the engine on a fresh source (a device or file swap). Freeze
-// survives: the engine resets freeze each Run, so the service re-asserts the user's choice.
+// Restart stops and starts the engine on a fresh source (a device or file swap).
 func (s *Service) Restart() error {
 	s.opMu.Lock()
 	defer s.opMu.Unlock()

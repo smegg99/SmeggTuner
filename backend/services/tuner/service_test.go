@@ -28,12 +28,6 @@ func TestStartStopOnFileSource(t *testing.T) {
 	if err := s.SetA4(442); err != nil {
 		t.Fatal(err)
 	}
-	if err := s.Freeze(true); err != nil {
-		t.Fatal(err)
-	}
-	if err := s.Freeze(false); err != nil {
-		t.Fatal(err)
-	}
 
 	deadline := time.Now().Add(6 * time.Second)
 	for ticks.Load() < 3 && time.Now().Before(deadline) {
@@ -51,9 +45,6 @@ func TestStartStopOnFileSource(t *testing.T) {
 	}
 	// setters must not deadlock while stopped (they must never reach a non-draining Run loop)
 	if err := s.SetA4(440); err != nil {
-		t.Fatal(err)
-	}
-	if err := s.Freeze(true); err != nil {
 		t.Fatal(err)
 	}
 }

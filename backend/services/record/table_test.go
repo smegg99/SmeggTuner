@@ -149,8 +149,8 @@ func TestEditReedRecomputesTheRowAndMarksTheTake(t *testing.T) {
 	}
 }
 
-// Held and frozen frames repeat a reading the engine already gave; neither is a new take.
-func TestHeldAndFrozenFramesAreNotNewReadings(t *testing.T) {
+// Held frames repeat a reading the engine already gave; they are not a new take.
+func TestHeldFramesAreNotNewReadings(t *testing.T) {
 	s, sessions := services(t)
 	open(t, sessions, 2)
 	s.SetArmed(true)
@@ -161,16 +161,11 @@ func TestHeldAndFrozenFramesAreNotNewReadings(t *testing.T) {
 	for range 3 {
 		s.OnMeasurement(held)
 	}
-	frozen := fine(62, true, -3, 3)
-	frozen.State = dsp.StateFrozen
-	for range 3 {
-		s.OnMeasurement(frozen)
-	}
 	if got := s.State().Readings; got != 1 {
-		t.Fatalf("readings = %d, want 1: a frozen re-emit repeats the take it latched", got)
+		t.Fatalf("readings = %d, want 1: a held frame repeats the take", got)
 	}
 
-	// Unfrozen, the engine's own take of the next note is a reading.
+	// The engine's own take of the next note is a reading.
 	s.OnMeasurement(fine(62, true, -3, 3))
 	if got := s.State().Readings; got != 2 {
 		t.Fatalf("readings = %d, want 2 once the engine measures the next note itself", got)

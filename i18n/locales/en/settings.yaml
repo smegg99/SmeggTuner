@@ -210,12 +210,6 @@ scaleNamings.doremi:
 scaleNamings.polish:
   value: C Cis D Dis E F Fis G Gis A Ais H (Polish)
   description: 'application settings: scaleNamings.polish.'
-stopAfterLock:
-  value: Hold stable readings
-  description: 'application settings: stopAfterLock.'
-stopAfterLockHint:
-  value: 'Keep the locked reading after the sound stops'
-  description: 'application settings: stopAfterLockHint.'
 themeHint:
   value: 'System, light or dark'
   description: 'application settings: themeHint.'

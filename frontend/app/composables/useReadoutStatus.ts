@@ -15,13 +15,13 @@ export function useReadoutStatus(
   watch(() => toValue(source), (next) => {
     clearTimeout(timer)
     // Never retain a lock, warm-up instruction or running state after it ends.
-    if (next === 'stopped' || next === 'deviceLost' || next === 'frozen') {
+    if (next === 'stopped' || next === 'deviceLost') {
       shown.value = next
       changedAt = Date.now()
       return
     }
     if (shown.value === 'stopped' || shown.value === 'deviceLost'
-      || shown.value === 'frozen' || shown.value === 'initializing'
+      || shown.value === 'initializing'
       || shown.value === 'locked' || shown.value === 'recorded') {
       if (shown.value === next) return
       shown.value = 'running'

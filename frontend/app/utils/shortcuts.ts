@@ -2,7 +2,7 @@
 
 export type ShortcutAction
   = | 'rooms1' | 'rooms2' | 'rooms3'
-    | 'manual' | 'freeze' | 'record' | 'undo'
+    | 'manual' | 'hold' | 'record' | 'undo'
     | 'noteDown' | 'noteUp' | 'takeNow'
 
 export interface ShortcutContext {
@@ -17,7 +17,7 @@ const EVERYWHERE: Record<string, ShortcutAction> = {
   '2': 'rooms2',
   '3': 'rooms3',
   'a': 'manual',
-  'h': 'freeze',
+  'h': 'hold',
   'r': 'record',
   'z': 'undo',
   ',': 'noteDown',
@@ -35,6 +35,6 @@ const TUNE_ROOM: Record<string, ShortcutAction> = {
 /** shortcutFor names the action a key press asks for, or undefined. */
 export function shortcutFor(key: string, ctx: ShortcutContext): ShortcutAction | undefined {
   const k = key.length === 1 ? key.toLowerCase() : key
-  if (k === ' ') return ctx.tune && !ctx.file ? 'freeze' : undefined
+  if (k === ' ') return ctx.tune && !ctx.file ? 'hold' : undefined
   return EVERYWHERE[k] ?? (ctx.tune ? TUNE_ROOM[k] : undefined)
 }

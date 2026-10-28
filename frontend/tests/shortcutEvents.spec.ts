@@ -5,7 +5,7 @@ import { defineComponent, h, ref } from 'vue'
 import { useShortcuts } from '~/composables/useShortcuts'
 
 const calls = vi.hoisted(() => ({
-  undo: vi.fn(), take: vi.fn(), record: vi.fn(), step: vi.fn(), freeze: vi.fn(),
+  undo: vi.fn(), take: vi.fn(), record: vi.fn(), step: vi.fn(), hold: vi.fn(),
 }))
 vi.mock('~/composables/useAudioDevices', () => ({
   useAudioDevices: () => ({ current: ref({ kind: 'microphone' }) }),
@@ -29,7 +29,7 @@ vi.mock('~/composables/useTuner', () => ({
   AUTO_NOTE: -1,
   useTuner: () => ({
     manualNote: ref(60), setAuto: vi.fn(), stepNote: calls.step,
-    frozen: ref(false), setFrozen: calls.freeze, canFreeze: ref(true), takeNow: calls.take,
+    hold: ref(false), setHold: calls.hold, takeNow: calls.take,
   }),
 }))
 
@@ -62,7 +62,7 @@ describe('global shortcut event ownership', () => {
     expect(press('Enter', button).defaultPrevented).toBe(false)
     expect(press(' ', button).defaultPrevented).toBe(false)
     expect(calls.take).not.toHaveBeenCalled()
-    expect(calls.freeze).not.toHaveBeenCalled()
+    expect(calls.hold).not.toHaveBeenCalled()
   })
 
   it('does not change recordings behind a dialog or menu', () => {

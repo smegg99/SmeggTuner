@@ -106,9 +106,9 @@ error.transposeMode:
 error.unexpected:
   value: Coś poszło nie tak. Szczegóły znajdziesz w logu.
   description: 'live tuner: error.unexpected.'
-freeze.hint:
-  value: Zatrzymaj lub wznów odczyt (H)
-  description: 'live tuner: freeze.hint.'
+hold.hint:
+  value: Zatrzymuj stabilne odczyty (H)
+  description: 'live tuner: the toolbar key that holds each locked reading until the sound stops.'
 input.relearnHint:
   value: 'Naucz szumu tła od nowa (4 s ciszy)'
   description: 'live tuner: input.relearnHint.'
@@ -303,9 +303,6 @@ spectrum.title:
 state.deviceLost:
   value: Utracono wejście
   description: 'live tuner: state.deviceLost.'
-state.frozen:
-  value: Zamrożony
-  description: 'live tuner: state.frozen.'
 state.initializing:
   value: Pomiar tła
   description: 'live tuner: state.initializing.'

@@ -5,10 +5,10 @@ import { shortcutFor } from '~/utils/shortcuts'
 const tune = { tune: true, file: false }
 
 describe('the global keys', () => {
-  it('freezes on Space with the microphone, and leaves Space to the transport with a file', () => {
-    expect(shortcutFor(' ', tune)).toBe('freeze')
+  it('toggles hold on Space with the microphone, and leaves Space to the transport with a file', () => {
+    expect(shortcutFor(' ', tune)).toBe('hold')
     expect(shortcutFor(' ', { tune: true, file: true })).toBeUndefined()
-    expect(shortcutFor('h', { tune: true, file: true })).toBe('freeze')
+    expect(shortcutFor('h', { tune: true, file: true })).toBe('hold')
   })
 
   it('steps the note with the arrows, takes on Enter and undoes on Backspace, in the tune room', () => {

@@ -210,12 +210,6 @@ scaleNamings.doremi:
 scaleNamings.polish:
   value: C Cis D Dis E F Fis G Gis A Ais H (polskie)
   description: 'application settings: scaleNamings.polish.'
-stopAfterLock:
-  value: Zatrzymuj stabilne odczyty
-  description: 'application settings: stopAfterLock.'
-stopAfterLockHint:
-  value: 'Zachowaj zablokowany odczyt po ucichnięciu'
-  description: 'application settings: stopAfterLockHint.'
 themeHint:
   value: 'Systemowy, jasny lub ciemny'
   description: 'application settings: themeHint.'

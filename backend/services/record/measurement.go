@@ -24,8 +24,7 @@ func (s *Service) OnMeasurement(m dsp.Measurement) {
 	_, _ = s.publishTable()
 }
 
-// taken reports whether m is the analysis that took a reading. A frozen re-emit repeats the latched
-// frame, Taken and all; a chord frame (it carries a chord name) is never a take.
+// taken reports whether m is the analysis that took a reading; a chord frame (it carries a chord name) is never a take.
 func taken(m dsp.Measurement) bool {
-	return m.Taken && m.State != dsp.StateFrozen && m.Label == "" && len(m.Reeds) > 0
+	return m.Taken && m.Label == "" && len(m.Reeds) > 0
 }

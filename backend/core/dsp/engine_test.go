@@ -150,26 +150,6 @@ func TestEngineSilentSlotKeepsItsOctave(t *testing.T) {
 	}
 }
 
-func TestEngineFreezeHoldsTheLastResult(t *testing.T) {
-	var out []Measurement
-	e := NewEngine(EngineConfig{}, func(m Measurement) { out = append(out, m) })
-	e.Freeze(true)
-	spec := audio.SynthSpec{SampleRate: 48000, Duration: 6 * time.Second, Reeds: []audio.ReedSpec{{Freq: 440.5, Amp: 0.2}}}
-	if err := e.Run(context.Background(), audio.NewSynthSource(spec)); err != nil {
-		t.Fatal(err)
-	}
-	// Freeze sent before Run is drained by Run itself, then holds from the first measured frame on.
-	frozen := 0
-	for _, m := range out {
-		if m.State == StateFrozen {
-			frozen++
-		}
-	}
-	if frozen == 0 {
-		t.Fatal("freeze never held a result")
-	}
-}
-
 func TestShownMatchesTheReferencePrequantization(t *testing.T) {
 	cases := []struct {
 		v      float64

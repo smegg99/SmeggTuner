@@ -14,9 +14,7 @@ type Engine struct {
 	ctl       chan func(*runner)
 	ctlMu     sync.Mutex
 	pending   []func(*runner)
-	frozen    bool
 	recording bool
-	latched   Measurement
 	wave      [WaveformPoints]float32
 	seed      *meter.Learned // a previous run's background on this input, adopted instead of learning
 	learned   *meter.Learned // what this run's analyzer had learned when Run returned
@@ -71,9 +69,6 @@ func (e *Engine) Update(mut func(*EngineConfig)) {
 	})
 }
 
-// Freeze latches the last measured result; processing continues, takes stop.
-func (e *Engine) Freeze(on bool) { e.send(func(*runner) { e.frozen = on }) }
-
 // Recalibrate starts the eight-update background learning, as on a fresh run.
 func (e *Engine) Recalibrate() { e.send(func(r *runner) { r.analyzer.Learn() }) }
 
@@ -88,17 +83,3 @@ func (e *Engine) SetRecording(on bool) {
 
 // TakeNow asks for a take without a lock; the next analysis that may take does, and only a take clears it.
 func (e *Engine) TakeNow() { e.send(func(r *runner) { r.analyzer.TakeRequest = true }) }
-
-func (e *Engine) publish(m Measurement) {
-	if e.frozen && e.latched.Frame == FrameMeasured {
-		held := e.latched
-		held.State, held.Waveform, held.InputLevel = StateFrozen, m.Waveform, m.InputLevel
-		held.Input, held.Unreliable = m.Input, m.Unreliable
-		e.emit(held)
-		return
-	}
-	if m.Frame == FrameMeasured {
-		e.latched = m
-	}
-	e.emit(m)
-}

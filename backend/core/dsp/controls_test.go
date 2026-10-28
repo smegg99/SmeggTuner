@@ -17,7 +17,6 @@ func TestControlBurstPreservesUpdatesAndRecordingState(t *testing.T) {
 	e.SetRecording(true)
 	e.TakeNow()
 	e.SetRecording(false)
-	e.Freeze(true)
 	src := audio.NewSynthSource(audio.SynthSpec{SampleRate: 48000, Duration: time.Second})
 	if err := e.Run(context.Background(), src); err != nil {
 		t.Fatal(err)
@@ -25,7 +24,7 @@ func TestControlBurstPreservesUpdatesAndRecordingState(t *testing.T) {
 	if e.cfg.A4 < 440.79 || e.cfg.A4 > 440.81 {
 		t.Fatalf("control updates dropped: A4=%v", e.cfg.A4)
 	}
-	if e.recording || !e.frozen {
-		t.Fatalf("final controls lost: recording=%v frozen=%v", e.recording, e.frozen)
+	if e.recording {
+		t.Fatal("final controls lost: still recording")
 	}
 }

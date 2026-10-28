@@ -50,9 +50,9 @@ describe('readout captions', () => {
     }
   })
 
-  it('shows stop, device loss and explicit freeze immediately and cancels pending captions', () => {
+  it('shows stop and device loss immediately and cancels pending captions', () => {
     const s = setup()
-    for (const state of ['stopped', 'deviceLost', 'frozen'] as const) {
+    for (const state of ['stopped', 'deviceLost'] as const) {
       s.input.value = 'locked'
       vi.advanceTimersByTime(100)
       s.input.value = state

@@ -14,7 +14,7 @@ help.everywhere.arrows:
   value: 'Step the pinned note (Tune)'
   description: 'About dialog: help.everywhere.arrows.'
 help.everywhere.hold:
-  value: 'Hold or resume the reading'
+  value: 'Hold stable readings on or off'
   description: 'About dialog: help.everywhere.hold.'
 help.everywhere.manual:
   value: 'Auto or pinned note'

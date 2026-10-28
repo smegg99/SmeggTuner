@@ -63,17 +63,6 @@ func (s *Service) SetFilters(hum50, hum60 bool) error {
 	})
 }
 
-// Freeze latches the last measured result on screen while the engine keeps running; re-asserted after every Start.
-func (s *Service) Freeze(on bool) error {
-	s.mu.Lock()
-	defer s.mu.Unlock()
-	s.frozen = on
-	if r := s.liveLocked(); r != nil {
-		r.engine.Freeze(on)
-	}
-	return nil
-}
-
 // Recalibrate starts the engine's background learning on the current run; a no-op when nothing is running. Called when recording arms.
 func (s *Service) Recalibrate() {
 	if r := s.current(); r != nil {

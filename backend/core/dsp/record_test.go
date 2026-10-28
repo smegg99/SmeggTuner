@@ -70,14 +70,9 @@ func TestEngineTakeNowTakesTheFirstMeasurement(t *testing.T) {
 	}
 }
 
-func TestEngineTakesNothingWhenNotRecordingOrFrozen(t *testing.T) {
-	for name, before := range map[string]func(*Engine){
-		"not recording": func(e *Engine) { e.TakeNow() },
-		"frozen":        func(e *Engine) { e.SetRecording(true); e.TakeNow(); e.Freeze(true) },
-	} {
-		if at := takes(runControlled(t, EngineConfig{}, 8, before, 440.5)); len(at) != 0 {
-			t.Fatalf("%s: takes at %v", name, at)
-		}
+func TestEngineTakesNothingWhenNotRecording(t *testing.T) {
+	if at := takes(runControlled(t, EngineConfig{}, 8, func(e *Engine) { e.TakeNow() }, 440.5)); len(at) != 0 {
+		t.Fatalf("takes at %v", at)
 	}
 }
 
