@@ -13,12 +13,19 @@ by itself while measuring, and it learns the room's background noise once per mi
 key to learn it again.
 
 The top bar was redone: the Tones, Octaves and Chords modes and the reed counts sit in it, A4 is
-typed straight into the note card, and every control has a tooltip. Clicking the note strip plays
-the note without crackling. A settings file the app cannot read now opens a window naming the file
-and the setting, instead of the app closing without a word.
+typed straight into the note card, and every control has a tooltip. Holding stable readings moved
+from the settings to the snowflake key in the top bar (H, or Space on the tuner): it holds each
+locked reading until the note stops, and the separate key that froze the reading at once is gone.
+Clicking the note strip plays the note without crackling. A settings file the app cannot read now
+opens a window naming the file and the setting, instead of the app closing without a word.
 
 The Workshop (sessions, recording and printed cards) is hidden in this release, so a first start
 shows a tuner and not a session manager. Nothing already stored is deleted.
+
+When the app cannot start, crashes, stops responding or is killed, a window says so and offers a
+report to copy, save or email, with the recent log in it; the email carries the report and the log
+file as attachments where the mail client takes them. A log file is now kept by default, next to the
+settings file or in the app's data folder when installed.
 
 New: Linux ARM64 packages, and an experimental edition that runs in the browser.
 
@@ -55,7 +62,7 @@ Android, iOS, and macOS are not currently supported.
 
 ## SmeggTuner 1.4.0
 
-Silnik pomiarowy został przebudowany tak, żeby działał jak profesjonalny Accordion Tuner Dirka.
+Silnik pomiarowy został przebudowany tak, żeby działał jak profesjonalny Tuner Dirka.
 Odczyty są teraz pokazywane w jego jednostkach, każda to 0,06 % częstotliwości nuty (mniej więcej
 jeden cent); centy można przywrócić w ustawieniach. Nowe ustawienie detekcji decyduje, jak szybko
 nowa nuta jest odczytywana i blokowana: Szybkie, Zrównoważone albo Stabilne.
@@ -66,13 +73,22 @@ może sama ustawiać poziom mikrofonu podczas pomiaru i uczy się szumu tła raz
 z przyciskiem, żeby nauczyć się go od nowa.
 
 Górny pasek został przerobiony: są na nim tryby Dźwięki, Oktawy i Akordy oraz liczba głosów, A4
-wpisuje się wprost w karcie nuty, a każdy przycisk ma podpowiedź. Kliknięcie paska nut odtwarza nutę
-bez trzasków. Plik ustawień, którego aplikacja nie potrafi odczytać, otwiera teraz okno z nazwą
-pliku i ustawienia, zamiast zamykać aplikację bez słowa.
+wpisuje się wprost w karcie nuty, a każdy przycisk ma podpowiedź. Zatrzymywanie stabilnych odczytów
+przeniosło się z ustawień na przycisk ze śnieżynką na górnym pasku (H albo spacja w stroiku): trzyma
+każdy zablokowany odczyt, aż dźwięk ucichnie, a osobny przycisk, który od razu zamrażał odczyt,
+zniknął. Kliknięcie paska nut odtwarza nutę bez trzasków. Plik ustawień, którego aplikacja nie
+potrafi odczytać, otwiera teraz okno z nazwą pliku i ustawienia, zamiast zamykać aplikację bez
+słowa.
 
 Warsztat (sesje, nagrywanie i drukowane karty) jest w tym wydaniu ukryty, żeby pierwsze
 uruchomienie pokazywało stroik, a nie menedżera sesji. Nic z tego, co już zapisano, nie jest
 usuwane.
+
+Gdy aplikacja nie może się uruchomić, ulegnie awarii, przestanie odpowiadać albo zostanie zamknięta,
+okno o tym mówi i proponuje raport do skopiowania, zapisania albo wysłania e-mailem, razem z
+ostatnimi wpisami dziennika; e-mail dostaje raport i plik dziennika jako załączniki, jeśli program
+pocztowy je przyjmuje. Plik dziennika jest teraz domyślnie zapisywany, obok pliku ustawień albo, po
+instalacji, w folderze danych aplikacji.
 
 Nowe: pakiety dla Linuksa ARM64 i eksperymentalna wersja działająca w przeglądarce.
 
