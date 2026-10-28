@@ -7,6 +7,7 @@ import (
 	"regexp"
 	"slices"
 	"strings"
+	"sync/atomic"
 
 	"github.com/smegg99/s99logger"
 )
@@ -16,25 +17,38 @@ func Wails() *slog.Logger {
 	return slog.New(&wailsHandler{group: "wails."})
 }
 
+const wailsMessage s99logger.MessageID = "wails.runtime"
+
+// wailsDebug is whether the console takes debug lines; the logger itself always runs at debug for the
+// report, so Wails' per-call debug lines are dropped here unless someone reads them.
+var wailsDebug atomic.Bool
+
 type wailsHandler struct {
 	attrs []s99logger.Attr
 	group string
 }
 
-// S99Logger applies its configured minimum level when the record is emitted.
-func (*wailsHandler) Enabled(context.Context, slog.Level) bool { return true }
+func (*wailsHandler) Enabled(_ context.Context, level slog.Level) bool {
+	return level >= slog.LevelInfo || wailsDebug.Load()
+}
 
 func (h *wailsHandler) Handle(ctx context.Context, r slog.Record) error {
+	if !h.Enabled(ctx, r.Level) {
+		return nil
+	}
 	attrs := append(slices.Clone(h.attrs), s99logger.String("source", "wails"), s99logger.String("detail", r.Message))
 	r.Attrs(func(a slog.Attr) bool {
 		attrs = appendSlogAttr(attrs, h.group, a)
 		return true
 	})
-	event := s99logger.NewEvent("wails.runtime", attrs...)
+	event := s99logger.NewEvent(wailsMessage, attrs...)
 	log := read()
 	level := r.Level
 	if refusal(r.Message) || traffic(r.Message) {
 		level = slog.LevelDebug
+	}
+	if level < slog.LevelInfo && !wailsDebug.Load() {
+		return nil
 	}
 	switch {
 	case level >= slog.LevelError:

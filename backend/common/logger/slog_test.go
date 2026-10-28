@@ -19,6 +19,7 @@ func TestWailsDiagnosticsUseConfiguredSinkAndLevel(t *testing.T) {
 	global = s99logger.New(s99logger.MultiSink(sink, s99logger.NewJSONSink(&encoded)), s99logger.Options{MinLevel: s99logger.LevelWarn})
 	mu.Unlock()
 	t.Cleanup(func() { mu.Lock(); global = previous; mu.Unlock() })
+	debugConsole(t)
 
 	framework := Wails().With("service", "session").WithGroup("shutdown")
 	framework.Info("filtered")
@@ -59,6 +60,7 @@ func TestWailsDiagnosticsUseConfiguredSinkAndLevel(t *testing.T) {
 	mu.Lock()
 	global = s99logger.New(next, s99logger.Options{MinLevel: s99logger.LevelDebug})
 	mu.Unlock()
+	debugConsole(t)
 	framework.Debug("reconfigured")
 	if len(next.values) != 1 || next.values[0].Level != s99logger.LevelDebug || len(sink.values) != 1 {
 		t.Fatal("framework logger did not follow the configured sink")
@@ -91,6 +93,7 @@ func TestBindingRefusalsAreNotErrors(t *testing.T) {
 	global = s99logger.New(sink, s99logger.Options{MinLevel: s99logger.LevelDebug})
 	mu.Unlock()
 	t.Cleanup(func() { mu.Lock(); global = previous; mu.Unlock() })
+	debugConsole(t)
 
 	framework := Wails()
 	framework.Error("Binding call failed: Bound method returned an error: session.error.noSession")
@@ -115,10 +118,35 @@ func TestAssetTrafficIsDebug(t *testing.T) {
 	global = s99logger.New(sink, s99logger.Options{MinLevel: s99logger.LevelDebug})
 	mu.Unlock()
 	t.Cleanup(func() { mu.Lock(); global = previous; mu.Unlock() })
+	debugConsole(t)
 
 	Wails().Info("[AssetFileServerFS] Handling request", "url", "/_nuxt/app.js", "file", "_nuxt/app.js")
 	Wails().Info("Asset server started")
 	if len(sink.values) != 2 || sink.values[0].Level != s99logger.LevelDebug || sink.values[1].Level != s99logger.LevelInfo {
+		t.Fatalf("records = %+v", sink.values)
+	}
+}
+
+// debugConsole stands for a console at debug, which is when Wails' debug lines are kept.
+func debugConsole(t *testing.T) {
+	t.Helper()
+	wailsDebug.Store(true)
+	t.Cleanup(func() { wailsDebug.Store(false) })
+}
+
+// The logger runs at debug for the report, so without a debug console Wails' debug lines stop at the bridge.
+func TestWailsDebugLinesNeedADebugConsole(t *testing.T) {
+	sink := &records{}
+	mu.Lock()
+	previous := global
+	global = s99logger.New(sink, s99logger.Options{MinLevel: s99logger.LevelDebug})
+	mu.Unlock()
+	t.Cleanup(func() { mu.Lock(); global = previous; mu.Unlock() })
+
+	Wails().Debug("Binding call complete:")
+	Wails().Info("[AssetFileServerFS] Handling request", "url", "/_nuxt/app.js")
+	Wails().Info("Asset server started")
+	if len(sink.values) != 1 || sink.values[0].Level != s99logger.LevelInfo {
 		t.Fatalf("records = %+v", sink.values)
 	}
 }

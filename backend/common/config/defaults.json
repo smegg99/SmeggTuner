@@ -9,13 +9,13 @@
   "logger": {
     "verbose": false,
     "no_color": false,
-    "enable_files": false,
-    "dir": "./logs",
+    "enable_files": true,
+    "dir": "@{datadir:logs}",
     "prefix": "",
     "level": "INFO",
-    "max_size_mb": 10,
-    "max_backups": 5,
-    "max_age_days": 30,
+    "max_size_mb": 2,
+    "max_backups": 3,
+    "max_age_days": 14,
     "log_name": "smeggtuner.log",
     "compression": "zstd",
     "local_time": true

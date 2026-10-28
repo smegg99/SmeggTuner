@@ -1,12 +1,14 @@
 package logger
 
 import (
+	"context"
 	"os"
 	"strings"
 	"sync"
 
 	"github.com/smegg99/s99logger"
 	"github.com/smegg99/s99logger/rotation"
+	"github.com/smegg99/s99wails/v2/shell/crash"
 
 	"smegg.me/smeggtuner/backend/common/i18n"
 )
@@ -40,7 +42,19 @@ func newConsoleLogger(service string, noColor bool, level s99logger.Level) *s99l
 	if noColor {
 		console.WithColor(false)
 	}
-	return s99logger.New(console, s99logger.Options{Service: service, MinLevel: level, Translator: i18n.Translator()})
+	sink := s99logger.MultiSink(s99logger.MinLevel(console, level), reportSink{})
+	return s99logger.New(sink, s99logger.Options{Service: service, MinLevel: s99logger.LevelDebug, Translator: i18n.Translator()})
+}
+
+// reportSink gives the error screen's report every record at debug, except the Wails runtime's
+// debug lines, which name every asset and binding call and would push the app's own lines out.
+type reportSink struct{}
+
+func (reportSink) Write(ctx context.Context, rec s99logger.Record) error {
+	if rec.Level == s99logger.LevelDebug && rec.MessageID == wailsMessage {
+		return nil
+	}
+	return crash.Sink().Write(ctx, rec)
 }
 
 func parseLevel(level string, verbose bool) s99logger.Level {
@@ -82,7 +96,9 @@ func Configure(opts Options) error {
 		console.WithColor(false)
 	}
 
-	sinks := []s99logger.Sink{console}
+	level := parseLevel(opts.Level, opts.Verbose)
+	wailsDebug.Store(level == s99logger.LevelDebug)
+	sinks := []s99logger.Sink{s99logger.MinLevel(console, level), reportSink{}}
 
 	compression := opts.Compression
 	if compression == "" {
@@ -104,7 +120,7 @@ func Configure(opts Options) error {
 			return err
 		}
 		newFile = fs
-		sinks = append(sinks, fs)
+		sinks = append(sinks, s99logger.MinLevel(fs, level))
 	}
 
 	service := defaultService
@@ -114,7 +130,7 @@ func Configure(opts Options) error {
 
 	logger := s99logger.New(s99logger.MultiSink(sinks...), s99logger.Options{
 		Service:    service,
-		MinLevel:   parseLevel(opts.Level, opts.Verbose),
+		MinLevel:   s99logger.LevelDebug,
 		Translator: i18n.Translator(),
 	})
 
