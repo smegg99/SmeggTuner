@@ -1,155 +1,143 @@
 <p align="center">
-  <img src="assets/smeggtuner-app-icon.svg" alt="SmeggTuner" width="140">
+  <img src="assets/smeggtuner-readme.svg" alt="SmeggTuner" width="240">
 </p>
 
 <p align="center">
-  <a href="README.md">English</a> | <b>Polski</b>
-  <br>
-  <a href="https://smeggtuner.com">smeggtuner.com</a>
+  <a href="README.md">English</a> | Polski | <a href="https://smeggtuner.com">smeggtuner.com</a>
 </p>
 
 # SmeggTuner
 
-Darmowy, otwartoźródłowy tuner do akordeonu. Zagraj dźwięk, a pokaże każdy głos rejestru osobno
-i dudnienia między nimi, więc widać, który stroik piłować i o ile.
+Tuner do strojenia akordeonów. Mierzy osobno każdy stroik nuty, do trzech naraz, razem z dudnieniem
+między nimi. Słucha mikrofonu albo czyta nagranie WAV. Działa tak jak profesjonalny Accordion Tuner
+Dirka, ale jest darmowy.
 
-Działa tak jak profesjonalny Accordion Tuner Dirka, ale za darmo. Działa na Linuksie i Windowsie,
-z mikrofonem albo z nagraniem WAV.
+Działa na Linuksie i Windowsie. Wersja na Androida i wersja przeglądarkowa są eksperymentalne.
+
+To wciąż beta, sprawdzona na niewielu akordeonach i kartach dźwiękowych. Zanim zaczniesz piłować
+stroik, porównaj odczyt z tunerem, któremu ufasz.
 
 <p align="center">
-  <img src="assets/screenshots/smeggtuner-recording-analysis.png" alt="Trzy głosy C4 zmierzone z nagrania" width="760">
+  <img src="assets/screenshots/smeggtuner-recording-analysis.png" alt="Trzy stroiki C4 zmierzone z nagrania" width="760">
 </p>
 
-> **Wersja beta.** Testy na prawdziwych akordeonach i kartach dźwiękowych są jeszcze ograniczone.
-> Zanim zaczniesz piłować stroik, sprawdź odczyt tunerem, któremu ufasz.
+## Co potrafi
 
-## Funkcje
+Tuner mierzy dźwięki, oktawy albo akordy. W trybie Dźwięki pokazuje stroiki jednej nuty, w trybach
+Oktawy i Akordy kilka nut naraz. Odchyłkę podaje w jednostkach Dirka (0,06 % częstotliwości nuty, czyli
+mniej więcej cent) albo w centach, a dudnienie w hercach albo w jednostkach. Wykrywanie nut ma trzy
+ustawienia: Szybkie, Zrównoważone i Stabilne. Stabilne wybiera i blokuje nutę tak samo jak tuner Dirka.
 
-- Mierzy do trzech głosów jednego dźwięku naraz i dudnienie każdej pary.
-- Trzy tryby: Dźwięki (głosy jednego dźwięku), Oktawy i Akordy.
-- Odczyty w jednostkach Dirka (0,06 % częstotliwości nuty, mniej więcej jeden cent) albo w
-  centach. Dudnienia w Hz albo w jednostkach.
-- Wykrywanie nut: Szybkie, Zrównoważone albo Stabilne. Stabilne działa dokładnie jak tuner Dirka.
-- Kalibracja karty dźwiękowej, osobno dla każdego mikrofonu. Trwa około minuty i nie wymaga
-  dźwięku.
-- Automatyczna głośność wejścia i szum tła uczony raz dla każdego mikrofonu. Przycisk na górnym
-  pasku uczy go od nowa.
-- Zatrzymuj stabilne odczyty: przycisk ze śnieżynką trzyma każdy zablokowany odczyt, aż dźwięk
-  ucichnie.
-- Otwiera nagrania WAV z odtwarzaniem, przewijaniem, pętlą i powiększeniem, więc można stroić
-  bez akordeonu na stole.
-- Kliknięcie paska nut odtwarza nutę.
-- A4 od 430 do 450 Hz, transpozycja, przypięta nuta przesuwana strzałkami, tolerancje i cztery
-  sposoby nazywania nut, w tym polski (C Cis D ... H).
-- Filtr przydźwięku sieciowego 50 Hz lub 60 Hz.
-- Polski i angielski, jasny i ciemny motyw, ikona w zasobniku, skróty klawiszowe.
-- Gdy nie może się uruchomić, ulegnie awarii, przestanie odpowiadać albo zostanie zamknięta, mówi o
-  tym w oknie z raportem, który można skopiować, zapisać albo wysłać e-mailem, razem z ostatnimi
-  wpisami dziennika. Plik dziennika jest domyślnie zapisywany.
+Każdy mikrofon ma własną kalibrację karty dźwiękowej. Trwa około minuty i nie potrzebuje żadnego
+dźwięku. Szum tła tuner poznaje raz dla każdego mikrofonu, a przyciskiem na górnym pasku można go
+nauczyć od nowa. Głośność wejścia może ustawiać się sama. Przycisk ze śnieżynką zatrzymuje każdy
+zablokowany odczyt, dopóki dźwięk nie ucichnie.
 
-Warsztat z poprzednich wersji jest w 1.4 wyłączony. Były w nim biblioteka akordeonów, sesje,
-nagrane odczyty, docelowe krzywe dudnień i drukowane raporty. Kod nadal tu jest i Warsztat wróci
-w jednym z kolejnych wydań.
+Nagranie WAV mierzy się tak samo jak mikrofon. Można je odtwarzać, przewijać, zapętlać i powiększać.
+Kliknięcie w pasek nut gra wybraną nutę. A4 ustawia się od 430 do 450 Hz; jest też transpozycja, filtr
+przydźwięku sieciowego 50 albo 60 Hz i cztery sposoby nazywania nut, w tym polski (C Cis D ... H).
 
-## SmeggTuner a tuner Dirka
+Kiedy aplikacja nie może wystartować, wysypie się, przestanie odpowiadać albo zostanie zamknięta siłą,
+pokazuje okno z raportem, który można skopiować, zapisać albo wysłać mailem.
+
+Warsztat z wersji 1.3 (biblioteka akordeonów, sesje, nagrane odczyty, krzywe docelowe i drukowane
+raporty) jest w 1.4 wyłączony. Warsztat wróci w którymś z kolejnych wydań.
+
+## Tuner Dirka
 
 | | Profesjonalny Accordion Tuner Dirka | SmeggTuner 1.4 |
 |---|---|---|
-| Cena | 298 EUR, plus 148 EUR za moduł nagrywania i raportów | Za darmo |
-| Kod | Zamknięty | Otwarty, MIT |
-| Systemy | Windows, macOS | Linux (x86_64, ARM64), Windows; eksperymentalna wersja w przeglądarce |
-| Głosy mierzone naraz | Do 3 | Do 3 |
-| Dźwięki, Oktawy, Akordy | Tak | Tak |
-| Jednostki lub centy, dudnienia w Hz | Tak | Tak |
-| Kalibracja karty dźwiękowej | Tak, dla każdego urządzenia | Tak, dla każdego mikrofonu |
-| Automatyczna głośność wejścia | Tak | Tak |
-| Szybkość wykrywania | Jedno zachowanie | Szybkie, Zrównoważone, Stabilne (Stabilne to Dirk) |
-| Analiza pliku WAV | Nie ma jej w menu | Tak, z przewijaniem, pętlą i powiększeniem |
-| Nagrywanie i raporty | Płatny moduł | Nie w 1.4, Warsztat wróci później |
+| Cena | 298 EUR i 148 EUR za moduł nagrywania i raportów | Za darmo |
+| Kod | Zamknięty | MIT |
+| Systemy | Windows, macOS | Linux, Windows; Android i przeglądarka eksperymentalnie |
+| Stroiki naraz | 3 | 3 |
+| Dźwięki, oktawy, akordy | Tak | Tak |
+| Kalibracja karty dźwiękowej | Dla każdego urządzenia | Dla każdego mikrofonu |
+| Wykrywanie nut | Jedno ustawienie | Szybkie, Zrównoważone, Stabilne |
+| Pliki WAV | Brak w menu | Tak |
+| Nagrywanie i raporty | Płatny moduł | Nie w 1.4 |
 
-Ceny tunera Dirka pochodzą z [dirksprojects.com](https://www.dirksprojects.com/), stan na
-październik 2026.
+Ceny ze strony [dirksprojects.com](https://www.dirksprojects.com/), stan z października 2026.
 
 ## Plany
 
-To plany, nie obietnice.
-
-- [ ] Przywrócić Warsztat: bibliotekę akordeonów, sesje, nagrywanie, krzywe docelowe i raporty.
-- [ ] Wydać wersję na Androida. Buduje się i działa w emulatorze, ale nie jest jeszcze wydana.
-- [ ] macOS i iOS. Nie mam sprzętu, żeby je przetestować.
-- [ ] Udostępnić wersję przeglądarkową pod app.smeggtuner.com.
-- [ ] Więcej testów na prawdziwych akordeonach, mikrofonach i kartach dźwiękowych.
+- [ ] Powrót Warsztatu
+- [ ] Wersja przeglądarkowa pod adresem app.smeggtuner.com
+- [ ] Testy na większej liczbie akordeonów, mikrofonów i kart dźwiękowych
+- [ ] macOS i iOS, kiedy będę miał na czym je testować
 
 ## Pobieranie
 
-Najnowsza wersja jest na [smeggtuner.com](https://smeggtuner.com) i na
-[stronie wydań](https://github.com/smegg99/Smegg-s-professional-Accordion-Tuner/releases).
+Najnowsza wersja jest na stronie
+[wydań](https://github.com/smegg99/Smegg-s-professional-Accordion-Tuner/releases) i na
+[smeggtuner.com](https://smeggtuner.com):
 
-- **Linux x86_64:** AppImage, DEB, RPM, pakiet dla Arch Linux
-- **Linux ARM64:** DEB, RPM, pakiet dla Arch Linux
-- **Windows x86_64:** instalator i wersja przenośna
+- Linux x86_64: AppImage, DEB, RPM, pakiet dla Arch Linux
+- Linux ARM64: DEB, RPM, pakiet dla Arch Linux
+- Windows x86_64: instalator i wersja przenośna
+- Android ARM64: APK, wersja eksperymentalna
 
-Zmiany w tej wersji opisuje [CHANGELOG.md](CHANGELOG.md).
-
-## Zrzuty ekranu
+Co się zmieniło, opisuje [CHANGELOG.md](CHANGELOG.md).
 
 <table>
   <tr>
-    <td><img src="assets/screenshots/smeggtuner-tuning.png" alt="Strojenie z nagrania" width="400"><br>Dwa głosy i ich dudnienie, z nagrania.</td>
-    <td><img src="assets/screenshots/smeggtuner-tuner-idle.png" alt="Tuner czeka na dźwięk" width="400"><br>Tuner czeka na dźwięk.</td>
+    <td><img src="assets/screenshots/smeggtuner-tuning.png" alt="Dwa stroiki i ich dudnienie" width="400"></td>
+    <td><img src="assets/screenshots/smeggtuner-tuner-idle.png" alt="Tuner czeka na dźwięk" width="400"></td>
   </tr>
   <tr>
-    <td><img src="assets/screenshots/smeggtuner-input-devices.png" alt="Wybór wejścia" width="400"><br>Wybierz mikrofon albo otwórz nagranie.</td>
-    <td><img src="assets/screenshots/smeggtuner-settings.png" alt="Ustawienia" width="400"><br>Ustawienia.</td>
+    <td><img src="assets/screenshots/smeggtuner-input-devices.png" alt="Wybór wejścia" width="400"></td>
+    <td><img src="assets/screenshots/smeggtuner-settings.png" alt="Ustawienia" width="400"></td>
   </tr>
   <tr>
-    <td><img src="assets/screenshots/smeggtuner-calibration-warmup.png" alt="Rozgrzewanie przed kalibracją karty dźwiękowej" width="400"><br>Kalibracja karty dźwiękowej, rozgrzewanie.</td>
-    <td><img src="assets/screenshots/smeggtuner-calibration-complete.png" alt="Kalibracja karty dźwiękowej zakończona" width="400"><br>Kalibracja zakończona.</td>
+    <td><img src="assets/screenshots/smeggtuner-calibration-warmup.png" alt="Rozgrzewanie przed kalibracją karty dźwiękowej" width="400"></td>
+    <td><img src="assets/screenshots/smeggtuner-calibration-complete.png" alt="Kalibracja karty dźwiękowej zakończona" width="400"></td>
   </tr>
 </table>
 
 ## Budowanie
 
-Do pracy nad aplikacją potrzebny jest Linux. Aplikacja jest napisana w Go i
-[Wails 3](https://v3.wails.io), z frontendem w Nuxt.
-
-- Go 1.27 z cgo, kompilator C i pkg-config
-- Node.js `^22.22.3 || ^24.15.0 || >=26.0.0` i pnpm 11.3.0
-- Nagłówki GTK 3 i WebKit2GTK 4.1 (`libgtk-3-dev libwebkit2gtk-4.1-dev` w Debianie i Ubuntu,
-  `gtk3-devel webkit2gtk4.1-devel` w Fedorze)
-- [just](https://github.com/casey/just), Python 3 i `rsvg-convert` z librsvg
-- [S99AB](https://github.com/smegg99/S99AB) i [S99Wails](https://github.com/smegg99/S99Wails)
-  sklonowane obok tego repozytorium
+Budować można tylko na Linuksie. Potrzebujesz Go 1.27 z cgo, nagłówków GTK 3 i WebKit2GTK 4.1
+(`libgtk-3-dev libwebkit2gtk-4.1-dev` w Debianie i Ubuntu, `gtk3-devel webkit2gtk4.1-devel`
+w Fedorze), Node.js `^22.22.3 || ^24.15.0 || >=26.0.0`, pnpm 11.3.0, [just](https://github.com/casey/just),
+Pythona 3 i `rsvg-convert`. Obok tego repozytorium muszą leżeć klony
+[S99AB](https://github.com/smegg99/S99AB), [S99Wails](https://github.com/smegg99/S99Wails)
+i [S99Logger](https://github.com/smegg99/S99Logger). Część tych bibliotek może jeszcze nie być
+opublikowana.
 
 ```sh
-git clone https://github.com/smegg99/S99AB.git
-git clone https://github.com/smegg99/S99Wails.git
-git clone https://github.com/smegg99/Smegg-s-professional-Accordion-Tuner.git SmeggTuner
-pnpm --dir S99AB install
-cd SmeggTuner
-pnpm --dir frontend install
-just generate
-just dev
+pnpm --dir ../S99AB install
+just build
 ```
 
-| Polecenie | Co robi |
-|---|---|
-| `just dev` | Przebudowuje i restartuje wersję debug po każdej zmianie źródeł |
-| `just build` | Buduje `bin/smeggtuner` (`just build debug` dla wersji debug) |
-| `just run` | Buduje i otwiera aplikację |
-| `just test` | Testy Go, frontendu i skryptów budowania |
-| `just check` | Pliki generowane, formatowanie, vet, tłumaczenia, typy, lint i testy |
-| `just web` | Buduje wersję przeglądarkową do `dist/web` |
-| `just install` | Instaluje wersję dla jednego użytkownika z wpisem w menu |
-| `just release` | Uruchamia sprawdzenia, potem buduje wszystkie cele wydania do `dist/release` |
+Gotowy plik to `bin/smeggtuner`. `just run` buduje aplikację i od razu ją uruchamia.
 
-Budowanie na Androida opisuje [build/Android.md](build/Android.md). Tłumaczenia są w
-`i18n/locales/{en,pl}`; po ich zmianie uruchom `just generate`.
+## Praca nad kodem
 
-Plik ustawień, `config.json`, powstaje z wartościami domyślnymi przy pierwszym uruchomieniu.
-Schemat jest w [`backend/common/config/config.cue`](backend/common/config/config.cue). Jeśli
-aplikacja znajdzie nieznane ustawienie, pokaże okno z nazwą pliku i tego ustawienia.
+`just dev` przebudowuje wersję debug i uruchamia ją ponownie po każdej zmianie w źródłach. `just test`
+uruchamia testy Go, frontendu i skryptów budujących. `just check` sprawdza do tego pliki generowane,
+formatowanie, vet, tłumaczenia, typy i lint, niczego nie zmieniając.
+
+Tłumaczenia leżą w `i18n/locales/{en,pl}`, a schemat ustawień w `backend/common/config/config.cue`.
+`just generate` odtwarza wszystko, co z nich powstaje, a do tego bindingi, ikony i pliki pomocnicze
+S99Wails.
+
+`just web` buduje wersję przeglądarkową do `dist/web`. `just release` przepuszcza wszystkie
+sprawdzenia i buduje każdy cel do `dist/release/<wersja>`; APK na Androida potrzebuje klucza do
+podpisu, opisanego w [build/Android.md](build/Android.md).
+
+`deploy.json` wdraża wersję przeglądarkową przez [S99Deploy](https://github.com/smegg99/S99Deploy):
+`deploy/app/fetch.sh` pobiera archiwum webowe wersji z `VERSION` z jej wydania na GitHubie i sprawdza je
+z plikiem `SHA256SUMS` tego wydania, a `deploy/app` to mały serwer w Go, który je udostępnia. Na serwerze
+`sudo depl up smeggtuner-app` wdraża wersję, którą wskazuje `VERSION` w repozytorium.
+
+## Ustawienia
+
+Przy pierwszym uruchomieniu aplikacja zapisuje `config.json` z domyślnymi wartościami: w katalogu,
+z którego ją uruchomiono, a po instalacji z pakietu w `~/.config/smeggtuner`. Baza danych i katalog
+`logs/` trafiają obok niego, a po instalacji do `~/.local/share/smeggtuner`. Jeśli w pliku jest
+ustawienie, którego schemat nie zna, aplikacja nie wystartuje i pokaże okno z nazwą pliku i tego
+ustawienia.
 
 ## Licencja
 
-MIT, zobacz [LICENSE](LICENSE).
+MIT, szczegóły w [LICENSE](LICENSE).
