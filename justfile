@@ -5,6 +5,7 @@ set positional-arguments
 app_name := "smeggtuner"
 with_node := "python3 scripts/node_env.py"
 version := `tr -d '\r\n' < VERSION`
+# Every platform 1.4 ships; the Android APK needs the signing keystore from build/Android.md.
 release_targets := "linux/amd64 linux/arm64 windows/amd64 android/arm64 web"
 
 [private]
@@ -33,7 +34,10 @@ check:
 
 # Build and run Go, frontend and build-tooling tests.
 test: build
-    CGO_ENABLED=1 go test -race -tags gtk3 -parallel 4 -timeout 25m ./...
+    # The recordings suite runs without the race detector, as in scripts/check.sh.
+    CGO_ENABLED=1 go test -race -tags gtk3 -parallel 4 -timeout 25m $(go list ./... | grep -vx smegg.me/smeggtuner/tests)
+    CGO_ENABLED=1 go test -tags gtk3 -parallel 4 -timeout 25m ./tests/
+    cd deploy/app && go test -race ./...
     {{ with_node }} pnpm --dir frontend test
     python3 -B -m unittest discover -s scripts -p 'test_*.py'
 
@@ -59,7 +63,7 @@ install: package
 bump new:
     {{ with_node }} node scripts/sync-version.mjs "$1"
 
-# Run every check, then build each target's release artifacts and SHA256SUMS into dist/release/VERSION.
+# Run every check, then build every shipped platform's packages and SHA256SUMS into dist/release/VERSION.
 release targets=release_targets: check
     bash scripts/release.sh {{ targets }}
 
