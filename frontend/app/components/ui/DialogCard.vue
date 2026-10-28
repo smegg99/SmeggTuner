@@ -1,169 +1,100 @@
+<!-- app/components/ui/DialogCard.vue -->
 <template>
-  <v-card class="dlg">
-    <div class="dlg__head">
-      <div class="dlg__what">
-        <h2 class="dlg__title">
-          {{ title }}
-        </h2>
-        <p
-          v-if="subtitle"
-          class="dlg__sub"
-        >
-          {{ subtitle }}
-        </p>
-      </div>
-
-      <button
-        type="button"
+  <UiPanel
+    :title="title"
+    class="dlg"
+    flush
+  >
+    <template #head>
+      <h2 class="dlg__title">
+        {{ title }}
+      </h2>
+      <v-btn
         class="dlg__close"
+        icon="mdi-close"
+        variant="text"
+        :width="32"
+        :height="32"
+        :min-height="32"
+        :disabled="busy"
         :title="t('common.close')"
         :aria-label="t('common.close')"
         @click="emit('close')"
-      >
-        <v-icon icon="mdi-close" />
-      </button>
-    </div>
-
+      />
+    </template>
     <div class="dlg__body">
       <slot />
     </div>
-
-    <div
-      v-if="$slots.actions || confirmLabel"
-      class="dlg__foot"
+    <template
+      v-if="$slots.actions"
+      #footer
     >
-      <slot name="actions">
-        <v-spacer />
-
-        <v-btn
-          :disabled="loading"
-          @click="emit('cancel')"
-        >
-          {{ cancelLabel ?? t('common.cancel') }}
-        </v-btn>
-        <v-btn
-          :color="confirmColor"
-          :loading="loading"
-          :disabled="confirmDisabled"
-          @click="emit('confirm')"
-        >
-          {{ confirmLabel }}
-        </v-btn>
-      </slot>
-    </div>
-  </v-card>
+      <div class="dlg__foot">
+        <slot name="actions" />
+      </div>
+    </template>
+  </UiPanel>
 </template>
 
 <script setup lang="ts">
-// Shared dialog chrome. Setting confirm-label turns the shared footer on; the actions slot overrides it.
-withDefaults(defineProps<{
-  title: string
-  subtitle?: string
-  confirmLabel?: string
-  cancelLabel?: string
-  confirmColor?: string
-  loading?: boolean
-  confirmDisabled?: boolean
-}>(), {
-  subtitle: undefined,
-  confirmLabel: undefined,
-  cancelLabel: undefined,
-  confirmColor: 'accent',
-  loading: false,
-  confirmDisabled: false,
-})
-
-const emit = defineEmits<{ close: [], cancel: [], confirm: [] }>()
-
+defineProps<{ title: string, busy?: boolean }>()
+const emit = defineEmits<{ close: [] }>()
 const { t } = useI18n()
 </script>
 
 <style scoped>
 .dlg {
-  display: flex;
-  flex-direction: column;
-  max-height: 752px;
+  background: rgb(var(--v-theme-chrome));
+  border: 1px solid rgb(var(--v-theme-line));
+  border-radius: var(--app-radius-panel);
+  max-height: min(720px, calc(100dvh - 32px));
   min-height: 0;
+  overflow: hidden;
 }
-
-/* title and close key share --dlg-glyph so they're one size */
-.dlg__head {
-  --dlg-glyph: 20.8px;
-
-  align-items: center;
+/* As tall as the main bar at every window size (useBarHeight), so a dialog's head lines up with it. */
+.dlg :deep(.panel__head) {
+  background: rgb(var(--v-theme-chrome2));
   border-bottom: 1px solid rgb(var(--v-theme-lineSoft));
-  display: flex;
-  flex: 0 0 auto;
-  gap: 11px;
-  padding: 9.6px 11px 9.6px 15.4px;
+  box-sizing: border-box;
+  flex-wrap: nowrap;
+  gap: 16px;
+  height: var(--app-bar-h, 48px);
+  min-height: 0;
+  padding: 0 12px 0 16px;
 }
-
-.dlg__what {
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
-  gap: 2.4px;
-  min-width: 0;
-}
-
 .dlg__title {
   color: rgb(var(--v-theme-ink));
-  font-size: var(--dlg-glyph);
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 16px;
   font-weight: 600;
-  line-height: 1.25;
-  margin: 0;
-  text-wrap: balance;
-}
-
-.dlg__sub {
-  color: rgb(var(--v-theme-ink3));
-  font-size: 12px;
-  line-height: 1.4;
+  line-height: 1.35;
   margin: 0;
 }
-
-.dlg__close {
-  align-items: center;
-  background: none;
-  block-size: 36.8px;
-  border: 0;
-  border-radius: 2px;
-  color: rgb(var(--v-theme-ink3));
-  cursor: pointer;
-  display: flex;
+.dlg .dlg__close {
   flex: 0 0 auto;
-  inline-size: 36.8px;
-  justify-content: center;
+  color: rgb(var(--v-theme-ink2));
 }
-
-.dlg__close:hover {
-  background: rgb(var(--v-theme-row));
-  color: rgb(var(--v-theme-ink));
-}
-
-.dlg__close:focus-visible {
-  outline: 2px solid rgb(var(--v-theme-ink2));
-  outline-offset: 1px;
-}
-
-.dlg__close :deep(.v-icon) {
-  font-size: var(--dlg-glyph);
-}
-
-/* Only the body scrolls, so a long dialog keeps its title and Save key in view. */
+.dlg :deep(.panel__body) { overflow: hidden; }
 .dlg__body {
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
-  padding: 12.8px 15.4px;
+  overscroll-behavior: contain;
+  padding: 16px;
+  font-size: 13px;
+  line-height: 1.5;
 }
-
-.dlg__foot {
-  align-items: center;
+.dlg :deep(.panel__foot) {
+  display: block;
   border-top: 1px solid rgb(var(--v-theme-lineSoft));
+  padding: 12px 16px;
+}
+.dlg__foot {
   display: flex;
-  flex: 0 0 auto;
-  gap: 6.6px;
-  padding: 8.8px 15.4px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
 }
 </style>
