@@ -69,7 +69,7 @@ Ceny ze strony [dirksprojects.com](https://www.dirksprojects.com/), stan z paźd
 ## Pobieranie
 
 Najnowsza wersja jest na stronie
-[wydań](https://github.com/smegg99/Smegg-s-professional-Accordion-Tuner/releases) i na
+[wydań](https://github.com/smegg99/SmeggTuner/releases) i na
 [smeggtuner.com](https://smeggtuner.com):
 
 - Linux x86_64: AppImage, DEB, RPM, pakiet dla Arch Linux

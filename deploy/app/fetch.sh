@@ -8,7 +8,7 @@ cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.."
 
 version=$(tr -d '[:space:]' <VERSION)
 name=smeggtuner-$version-web.tar.zst
-release=https://github.com/smegg99/Smegg-s-professional-Accordion-Tuner/releases/download/v$version
+release=https://github.com/smegg99/SmeggTuner/releases/download/v$version
 work=$(mktemp -d)
 trap 'rm -rf -- "$work"' EXIT
 

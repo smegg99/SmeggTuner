@@ -66,7 +66,7 @@ Prices from [dirksprojects.com](https://www.dirksprojects.com/), October 2026.
 
 ## Download
 
-[Releases](https://github.com/smegg99/Smegg-s-professional-Accordion-Tuner/releases) or
+[Releases](https://github.com/smegg99/SmeggTuner/releases) or
 [smeggtuner.com](https://smeggtuner.com):
 
 - Linux x86_64: AppImage, DEB, RPM, Arch package
