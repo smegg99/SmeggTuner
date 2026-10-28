@@ -26,6 +26,7 @@ node_modules
 
 .task
 bin
+/dist
 logs
 
 # Stray builds of the s99wails codegen tools and scripts/analyze, left in the root
@@ -34,16 +35,20 @@ logs
 /analyze
 /frontendgen
 /traygen
-frontend/dist
+backend/frontend/
+/frontend/dist
 frontend/.output
+frontend/.output-web
+frontend/.web-assets
 frontend/.nuxt
 frontend/node_modules
-build/linux/appimage/build
+# AppImage staging: create:appimage copies the binary and icon here.
+/build/linux/appimage/
 build/windows/nsis/MicrosoftEdgeWebview2Setup.exe
 smeggtuner
 
 # Runtime config (generated from the CUE schema on first run)
-config.json
+/config.json
 
 # The SQLite datastore and its write-ahead sidecars. In a portable/dev run it
 # lands beside the config, which is the repo root. Holds the sessions, the
@@ -59,11 +64,22 @@ config.json
 # skips unless SMEGGTUNER_SAMPLES points at a folder. The committed fixture set
 # is tests/fixtures/, which carries its own .expect.json goldens.
 /sounds/
-/scripts
 
-# Working notes. Written to hand a task over mid-flight, dated, and true only of
-# the day they were written. The durable parts belong in architecture.md and
-# roadmap.md; these stay on disk as scratch.
-docs/
+# Local research and test lab data.
 testlab
-frontend/tests
+
+# Obsolete build/config snapshots.
+/bin.tar.gz
+/config.json.*
+
+# Local third-party binaries and audio-engine research
+/reverse-engineering/
+
+# Regenerated from the pinned Wails module and build/android-support/.
+/build/android/
+/.idea/
+*.jks
+*.keystore
+
+# Python bytecode from the build helpers.
+__pycache__/
