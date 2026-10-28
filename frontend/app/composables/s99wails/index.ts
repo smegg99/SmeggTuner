@@ -28,3 +28,12 @@ export {
   type AccentMode,
 } from './resolveDesktopTheme'
 export { installDesktopEditKeys } from './editKeys'
+export {
+  crashActions,
+  installCrashHeartbeat,
+  isCrashWindow,
+  onCrashReport,
+  type CrashActions,
+  type CrashKind,
+  type CrashReport,
+} from './crashScreen'

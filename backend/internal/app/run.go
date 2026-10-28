@@ -5,6 +5,7 @@ import (
 	"sync/atomic"
 
 	themeservice "github.com/smegg99/s99wails/v2/services/theme"
+	"github.com/smegg99/s99wails/v2/shell/crash"
 	"github.com/smegg99/s99wails/v2/shell/editkeys"
 	"github.com/smegg99/s99wails/v2/shell/tray"
 	"github.com/smegg99/s99wails/v2/shell/windowstate"
@@ -43,6 +44,7 @@ func setupDesktop(app *application.App, window *application.WebviewWindow) func(
 		return func() {}
 	}
 	editkeys.Watch(window, func(err error) { logger.Warn(i18n.KeyLogRunFailed, logger.Err(err)) })
+	stopBeat := crash.Beat()
 
 	stopTracking := windowstate.Track(window, datastore.WindowStore{}, windowstate.Options{
 		OnError: func(err error) {
@@ -60,6 +62,7 @@ func setupDesktop(app *application.App, window *application.WebviewWindow) func(
 	setupLocaleSync(trayMgr)
 	stopThemeWatcher := themeservice.RegisterThemeWatcher(app)
 	return func() {
+		stopBeat()
 		stopThemeWatcher()
 		trayMgr.Close()
 		stopTracking()

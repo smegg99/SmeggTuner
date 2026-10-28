@@ -3,7 +3,9 @@ package app
 
 import (
 	"embed"
-	"errors"
+
+	"github.com/smegg99/s99ab/work/applife"
+	"github.com/smegg99/s99wails/v2/shell/crash"
 
 	"smegg.me/smeggtuner/backend/common/config"
 	"smegg.me/smeggtuner/backend/common/i18n"
@@ -31,6 +33,7 @@ var (
 // Main wires and runs the desktop app, returning the process exit code.
 func Main(embeddedAssets embed.FS) int {
 	assets = embeddedAssets
+	watchCrashes()
 	return run(runApplication, showStartupFailure)
 }
 
@@ -79,6 +82,7 @@ func run(launch func() error, failed func(startupFailure)) (exitCode int) {
 		failed(startupFailure{err: err})
 		return 1
 	}
+	describeCrash()
 
 	if err := initDatastore(cfg.Storage.DBPath); err != nil {
 		logger.Error(i18n.KeyLogDatastoreInitFailed, logger.Err(err))
@@ -93,23 +97,30 @@ func run(launch func() error, failed func(startupFailure)) (exitCode int) {
 	return 0
 }
 
+// cleanup closes every owner in reverse construction order, then tells the crash watcher the exit was clean.
 func cleanup() error {
 	logger.Info(i18n.KeyLogCleaningUp)
 	// Wails may have stopped services already; partial startup still needs every owner closed.
-	var failures []error
-	for _, operation := range []struct {
-		name  string
-		close func() error
-	}{
-		{"tuner", tunerSvc.ServiceShutdown},
-		{"audio", audioSvc.ServiceShutdown},
-		{"session", sessionSvc.ServiceShutdown},
-		{"datastore", datastore.Close},
-	} {
-		if err := operation.close(); err != nil {
-			logger.Error(i18n.KeyLogRunFailed, logger.Str("shutdown", operation.name), logger.Err(err))
-			failures = append(failures, err)
+	return applife.New(applife.Options{Closers: []applife.Closer{
+		applife.CloserFunc(func() error {
+			crash.Done()
+			return nil
+		}),
+		applife.CloserFunc(logger.Close),
+		named("datastore", datastore.Close),
+		named("session", sessionSvc.ServiceShutdown),
+		named("audio", audioSvc.ServiceShutdown),
+		named("tuner", tunerSvc.ServiceShutdown),
+	}}).Shutdown()
+}
+
+// named logs a closer's failure with what it was shutting down.
+func named(name string, close func() error) applife.Closer {
+	return applife.CloserFunc(func() error {
+		err := close()
+		if err != nil {
+			logger.Error(i18n.KeyLogRunFailed, logger.Str("shutdown", name), logger.Err(err))
 		}
-	}
-	return errors.Join(append(failures, logger.Close())...)
+		return err
+	})
 }

@@ -43,33 +43,6 @@ func AppName(l *i18n.Localizer) string {
 	return plain(l, "app.name")
 }
 
-// AppStartupFailedConfig startup failure window: the settings file failed to load.
-func AppStartupFailedConfig(l *i18n.Localizer) string {
-	return plain(l, "app.startupFailed.config")
-}
-
-// AppStartupFailedFile startup failure window: the path of the settings file. Parameters: path, the absolute file path.
-type AppStartupFailedFileParams struct {
-	Path string
-}
-
-func AppStartupFailedFile(l *i18n.Localizer, p AppStartupFailedFileParams) string {
-	data := map[string]any{
-		"Path": p.Path,
-	}
-	return withData(l, "app.startupFailed.file", data)
-}
-
-// AppStartupFailedOther startup failure window: a failure other than the settings file (logging, database).
-func AppStartupFailedOther(l *i18n.Localizer) string {
-	return plain(l, "app.startupFailed.other")
-}
-
-// AppStartupFailedTitle startup failure window: heading, shown when the app cannot start.
-func AppStartupFailedTitle(l *i18n.Localizer) string {
-	return plain(l, "app.startupFailed.title")
-}
-
 // LogAppStarting Native diagnostic event: starting smeggtuner.
 func LogAppStarting(l *i18n.Localizer) string {
 	return plain(l, "log.appStarting")
@@ -158,6 +131,16 @@ func LogConfigLoaded(l *i18n.Localizer) string {
 // LogConfigSaveFailed Native diagnostic event: failed to save configuration.
 func LogConfigSaveFailed(l *i18n.Localizer) string {
 	return plain(l, "log.configSaveFailed")
+}
+
+// LogCrashScreenFailed Native diagnostic event: the startup failure screen could not open.
+func LogCrashScreenFailed(l *i18n.Localizer) string {
+	return plain(l, "log.crashScreenFailed")
+}
+
+// LogCrashWatchFailed Native diagnostic event: the crash watcher process could not start.
+func LogCrashWatchFailed(l *i18n.Localizer) string {
+	return plain(l, "log.crashWatchFailed")
 }
 
 // LogDatastoreInitFailed Native diagnostic event: failed to initialize datastore.

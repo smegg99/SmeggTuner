@@ -26,6 +26,10 @@ if (requested) {
 
 const files = [
   {
+    path: 'backend/internal/app/version.go',
+    replacements: [/(const version = ")[0-9]+\.[0-9]+\.[0-9]+(")/],
+  },
+  {
     path: 'build/config.yml',
     replacements: [/(version: ")[0-9]+\.[0-9]+\.[0-9]+(" # The application version)/],
   },

@@ -9,9 +9,8 @@
       <ShellBootScreen
         v-else
         :failure="status === 'failed' ? failure || t('web.loadFailed') : undefined"
-      >
-        {{ t('web.loadFailed') }}
-      </ShellBootScreen>
+        :message="t('web.loadFailed')"
+      />
     </Transition>
   </v-app>
 </template>

@@ -154,6 +154,12 @@ windowStateLoadFailed:
 windowStateSaveFailed:
   value: Failed to save window state
   description: 'Native diagnostic event: failed to save window state.'
+crashWatchFailed:
+  value: Failed to start the crash watcher
+  description: 'Native diagnostic event: the crash watcher process could not start.'
+crashScreenFailed:
+  value: Failed to show the error screen
+  description: 'Native diagnostic event: the startup failure screen could not open.'
 runFailed:
   value: Application run failed
   description: 'Native diagnostic event: application run failed.'

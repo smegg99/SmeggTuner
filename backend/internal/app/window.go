@@ -5,6 +5,7 @@ import (
 	loggerservice "github.com/smegg99/s99wails/v2/services/logger"
 	themeservice "github.com/smegg99/s99wails/v2/services/theme"
 	titleservice "github.com/smegg99/s99wails/v2/services/title"
+	"github.com/smegg99/s99wails/v2/shell/crash"
 	"github.com/smegg99/s99wails/v2/shell/window"
 	"github.com/smegg99/s99wails/v2/shell/windowstate"
 	"github.com/wailsapp/wails/v3/pkg/application"
@@ -35,6 +36,7 @@ func applicationOptions(onSecondInstance func(application.SecondInstanceData)) a
 				Base: i18n.AppName(i18n.Localizer()),
 			})),
 			application.NewService(browserservice.New(logger.Underlying())),
+			application.NewService(&crash.Heartbeat{}),
 			application.NewService(audioSvc),
 			application.NewService(sessionSvc),
 			application.NewService(recordSvc),
@@ -59,6 +61,12 @@ func applicationOptions(onSecondInstance func(application.SecondInstanceData)) a
 	}
 }
 
+// The main window's minimum; the error screen opens at this size too.
+const (
+	minWidth  = 960
+	minHeight = 640
+)
+
 func createWindow(app *application.App) *application.WebviewWindow {
 	var store windowstate.Store
 	if application.System.IsDesktop() {
@@ -79,6 +87,6 @@ func windowOptions(store windowstate.Store) application.WebviewWindowOptions {
 			logger.Warn(i18n.KeyLogWindowStateLoadFailed, logger.Err(err))
 		}
 	}
-	window.Apply(&opts, window.Limits{MinWidth: 960, MinHeight: 640})
+	window.Apply(&opts, window.Limits{MinWidth: minWidth, MinHeight: minHeight})
 	return opts
 }

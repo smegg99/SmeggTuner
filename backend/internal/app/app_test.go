@@ -13,7 +13,6 @@ import (
 	"testing"
 	"time"
 
-	"smegg.me/smeggtuner/backend/common/i18n"
 	"smegg.me/smeggtuner/backend/core/datastore"
 	"smegg.me/smeggtuner/backend/core/repositories"
 	coresession "smegg.me/smeggtuner/backend/core/session"
@@ -130,16 +129,4 @@ func checkLifecycle(t *testing.T, scenario string) {
 		}
 	}
 	t.Log("lifecycle returned after cleanup")
-}
-
-func TestTheFailurePageNamesTheFileAndEscapesTheError(t *testing.T) {
-	page := string(renderFailure(startupFailure{path: "/home/u/config.json", err: errors.New("bad <key> tuner.note_sounds")}))
-	for _, want := range []string{"/home/u/config.json", "bad &lt;key&gt; tuner.note_sounds", i18n.AppStartupFailedTitle(i18n.Localizer())} {
-		if !strings.Contains(page, want) {
-			t.Fatalf("page lacks %q:\n%s", want, page)
-		}
-	}
-	if other := string(renderFailure(startupFailure{err: errors.New("disk full")})); strings.Contains(other, "config.json") || !strings.Contains(other, "disk full") {
-		t.Fatalf("a failure without a settings file:\n%s", other)
-	}
 }

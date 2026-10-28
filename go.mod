@@ -13,6 +13,7 @@ require (
 	github.com/joho/godotenv v1.5.1
 	github.com/mattn/go-sqlite3 v1.14.52
 	github.com/nicksnyder/go-i18n/v2 v2.6.1
+	github.com/smegg99/s99ab v1.6.1
 	github.com/smegg99/s99config v1.0.1
 	github.com/smegg99/s99logger v1.1.0
 	github.com/smegg99/s99wails/v2 v2.0.0
@@ -116,7 +117,7 @@ require (
 	github.com/kanrichan/resvg-go v0.0.1 // indirect
 	github.com/kevinburke/ssh_config v1.6.0 // indirect
 	github.com/klauspost/compress v1.20.3 // indirect
-	github.com/klauspost/cpuid/v2 v2.3.0 // indirect
+	github.com/klauspost/cpuid/v2 v2.4.0 // indirect
 	github.com/klauspost/pgzip v1.2.7 // indirect
 	github.com/knadh/koanf/maps v0.1.3 // indirect
 	github.com/knadh/koanf/parsers/toml/v2 v2.2.2 // indirect
@@ -213,3 +214,5 @@ replace (
 	github.com/smegg99/s99wails/traygen/v2 => ../S99Wails/traygen
 	github.com/smegg99/s99wails/v2 => ../S99Wails
 )
+
+replace github.com/smegg99/s99logger => ../S99Logger
