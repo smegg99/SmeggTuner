@@ -5,10 +5,10 @@ import (
 	"os"
 	"strings"
 	"sync"
+	"sync/atomic"
 
 	"github.com/smegg99/s99logger"
 	"github.com/smegg99/s99logger/rotation"
-	"github.com/smegg99/s99wails/v2/shell/crash"
 
 	"smegg.me/smeggtuner/backend/common/i18n"
 )
@@ -46,15 +46,24 @@ func newConsoleLogger(service string, noColor bool, level s99logger.Level) *s99l
 	return s99logger.New(sink, s99logger.Options{Service: service, MinLevel: s99logger.LevelDebug, Translator: i18n.Translator()})
 }
 
-// reportSink gives the error screen's report every record at debug, except the Wails runtime's
-// debug lines, which name every asset and binding call and would push the app's own lines out.
+// report is where reportSink sends records; the desktop wiring sets it, so this package needs no webview.
+var report atomic.Pointer[s99logger.Sink]
+
+// ReportTo sends every record at debug to sink as well, for the error screen's report.
+func ReportTo(sink s99logger.Sink) {
+	report.Store(&sink)
+}
+
+// reportSink gives the report every record at debug, except the Wails runtime's debug lines, which
+// name every asset and binding call and would push the app's own lines out.
 type reportSink struct{}
 
 func (reportSink) Write(ctx context.Context, rec s99logger.Record) error {
-	if rec.Level == s99logger.LevelDebug && rec.MessageID == wailsMessage {
+	sink := report.Load()
+	if sink == nil || (rec.Level == s99logger.LevelDebug && rec.MessageID == wailsMessage) {
 		return nil
 	}
-	return crash.Sink().Write(ctx, rec)
+	return (*sink).Write(ctx, rec)
 }
 
 func parseLevel(level string, verbose bool) s99logger.Level {

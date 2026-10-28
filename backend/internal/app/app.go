@@ -33,6 +33,7 @@ var (
 // Main wires and runs the desktop app, returning the process exit code.
 func Main(embeddedAssets embed.FS) int {
 	assets = embeddedAssets
+	logger.ReportTo(crash.Sink())
 	watchCrashes()
 	return run(runApplication, showStartupFailure)
 }
