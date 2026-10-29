@@ -41,7 +41,8 @@ export function useDesktopLocaleSync(options: DesktopLocaleSyncOptions): void {
     onMounted(() => {
       void adopt()
     })
-  } else {
+  }
+  else {
     void adopt()
   }
 }

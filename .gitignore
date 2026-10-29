@@ -87,3 +87,4 @@ __pycache__/
 # The web edition deploy/app/fetch.sh unpacks on the server.
 /deploy/app/site
 /deploy/app/site.old
+CHANGELOG.md

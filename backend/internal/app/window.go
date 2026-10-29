@@ -28,6 +28,8 @@ func applicationOptions(onSecondInstance func(application.SecondInstanceData)) a
 		Description: i18n.AppDescription(i18n.Localizer()),
 		Icon:        trayicons.AppIcon,
 		Logger:      logger.Wails(),
+		// A panic in a binding, event or menu callback reaches the crash watcher instead of a bare exit.
+		PanicHandler: crash.PanicHandler,
 		Services: []application.Service{
 			application.NewService(&configservice.Service{}),
 			application.NewService(loggerservice.New(logger.Underlying())),

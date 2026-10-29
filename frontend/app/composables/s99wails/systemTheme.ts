@@ -4,6 +4,7 @@
 import { getCurrentInstance, onUnmounted, readonly, ref, type Ref } from 'vue'
 import { Events } from '@wailsio/runtime'
 import { isWails } from './environment'
+import { THEME_CHANGED_EVENT } from './names'
 
 /** Mirrors the Go accent.Info bindings model. */
 export interface SystemThemeInfo {
@@ -12,9 +13,6 @@ export interface SystemThemeInfo {
   scheme: 'no-preference' | 'light' | 'dark'
   accent_watch_supported: boolean
 }
-
-/** Event name emitted by the s99wails services/theme watcher. */
-export const THEME_CHANGED_EVENT = 'theme:changed'
 
 export interface SystemThemeOptions {
   /** Typically the ThemeService.GetTheme binding. */

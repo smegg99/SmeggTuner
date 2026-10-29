@@ -538,13 +538,14 @@ func ReportFactsTolerance(l *i18n.Localizer) string {
 	return plain(l, "report.facts.tolerance")
 }
 
-// ReportFactsToleranceValue tuning report and export: facts.toleranceValue. Parameters: beat, reed, unit.
+// ReportFactsToleranceValueParams are the placeholders of report.facts.toleranceValue.
 type ReportFactsToleranceValueParams struct {
 	Beat string
 	Reed string
 	Unit string
 }
 
+// ReportFactsToleranceValue tuning report and export: facts.toleranceValue. Parameters: beat, reed, unit.
 func ReportFactsToleranceValue(l *i18n.Localizer, p ReportFactsToleranceValueParams) string {
 	data := map[string]any{
 		"Beat": p.Beat,
@@ -559,12 +560,13 @@ func ReportFactsTranspose(l *i18n.Localizer) string {
 	return plain(l, "report.facts.transpose")
 }
 
-// ReportFactsTransposeValue tuning report and export: facts.transposeValue. Parameters: key, sounds.
+// ReportFactsTransposeValueParams are the placeholders of report.facts.transposeValue.
 type ReportFactsTransposeValueParams struct {
 	Key    string
 	Sounds string
 }
 
+// ReportFactsTransposeValue tuning report and export: facts.transposeValue. Parameters: key, sounds.
 func ReportFactsTransposeValue(l *i18n.Localizer, p ReportFactsTransposeValueParams) string {
 	data := map[string]any{
 		"Key":    p.Key,
@@ -573,12 +575,13 @@ func ReportFactsTransposeValue(l *i18n.Localizer, p ReportFactsTransposeValuePar
 	return withData(l, "report.facts.transposeValue", data)
 }
 
-// ReportFooterGenerated tuning report and export: footer.generated. Parameters: app, at.
+// ReportFooterGeneratedParams are the placeholders of report.footer.generated.
 type ReportFooterGeneratedParams struct {
 	App string
 	At  string
 }
 
+// ReportFooterGenerated tuning report and export: footer.generated. Parameters: app, at.
 func ReportFooterGenerated(l *i18n.Localizer, p ReportFooterGeneratedParams) string {
 	data := map[string]any{
 		"App": p.App,
@@ -587,11 +590,12 @@ func ReportFooterGenerated(l *i18n.Localizer, p ReportFooterGeneratedParams) str
 	return withData(l, "report.footer.generated", data)
 }
 
-// ReportGraphEdited tuning report and export: graph.edited. Parameters: mark.
+// ReportGraphEditedParams are the placeholders of report.graph.edited.
 type ReportGraphEditedParams struct {
 	Mark string
 }
 
+// ReportGraphEdited tuning report and export: graph.edited. Parameters: mark.
 func ReportGraphEdited(l *i18n.Localizer, p ReportGraphEditedParams) string {
 	data := map[string]any{
 		"Mark": p.Mark,
@@ -599,11 +603,12 @@ func ReportGraphEdited(l *i18n.Localizer, p ReportGraphEditedParams) string {
 	return withData(l, "report.graph.edited", data)
 }
 
-// ReportHeadBeat tuning report and export: head.beat. Parameters: pair.
+// ReportHeadBeatParams are the placeholders of report.head.beat.
 type ReportHeadBeatParams struct {
 	Pair string
 }
 
+// ReportHeadBeat tuning report and export: head.beat. Parameters: pair.
 func ReportHeadBeat(l *i18n.Localizer, p ReportHeadBeatParams) string {
 	data := map[string]any{
 		"Pair": p.Pair,
@@ -611,11 +616,12 @@ func ReportHeadBeat(l *i18n.Localizer, p ReportHeadBeatParams) string {
 	return withData(l, "report.head.beat", data)
 }
 
-// ReportHeadReed Report column heading; index is the one-based reed number.
+// ReportHeadReedParams are the placeholders of report.head.reed.
 type ReportHeadReedParams struct {
 	Index int
 }
 
+// ReportHeadReed Report column heading; index is the one-based reed number.
 func ReportHeadReed(l *i18n.Localizer, p ReportHeadReedParams) string {
 	data := map[string]any{
 		"Index": p.Index,
@@ -623,11 +629,12 @@ func ReportHeadReed(l *i18n.Localizer, p ReportHeadReedParams) string {
 	return withData(l, "report.head.reed", data)
 }
 
-// ReportLegendErrorCents tuning report and export: legend.error.cents. Parameters: a4.
+// ReportLegendErrorCentsParams are the placeholders of report.legend.error.cents.
 type ReportLegendErrorCentsParams struct {
 	A4 string
 }
 
+// ReportLegendErrorCents tuning report and export: legend.error.cents. Parameters: a4.
 func ReportLegendErrorCents(l *i18n.Localizer, p ReportLegendErrorCentsParams) string {
 	data := map[string]any{
 		"A4": p.A4,
@@ -645,11 +652,12 @@ func ReportLegendErrorNoCurve(l *i18n.Localizer) string {
 	return plain(l, "report.legend.error.noCurve")
 }
 
-// ReportLegendErrorReference tuning report and export: legend.error.reference. Parameters: a4.
+// ReportLegendErrorReferenceParams are the placeholders of report.legend.error.reference.
 type ReportLegendErrorReferenceParams struct {
 	A4 string
 }
 
+// ReportLegendErrorReference tuning report and export: legend.error.reference. Parameters: a4.
 func ReportLegendErrorReference(l *i18n.Localizer, p ReportLegendErrorReferenceParams) string {
 	data := map[string]any{
 		"A4": p.A4,
@@ -687,11 +695,12 @@ func ReportSummaryAllIn(l *i18n.Localizer) string {
 	return plain(l, "report.summary.allIn")
 }
 
-// ReportSummaryBeats tuning report and export: summary.beats. Parameters: pluralCount.
+// ReportSummaryBeatsParams are the placeholders of report.summary.beats.
 type ReportSummaryBeatsParams struct {
 	PluralCount int
 }
 
+// ReportSummaryBeats tuning report and export: summary.beats. Parameters: pluralCount.
 func ReportSummaryBeats(l *i18n.Localizer, p ReportSummaryBeatsParams) string {
 	data := map[string]any{
 		"PluralCount": p.PluralCount,
@@ -699,7 +708,7 @@ func ReportSummaryBeats(l *i18n.Localizer, p ReportSummaryBeatsParams) string {
 	return withCount(l, "report.summary.beats", p.PluralCount, data)
 }
 
-// ReportSummaryLine tuning report and export: summary.line. Parameters: beats, max, min, notes, reeds.
+// ReportSummaryLineParams are the placeholders of report.summary.line.
 type ReportSummaryLineParams struct {
 	Beats string
 	Max   string
@@ -708,6 +717,7 @@ type ReportSummaryLineParams struct {
 	Reeds string
 }
 
+// ReportSummaryLine tuning report and export: summary.line. Parameters: beats, max, min, notes, reeds.
 func ReportSummaryLine(l *i18n.Localizer, p ReportSummaryLineParams) string {
 	data := map[string]any{
 		"Beats": p.Beats,
@@ -719,11 +729,12 @@ func ReportSummaryLine(l *i18n.Localizer, p ReportSummaryLineParams) string {
 	return withData(l, "report.summary.line", data)
 }
 
-// ReportSummaryNotes tuning report and export: summary.notes. Parameters: pluralCount.
+// ReportSummaryNotesParams are the placeholders of report.summary.notes.
 type ReportSummaryNotesParams struct {
 	PluralCount int
 }
 
+// ReportSummaryNotes tuning report and export: summary.notes. Parameters: pluralCount.
 func ReportSummaryNotes(l *i18n.Localizer, p ReportSummaryNotesParams) string {
 	data := map[string]any{
 		"PluralCount": p.PluralCount,
@@ -731,13 +742,14 @@ func ReportSummaryNotes(l *i18n.Localizer, p ReportSummaryNotesParams) string {
 	return withCount(l, "report.summary.notes", p.PluralCount, data)
 }
 
-// ReportSummaryOut tuning report and export: summary.out. Parameters: beats, pluralCount, reeds.
+// ReportSummaryOutParams are the placeholders of report.summary.out.
 type ReportSummaryOutParams struct {
 	Beats       string
 	PluralCount int
 	Reeds       string
 }
 
+// ReportSummaryOut tuning report and export: summary.out. Parameters: beats, pluralCount, reeds.
 func ReportSummaryOut(l *i18n.Localizer, p ReportSummaryOutParams) string {
 	data := map[string]any{
 		"Beats":       p.Beats,
@@ -747,11 +759,12 @@ func ReportSummaryOut(l *i18n.Localizer, p ReportSummaryOutParams) string {
 	return withCount(l, "report.summary.out", p.PluralCount, data)
 }
 
-// ReportSummaryReeds tuning report and export: summary.reeds. Parameters: pluralCount.
+// ReportSummaryReedsParams are the placeholders of report.summary.reeds.
 type ReportSummaryReedsParams struct {
 	PluralCount int
 }
 
+// ReportSummaryReeds tuning report and export: summary.reeds. Parameters: pluralCount.
 func ReportSummaryReeds(l *i18n.Localizer, p ReportSummaryReedsParams) string {
 	data := map[string]any{
 		"PluralCount": p.PluralCount,
@@ -759,11 +772,12 @@ func ReportSummaryReeds(l *i18n.Localizer, p ReportSummaryReedsParams) string {
 	return withCount(l, "report.summary.reeds", p.PluralCount, data)
 }
 
-// ReportSummaryReedsShort tuning report and export: summary.reedsShort. Parameters: pluralCount.
+// ReportSummaryReedsShortParams are the placeholders of report.summary.reedsShort.
 type ReportSummaryReedsShortParams struct {
 	PluralCount int
 }
 
+// ReportSummaryReedsShort tuning report and export: summary.reedsShort. Parameters: pluralCount.
 func ReportSummaryReedsShort(l *i18n.Localizer, p ReportSummaryReedsShortParams) string {
 	data := map[string]any{
 		"PluralCount": p.PluralCount,
@@ -771,11 +785,12 @@ func ReportSummaryReedsShort(l *i18n.Localizer, p ReportSummaryReedsShortParams)
 	return withCount(l, "report.summary.reedsShort", p.PluralCount, data)
 }
 
-// ReportTableBassTitle tuning report and export: table.bassTitle. Parameters: unit.
+// ReportTableBassTitleParams are the placeholders of report.table.bassTitle.
 type ReportTableBassTitleParams struct {
 	Unit string
 }
 
+// ReportTableBassTitle tuning report and export: table.bassTitle. Parameters: unit.
 func ReportTableBassTitle(l *i18n.Localizer, p ReportTableBassTitleParams) string {
 	data := map[string]any{
 		"Unit": p.Unit,
@@ -803,11 +818,12 @@ func ReportTableRegister(l *i18n.Localizer) string {
 	return plain(l, "report.table.register")
 }
 
-// ReportTableTitle tuning report and export: table.title. Parameters: unit.
+// ReportTableTitleParams are the placeholders of report.table.title.
 type ReportTableTitleParams struct {
 	Unit string
 }
 
+// ReportTableTitle tuning report and export: table.title. Parameters: unit.
 func ReportTableTitle(l *i18n.Localizer, p ReportTableTitleParams) string {
 	data := map[string]any{
 		"Unit": p.Unit,

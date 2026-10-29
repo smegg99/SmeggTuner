@@ -13,13 +13,14 @@ require (
 	github.com/joho/godotenv v1.5.1
 	github.com/mattn/go-sqlite3 v1.14.52
 	github.com/nicksnyder/go-i18n/v2 v2.6.1
-	github.com/smegg99/s99ab v1.6.1
-	github.com/smegg99/s99config v1.0.1
-	github.com/smegg99/s99logger v1.1.0
-	github.com/smegg99/s99wails/v2 v2.0.0
+	github.com/smegg99/s99ab v1.8.1
+	github.com/smegg99/s99config v1.1.1
+	github.com/smegg99/s99logger v1.3.1
+	github.com/smegg99/s99wails/v2 v2.1.1
 	github.com/wailsapp/task/v3 v3.40.1-patched3
 	github.com/wailsapp/wails/v3 v3.0.0
 	golang.org/x/image v0.47.0
+	golang.org/x/text v0.43.0
 	gopkg.in/yaml.v3 v3.0.1
 	gorm.io/driver/sqlite v1.6.0
 	gorm.io/gorm v1.31.2
@@ -165,9 +166,9 @@ require (
 	github.com/sergi/go-diff v1.4.0 // indirect
 	github.com/shopspring/decimal v1.4.0 // indirect
 	github.com/skeema/knownhosts v1.3.2 // indirect
-	github.com/smegg99/s99locale v1.0.0 // indirect
-	github.com/smegg99/s99term v1.0.0 // indirect
-	github.com/smegg99/s99wails/traygen/v2 v2.0.0 // indirect
+	github.com/smegg99/s99locale v1.1.1 // indirect
+	github.com/smegg99/s99term v1.1.0 // indirect
+	github.com/smegg99/s99wails/traygen/v2 v2.1.1 // indirect
 	github.com/spf13/cast v1.10.0 // indirect
 	github.com/spf13/cobra v1.10.2 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
@@ -193,7 +194,6 @@ require (
 	golang.org/x/sync v0.24.0 // indirect
 	golang.org/x/sys v0.49.0 // indirect
 	golang.org/x/term v0.47.0 // indirect
-	golang.org/x/text v0.43.0 // indirect
 	golang.org/x/tools v0.51.0 // indirect
 	google.golang.org/protobuf v1.36.12 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
@@ -208,11 +208,3 @@ tool (
 	github.com/smegg99/s99wails/v2/frontendgen
 	github.com/wailsapp/wails/v3/cmd/wails3
 )
-
-replace (
-	github.com/smegg99/s99ab => ../S99AB
-	github.com/smegg99/s99wails/traygen/v2 => ../S99Wails/traygen
-	github.com/smegg99/s99wails/v2 => ../S99Wails
-)
-
-replace github.com/smegg99/s99logger => ../S99Logger

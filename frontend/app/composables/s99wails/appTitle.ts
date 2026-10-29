@@ -33,7 +33,8 @@ export function useAppTitle(sink: AppTitleSink): { setTitle: (text: string) => v
     let result: Promise<void> | unknown
     try {
       result = sink.Set(next)
-    } catch (err) {
+    }
+    catch (err) {
       result = Promise.reject(err)
     }
 

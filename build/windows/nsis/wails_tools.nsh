@@ -14,7 +14,7 @@
     !define INFO_PRODUCTNAME "SmeggTuner"
 !endif
 !ifndef INFO_PRODUCTVERSION
-    !define INFO_PRODUCTVERSION "1.4.0"
+    !define INFO_PRODUCTVERSION "1.4.1"
 !endif
 !ifndef INFO_COPYRIGHT
     !define INFO_COPYRIGHT "Copyright (c) 2026 Smegg99"

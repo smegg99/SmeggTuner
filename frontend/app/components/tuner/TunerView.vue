@@ -2,7 +2,7 @@
 <template>
   <div
     class="tuner"
-    :class="{ 'tuner--compact': compact, 'tuner--web': WEB }"
+    :class="{ 'tuner--compact': compact }"
   >
     <!-- Compact windows give the mode and reed keys a row, wide ones carry them in the top bar; an
          open session's register decides both. -->
@@ -47,7 +47,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { useAudioDevices } from '~/composables/useAudioDevices'
-import { WEB } from '~/utils/features'
 
 // File view keys off the source selection, not the transport DTO: a slow/failed DTO round
 // trip would otherwise render nothing with no error.
@@ -86,9 +85,6 @@ watch(file, (value) => {
   min-height: 0;
   min-width: 0;
 }
-
-/* A browser window is usually much wider than the desktop app's, so the note card takes a share of it, not a fixed strip. */
-.tuner--web { grid-template-columns: minmax(0, 1fr) clamp(240px, 26%, 340px); }
 
 .tuner__input { grid-area: input; }
 .tuner__notes { grid-area: notes; }

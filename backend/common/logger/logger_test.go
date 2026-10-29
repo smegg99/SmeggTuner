@@ -39,3 +39,18 @@ func TestLogLanguageChangesWithoutChangingEventIdentity(t *testing.T) {
 		}
 	}
 }
+
+// The level comes from s99logger.ParseLevel; verbose forces debug and anything unknown is info.
+func TestLevelFollowsTheLibraryParser(t *testing.T) {
+	for in, want := range map[string]s99logger.Level{
+		"debug": s99logger.LevelDebug, " Warning ": s99logger.LevelWarn, "ERROR": s99logger.LevelError,
+		"": s99logger.LevelInfo, "loud": s99logger.LevelInfo, "TRACE": s99logger.LevelInfo,
+	} {
+		if got := levelOf(in, false); got != want {
+			t.Errorf("levelOf(%q) = %v, want %v", in, got, want)
+		}
+	}
+	if levelOf("error", true) != s99logger.LevelDebug {
+		t.Error("verbose did not force debug")
+	}
+}

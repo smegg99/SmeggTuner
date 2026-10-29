@@ -3,10 +3,8 @@
 // frontendgen/assets/crashScreen.ts
 import { Call, Events } from '@wailsio/runtime'
 import { isWails } from './environment'
+import { CRASH_HEARTBEAT, CRASH_QUERY, CRASH_REPORT_EVENT, CRASH_SERVICE } from './names'
 
-const SERVICE = 'github.com/smegg99/s99wails/v2/shell/crash.Service'
-const HEARTBEAT = 'github.com/smegg99/s99wails/v2/shell/crash.Heartbeat'
-const REPORT_EVENT = 's99crash:report'
 const BEAT_MS = 2000
 
 /** Why the screen opened; matches shell/crash.Kind. */
@@ -48,25 +46,25 @@ export interface CrashActions {
 
 /** Whether this window is the shell/crash screen: its URL carries shell/crash.Query. */
 export function isCrashWindow(): boolean {
-  return typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('s99crash')
+  return typeof window !== 'undefined' && new URLSearchParams(window.location.search).has(CRASH_QUERY)
 }
 
 export const crashActions: CrashActions = {
-  report: () => Call.ByName(`${SERVICE}.Report`) as Promise<CrashReport>,
-  copy: () => Call.ByName(`${SERVICE}.Copy`) as Promise<boolean>,
-  save: () => Call.ByName(`${SERVICE}.Save`) as Promise<string>,
-  email: () => Call.ByName(`${SERVICE}.Email`) as Promise<void>,
-  openLogs: () => Call.ByName(`${SERVICE}.OpenLogs`) as Promise<void>,
-  restart: () => Call.ByName(`${SERVICE}.Restart`) as Promise<void>,
-  close: () => Call.ByName(`${SERVICE}.Close`) as Promise<void>,
-  wait: () => Call.ByName(`${SERVICE}.Wait`) as Promise<void>,
-  kill: () => Call.ByName(`${SERVICE}.Kill`) as Promise<void>,
-  setTitle: phrase => Call.ByName(`${SERVICE}.SetTitle`, phrase) as Promise<void>,
+  report: () => Call.ByName(`${CRASH_SERVICE}.Report`) as Promise<CrashReport>,
+  copy: () => Call.ByName(`${CRASH_SERVICE}.Copy`) as Promise<boolean>,
+  save: () => Call.ByName(`${CRASH_SERVICE}.Save`) as Promise<string>,
+  email: () => Call.ByName(`${CRASH_SERVICE}.Email`) as Promise<void>,
+  openLogs: () => Call.ByName(`${CRASH_SERVICE}.OpenLogs`) as Promise<void>,
+  restart: () => Call.ByName(`${CRASH_SERVICE}.Restart`) as Promise<void>,
+  close: () => Call.ByName(`${CRASH_SERVICE}.Close`) as Promise<void>,
+  wait: () => Call.ByName(`${CRASH_SERVICE}.Wait`) as Promise<void>,
+  kill: () => Call.ByName(`${CRASH_SERVICE}.Kill`) as Promise<void>,
+  setTitle: phrase => Call.ByName(`${CRASH_SERVICE}.SetTitle`, phrase) as Promise<void>,
 }
 
 /** Calls back with each report the screen receives after the first, such as a hang's stacks. */
 export function onCrashReport(callback: (report: CrashReport) => void): () => void {
-  return Events.On(REPORT_EVENT, event => callback(event.data as CrashReport))
+  return Events.On(CRASH_REPORT_EVENT, event => callback(event.data as CrashReport))
 }
 
 /**
@@ -76,11 +74,11 @@ export function onCrashReport(callback: (report: CrashReport) => void): () => vo
 export function installCrashHeartbeat(): () => void {
   if (!isWails()) return () => {}
   const beat = () => {
-    if (document.visibilityState === 'visible') void Call.ByName(`${HEARTBEAT}.Beat`).catch(() => {})
+    if (document.visibilityState === 'visible') void Call.ByName(`${CRASH_HEARTBEAT}.Beat`).catch(() => {})
   }
   const onVisibility = () => {
     if (document.visibilityState === 'visible') beat()
-    else void Call.ByName(`${HEARTBEAT}.Rest`).catch(() => {})
+    else void Call.ByName(`${CRASH_HEARTBEAT}.Rest`).catch(() => {})
   }
   beat()
   const timer = setInterval(beat, BEAT_MS)
@@ -88,6 +86,6 @@ export function installCrashHeartbeat(): () => void {
   return () => {
     clearInterval(timer)
     document.removeEventListener('visibilitychange', onVisibility)
-    void Call.ByName(`${HEARTBEAT}.Rest`).catch(() => {})
+    void Call.ByName(`${CRASH_HEARTBEAT}.Rest`).catch(() => {})
   }
 }

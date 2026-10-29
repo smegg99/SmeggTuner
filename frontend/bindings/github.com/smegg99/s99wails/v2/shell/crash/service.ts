@@ -14,6 +14,9 @@ import { Call as $Call, CancellablePromise as $CancellablePromise, Create as $Cr
 // @ts-ignore: Unused imports
 import * as $models from "./models.js";
 
+/**
+ * Close closes the screen; refused while the hung app still runs.
+ */
 export function Close(): $CancellablePromise<void> {
     return $Call.ByID(4180721832);
 }
@@ -26,8 +29,7 @@ export function Copy(): $CancellablePromise<boolean> {
 }
 
 /**
- * Email opens the user's mail client addressed to Options.ReportEmail with the report and the log file
- * attached. Where the client cannot take attachments, the report goes in a mailto body instead.
+ * Email opens the mail client to Options.ReportEmail with the report and log attached, or in a mailto body where it cannot attach.
  */
 export function Email(): $CancellablePromise<void> {
     return $Call.ByID(541184428);
@@ -54,7 +56,7 @@ export function Report(): $CancellablePromise<$models.Report> {
 }
 
 /**
- * Restart starts the program again, without the watcher flag, and closes the screen.
+ * Restart starts the program again and closes the screen; refused while the hung app still runs.
  */
 export function Restart(): $CancellablePromise<void> {
     return $Call.ByID(253440783);

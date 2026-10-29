@@ -42,8 +42,7 @@ export class Info {
 }
 
 /**
- * Scheme is the OS color-scheme preference. Unlike a plain dark-mode bool it
- * preserves "no preference", which is a real state on Linux.
+ * Scheme is the OS color-scheme preference, keeping "no preference", a real state on Linux.
  */
 export enum Scheme {
     /**

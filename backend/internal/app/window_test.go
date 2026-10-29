@@ -18,6 +18,13 @@ func TestApplicationOptionsKeepProductionDiagnostics(t *testing.T) {
 	}
 }
 
+// A panic Wails recovers would otherwise exit 1 with no trace, which the crash watcher reports as a kill.
+func TestApplicationOptionsReportRecoveredPanics(t *testing.T) {
+	if applicationOptions(nil).PanicHandler == nil || crashOptions().App.PanicHandler == nil {
+		t.Fatal("a recovered panic must reach the crash watcher")
+	}
+}
+
 func TestWindowOptionsRestorePersistedGeometryBeforeCreation(t *testing.T) {
 	if err := datastore.Initialize(filepath.Join(t.TempDir(), "windows.db")); err != nil {
 		t.Fatal(err)

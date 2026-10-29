@@ -2,11 +2,12 @@
 
 // frontendgen/assets/editKeys.ts
 import { Events } from '@wailsio/runtime'
+import { EDIT_KEY_EVENT } from './names'
 
 /** Replays native edit keys and prevents middle-release paste outside a focused field. */
 export function installDesktopEditKeys(): () => void {
   const stopMiddle = swallowMiddle(window)
-  const stopKeys = Events.On('edit:key', (event) => {
+  const stopKeys = Events.On(EDIT_KEY_EVENT, (event) => {
     const target = document.activeElement
     const redo = event.data === 'redo'
     const key = new KeyboardEvent('keydown', { key: redo ? 'Z' : 'z', ctrlKey: true, shiftKey: redo, bubbles: true, cancelable: true })

@@ -11,8 +11,7 @@
 import { Call as $Call, CancellablePromise as $CancellablePromise, Create as $Create } from "@wailsio/runtime";
 
 /**
- * Set replaces the phrase after the base name; empty shows the base alone. The
- * error is always nil and exists for the generated binding.
+ * Set replaces the phrase after the base name, empty showing the base alone; the nil error is for the binding.
  */
 export function Set(text: string): $CancellablePromise<void> {
     return $Call.ByID(2129604069, text);

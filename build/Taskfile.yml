@@ -68,7 +68,7 @@ tasks:
     cmds:
       - mkdir -p backend/frontend/public
       - touch backend/frontend/public/.keep
-      - go tool frontendgen -out frontend/app/composables/s99wails -s99ab
+      - go tool frontendgen --out frontend/app/composables/s99wails --s99ab
       - go tool wails3 generate bindings -f '{{.BUILD_FLAGS}}' -clean=true -ts -d frontend/bindings ./backend
 
   generate:icons:

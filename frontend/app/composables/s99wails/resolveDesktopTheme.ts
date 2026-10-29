@@ -51,7 +51,8 @@ export function resolveDesktopTheme(inputs: DesktopThemeInputs): DesktopTheme {
     if (inputs.accentMode() === 'custom') {
       const hex = normalizeHex(inputs.customAccent())
       if (hex) return hex
-    } else {
+    }
+    else {
       const sys = inputs.system.value
       if (sys?.accent_watch_supported && sys.accent_color) {
         const hex = normalizeHex(sys.accent_color)

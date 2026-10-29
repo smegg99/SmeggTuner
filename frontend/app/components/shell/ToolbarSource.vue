@@ -1,7 +1,10 @@
+<!-- app/components/shell/ToolbarSource.vue -->
 <template>
   <v-menu
+    v-model="open"
     location="bottom start"
     :min-width="125"
+    @update:model-value="onOpen"
   >
     <template #activator="{ props: menu }">
       <!-- Device/recording names are arbitrary; the key is a declared width and the name ellipsises. -->
@@ -9,7 +12,7 @@
         v-bind="menu"
         class="source-key"
         :title="running ? t('settings.lockedWhileRunning') : label"
-        :disabled="loading || running"
+        :disabled="running || (loading && !open)"
         :aria-label="running ? t('settings.lockedWhileRunning') : label"
         :width="125"
         :prepend-icon="current.kind === 'file' ? 'mdi-file-music-outline' : 'mdi-microphone'"
@@ -24,6 +27,7 @@
       <div>
         <!-- System default is the empty device id; no enumerated device carries it, so it's a synthetic entry. -->
         <v-list-item
+          :disabled="loading"
           :active="onDefault"
           :append-icon="(onDefault) ? 'mdi-check' : undefined"
           :title="t('tuner.source.default')"
@@ -33,6 +37,7 @@
         <v-list-item
           v-for="device in devices"
           :key="device.id"
+          :disabled="loading"
           :active="current.kind === 'mic' && current.deviceId === device.id"
           :append-icon="(current.kind === 'mic' && current.deviceId === device.id) ? 'mdi-check' : undefined"
           :title="device.name"
@@ -40,7 +45,7 @@
         />
 
         <v-list-item
-          v-if="!devices.length"
+          v-if="!loading && !devices.length"
           disabled
           :title="t('tuner.source.noDevices')"
         />
@@ -58,7 +63,8 @@
         <v-list-item
           :title="t('tuner.source.refresh')"
           prepend-icon="mdi-refresh"
-          @click="refresh"
+          :disabled="loading"
+          @click="browse"
         />
       </div>
     </v-list>
@@ -66,7 +72,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useAudioDevices } from '~/composables/useAudioDevices'
 import { useTuner } from '~/composables/useTuner'
 import { WEB } from '~/utils/features'
@@ -77,8 +83,13 @@ import { WEB } from '~/utils/features'
 const SYSTEM_DEFAULT = ''
 
 const { t } = useI18n()
-const { devices, current, loading, refresh, selectMic, pickFile } = useAudioDevices()
+const { devices, current, loading, browse, selectMic, pickFile } = useAudioDevices()
 const { running } = useTuner()
+const open = ref(false)
+
+function onOpen(value: boolean) {
+  if (value && WEB) void browse()
+}
 
 const onDefault = computed(() =>
   current.value.kind === 'mic' && current.value.deviceId === SYSTEM_DEFAULT,

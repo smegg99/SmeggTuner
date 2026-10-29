@@ -3,7 +3,6 @@ package logger
 import (
 	"context"
 	"os"
-	"strings"
 	"sync"
 	"sync/atomic"
 
@@ -66,22 +65,13 @@ func (reportSink) Write(ctx context.Context, rec s99logger.Record) error {
 	return (*sink).Write(ctx, rec)
 }
 
-func parseLevel(level string, verbose bool) s99logger.Level {
+// levelOf is the configured level: verbose forces debug, and a name s99logger does not know is info.
+func levelOf(level string, verbose bool) s99logger.Level {
 	if verbose {
 		return s99logger.LevelDebug
 	}
-	switch strings.ToUpper(strings.TrimSpace(level)) {
-	case "TRACE", "DEBUG":
-		return s99logger.LevelDebug
-	case "INFO", "":
-		return s99logger.LevelInfo
-	case "WARN", "WARNING":
-		return s99logger.LevelWarn
-	case "ERROR", "FATAL", "PANIC":
-		return s99logger.LevelError
-	default:
-		return s99logger.LevelInfo
-	}
+	parsed, _ := s99logger.ParseLevel(level)
+	return parsed
 }
 
 func read() *s99logger.Logger {
@@ -105,7 +95,7 @@ func Configure(opts Options) error {
 		console.WithColor(false)
 	}
 
-	level := parseLevel(opts.Level, opts.Verbose)
+	level := levelOf(opts.Level, opts.Verbose)
 	wailsDebug.Store(level == s99logger.LevelDebug)
 	sinks := []s99logger.Sink{s99logger.MinLevel(console, level), reportSink{}}
 

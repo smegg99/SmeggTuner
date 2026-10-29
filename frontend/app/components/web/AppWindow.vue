@@ -20,9 +20,11 @@
           v-show="view === 'tune'"
           class="window__tune"
         >
-          <WebMicError />
-          <WebSpeedWarning />
-          <WebProcessingNote />
+          <div class="window__notices">
+            <WebMicError />
+            <WebSpeedWarning />
+            <WebProcessingNote />
+          </div>
           <TunerView />
         </div>
         <SettingsView v-if="view === 'settings'" />
@@ -93,7 +95,7 @@ useWakeLock(running)
 .instrument-frame :deep(.s99ab-frame__status) { height: 28px; }
 .window__view { display: grid; min-height: 0; min-width: 0; }
 .window__view > * { grid-area: 1 / 1; min-height: 0; min-width: 0; }
-.window__tune { display: grid; grid-template-rows: auto auto auto minmax(0, 1fr); min-height: 0; min-width: 0; }
+.window__tune { display: grid; grid-template-rows: auto minmax(0, 1fr); min-height: 0; min-width: 0; }
 .window__navigation { display: flex; gap: var(--s99ab-control-gap); min-width: 0; }
 .window__navigation :deep(.key) { flex: 1 1 0; min-width: 0; height: 44px; }
 .window__navigation :deep(.key__label) { display: inline; }

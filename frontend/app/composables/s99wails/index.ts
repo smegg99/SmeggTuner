@@ -2,13 +2,13 @@
 
 // frontendgen/assets/index.ts
 export { isWails, useWailsEnvironment } from './environment'
+export { THEME_CHANGED_EVENT } from './names'
 export {
   useDesktopLocaleSync,
   type DesktopLocaleSyncOptions,
 } from './localeSync'
 export {
   useSystemTheme,
-  THEME_CHANGED_EVENT,
   type SystemThemeInfo,
   type SystemThemeOptions,
 } from './systemTheme'

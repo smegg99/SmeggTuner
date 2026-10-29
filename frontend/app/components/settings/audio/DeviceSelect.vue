@@ -1,3 +1,4 @@
+<!-- app/components/settings/audio/DeviceSelect.vue -->
 <template>
   <UiFormField
     v-slot="{ id }"
@@ -9,17 +10,20 @@
       <v-select
         :id="id"
         v-model="deviceId"
+        v-model:menu="open"
         :items="deviceItems"
-        :disabled="loading || running"
+        :disabled="running || (loading && !open)"
         item-title="label"
         item-value="value"
         hide-details="auto"
         :aria-label="t('settings.audioDeviceLabel')"
         :list-props="{ class: 'tuner-menu' }"
+        @update:menu="onOpen"
       >
         <template #item="{ props: itemProps, item }">
           <v-list-item
             v-bind="itemProps"
+            :disabled="loading"
             :append-icon="(item.value === deviceId) ? 'mdi-check' : undefined"
           />
         </template>
@@ -29,14 +33,15 @@
         icon="mdi-refresh"
         :disabled="loading || running"
         :title="t('settings.audioDeviceRefresh')"
-        @click="refresh"
+        @click="browse"
       />
     </div>
   </UiFormField>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
+import { WEB } from '~/utils/features'
 import { useAudioDevices } from '~/composables/useAudioDevices'
 import type { AudioDeviceView } from '~/composables/useAudioDevices'
 import { useConfigSync } from '~/composables/useConfigSync'
@@ -48,9 +53,14 @@ const SYSTEM_DEFAULT = ''
 
 const { t } = useI18n()
 const { config } = useConfigSync()
-const { devices, current, loading, error, refresh, selectMic } = useAudioDevices()
+const { devices, current, loading, error, browse, selectMic } = useAudioDevices()
 // Locked while running: switching device restarts the run.
 const { running } = useTuner()
+const open = ref(false)
+
+function onOpen(value: boolean) {
+  if (value && WEB) void browse()
+}
 
 const items = computed<AudioDeviceView[]>(() => [
   { id: SYSTEM_DEFAULT, name: t('settings.audioDeviceSystemDefault'), default: false },

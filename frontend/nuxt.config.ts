@@ -43,8 +43,8 @@ const web = process.env.SMEGGTUNER_EDITION === 'web'
 const browserTarget: string | string[] = web
   ? ['safari16.4', 'chrome111', 'firefox115', 'edge111']
   : `chrome${androidConfig.webViewMinMajor}`
-// The web edition lays out at the device's own width: its compact layout is the phone one, not a scaled desktop window.
-const desktopOnlyPlugins = ['/plugins/editKeys.ts', '/plugins/01.viewport.client.ts']
+// Browser and Android share the fitted instrument viewport.
+const desktopOnlyPlugins = ['/plugins/editKeys.ts']
 
 export default defineNuxtConfig({
   extends: ['@smegg99/s99ab'],

@@ -27,11 +27,12 @@ type startupFailure struct {
 func crashOptions() crash.Options {
 	return crash.Options{
 		App: application.Options{
-			Name:   i18n.AppName(i18n.Localizer()),
-			Icon:   trayicons.AppIcon,
-			Logger: logger.Wails(),
-			Assets: application.AssetOptions{Handler: application.AssetFileServerFS(assets)},
-			Linux:  application.LinuxOptions{ProgramName: "smeggtuner"},
+			Name:         i18n.AppName(i18n.Localizer()),
+			Icon:         trayicons.AppIcon,
+			Logger:       logger.Wails(),
+			PanicHandler: crash.PanicHandler,
+			Assets:       application.AssetOptions{Handler: application.AssetFileServerFS(assets)},
+			Linux:        application.LinuxOptions{ProgramName: "smeggtuner"},
 		},
 		Version:     version,
 		ReportEmail: reportEmail,

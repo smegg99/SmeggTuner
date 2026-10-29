@@ -1,7 +1,7 @@
 <!-- app/components/web/MicError.vue -->
 <template>
   <p
-    v-if="micError"
+    v-if="message"
     class="mic"
     role="alert"
   >
@@ -9,15 +9,19 @@
       icon="mdi-microphone-off"
       size="16"
     />
-    {{ t(`web.mic.${micError}`) }}
+    {{ t(message) }}
   </p>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useAudioDevices } from '~/composables/useAudioDevices'
 import { useWebEngine } from '~/web/useWebEngine'
 
 const { t } = useI18n()
 const { micError } = useWebEngine()
+const { error } = useAudioDevices()
+const message = computed(() => error.value || (micError.value ? `web.mic.${micError.value}` : ''))
 </script>
 
 <style scoped>

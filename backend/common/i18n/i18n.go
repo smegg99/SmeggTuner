@@ -3,7 +3,6 @@
 package i18n
 
 import (
-	"embed"
 	"fmt"
 	"io/fs"
 	"sync/atomic"
@@ -12,9 +11,6 @@ import (
 	"github.com/smegg99/s99logger"
 	"github.com/smegg99/s99wails/v2/locale"
 )
-
-//go:embed locales/*.json
-var localeFS embed.FS
 
 //go:generate go tool loc build -c ../../../i18n/config.cue
 
@@ -31,7 +27,7 @@ func Translator() s99logger.Translator { return locales.Translator() }
 
 // mustLoad parses the embedded locale files; a failure is a build defect, so it panics.
 func mustLoad() *locale.Locales {
-	sub, err := fs.Sub(localeFS, "locales")
+	sub, err := fs.Sub(LocaleFiles, "locales")
 	if err != nil {
 		panic(fmt.Sprintf("i18n: sub locales fs: %v", err))
 	}

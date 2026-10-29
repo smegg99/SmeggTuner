@@ -173,7 +173,7 @@ HELP
         preflight doctor
         mkdir -p backend/frontend/public
         touch backend/frontend/public/.keep
-        go tool frontendgen -out frontend/app/composables/s99wails -s99ab
+        go tool frontendgen --out frontend/app/composables/s99wails --s99ab
         go tool wails3 generate bindings -f '-tags gtk3 -mod=readonly' -clean=true -ts -d frontend/bindings ./backend
         (cd frontend && pnpm run generate)
         rm -rf -- backend/frontend/public

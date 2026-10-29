@@ -5,10 +5,7 @@ package config
 
 import (
 	_ "embed"
-	"errors"
 	"fmt"
-	"io/fs"
-	"os"
 	"path/filepath"
 
 	"github.com/joho/godotenv"
@@ -61,13 +58,7 @@ func Initialize() (string, error) {
 		return "", fmt.Errorf("compile config schema: %w", err)
 	}
 
-	if _, statErr := os.Stat(path); errors.Is(statErr, fs.ErrNotExist) {
-		if err := l.WriteDefaults(path); err != nil {
-			return path, fmt.Errorf("write default config %s: %w", path, err)
-		}
-	}
-
-	if err := l.Load(path); err != nil {
+	if err := l.LoadOrCreate(path); err != nil {
 		return path, fmt.Errorf("load config %s: %w", path, err)
 	}
 

@@ -1,3 +1,4 @@
+// app/composables/useAudioDevices.ts
 import { ref, shallowRef } from 'vue'
 import * as AudioService from '~~bindings/smegg.me/smeggtuner/backend/services/audio/service.js'
 import * as TunerService from '~~bindings/smegg.me/smeggtuner/backend/services/tuner/service.js'
@@ -5,6 +6,8 @@ import { SourceKind } from '~~bindings/smegg.me/smeggtuner/backend/services/audi
 import type { DeviceDTO, SourceDTO } from '~~bindings/smegg.me/smeggtuner/backend/services/audio/models.js'
 import { toErrorKey, useTuner } from '~/composables/useTuner'
 import { useTransport } from '~/composables/useTransport'
+import { WEB } from '~/utils/features'
+import { MicError, requestMic } from '~/web/mic'
 
 export interface AudioDeviceView { id: string, name: string, default: boolean }
 
@@ -40,11 +43,14 @@ function toSourceView(dto: SourceDTO): AudioSourceView {
   }
 }
 
-async function refresh(log: Logger) {
+async function refresh(log: Logger, browse = false) {
   const seq = ++refreshSeq
   loading.value = true
+  let permission: MediaStream | undefined
 
   try {
+    // Request inside the click handler; enumerate while the grant is still active.
+    if (WEB && browse) permission = await requestMic('')
     const [list, source]: [DeviceDTO[], SourceDTO] = await Promise.all([
       AudioService.ListDevices(),
       AudioService.Current(),
@@ -62,10 +68,11 @@ async function refresh(log: Logger) {
     if (seq !== refreshSeq) return
 
     devices.value = []
-    error.value = toErrorKey(err)
+    error.value = err instanceof MicError ? `web.mic.${err.reason}` : toErrorKey(err)
     log.error('log.frontendAudioListFailed', { error: String(err) })
   }
   finally {
+    permission?.getTracks().forEach(track => track.stop())
     if (seq === refreshSeq) loading.value = false
   }
 }
@@ -137,6 +144,7 @@ export function useAudioDevices() {
     loading,
     error,
     refresh: () => refresh(log),
+    browse: () => loading.value ? Promise.resolve() : refresh(log, true),
     selectMic: (deviceId: string) => select(() => AudioService.SelectMic(deviceId), log),
     selectFile: (path: string, loop: boolean) => select(() => AudioService.SelectFile(path, loop), log),
     pickFile: () => pickFile(log, { title: t('file.openTitle'), filter: t('file.openFilter') }),
