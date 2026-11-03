@@ -1,25 +1,26 @@
 <!-- lang:en -->
 
-## SmeggTuner 1.4.0
+## SmeggTuner 1.4.2
 
-The measuring engine was rebuilt to work like Dirk's professional Accordion Tuner. Readings are in its
-units (0.06 % of the note, about a cent) or in cents, note detection can be Fast, Balanced or Steady,
-and the sound card is calibrated per microphone on its own screen. The top bar was redone, and the
-snowflake key now holds stable readings.
+The new signal generator plays up to four tones together, with a separate tuning offset for each.
+Choose a pure tone or a reed-like sound to tune by ear. Volume sliders now show the level as a
+percentage when you point at them or drag them.
 
-The Workshop is hidden in this release; nothing stored is deleted. When the app cannot start, crashes,
-hangs or is killed, it opens a window with a report to copy, save or email. A settings file from 1.3 is
-refused in that window, which names the old setting: delete the setting or the whole file.
+The app has a refreshed icon, and the English and Polish usage guides explain every button and card with
+annotated screenshots. Translation files were reorganized and have their own guide for translators.
+The Linux AppImage is smaller.
+
+The Workshop remains hidden. Android and the web version are still experimental.
 
 ### Supported platforms
 
-**Linux x86_64:** AppImage, DEB, RPM, and Arch Linux packages.
+**Linux x86_64:** AppImage, DEB, RPM, Arch Linux package, and per-user archive.
 
-**Linux ARM64:** DEB, RPM, and Arch Linux packages.
+**Linux ARM64:** DEB, RPM, Arch Linux package, and per-user archive.
 
 **Windows x86_64:** installer and portable executable.
 
-**Android ARM64:** experimental APK.
+**Android ARM64:** experimental signed APK and app bundle (AAB).
 
 **Web:** experimental, at app.smeggtuner.com.
 
@@ -27,27 +28,27 @@ iOS and macOS are not currently supported.
 
 <!-- lang:pl -->
 
-## SmeggTuner 1.4.0
+## SmeggTuner 1.4.2
 
-Silnik pomiarowy powstał od nowa i działa jak profesjonalny Accordion Tuner Dirka. Odczyty są w jego
-jednostkach (0,06 % nuty, mniej więcej cent) albo w centach, wykrywanie nut może być Szybkie,
-Zrównoważone albo Stabilne, a karta dźwiękowa ma osobną kalibrację dla każdego mikrofonu, na własnym
-ekranie. Górny pasek jest przerobiony, a przycisk ze śnieżynką zatrzymuje stabilne odczyty.
+Nowy generator sygnału odtwarza do czterech tonów naraz, z osobną odchyłką stroju dla każdego.
+Do strojenia na słuch można wybrać czysty ton albo dźwięk podobny do stroika. Suwaki głośności
+pokazują teraz poziom w procentach po najechaniu myszką i podczas przesuwania.
 
-Warsztat jest w tym wydaniu ukryty; nic z zapisanych danych nie jest usuwane. Kiedy aplikacja nie może
-wystartować, wysypie się, zawiesi albo zostanie zamknięta siłą, pokazuje okno z raportem do skopiowania,
-zapisania albo wysłania mailem. Plik ustawień z wersji 1.3 zostanie odrzucony w tym oknie, które pokaże
-stare ustawienie: usuń je albo cały plik.
+Aplikacja ma odświeżoną ikonę, a polska i angielska instrukcja obsługi opisują każdy przycisk i panel na zrzutach
+ekranu ze strzałkami. Pliki tłumaczeń zostały uporządkowane i mają osobną instrukcję dla tłumaczy.
+Plik AppImage dla Linuksa zajmuje mniej miejsca.
+
+Warsztat pozostaje ukryty. Wersje na Androida i do przeglądarki nadal są eksperymentalne.
 
 ### Obsługiwane platformy
 
-**Linux x86_64:** AppImage, pakiety DEB i RPM oraz pakiet dla Arch Linux.
+**Linux x86_64:** AppImage, pakiety DEB, RPM i Arch Linux oraz archiwum do instalacji bez uprawnień administratora.
 
-**Linux ARM64:** pakiety DEB i RPM oraz pakiet dla Arch Linux.
+**Linux ARM64:** pakiety DEB, RPM i Arch Linux oraz archiwum do instalacji bez uprawnień administratora.
 
 **Windows x86_64:** instalator oraz wersja przenośna.
 
-**Android ARM64:** eksperymentalny plik APK.
+**Android ARM64:** eksperymentalny podpisany plik APK i pakiet aplikacji AAB.
 
 **Przeglądarka:** wersja eksperymentalna pod app.smeggtuner.com.
 
