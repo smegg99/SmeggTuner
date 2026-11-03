@@ -67,6 +67,7 @@ export function localServices(mic: MicControl, save: (deviceId: string) => Promi
     // The web edition has no reference tone (the Go tone player is desktop-only); pressing a note only picks it.
     [TUNER + 'PlayTone']: () => null,
     [TUNER + 'ToggleTone']: () => null,
+    [TUNER + 'PlaySignal']: () => null,
     [TUNER + 'StopTone']: () => null,
     [TUNER + 'SetToneVolume']: args => Number(args[0] ?? 1),
     // No accent: a browser cannot read the system's, so the theme falls back to the web default (WEB_ACCENT).

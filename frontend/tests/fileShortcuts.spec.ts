@@ -39,6 +39,9 @@ vi.mock('~/composables/useOutputLevel', () => ({
     volume: ref(1), muted: { get value() { return host.muted } }, setVolume: vi.fn(), setMuted: host.mute,
   }),
 }))
+vi.mock('~/composables/useSignal', () => ({
+  useSignal: () => ({ open: ref(false), toggle: vi.fn(), step: vi.fn() }),
+}))
 
 const shell = defineComponent({
   setup() {

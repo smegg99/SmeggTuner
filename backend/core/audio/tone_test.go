@@ -235,3 +235,40 @@ func TestQuickPressesNeverCutATone(t *testing.T) {
 		t.Fatalf("%d tones still fading after 30 ms clicks", len(p.fading))
 	}
 }
+
+// A chord of beating tones never leaves the single tone's level, sine or reed, even where they peak
+// together; a one-tone sine chord is the plain tone.
+func TestChordStaysWithinASingleTone(t *testing.T) {
+	cents := []float64{0, 15, -15}
+	freqs := make([]float64, len(cents))
+	for i, c := range cents {
+		freqs[i] = 440 * math.Exp2(c/1200)
+	}
+	for _, harmonics := range []int{1, 8} {
+		v := newChordVoice(freqs, harmonics, time.Minute)
+		for i := int64(0); i < ToneRate*20; i += 7 {
+			if s := v.wave(i); math.Abs(s) > 1+1e-9 {
+				t.Fatalf("harmonics %d: wave %v at frame %d past full", harmonics, s, i)
+			}
+		}
+	}
+	plain, chord := newToneVoice(440, time.Minute), newChordVoice([]float64{440}, 1, time.Minute)
+	for i := int64(0); i < 2000; i++ {
+		if math.Abs(plain.wave(i)-chord.wave(i)) > 1e-9 {
+			t.Fatalf("frame %d: one-tone chord %v, plain tone %v", i, chord.wave(i), plain.wave(i))
+		}
+	}
+}
+
+// A reed tone keeps its overtones below the output band's edge.
+func TestChordOvertonesStayInBand(t *testing.T) {
+	v := newChordVoice([]float64{3000}, 8, time.Minute)
+	for _, p := range v.partials {
+		if f := p.w * ToneRate / (2 * math.Pi); f >= 0.45*ToneRate {
+			t.Fatalf("partial at %v Hz past the band", f)
+		}
+	}
+	if len(v.partials) != 7 {
+		t.Fatalf("3 kHz reed tone has %d partials, want 7", len(v.partials))
+	}
+}

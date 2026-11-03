@@ -91,6 +91,8 @@ var (
 	ErrChordsAuto = &ServiceError{Key: "tuner.error.chordsAuto"}
 	// ErrToneNeedsManual reports the tone button pressed with no manual note.
 	ErrToneNeedsManual = &ServiceError{Key: "tuner.error.toneNeedsManual"}
+	// ErrSignalVoices reports a signal chord with no tone, too many, or an offset past 100 cents.
+	ErrSignalVoices = &ServiceError{Key: "tuner.error.signalVoices"}
 	// ErrPlaybackFailed reports a reference tone that could not be played.
 	ErrPlaybackFailed = &ServiceError{Key: "tuner.error.playbackFailed"}
 	// ErrSampleRate reports a source whose sample rate cannot carry the note table at this A4 and transposition.

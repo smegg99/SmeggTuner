@@ -6,6 +6,7 @@ import { useFileRun } from '~/composables/useFileRun'
 import { useOutputLevel } from '~/composables/useOutputLevel'
 import { useRecord } from '~/composables/useRecord'
 import { useShell } from '~/composables/useShell'
+import { useSignal } from '~/composables/useSignal'
 import { AUTO_NOTE, useTuner } from '~/composables/useTuner'
 import { shortcutFor } from '~/utils/shortcuts'
 import { WORKSHOP } from '~/utils/features'
@@ -33,6 +34,7 @@ export function useShortcuts() {
 
   const transport = useTransport()
   const { muted, setMuted } = useOutputLevel()
+  const signal = useSignal()
 
   const manual = () => manualNote.value !== AUTO_NOTE
 
@@ -59,6 +61,11 @@ export function useShortcuts() {
     noteDown: () => { if (manual()) void stepNote(-1) },
     noteUp: () => { if (manual()) void stepNote(1) },
     takeNow: () => { if (recording.value) void takeNow() },
+    signal: () => void signal.toggle(),
+    signalDown: () => signal.step(-1),
+    signalUp: () => signal.step(1),
+    signalOctaveDown: () => signal.step(-12),
+    signalOctaveUp: () => signal.step(12),
   }
 
   const centre = () => (transport.view.from + transport.view.to) / 2
@@ -93,10 +100,10 @@ export function useShortcuts() {
       }
     }
 
-    const action = shortcutFor(event.key, { tune: view.value === 'tune', file })
+    const action = shortcutFor(event.key, { tune: view.value === 'tune', file, signal: view.value === 'tune' && signal.open.value })
     const run = action && actions[action]
     if (!run) return
-    if (event.repeat && action !== 'noteDown' && action !== 'noteUp') return
+    if (event.repeat && !['noteDown', 'noteUp', 'signalDown', 'signalUp', 'signalOctaveDown', 'signalOctaveUp'].includes(action)) return
 
     event.preventDefault()
     run()

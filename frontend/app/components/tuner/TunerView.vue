@@ -2,16 +2,18 @@
 <template>
   <div
     class="tuner"
-    :class="{ 'tuner--compact': compact }"
+    :class="{ 'tuner--compact': compact, 'tuner--signal': signalOpen }"
   >
     <!-- Compact windows give the mode and reed keys a row, wide ones carry them in the top bar; an
          open session's register decides both. -->
     <TunerModePanel
       v-if="compact && !sessionReeds"
+      v-show="!signalOpen"
       class="tuner__controls"
     />
     <UiToolGroup
       v-if="compact"
+      v-show="!signalOpen"
       class="tuner__tabs"
       :model-value="plot"
       :items="plots"
@@ -20,38 +22,55 @@
     />
     <FilePanel
       v-if="file"
-      v-show="!compact || plot === 'input'"
+      v-show="signalOpen || !compact || plot === 'input'"
       class="tuner__input"
     />
     <TunerInputPanel
       v-else
-      v-show="!compact || plot === 'input'"
+      v-show="signalOpen || !compact || plot === 'input'"
       class="tuner__input"
     />
 
+    <!-- The signal generator keeps only the input; the readings are hidden, not torn down, so their
+         canvases come back as they were. -->
     <TunerNoteRuler
-      v-show="!compact || plot === 'notes'"
+      v-show="!signalOpen && (!compact || plot === 'notes')"
       class="tuner__notes"
     />
     <TunerSpectrumPanel
-      v-show="!compact || plot === 'spectrum'"
+      v-show="!signalOpen && (!compact || plot === 'spectrum')"
       class="tuner__spectrum"
     />
-    <TunerNotePanel class="tuner__note" />
-    <TunerDeviationRuler class="tuner__ruler" />
+    <TunerNotePanel
+      v-show="!signalOpen"
+      class="tuner__note"
+    />
+    <TunerDeviationRuler
+      v-show="!signalOpen"
+      class="tuner__ruler"
+    />
 
-    <TunerValueBoxes class="tuner__boxes" />
+    <SignalPanel
+      v-if="signalOpen"
+      class="tuner__signal"
+    />
+    <TunerValueBoxes
+      v-else
+      class="tuner__boxes"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { useAudioDevices } from '~/composables/useAudioDevices'
+import { useSignal } from '~/composables/useSignal'
 
 // File view keys off the source selection, not the transport DTO: a slow/failed DTO round
 // trip would otherwise render nothing with no error.
 const { current } = useAudioDevices()
 const { sessionReeds } = useTuner()
+const { open: signalOpen } = useSignal()
 const { t } = useI18n()
 const compact = useCompactLayout()
 type Plot = 'input' | 'notes' | 'spectrum'
@@ -95,6 +114,32 @@ watch(file, (value) => {
 .tuner__boxes { grid-area: boxes; }
 .tuner__controls { grid-area: controls; }
 .tuner__tabs { grid-area: tabs; }
+.tuner__signal { grid-area: signal; }
+
+/* The signal generator: the input keeps its size and the generator takes every row below it. */
+.tuner--signal {
+  grid-template-areas:
+    "input  input"
+    "signal signal"
+    "signal signal"
+    "signal signal"
+    "signal signal";
+}
+
+/* Portrait has no fixed rows to keep: the input over the generator. Two classes, so the compact
+   layouts below never override it. */
+.tuner.tuner--compact.tuner--signal {
+  grid-template-areas: "input" "signal";
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) minmax(min-content, 2fr);
+}
+.tuner.tuner--compact.tuner--signal .tuner__input { grid-area: input; }
+
+/* A landscape phone has no height for both: the generator takes the room. */
+@media (max-height: 559px) {
+  .tuner.tuner--compact.tuner--signal { grid-template-areas: "signal"; grid-template-rows: minmax(0, 1fr); }
+  .tuner.tuner--compact.tuner--signal .tuner__input { display: none; }
+}
 
 /* Portrait: one column. The readout is a short strip over the spectrum, which gets the full width. */
 .tuner--compact {

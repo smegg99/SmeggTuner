@@ -36,11 +36,54 @@ type toneVoice struct {
 	stop   int64   // frame the stop fade starts at; -1 while none was asked for
 	cut    int64   // frame the short yield fade starts at; -1 while none was asked for
 	next   int64   // the frame the next sample is
+
+	// partials replace w when set: a chord, each tone with its overtones, already scaled to full scale.
+	partials []partial
 }
 
 func newToneVoice(freq float64, dur time.Duration) *toneVoice {
 	frames := max(toneMinFrames, int64(math.Round(dur.Seconds()*ToneRate)))
 	return &toneVoice{w: 2 * math.Pi * freq / ToneRate, frames: frames, attack: toneFadeFrames, stop: -1, cut: -1}
+}
+
+// partial is one sine of a chord voice.
+type partial struct {
+	w   float64 // radians per frame
+	amp float64
+}
+
+// newChordVoice sounds every freq at once. With harmonics above 1 each tone carries overtones falling
+// as 1/k (a sawtooth's spectrum, nearer a reed than a sine), so a reed beats against them too. Scaled
+// so the instant every tone peaks together, as beating tones do, stays at the single tone's level.
+func newChordVoice(freqs []float64, harmonics int, dur time.Duration) *toneVoice {
+	v := newToneVoice(freqs[0], dur)
+	var peaks float64
+	for _, f := range freqs {
+		first := len(v.partials)
+		for k := 1; k <= max(1, harmonics) && float64(k)*f < 0.45*ToneRate; k++ {
+			v.partials = append(v.partials, partial{w: 2 * math.Pi * float64(k) * f / ToneRate, amp: 1 / float64(k)})
+		}
+		peaks += wavePeak(v.partials[first:])
+	}
+	for i := range v.partials {
+		v.partials[i].amp /= peaks
+	}
+	return v
+}
+
+// wavePeak is the largest magnitude one tone's partials reach, sampled over the fundamental's period.
+func wavePeak(ps []partial) float64 {
+	const steps = 2048
+	var peak float64
+	for i := range steps {
+		x := 2 * math.Pi * float64(i) / steps
+		var s float64
+		for k, p := range ps {
+			s += p.amp * math.Sin(float64(k+1)*x)
+		}
+		peak = max(peak, math.Abs(s))
+	}
+	return peak
 }
 
 // newPressVoice is a note-strip tone: a short attack and a hold, so a click is heard.
@@ -73,7 +116,19 @@ func (v *toneVoice) envelope(i int64) float64 {
 
 // sample is frame i at volume 0..1, truncated toward zero as the reference writes it.
 func (v *toneVoice) sample(i int64, vol float64) int32 {
-	return int32(vol * (toneScale * v.envelope(i) * math.Sin(float64(i)*v.w)))
+	return int32(vol * (toneScale * v.envelope(i) * v.wave(i)))
+}
+
+// wave is the voice's waveform at frame i, -1..1.
+func (v *toneVoice) wave(i int64) float64 {
+	if v.partials == nil {
+		return math.Sin(float64(i) * v.w)
+	}
+	var s float64
+	for _, p := range v.partials {
+		s += p.amp * math.Sin(float64(i)*p.w)
+	}
+	return s
 }
 
 // halt starts the stop fade at the next frame, or at the end of the hold.

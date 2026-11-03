@@ -33,6 +33,7 @@ type TonePlayer struct {
 // except that a stop folds into a press the callback has not taken yet (released sets).
 type toneCommand struct {
 	freq     float64
+	chord    *toneVoice // a chord, built here rather than on the audio thread; nil for a single sine
 	dur      time.Duration
 	stop     bool
 	press    bool
@@ -65,9 +66,26 @@ func (p *TonePlayer) Press(freq float64, dur time.Duration) error {
 	return p.start(&toneCommand{freq: freq, dur: dur, press: true})
 }
 
+// Chord sounds every freq together for dur, each with harmonics partials (1 is a plain sine).
+func (p *TonePlayer) Chord(freqs []float64, harmonics int, dur time.Duration) error {
+	if len(freqs) == 0 {
+		return errors.New("tone player: empty chord")
+	}
+	for _, f := range freqs {
+		if !audible(f) {
+			return errBand
+		}
+	}
+	return p.start(&toneCommand{freq: freqs[0], chord: newChordVoice(freqs, harmonics, dur), dur: dur})
+}
+
+var errBand = errors.New("tone player: frequency outside the output band")
+
+func audible(f float64) bool { return f > 0 && f < ToneRate/2 }
+
 func (p *TonePlayer) start(c *toneCommand) error {
-	if !(c.freq > 0) || c.freq >= ToneRate/2 {
-		return errors.New("tone player: frequency outside the output band")
+	if !audible(c.freq) {
+		return errBand
 	}
 	p.mu.Lock()
 	defer p.mu.Unlock()
@@ -134,9 +152,12 @@ func (p *TonePlayer) take(c *toneCommand) {
 	if p.voice != nil {
 		p.fading = append(p.fading, p.voice)
 	}
-	if c.press {
+	switch {
+	case c.press:
 		p.voice = newPressVoice(c.freq, c.dur)
-	} else {
+	case c.chord != nil:
+		p.voice = c.chord
+	default:
 		p.voice = newToneVoice(c.freq, c.dur)
 	}
 	if c.released {

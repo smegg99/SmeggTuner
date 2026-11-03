@@ -100,6 +100,21 @@ side.treble: {value: "Dyskant"}
 step.noteDown: {value: "Pół tonu w dół"}
 step.noteUp: {value: "Pół tonu w górę"}
 # Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
+signal.add: {value: "Dodaj dźwięk"}
+signal.cents: {value: "Odstrojenie od nuty w centach"}
+signal.down: {value: "Pół tonu w dół (strzałka w lewo, w dół o oktawę)"}
+signal.open: {value: "Generator sygnału: gra czystą nutę do strojenia stroika"}
+signal.play: {value: "Graj"}
+signal.playHint: {value: "Zagraj nutę ze wszystkimi dźwiękami, a bez nuty pierwszą usłyszaną (Spacja)"}
+signal.remove: {value: "Usuń ten dźwięk"}
+signal.stop: {value: "Stop"}
+signal.stopHint: {value: "Zatrzymaj dźwięk (Spacja)"}
+signal.title: {value: "Generator sygnału"}
+signal.up: {value: "Pół tonu w górę (strzałka w prawo, w górę o oktawę)"}
+signal.wave.hint: {value: "Dźwięk stroika ma alikwoty, więc dudnienia słychać też na nich"}
+signal.wave.reed: {value: "Stroik"}
+signal.wave.sine: {value: "Sinus"}
+
 # Reference pitch and units
 reference.a4Locked: {value: "Zablokowane w Ustawieniach"}
 reference.a4Type: {value: "Wpisz A4 w hercach, od 430 do 450"}
@@ -300,6 +315,7 @@ error.sampleRate:
     transpozycji. Użyj nagrania z próbkowaniem 44,1 kHz lub wyższym.
 
 error.sessionDecides: {value: "O tym, co jest mierzone, decyduje rejestr otwartej sesji."}
+error.signalVoices: {value: "Graj od jednego do czterech dźwięków, każdy najwyżej 100 centów od nuty."}
 error.toneNeedsManual: {value: "Przypnij dźwięk, aby zagrać jego ton."}
 error.transposeMode: {value: "Akordy i oktawy mierzy się bez transpozycji."}
 error.unexpected: {value: "Coś poszło nie tak. Szczegóły znajdziesz w logu."}

@@ -43,6 +43,35 @@ func (s *Service) ToggleTone() error {
 	return s.sound(cfg.ManualNote, cfg, false)
 }
 
+// PlaySignal is the signal generator: note at the engine's pitch with each of cents laid over it, all
+// sounding together until StopTone. A reed tone carries overtones, so a reed played against it beats
+// on them as well as on the fundamental.
+func (s *Service) PlaySignal(note int, cents []float64, reed bool) error {
+	n := tuning.Note(note)
+	if !n.Valid() {
+		return rejected("signal_note", note, ErrInvalidNote)
+	}
+	if len(cents) == 0 || len(cents) > maxSignalVoices {
+		return rejected("signal_voices", cents, ErrSignalVoices)
+	}
+	cfg, _, _ := s.view()
+	base := toneFreq(cfg, n)
+	freqs := make([]float64, len(cents))
+	for i, c := range cents {
+		if math.IsNaN(c) || math.Abs(c) > maxSignalCents {
+			return rejected("signal_cents", c, ErrSignalVoices)
+		}
+		freqs[i] = base * math.Exp2(c/1200)
+	}
+	harmonics := 1
+	if reed {
+		harmonics = reedHarmonics
+	}
+	return s.emit(n, signalDuration, func(p *coreaudio.TonePlayer) error {
+		return p.Chord(freqs, harmonics, signalDuration)
+	})
+}
+
 // StopTone fades the tone out; must be idempotent (also called on pointer-cancel and window blur).
 func (s *Service) StopTone() error {
 	end := time.Now().Add(coreaudio.ToneFade).UnixNano()
@@ -83,6 +112,17 @@ func toneFreq(cfg dsp.EngineConfig, n tuning.Note) float64 {
 // sound plays n; a press is the note strip's tone, which starts at once and is heard however short the
 // click. Unlike the reference it plays on an uncalibrated sound card; the app asks for calibration instead.
 func (s *Service) sound(n tuning.Note, cfg dsp.EngineConfig, press bool) error {
+	freq, dur := toneFreq(cfg, n), s.toneDur()
+	return s.emit(n, dur, func(p *coreaudio.TonePlayer) error {
+		if press {
+			return p.Press(freq, dur)
+		}
+		return p.Play(freq, dur)
+	})
+}
+
+// emit opens the player and runs play, marking the room as ours for dur.
+func (s *Service) emit(n tuning.Note, dur time.Duration, play func(*coreaudio.TonePlayer) error) error {
 	player, err := s.tonePlayer()
 	if err != nil {
 		logger.Warn(i18n.KeyLogTunerTonePlayFailed, logger.Err(err))
@@ -91,14 +131,8 @@ func (s *Service) sound(n tuning.Note, cfg dsp.EngineConfig, press bool) error {
 	// A lazily opened player starts at full, so assert the level.
 	player.SetVolume(s.toneVolume())
 	// Set the deadline before Play so there is no window where the tone sounds but observe still trusts the room.
-	dur := s.toneDur()
 	s.toneUntil.Store(time.Now().Add(dur).UnixNano())
-
-	play := player.Play
-	if press {
-		play = player.Press
-	}
-	if err := play(toneFreq(cfg, n), dur); err != nil {
+	if err := play(player); err != nil {
 		s.toneUntil.Store(0)
 		logger.Warn(i18n.KeyLogTunerTonePlayFailed, logger.Err(err))
 		return ErrPlaybackFailed

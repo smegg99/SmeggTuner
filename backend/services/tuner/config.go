@@ -16,6 +16,13 @@ import (
 const (
 	// toneDuration is the reference tone's audible length; the config file's tuner.tone_duration_ms overrides it.
 	toneDuration = 43 * time.Second
+	// signalDuration bounds a signal-generator tone nobody stopped.
+	signalDuration = 30 * time.Minute
+	// maxSignalVoices and maxSignalCents bound the signal generator's chord: a musette's three reeds and one more.
+	maxSignalVoices = 4
+	maxSignalCents  = 100.0
+	// reedHarmonics is the partial count of the signal generator's reed tone.
+	reedHarmonics = 8
 
 	// emitQueue is the DSP-to-Wails handoff depth: two analyses a second plus twenty heartbeats.
 	emitQueue = 16

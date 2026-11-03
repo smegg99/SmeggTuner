@@ -58,6 +58,12 @@
         @toggle="setMuted(!muted)"
         @update:model-value="setVolume"
       />
+      <UiToolKey
+        icon="mdi-sine-wave"
+        :title="t('tuner.signal.open')"
+        :active="signalOpen"
+        @click="setSignalOpen(!signalOpen)"
+      />
     </div>
   </div>
 </template>
@@ -67,6 +73,7 @@ import { computed } from 'vue'
 import { AUTO_NOTE, useTuner } from '~/composables/useTuner'
 import { useConfigSync } from '~/composables/useConfigSync'
 import { useOutputLevel } from '~/composables/useOutputLevel'
+import { useSignal } from '~/composables/useSignal'
 import { noteName } from '~/utils/tuning'
 import { WEB } from '~/utils/features'
 
@@ -76,6 +83,7 @@ const { config } = useConfigSync()
 const { note, manualNote, mode, sessionReeds, setAuto, stepNote } = useTuner()
 const compact = useCompactLayout()
 const { volume, muted, setVolume, setMuted } = useOutputLevel()
+const { open: signalOpen, setOpen: setSignalOpen } = useSignal()
 
 const manual = computed(() => manualNote.value !== AUTO_NOTE)
 const chords = computed(() => !sessionReeds.value && mode.value === 'chords')

@@ -94,6 +94,21 @@ side.treble: {value: "Treble"}
 step.noteDown: {value: "One semitone down"}
 step.noteUp: {value: "One semitone up"}
 # Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
+signal.add: {value: "Add a tone"}
+signal.cents: {value: "Offset in cents from the note"}
+signal.down: {value: "One semitone down (Left arrow, Down arrow for an octave)"}
+signal.open: {value: "Signal generator: plays a note clean to tune a reed against"}
+signal.play: {value: "Play"}
+signal.playHint: {value: "Play the note with every tone, or with no note yet the first one heard (Space)"}
+signal.remove: {value: "Remove this tone"}
+signal.stop: {value: "Stop"}
+signal.stopHint: {value: "Stop the tone (Space)"}
+signal.title: {value: "Signal generator"}
+signal.up: {value: "One semitone up (Right arrow, Up arrow for an octave)"}
+signal.wave.hint: {value: "A reed tone has overtones, so beats are heard on them too"}
+signal.wave.reed: {value: "Reed"}
+signal.wave.sine: {value: "Sine"}
+
 # Reference pitch and units
 reference.a4Locked: {value: "Locked in Settings"}
 reference.a4Type: {value: "Type A4 in hertz, 430 to 450"}
@@ -293,6 +308,8 @@ error.sampleRate:
     recording made at 44.1 kHz or more.
 
 error.sessionDecides: {value: "The open session's register decides what is measured."}
+error.signalVoices:
+  value: Play one to four tones, each within 100 cents of the note.
 error.toneNeedsManual: {value: "Pin a note to play its tone."}
 error.transposeMode: {value: "Chords and octaves are measured untransposed."}
 error.unexpected: {value: "Something went wrong. See the log for details."}

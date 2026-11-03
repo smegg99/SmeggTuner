@@ -18,6 +18,17 @@ describe('the global keys', () => {
     expect(shortcutFor('Backspace', tune)).toBe('undo')
   })
 
+  it('plays and stops on Space and picks the note with the arrows, in the signal generator', () => {
+    const signal = { tune: true, file: false, signal: true }
+    expect(shortcutFor(' ', signal)).toBe('signal')
+    expect(shortcutFor('ArrowLeft', signal)).toBe('signalDown')
+    expect(shortcutFor('ArrowRight', signal)).toBe('signalUp')
+    expect(shortcutFor('ArrowDown', signal)).toBe('signalOctaveDown')
+    expect(shortcutFor('ArrowUp', signal)).toBe('signalOctaveUp')
+    expect(shortcutFor('Enter', signal)).toBe('takeNow')
+    expect(shortcutFor('h', signal)).toBe('hold')
+  })
+
   // The workshop has a table and a chart that use these keys for themselves.
   it('leaves Space, Enter, Backspace and the arrows alone outside the tune room', () => {
     const shop = { tune: false, file: false }

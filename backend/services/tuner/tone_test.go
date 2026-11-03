@@ -51,6 +51,22 @@ func TestToneGates(t *testing.T) {
 	wantErr(t, s.PlayTone(5), ErrInvalidNote)
 }
 
+// The signal generator takes one to four tones within a semitone of the note, in every mode.
+func TestSignalGates(t *testing.T) {
+	s := silentService(t)
+	wantErr(t, s.PlaySignal(69, []float64{0, 12}, true), ErrPlaybackFailed)
+	wantErr(t, s.PlaySignal(5, []float64{0}, false), ErrInvalidNote)
+	wantErr(t, s.PlaySignal(69, nil, false), ErrSignalVoices)
+	wantErr(t, s.PlaySignal(69, []float64{0, 1, 2, 3, 4}, false), ErrSignalVoices)
+	wantErr(t, s.PlaySignal(69, []float64{0, 101}, false), ErrSignalVoices)
+	wantErr(t, s.PlaySignal(69, []float64{math.NaN()}, false), ErrSignalVoices)
+	mustOK(t, s.SetMode("chords"))
+	wantErr(t, s.PlaySignal(69, []float64{-100, 100}, false), ErrPlaybackFailed)
+	if s.tonePlaying() {
+		t.Fatal("a signal that never opened the output still claims the room")
+	}
+}
+
 // A second press while the tone sounds fades it out; the room counts as ours until the fade ends.
 func TestToneToggleStops(t *testing.T) {
 	s := freshService(t)
