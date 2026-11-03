@@ -93,8 +93,8 @@ export default defineNuxtConfig({
     entryImportMap: false,
   },
   compatibilityDate: '2025-07-15',
+  // Wails serves files as they are; scripts/web.sh precompresses the web edition itself.
   nitro: {
-    compressPublicAssets: true,
     ...(web && {
       output: { dir: path.resolve(__dirname, '.output-web') },
       // web-public is the manifest, service worker and runtime hook; scripts/web.sh builds the engine and icons into .web-assets.

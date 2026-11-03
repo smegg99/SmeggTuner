@@ -1,5 +1,4 @@
 // app/plugins/vuetify.ts
-import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import { en, pl } from 'vuetify/locale'
