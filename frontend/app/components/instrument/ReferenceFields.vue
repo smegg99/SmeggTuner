@@ -1,24 +1,24 @@
 <template>
   <!-- A4 and judging windows are per-instrument, never global. -->
   <UiFormSection
-    :title="t('instrument.sections.reference')"
+    :title="t('session.instrument.sections.reference')"
     class="tuner-section"
   >
     <UiFormField
       v-show="mode !== 'tolerance'"
       v-slot="{ id }"
-      :label="t('instrument.a4')"
-      :hint="a4Note || t('instrument.a4Hint')"
+      :label="t('session.instrument.a4')"
+      :hint="a4Note || t('session.instrument.a4Hint')"
       :error="a4Note"
     >
       <v-text-field
         :id="id"
         v-model="a4Draft"
-        :suffix="t('settings.a4Unit')"
+        :suffix="t('tuner.unit.hz')"
         :disabled="a4Disabled"
         hide-details="auto"
         autocomplete="off"
-        :aria-label="t('instrument.a4')"
+        :aria-label="t('session.instrument.a4')"
         inputmode="decimal"
         class="tuner-number"
         @blur="emit('commitA4')"
@@ -32,16 +32,16 @@
     >
       <UiFormField
         v-slot="{ id }"
-        :label="t('instrument.tolerance')"
-        :hint="t('instrument.toleranceHint')"
+        :label="t('session.instrument.tolerance')"
+        :hint="t('session.instrument.toleranceHint')"
       >
         <v-text-field
           :id="id"
           v-model="tolDraft"
-          :suffix="t('settings.toleranceUnit')"
+          :suffix="t('common.unitSymbol.reference')"
           hide-details="auto"
           autocomplete="off"
-          :aria-label="t('instrument.tolerance')"
+          :aria-label="t('session.instrument.tolerance')"
           inputmode="decimal"
           class="tuner-number"
           @blur="emit('commitTol')"
@@ -51,15 +51,15 @@
 
       <UiFormField
         v-slot="{ id }"
-        :label="t('instrument.beatTolerance')"
+        :label="t('session.instrument.beatTolerance')"
       >
         <v-text-field
           :id="id"
           v-model="beatDraft"
-          :suffix="t('settings.toleranceUnit')"
+          :suffix="t('common.unitSymbol.reference')"
           hide-details="auto"
           autocomplete="off"
-          :aria-label="t('instrument.beatTolerance')"
+          :aria-label="t('session.instrument.beatTolerance')"
           inputmode="decimal"
           class="tuner-number"
           @blur="emit('commitBeat')"

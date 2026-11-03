@@ -11,7 +11,7 @@
     <canvas
       ref="canvas"
       role="img"
-      :aria-label="t('file.waveform', { name: state.name })"
+      :aria-label="t('tuner.file.waveform', { name: state.name })"
     />
   </div>
 </template>

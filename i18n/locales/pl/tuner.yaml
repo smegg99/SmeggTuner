@@ -1,379 +1,305 @@
-bassRegister.all:
-  value: Cała maszyna
-  description: 'live tuner: bassRegister.all.'
-bassRegister.hint:
-  value: 'Wyciągnięty rejestr basowy'
-  description: 'live tuner: bassRegister.hint.'
-boxes.beat:
-  value: Dudnienie {a} do {b}
-  description: 'live tuner: boxes.beat. Parameters: a, b.'
-  placeholders:
-    a:
-      type: string
-    b:
-      type: string
-boxes.goal:
-  value: cel
-  description: 'live tuner: boxes.goal.'
-boxes.hzOnly:
-  value: tylko w Hz
-  description: 'live tuner: boxes.hzOnly.'
-boxes.notHeard:
-  value: nie słychać
-  description: 'live tuner: boxes.notHeard.'
-boxes.reed:
-  value: Głos {n}
-  description: 'live tuner: boxes.reed. Parameters: n.'
-  placeholders:
-    n:
-      type: string
-boxes.reedBank:
-  value: Głos {bank}
-  description: 'live tuner: boxes.reedBank. Parameters: bank.'
-  placeholders:
-    bank:
-      type: string
-boxes.tone:
-  value: Dźwięk {n}
-  description: 'live tuner: boxes.tone. Parameters: n.'
-  placeholders:
-    n:
-      type: string
-boxes.unit.cents:
-  value: cent
-  description: 'live tuner: boxes.unit.cents.'
-boxes.unit.hz:
-  value: Hz
-  description: 'live tuner: boxes.unit.hz.'
-boxes.unit.reference:
-  value: j
-  description: 'live tuner: boxes.unit.reference.'
-error.a4Locked:
-  value: Wysokość odniesienia jest zablokowana w Ustawieniach.
-  description: 'live tuner: error.a4Locked.'
-error.chordsAuto:
-  value: W trybie akordów tuner sam wybiera dźwięki.
-  description: 'live tuner: error.chordsAuto.'
-error.deviceGone:
-  value: Ten mikrofon nie jest już podłączony.
-  description: 'live tuner: error.deviceGone.'
-error.deviceLost:
-  value: Mikrofon przestał odpowiadać i tuner został zatrzymany.
-  description: 'live tuner: error.deviceLost.'
-error.fileUnreadable:
-  value: Nie udało się odczytać nagrania. Musi to być plik WAV.
-  description: 'live tuner: error.fileUnreadable.'
-error.invalidA4:
-  value: Wysokość odniesienia musi mieścić się w zakresie 430-450 Hz.
-  description: 'live tuner: error.invalidA4.'
-error.invalidBox:
-  value: Nie ma takiego pola głosu.
-  description: 'live tuner: error.invalidBox.'
-error.invalidMode:
-  value: Tuner mierzy dźwięki, oktawy albo akordy.
-  description: 'live tuner: error.invalidMode.'
-error.invalidNote:
-  value: Ten dźwięk jest poza zakresem śledzonym przez tuner.
-  description: 'live tuner: error.invalidNote.'
-error.invalidReedCount:
-  value: Tuner rozróżnia od jednego do trzech głosów na dźwięk.
-  description: 'live tuner: error.invalidReedCount.'
-error.invalidTranspose:
-  value: Transpozycja wynosi od 0 do 11 półtonów.
-  description: 'live tuner: error.invalidTranspose.'
-error.lastBox:
-  value: Co najmniej jedno pole zostaje włączone.
-  description: 'live tuner: error.lastBox.'
-error.noDevices:
-  value: Nie znaleziono mikrofonu. Podłącz go i odśwież listę urządzeń.
-  description: 'live tuner: error.noDevices.'
-error.playbackFailed:
-  value: Nie udało się odtworzyć dźwięku odniesienia.
-  description: 'live tuner: error.playbackFailed.'
-error.sampleRate:
-  value: Częstotliwość próbkowania wejścia jest za niska dla najwyższych dźwięków przy tej wysokości i transpozycji.
-    Użyj nagrania z próbkowaniem 44,1 kHz lub wyższym.
-  description: 'live tuner: error.sampleRate.'
-error.sessionDecides:
-  value: O tym, co jest mierzone, decyduje rejestr otwartej sesji.
-  description: 'live tuner: error.sessionDecides.'
-error.toneNeedsManual:
-  value: Przypnij dźwięk, aby zagrać jego ton.
-  description: 'live tuner: error.toneNeedsManual.'
-error.transposeMode:
-  value: Akordy i oktawy mierzy się bez transpozycji.
-  description: 'live tuner: error.transposeMode.'
-error.unexpected:
-  value: Coś poszło nie tak. Szczegóły znajdziesz w logu.
-  description: 'live tuner: error.unexpected.'
-hold.hint:
-  value: Zatrzymuj stabilne odczyty (H)
-  description: 'live tuner: the toolbar key that holds each locked reading until the sound stops.'
-input.relearnHint:
-  value: 'Naucz szumu tła od nowa (4 s ciszy)'
-  description: 'live tuner: input.relearnHint.'
-input.tooStrong:
-  value: Sygnał za silny
-  description: 'live tuner: input.tooStrong.'
-input.unreliable:
-  value: Sygnał niepewny
-  description: 'live tuner: input.unreliable.'
-inputPanel.label:
-  value: Sygnał wejściowy
-  description: 'live tuner: inputPanel.label.'
-inputPanel.title:
-  value: Wejście
-  description: 'live tuner: inputPanel.title.'
-level.silent:
-  value: cisza
-  description: 'live tuner: level.silent.'
-mode.auto:
-  value: Auto
-  description: 'live tuner: mode.auto.'
-notes.clickToPin:
-  value: kliknij, aby przypiąć
-  description: 'live tuner: notes.clickToPin.'
-notes.label:
-  value: Nuty od E0 do C9. Kliknij, aby przypiąć.
-  description: 'live tuner: notes.label.'
-notes.range:
-  value: E0 do C9
-  description: 'live tuner: notes.range.'
-notes.title:
-  value: Nuty
-  description: 'live tuner: notes.title.'
-notes.tracking:
-  value: śledzi
-  description: 'live tuner: notes.tracking.'
-output.mute:
-  value: Wycisz
-  description: 'live tuner: output.mute.'
-output.unmute:
-  value: Wyłącz wyciszenie
-  description: 'live tuner: output.unmute.'
-output.volume:
-  value: Głośność wyjścia
-  description: 'live tuner: output.volume.'
-panel.boxBase:
-  value: Podstawa jest mierzona zawsze
-  description: 'live tuner: panel.boxBase.'
-panel.boxChord:
-  value: Akordy mierzą wszystkie trzy dźwięki
-  description: 'live tuner: panel.boxChord.'
-panel.boxLast:
-  value: Co najmniej jedno pole zostaje włączone
-  description: 'live tuner: panel.boxLast.'
+# Live tuner, WAV playback and browser edition (Polish).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one = 1; few = 2, 3, 4, 22; many = 0, 5, 12, 21; other = fractions.
+
+# Input, output and playback
+input.relearnHint: {value: "Naucz szumu tła od nowa (4 s ciszy)"}
+input.tooStrong: {value: "Sygnał za silny"}
+input.unreliable: {value: "Sygnał niepewny"}
+inputPanel.label: {value: "Sygnał wejściowy"}
+inputPanel.title: {value: "Wejście"}
+level.silent: {value: "cisza"}
+output.mute: {value: "Wycisz"}
+output.unmute: {value: "Wyłącz wyciszenie"}
+output.volume: {value: "Głośność wyjścia"}
+soundcard.running: {value: "Kalibrowanie karty dźwiękowej"}
+soundcard.uncalibrated: {value: "Karta dźwiękowa nieskalibrowana. Skalibruj"}
+soundcard.unreliable: {value: "Kalibracja niepewna. Skalibruj ponownie"}
+source.analyze: {value: "Analizuj nagranie…"}
+source.default: {value: "Urządzenie domyślne"}
+source.noDevices: {value: "Nie znaleziono mikrofonów"}
+source.refresh: {value: "Odśwież listę urządzeń"}
+transport.fileHint: {value: "Nagranie odtwarza się z jego karty"}
+transport.start: {value: "Start"}
+transport.stop: {value: "Stop"}
+
+# Modes, registers and note selection
+bassRegister.all: {value: "Cała maszyna"}
+bassRegister.hint: {value: "Wyciągnięty rejestr basowy"}
+controls: {value: "Sterowanie strojeniem"}
+mode.auto: {value: "Auto"}
+mode.autoHint: {value: "Niech tuner sam znajdzie nutę"}
+mode.pinHint: {value: "Przypnij tę nutę"}
+mode.pinned: {value: "Przypięta nuta"}
+notes.clickToPin: {value: "kliknij, aby przypiąć"}
+notes.label: {value: "Nuty od E0 do C9. Kliknij, aby przypiąć."}
+notes.range: {value: "E0 do C9"}
+notes.title: {value: "Nuty"}
+notes.tracking: {value: "śledzi"}
+panel.boxBase: {value: "Podstawa jest mierzona zawsze"}
+panel.boxChord: {value: "Akordy mierzą wszystkie trzy dźwięki"}
+panel.boxLast: {value: "Co najmniej jedno pole zostaje włączone"}
+
 panel.boxOctave:
   plural:
     argument: octaves
     forms:
-      one: 'Pole {box}: {octaves} oktawa nad podstawą'
-      few: 'Pole {box}: {octaves} oktawy nad podstawą'
-      many: 'Pole {box}: {octaves} oktaw nad podstawą'
-      other: 'Pole {box}: {octaves} oktaw nad podstawą'
-  description: Octave selector tooltip; box is the numbered selector, octaves is the distance above the fundamental.
+      one: "Pole {box}: {octaves} oktawa nad podstawą"
+      few: "Pole {box}: {octaves} oktawy nad podstawą"
+      many: "Pole {box}: {octaves} oktaw nad podstawą"
+      other: "Pole {box}: {octaves} oktaw nad podstawą"
   placeholders:
-    octaves:
-      type: integer
-    box:
-      type: string
+    octaves: {type: integer}
+    box: {type: string}
+
 panel.boxReed:
-  value: 'Głos {n}: mierz go albo nie'
-  description: 'live tuner: panel.boxReed. Parameters: n.'
+  value: "Głos {n}: mierz go albo nie"
   placeholders:
-    n:
-      type: string
+    n: {type: string}
+
 panel.bySession:
   plural:
     argument: n
     forms:
-      one: '{n} głos, ustala rejestr sesji'
-      few: '{n} głosy, ustala rejestr sesji'
-      many: '{n} głosów, ustala rejestr sesji'
-      other: '{n} głosów, ustala rejestr sesji'
-  description: 'live tuner: panel.bySession. Parameters: n.'
+      one: "{n} głos, ustala rejestr sesji"
+      few: "{n} głosy, ustala rejestr sesji"
+      many: "{n} głosów, ustala rejestr sesji"
+      other: "{n} głosów, ustala rejestr sesji"
   placeholders:
-    n:
-      type: integer
-panel.locked:
-  value: Blokada
-  description: 'live tuner: panel.locked.'
-panel.modeHints.chords:
-  value: 'Akordy trzydźwiękowe'
-  description: 'live tuner: panel.modeHints.chords.'
-panel.modeHints.octaves:
-  value: 'Nuta z wyższymi oktawami'
-  description: 'live tuner: panel.modeHints.octaves.'
-panel.modeHints.tones:
-  value: 'Jedna nuta, do trzech stroików'
-  description: 'live tuner: panel.modeHints.tones.'
-panel.modeLabel:
-  value: Co jest mierzone
-  description: 'live tuner: panel.modeLabel.'
-panel.modes.chords:
-  value: Akordy
-  description: 'live tuner: panel.modes.chords.'
-panel.modes.octaves:
-  value: Oktawy
-  description: 'live tuner: panel.modes.octaves.'
-panel.modes.tones:
-  value: Dźwięki
-  description: 'live tuner: panel.modes.tones.'
-panel.recorded:
-  value: Nagrano
-  description: 'live tuner: panel.recorded.'
-panel.reeds:
-  value: Głosy
-  description: 'live tuner: panel.reeds.'
+    n: {type: integer}
+
+panel.locked: {value: "Blokada"}
+panel.modeHints.chords: {value: "Akordy trzydźwiękowe"}
+panel.modeHints.octaves: {value: "Nuta z wyższymi oktawami"}
+panel.modeHints.tones: {value: "Jedna nuta, do trzech stroików"}
+panel.modeLabel: {value: "Co jest mierzone"}
+panel.modes.chords: {value: "Akordy"}
+panel.modes.octaves: {value: "Oktawy"}
+panel.modes.tones: {value: "Dźwięki"}
+panel.quiet: {value: "Za cicho"}
+panel.recorded: {value: "Nagrano"}
+panel.reeds: {value: "Głosy"}
+
 reeds.count:
   plural:
     argument: n
     forms:
-      one: '{n} głos'
-      few: '{n} głosy'
-      many: '{n} głosów'
-      other: '{n} głosów'
-  description: 'live tuner: reeds.count. Parameters: n.'
+      one: "{n} głos"
+      few: "{n} głosy"
+      many: "{n} głosów"
+      other: "{n} głosów"
   placeholders:
-    n:
-      type: integer
-reference.a4Locked:
-  value: Zablokowane w Ustawieniach
-  description: 'live tuner: reference.a4Locked.'
-reference.frozen:
-  value: 'Ustalone: sesja ma już odczyty'
-  description: 'live tuner: reference.frozen.'
-reference.transpose:
-  value: Transpozycja
-  description: 'live tuner: reference.transpose.'
-reference.transposeDown:
-  value: O półton mniej
-  description: 'live tuner: reference.transposeDown.'
-reference.transposeHint:
-  value: 'O ile półtonów klawisze brzmią wyżej'
-  description: 'live tuner: reference.transposeHint.'
-reference.transposeMode:
-  value: Akordy i oktawy mierzy się bez transpozycji
-  description: 'live tuner: reference.transposeMode.'
-reference.transposeUp:
-  value: O półton więcej
-  description: 'live tuner: reference.transposeUp.'
+    n: {type: integer}
+
+register.hint: {value: "Wyciągnięty rejestr"}
+register.lockedPlaying: {value: "Zatrzymaj odtwarzanie, aby zmienić rejestr."}
+side.bass: {value: "Basy"}
+side.hint: {value: "Strona melodyczna lub basowa"}
+side.treble: {value: "Dyskant"}
+step.noteDown: {value: "Pół tonu w dół"}
+step.noteUp: {value: "Pół tonu w górę"}
+# Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
+# Reference pitch and units
+reference.a4Locked: {value: "Zablokowane w Ustawieniach"}
+reference.a4Type: {value: "Wpisz A4 w hercach, od 430 do 450"}
+reference.frozen: {value: "Ustalone: sesja ma już odczyty"}
+reference.transpose: {value: "Transpozycja"}
+reference.transposeDown: {value: "O półton mniej"}
+reference.transposeHint: {value: "O ile półtonów klawisze brzmią wyżej"}
+reference.transposeMode: {value: "Akordy i oktawy mierzy się bez transpozycji"}
+reference.transposeUp: {value: "O półton więcej"}
+
 reference.transposed:
-  value: Transpozycja +{n}
-  description: 'live tuner: reference.transposed. Parameters: n.'
+  value: "Transpozycja +{n}"
   placeholders:
-    n:
-      type: string
-register.hint:
-  value: 'Wyciągnięty rejestr'
-  description: 'live tuner: register.hint.'
-register.lockedPlaying:
-  value: Zatrzymaj odtwarzanie, aby zmienić rejestr.
-  description: 'live tuner: register.lockedPlaying.'
-ruler.label:
-  value: Odchyłka każdego głosu
-  description: 'live tuner: ruler.label.'
-side.bass:
-  value: Basy
-  description: 'live tuner: side.bass.'
-side.hint:
-  value: 'Strona melodyczna lub basowa'
-  description: 'live tuner: side.hint.'
-side.treble:
-  value: Dyskant
-  description: 'live tuner: side.treble.'
-source.analyze:
-  value: Analizuj nagranie…
-  description: 'live tuner: source.analyze.'
-source.default:
-  value: Urządzenie domyślne
-  description: 'live tuner: source.default.'
-source.noDevices:
-  value: Nie znaleziono mikrofonów
-  description: 'live tuner: source.noDevices.'
-source.refresh:
-  value: Odśwież listę urządzeń
-  description: 'live tuner: source.refresh.'
-spectrum.label:
-  value: Widmo częstotliwości śledzonego dźwięku
-  description: 'live tuner: spectrum.label.'
-spectrum.title:
-  value: Widmo
-  description: 'live tuner: spectrum.title.'
-state.deviceLost:
-  value: Utracono wejście
-  description: 'live tuner: state.deviceLost.'
-state.initializing:
-  value: Pomiar tła
-  description: 'live tuner: state.initializing.'
-state.running:
-  value: Nasłuchiwanie
-  description: 'live tuner: state.running.'
-state.stopped:
-  value: Zatrzymany
-  description: 'live tuner: state.stopped.'
-state.tooQuiet:
-  value: Za cicho, graj głośniej lub podejdź bliżej
-  description: 'live tuner: state.tooQuiet.'
-step.noteDown:
-  value: Pół tonu w dół
-  description: 'live tuner: step.noteDown.'
-step.noteUp:
-  value: Pół tonu w górę
-  description: 'live tuner: step.noteUp.'
-transport.start:
-  value: Start
-  description: 'live tuner: transport.start.'
-transport.stop:
-  value: Stop
-  description: 'live tuner: transport.stop.'
-unit.cents:
-  value: Cent
-  description: 'live tuner: unit.cents.'
-unit.hz:
-  value: Hz
-  description: 'live tuner: unit.hz.'
-unit.label:
-  value: Jednostka odchyłki
-  description: 'live tuner: unit.label.'
-unit.reference:
-  value: Jednostki
-  description: 'live tuner: unit.reference.'
-warmup.play:
-  value: Teraz graj
-  description: 'live tuner: warmup.play.'
-warmup.quiet:
-  value: Cisza
-  description: 'live tuner: warmup.quiet.'
+    n: {type: string}
 
-controls:
-  value: Sterowanie strojeniem
-  description: Opens the tuning controls on compact screens.
+unit.cents: {value: "Cent"}
+unit.hz: {value: "Hz"}
+unit.reference: {value: "Jednostki"}
 
-panel.quiet:
-  value: Za cicho
-  description: Short quiet-input status on the fixed tuner readout.
-soundcard.uncalibrated:
-  value: 'Karta dźwiękowa nieskalibrowana. Skalibruj'
-  description: 'live tuner: soundcard.uncalibrated.'
-soundcard.unreliable:
-  value: 'Kalibracja niepewna. Skalibruj ponownie'
-  description: 'live tuner: soundcard.unreliable.'
-soundcard.running:
-  value: 'Kalibrowanie karty dźwiękowej'
-  description: 'live tuner: soundcard.running.'
-mode.autoHint:
-  value: 'Niech tuner sam znajdzie nutę'
-  description: 'live tuner: mode.autoHint.'
-mode.pinHint:
-  value: 'Przypnij tę nutę'
-  description: 'live tuner: mode.pinHint.'
-mode.pinned:
-  value: 'Przypięta nuta'
-  description: 'live tuner: mode.pinned.'
-transport.fileHint:
-  value: 'Nagranie odtwarza się z jego karty'
-  description: 'live tuner: transport.fileHint.'
-reference.a4Type:
-  value: 'Wpisz A4 w hercach, od 430 do 450'
-  description: 'live tuner: reference.a4Type.'
+# Live readings and graphs
+boxes.beat:
+  value: "Dudnienie {a} do {b}"
+  placeholders:
+    a: {type: string}
+    b: {type: string}
+
+boxes.goal: {value: "cel"}
+boxes.hzOnly: {value: "tylko w Hz"}
+boxes.notHeard: {value: "nie słychać"}
+
+boxes.reed:
+  value: "Głos {n}"
+  placeholders:
+    n: {type: string}
+
+boxes.reedBank:
+  value: "Głos {bank}"
+  placeholders:
+    bank: {type: string}
+
+boxes.tone:
+  value: "Dźwięk {n}"
+  placeholders:
+    n: {type: string}
+
+ruler.label: {value: "Odchyłka każdego głosu"}
+spectrum.label: {value: "Widmo częstotliwości śledzonego dźwięku"}
+spectrum.title: {value: "Widmo"}
+
+# Hold, noise learning and tuner state
+hold.hint: {value: "Zatrzymuj stabilne odczyty (H)"}
+state.deviceLost: {value: "Utracono wejście"}
+state.initializing: {value: "Pomiar tła"}
+state.running: {value: "Nasłuchiwanie"}
+state.stopped: {value: "Zatrzymany"}
+state.tooQuiet: {value: "Za cicho, graj głośniej lub podejdź bliżej"}
+warmup.quiet: {value: "Cisza"}
+
+# WAV files and waveform controls
+file.clearSelection: {value: "Zaznacz całe nagranie"}
+file.fit: {value: "Pokaż całe nagranie"}
+file.loop: {value: "Zapętl zaznaczenie"}
+file.mute: {value: "Wycisz nagranie"}
+file.openFilter: {value: "Audio WAV"}
+file.openTitle: {value: "Wybierz nagranie WAV"}
+file.pause: {value: "Pauza"}
+file.play: {value: "Odtwarzaj"}
+file.stop: {value: "Zatrzymaj i wróć na początek zaznaczenia"}
+file.toEnd: {value: "Na koniec zaznaczenia"}
+file.toStart: {value: "Na początek zaznaczenia"}
+file.unmute: {value: "Włącz dźwięk nagrania"}
+file.volume: {value: "Głośność odtwarzania"}
+
+file.waveform:
+  value: >-
+    Przebieg pliku {name}. Przeciągnij oś czasu, aby przesunąć głowicę, przeciągnij przebieg, aby
+    zaznaczyć fragment. Po zatrzymaniu odtwarzania jasna przerywana linia wskazuje dźwięk, z
+    którego pochodzi odczyt na ekranie.
+  placeholders:
+    name: {type: string}
+
+file.zoomIn: {value: "Powiększ"}
+file.zoomOut: {value: "Pomniejsz"}
+
+# Instrument calibration workflow
+calibrate.leave: {value: "Wyjdź z kalibracji"}
+calibrate.needsSession: {value: "Otwórz sesję, aby skalibrować jej instrument."}
+calibrate.range.again: {value: "Od nowa"}
+
+calibrate.range.backwards:
+  value: "Najwyższy dźwięk nie może być niższy od najniższego. Zmierz zakres ponownie."
+
+calibrate.range.capture: {value: "Zapisz"}
+calibrate.range.highest: {value: "Najwyższy"}
+calibrate.range.lowest: {value: "Najniższy"}
+calibrate.range.next: {value: "Przejdź do kalibracji stroików"}
+calibrate.range.playHigh: {value: "Teraz zagraj najwyższy klawisz."}
+calibrate.range.playLow: {value: "Zagraj najniższy klawisz."}
+calibrate.range.step: {value: "Klawiatura"}
+calibrate.status.captured: {value: "Zapisano"}
+calibrate.status.holding: {value: "Utrzymuj dźwięk"}
+calibrate.status.loud: {value: "Za głośno"}
+calibrate.status.play: {value: "Zagraj dźwięk"}
+calibrate.sweep.bassAll: {value: "Basy - cała maszyna"}
+
+calibrate.sweep.done:
+  plural:
+    argument: n
+    forms:
+      one: "Zeskanowano. {n} odczyt na karcie."
+      few: "Zeskanowano. {n} odczyty na karcie."
+      many: "Zeskanowano. {n} odczytów na karcie."
+      other: "Zeskanowano. {n} odczytów na karcie."
+  placeholders:
+    n: {type: integer}
+
+calibrate.sweep.noRegisters:
+  value: "Ten akordeon nie ma opisanych rejestrów. Skan i tak działa; odczyty trafiają do numerowanych kolumn."
+
+calibrate.sweep.pickRegister: {value: "Który rejestr kalibrujesz?"}
+
+calibrate.sweep.progress:
+  value: "{done} z {total}"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+calibrate.sweep.redoRange: {value: "Popraw klawiaturę"}
+calibrate.sweep.review: {value: "Zobacz kartę"}
+calibrate.sweep.skip: {value: "Pomiń"}
+calibrate.sweep.soloTeaches: {value: "Skan rejestru z jednym głosem uczy też aplikację brzmienia tego głosu."}
+calibrate.sweep.startPlain: {value: "Zacznij skan"}
+calibrate.sweep.step: {value: "Głosy"}
+calibrate.sweep.stop: {value: "Zatrzymaj"}
+calibrate.title: {value: "Kalibracja"}
+
+# Browser edition
+web.accent.default: {value: "Domyślny"}
+web.accent.hint: {value: "Kolor aplikacji lub własny"}
+web.diagnostics.copied: {value: "Skopiowano"}
+web.diagnostics.copy: {value: "Kopiuj diagnostykę"}
+web.diagnostics.empty: {value: "Uruchom stroik, aby zobaczyć dane mikrofonu."}
+web.diagnostics.title: {value: "Diagnostyka"}
+web.downloads.title: {value: "Pobierz aplikację"}
+web.experimental: {value: "Eksperymentalna"}
+web.loadFailed: {value: "Silnik nie uruchomił się w tej przeglądarce."}
+
+web.mic.denied:
+  value: >-
+    Odmówiono dostępu do mikrofonu. Zezwól na niego w ustawieniach przeglądarki i uruchom stroik
+    ponownie.
+
+web.mic.failed: {value: "Nie udało się otworzyć mikrofonu."}
+web.mic.none: {value: "Nie znaleziono mikrofonu."}
+web.mic.unsupported: {value: "Ta przeglądarka nie może nagrywać dźwięku."}
+web.notice.background: {value: "Karta w tle może wstrzymać dźwięk."}
+web.notice.native: {value: "Dokładna jest zainstalowana aplikacja."}
+web.notice.ok: {value: "Rozumiem"}
+
+web.notice.processing:
+  value: >-
+    Przeglądarka może stosować do mikrofonu usuwanie echa, redukcję szumów, automatyczne
+    wzmocnienie lub zmianę częstotliwości próbkowania. Każde z nich może zmienić odczyty.
+
+web.notice.title: {value: "Eksperymentalna wersja przeglądarkowa"}
+web.processing.autoGainControl: {value: "automatyczne wzmocnienie"}
+web.processing.echoCancellation: {value: "usuwanie echa"}
+web.processing.noiseSuppression: {value: "redukcja szumów"}
+
+web.processingOn:
+  value: "Przeglądarka pozostawiła włączone: {list}. Odczyty mogą być niedokładne."
+  placeholders:
+    list: {type: string}
+
+web.slow:
+  value: >-
+    To urządzenie nie nadąża za silnikiem. Spóźniony dźwięk jest pomijany, aby odczyty pozostały
+    aktualne.
+
+# Tuner errors
+error.a4Locked: {value: "Wysokość odniesienia jest zablokowana w Ustawieniach."}
+error.chordsAuto: {value: "W trybie akordów tuner sam wybiera dźwięki."}
+error.deviceGone: {value: "Ten mikrofon nie jest już podłączony."}
+error.deviceLost: {value: "Mikrofon przestał odpowiadać i tuner został zatrzymany."}
+error.fileUnreadable: {value: "Nie udało się odczytać nagrania. Musi to być plik WAV."}
+error.invalidA4: {value: "Wysokość odniesienia musi mieścić się w zakresie 430-450 Hz."}
+error.invalidBox: {value: "Nie ma takiego pola głosu."}
+error.invalidMode: {value: "Tuner mierzy dźwięki, oktawy albo akordy."}
+error.invalidNote: {value: "Ten dźwięk jest poza zakresem śledzonym przez tuner."}
+error.invalidTranspose: {value: "Transpozycja wynosi od 0 do 11 półtonów."}
+error.lastBox: {value: "Co najmniej jedno pole zostaje włączone."}
+error.noDevices: {value: "Nie znaleziono mikrofonu. Podłącz go i odśwież listę urządzeń."}
+error.playbackFailed: {value: "Nie udało się odtworzyć dźwięku odniesienia."}
+
+error.sampleRate:
+  value: >-
+    Częstotliwość próbkowania wejścia jest za niska dla najwyższych dźwięków przy tej wysokości i
+    transpozycji. Użyj nagrania z próbkowaniem 44,1 kHz lub wyższym.
+
+error.sessionDecides: {value: "O tym, co jest mierzone, decyduje rejestr otwartej sesji."}
+error.toneNeedsManual: {value: "Przypnij dźwięk, aby zagrać jego ton."}
+error.transposeMode: {value: "Akordy i oktawy mierzy się bez transpozycji."}
+error.unexpected: {value: "Coś poszło nie tak. Szczegóły znajdziesz w logu."}

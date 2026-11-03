@@ -35,7 +35,7 @@
       />
       <UiToolKey
         icon="mdi-delete-outline"
-        :title="t('session.delete')"
+        :title="t('common.delete')"
         @click="emit('delete', session.id)"
       />
     </div>

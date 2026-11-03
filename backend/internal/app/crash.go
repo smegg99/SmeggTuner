@@ -27,7 +27,7 @@ type startupFailure struct {
 func crashOptions() crash.Options {
 	return crash.Options{
 		App: application.Options{
-			Name:         i18n.AppName(i18n.Localizer()),
+			Name:         i18n.CommonAppName(i18n.Localizer()),
 			Icon:         trayicons.AppIcon,
 			Logger:       logger.Wails(),
 			PanicHandler: crash.PanicHandler,

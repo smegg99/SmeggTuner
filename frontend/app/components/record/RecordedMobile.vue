@@ -6,7 +6,7 @@
     <UiPageStepper
       :model-value="index"
       :count="rows.length"
-      :label="t('record.table.note')"
+      :label="t('common.note')"
       @update:model-value="select"
     >
       <strong>{{ row.noteName }}</strong> {{ row.register }}
@@ -17,7 +17,7 @@
       :label="voiceLabel"
     />
     <table class="reading-table">
-      <thead><tr><th>{{ t('record.mobile.current') }}</th><th>{{ t('record.mobile.goal') }}</th><th>{{ t('record.mobile.error') }}</th></tr></thead>
+      <thead><tr><th>{{ t('record.mobile.current') }}</th><th>{{ t('settings.errorReferenceGoal') }}</th><th>{{ t('record.mobile.error') }}</th></tr></thead>
       <tbody>
         <tr>
           <RecordRecordedReedCell

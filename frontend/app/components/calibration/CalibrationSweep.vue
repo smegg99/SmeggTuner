@@ -19,7 +19,7 @@
           :style="{ width: `${pct}%` }"
         />
       </div>
-      <span class="sw__count">{{ t('calibrate.sweep.progress', { done: progress.done, total: progress.total }) }}</span>
+      <span class="sw__count">{{ t('tuner.calibrate.sweep.progress', { done: progress.done, total: progress.total }) }}</span>
     </div>
 
     <p
@@ -38,20 +38,20 @@
     <div class="sw__keys">
       <UiToolKey
         icon="mdi-debug-step-over"
-        :label="t('calibrate.sweep.skip')"
-        :title="t('calibrate.sweep.skip')"
+        :label="t('tuner.calibrate.sweep.skip')"
+        :title="t('tuner.calibrate.sweep.skip')"
         @click="skip"
       />
       <v-btn
-        :title="t('calibrate.sweep.stop')"
-        :aria-label="t('calibrate.sweep.stop')"
+        :title="t('tuner.calibrate.sweep.stop')"
+        :aria-label="t('tuner.calibrate.sweep.stop')"
         class="tone-key"
         style="--key-tone: rgb(var(--v-theme-reed))"
         prepend-icon="mdi-stop"
         :data-icon="'mdi-stop'"
         @click="finish"
       >
-        {{ t('calibrate.sweep.stop') }}
+        {{ t('tuner.calibrate.sweep.stop') }}
       </v-btn>
     </div>
   </div>
@@ -65,19 +65,19 @@
       class="sw__done-icon"
     />
     <p class="sw__prompt">
-      {{ t('calibrate.sweep.done', capturedCount) }}
+      {{ t('tuner.calibrate.sweep.done', capturedCount) }}
     </p>
     <div class="sw__keys">
       <UiToolKey
         icon="mdi-table"
-        :label="t('calibrate.sweep.review')"
-        :title="t('calibrate.sweep.review')"
+        :label="t('tuner.calibrate.sweep.review')"
+        :title="t('tuner.calibrate.sweep.review')"
         @click="setView('workshop')"
       />
       <UiToolKey
         icon="mdi-refresh"
-        :label="t('calibrate.sweep.again')"
-        :title="t('calibrate.sweep.again')"
+        :label="t('settings.calibration.screen.again')"
+        :title="t('settings.calibration.screen.again')"
         @click="reset"
       />
     </div>

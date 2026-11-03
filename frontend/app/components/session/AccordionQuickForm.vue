@@ -3,18 +3,18 @@
   <div class="quick">
     <UiFormField
       v-slot="{ id }"
-      :label="t('instrument.name')"
-      :hint="t('instrument.nameHint')"
-      :error="nameError ? t('instrument.nameRequired') : ''"
+      :label="t('session.instrument.name')"
+      :hint="t('session.instrument.nameHint')"
+      :error="nameError ? t('session.instrument.nameRequired') : ''"
     >
       <v-text-field
         :id="id"
         v-model="name"
         :maxlength="MAX_INSTRUMENT_NAME"
-        :placeholder="t('instrument.namePlaceholder')"
+        :placeholder="t('session.instrument.namePlaceholder')"
         hide-details="auto"
         autocomplete="off"
-        :aria-label="t('instrument.name')"
+        :aria-label="t('session.instrument.name')"
         :aria-invalid="nameError || undefined"
         :error="nameError"
       />
@@ -22,16 +22,16 @@
 
     <UiFormField
       v-slot="{ id }"
-      :label="t('instrument.a4')"
-      :hint="t('instrument.a4Hint')"
+      :label="t('session.instrument.a4')"
+      :hint="t('session.instrument.a4Hint')"
     >
       <v-text-field
         :id="id"
         v-model="a4Draft"
-        :suffix="t('settings.a4Unit')"
+        :suffix="t('tuner.unit.hz')"
         hide-details="auto"
         autocomplete="off"
-        :aria-label="t('instrument.a4')"
+        :aria-label="t('session.instrument.a4')"
         inputmode="decimal"
         class="tuner-number"
         @blur="emit('commitA4')"

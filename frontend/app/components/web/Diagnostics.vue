@@ -1,14 +1,14 @@
 <!-- app/components/web/Diagnostics.vue -->
 <template>
   <UiFormSection
-    :title="t('web.diagnostics.title')"
+    :title="t('tuner.web.diagnostics.title')"
     class="tuner-section settings__section"
   >
     <p
       v-if="!track"
       class="diag__empty"
     >
-      {{ t('web.diagnostics.empty') }}
+      {{ t('tuner.web.diagnostics.empty') }}
     </p>
     <pre class="diag">{{ text }}</pre>
     <v-btn
@@ -16,7 +16,7 @@
       prepend-icon="mdi-content-copy"
       @click="copy"
     >
-      {{ copied ? t('web.diagnostics.copied') : t('web.diagnostics.copy') }}
+      {{ copied ? t('tuner.web.diagnostics.copied') : t('tuner.web.diagnostics.copy') }}
     </v-btn>
   </UiFormSection>
 </template>

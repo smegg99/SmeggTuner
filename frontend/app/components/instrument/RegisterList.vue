@@ -21,7 +21,7 @@
         <button
           type="button"
           class="item__kill"
-          :title="t('instrument.builder.remove')"
+          :title="t('session.instrument.builder.remove')"
           @click="emit('remove', i)"
         >
           <v-icon
@@ -36,7 +36,7 @@
       v-if="compact && items.length > 1"
       v-model="page"
       :count="items.length"
-      :label="t('instrument.sections.voices')"
+      :label="t('session.instrument.sections.voices')"
     />
     <p
       v-if="!items.length"

@@ -107,13 +107,13 @@ describe('the file transport, with its real children', () => {
     const titles = mountReal().findAll('button').map(b => b.attributes('title'))
 
     expect(titles).toEqual([
-      'file.toStart',
-      'file.toEnd',
-      'file.loop',
-      'file.zoomOut',
-      'file.zoomIn',
-      'file.fit',
-      'file.clearSelection',
+      'tuner.file.toStart',
+      'tuner.file.toEnd',
+      'tuner.file.loop',
+      'tuner.file.zoomOut',
+      'tuner.file.zoomIn',
+      'tuner.file.fit',
+      'tuner.file.clearSelection',
     ])
   })
 
@@ -126,7 +126,7 @@ describe('the file transport, with its real children', () => {
   it('carries no volume of its own by default', () => {
     const w = mountReal()
 
-    expect(w.findAll('button').map(b => b.attributes('title'))).not.toContain('file.mute')
+    expect(w.findAll('button').map(b => b.attributes('title'))).not.toContain('tuner.file.mute')
     expect(w.find('[role="slider"]').exists()).toBe(false)
   })
 
@@ -134,14 +134,14 @@ describe('the file transport, with its real children', () => {
     const titles = mountReal({ withVolume: true }).findAll('button').map(b => b.attributes('title'))
 
     expect(titles).toEqual([
-      'file.toStart',
-      'file.toEnd',
-      'file.loop',
-      'file.mute',
-      'file.zoomOut',
-      'file.zoomIn',
-      'file.fit',
-      'file.clearSelection',
+      'tuner.file.toStart',
+      'tuner.file.toEnd',
+      'tuner.file.loop',
+      'tuner.file.mute',
+      'tuner.file.zoomOut',
+      'tuner.file.zoomIn',
+      'tuner.file.fit',
+      'tuner.file.clearSelection',
     ])
   })
 
@@ -153,9 +153,9 @@ describe('the file transport, with its real children', () => {
   it('does not duplicate the run controls', () => {
     const titles = mountReal().findAll('button').map(b => b.attributes('title'))
 
-    expect(titles).not.toContain('file.play')
-    expect(titles).not.toContain('file.pause')
-    expect(titles).not.toContain('file.stop')
+    expect(titles).not.toContain('tuner.file.play')
+    expect(titles).not.toContain('tuner.file.pause')
+    expect(titles).not.toContain('tuner.file.stop')
   })
 
   it('puts a real volume control on the screen', () => {

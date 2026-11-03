@@ -15,7 +15,7 @@ describe('recorded reed keyboard editing', () => {
   let wrapper: ReturnType<typeof mount<typeof RecordedReedCell>>
   beforeEach(() => {
     vi.stubGlobal('useI18n', () => ({
-      t: (key: string, params?: { index: number }) => key === 'record.table.reed' ? `Reed ${params?.index}` : key,
+      t: (key: string, params?: { index: number }) => key === 'common.reed' ? `Reed ${params?.index}` : key,
       n: (value: number) => String(value),
     }))
     wrapper = mount(RecordedReedCell, { props: { cell, noteName: 'A4' }, attachTo: document.body })

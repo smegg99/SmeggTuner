@@ -1,22 +1,22 @@
 <template>
   <UiFormSection
-    :title="t('instrument.sections.identity')"
+    :title="t('session.instrument.sections.identity')"
     class="tuner-section"
   >
     <UiFormField
       v-slot="{ id }"
-      :label="t('instrument.name')"
-      :hint="t('instrument.nameHint')"
-      :error="nameError ? t('instrument.nameRequired') : ''"
+      :label="t('session.instrument.name')"
+      :hint="t('session.instrument.nameHint')"
+      :error="nameError ? t('session.instrument.nameRequired') : ''"
     >
       <v-text-field
         :id="id"
         v-model="name"
         :maxlength="MAX_INSTRUMENT_NAME"
-        :placeholder="t('instrument.namePlaceholder')"
+        :placeholder="t('session.instrument.namePlaceholder')"
         hide-details="auto"
         autocomplete="off"
-        :aria-label="t('instrument.name')"
+        :aria-label="t('session.instrument.name')"
         :error="nameError"
         @keyup.enter="emit('submit')"
       />

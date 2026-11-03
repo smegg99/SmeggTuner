@@ -8,8 +8,8 @@
       <WebAppWindow v-if="entered" />
       <ShellBootScreen
         v-else
-        :failure="status === 'failed' ? failure || t('web.loadFailed') : undefined"
-        :message="t('web.loadFailed')"
+        :failure="status === 'failed' ? failure || t('tuner.web.loadFailed') : undefined"
+        :message="t('tuner.web.loadFailed')"
       />
     </Transition>
   </v-app>

@@ -2,8 +2,8 @@
   <div class="calibration-tools key-row">
     <UiToolKey
       icon="mdi-arrow-left"
-      :label="t('calibrate.leave')"
-      :title="t('calibrate.leave')"
+      :label="t('tuner.calibrate.leave')"
+      :title="t('tuner.calibrate.leave')"
       @click="setView('workshop')"
     />
 

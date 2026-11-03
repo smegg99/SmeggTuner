@@ -9,7 +9,7 @@
       icon="mdi-speedometer-slow"
       size="16"
     />
-    {{ t('web.slow') }}
+    {{ t('tuner.web.slow') }}
   </p>
 </template>
 

@@ -32,7 +32,7 @@
       <UiToolKey
         icon="mdi-refresh"
         :disabled="loading || running"
-        :title="t('settings.audioDeviceRefresh')"
+        :title="t('tuner.source.refresh')"
         @click="browse"
       />
     </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="build">
-    <span class="build__h">{{ t('instrument.builder.title') }}</span>
+    <span class="build__h">{{ t('session.instrument.builder.title') }}</span>
 
     <div class="build__body">
       <span class="build__sym"><InstrumentRegisterSymbol :banks="banks" /></span>
@@ -8,7 +8,7 @@
       <!-- Rows mirror the engraving top to bottom: 4' high, 8' middle, 16' low. -->
       <div class="build__rows">
         <div class="build__row">
-          <span class="build__label">{{ t('instrument.builder.high') }}</span>
+          <span class="build__label">{{ t('session.instrument.builder.high') }}</span>
           <UiToolKey
             :label="t(sym.high ? 'common.yes' : 'common.no')"
             :active="sym.high"
@@ -18,17 +18,17 @@
         </div>
 
         <div class="build__row">
-          <span class="build__label">{{ t('instrument.builder.middle') }}</span>
+          <span class="build__label">{{ t('session.instrument.builder.middle') }}</span>
           <UiToolGroup
             :model-value="sym.middle"
             :items="COUNTS"
-            :label="t('instrument.builder.middle')"
+            :label="t('session.instrument.builder.middle')"
             @update:model-value="n => sym.middle = n as number"
           />
         </div>
 
         <div class="build__row">
-          <span class="build__label">{{ t('instrument.builder.low') }}</span>
+          <span class="build__label">{{ t('session.instrument.builder.low') }}</span>
           <UiToolKey
             :label="t(sym.low ? 'common.yes' : 'common.no')"
             :active="sym.low"
@@ -40,7 +40,7 @@
 
       <UiToolKey
         icon="mdi-plus"
-        :label="t('instrument.builder.add')"
+        :label="t('session.instrument.builder.add')"
         :disabled="!canAdd"
         :title="addHint"
         @click="add"
@@ -73,7 +73,7 @@ const canAdd = computed(() => canAddRegister(props.have, banks.value))
 // Why the key is off, when it is off for a reason worth saying.
 const addHint = computed(() => {
   if (canAdd.value || !banks.value.length) return ''
-  return t('instrument.builder.already')
+  return t('session.instrument.builder.already')
 })
 
 function add() {

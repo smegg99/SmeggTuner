@@ -68,7 +68,7 @@ async function refresh(log: Logger, browse = false) {
     if (seq !== refreshSeq) return
 
     devices.value = []
-    error.value = err instanceof MicError ? `web.mic.${err.reason}` : toErrorKey(err)
+    error.value = err instanceof MicError ? `tuner.web.mic.${err.reason}` : toErrorKey(err)
     log.error('log.frontendAudioListFailed', { error: String(err) })
   }
   finally {
@@ -147,6 +147,6 @@ export function useAudioDevices() {
     browse: () => loading.value ? Promise.resolve() : refresh(log, true),
     selectMic: (deviceId: string) => select(() => AudioService.SelectMic(deviceId), log),
     selectFile: (path: string, loop: boolean) => select(() => AudioService.SelectFile(path, loop), log),
-    pickFile: () => pickFile(log, { title: t('file.openTitle'), filter: t('file.openFilter') }),
+    pickFile: () => pickFile(log, { title: t('tuner.file.openTitle'), filter: t('tuner.file.openFilter') }),
   }
 }

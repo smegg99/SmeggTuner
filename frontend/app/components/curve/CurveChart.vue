@@ -1,7 +1,7 @@
 <template>
   <UiPanel
     class="curve-panel"
-    :title="t('sessionPage.tabs.curve')"
+    :title="t('session.curve.helpTitle')"
     flush
   >
     <template #actions>
@@ -9,7 +9,7 @@
       <UiToolKey
         icon="mdi-information-outline"
         class="panel-help"
-        :title="t('curve.helpTitle')"
+        :title="t('session.curve.helpTitle')"
         @click="emit('help')"
       />
     </template>
@@ -21,7 +21,7 @@
         v-if="!range"
         class="plot__empty"
       >
-        {{ t('curve.startHint') }}
+        {{ t('session.curve.startHint') }}
       </p>
       <Line
         v-else

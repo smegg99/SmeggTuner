@@ -1,226 +1,291 @@
-accordion.a4Locked:
-  value: 'Fixed: this session has already recorded against it.'
-  description: 'session management: accordion.a4Locked.'
-accordion.columnsRefused:
-  value: This change would alter the reed ranks used by existing readings. The change was not saved. Restore the
-    previous ranks or create a new session.
-  description: 'session management: accordion.columnsRefused.'
-accordion.frozen:
-  value: The reference pitch and reed ranks cannot change after readings are recorded. You can still add registers
-    using the existing ranks.
-  description: 'session management: accordion.frozen.'
-accordion.remember:
-  value: Save to instrument library
-  description: 'session management: accordion.remember.'
-accordion.rememberHint:
-  value: Save this session's instrument to the library for use in future sessions.
-  description: 'session management: accordion.rememberHint.'
+# Sessions, instruments and target curves (English).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one = 1; other = 0, 2, 3, ...
+
+# Session list and actions
 card.a4:
-  value: A = {hz} Hz
-  description: 'session management: card.a4. Parameters: hz.'
+  value: "A = {hz} Hz"
   placeholders:
-    hz:
-      type: string
-card.changed:
-  value: The accordion on the shelf has changed since this session was recorded.
-  description: 'session management: card.changed.'
-card.hasCurve:
-  value: Goal curve set
-  description: 'session management: card.hasCurve.'
+    hz: {type: string}
+
+card.changed: {value: "The accordion on the shelf has changed since this session was recorded."}
+card.hasCurve: {value: "Goal curve set"}
+
 card.readings:
   plural:
     argument: count
     forms:
-      one: '{count} reading'
-      other: '{count} readings'
-  description: 'session management: card.readings. Parameters: count.'
+      one: "{count} reading"
+      other: "{count} readings"
   placeholders:
-    count:
-      type: integer
-card.unnamedInstrument:
-  value: Accordion not named
-  description: 'session management: card.unnamedInstrument.'
+    count: {type: integer}
+
+card.unnamedInstrument: {value: "Accordion not named"}
+
 card.updated:
-  value: Updated {when}
-  description: 'session management: card.updated. Parameters: when.'
+  value: "Updated {when}"
   placeholders:
-    when:
-      type: string
-delete:
-  value: Delete
-  description: 'session management: delete.'
-deleteHint:
-  value: Permanently delete this session, including all passes, readings and its tuning curve.
-  description: 'session management: deleteHint.'
-deleteTitle:
-  value: Delete this session?
-  description: 'session management: deleteTitle.'
-dialog.backToList:
-  value: Pick one already tuned
-  description: 'session management: dialog.backToList.'
-dialog.describeNew:
-  value: Describe a new one...
-  description: 'session management: dialog.describeNew.'
-dialog.forgetAccordion:
-  value: Forget this accordion
-  description: 'session management: dialog.forgetAccordion.'
-dialog.instrument:
-  value: Accordion
-  description: 'session management: dialog.instrument.'
-dialog.loadAccordion:
-  value: Load from file...
-  description: 'session management: dialog.loadAccordion.'
-dialog.name:
-  value: Session name
-  description: 'session management: dialog.name.'
-dialog.nameHint:
-  value: Use an instrument or customer name to identify the session.
-  description: 'session management: dialog.nameHint.'
-dialog.newTitle:
-  value: New session
-  description: 'session management: dialog.newTitle.'
-dialog.pickAccordion:
-  value: Which accordion?
-  description: 'session management: dialog.pickAccordion.'
-dialog.start:
-  value: Start
-  description: 'session management: dialog.start.'
-empty:
-  value: No sessions yet
-  description: 'session management: empty.'
-emptyHint:
-  value: Create a session to save measurements, or use the tuner without one.
-  description: 'session management: emptyHint.'
-error.fitFailed:
-  value: Could not fit a curve to that pass.
-  description: 'session management: error.fitFailed.'
-error.hasReadings:
-  value: 'This session already holds readings: they were all measured against its reference and reed count, so neither
-    can change now.'
-  description: 'session management: error.hasReadings.'
-error.imageUnreadable:
-  value: That photograph would not open.
-  description: 'session management: error.imageUnreadable.'
-error.instrumentName:
-  value: Give the accordion a name so you can find it again.
-  description: 'session management: error.instrumentName.'
-error.invalidA4:
-  value: The reference pitch must be between 430 and 450 Hz.
-  description: 'session management: error.invalidA4.'
-error.invalidInstrument:
-  value: 'That accordion cannot be used: a reed rank is named twice, or a register sounds a rank the accordion does
-    not have.'
-  description: 'session management: error.invalidInstrument.'
-error.invalidName:
-  value: Give the session a name.
-  description: 'session management: error.invalidName.'
-error.invalidNote:
-  value: That note is outside the range the tuner tracks.
-  description: 'session management: error.invalidNote.'
-error.invalidReed:
-  value: This accordion does not sound that reed.
-  description: 'session management: error.invalidReed.'
-error.invalidReedCount:
-  value: An accordion sounds between 1 and 8 reeds on a note.
-  description: 'session management: error.invalidReedCount.'
-error.invalidTranspose:
-  value: Transposition is 0 to 11 semitones.
-  description: 'session management: error.invalidTranspose.'
-error.invalidUnit:
-  value: Values are entered in units of 0.06 %, in cents or in hertz.
-  description: 'session management: error.invalidUnit.'
-error.invalidValue:
-  value: That value is not a number.
-  description: 'session management: error.invalidValue.'
-error.loadFailed:
-  value: Could not read the session.
-  description: 'session management: error.loadFailed.'
-error.noBassMachine:
-  value: This accordion declares no bass machine.
-  description: 'session management: error.noBassMachine.'
-error.noBassRegister:
-  value: The accordion has no such bass register.
-  description: 'session management: error.noBassRegister.'
-error.noCurve:
-  value: This session has no goal curve.
-  description: 'session management: error.noCurve.'
-error.noReadings:
-  value: Nothing has been recorded in this session yet.
-  description: 'session management: error.noReadings.'
-error.noRegister:
-  value: This accordion has no such register.
-  description: 'session management: error.noRegister.'
-error.noSession:
-  value: No session is open.
-  description: 'session management: error.noSession.'
-error.notAnImage:
-  value: That file is not a photograph.
-  description: 'session management: error.notAnImage.'
-error.notFound:
-  value: That session is gone.
-  description: 'session management: error.notFound.'
-error.notesTooLong:
-  value: Shorten the note to 500 characters.
-  description: 'session management: error.notesTooLong.'
-error.saveFailed:
-  value: Could not save the session. Your last takes may be lost if you close now.
-  description: 'session management: error.saveFailed.'
-error.takeNotFound:
-  value: That reading is gone.
-  description: 'session management: error.takeNotFound.'
-error.unexpected:
-  value: Something went wrong.
-  description: 'session management: error.unexpected.'
-export:
-  value: Export session
-  description: 'session management: export.'
-file.exportSessionTitle:
-  value: Export session
-  description: 'session management: file.exportSessionTitle.'
-file.openFilter:
-  value: smeggtuner session
-  description: 'session management: file.openFilter.'
-file.openTitle:
-  value: Select a session file
-  description: 'session management: file.openTitle.'
+    when: {type: string}
+
+deleteHint: {value: "Permanently delete this session, including all passes, readings and its tuning curve."}
+deleteTitle: {value: "Delete this session?"}
+empty: {value: "No sessions yet"}
+emptyHint: {value: "Create a session to save measurements, or use the tuner without one."}
+export: {value: "Export session"}
+file.openFilter: {value: "smeggtuner session"}
+file.openTitle: {value: "Select a session file"}
+new: {value: "New session"}
+title: {value: "Sessions"}
+
+# Session dialog and tabs
+dialog.backToList: {value: "Pick one already tuned"}
+dialog.describeNew: {value: "Describe a new one..."}
+dialog.forgetAccordion: {value: "Forget this accordion"}
+dialog.loadAccordion: {value: "Load from file..."}
+dialog.name: {value: "Session name"}
+dialog.nameHint: {value: "Use an instrument or customer name to identify the session."}
+dialog.pickAccordion: {value: "Which accordion?"}
+dialog.start: {value: "Start"}
+page.mobile.curve: {value: "Targets"}
+page.mobile.recorded: {value: "Readings"}
+
+# Instrument editing restrictions
+accordion.a4Locked: {value: "Fixed: this session has already recorded against it."}
+
+accordion.columnsRefused:
+  value: >-
+    This change would alter the reed ranks used by existing readings. The change was not saved.
+    Restore the previous ranks or create a new session.
+
+accordion.frozen:
+  value: >-
+    The reference pitch and reed ranks cannot change after readings are recorded. You can still
+    add registers using the existing ranks.
+
+accordion.frozenShort: {value: "Ranks locked"}
+accordion.remember: {value: "Save to instrument library"}
+accordion.rememberHint: {value: "Save this session's instrument to the library for use in future sessions."}
+
+# Instrument definition and registers
+instrument.a4: {value: "Reference pitch"}
+
+instrument.a4Hint:
+  value: "Reference frequency of A4 in hertz. New sessions for this instrument use this value."
+
+instrument.bass.build: {value: "Feet the next switch sounds"}
+instrument.bass.fixed: {value: "No bass registers: a fixed machine, every voice always sounds."}
+
+instrument.bass.full:
+  value: "A bass machine here carries at most {n} switches"
+  placeholders:
+    n: {type: string}
+
+instrument.bass.hint: {value: "Declare how many voices the bass sounds; most machines have four or five."}
+instrument.bass.registerName: {value: "Switch name"}
+instrument.bass.voices: {value: "Bass voices"}
+instrument.beatTolerance: {value: "Beat tolerance"}
+instrument.builder.add: {value: "Add"}
+instrument.builder.already: {value: "That switch is already described"}
+instrument.builder.high: {value: "4' piccolo"}
+instrument.builder.low: {value: "16' bass"}
+instrument.builder.middle: {value: "8' reeds"}
+instrument.builder.none: {value: "No switches yet. Pick the ranks each one sounds, below."}
+instrument.builder.remove: {value: "Remove this register"}
+instrument.builder.title: {value: "Add a switch"}
+instrument.file.exportTitle: {value: "Export accordion"}
+instrument.file.filterName: {value: "smeggtuner accordion"}
+instrument.file.imageFilter: {value: "Images"}
+instrument.file.imageTitle: {value: "Select a photograph"}
+instrument.file.openTitle: {value: "Select an accordion file"}
+instrument.name: {value: "Name"}
+instrument.nameHint: {value: "Name shown in the instrument library and sessions."}
+instrument.namePlaceholder: {value: "Hohner Morino V N"}
+instrument.nameRequired: {value: "Enter an accordion name."}
+instrument.photo: {value: "Photograph"}
+instrument.range.backwards: {value: "The highest note must not be lower than the lowest note."}
+instrument.range.clear: {value: "Clear"}
+instrument.range.down: {value: "Lower"}
+
+instrument.range.hint:
+  value: "Optional. The lowest and highest key. You can also set it by ear during calibration."
+
+instrument.range.label: {value: "Keyboard range"}
+instrument.range.to: {value: "to"}
+instrument.range.up: {value: "Higher"}
+
+instrument.registersHint:
+  value: >-
+    Click the dots of each switch's symbol - the circle engraved on the accordion - or pick a
+    common one. What it sounds is read straight off the dots.
+
+instrument.registersSubtitle: {value: "The treble-side switches, and the ranks each one sounds."}
+
+instrument.says:
+  plural:
+    argument: reeds
+    forms:
+      one: "Reed ranks {banks}. The widest switch sounds {reeds} reed."
+      other: "Reed ranks {banks}. The widest switch sounds {reeds} reeds."
+  placeholders:
+    banks: {type: string}
+    reeds: {type: integer}
+
+instrument.sections.bass: {value: "Bass machine"}
+instrument.sections.identity: {value: "Identity"}
+instrument.sections.keyboard: {value: "Keyboard"}
+instrument.sections.reference: {value: "Reference & tolerance"}
+instrument.sections.voices: {value: "Registers"}
+instrument.tolerance: {value: "Reed tolerance"}
+
+instrument.toleranceHint:
+  value: >-
+    Allowed reed deviation in units of 0.06% of the note frequency. Readings outside this range
+    are marked out of tune.
+
+# Target curve editor
+curve.clearAll: {value: "Clear curve"}
+
+curve.clearAllConfirm:
+  value: >-
+    Every anchor is taken out. The goal goes back to the scale pitch for every note, and the tuner
+    becomes a plain indicator.
+
+curve.clearAllHint: {value: "Take every anchor out and leave the goal at the scale pitch."}
+curve.clearAllTitle: {value: "Clear the whole curve?"}
+curve.entryUnit: {value: "Entry unit"}
+
+curve.help.hz:
+  value: >-
+    Hz enters a goal in hertz, read at A4 = 440 Hz as the reference beat list does, so it does not
+    move with the session's A4. Recorded lays this session's readings over the list, and List can
+    fit the anchors to them or copy another session's list.
+
+curve.help.hzTitle: {value: "Hz and readings"}
+
+curve.help.interp:
+  value: >-
+    With Interpolate on, notes between your anchors follow the line; off, each anchor holds until
+    the next. With no anchors the goal is the scale pitch everywhere.
+
+curve.help.interpTitle: {value: "Between the points"}
+
+curve.help.lead:
+  value: >-
+    The goal you are tuning toward: how far each reed should sit from its scale pitch, note by
+    note. A recorded reed is read against this, so the table calls it in or out against your
+    target, not against dead-centre.
+
+curve.help.set:
+  value: >-
+    Pick a note and a value and press Set, or drag a point on the chart up or down. Each rank is
+    its own line, and the one you are editing is highlighted.
+
+curve.help.setTitle: {value: "Setting a point"}
+curve.helpTitle: {value: "Desired beatings"}
+curve.interpolate: {value: "Interpolate"}
+curve.interpolateHint: {value: "Follow the line between anchors. Off, each anchor holds until the next one."}
+curve.menu.ends: {value: "Beyond the anchors"}
+curve.menu.extendHigh: {value: "Continue above the highest"}
+curve.menu.extendLow: {value: "Continue below the lowest"}
+curve.menu.fit: {value: "Fit to this session's readings"}
+
+curve.menu.fitBody:
+  plural:
+    argument: n
+    forms:
+      one: "The anchors are replaced by a curve fitted to the one reading."
+      other: "The anchors are replaced by a curve fitted to {n} readings."
+  placeholders:
+    n: {type: integer}
+
+curve.menu.fromFile: {value: "Copy from a session file"}
+curve.menu.fromSession: {value: "Copy from a session"}
+curve.menu.label: {value: "List"}
+curve.menu.replace: {value: "Replace the list"}
+curve.menu.replaceBody: {value: "The anchors are replaced by the other list, with its settings."}
+curve.menu.replaceConfirm: {value: "Replace"}
+curve.menu.replaceTitle: {value: "Replace the beat list?"}
+curve.rank: {value: "Rank"}
+curve.recorded: {value: "Recorded"}
+curve.recordedHint: {value: "Show this session's readings on the graph"}
+curve.remove: {value: "Remove"}
+curve.removeHint: {value: "Take this note’s anchor out of the curve."}
+
+curve.scale:
+  value: "Scale {v}"
+  placeholders:
+    v: {type: string}
+
+curve.scaleAuto: {value: "Scale auto"}
+curve.scaleHint: {value: "How far up and down the graph reaches"}
+curve.set: {value: "Set"}
+curve.setHint: {value: "Put an anchor on this note for the rank selected."}
+curve.startHint: {value: "No anchors yet. The goal is the scale pitch for every note."}
+
+# Readings and workshop actions
 footer.coverage:
-  value: '{done} / {total} notes'
-  description: 'session management: footer.coverage. Parameters: done, total.'
+  value: "{done} / {total} notes"
   placeholders:
-    done:
-      type: string
-    total:
-      type: string
+    done: {type: string}
+    total: {type: string}
+
 footer.inTune:
-  value: '{done} / {total} in tune'
-  description: 'session management: footer.inTune. Parameters: done, total.'
+  value: "{done} / {total} in tune"
   placeholders:
-    done:
-      type: string
-    total:
-      type: string
-footer.none:
-  value: No session
-  description: 'session management: footer.none.'
-new:
-  value: New session
-  description: 'session management: new.'
-readings.empty:
-  value: Start recording, then play notes to save readings.
-  description: 'session management: readings.empty.'
+    done: {type: string}
+    total: {type: string}
+
+footer.none: {value: "No session"}
+
 readings.notes:
   plural:
     argument: n
     forms:
-      one: one note
-      other: '{n} notes'
-  description: 'session management: readings.notes. Parameters: n.'
+      one: "one note"
+      other: "{n} notes"
   placeholders:
-    n:
-      type: integer
-title:
-  value: Sessions
-  description: 'session management: title.'
-accordion.frozenShort:
-  value: Ranks locked
-  description: Compact trigger explaining why recorded ranks cannot change.
+    n: {type: integer}
+
+workshop.exit: {value: "Exit session"}
+workshop.import: {value: "Import"}
+workshop.open: {value: "Open"}
+workshop.print: {value: "Print card"}
+
+# Session errors
+error.fitFailed: {value: "Could not fit a curve to that pass."}
+
+error.hasReadings:
+  value: >-
+    This session already holds readings: they were all measured against its reference and reed
+    count, so neither can change now.
+
+error.imageUnreadable: {value: "That photograph would not open."}
+error.instrumentName: {value: "Give the accordion a name so you can find it again."}
+error.invalidA4: {value: "The reference pitch must be between 430 and 450 Hz."}
+
+error.invalidInstrument:
+  value: >-
+    That accordion cannot be used: a reed rank is named twice, or a register sounds a rank the
+    accordion does not have.
+
+error.invalidName: {value: "Give the session a name."}
+error.invalidNote: {value: "That note is outside the range the tuner tracks."}
+error.invalidReed: {value: "This accordion does not sound that reed."}
+error.invalidReedCount: {value: "An accordion sounds between 1 and 8 reeds on a note."}
+error.invalidTranspose: {value: "Transposition is 0 to 11 semitones."}
+error.invalidUnit: {value: "Values are entered in units of 0.06 %, in cents or in hertz."}
+error.invalidValue: {value: "That value is not a number."}
+error.loadFailed: {value: "Could not read the session."}
+error.noBassMachine: {value: "This accordion declares no bass machine."}
+error.noBassRegister: {value: "The accordion has no such bass register."}
+error.noCurve: {value: "This session has no goal curve."}
+error.noReadings: {value: "Nothing has been recorded in this session yet."}
+error.noRegister: {value: "This accordion has no such register."}
+error.noSession: {value: "No session is open."}
+error.notAnImage: {value: "That file is not a photograph."}
+error.notFound: {value: "That session is gone."}
+error.notesTooLong: {value: "Shorten the note to 500 characters."}
+error.saveFailed: {value: "Could not save the session. Your last takes may be lost if you close now."}
+error.takeNotFound: {value: "That reading is gone."}
+error.unexpected: {value: "Something went wrong."}

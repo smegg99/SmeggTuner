@@ -29,14 +29,14 @@
 
   <UiFormField
     v-slot="{ id }"
-    :label="t('settings.report.website')"
+    :label="t('common.website')"
   >
     <v-text-field
       :id="id"
       v-model="website"
       hide-details="auto"
       autocomplete="off"
-      :aria-label="t('settings.report.website')"
+      :aria-label="t('common.website')"
     />
   </UiFormField>
 </template>

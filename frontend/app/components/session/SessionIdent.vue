@@ -27,7 +27,7 @@
       v-if="onAccordion && remembered"
       class="ident__key"
       icon="mdi-export"
-      :title="t('instrument.export')"
+      :title="t('common.export')"
       @click="exportIt"
     />
     <UiToolKey
@@ -76,9 +76,9 @@ const instrument = computed(() => {
 })
 
 const VIEWS = computed<ToolItem[]>(() => [
-  { value: 'recorded', label: t(compact.value ? 'sessionPage.mobile.recorded' : 'sessionPage.tabs.recorded'), icon: 'mdi-table' },
-  { value: 'curve', label: t(compact.value ? 'sessionPage.mobile.curve' : 'sessionPage.tabs.curve'), icon: 'mdi-chart-bell-curve-cumulative' },
-  { value: 'accordion', label: t('sessionPage.tabs.accordion'), icon: 'mdi-piano' },
+  { value: 'recorded', label: t(compact.value ? 'session.page.mobile.recorded' : 'record.table.label'), icon: 'mdi-table' },
+  { value: 'curve', label: t(compact.value ? 'session.page.mobile.curve' : 'session.curve.helpTitle'), icon: 'mdi-chart-bell-curve-cumulative' },
+  { value: 'accordion', label: t('common.accordion'), icon: 'mdi-piano' },
 ])
 </script>
 

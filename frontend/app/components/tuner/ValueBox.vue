@@ -5,7 +5,7 @@
   >
     <div class="box__top">
       <span class="box__label">{{ label }}</span>
-      <span class="box__unit">{{ t(`tuner.boxes.unit.${box.unit}`) }}</span>
+      <span class="box__unit">{{ t(`common.unitSymbol.${box.unit}`) }}</span>
     </div>
 
     <!-- "notHeard": a declared slot the engine did not hear. "idle": nothing sounding. Either way

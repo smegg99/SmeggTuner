@@ -2,31 +2,31 @@
 <template>
   <v-dialog
     v-model="open"
-    :aria-label="t('about.helpTitle')"
+    :aria-label="t('common.about.helpTitle')"
     width="var(--dlg-lg)"
   >
     <UiDialogCard
-      :title="t('about.helpTitle')"
+      :title="t('common.about.helpTitle')"
       @close="open = false"
     >
       <div class="help">
         <p class="help__lead">
-          {{ t(WORKSHOP ? 'about.help.intro' : 'about.help.introTuner') }}
+          {{ t(WORKSHOP ? 'common.about.help.intro' : 'common.about.help.introTuner') }}
         </p>
 
         <h3 class="help__h">
-          {{ t('about.help.rooms.title') }}
+          {{ t('common.about.help.rooms.title') }}
         </h3>
         <ul class="help__rooms">
-          <li><b>{{ t('about.help.rooms.tuneName') }}</b> - {{ t('about.help.rooms.tune') }}</li>
+          <li><b>{{ t('common.routes.tune') }}</b> - {{ t('common.about.help.rooms.tune') }}</li>
           <li v-if="WORKSHOP">
-            <b>{{ t('about.help.rooms.workshopName') }}</b> - {{ t('about.help.rooms.workshop') }}
+            <b>{{ t('common.routes.workshop') }}</b> - {{ t('common.about.help.rooms.workshop') }}
           </li>
-          <li><b>{{ t('about.help.rooms.settingsName') }}</b> - {{ t('about.help.rooms.settings') }}</li>
+          <li><b>{{ t('common.routes.settings') }}</b> - {{ t('common.about.help.rooms.settings') }}</li>
         </ul>
 
         <h3 class="help__h">
-          {{ t('about.help.everywhere.title') }}
+          {{ t('common.about.help.everywhere.title') }}
         </h3>
         <dl class="help__keys">
           <div
@@ -51,7 +51,7 @@
         </dl>
 
         <h3 class="help__h">
-          {{ t('about.help.shortcuts.title') }}
+          {{ t('common.about.help.shortcuts.title') }}
         </h3>
         <dl class="help__keys">
           <div
@@ -92,26 +92,26 @@ interface KeyRow { keys: string[], or?: boolean, desc: string }
 
 // Kept in sync with useShortcuts by eye; this only describes the bindings, it does not create them.
 // Recording belongs to the workshop's sessions, so its keys are described only with it.
-const RECORDING = ['about.help.everywhere.record', 'about.help.everywhere.takeNow', 'about.help.everywhere.undo']
+const RECORDING = ['common.about.help.everywhere.record', 'common.about.help.everywhere.takeNow', 'common.about.help.everywhere.undo']
 const GLOBAL_KEYS = computed<KeyRow[]>(() => [
-  { keys: WORKSHOP ? ['1', '2', '3'] : ['1', '2'], desc: WORKSHOP ? 'about.help.everywhere.rooms' : 'about.help.everywhere.roomsTuner' },
-  { keys: ['a'], desc: 'about.help.everywhere.manual' },
-  { keys: [',', '.'], desc: 'about.help.everywhere.step' },
-  { keys: ['ArrowLeft', 'ArrowRight'], desc: 'about.help.everywhere.arrows' },
-  { keys: ['h', 'space'], or: true, desc: 'about.help.everywhere.hold' },
-  { keys: ['r'], desc: 'about.help.everywhere.record' },
-  { keys: ['enter'], desc: 'about.help.everywhere.takeNow' },
-  { keys: ['z', 'backspace'], or: true, desc: 'about.help.everywhere.undo' },
+  { keys: WORKSHOP ? ['1', '2', '3'] : ['1', '2'], desc: WORKSHOP ? 'common.about.help.everywhere.rooms' : 'common.about.help.everywhere.roomsTuner' },
+  { keys: ['a'], desc: 'common.about.help.everywhere.manual' },
+  { keys: [',', '.'], desc: 'common.about.help.everywhere.step' },
+  { keys: ['ArrowLeft', 'ArrowRight'], desc: 'common.about.help.everywhere.arrows' },
+  { keys: ['h', 'space'], or: true, desc: 'common.about.help.everywhere.hold' },
+  { keys: ['r'], desc: 'common.about.help.everywhere.record' },
+  { keys: ['enter'], desc: 'common.about.help.everywhere.takeNow' },
+  { keys: ['z', 'backspace'], or: true, desc: 'common.about.help.everywhere.undo' },
 ].filter(k => WORKSHOP || !RECORDING.includes(k.desc)))
 
 // Kept in sync with useShortcuts' file keys by eye; this only describes those keys.
 const KEYS: KeyRow[] = [
-  { keys: ['space'], desc: 'about.help.shortcuts.space' },
-  { keys: ['home', 'end'], desc: 'about.help.shortcuts.homeEnd' },
-  { keys: ['l'], desc: 'about.help.shortcuts.loop' },
-  { keys: ['m'], desc: 'about.help.shortcuts.mute' },
-  { keys: ['f', 's'], desc: 'about.help.shortcuts.fit' },
-  { keys: ['plus', 'minus'], desc: 'about.help.shortcuts.zoom' },
+  { keys: ['space'], desc: 'common.about.help.shortcuts.space' },
+  { keys: ['home', 'end'], desc: 'common.about.help.shortcuts.homeEnd' },
+  { keys: ['l'], desc: 'tuner.file.loop' },
+  { keys: ['m'], desc: 'common.about.help.shortcuts.mute' },
+  { keys: ['f', 's'], desc: 'common.about.help.shortcuts.fit' },
+  { keys: ['plus', 'minus'], desc: 'common.about.help.shortcuts.zoom' },
 ]
 </script>
 

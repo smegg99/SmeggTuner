@@ -8,7 +8,7 @@
     class="ident__pic"
     :class="{ 'ident__pic--live': live }"
     :type="live ? 'button' : undefined"
-    :title="live ? t('instrument.photo') : undefined"
+    :title="live ? t('session.instrument.photo') : undefined"
     @click="live && emit('pick')"
   >
     <img

@@ -25,7 +25,7 @@ const props = defineProps<{
 
 const { t } = useI18n()
 
-const statusText = computed(() => t(`calibrate.status.${props.status === 'idle' ? 'play' : props.status}`))
+const statusText = computed(() => props.status === 'listening' ? t('tuner.state.running') : t(`tuner.calibrate.status.${props.status === 'idle' ? 'play' : props.status}`))
 </script>
 
 <style scoped>

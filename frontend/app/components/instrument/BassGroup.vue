@@ -2,19 +2,19 @@
 <template>
   <!-- The bass machine's section of the accordion form, its hint on the heading. -->
   <UiFormSection
-    :title="t('instrument.sections.bass')"
+    :title="t('session.instrument.sections.bass')"
     class="tuner-section"
   >
     <template #head>
       <span class="form-section__title section-hint">
-        {{ t('instrument.sections.bass') }}
+        {{ t('session.instrument.sections.bass') }}
         <v-tooltip
           activator="parent"
           location="top start"
           max-width="340"
           open-delay="300"
         >
-          {{ t('instrument.bass.hint') }}
+          {{ t('session.instrument.bass.hint') }}
         </v-tooltip>
       </span>
     </template>

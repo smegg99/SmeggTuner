@@ -24,7 +24,7 @@ func (p *BassPart) Head(i int) string {
 	if i >= 0 && i < len(p.Feet) {
 		return fmt.Sprintf("%d'", p.Feet[i])
 	}
-	return i18n.ReportHeadReed(i18n.Localizer(), i18n.ReportHeadReedParams{Index: i + 1})
+	return i18n.CommonReed(i18n.Localizer(), i18n.CommonReedParams{Index: i + 1})
 }
 
 // VoiceColumns is the columns needed to label a reading, zero unless multi-register.

@@ -2,24 +2,24 @@
 <template>
   <!-- The treble registers' section of the accordion form: what the switches say, then the switches. -->
   <UiFormSection
-    :title="t('instrument.sections.voices')"
+    :title="t('session.instrument.sections.voices')"
     class="tuner-section"
   >
     <template #head>
       <span class="form-section__title section-hint">
-        {{ t('instrument.sections.voices') }}
+        {{ t('session.instrument.sections.voices') }}
         <v-tooltip
           activator="parent"
           location="top start"
           max-width="340"
           open-delay="300"
         >
-          {{ t('instrument.registersHint') }}
+          {{ t('session.instrument.registersHint') }}
         </v-tooltip>
       </span>
     </template>
     <p class="acc__says">
-      {{ banks.length ? t('instrument.says', { banks: banks.join(' '), reeds: reedCount }, reedCount) : t('instrument.registersSubtitle') }}
+      {{ banks.length ? t('session.instrument.says', { banks: banks.join(' '), reeds: reedCount }, reedCount) : t('session.instrument.registersSubtitle') }}
     </p>
 
     <InstrumentRegisterSection

@@ -7,7 +7,7 @@
       class="read__empty"
     >
       <p class="read__sub">
-        {{ t('session.readings.empty') }}
+        {{ t('record.table.empty') }}
       </p>
     </div>
 
@@ -47,7 +47,7 @@
           v-if="!compact"
           class="read__bass-title"
         >
-          {{ t('record.table.bassTitle') }}
+          {{ t('tuner.side.bass') }}
         </h3>
         <RecordRecordedTable
           class="read__table"

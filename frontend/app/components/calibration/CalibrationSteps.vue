@@ -5,7 +5,7 @@
       :class="{ 'cal__step--on': stage === 'range' }"
     >
       <span class="cal__stepno">1</span>
-      <span class="cal__steplabel">{{ t('calibrate.range.step') }}</span>
+      <span class="cal__steplabel">{{ t('tuner.calibrate.range.step') }}</span>
     </span>
     <span class="cal__stepsep" />
     <span
@@ -13,7 +13,7 @@
       :class="{ 'cal__step--on': stage !== 'range' }"
     >
       <span class="cal__stepno">2</span>
-      <span class="cal__steplabel">{{ t('calibrate.sweep.step') }}</span>
+      <span class="cal__steplabel">{{ t('tuner.calibrate.sweep.step') }}</span>
     </span>
   </div>
 </template>

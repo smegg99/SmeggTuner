@@ -23,7 +23,7 @@
     <span
       v-if="WEB"
       class="status__experimental"
-    >{{ t('web.experimental') }}</span>
+    >{{ t('tuner.web.experimental') }}</span>
 
     <!-- Just the tag; commit and full build stamp are in the About dialog. -->
     <span

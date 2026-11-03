@@ -3,7 +3,7 @@
     <InstrumentRegisterList
       v-show="mode !== 'builder'"
       :items="items"
-      :empty="t('instrument.builder.none')"
+      :empty="t('session.instrument.builder.none')"
       @remove="remove"
     >
       <template #symbol="{ index }">

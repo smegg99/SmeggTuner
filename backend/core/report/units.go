@@ -21,5 +21,5 @@ func (r *Report) UnitSymbol() string {
 	if r.InCents() {
 		return i18n.ReportUnitCentsSymbol(i18n.Localizer())
 	}
-	return i18n.ReportUnitReferenceSymbol(i18n.Localizer())
+	return i18n.CommonUnitSymbolReference(i18n.Localizer())
 }

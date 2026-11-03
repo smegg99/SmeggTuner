@@ -1,7 +1,7 @@
 <template>
   <UiFormField
     :label="t('settings.accent.label')"
-    :hint="t(WEB ? 'web.accent.hint' : 'settings.accent.hint')"
+    :hint="t(WEB ? 'tuner.web.accent.hint' : 'settings.accent.hint')"
   >
     <div class="accent">
       <UiToolGroup
@@ -91,7 +91,7 @@ function onSelect(value: unknown) {
 // The web edition cannot see the system accent, so "follow the system" is the app's own default colour there.
 const accentItems = computed<ToolItem[]>(() =>
   ACCENT_MODES.map(m => WEB && m.value === ACCENT_MODE.AUTO
-    ? { value: m.value, label: t('web.accent.default'), icon: 'mdi-water-outline' }
+    ? { value: m.value, label: t('tuner.web.accent.default'), icon: 'mdi-water-outline' }
     : { value: m.value, label: t(m.labelKey), icon: m.icon }),
 )
 </script>

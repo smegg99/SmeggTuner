@@ -91,14 +91,14 @@ describe('the value box', () => {
 
     const wrapper = mountBox(boxes[1]!)
     expect(wrapper.find('.box__value').text()).toBe('2.34')
-    expect(wrapper.find('.box__unit').text()).toBe('tuner.boxes.unit.hz')
+    expect(wrapper.find('.box__unit').text()).toBe('common.unitSymbol.hz')
   })
 
   it('prints a reed the engine did measure, and marks the backend verdict', () => {
     const wrapper = mountBox(reed)
 
     expect(wrapper.find('.box__value').text()).toBe('+4.2')
-    expect(wrapper.find('.box__unit').text()).toBe('tuner.boxes.unit.reference')
+    expect(wrapper.find('.box__unit').text()).toBe('common.unitSymbol.reference')
     expect(wrapper.classes()).toContain('box--out')
     expect(wrapper.findComponent(DeviationBar).props('out')).toBe(true)
   })

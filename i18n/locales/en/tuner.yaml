@@ -1,373 +1,298 @@
-bassRegister.all:
-  value: Whole machine
-  description: 'live tuner: bassRegister.all.'
-bassRegister.hint:
-  value: 'The pulled bass switch'
-  description: 'live tuner: bassRegister.hint.'
-boxes.beat:
-  value: Beat {a} to {b}
-  description: 'live tuner: boxes.beat. Parameters: a, b.'
-  placeholders:
-    a:
-      type: string
-    b:
-      type: string
-boxes.goal:
-  value: goal
-  description: 'live tuner: boxes.goal.'
-boxes.hzOnly:
-  value: only in Hz
-  description: 'live tuner: boxes.hzOnly.'
-boxes.notHeard:
-  value: not heard
-  description: 'live tuner: boxes.notHeard.'
-boxes.reed:
-  value: Reed {n}
-  description: 'live tuner: boxes.reed. Parameters: n.'
-  placeholders:
-    n:
-      type: string
-boxes.reedBank:
-  value: Reed {bank}
-  description: 'live tuner: boxes.reedBank. Parameters: bank.'
-  placeholders:
-    bank:
-      type: string
-boxes.tone:
-  value: Tone {n}
-  description: 'live tuner: boxes.tone. Parameters: n.'
-  placeholders:
-    n:
-      type: string
-boxes.unit.cents:
-  value: cent
-  description: 'live tuner: boxes.unit.cents.'
-boxes.unit.hz:
-  value: Hz
-  description: 'live tuner: boxes.unit.hz.'
-boxes.unit.reference:
-  value: u
-  description: 'live tuner: boxes.unit.reference.'
-error.a4Locked:
-  value: The reference pitch is locked in Settings.
-  description: 'live tuner: error.a4Locked.'
-error.chordsAuto:
-  value: Chords mode picks its own notes.
-  description: 'live tuner: error.chordsAuto.'
-error.deviceGone:
-  value: That microphone is no longer connected.
-  description: 'live tuner: error.deviceGone.'
-error.deviceLost:
-  value: The microphone stopped responding and the tuner was stopped.
-  description: 'live tuner: error.deviceLost.'
-error.fileUnreadable:
-  value: That recording could not be read. It must be a WAV file.
-  description: 'live tuner: error.fileUnreadable.'
-error.invalidA4:
-  value: The reference pitch must be between 430 and 450 Hz.
-  description: 'live tuner: error.invalidA4.'
-error.invalidBox:
-  value: There is no such reed box.
-  description: 'live tuner: error.invalidBox.'
-error.invalidMode:
-  value: The tuner measures tones, octaves or chords.
-  description: 'live tuner: error.invalidMode.'
-error.invalidNote:
-  value: That note is outside the range the tuner tracks.
-  description: 'live tuner: error.invalidNote.'
-error.invalidReedCount:
-  value: The tuner resolves one to three reeds per note.
-  description: 'live tuner: error.invalidReedCount.'
-error.invalidTranspose:
-  value: Transposition is 0 to 11 semitones.
-  description: 'live tuner: error.invalidTranspose.'
-error.lastBox:
-  value: At least one box stays on.
-  description: 'live tuner: error.lastBox.'
-error.noDevices:
-  value: No microphone was found. Connect one and refresh the device list.
-  description: 'live tuner: error.noDevices.'
-error.playbackFailed:
-  value: The reference tone could not be played.
-  description: 'live tuner: error.playbackFailed.'
-error.sampleRate:
-  value: The input's sample rate is too low for the top notes at this pitch and transposition. Use a recording made
-    at 44.1 kHz or more.
-  description: 'live tuner: error.sampleRate.'
-error.sessionDecides:
-  value: The open session's register decides what is measured.
-  description: 'live tuner: error.sessionDecides.'
-error.toneNeedsManual:
-  value: Pin a note to play its tone.
-  description: 'live tuner: error.toneNeedsManual.'
-error.transposeMode:
-  value: Chords and octaves are measured untransposed.
-  description: 'live tuner: error.transposeMode.'
-error.unexpected:
-  value: Something went wrong. See the log for details.
-  description: 'live tuner: error.unexpected.'
-hold.hint:
-  value: Hold stable readings (H)
-  description: 'live tuner: the toolbar key that holds each locked reading until the sound stops.'
-input.relearnHint:
-  value: 'Relearn background noise (4 s of quiet)'
-  description: 'live tuner: input.relearnHint.'
-input.tooStrong:
-  value: Signal too strong
-  description: 'live tuner: input.tooStrong.'
-input.unreliable:
-  value: Signal unreliable
-  description: 'live tuner: input.unreliable.'
-inputPanel.label:
-  value: The input signal
-  description: 'live tuner: inputPanel.label.'
-inputPanel.title:
-  value: Input
-  description: 'live tuner: inputPanel.title.'
-level.silent:
-  value: silent
-  description: 'live tuner: level.silent.'
-mode.auto:
-  value: Auto
-  description: 'live tuner: mode.auto.'
-notes.clickToPin:
-  value: click to pin
-  description: 'live tuner: notes.clickToPin.'
-notes.label:
-  value: The notes E0 to C9. Click one to pin it.
-  description: 'live tuner: notes.label.'
-notes.range:
-  value: E0 to C9
-  description: 'live tuner: notes.range.'
-notes.title:
-  value: Notes
-  description: 'live tuner: notes.title.'
-notes.tracking:
-  value: tracking
-  description: 'live tuner: notes.tracking.'
-output.mute:
-  value: Mute
-  description: 'live tuner: output.mute.'
-output.unmute:
-  value: Unmute
-  description: 'live tuner: output.unmute.'
-output.volume:
-  value: Output volume
-  description: 'live tuner: output.volume.'
-panel.boxBase:
-  value: The base is always measured
-  description: 'live tuner: panel.boxBase.'
-panel.boxChord:
-  value: Chords measure all three tones
-  description: 'live tuner: panel.boxChord.'
-panel.boxLast:
-  value: At least one box stays on
-  description: 'live tuner: panel.boxLast.'
+# Live tuner, WAV playback and browser edition (English).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one = 1; other = 0, 2, 3, ...
+
+# Input, output and playback
+input.relearnHint: {value: "Relearn background noise (4 s of quiet)"}
+input.tooStrong: {value: "Signal too strong"}
+input.unreliable: {value: "Signal unreliable"}
+inputPanel.label: {value: "The input signal"}
+inputPanel.title: {value: "Input"}
+level.silent: {value: "silent"}
+output.mute: {value: "Mute"}
+output.unmute: {value: "Unmute"}
+output.volume: {value: "Output volume"}
+soundcard.running: {value: "Calibrating the sound card"}
+soundcard.uncalibrated: {value: "Sound card not calibrated. Calibrate"}
+soundcard.unreliable: {value: "Calibration unreliable. Calibrate again"}
+source.analyze: {value: "Analyze recording…"}
+source.default: {value: "System default"}
+source.noDevices: {value: "No microphones found"}
+source.refresh: {value: "Refresh the device list"}
+transport.fileHint: {value: "A recording plays from its own card"}
+transport.start: {value: "Start"}
+transport.stop: {value: "Stop"}
+
+# Modes, registers and note selection
+bassRegister.all: {value: "Whole machine"}
+bassRegister.hint: {value: "The pulled bass switch"}
+controls: {value: "Tuning controls"}
+mode.auto: {value: "Auto"}
+mode.autoHint: {value: "Let the tuner find the note"}
+mode.pinHint: {value: "Pin this note"}
+mode.pinned: {value: "Pinned note"}
+notes.clickToPin: {value: "click to pin"}
+notes.label: {value: "The notes E0 to C9. Click one to pin it."}
+notes.range: {value: "E0 to C9"}
+notes.title: {value: "Notes"}
+notes.tracking: {value: "tracking"}
+panel.boxBase: {value: "The base is always measured"}
+panel.boxChord: {value: "Chords measure all three tones"}
+panel.boxLast: {value: "At least one box stays on"}
+
 panel.boxOctave:
   plural:
     argument: octaves
     forms:
-      one: 'Box {box}: {octaves} octave above the base'
-      other: 'Box {box}: {octaves} octaves above the base'
-  description: Octave selector tooltip; box is the numbered selector, octaves is the distance above the fundamental.
+      one: "Box {box}: {octaves} octave above the base"
+      other: "Box {box}: {octaves} octaves above the base"
   placeholders:
-    octaves:
-      type: integer
-    box:
-      type: string
+    octaves: {type: integer}
+    box: {type: string}
+
 panel.boxReed:
-  value: 'Reed {n}: measure it or not'
-  description: 'live tuner: panel.boxReed. Parameters: n.'
+  value: "Reed {n}: measure it or not"
   placeholders:
-    n:
-      type: string
+    n: {type: string}
+
 panel.bySession:
   plural:
     argument: n
     forms:
-      one: '{n} reed, set by the session''s register'
-      other: '{n} reeds, set by the session''s register'
-  description: 'live tuner: panel.bySession. Parameters: n.'
+      one: "{n} reed, set by the session's register"
+      other: "{n} reeds, set by the session's register"
   placeholders:
-    n:
-      type: integer
-panel.locked:
-  value: Lock
-  description: 'live tuner: panel.locked.'
-panel.modeHints.chords:
-  value: 'Three-note chords'
-  description: 'live tuner: panel.modeHints.chords.'
-panel.modeHints.octaves:
-  value: 'A note with its upper octaves'
-  description: 'live tuner: panel.modeHints.octaves.'
-panel.modeHints.tones:
-  value: 'One note, up to three reeds'
-  description: 'live tuner: panel.modeHints.tones.'
-panel.modeLabel:
-  value: What is measured
-  description: 'live tuner: panel.modeLabel.'
-panel.modes.chords:
-  value: Chords
-  description: 'live tuner: panel.modes.chords.'
-panel.modes.octaves:
-  value: Octaves
-  description: 'live tuner: panel.modes.octaves.'
-panel.modes.tones:
-  value: Tones
-  description: 'live tuner: panel.modes.tones.'
-panel.recorded:
-  value: Recorded
-  description: 'live tuner: panel.recorded.'
-panel.reeds:
-  value: Reeds
-  description: 'live tuner: panel.reeds.'
+    n: {type: integer}
+
+panel.locked: {value: "Lock"}
+panel.modeHints.chords: {value: "Three-note chords"}
+panel.modeHints.octaves: {value: "A note with its upper octaves"}
+panel.modeHints.tones: {value: "One note, up to three reeds"}
+panel.modeLabel: {value: "What is measured"}
+panel.modes.chords: {value: "Chords"}
+panel.modes.octaves: {value: "Octaves"}
+panel.modes.tones: {value: "Tones"}
+panel.quiet: {value: "Too quiet"}
+panel.recorded: {value: "Recorded"}
+panel.reeds: {value: "Reeds"}
+
 reeds.count:
   plural:
     argument: n
     forms:
-      one: '{n} reed'
-      other: '{n} reeds'
-  description: 'live tuner: reeds.count. Parameters: n.'
+      one: "{n} reed"
+      other: "{n} reeds"
   placeholders:
-    n:
-      type: integer
-reference.a4Locked:
-  value: Locked in Settings
-  description: 'live tuner: reference.a4Locked.'
-reference.frozen:
-  value: 'Fixed: the session already holds readings'
-  description: 'live tuner: reference.frozen.'
-reference.transpose:
-  value: Transpose
-  description: 'live tuner: reference.transpose.'
-reference.transposeDown:
-  value: One semitone less
-  description: 'live tuner: reference.transposeDown.'
-reference.transposeHint:
-  value: 'Semitones the keys sound above their names'
-  description: 'live tuner: reference.transposeHint.'
-reference.transposeMode:
-  value: Chords and octaves are measured untransposed
-  description: 'live tuner: reference.transposeMode.'
-reference.transposeUp:
-  value: One semitone more
-  description: 'live tuner: reference.transposeUp.'
+    n: {type: integer}
+
+register.hint: {value: "The pulled register"}
+register.lockedPlaying: {value: "Stop playback to change the register."}
+side.bass: {value: "Bass"}
+side.hint: {value: "Treble or bass side"}
+side.treble: {value: "Treble"}
+step.noteDown: {value: "One semitone down"}
+step.noteUp: {value: "One semitone up"}
+# Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
+# Reference pitch and units
+reference.a4Locked: {value: "Locked in Settings"}
+reference.a4Type: {value: "Type A4 in hertz, 430 to 450"}
+reference.frozen: {value: "Fixed: the session already holds readings"}
+reference.transpose: {value: "Transpose"}
+reference.transposeDown: {value: "One semitone less"}
+reference.transposeHint: {value: "Semitones the keys sound above their names"}
+reference.transposeMode: {value: "Chords and octaves are measured untransposed"}
+reference.transposeUp: {value: "One semitone more"}
+
 reference.transposed:
-  value: Transposed +{n}
-  description: 'live tuner: reference.transposed. Parameters: n.'
+  value: "Transposed +{n}"
   placeholders:
-    n:
-      type: string
-register.hint:
-  value: 'The pulled register'
-  description: 'live tuner: register.hint.'
-register.lockedPlaying:
-  value: Stop playback to change the register.
-  description: 'live tuner: register.lockedPlaying.'
-ruler.label:
-  value: The deviation of each reed
-  description: 'live tuner: ruler.label.'
-side.bass:
-  value: Bass
-  description: 'live tuner: side.bass.'
-side.hint:
-  value: 'Treble or bass side'
-  description: 'live tuner: side.hint.'
-side.treble:
-  value: Treble
-  description: 'live tuner: side.treble.'
-source.analyze:
-  value: Analyze recording…
-  description: 'live tuner: source.analyze.'
-source.default:
-  value: System default
-  description: 'live tuner: source.default.'
-source.noDevices:
-  value: No microphones found
-  description: 'live tuner: source.noDevices.'
-source.refresh:
-  value: Refresh the device list
-  description: 'live tuner: source.refresh.'
-spectrum.label:
-  value: The frequency spectrum of the tracked note
-  description: 'live tuner: spectrum.label.'
-spectrum.title:
-  value: Spectrum
-  description: 'live tuner: spectrum.title.'
-state.deviceLost:
-  value: Input lost
-  description: 'live tuner: state.deviceLost.'
-state.initializing:
-  value: Measuring the room
-  description: 'live tuner: state.initializing.'
-state.running:
-  value: Listening
-  description: 'live tuner: state.running.'
-state.stopped:
-  value: Stopped
-  description: 'live tuner: state.stopped.'
-state.tooQuiet:
-  value: Too quiet, play louder or move closer
-  description: 'live tuner: state.tooQuiet.'
-step.noteDown:
-  value: One semitone down
-  description: 'live tuner: step.noteDown.'
-step.noteUp:
-  value: One semitone up
-  description: 'live tuner: step.noteUp.'
-transport.start:
-  value: Start
-  description: 'live tuner: transport.start.'
-transport.stop:
-  value: Stop
-  description: 'live tuner: transport.stop.'
-unit.cents:
-  value: Cent
-  description: 'live tuner: unit.cents.'
-unit.hz:
-  value: Hz
-  description: 'live tuner: unit.hz.'
-unit.label:
-  value: Deviation unit
-  description: 'live tuner: unit.label.'
-unit.reference:
-  value: Units
-  description: 'live tuner: unit.reference.'
-warmup.play:
-  value: Now play
-  description: 'live tuner: warmup.play.'
-warmup.quiet:
-  value: Stay quiet
-  description: 'live tuner: warmup.quiet.'
+    n: {type: string}
 
-controls:
-  value: Tuning controls
-  description: Opens the tuning controls on compact screens.
+unit.cents: {value: "Cent"}
+unit.hz: {value: "Hz"}
+unit.reference: {value: "Units"}
 
-panel.quiet:
-  value: Too quiet
-  description: Short quiet-input status on the fixed tuner readout.
-soundcard.uncalibrated:
-  value: 'Sound card not calibrated. Calibrate'
-  description: 'live tuner: soundcard.uncalibrated.'
-soundcard.unreliable:
-  value: 'Calibration unreliable. Calibrate again'
-  description: 'live tuner: soundcard.unreliable.'
-soundcard.running:
-  value: 'Calibrating the sound card'
-  description: 'live tuner: soundcard.running.'
-mode.autoHint:
-  value: 'Let the tuner find the note'
-  description: 'live tuner: mode.autoHint.'
-mode.pinHint:
-  value: 'Pin this note'
-  description: 'live tuner: mode.pinHint.'
-mode.pinned:
-  value: 'Pinned note'
-  description: 'live tuner: mode.pinned.'
-transport.fileHint:
-  value: 'A recording plays from its own card'
-  description: 'live tuner: transport.fileHint.'
-reference.a4Type:
-  value: 'Type A4 in hertz, 430 to 450'
-  description: 'live tuner: reference.a4Type.'
+# Live readings and graphs
+boxes.beat:
+  value: "Beat {a} to {b}"
+  placeholders:
+    a: {type: string}
+    b: {type: string}
+
+boxes.goal: {value: "goal"}
+boxes.hzOnly: {value: "only in Hz"}
+boxes.notHeard: {value: "not heard"}
+
+boxes.reed:
+  value: "Reed {n}"
+  placeholders:
+    n: {type: string}
+
+boxes.reedBank:
+  value: "Reed {bank}"
+  placeholders:
+    bank: {type: string}
+
+boxes.tone:
+  value: "Tone {n}"
+  placeholders:
+    n: {type: string}
+
+ruler.label: {value: "The deviation of each reed"}
+spectrum.label: {value: "The frequency spectrum of the tracked note"}
+spectrum.title: {value: "Spectrum"}
+
+# Hold, noise learning and tuner state
+hold.hint: {value: "Hold stable readings (H)"}
+state.deviceLost: {value: "Input lost"}
+state.initializing: {value: "Measuring the room"}
+state.running: {value: "Listening"}
+state.stopped: {value: "Stopped"}
+state.tooQuiet: {value: "Too quiet, play louder or move closer"}
+warmup.quiet: {value: "Stay quiet"}
+
+# WAV files and waveform controls
+file.clearSelection: {value: "Select the whole recording"}
+file.fit: {value: "Show the whole recording"}
+file.loop: {value: "Loop the selection"}
+file.mute: {value: "Mute the recording"}
+file.openFilter: {value: "WAV audio"}
+file.openTitle: {value: "Select a WAV recording"}
+file.pause: {value: "Pause"}
+file.play: {value: "Play"}
+file.stop: {value: "Stop, and go back to the start of the selection"}
+file.toEnd: {value: "To the end of the selection"}
+file.toStart: {value: "To the start of the selection"}
+file.unmute: {value: "Play the recording aloud"}
+file.volume: {value: "Playback volume"}
+
+file.waveform:
+  value: >-
+    Waveform of {name}. Drag the timeline to move the playhead, drag the trace to select a
+    fragment. When playback stops, a pale dashed line marks the audio the reading on screen was
+    measured from.
+  placeholders:
+    name: {type: string}
+
+file.zoomIn: {value: "Zoom in"}
+file.zoomOut: {value: "Zoom out"}
+
+# Instrument calibration workflow
+calibrate.leave: {value: "Leave calibration"}
+calibrate.needsSession: {value: "Open a session to calibrate its instrument."}
+calibrate.range.again: {value: "Start over"}
+
+calibrate.range.backwards:
+  value: "The highest note must not be lower than the lowest note. Measure the range again."
+
+calibrate.range.capture: {value: "Capture"}
+calibrate.range.highest: {value: "Highest"}
+calibrate.range.lowest: {value: "Lowest"}
+calibrate.range.next: {value: "Continue to reed calibration"}
+calibrate.range.playHigh: {value: "Now play the highest key."}
+calibrate.range.playLow: {value: "Play the lowest key."}
+calibrate.range.step: {value: "The keyboard"}
+calibrate.status.captured: {value: "Captured"}
+calibrate.status.holding: {value: "Keep the note steady"}
+calibrate.status.loud: {value: "Too loud"}
+calibrate.status.play: {value: "Play a note"}
+calibrate.sweep.bassAll: {value: "Bass - whole machine"}
+
+calibrate.sweep.done:
+  plural:
+    argument: n
+    forms:
+      one: "Swept. {n} reading on the card."
+      other: "Swept. {n} readings on the card."
+  placeholders:
+    n: {type: integer}
+
+calibrate.sweep.noRegisters:
+  value: >-
+    This accordion has no registers described. The sweep still runs; its readings land in numbered
+    columns.
+
+calibrate.sweep.pickRegister: {value: "Which register are you calibrating?"}
+
+calibrate.sweep.progress:
+  value: "{done} of {total}"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+calibrate.sweep.redoRange: {value: "Redo the keyboard"}
+calibrate.sweep.review: {value: "See the card"}
+calibrate.sweep.skip: {value: "Skip"}
+
+calibrate.sweep.soloTeaches:
+  value: "Sweeping a single-voice register also teaches the app that voice's sound."
+
+calibrate.sweep.startPlain: {value: "Start the sweep"}
+calibrate.sweep.step: {value: "The reeds"}
+calibrate.sweep.stop: {value: "Stop"}
+calibrate.title: {value: "Calibrate"}
+
+# Browser edition
+web.accent.default: {value: "Default"}
+web.accent.hint: {value: "The app's own colour or yours"}
+web.diagnostics.copied: {value: "Copied"}
+web.diagnostics.copy: {value: "Copy diagnostics"}
+web.diagnostics.empty: {value: "Start the tuner to see the microphone details."}
+web.diagnostics.title: {value: "Diagnostics"}
+web.downloads.title: {value: "Get the app"}
+web.experimental: {value: "Experimental"}
+web.loadFailed: {value: "The engine could not start in this browser."}
+
+web.mic.denied:
+  value: "Microphone access was refused. Allow it in the browser settings and start the tuner again."
+
+web.mic.failed: {value: "The microphone could not be opened."}
+web.mic.none: {value: "No microphone was found."}
+web.mic.unsupported: {value: "This browser cannot record audio."}
+web.notice.background: {value: "A tab in the background may pause the audio."}
+web.notice.native: {value: "The installed app is the accurate one."}
+web.notice.ok: {value: "Understood"}
+
+web.notice.processing:
+  value: >-
+    Your browser may apply echo cancellation, noise suppression, automatic gain or resampling to
+    the microphone. Any of them can change the readings.
+
+web.notice.title: {value: "Experimental web version"}
+web.processing.autoGainControl: {value: "automatic gain"}
+web.processing.echoCancellation: {value: "echo cancellation"}
+web.processing.noiseSuppression: {value: "noise suppression"}
+
+web.processingOn:
+  value: "The browser kept these on: {list}. Readings may be off."
+  placeholders:
+    list: {type: string}
+
+web.slow:
+  value: "This device cannot keep up with the engine. Late audio is skipped so the readings stay current."
+
+# Tuner errors
+error.a4Locked: {value: "The reference pitch is locked in Settings."}
+error.chordsAuto: {value: "Chords mode picks its own notes."}
+error.deviceGone: {value: "That microphone is no longer connected."}
+error.deviceLost: {value: "The microphone stopped responding and the tuner was stopped."}
+error.fileUnreadable: {value: "That recording could not be read. It must be a WAV file."}
+error.invalidA4: {value: "The reference pitch must be between 430 and 450 Hz."}
+error.invalidBox: {value: "There is no such reed box."}
+error.invalidMode: {value: "The tuner measures tones, octaves or chords."}
+error.invalidNote: {value: "That note is outside the range the tuner tracks."}
+error.invalidTranspose: {value: "Transposition is 0 to 11 semitones."}
+error.lastBox: {value: "At least one box stays on."}
+error.noDevices: {value: "No microphone was found. Connect one and refresh the device list."}
+error.playbackFailed: {value: "The reference tone could not be played."}
+
+error.sampleRate:
+  value: >-
+    The input's sample rate is too low for the top notes at this pitch and transposition. Use a
+    recording made at 44.1 kHz or more.
+
+error.sessionDecides: {value: "The open session's register decides what is measured."}
+error.toneNeedsManual: {value: "Pin a note to play its tone."}
+error.transposeMode: {value: "Chords and octaves are measured untransposed."}
+error.unexpected: {value: "Something went wrong. See the log for details."}

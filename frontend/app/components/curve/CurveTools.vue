@@ -1,9 +1,9 @@
 <template>
   <UiToolKey
     class="tuner-small"
-    :label="t('curve.recorded')"
+    :label="t('session.curve.recorded')"
     :active="recorded"
-    :title="t('curve.recordedHint')"
+    :title="t('session.curve.recordedHint')"
     @click="recorded = !recorded"
   />
 
@@ -11,8 +11,8 @@
     <template #activator="{ props: menu }">
       <v-btn
         v-bind="menu"
-        :title="t('curve.scaleHint')"
-        :aria-label="t('curve.scaleHint')"
+        :title="t('session.curve.scaleHint')"
+        :aria-label="t('session.curve.scaleHint')"
         size="small"
         class="tuner-small"
         append-icon="mdi-menu-down"
@@ -35,7 +35,7 @@
   <UiToolGroup
     :model-value="hz"
     :items="ENTRY_UNITS"
-    :label="t('curve.entryUnit')"
+    :label="t('session.curve.entryUnit')"
     class="tuner-small"
     @update:model-value="v => hz = Boolean(v)"
   />
@@ -56,7 +56,7 @@ const hz = defineModel<boolean>('hz', { required: true })
 
 const { t } = useI18n()
 
-const scaleLabel = (v: number) => (v ? t('curve.scale', { v }) : t('curve.scaleAuto'))
+const scaleLabel = (v: number) => (v ? t('session.curve.scale', { v }) : t('session.curve.scaleAuto'))
 
 const ENTRY_UNITS = computed<ToolItem[]>(() => [
   { value: false, label: t(`tuner.unit.${props.unit}`) },

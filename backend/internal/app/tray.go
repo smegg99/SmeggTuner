@@ -15,7 +15,7 @@ func setupSystemTray(app *application.App, window *application.WebviewWindow, qu
 	manager := tray.NewManager(app, tray.Options{
 		Icons:              trayicons.ForStatus(trayicons.StatusIdle),
 		TemplateIcon:       trayicons.TemplateIcon,
-		Tooltip:            func() string { return i18n.TrayTooltip(i18n.Localizer()) },
+		Tooltip:            func() string { return i18n.CommonAppName(i18n.Localizer()) },
 		OnClick:            func() { tray.Toggle(window) },
 		OnError:            func(err error) { logger.Error(i18n.KeyLogTrayIconFailed, logger.Err(err)) },
 		ThemeChangedEvents: []string{themeservice.EventThemeChanged},
@@ -23,9 +23,9 @@ func setupSystemTray(app *application.App, window *application.WebviewWindow, qu
 	manager.RegisterEvents(app)
 	manager.SetMenu(func() []tray.Item {
 		return []tray.Item{
-			{Label: i18n.TrayShow(i18n.Localizer()), OnClick: func() { tray.Show(window) }},
+			{Label: i18n.CommonTrayShow(i18n.Localizer()), OnClick: func() { tray.Show(window) }},
 			{Separator: true},
-			{Label: i18n.TrayQuit(i18n.Localizer()), OnClick: quit},
+			{Label: i18n.CommonTrayQuit(i18n.Localizer()), OnClick: quit},
 		}
 	})
 

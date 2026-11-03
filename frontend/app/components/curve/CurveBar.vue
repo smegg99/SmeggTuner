@@ -6,7 +6,7 @@
       v-if="!compact && rankItems.length > 1"
       :model-value="reed"
       :items="rankItems"
-      :label="t('curve.rank')"
+      :label="t('session.curve.rank')"
       @update:model-value="v => reed = v as number"
     />
 
@@ -16,7 +16,7 @@
       v-model="value"
       class="bar__value tuner-number"
       :suffix="t(`tuner.unit.${entry}`)"
-      :aria-label="t('curve.entryUnit')"
+      :aria-label="t('session.curve.entryUnit')"
       hide-details="auto"
       autocomplete="off"
       inputmode="decimal"
@@ -24,16 +24,16 @@
 
     <UiToolKey
       icon="mdi-check"
-      :label="compact ? undefined : t('curve.set')"
+      :label="compact ? undefined : t('session.curve.set')"
       :disabled="!note || busy"
-      :title="t('curve.setHint')"
+      :title="t('session.curve.setHint')"
       @click="emit('set')"
     />
     <UiToolKey
       icon="mdi-close"
-      :label="compact ? undefined : t('curve.remove')"
+      :label="compact ? undefined : t('session.curve.remove')"
       :disabled="!canRemove || busy"
-      :title="t('curve.removeHint')"
+      :title="t('session.curve.removeHint')"
       @click="emit('remove')"
     />
 
@@ -65,22 +65,22 @@
           v-if="rankItems.length > 1"
           :model-value="reed"
           :items="rankItems"
-          :label="t('curve.rank')"
+          :label="t('session.curve.rank')"
           @update:model-value="v => reed = v as number"
         />
         <UiToolKey
-          :label="t('curve.interpolate')"
+          :label="t('session.curve.interpolate')"
           :active="interpolate"
-          :title="t('curve.interpolateHint')"
+          :title="t('session.curve.interpolateHint')"
           @click="emit('interpolate', !interpolate)"
         />
         <div class="curve-options__row">
           <CurveMenu />
           <UiToolKey
             icon="mdi-delete-outline"
-            :label="t('curve.clearAll')"
+            :label="t('session.curve.clearAll')"
             :disabled="!canClear || busy"
-            :title="t('curve.clearAllHint')"
+            :title="t('session.curve.clearAllHint')"
             @click="emit('clear')"
           />
         </div>
@@ -89,18 +89,18 @@
 
     <UiToolKey
       v-if="!compact"
-      :label="t('curve.interpolate')"
+      :label="t('session.curve.interpolate')"
       :active="interpolate"
-      :title="t('curve.interpolateHint')"
+      :title="t('session.curve.interpolateHint')"
       @click="emit('interpolate', !interpolate)"
     />
     <CurveMenu v-if="!compact" />
     <UiToolKey
       v-if="!compact"
       icon="mdi-delete-outline"
-      :label="t('curve.clearAll')"
+      :label="t('session.curve.clearAll')"
       :disabled="!canClear || busy"
-      :title="t('curve.clearAllHint')"
+      :title="t('session.curve.clearAllHint')"
       @click="emit('clear')"
     />
   </div>

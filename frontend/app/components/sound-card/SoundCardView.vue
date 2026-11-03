@@ -55,8 +55,8 @@
             v-if="running"
             class="sc__key"
             icon="mdi-close"
-            :label="t('settings.calibration.cancel')"
-            :title="t('settings.calibration.cancel')"
+            :label="t('common.cancel')"
+            :title="t('common.cancel')"
             @click="cancelCalibration"
           />
           <UiToolKey

@@ -3,8 +3,8 @@
   <span class="keys">
     <v-btn
       variant="text"
-      :title="t('file.toStart')"
-      :aria-label="t('file.toStart')"
+      :title="t('tuner.file.toStart')"
+      :aria-label="t('tuner.file.toStart')"
       class="tone-key"
       style="--key-tone: rgb(var(--v-theme-accent))"
       :icon="'mdi-skip-previous'"
@@ -13,8 +13,8 @@
     />
     <v-btn
       variant="text"
-      :title="t('file.toEnd')"
-      :aria-label="t('file.toEnd')"
+      :title="t('tuner.file.toEnd')"
+      :aria-label="t('tuner.file.toEnd')"
       class="tone-key"
       style="--key-tone: rgb(var(--v-theme-accent))"
       :icon="'mdi-skip-next'"
@@ -23,7 +23,7 @@
     />
     <UiToolKey
       icon="mdi-repeat"
-      :title="t('file.loop')"
+      :title="t('tuner.file.loop')"
       :active="state.loop"
       @click="setLoop(!state.loop)"
     />
@@ -37,8 +37,8 @@
         :model-value="volume"
         :on="!muted"
         :active="muted"
-        :title="t('file.volume')"
-        :toggle-title="muted ? t('file.unmute') : t('file.mute')"
+        :title="t('tuner.file.volume')"
+        :toggle-title="muted ? t('tuner.file.unmute') : t('tuner.file.mute')"
         @toggle="setMuted(!muted)"
         @update:model-value="setVolume"
       />
@@ -50,22 +50,22 @@
   <span class="keys">
     <UiToolKey
       icon="mdi-magnify-minus-outline"
-      :title="t('file.zoomOut')"
+      :title="t('tuner.file.zoomOut')"
       @click="zoom(2, centre)"
     />
     <UiToolKey
       icon="mdi-magnify-plus-outline"
-      :title="t('file.zoomIn')"
+      :title="t('tuner.file.zoomIn')"
       @click="zoom(0.5, centre)"
     />
     <UiToolKey
       icon="mdi-arrow-expand-horizontal"
-      :title="t('file.fit')"
+      :title="t('tuner.file.fit')"
       @click="fit()"
     />
     <UiToolKey
       icon="mdi-selection-remove"
-      :title="t('file.clearSelection')"
+      :title="t('tuner.file.clearSelection')"
       :disabled="!hasSelection"
       @click="clearSelection()"
     />

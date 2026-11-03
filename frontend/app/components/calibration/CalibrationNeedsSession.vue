@@ -3,12 +3,12 @@
   <!-- Calibration records onto a session's instrument, so it needs one open: the way to the workshop. -->
   <div class="cal__empty">
     <p class="cal__lead">
-      {{ t('calibrate.needsSession') }}
+      {{ t('tuner.calibrate.needsSession') }}
     </p>
     <UiToolKey
       icon="mdi-folder-music-outline"
-      :label="t('routes.workshop')"
-      :title="t('routes.workshop')"
+      :label="t('common.routes.workshop')"
+      :title="t('common.routes.workshop')"
       @click="setView('workshop')"
     />
   </div>

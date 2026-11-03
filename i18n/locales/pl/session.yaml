@@ -1,230 +1,306 @@
-accordion.a4Locked:
-  value: 'Zablokowane: sesja ma już odczyty zmierzone względem tej wysokości.'
-  description: 'session management: accordion.a4Locked.'
-accordion.columnsRefused:
-  value: Ta zmiana naruszyłaby układ głosów używany przez istniejące odczyty. Nie zapisano zmiany. Przywróć poprzedni
-    układ lub utwórz nową sesję.
-  description: 'session management: accordion.columnsRefused.'
-accordion.frozen:
-  value: Po zapisaniu odczytów nie można zmienić stroju odniesienia ani układu głosów. Nadal możesz dodawać rejestry
-    korzystające z istniejących głosów.
-  description: 'session management: accordion.frozen.'
-accordion.remember:
-  value: Zapisz w bibliotece instrumentów
-  description: 'session management: accordion.remember.'
-accordion.rememberHint:
-  value: Zapisz instrument z tej sesji w bibliotece, aby użyć go w kolejnych sesjach.
-  description: 'session management: accordion.rememberHint.'
+# Sessions, instruments and target curves (Polish).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one = 1; few = 2, 3, 4, 22; many = 0, 5, 12, 21; other = fractions.
+
+# Session list and actions
 card.a4:
-  value: A = {hz} Hz
-  description: 'session management: card.a4. Parameters: hz.'
+  value: "A = {hz} Hz"
   placeholders:
-    hz:
-      type: string
-card.changed:
-  value: Akordeon na półce zmienił się od nagrania tej sesji.
-  description: 'session management: card.changed.'
-card.hasCurve:
-  value: Krzywa docelowa ustawiona
-  description: 'session management: card.hasCurve.'
+    hz: {type: string}
+
+card.changed: {value: "Akordeon na półce zmienił się od nagrania tej sesji."}
+card.hasCurve: {value: "Krzywa docelowa ustawiona"}
+
 card.readings:
   plural:
     argument: count
     forms:
-      one: '{count} odczyt'
-      few: '{count} odczyty'
-      many: '{count} odczytów'
-      other: '{count} odczytów'
-  description: 'session management: card.readings. Parameters: count.'
+      one: "{count} odczyt"
+      few: "{count} odczyty"
+      many: "{count} odczytów"
+      other: "{count} odczytów"
   placeholders:
-    count:
-      type: integer
-card.unnamedInstrument:
-  value: Akordeon bez nazwy
-  description: 'session management: card.unnamedInstrument.'
+    count: {type: integer}
+
+card.unnamedInstrument: {value: "Akordeon bez nazwy"}
+
 card.updated:
-  value: Zmieniono {when}
-  description: 'session management: card.updated. Parameters: when.'
+  value: "Zmieniono {when}"
   placeholders:
-    when:
-      type: string
-delete:
-  value: Usuń
-  description: 'session management: delete.'
-deleteHint:
-  value: Trwale usuń tę sesję wraz ze wszystkimi przebiegami, odczytami i krzywą strojenia.
-  description: 'session management: deleteHint.'
-deleteTitle:
-  value: Usunąć tę sesję?
-  description: 'session management: deleteTitle.'
-dialog.backToList:
-  value: Wybierz już strojony
-  description: 'session management: dialog.backToList.'
-dialog.describeNew:
-  value: Opisz nowy...
-  description: 'session management: dialog.describeNew.'
-dialog.forgetAccordion:
-  value: Zapomnij ten akordeon
-  description: 'session management: dialog.forgetAccordion.'
-dialog.instrument:
-  value: Akordeon
-  description: 'session management: dialog.instrument.'
-dialog.loadAccordion:
-  value: Wczytaj z pliku...
-  description: 'session management: dialog.loadAccordion.'
-dialog.name:
-  value: Nazwa sesji
-  description: 'session management: dialog.name.'
-dialog.nameHint:
-  value: Wpisz nazwę instrumentu lub klienta, aby rozpoznać sesję.
-  description: 'session management: dialog.nameHint.'
-dialog.newTitle:
-  value: Nowa sesja
-  description: 'session management: dialog.newTitle.'
-dialog.pickAccordion:
-  value: Który akordeon?
-  description: 'session management: dialog.pickAccordion.'
-dialog.start:
-  value: Zacznij
-  description: 'session management: dialog.start.'
-empty:
-  value: Brak sesji
-  description: 'session management: empty.'
-emptyHint:
-  value: Utwórz sesję, aby zapisywać pomiary, lub używaj tunera bez sesji.
-  description: 'session management: emptyHint.'
-error.fitFailed:
-  value: Nie udało się dopasować krzywej do tego przebiegu.
-  description: 'session management: error.fitFailed.'
-error.hasReadings:
-  value: 'Ta sesja ma już odczyty: wszystkie zmierzono względem jej odniesienia i liczby głosów, więc żadnego z
-    nich nie da się teraz zmienić.'
-  description: 'session management: error.hasReadings.'
-error.imageUnreadable:
-  value: Nie udało się otworzyć tego zdjęcia.
-  description: 'session management: error.imageUnreadable.'
-error.instrumentName:
-  value: Nadaj akordeonowi nazwę, żeby go potem znaleźć.
-  description: 'session management: error.instrumentName.'
-error.invalidA4:
-  value: Wysokość odniesienia musi mieścić się w zakresie 430-450 Hz.
-  description: 'session management: error.invalidA4.'
-error.invalidInstrument:
-  value: 'Tego akordeonu nie można użyć: chór głosowy nazwany dwa razy albo rejestr używa chóru, którego akordeon
-    nie ma.'
-  description: 'session management: error.invalidInstrument.'
-error.invalidName:
-  value: Nadaj sesji nazwę.
-  description: 'session management: error.invalidName.'
-error.invalidNote:
-  value: Ten dźwięk jest poza zakresem tunera.
-  description: 'session management: error.invalidNote.'
-error.invalidReed:
-  value: Ten akordeon nie ma takiego głosu.
-  description: 'session management: error.invalidReed.'
-error.invalidReedCount:
-  value: Akordeon gra od 1 do 8 głosów na jednym dźwięku.
-  description: 'session management: error.invalidReedCount.'
-error.invalidTranspose:
-  value: Transpozycja wynosi od 0 do 11 półtonów.
-  description: 'session management: error.invalidTranspose.'
-error.invalidUnit:
-  value: Wartości podaje się w jednostkach 0,06 %, w centach albo w hercach.
-  description: 'session management: error.invalidUnit.'
-error.invalidValue:
-  value: To nie jest liczba.
-  description: 'session management: error.invalidValue.'
-error.loadFailed:
-  value: Nie udało się odczytać sesji.
-  description: 'session management: error.loadFailed.'
-error.noBassMachine:
-  value: Ten akordeon nie deklaruje basów.
-  description: 'session management: error.noBassMachine.'
-error.noBassRegister:
-  value: Akordeon nie ma takiego rejestru basowego.
-  description: 'session management: error.noBassRegister.'
-error.noCurve:
-  value: Ta sesja nie ma krzywej docelowej.
-  description: 'session management: error.noCurve.'
-error.noReadings:
-  value: W tej sesji nic jeszcze nie nagrano.
-  description: 'session management: error.noReadings.'
-error.noRegister:
-  value: Ten akordeon nie ma takiego rejestru.
-  description: 'session management: error.noRegister.'
-error.noSession:
-  value: Żadna sesja nie jest otwarta.
-  description: 'session management: error.noSession.'
-error.notAnImage:
-  value: Ten plik nie jest zdjęciem.
-  description: 'session management: error.notAnImage.'
-error.notFound:
-  value: Nie ma takiej sesji.
-  description: 'session management: error.notFound.'
-error.notesTooLong:
-  value: Skróć notatkę do 500 znaków.
-  description: 'session management: error.notesTooLong.'
-error.saveFailed:
-  value: Nie udało się zapisać sesji. Jeśli teraz zamkniesz, ostatnie nagrania mogą przepaść.
-  description: 'session management: error.saveFailed.'
-error.takeNotFound:
-  value: Nie ma już tego odczytu.
-  description: 'session management: error.takeNotFound.'
-error.unexpected:
-  value: Coś poszło nie tak.
-  description: 'session management: error.unexpected.'
-export:
-  value: Eksportuj sesję
-  description: 'session management: export.'
-file.exportSessionTitle:
-  value: Eksportuj sesję
-  description: 'session management: file.exportSessionTitle.'
-file.openFilter:
-  value: sesja smeggtuner
-  description: 'session management: file.openFilter.'
-file.openTitle:
-  value: Wybierz plik sesji
-  description: 'session management: file.openTitle.'
+    when: {type: string}
+
+deleteHint: {value: "Trwale usuń tę sesję wraz ze wszystkimi przebiegami, odczytami i krzywą strojenia."}
+deleteTitle: {value: "Usunąć tę sesję?"}
+empty: {value: "Brak sesji"}
+emptyHint: {value: "Utwórz sesję, aby zapisywać pomiary, lub używaj tunera bez sesji."}
+export: {value: "Eksportuj sesję"}
+file.openFilter: {value: "sesja smeggtuner"}
+file.openTitle: {value: "Wybierz plik sesji"}
+new: {value: "Nowa sesja"}
+title: {value: "Sesje"}
+
+# Session dialog and tabs
+dialog.backToList: {value: "Wybierz już strojony"}
+dialog.describeNew: {value: "Opisz nowy..."}
+dialog.forgetAccordion: {value: "Zapomnij ten akordeon"}
+dialog.loadAccordion: {value: "Wczytaj z pliku..."}
+dialog.name: {value: "Nazwa sesji"}
+dialog.nameHint: {value: "Wpisz nazwę instrumentu lub klienta, aby rozpoznać sesję."}
+dialog.pickAccordion: {value: "Który akordeon?"}
+dialog.start: {value: "Zacznij"}
+page.mobile.curve: {value: "Cele"}
+page.mobile.recorded: {value: "Pomiary"}
+
+# Instrument editing restrictions
+accordion.a4Locked: {value: "Zablokowane: sesja ma już odczyty zmierzone względem tej wysokości."}
+
+accordion.columnsRefused:
+  value: >-
+    Ta zmiana naruszyłaby układ głosów używany przez istniejące odczyty. Nie zapisano zmiany.
+    Przywróć poprzedni układ lub utwórz nową sesję.
+
+accordion.frozen:
+  value: >-
+    Po zapisaniu odczytów nie można zmienić stroju odniesienia ani układu głosów. Nadal możesz
+    dodawać rejestry korzystające z istniejących głosów.
+
+accordion.frozenShort: {value: "Głosy zablokowane"}
+accordion.remember: {value: "Zapisz w bibliotece instrumentów"}
+
+accordion.rememberHint:
+  value: "Zapisz instrument z tej sesji w bibliotece, aby użyć go w kolejnych sesjach."
+
+# Instrument definition and registers
+instrument.a4: {value: "Wysokość odniesienia"}
+
+instrument.a4Hint:
+  value: "Częstotliwość wzorcowa A4 w hercach. Nowe sesje tego instrumentu używają tej wartości."
+
+instrument.bass.build: {value: "Stopy, którymi gra następny rejestr"}
+instrument.bass.fixed: {value: "Bez rejestrów basowych: maszyna na sztywno, wszystkie głosy grają zawsze."}
+
+instrument.bass.full:
+  value: "Basy mieszczą tu najwyżej {n} rejestrów"
+  placeholders:
+    n: {type: string}
+
+instrument.bass.hint: {value: "Podaj, iloma głosami grają basy; najczęściej cztery albo pięć."}
+instrument.bass.registerName: {value: "Nazwa przełącznika"}
+instrument.bass.voices: {value: "Głosy basowe"}
+instrument.beatTolerance: {value: "Tolerancja dudnienia"}
+instrument.builder.add: {value: "Dodaj"}
+instrument.builder.already: {value: "Ten rejestr jest już opisany"}
+instrument.builder.high: {value: "4 stopy (pikolo)"}
+instrument.builder.low: {value: "16 stóp (bas)"}
+instrument.builder.middle: {value: "8 stóp (głosy)"}
+instrument.builder.none: {value: "Brak rejestrów. Wybierz poniżej chóry, którymi gra każdy z nich."}
+instrument.builder.remove: {value: "Usuń ten rejestr"}
+instrument.builder.title: {value: "Dodaj rejestr"}
+instrument.file.exportTitle: {value: "Eksportuj akordeon"}
+instrument.file.filterName: {value: "akordeon smeggtuner"}
+instrument.file.imageFilter: {value: "Obrazy"}
+instrument.file.imageTitle: {value: "Wybierz zdjęcie"}
+instrument.file.openTitle: {value: "Wybierz plik akordeonu"}
+instrument.name: {value: "Nazwa"}
+instrument.nameHint: {value: "Nazwa wyświetlana w bibliotece instrumentów i sesjach."}
+instrument.namePlaceholder: {value: "Hohner Morino V N"}
+instrument.nameRequired: {value: "Wpisz nazwę akordeonu."}
+instrument.photo: {value: "Zdjęcie"}
+instrument.range.backwards: {value: "Najwyższy dźwięk nie może być niższy od najniższego."}
+instrument.range.clear: {value: "Wyczyść"}
+instrument.range.down: {value: "Niżej"}
+
+instrument.range.hint:
+  value: "Opcjonalne. Najniższy i najwyższy klawisz. Możesz też ustawić go słuchowo podczas kalibracji."
+
+instrument.range.label: {value: "Zakres klawiatury"}
+instrument.range.to: {value: "do"}
+instrument.range.up: {value: "Wyżej"}
+
+instrument.registersHint:
+  value: >-
+    Klikaj kropki symbolu każdego rejestru - kółka wygrawerowanego na akordeonie - albo wybierz
+    typowy. To, co gra, odczytuje się prosto z kropek.
+
+instrument.registersSubtitle: {value: "Przełączniki strony dyskantowej i chóry, którymi grają."}
+
+instrument.says:
+  plural:
+    argument: reeds
+    forms:
+      one: "Chóry głosowe {banks}. Najszerszy rejestr uruchamia {reeds} głos."
+      few: "Chóry głosowe {banks}. Najszerszy rejestr uruchamia {reeds} głosy."
+      many: "Chóry głosowe {banks}. Najszerszy rejestr uruchamia {reeds} głosów."
+      other: "Chóry głosowe {banks}. Najszerszy rejestr uruchamia {reeds} głosów."
+  placeholders:
+    banks: {type: string}
+    reeds: {type: integer}
+
+instrument.sections.bass: {value: "Basy"}
+instrument.sections.identity: {value: "Oznaczenie"}
+instrument.sections.keyboard: {value: "Klawiatura"}
+instrument.sections.reference: {value: "Odniesienie i tolerancja"}
+instrument.sections.voices: {value: "Rejestry"}
+instrument.tolerance: {value: "Tolerancja głosu"}
+
+instrument.toleranceHint:
+  value: >-
+    Dopuszczalna odchyłka stroika w jednostkach równych 0,06% częstotliwości nuty. Odczyty poza
+    tym zakresem są oznaczane jako rozstrojone.
+
+# Target curve editor
+curve.clearAll: {value: "Wyczyść krzywą"}
+
+curve.clearAllConfirm:
+  value: >-
+    Wszystkie punkty zostaną usunięte. Cel wróci do wysokości skali dla każdego dźwięku, a tuner
+    stanie się zwykłym wskaźnikiem.
+
+curve.clearAllHint: {value: "Usuń wszystkie punkty i zostaw cel na wysokości skali."}
+curve.clearAllTitle: {value: "Wyczyścić całą krzywą?"}
+curve.entryUnit: {value: "Jednostka wpisu"}
+
+curve.help.hz:
+  value: >-
+    Hz wpisuje cel w hercach, liczony przy A4 = 440 Hz jak w liście dudnień oryginału, więc nie
+    zmienia się z A4 sesji. Nagrane kładzie odczyty tej sesji na listę, a Lista może dopasować do
+    nich punkty albo skopiować listę z innej sesji.
+
+curve.help.hzTitle: {value: "Hz i odczyty"}
+
+curve.help.interp:
+  value: >-
+    Przy włączonej Interpolacji dźwięki między punktami idą po linii; wyłączona - każdy punkt
+    obowiązuje aż do następnego. Bez punktów celem jest wszędzie wysokość skali.
+
+curve.help.interpTitle: {value: "Między punktami"}
+
+curve.help.lead:
+  value: >-
+    Cel, do którego stroisz: jak daleko każdy głos ma leżeć od swojej wysokości skali, dźwięk po
+    dźwięku. Nagrany głos jest oceniany względem tego celu, a nie względem czystego środka.
+
+curve.help.set:
+  value: >-
+    Wybierz dźwięk i wartość i naciśnij Ustaw, albo przeciągnij punkt na wykresie w górę lub w
+    dół. Każdy chór to osobna linia, a edytowany jest wyróżniony.
+
+curve.help.setTitle: {value: "Ustawianie punktu"}
+curve.helpTitle: {value: "Żądane dudnienia"}
+curve.interpolate: {value: "Interpoluj"}
+
+curve.interpolateHint:
+  value: "Prowadź linię między punktami. Wyłączone - każdy punkt obowiązuje aż do następnego."
+
+curve.menu.ends: {value: "Poza punktami"}
+curve.menu.extendHigh: {value: "Przedłuż powyżej najwyższego"}
+curve.menu.extendLow: {value: "Przedłuż poniżej najniższego"}
+curve.menu.fit: {value: "Dopasuj do odczytów tej sesji"}
+
+curve.menu.fitBody:
+  plural:
+    argument: n
+    forms:
+      one: "Punkty zostaną zastąpione krzywą dopasowaną do jednego odczytu."
+      few: "Punkty zostaną zastąpione krzywą dopasowaną do {n} odczytów."
+      many: "Punkty zostaną zastąpione krzywą dopasowaną do {n} odczytów."
+      other: "Punkty zostaną zastąpione krzywą dopasowaną do {n} odczytów."
+  placeholders:
+    n: {type: integer}
+
+curve.menu.fromFile: {value: "Skopiuj z pliku sesji"}
+curve.menu.fromSession: {value: "Skopiuj z sesji"}
+curve.menu.label: {value: "Lista"}
+curve.menu.replace: {value: "Zastąp listę"}
+curve.menu.replaceBody: {value: "Punkty zostaną zastąpione drugą listą, razem z jej ustawieniami."}
+curve.menu.replaceConfirm: {value: "Zastąp"}
+curve.menu.replaceTitle: {value: "Zastąpić listę dudnień?"}
+curve.rank: {value: "Chór"}
+curve.recorded: {value: "Nagrane"}
+curve.recordedHint: {value: "Pokaż odczyty tej sesji na wykresie"}
+curve.remove: {value: "Usuń"}
+curve.removeHint: {value: "Usuń punkt tego dźwięku z krzywej."}
+
+curve.scale:
+  value: "Skala {v}"
+  placeholders:
+    v: {type: string}
+
+curve.scaleAuto: {value: "Skala auto"}
+curve.scaleHint: {value: "Jak daleko w górę i w dół sięga wykres"}
+curve.set: {value: "Ustaw"}
+curve.setHint: {value: "Umieść punkt na tym dźwięku dla wybranego chóru."}
+curve.startHint: {value: "Brak punktów. Celem jest wysokość skali dla każdego dźwięku."}
+
+# Readings and workshop actions
 footer.coverage:
-  value: '{done} / {total} dźwięków'
-  description: 'session management: footer.coverage. Parameters: done, total.'
+  value: "{done} / {total} dźwięków"
   placeholders:
-    done:
-      type: string
-    total:
-      type: string
+    done: {type: string}
+    total: {type: string}
+
 footer.inTune:
-  value: '{done} / {total} nastrojonych'
-  description: 'session management: footer.inTune. Parameters: done, total.'
+  value: "{done} / {total} nastrojonych"
   placeholders:
-    done:
-      type: string
-    total:
-      type: string
-footer.none:
-  value: Brak sesji
-  description: 'session management: footer.none.'
-new:
-  value: Nowa sesja
-  description: 'session management: new.'
-readings.empty:
-  value: Włącz nagrywanie, a następnie graj dźwięki, aby zapisać odczyty.
-  description: 'session management: readings.empty.'
+    done: {type: string}
+    total: {type: string}
+
+footer.none: {value: "Brak sesji"}
+
 readings.notes:
   plural:
     argument: n
     forms:
-      one: jeden dźwięk
-      few: '{n} dźwięki'
-      many: '{n} dźwięków'
-      other: '{n} dźwięków'
-  description: 'session management: readings.notes. Parameters: n.'
+      one: "jeden dźwięk"
+      few: "{n} dźwięki"
+      many: "{n} dźwięków"
+      other: "{n} dźwięków"
   placeholders:
-    n:
-      type: integer
-title:
-  value: Sesje
-  description: 'session management: title.'
-accordion.frozenShort:
-  value: Głosy zablokowane
-  description: Compact trigger explaining why recorded ranks cannot change.
+    n: {type: integer}
+
+workshop.exit: {value: "Wyjdź z sesji"}
+workshop.import: {value: "Importuj"}
+workshop.open: {value: "Otwórz"}
+workshop.print: {value: "Drukuj kartę"}
+
+# Session errors
+error.fitFailed: {value: "Nie udało się dopasować krzywej do tego przebiegu."}
+
+error.hasReadings:
+  value: >-
+    Ta sesja ma już odczyty: wszystkie zmierzono względem jej odniesienia i liczby głosów, więc
+    żadnego z nich nie da się teraz zmienić.
+
+error.imageUnreadable: {value: "Nie udało się otworzyć tego zdjęcia."}
+error.instrumentName: {value: "Nadaj akordeonowi nazwę, żeby go potem znaleźć."}
+error.invalidA4: {value: "Wysokość odniesienia musi mieścić się w zakresie 430-450 Hz."}
+
+error.invalidInstrument:
+  value: >-
+    Tego akordeonu nie można użyć: chór głosowy nazwany dwa razy albo rejestr używa chóru, którego
+    akordeon nie ma.
+
+error.invalidName: {value: "Nadaj sesji nazwę."}
+error.invalidNote: {value: "Ten dźwięk jest poza zakresem tunera."}
+error.invalidReed: {value: "Ten akordeon nie ma takiego głosu."}
+error.invalidReedCount: {value: "Akordeon gra od 1 do 8 głosów na jednym dźwięku."}
+error.invalidTranspose: {value: "Transpozycja wynosi od 0 do 11 półtonów."}
+error.invalidUnit: {value: "Wartości podaje się w jednostkach 0,06 %, w centach albo w hercach."}
+error.invalidValue: {value: "To nie jest liczba."}
+error.loadFailed: {value: "Nie udało się odczytać sesji."}
+error.noBassMachine: {value: "Ten akordeon nie deklaruje basów."}
+error.noBassRegister: {value: "Akordeon nie ma takiego rejestru basowego."}
+error.noCurve: {value: "Ta sesja nie ma krzywej docelowej."}
+error.noReadings: {value: "W tej sesji nic jeszcze nie nagrano."}
+error.noRegister: {value: "Ten akordeon nie ma takiego rejestru."}
+error.noSession: {value: "Żadna sesja nie jest otwarta."}
+error.notAnImage: {value: "Ten plik nie jest zdjęciem."}
+error.notFound: {value: "Nie ma takiej sesji."}
+error.notesTooLong: {value: "Skróć notatkę do 500 znaków."}
+
+error.saveFailed:
+  value: "Nie udało się zapisać sesji. Jeśli teraz zamkniesz, ostatnie nagrania mogą przepaść."
+
+error.takeNotFound: {value: "Nie ma już tego odczytu."}
+error.unexpected: {value: "Coś poszło nie tak."}

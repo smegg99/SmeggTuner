@@ -74,13 +74,13 @@ describe('the sound card calibration room', () => {
     expect(w.findAll('.sc__fill').map(f => f.attributes('style'))).toEqual(['width: 100%;', 'width: 50%;'])
     expect(w.find('.sc__half--on').text()).toBe('settings.calibration.screen.bar.confirming')
     expect(w.findAll('.sc__stat dd').map(d => d.text())).toEqual([
-      '+0.012 %, +0.20 tuner.boxes.unit.reference',
+      '+0.012 %, +0.20 common.unitSymbol.reference',
       'settings.calibration.screen.steadiness(ppm=3.2,target=5)',
       '48000 Hz', '31 s', '2',
     ])
     // The calibrate key keeps its place, disabled, beside Cancel.
     const keys = w.findAll('button')
-    expect(keys.map(k => k.text())).toEqual(['settings.calibration.cancel', 'settings.calibration.start'])
+    expect(keys.map(k => k.text())).toEqual(['common.cancel', 'settings.calibration.start'])
     expect(keys[1]!.attributes('disabled')).toBeDefined()
     await keys[0]!.trigger('click')
     expect(cancelCalibration).toHaveBeenCalled()
@@ -95,9 +95,9 @@ describe('the sound card calibration room', () => {
   it('states the stored correction as a pitch error and returns where it came from', async () => {
     const w = await view({ status: 'calibrated', percent: 0.006 })
     expect(w.text()).toContain('settings.calibration.screen.calibrated(percent=+0.006)')
-    expect(w.text()).toContain('settings.calibration.screen.pitch(pitch=+0.10 tuner.boxes.unit.reference)')
+    expect(w.text()).toContain('settings.calibration.screen.pitch(pitch=+0.10 common.unitSymbol.reference)')
     expect(w.find('.sc__step--on').text()).toContain('settings.calibration.screen.steps.done')
-    expect(w.find('.sc__stat dd').text()).toBe('+0.006 %, +0.10 tuner.boxes.unit.reference')
+    expect(w.find('.sc__stat dd').text()).toBe('+0.006 %, +0.10 common.unitSymbol.reference')
     const keys = w.findAll('button')
     expect(keys.map(k => k.text())).toEqual(['settings.calibration.screen.return', 'settings.calibration.screen.again'])
     await keys[0]!.trigger('click')

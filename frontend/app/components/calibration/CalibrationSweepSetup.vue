@@ -4,7 +4,7 @@
       v-if="!compact || options.length"
       class="sw__prompt"
     >
-      {{ t('calibrate.sweep.pickRegister') }}
+      {{ t('tuner.calibrate.sweep.pickRegister') }}
     </p>
 
     <CalibrationRegisterKeys
@@ -23,12 +23,12 @@
         :items="options"
         item-title="label"
         item-value="id"
-        :aria-label="t('calibrate.sweep.pickRegister')"
+        :aria-label="t('tuner.calibrate.sweep.pickRegister')"
         hide-details
       />
       <UiToolKey
         icon="mdi-play"
-        :title="t('calibrate.sweep.startPlain')"
+        :title="t('tuner.calibrate.sweep.startPlain')"
         @click="startChoice"
       />
     </div>
@@ -39,32 +39,32 @@
       v-if="hasSolo && !compact"
       class="sw__hint"
     >
-      {{ t('calibrate.sweep.soloTeaches') }}
+      {{ t('tuner.calibrate.sweep.soloTeaches') }}
     </p>
 
     <!-- No register described: sweep into numbered columns, like an undescribed session. -->
     <template v-if="!registers.length && !bassOptions.length">
       <p class="sw__hint">
-        {{ t('calibrate.sweep.noRegisters') }}
+        {{ t('tuner.calibrate.sweep.noRegisters') }}
       </p>
       <v-btn
-        :title="t('calibrate.sweep.startPlain')"
-        :aria-label="t('calibrate.sweep.startPlain')"
+        :title="t('tuner.calibrate.sweep.startPlain')"
+        :aria-label="t('tuner.calibrate.sweep.startPlain')"
         class="tone-key"
         style="--key-tone: rgb(var(--v-theme-goal))"
         prepend-icon="mdi-play"
         :data-icon="'mdi-play'"
         @click="emit('begin', '')"
       >
-        {{ t('calibrate.sweep.startPlain') }}
+        {{ t('tuner.calibrate.sweep.startPlain') }}
       </v-btn>
     </template>
 
     <div class="sw__actions">
       <UiToolKey
         icon="mdi-arrow-left"
-        :label="t('calibrate.sweep.redoRange')"
-        :title="t('calibrate.sweep.redoRange')"
+        :label="t('tuner.calibrate.sweep.redoRange')"
+        :title="t('tuner.calibrate.sweep.redoRange')"
         @click="emit('redoRange')"
       />
       <v-menu v-if="compact && hasSolo">
@@ -72,11 +72,11 @@
           <UiToolKey
             v-bind="menu"
             icon="mdi-information-outline"
-            :title="t('calibrate.sweep.soloTeaches')"
+            :title="t('tuner.calibrate.sweep.soloTeaches')"
           />
         </template>
         <p class="sw__explanation">
-          {{ t('calibrate.sweep.soloTeaches') }}
+          {{ t('tuner.calibrate.sweep.soloTeaches') }}
         </p>
       </v-menu>
     </div>
@@ -107,7 +107,7 @@ const hasSolo = computed(() =>
 // The whole machine first - the only choice on a fixed bass - then each declared switch.
 const bassOptions = computed(() => {
   if (!props.bassReeds) return []
-  const out = [{ register: '', label: t('calibrate.sweep.bassAll') }]
+  const out = [{ register: '', label: t('tuner.calibrate.sweep.bassAll') }]
   for (const r of props.bassRegisters ?? []) {
     out.push({ register: r.name, label: `${r.name} - ${r.feet.map(f => `${f}'`).join('+')}` })
   }

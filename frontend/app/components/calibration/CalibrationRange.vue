@@ -2,7 +2,7 @@
   <div class="rng">
     <template v-if="phase !== 'done'">
       <p class="rng__prompt">
-        {{ t(phase === 'low' ? 'calibrate.range.playLow' : 'calibrate.range.playHigh') }}
+        {{ t(phase === 'low' ? 'tuner.calibrate.range.playLow' : 'tuner.calibrate.range.playHigh') }}
       </p>
 
       <CalibrationReadout
@@ -21,9 +21,9 @@
         />
         <UiToolKey
           icon="mdi-check"
-          :label="t('calibrate.range.capture')"
+          :label="t('tuner.calibrate.range.capture')"
           :disabled="!heard"
-          :title="t('calibrate.range.capture')"
+          :title="t('tuner.calibrate.range.capture')"
           @click="capture"
         />
       </div>
@@ -32,7 +32,7 @@
     <template v-else>
       <div class="rng__range">
         <span class="rng__end">
-          <span class="rng__endlabel">{{ t('calibrate.range.lowest') }}</span>
+          <span class="rng__endlabel">{{ t('tuner.calibrate.range.lowest') }}</span>
           <span class="rng__endnote">{{ noteName(lo) }}</span>
         </span>
         <v-icon
@@ -40,7 +40,7 @@
           class="rng__arrow"
         />
         <span class="rng__end">
-          <span class="rng__endlabel">{{ t('calibrate.range.highest') }}</span>
+          <span class="rng__endlabel">{{ t('tuner.calibrate.range.highest') }}</span>
           <span class="rng__endnote">{{ noteName(hi) }}</span>
         </span>
       </div>
@@ -49,21 +49,21 @@
         v-if="backwards"
         class="rng__warn"
       >
-        {{ t('calibrate.range.backwards') }}
+        {{ t('tuner.calibrate.range.backwards') }}
       </p>
 
       <div class="rng__keys">
         <UiToolKey
           icon="mdi-refresh"
-          :label="t('calibrate.range.again')"
-          :title="t('calibrate.range.again')"
+          :label="t('tuner.calibrate.range.again')"
+          :title="t('tuner.calibrate.range.again')"
           @click="reset"
         />
         <UiToolKey
           icon="mdi-arrow-right"
-          :label="t('calibrate.range.next')"
+          :label="t('tuner.calibrate.range.next')"
           :disabled="backwards || saving"
-          :title="t('calibrate.range.next')"
+          :title="t('tuner.calibrate.range.next')"
           @click="onNext"
         />
       </div>

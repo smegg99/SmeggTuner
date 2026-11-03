@@ -1,44 +1,117 @@
-accept:
-  value: Zatwierdź
-  description: 'shared controls: accept.'
-back:
-  value: Wstecz
-  description: 'shared controls: back.'
-cancel:
-  value: Anuluj
-  description: 'shared controls: cancel.'
-close:
-  value: Zamknij
-  description: 'shared controls: close.'
-color.hue:
-  value: Barwa
-  description: 'shared controls: color.hue.'
-color.saturation:
-  value: Nasycenie
-  description: 'shared controls: color.saturation.'
-color.value:
-  value: Jasność
-  description: 'shared controls: color.value.'
-delete:
-  value: Usuń
-  description: 'shared controls: delete.'
-'no':
-  value: Nie
-  description: 'shared controls: no.'
-save:
-  value: Zapisz
-  description: 'shared controls: save.'
-website:
-  value: Strona
-  description: 'shared controls: website.'
-'yes':
-  value: Tak
-  description: 'shared controls: yes.'
+# Shared labels and application text (Polish).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
 
-previous:
-  value: Poprzednia
-  description: Navigate between fixed screen pages.
+# Buttons and shared labels
+accept: {value: "Zatwierdź"}
+back: {value: "Wstecz"}
+cancel: {value: "Anuluj"}
+close: {value: "Zamknij"}
+delete: {value: "Usuń"}
+export: {value: "Eksportuj"}
+next: {value: "Następna"}
+"no": {value: "Nie"}
+none: {value: "Brak"}
+previous: {value: "Poprzednia"}
+website: {value: "Strona"}
+"yes": {value: "Tak"}
 
-next:
-  value: Następna
-  description: Navigate between fixed screen pages.
+# Musical labels and unit symbols
+accordion: {value: "Akordeon"}
+note: {value: "Dźwięk"}
+
+reed:
+  value: "Głos {index}"
+  placeholders:
+    index: {type: integer}
+
+unitSymbol.cents: {value: "cent"}
+unitSymbol.hz: {value: "Hz"}
+unitSymbol.reference: {value: "j"}
+
+# Color controls
+color.hue: {value: "Barwa"}
+color.saturation: {value: "Nasycenie"}
+color.value: {value: "Jasność"}
+
+# Navigation and window titles
+routes.navigation: {value: "Nawigacja główna"}
+routes.settings: {value: "Ustawienia"}
+routes.tune: {value: "Strojenie"}
+routes.workshop: {value: "Warsztat"}
+
+title.count:
+  value: "{room} {name} ({done})"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+
+title.progress:
+  value: "{room} {name} {done}/{total}"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+    total: {type: string}
+
+title.room.calibrate: {value: "kalibracja"}
+title.room.settings: {value: "ustawienia"}
+title.room.soundcard: {value: "karta dźwiękowa"}
+title.room.tune: {value: "strojenie"}
+title.room.workshop: {value: "warsztat"}
+
+title.session:
+  value: "{room} {name}"
+  placeholders:
+    name: {type: string}
+    room: {type: string}
+
+title.uncalibrated:
+  value: "{title} (karta dźwiękowa nieskalibrowana)"
+  placeholders:
+    title: {type: string}
+
+# Application and About dialog
+about.aboutTitle: {value: "O programie"}
+about.commit: {value: "Kompilacja"}
+about.donate: {value: "Wesprzyj na Ko-fi"}
+about.mascot: {value: "Kot grający na akordeonie"}
+about.publisher: {value: "Autor: Smegg99"}
+about.tagline: {value: "Wolny program do strojenia akordeonów o otwartym kodzie."}
+about.untagged: {value: "wersja rozwojowa"}
+about.version: {value: "Wersja"}
+app.description: {value: "Wolna i otwarta aplikacja do strojenia akordeonów."}
+app.name: {value: "SmeggTuner"}
+
+# Help dialog and keyboard instructions
+about.help.everywhere.arrows: {value: "Przesuń przypiętą nutę (Strojenie)"}
+about.help.everywhere.hold: {value: "Włącz lub wyłącz zatrzymywanie stabilnych odczytów"}
+about.help.everywhere.manual: {value: "Nuta automatyczna lub przypięta"}
+about.help.everywhere.record: {value: "Włącz lub wyłącz nagrywanie"}
+about.help.everywhere.rooms: {value: "Strojenie, Warsztat, Ustawienia"}
+about.help.everywhere.roomsTuner: {value: "Strojenie, Ustawienia"}
+about.help.everywhere.step: {value: "Przesuń przypiętą nutę"}
+about.help.everywhere.takeNow: {value: "Zapisz odczyt od razu"}
+about.help.everywhere.title: {value: "Wszędzie"}
+about.help.everywhere.undo: {value: "Cofnij ostatni odczyt"}
+
+about.help.intro:
+  value: "Mierzy stroiki akordeonu względem stroju odniesienia. Sesja przechowuje odczyty jednego akordeonu."
+
+about.help.introTuner: {value: "Mierzy stroiki akordeonu względem stroju odniesienia."}
+about.help.rooms.settings: {value: "Mikrofon, odczyty i wygląd."}
+about.help.rooms.title: {value: "Główne widoki"}
+about.help.rooms.tune: {value: "Mierz stroiki i dudnienia z mikrofonu lub pliku WAV."}
+about.help.rooms.workshop: {value: "Sesje, instrumenty i raporty."}
+about.help.shortcuts.fit: {value: "Dopasuj plik lub zaznaczenie"}
+about.help.shortcuts.homeEnd: {value: "Skok na początek lub koniec zaznaczenia"}
+about.help.shortcuts.mute: {value: "Wycisz głośniki"}
+about.help.shortcuts.space: {value: "Odtwórz lub wstrzymaj"}
+about.help.shortcuts.title: {value: "Klawisze odtwarzania (otwarty plik)"}
+about.help.shortcuts.zoom: {value: "Przybliż lub oddal"}
+about.helpTitle: {value: "Pomoc"}
+
+# System tray
+tray.quit: {value: "Zakończ"}
+tray.show: {value: "Pokaż"}

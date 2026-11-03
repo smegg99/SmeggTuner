@@ -10,7 +10,7 @@
         <v-text-field
           :id="id"
           v-model="reedDraft"
-          :suffix="t('settings.toleranceUnit')"
+          :suffix="t('common.unitSymbol.reference')"
           hide-details="auto"
           autocomplete="off"
           :aria-label="t('settings.toleranceLabel')"
@@ -24,7 +24,7 @@
         <span class="tol__cap">{{ t('settings.toleranceBeat') }}</span>
         <v-text-field
           v-model="beatDraft"
-          :suffix="t('settings.toleranceUnit')"
+          :suffix="t('common.unitSymbol.reference')"
           hide-details="auto"
           autocomplete="off"
           :aria-label="t('settings.toleranceLabel')"

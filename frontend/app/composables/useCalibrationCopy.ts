@@ -29,7 +29,7 @@ export function useCalibrationCopy(
 
   // A clock correction as the pitch error it stands for, in the unit the tuner reads in.
   function pitch(percent: number): string {
-    const unitLabel = t(`tuner.boxes.unit.${unit.value === 'cents' ? 'cents' : 'reference'}`)
+    const unitLabel = t(`common.unitSymbol.${unit.value === 'cents' ? 'cents' : 'reference'}`)
     return `${clockPitch(percent, unit.value)} ${unitLabel}`
   }
 

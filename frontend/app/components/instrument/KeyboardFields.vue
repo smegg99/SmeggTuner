@@ -1,15 +1,15 @@
 <template>
   <UiFormSection
-    :title="t('instrument.sections.keyboard')"
+    :title="t('session.instrument.sections.keyboard')"
     class="tuner-section"
   >
     <UiFormField
-      :label="t('instrument.range.label')"
-      :hint="t('instrument.range.hint')"
+      :label="t('session.instrument.range.label')"
+      :hint="t('session.instrument.range.hint')"
     >
       <div class="form__range">
         <InstrumentNoteStepper v-model="lo" />
-        <span class="form__rangeto">{{ t('instrument.range.to') }}</span>
+        <span class="form__rangeto">{{ t('session.instrument.range.to') }}</span>
         <InstrumentNoteStepper v-model="hi" />
       </div>
     </UiFormField>
@@ -18,7 +18,7 @@
       v-if="rangeError"
       class="form__warn"
     >
-      {{ t('instrument.range.backwards') }}
+      {{ t('session.instrument.range.backwards') }}
     </p>
   </UiFormSection>
 </template>

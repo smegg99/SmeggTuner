@@ -84,7 +84,7 @@ describe('browsing browser input devices', () => {
     list.mockClear()
     getUserMedia.mockRejectedValueOnce(new DOMException('Denied', 'NotAllowedError'))
     await audio.browse()
-    expect(audio.error.value).toBe('web.mic.denied')
+    expect(audio.error.value).toBe('tuner.web.mic.denied')
     expect(audio.loading.value).toBe(false)
     expect(list).not.toHaveBeenCalled()
     expect(stop).not.toHaveBeenCalled()

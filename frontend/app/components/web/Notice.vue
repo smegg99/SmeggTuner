@@ -3,16 +3,16 @@
   <v-dialog
     v-model="open"
     width="var(--dlg-md)"
-    :aria-label="t('web.notice.title')"
+    :aria-label="t('tuner.web.notice.title')"
   >
     <UiDialogCard
-      :title="t('web.notice.title')"
+      :title="t('tuner.web.notice.title')"
       @close="close"
     >
       <ul class="notice">
-        <li>{{ t('web.notice.processing') }}</li>
-        <li>{{ t('web.notice.background') }}</li>
-        <li>{{ t('web.notice.native') }}</li>
+        <li>{{ t('tuner.web.notice.processing') }}</li>
+        <li>{{ t('tuner.web.notice.background') }}</li>
+        <li>{{ t('tuner.web.notice.native') }}</li>
       </ul>
       <template #actions>
         <v-btn
@@ -22,13 +22,13 @@
           target="_blank"
           rel="noopener"
         >
-          {{ t('web.downloads.title') }}
+          {{ t('tuner.web.downloads.title') }}
         </v-btn>
         <v-btn
           color="primary"
           @click="close"
         >
-          {{ t('web.notice.ok') }}
+          {{ t('tuner.web.notice.ok') }}
         </v-btn>
       </template>
     </UiDialogCard>

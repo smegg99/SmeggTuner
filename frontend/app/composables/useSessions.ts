@@ -78,7 +78,7 @@ export function useSessions() {
     const path = await run(() => SessionService.SaveFileDialog(
       'session',
       suggested,
-      t('session.file.exportSessionTitle'),
+      t('session.export'),
       t('session.file.openFilter'),
     ))
     if (!path) return false

@@ -1,44 +1,117 @@
-accept:
-  value: Accept
-  description: 'shared controls: accept.'
-back:
-  value: Back
-  description: 'shared controls: back.'
-cancel:
-  value: Cancel
-  description: 'shared controls: cancel.'
-close:
-  value: Close
-  description: 'shared controls: close.'
-color.hue:
-  value: Hue
-  description: 'shared controls: color.hue.'
-color.saturation:
-  value: Saturation
-  description: 'shared controls: color.saturation.'
-color.value:
-  value: Value
-  description: 'shared controls: color.value.'
-delete:
-  value: Delete
-  description: 'shared controls: delete.'
-'no':
-  value: 'No'
-  description: 'shared controls: no.'
-save:
-  value: Save
-  description: 'shared controls: save.'
-website:
-  value: Website
-  description: 'shared controls: website.'
-'yes':
-  value: 'Yes'
-  description: 'shared controls: yes.'
+# Shared labels and application text (English).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
 
-previous:
-  value: Previous
-  description: Navigate between fixed screen pages.
+# Buttons and shared labels
+accept: {value: "Accept"}
+back: {value: "Back"}
+cancel: {value: "Cancel"}
+close: {value: "Close"}
+delete: {value: "Delete"}
+export: {value: "Export"}
+next: {value: "Next"}
+"no": {value: "No"}
+none: {value: "None"}
+previous: {value: "Previous"}
+website: {value: "Website"}
+"yes": {value: "Yes"}
 
-next:
-  value: Next
-  description: Navigate between fixed screen pages.
+# Musical labels and unit symbols
+accordion: {value: "Accordion"}
+note: {value: "Note"}
+
+reed:
+  value: "Reed {index}"
+  placeholders:
+    index: {type: integer}
+
+unitSymbol.cents: {value: "cent"}
+unitSymbol.hz: {value: "Hz"}
+unitSymbol.reference: {value: "u"}
+
+# Color controls
+color.hue: {value: "Hue"}
+color.saturation: {value: "Saturation"}
+color.value: {value: "Value"}
+
+# Navigation and window titles
+routes.navigation: {value: "Main navigation"}
+routes.settings: {value: "Settings"}
+routes.tune: {value: "Tune"}
+routes.workshop: {value: "Workshop"}
+
+title.count:
+  value: "{room} {name} ({done})"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+
+title.progress:
+  value: "{room} {name} {done}/{total}"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+    total: {type: string}
+
+title.room.calibrate: {value: "calibration"}
+title.room.settings: {value: "settings"}
+title.room.soundcard: {value: "sound card"}
+title.room.tune: {value: "tuning"}
+title.room.workshop: {value: "workshop"}
+
+title.session:
+  value: "{room} {name}"
+  placeholders:
+    name: {type: string}
+    room: {type: string}
+
+title.uncalibrated:
+  value: "{title} (sound card not calibrated)"
+  placeholders:
+    title: {type: string}
+
+# Application and About dialog
+about.aboutTitle: {value: "About"}
+about.commit: {value: "Build"}
+about.donate: {value: "Support on Ko-fi"}
+about.mascot: {value: "A cat playing the accordion"}
+about.publisher: {value: "By Smegg99"}
+about.tagline: {value: "Free and open source accordion tuning program."}
+about.untagged: {value: "development build"}
+about.version: {value: "Version"}
+app.description: {value: "Free and open-source accordion tuner."}
+app.name: {value: "SmeggTuner"}
+
+# Help dialog and keyboard instructions
+about.help.everywhere.arrows: {value: "Step the pinned note (Tune)"}
+about.help.everywhere.hold: {value: "Hold stable readings on or off"}
+about.help.everywhere.manual: {value: "Auto or pinned note"}
+about.help.everywhere.record: {value: "Start or stop recording"}
+about.help.everywhere.rooms: {value: "Tune, Workshop, Settings"}
+about.help.everywhere.roomsTuner: {value: "Tune, Settings"}
+about.help.everywhere.step: {value: "Step the pinned note"}
+about.help.everywhere.takeNow: {value: "Take the reading now"}
+about.help.everywhere.title: {value: "Everywhere"}
+about.help.everywhere.undo: {value: "Undo the last reading"}
+
+about.help.intro:
+  value: "Measures accordion reeds against a reference pitch. A session keeps one accordion's readings."
+
+about.help.introTuner: {value: "Measures accordion reeds against a reference pitch."}
+about.help.rooms.settings: {value: "Microphone, readings and appearance."}
+about.help.rooms.title: {value: "Main views"}
+about.help.rooms.tune: {value: "Measure reeds and beats from a microphone or a WAV file."}
+about.help.rooms.workshop: {value: "Sessions, instruments and reports."}
+about.help.shortcuts.fit: {value: "Fit the file or the selection"}
+about.help.shortcuts.homeEnd: {value: "Jump to the selection start or end"}
+about.help.shortcuts.mute: {value: "Mute the speakers"}
+about.help.shortcuts.space: {value: "Play or pause"}
+about.help.shortcuts.title: {value: "Playback keys (file open)"}
+about.help.shortcuts.zoom: {value: "Zoom in or out"}
+about.helpTitle: {value: "Help"}
+
+# System tray
+tray.quit: {value: "Quit"}
+tray.show: {value: "Show"}

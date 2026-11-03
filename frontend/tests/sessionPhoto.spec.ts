@@ -76,7 +76,7 @@ describe('the photograph in the session header', () => {
     const tile = w.find('.ident__pic')
 
     expect(tile.element.tagName).toBe('BUTTON')
-    expect(tile.attributes('title')).toBe('instrument.photo')
+    expect(tile.attributes('title')).toBe('session.instrument.photo')
     expect(tile.classes()).toContain('ident__pic--live')
 
     await tile.trigger('click')

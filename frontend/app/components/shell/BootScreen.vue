@@ -29,7 +29,7 @@
 defineProps<{ failure?: string, message?: string }>()
 
 const { t } = useI18n()
-const name = computed(() => t('app.name'))
+const name = computed(() => t('common.app.name'))
 
 async function reload() {
   window.location.reload()

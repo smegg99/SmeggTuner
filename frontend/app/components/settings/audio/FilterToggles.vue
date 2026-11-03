@@ -26,7 +26,7 @@ const { running } = useTuner()
 // One choice of three, not two switches: a mains supply is 50 or 60 Hz or the microphone is not
 // hearing it, and off used to be reachable only by turning the lit one back off.
 const CHOICES = computed<ToolItem[]>(() => [
-  { value: 0, label: t('settings.humFilterNone') },
+  { value: 0, label: t('common.none') },
   { value: 50, label: t('settings.humFilter50') },
   { value: 60, label: t('settings.humFilter60') },
 ])

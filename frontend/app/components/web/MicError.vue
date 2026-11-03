@@ -21,7 +21,7 @@ import { useWebEngine } from '~/web/useWebEngine'
 const { t } = useI18n()
 const { micError } = useWebEngine()
 const { error } = useAudioDevices()
-const message = computed(() => error.value || (micError.value ? `web.mic.${micError.value}` : ''))
+const message = computed(() => error.value || (micError.value ? `tuner.web.mic.${micError.value}` : ''))
 </script>
 
 <style scoped>

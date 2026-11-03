@@ -142,7 +142,7 @@ const beatHeads = computed(() => beatGroups(props.reedCount, props.rows).map(g =
 function headOf(reed: number): string {
   const banks = props.banks
   if (banks && banks.length === props.reedCount && reed < banks.length) return banks[reed]!
-  return t('record.table.reed', { index: reed + 1 })
+  return t('common.reed', { index: reed + 1 })
 }
 
 // Name the register on a row only when the pass caught more than one.

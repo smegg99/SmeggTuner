@@ -13,10 +13,13 @@ if (scan.missing?.length) throw new Error(`Missing locale keys: ${JSON.stringify
 
 // S99Locale's source scanner does not read Go HTML templates.
 const template = readFileSync(new URL('../backend/core/report/templates/report.gohtml', import.meta.url), 'utf8')
+const reportKeys = new Set([...template.matchAll(/\bT(?:f|n)?\s+"([\w.]+)"/g)].map(([, key]) => key))
 for (const locale of ['en', 'pl']) {
   const messages = JSON.parse(readFileSync(new URL(`../backend/common/i18n/locales/${locale}.json`, import.meta.url), 'utf8'))
-  for (const [, key] of template.matchAll(/\bT(?:f|n)?\s+"([\w.]+)"/g)) {
+  for (const key of reportKeys) {
     if (!(key in messages)) throw new Error(`Missing ${locale} report key: ${key}`)
   }
 }
+const unused = (scan.unused ?? []).filter(key => !reportKeys.has(key))
+if (unused.length) throw new Error(`Unused locale keys: ${unused.join(', ')}`)
 console.log(`Locale references checked in ${scan.filesScanned} source files and the report template`)

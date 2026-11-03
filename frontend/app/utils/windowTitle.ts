@@ -7,23 +7,23 @@ export type Translate = (key: string, params?: Record<string, unknown>) => strin
 // An uncalibrated mic says so in every room, so the title keeps asking for the calibration.
 export function windowTitle(view: View, progress: SessionProgress, t: Translate, uncalibrated = false): string {
   const title = roomTitle(view, progress, t)
-  return uncalibrated ? t('title.uncalibrated', { title }) : title
+  return uncalibrated ? t('common.title.uncalibrated', { title }) : title
 }
 
 function roomTitle(view: View, progress: SessionProgress, t: Translate): string {
-  const room = t(`title.room.${view}`)
+  const room = t(`common.title.room.${view}`)
 
   if (progress.kind === 'none' || !progress.name) return room
 
   if (progress.kind === 'idle') {
-    return t('title.session', { room, name: progress.name })
+    return t('common.title.session', { room, name: progress.name })
   }
 
   if (progress.total === null) {
-    return t('title.count', { room, name: progress.name, done: progress.done })
+    return t('common.title.count', { room, name: progress.name, done: progress.done })
   }
 
-  return t('title.progress', {
+  return t('common.title.progress', {
     room,
     name: progress.name,
     done: progress.done,

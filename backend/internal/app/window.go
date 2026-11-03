@@ -24,8 +24,8 @@ func createApp(onSecondInstance func(application.SecondInstanceData)) *applicati
 
 func applicationOptions(onSecondInstance func(application.SecondInstanceData)) application.Options {
 	return application.Options{
-		Name:        i18n.AppName(i18n.Localizer()),
-		Description: i18n.AppDescription(i18n.Localizer()),
+		Name:        i18n.CommonAppName(i18n.Localizer()),
+		Description: i18n.CommonAppDescription(i18n.Localizer()),
 		Icon:        trayicons.AppIcon,
 		Logger:      logger.Wails(),
 		// A panic in a binding, event or menu callback reaches the crash watcher instead of a bare exit.
@@ -35,7 +35,7 @@ func applicationOptions(onSecondInstance func(application.SecondInstanceData)) a
 			application.NewService(loggerservice.New(logger.Underlying())),
 			application.NewService(&themeservice.Service{}),
 			application.NewService(titleservice.New(titleservice.Options{
-				Base: i18n.AppName(i18n.Localizer()),
+				Base: i18n.CommonAppName(i18n.Localizer()),
 			})),
 			application.NewService(browserservice.New(logger.Underlying())),
 			application.NewService(&crash.Heartbeat{}),
@@ -79,7 +79,7 @@ func createWindow(app *application.App) *application.WebviewWindow {
 
 func windowOptions(store windowstate.Store) application.WebviewWindowOptions {
 	opts := application.WebviewWindowOptions{
-		Title:  i18n.AppName(i18n.Localizer()),
+		Title:  i18n.CommonAppName(i18n.Localizer()),
 		Width:  1100,
 		Height: 720,
 		URL:    "/",

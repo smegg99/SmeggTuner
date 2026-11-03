@@ -4,7 +4,7 @@
     :class="{ 'views--marks': !labelled }"
     :model-value="view"
     :items="VIEWS"
-    :label="t('routes.navigation')"
+    :label="t('common.routes.navigation')"
     @update:model-value="v => setView(v as View)"
   />
 </template>
@@ -27,9 +27,9 @@ const { view, setView } = useShell()
 
 // The name stays as title/aria-label when only the mark shows.
 const VIEWS = computed<ToolItem[]>(() => [
-  { value: 'tune', label: t('routes.tune'), icon: 'mdi-tune-vertical', title: t('routes.tune') },
-  { value: 'workshop', label: t('routes.workshop'), icon: 'mdi-hammer-wrench', title: t('routes.workshop') },
-  { value: 'settings', label: t('routes.settings'), icon: 'mdi-cog-outline', title: t('routes.settings') },
+  { value: 'tune', label: t('common.routes.tune'), icon: 'mdi-tune-vertical', title: t('common.routes.tune') },
+  { value: 'workshop', label: t('common.routes.workshop'), icon: 'mdi-hammer-wrench', title: t('common.routes.workshop') },
+  { value: 'settings', label: t('common.routes.settings'), icon: 'mdi-cog-outline', title: t('common.routes.settings') },
 ].filter(v => WORKSHOP || v.value !== 'workshop'))
 </script>
 

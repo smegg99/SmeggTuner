@@ -61,7 +61,7 @@ function dialog() {
 }
 
 function exportButton() {
-  return wrapper!.findAllComponents(VBtn).find(button => button.text() === 'record.report.export')!
+  return wrapper!.findAllComponents(VBtn).find(button => button.text() === 'common.export')!
 }
 
 describe('the printed note', () => {

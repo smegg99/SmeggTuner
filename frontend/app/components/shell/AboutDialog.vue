@@ -2,42 +2,42 @@
 <template>
   <v-dialog
     v-model="open"
-    :aria-label="t('about.aboutTitle')"
+    :aria-label="t('common.about.aboutTitle')"
     width="var(--dlg-md)"
   >
     <UiDialogCard
-      :title="t('about.aboutTitle')"
+      :title="t('common.about.aboutTitle')"
       @close="open = false"
     >
       <div class="about">
         <ShellAppMascot
           class="about__mascot"
-          :label="t('about.mascot')"
+          :label="t('common.about.mascot')"
         />
         <h1 class="about__title">
           <ShellAppLogo
             class="about__logo"
-            :title="t('about.appName')"
+            :title="t('common.app.name')"
           />
         </h1>
 
         <p class="about__tagline">
-          {{ t('about.tagline') }}
+          {{ t('common.about.tagline') }}
         </p>
         <p class="about__publisher">
-          {{ t('about.publisher') }}
+          {{ t('common.about.publisher') }}
         </p>
 
         <dl class="about__meta">
           <div class="about__meta-row">
-            <dt>{{ t('about.version') }}</dt>
-            <dd>{{ version || t('about.untagged') }}</dd>
+            <dt>{{ t('common.about.version') }}</dt>
+            <dd>{{ version || t('common.about.untagged') }}</dd>
           </div>
           <div
             v-if="commit"
             class="about__meta-row"
           >
-            <dt>{{ t('about.commit') }}</dt>
+            <dt>{{ t('common.about.commit') }}</dt>
             <dd>{{ commit }}</dd>
           </div>
         </dl>
@@ -73,7 +73,7 @@ const links = computed(() => [
   { url: 'https://qr2g.it/1R', icon: 'mdi-github', label: 'GitHub' },
   { url: 'https://linkedin.smegg.me', icon: 'mdi-linkedin', label: 'LinkedIn' },
   { url: 'https://smeggtuner.com', icon: 'mdi-web', label: t('common.website') },
-  { url: 'https://ko-fi.com/smegg99', icon: 'mdi-coffee-outline', label: t('about.donate') },
+  { url: 'https://ko-fi.com/smegg99', icon: 'mdi-coffee-outline', label: t('common.about.donate') },
 ])
 
 const open = defineModel<boolean>({ required: true })

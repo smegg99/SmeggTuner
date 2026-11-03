@@ -50,7 +50,7 @@ const emit = defineEmits<{ edit: [value: number] }>()
 const { t } = useI18n()
 const { parse } = useRecordFormat()
 
-const label = computed(() => `${props.noteName}: ${t('record.table.reed', { index: props.cell.reed + 1 })}`)
+const label = computed(() => `${props.noteName}: ${t('common.reed', { index: props.cell.reed + 1 })}`)
 const editable = computed(() => props.cell.present && props.cell.slot >= 0)
 const button = useTemplateRef<HTMLButtonElement>('button')
 const editing = ref(false)

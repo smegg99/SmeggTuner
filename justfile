@@ -28,6 +28,15 @@ dev:
 generate:
     bash scripts/generate.sh
 
+# Rebuild only translations after editing i18n/locales.
+locales:
+    go tool loc build -c i18n/config.cue
+
+# Validate translations, generated output and references without building the app.
+check-locales:
+    go tool loc check -c i18n/config.cue
+    {{ with_node }} node scripts/check-locales.mjs
+
 # Check generated drift, then build and run all repository checks.
 check:
     bash scripts/check.sh

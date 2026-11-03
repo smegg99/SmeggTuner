@@ -80,15 +80,15 @@ describe('calibration register choices', () => {
   ])('does not offer an unnamed treble sweep when described choices exist: %j', (props) => {
     const setup = mount(CalibrationSweepSetup, { props, global: { stubs } })
     mounted.push(setup)
-    expect(setup.text()).not.toContain('calibrate.sweep.noRegisters')
-    expect(setup.text()).not.toContain('calibrate.sweep.startPlain')
+    expect(setup.text()).not.toContain('tuner.calibrate.sweep.noRegisters')
+    expect(setup.text()).not.toContain('tuner.calibrate.sweep.startPlain')
     expect(setup.findAll('.sw__reg').length).toBeGreaterThan(0)
   })
 
   it('offers the generic sweep when there are no register choices', async () => {
     const setup = mount(CalibrationSweepSetup, { props: { registers: [] }, global: { stubs } })
     mounted.push(setup)
-    expect(setup.text()).toContain('calibrate.sweep.noRegisters')
+    expect(setup.text()).toContain('tuner.calibrate.sweep.noRegisters')
     await setup.find('button').trigger('click')
     expect(setup.emitted('begin')).toEqual([['']])
   })
@@ -96,7 +96,7 @@ describe('calibration register choices', () => {
   it('keeps the solo calibration explanation for a single-rank register', () => {
     const setup = mount(CalibrationSweepSetup, { props: { registers: [{ name: 'M', banks: [Bank.BankM1] }] }, global: { stubs } })
     mounted.push(setup)
-    expect(setup.text()).toContain('calibrate.sweep.soloTeaches')
-    expect(setup.text()).not.toContain('calibrate.sweep.noRegisters')
+    expect(setup.text()).toContain('tuner.calibrate.sweep.soloTeaches')
+    expect(setup.text()).not.toContain('tuner.calibrate.sweep.noRegisters')
   })
 })

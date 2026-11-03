@@ -33,507 +33,884 @@ func withCount(l *i18n.Localizer, id string, count int, data map[string]any) str
 	return out
 }
 
-// AppDescription native application metadata: description.
-func AppDescription(l *i18n.Localizer) string {
-	return plain(l, "app.description")
+// CommonAboutAboutTitle renders common.about.aboutTitle.
+func CommonAboutAboutTitle(l *i18n.Localizer) string {
+	return plain(l, "common.about.aboutTitle")
 }
 
-// AppName native application metadata: name.
-func AppName(l *i18n.Localizer) string {
-	return plain(l, "app.name")
+// CommonAboutCommit renders common.about.commit.
+func CommonAboutCommit(l *i18n.Localizer) string {
+	return plain(l, "common.about.commit")
 }
 
-// LogAppStarting Native diagnostic event: starting smeggtuner.
+// CommonAboutDonate renders common.about.donate.
+func CommonAboutDonate(l *i18n.Localizer) string {
+	return plain(l, "common.about.donate")
+}
+
+// CommonAboutHelpEverywhereArrows renders common.about.help.everywhere.arrows.
+func CommonAboutHelpEverywhereArrows(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.everywhere.arrows")
+}
+
+// CommonAboutHelpEverywhereHold renders common.about.help.everywhere.hold.
+func CommonAboutHelpEverywhereHold(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.everywhere.hold")
+}
+
+// CommonAboutHelpEverywhereManual renders common.about.help.everywhere.manual.
+func CommonAboutHelpEverywhereManual(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.everywhere.manual")
+}
+
+// CommonAboutHelpEverywhereRecord renders common.about.help.everywhere.record.
+func CommonAboutHelpEverywhereRecord(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.everywhere.record")
+}
+
+// CommonAboutHelpEverywhereRooms renders common.about.help.everywhere.rooms.
+func CommonAboutHelpEverywhereRooms(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.everywhere.rooms")
+}
+
+// CommonAboutHelpEverywhereRoomsTuner renders common.about.help.everywhere.roomsTuner.
+func CommonAboutHelpEverywhereRoomsTuner(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.everywhere.roomsTuner")
+}
+
+// CommonAboutHelpEverywhereStep renders common.about.help.everywhere.step.
+func CommonAboutHelpEverywhereStep(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.everywhere.step")
+}
+
+// CommonAboutHelpEverywhereTakeNow renders common.about.help.everywhere.takeNow.
+func CommonAboutHelpEverywhereTakeNow(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.everywhere.takeNow")
+}
+
+// CommonAboutHelpEverywhereTitle renders common.about.help.everywhere.title.
+func CommonAboutHelpEverywhereTitle(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.everywhere.title")
+}
+
+// CommonAboutHelpEverywhereUndo renders common.about.help.everywhere.undo.
+func CommonAboutHelpEverywhereUndo(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.everywhere.undo")
+}
+
+// CommonAboutHelpIntro renders common.about.help.intro.
+func CommonAboutHelpIntro(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.intro")
+}
+
+// CommonAboutHelpIntroTuner renders common.about.help.introTuner.
+func CommonAboutHelpIntroTuner(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.introTuner")
+}
+
+// CommonAboutHelpRoomsSettings renders common.about.help.rooms.settings.
+func CommonAboutHelpRoomsSettings(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.rooms.settings")
+}
+
+// CommonAboutHelpRoomsTitle renders common.about.help.rooms.title.
+func CommonAboutHelpRoomsTitle(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.rooms.title")
+}
+
+// CommonAboutHelpRoomsTune renders common.about.help.rooms.tune.
+func CommonAboutHelpRoomsTune(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.rooms.tune")
+}
+
+// CommonAboutHelpRoomsWorkshop renders common.about.help.rooms.workshop.
+func CommonAboutHelpRoomsWorkshop(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.rooms.workshop")
+}
+
+// CommonAboutHelpShortcutsFit renders common.about.help.shortcuts.fit.
+func CommonAboutHelpShortcutsFit(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.shortcuts.fit")
+}
+
+// CommonAboutHelpShortcutsHomeEnd renders common.about.help.shortcuts.homeEnd.
+func CommonAboutHelpShortcutsHomeEnd(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.shortcuts.homeEnd")
+}
+
+// CommonAboutHelpShortcutsMute renders common.about.help.shortcuts.mute.
+func CommonAboutHelpShortcutsMute(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.shortcuts.mute")
+}
+
+// CommonAboutHelpShortcutsSpace renders common.about.help.shortcuts.space.
+func CommonAboutHelpShortcutsSpace(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.shortcuts.space")
+}
+
+// CommonAboutHelpShortcutsTitle renders common.about.help.shortcuts.title.
+func CommonAboutHelpShortcutsTitle(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.shortcuts.title")
+}
+
+// CommonAboutHelpShortcutsZoom renders common.about.help.shortcuts.zoom.
+func CommonAboutHelpShortcutsZoom(l *i18n.Localizer) string {
+	return plain(l, "common.about.help.shortcuts.zoom")
+}
+
+// CommonAboutHelpTitle renders common.about.helpTitle.
+func CommonAboutHelpTitle(l *i18n.Localizer) string {
+	return plain(l, "common.about.helpTitle")
+}
+
+// CommonAboutMascot renders common.about.mascot.
+func CommonAboutMascot(l *i18n.Localizer) string {
+	return plain(l, "common.about.mascot")
+}
+
+// CommonAboutPublisher renders common.about.publisher.
+func CommonAboutPublisher(l *i18n.Localizer) string {
+	return plain(l, "common.about.publisher")
+}
+
+// CommonAboutTagline renders common.about.tagline.
+func CommonAboutTagline(l *i18n.Localizer) string {
+	return plain(l, "common.about.tagline")
+}
+
+// CommonAboutUntagged renders common.about.untagged.
+func CommonAboutUntagged(l *i18n.Localizer) string {
+	return plain(l, "common.about.untagged")
+}
+
+// CommonAboutVersion renders common.about.version.
+func CommonAboutVersion(l *i18n.Localizer) string {
+	return plain(l, "common.about.version")
+}
+
+// CommonAccept renders common.accept.
+func CommonAccept(l *i18n.Localizer) string {
+	return plain(l, "common.accept")
+}
+
+// CommonAccordion renders common.accordion.
+func CommonAccordion(l *i18n.Localizer) string {
+	return plain(l, "common.accordion")
+}
+
+// CommonAppDescription renders common.app.description.
+func CommonAppDescription(l *i18n.Localizer) string {
+	return plain(l, "common.app.description")
+}
+
+// CommonAppName renders common.app.name.
+func CommonAppName(l *i18n.Localizer) string {
+	return plain(l, "common.app.name")
+}
+
+// CommonBack renders common.back.
+func CommonBack(l *i18n.Localizer) string {
+	return plain(l, "common.back")
+}
+
+// CommonCancel renders common.cancel.
+func CommonCancel(l *i18n.Localizer) string {
+	return plain(l, "common.cancel")
+}
+
+// CommonClose renders common.close.
+func CommonClose(l *i18n.Localizer) string {
+	return plain(l, "common.close")
+}
+
+// CommonColorHue renders common.color.hue.
+func CommonColorHue(l *i18n.Localizer) string {
+	return plain(l, "common.color.hue")
+}
+
+// CommonColorSaturation renders common.color.saturation.
+func CommonColorSaturation(l *i18n.Localizer) string {
+	return plain(l, "common.color.saturation")
+}
+
+// CommonColorValue renders common.color.value.
+func CommonColorValue(l *i18n.Localizer) string {
+	return plain(l, "common.color.value")
+}
+
+// CommonDelete renders common.delete.
+func CommonDelete(l *i18n.Localizer) string {
+	return plain(l, "common.delete")
+}
+
+// CommonExport renders common.export.
+func CommonExport(l *i18n.Localizer) string {
+	return plain(l, "common.export")
+}
+
+// CommonNext renders common.next.
+func CommonNext(l *i18n.Localizer) string {
+	return plain(l, "common.next")
+}
+
+// CommonNo renders common.no.
+func CommonNo(l *i18n.Localizer) string {
+	return plain(l, "common.no")
+}
+
+// CommonNone renders common.none.
+func CommonNone(l *i18n.Localizer) string {
+	return plain(l, "common.none")
+}
+
+// CommonNote renders common.note.
+func CommonNote(l *i18n.Localizer) string {
+	return plain(l, "common.note")
+}
+
+// CommonPrevious renders common.previous.
+func CommonPrevious(l *i18n.Localizer) string {
+	return plain(l, "common.previous")
+}
+
+// CommonReedParams are the placeholders of common.reed.
+type CommonReedParams struct {
+	Index int
+}
+
+// CommonReed renders common.reed.
+func CommonReed(l *i18n.Localizer, p CommonReedParams) string {
+	data := map[string]any{
+		"Index": p.Index,
+	}
+	return withData(l, "common.reed", data)
+}
+
+// CommonRoutesNavigation renders common.routes.navigation.
+func CommonRoutesNavigation(l *i18n.Localizer) string {
+	return plain(l, "common.routes.navigation")
+}
+
+// CommonRoutesSettings renders common.routes.settings.
+func CommonRoutesSettings(l *i18n.Localizer) string {
+	return plain(l, "common.routes.settings")
+}
+
+// CommonRoutesTune renders common.routes.tune.
+func CommonRoutesTune(l *i18n.Localizer) string {
+	return plain(l, "common.routes.tune")
+}
+
+// CommonRoutesWorkshop renders common.routes.workshop.
+func CommonRoutesWorkshop(l *i18n.Localizer) string {
+	return plain(l, "common.routes.workshop")
+}
+
+// CommonTitleCountParams are the placeholders of common.title.count.
+type CommonTitleCountParams struct {
+	Done string
+	Name string
+	Room string
+}
+
+// CommonTitleCount renders common.title.count.
+func CommonTitleCount(l *i18n.Localizer, p CommonTitleCountParams) string {
+	data := map[string]any{
+		"Done": p.Done,
+		"Name": p.Name,
+		"Room": p.Room,
+	}
+	return withData(l, "common.title.count", data)
+}
+
+// CommonTitleProgressParams are the placeholders of common.title.progress.
+type CommonTitleProgressParams struct {
+	Done  string
+	Name  string
+	Room  string
+	Total string
+}
+
+// CommonTitleProgress renders common.title.progress.
+func CommonTitleProgress(l *i18n.Localizer, p CommonTitleProgressParams) string {
+	data := map[string]any{
+		"Done":  p.Done,
+		"Name":  p.Name,
+		"Room":  p.Room,
+		"Total": p.Total,
+	}
+	return withData(l, "common.title.progress", data)
+}
+
+// CommonTitleRoomCalibrate renders common.title.room.calibrate.
+func CommonTitleRoomCalibrate(l *i18n.Localizer) string {
+	return plain(l, "common.title.room.calibrate")
+}
+
+// CommonTitleRoomSettings renders common.title.room.settings.
+func CommonTitleRoomSettings(l *i18n.Localizer) string {
+	return plain(l, "common.title.room.settings")
+}
+
+// CommonTitleRoomSoundcard renders common.title.room.soundcard.
+func CommonTitleRoomSoundcard(l *i18n.Localizer) string {
+	return plain(l, "common.title.room.soundcard")
+}
+
+// CommonTitleRoomTune renders common.title.room.tune.
+func CommonTitleRoomTune(l *i18n.Localizer) string {
+	return plain(l, "common.title.room.tune")
+}
+
+// CommonTitleRoomWorkshop renders common.title.room.workshop.
+func CommonTitleRoomWorkshop(l *i18n.Localizer) string {
+	return plain(l, "common.title.room.workshop")
+}
+
+// CommonTitleSessionParams are the placeholders of common.title.session.
+type CommonTitleSessionParams struct {
+	Name string
+	Room string
+}
+
+// CommonTitleSession renders common.title.session.
+func CommonTitleSession(l *i18n.Localizer, p CommonTitleSessionParams) string {
+	data := map[string]any{
+		"Name": p.Name,
+		"Room": p.Room,
+	}
+	return withData(l, "common.title.session", data)
+}
+
+// CommonTitleUncalibratedParams are the placeholders of common.title.uncalibrated.
+type CommonTitleUncalibratedParams struct {
+	Title string
+}
+
+// CommonTitleUncalibrated renders common.title.uncalibrated.
+func CommonTitleUncalibrated(l *i18n.Localizer, p CommonTitleUncalibratedParams) string {
+	data := map[string]any{
+		"Title": p.Title,
+	}
+	return withData(l, "common.title.uncalibrated", data)
+}
+
+// CommonTrayQuit renders common.tray.quit.
+func CommonTrayQuit(l *i18n.Localizer) string {
+	return plain(l, "common.tray.quit")
+}
+
+// CommonTrayShow renders common.tray.show.
+func CommonTrayShow(l *i18n.Localizer) string {
+	return plain(l, "common.tray.show")
+}
+
+// CommonUnitSymbolCents renders common.unitSymbol.cents.
+func CommonUnitSymbolCents(l *i18n.Localizer) string {
+	return plain(l, "common.unitSymbol.cents")
+}
+
+// CommonUnitSymbolHz renders common.unitSymbol.hz.
+func CommonUnitSymbolHz(l *i18n.Localizer) string {
+	return plain(l, "common.unitSymbol.hz")
+}
+
+// CommonUnitSymbolReference renders common.unitSymbol.reference.
+func CommonUnitSymbolReference(l *i18n.Localizer) string {
+	return plain(l, "common.unitSymbol.reference")
+}
+
+// CommonWebsite renders common.website.
+func CommonWebsite(l *i18n.Localizer) string {
+	return plain(l, "common.website")
+}
+
+// CommonYes renders common.yes.
+func CommonYes(l *i18n.Localizer) string {
+	return plain(l, "common.yes")
+}
+
+// LogAppStarting renders log.appStarting.
 func LogAppStarting(l *i18n.Localizer) string {
 	return plain(l, "log.appStarting")
 }
 
-// LogAudioDeviceEnumFailed Native diagnostic event: failed to enumerate capture devices.
+// LogAudioDeviceEnumFailed renders log.audioDeviceEnumFailed.
 func LogAudioDeviceEnumFailed(l *i18n.Localizer) string {
 	return plain(l, "log.audioDeviceEnumFailed")
 }
 
-// LogAudioDeviceGone Native diagnostic event: selected capture device is no longer present.
+// LogAudioDeviceGone renders log.audioDeviceGone.
 func LogAudioDeviceGone(l *i18n.Localizer) string {
 	return plain(l, "log.audioDeviceGone")
 }
 
-// LogAudioDevicesListed Native diagnostic event: capture devices enumerated.
+// LogAudioDevicesListed renders log.audioDevicesListed.
 func LogAudioDevicesListed(l *i18n.Localizer) string {
 	return plain(l, "log.audioDevicesListed")
 }
 
-// LogAudioDialogFailed Native diagnostic event: file dialog failed.
+// LogAudioDialogFailed renders log.audioDialogFailed.
 func LogAudioDialogFailed(l *i18n.Localizer) string {
 	return plain(l, "log.audioDialogFailed")
 }
 
-// LogAudioDialogUnavailable Native diagnostic event: file dialog requested without a running application.
+// LogAudioDialogUnavailable renders log.audioDialogUnavailable.
 func LogAudioDialogUnavailable(l *i18n.Localizer) string {
 	return plain(l, "log.audioDialogUnavailable")
 }
 
-// LogAudioFileUnreadable Native diagnostic event: recording could not be opened.
+// LogAudioFileUnreadable renders log.audioFileUnreadable.
 func LogAudioFileUnreadable(l *i18n.Localizer) string {
 	return plain(l, "log.audioFileUnreadable")
 }
 
-// LogAudioNoDevices Native diagnostic event: no capture devices available.
+// LogAudioNoDevices renders log.audioNoDevices.
 func LogAudioNoDevices(l *i18n.Localizer) string {
 	return plain(l, "log.audioNoDevices")
 }
 
-// LogAudioSourceSelected Native diagnostic event: input source selected.
+// LogAudioSourceSelected renders log.audioSourceSelected.
 func LogAudioSourceSelected(l *i18n.Localizer) string {
 	return plain(l, "log.audioSourceSelected")
 }
 
-// LogAudioSpeakerUnavailable Native diagnostic event: no output device, file playback will be silent.
+// LogAudioSpeakerUnavailable renders log.audioSpeakerUnavailable.
 func LogAudioSpeakerUnavailable(l *i18n.Localizer) string {
 	return plain(l, "log.audioSpeakerUnavailable")
 }
 
-// LogCalibrationAbandoned Audio diagnostic: sound card calibration abandoned.
+// LogCalibrationAbandoned renders log.calibrationAbandoned.
 func LogCalibrationAbandoned(l *i18n.Localizer) string {
 	return plain(l, "log.calibrationAbandoned")
 }
 
-// LogCalibrationFinished Audio diagnostic: sound card calibration finished.
+// LogCalibrationFinished renders log.calibrationFinished.
 func LogCalibrationFinished(l *i18n.Localizer) string {
 	return plain(l, "log.calibrationFinished")
 }
 
-// LogCalibrationNoDevice Audio diagnostic: sound card calibration could not open the device.
+// LogCalibrationNoDevice renders log.calibrationNoDevice.
 func LogCalibrationNoDevice(l *i18n.Localizer) string {
 	return plain(l, "log.calibrationNoDevice")
 }
 
-// LogCalibrationStarted Audio diagnostic: sound card calibration started.
+// LogCalibrationStarted renders log.calibrationStarted.
 func LogCalibrationStarted(l *i18n.Localizer) string {
 	return plain(l, "log.calibrationStarted")
 }
 
-// LogCleaningUp Native diagnostic event: cleaning up.
+// LogCleaningUp renders log.cleaningUp.
 func LogCleaningUp(l *i18n.Localizer) string {
 	return plain(l, "log.cleaningUp")
 }
 
-// LogConfigLoadFailed Native diagnostic event: failed to load configuration.
+// LogConfigLoadFailed renders log.configLoadFailed.
 func LogConfigLoadFailed(l *i18n.Localizer) string {
 	return plain(l, "log.configLoadFailed")
 }
 
-// LogConfigLoaded Native diagnostic event: configuration loaded.
+// LogConfigLoaded renders log.configLoaded.
 func LogConfigLoaded(l *i18n.Localizer) string {
 	return plain(l, "log.configLoaded")
 }
 
-// LogConfigSaveFailed Native diagnostic event: failed to save configuration.
+// LogConfigSaveFailed renders log.configSaveFailed.
 func LogConfigSaveFailed(l *i18n.Localizer) string {
 	return plain(l, "log.configSaveFailed")
 }
 
-// LogCrashScreenFailed Native diagnostic event: the startup failure screen could not open.
+// LogCrashScreenFailed renders log.crashScreenFailed.
 func LogCrashScreenFailed(l *i18n.Localizer) string {
 	return plain(l, "log.crashScreenFailed")
 }
 
-// LogCrashWatchFailed Native diagnostic event: the crash watcher process could not start.
+// LogCrashWatchFailed renders log.crashWatchFailed.
 func LogCrashWatchFailed(l *i18n.Localizer) string {
 	return plain(l, "log.crashWatchFailed")
 }
 
-// LogDatastoreInitFailed Native diagnostic event: failed to initialize datastore.
+// LogDatastoreInitFailed renders log.datastoreInitFailed.
 func LogDatastoreInitFailed(l *i18n.Localizer) string {
 	return plain(l, "log.datastoreInitFailed")
 }
 
-// LogDatastoreReady Native diagnostic event: datastore ready.
+// LogDatastoreReady renders log.datastoreReady.
 func LogDatastoreReady(l *i18n.Localizer) string {
 	return plain(l, "log.datastoreReady")
 }
 
-// LogDeviceStoreFailed Audio diagnostic: failed to store a capture device's settings.
+// LogDeviceStoreFailed renders log.deviceStoreFailed.
 func LogDeviceStoreFailed(l *i18n.Localizer) string {
 	return plain(l, "log.deviceStoreFailed")
 }
 
-// LogFrontendAudioCalibrationCancelFailed Frontend diagnostic: Could not cancel calibration.
+// LogFrontendAudioCalibrationCancelFailed renders log.frontendAudioCalibrationCancelFailed.
 func LogFrontendAudioCalibrationCancelFailed(l *i18n.Localizer) string {
 	return plain(l, "log.frontendAudioCalibrationCancelFailed")
 }
 
-// LogFrontendAudioCalibrationFailed Frontend diagnostic: Could not start calibration.
+// LogFrontendAudioCalibrationFailed renders log.frontendAudioCalibrationFailed.
 func LogFrontendAudioCalibrationFailed(l *i18n.Localizer) string {
 	return plain(l, "log.frontendAudioCalibrationFailed")
 }
 
-// LogFrontendAudioCorrectionFailed Frontend diagnostic: Could not read sound card correction.
+// LogFrontendAudioCorrectionFailed renders log.frontendAudioCorrectionFailed.
 func LogFrontendAudioCorrectionFailed(l *i18n.Localizer) string {
 	return plain(l, "log.frontendAudioCorrectionFailed")
 }
 
-// LogFrontendAudioDialogFailed Frontend diagnostic: Could not open the file dialog.
+// LogFrontendAudioDialogFailed renders log.frontendAudioDialogFailed.
 func LogFrontendAudioDialogFailed(l *i18n.Localizer) string {
 	return plain(l, "log.frontendAudioDialogFailed")
 }
 
-// LogFrontendAudioListFailed Frontend diagnostic: Could not list audio devices.
+// LogFrontendAudioListFailed renders log.frontendAudioListFailed.
 func LogFrontendAudioListFailed(l *i18n.Localizer) string {
 	return plain(l, "log.frontendAudioListFailed")
 }
 
-// LogFrontendAudioSelectFailed Frontend diagnostic: Could not select audio source.
+// LogFrontendAudioSelectFailed renders log.frontendAudioSelectFailed.
 func LogFrontendAudioSelectFailed(l *i18n.Localizer) string {
 	return plain(l, "log.frontendAudioSelectFailed")
 }
 
-// LogFrontendAudioStateFailed Frontend diagnostic: Could not read audio device state.
+// LogFrontendAudioStateFailed renders log.frontendAudioStateFailed.
 func LogFrontendAudioStateFailed(l *i18n.Localizer) string {
 	return plain(l, "log.frontendAudioStateFailed")
 }
 
-// LogFrontendAudioVolumeFailed Frontend diagnostic: Could not change automatic volume control.
+// LogFrontendAudioVolumeFailed renders log.frontendAudioVolumeFailed.
 func LogFrontendAudioVolumeFailed(l *i18n.Localizer) string {
 	return plain(l, "log.frontendAudioVolumeFailed")
 }
 
-// LogFrontendConfigLoadFailed Frontend diagnostic: Could not load configuration.
+// LogFrontendConfigLoadFailed renders log.frontendConfigLoadFailed.
 func LogFrontendConfigLoadFailed(l *i18n.Localizer) string {
 	return plain(l, "log.frontendConfigLoadFailed")
 }
 
-// LogFrontendConfigLoaded Frontend diagnostic: Configuration loaded.
+// LogFrontendConfigLoaded renders log.frontendConfigLoaded.
 func LogFrontendConfigLoaded(l *i18n.Localizer) string {
 	return plain(l, "log.frontendConfigLoaded")
 }
 
-// LogFrontendConfigSaveFailed Frontend diagnostic: Could not save configuration.
+// LogFrontendConfigSaveFailed renders log.frontendConfigSaveFailed.
 func LogFrontendConfigSaveFailed(l *i18n.Localizer) string {
 	return plain(l, "log.frontendConfigSaveFailed")
 }
 
-// LogFrontendCurveViewFailed Frontend diagnostic: Could not read curve view settings.
+// LogFrontendCurveViewFailed renders log.frontendCurveViewFailed.
 func LogFrontendCurveViewFailed(l *i18n.Localizer) string {
 	return plain(l, "log.frontendCurveViewFailed")
 }
 
-// LogFrontendError Unhandled frontend failure forwarded to the native logger.
+// LogFrontendError renders log.frontendError.
 func LogFrontendError(l *i18n.Localizer) string {
 	return plain(l, "log.frontendError")
 }
 
-// LogFrontendRejection Unhandled frontend failure forwarded to the native logger.
+// LogFrontendRejection renders log.frontendRejection.
 func LogFrontendRejection(l *i18n.Localizer) string {
 	return plain(l, "log.frontendRejection")
 }
 
-// LogFrontendResizeNotice A benign browser notice kept out of the error log; logged once at debug level.
+// LogFrontendResizeNotice renders log.frontendResizeNotice.
 func LogFrontendResizeNotice(l *i18n.Localizer) string {
 	return plain(l, "log.frontendResizeNotice")
 }
 
-// LogFrontendSettingFailed Tuner setting command failed; setting identifier remains a structured log field.
+// LogFrontendSettingFailed renders log.frontendSettingFailed.
 func LogFrontendSettingFailed(l *i18n.Localizer) string {
 	return plain(l, "log.frontendSettingFailed")
 }
 
-// LogFrontendTunerStartFailed Frontend diagnostic: Could not start the tuner.
+// LogFrontendTunerStartFailed renders log.frontendTunerStartFailed.
 func LogFrontendTunerStartFailed(l *i18n.Localizer) string {
 	return plain(l, "log.frontendTunerStartFailed")
 }
 
-// LogFrontendTunerStateFailed Frontend diagnostic: Could not read tuner state.
+// LogFrontendTunerStateFailed renders log.frontendTunerStateFailed.
 func LogFrontendTunerStateFailed(l *i18n.Localizer) string {
 	return plain(l, "log.frontendTunerStateFailed")
 }
 
-// LogFrontendTunerStopFailed Frontend diagnostic: Could not stop the tuner.
+// LogFrontendTunerStopFailed renders log.frontendTunerStopFailed.
 func LogFrontendTunerStopFailed(l *i18n.Localizer) string {
 	return plain(l, "log.frontendTunerStopFailed")
 }
 
-// LogFrontendTunerTonePlayFailed Frontend diagnostic: Could not play the reference tone.
+// LogFrontendTunerTonePlayFailed renders log.frontendTunerTonePlayFailed.
 func LogFrontendTunerTonePlayFailed(l *i18n.Localizer) string {
 	return plain(l, "log.frontendTunerTonePlayFailed")
 }
 
-// LogFrontendTunerToneStopFailed Frontend diagnostic: Could not stop the reference tone.
+// LogFrontendTunerToneStopFailed renders log.frontendTunerToneStopFailed.
 func LogFrontendTunerToneStopFailed(l *i18n.Localizer) string {
 	return plain(l, "log.frontendTunerToneStopFailed")
 }
 
-// LogLoadingConfig Native diagnostic event: loading configuration.
+// LogLoadingConfig renders log.loadingConfig.
 func LogLoadingConfig(l *i18n.Localizer) string {
 	return plain(l, "log.loadingConfig")
 }
 
-// LogLoggerInitFailed Native diagnostic event: failed to configure logger.
+// LogLoggerInitFailed renders log.loggerInitFailed.
 func LogLoggerInitFailed(l *i18n.Localizer) string {
 	return plain(l, "log.loggerInitFailed")
 }
 
-// LogMicBlocksDropped Audio diagnostic: mic consumer stalled, dropping blocks.
+// LogMicBlocksDropped renders log.micBlocksDropped.
 func LogMicBlocksDropped(l *i18n.Localizer) string {
 	return plain(l, "log.micBlocksDropped")
 }
 
-// LogMicDeviceLost Audio diagnostic: capture device stopped unexpectedly.
+// LogMicDeviceLost renders log.micDeviceLost.
 func LogMicDeviceLost(l *i18n.Localizer) string {
 	return plain(l, "log.micDeviceLost")
 }
 
-// LogRecordCleared Native diagnostic event: pass cleared.
+// LogRecordCleared renders log.recordCleared.
 func LogRecordCleared(l *i18n.Localizer) string {
 	return plain(l, "log.recordCleared")
 }
 
-// LogRecordEdited Native diagnostic event: take edited by hand.
+// LogRecordEdited renders log.recordEdited.
 func LogRecordEdited(l *i18n.Localizer) string {
 	return plain(l, "log.recordEdited")
 }
 
-// LogRecordRejected Native diagnostic event: rejected a record request.
+// LogRecordRejected renders log.recordRejected.
 func LogRecordRejected(l *i18n.Localizer) string {
 	return plain(l, "log.recordRejected")
 }
 
-// LogRecordTake Native diagnostic event: take recorded.
+// LogRecordTake renders log.recordTake.
 func LogRecordTake(l *i18n.Localizer) string {
 	return plain(l, "log.recordTake")
 }
 
-// LogRecordUndone Native diagnostic event: last take undone.
+// LogRecordUndone renders log.recordUndone.
 func LogRecordUndone(l *i18n.Localizer) string {
 	return plain(l, "log.recordUndone")
 }
 
-// LogReinitLogger Native diagnostic event: reconfiguring logger from configuration.
+// LogReinitLogger renders log.reinitLogger.
 func LogReinitLogger(l *i18n.Localizer) string {
 	return plain(l, "log.reinitLogger")
 }
 
-// LogReportFailed Native diagnostic event: failed to write the tuning report.
+// LogReportFailed renders log.reportFailed.
 func LogReportFailed(l *i18n.Localizer) string {
 	return plain(l, "log.reportFailed")
 }
 
-// LogReportOpenFailed Native diagnostic event: failed to open the tuning report.
+// LogReportOpenFailed renders log.reportOpenFailed.
 func LogReportOpenFailed(l *i18n.Localizer) string {
 	return plain(l, "log.reportOpenFailed")
 }
 
-// LogReportOpened Native diagnostic event: tuning report handed to the browser.
+// LogReportOpened renders log.reportOpened.
 func LogReportOpened(l *i18n.Localizer) string {
 	return plain(l, "log.reportOpened")
 }
 
-// LogReportRejected Native diagnostic event: rejected a report request.
+// LogReportRejected renders log.reportRejected.
 func LogReportRejected(l *i18n.Localizer) string {
 	return plain(l, "log.reportRejected")
 }
 
-// LogReportWritten Native diagnostic event: tuning report written.
+// LogReportWritten renders log.reportWritten.
 func LogReportWritten(l *i18n.Localizer) string {
 	return plain(l, "log.reportWritten")
 }
 
-// LogRunFailed Native diagnostic event: application run failed.
+// LogRunFailed renders log.runFailed.
 func LogRunFailed(l *i18n.Localizer) string {
 	return plain(l, "log.runFailed")
 }
 
-// LogSecondInstance Native diagnostic event: second instance launched, focusing existing window.
+// LogSecondInstance renders log.secondInstance.
 func LogSecondInstance(l *i18n.Localizer) string {
 	return plain(l, "log.secondInstance")
 }
 
-// LogSessionClosed Native diagnostic event: session closed.
+// LogSessionClosed renders log.sessionClosed.
 func LogSessionClosed(l *i18n.Localizer) string {
 	return plain(l, "log.sessionClosed")
 }
 
-// LogSessionCreated Native diagnostic event: session created.
+// LogSessionCreated renders log.sessionCreated.
 func LogSessionCreated(l *i18n.Localizer) string {
 	return plain(l, "log.sessionCreated")
 }
 
-// LogSessionCurveDropped Native diagnostic event: goal curve dropped.
+// LogSessionCurveDropped renders log.sessionCurveDropped.
 func LogSessionCurveDropped(l *i18n.Localizer) string {
 	return plain(l, "log.sessionCurveDropped")
 }
 
-// LogSessionCurveFitted Native diagnostic event: goal curve fitted from a pass.
+// LogSessionCurveFitted renders log.sessionCurveFitted.
 func LogSessionCurveFitted(l *i18n.Localizer) string {
 	return plain(l, "log.sessionCurveFitted")
 }
 
-// LogSessionCurveImported Native diagnostic event: goal curve imported.
+// LogSessionCurveImported renders log.sessionCurveImported.
 func LogSessionCurveImported(l *i18n.Localizer) string {
 	return plain(l, "log.sessionCurveImported")
 }
 
-// LogSessionDeleted Native diagnostic event: session deleted.
+// LogSessionDeleted renders log.sessionDeleted.
 func LogSessionDeleted(l *i18n.Localizer) string {
 	return plain(l, "log.sessionDeleted")
 }
 
-// LogSessionLoadFailed Native diagnostic event: failed to load the session.
+// LogSessionLoadFailed renders log.sessionLoadFailed.
 func LogSessionLoadFailed(l *i18n.Localizer) string {
 	return plain(l, "log.sessionLoadFailed")
 }
 
-// LogSessionOpened Native diagnostic event: session opened.
+// LogSessionOpened renders log.sessionOpened.
 func LogSessionOpened(l *i18n.Localizer) string {
 	return plain(l, "log.sessionOpened")
 }
 
-// LogSessionReedsClamped Native diagnostic event: instrument sounds more reeds than the engine resolves, clamping the engine.
+// LogSessionReedsClamped renders log.sessionReedsClamped.
 func LogSessionReedsClamped(l *i18n.Localizer) string {
 	return plain(l, "log.sessionReedsClamped")
 }
 
-// LogSessionRejected Native diagnostic event: rejected an invalid session change.
+// LogSessionRejected renders log.sessionRejected.
 func LogSessionRejected(l *i18n.Localizer) string {
 	return plain(l, "log.sessionRejected")
 }
 
-// LogSessionSaveFailed Native diagnostic event: failed to save the session.
+// LogSessionSaveFailed renders log.sessionSaveFailed.
 func LogSessionSaveFailed(l *i18n.Localizer) string {
 	return plain(l, "log.sessionSaveFailed")
 }
 
-// LogTrayIconFailed Native diagnostic event: failed to load tray icon.
+// LogTrayIconFailed renders log.trayIconFailed.
 func LogTrayIconFailed(l *i18n.Localizer) string {
 	return plain(l, "log.trayIconFailed")
 }
 
-// LogTunerEventsDropped Native diagnostic event: measurement events dropped, the frontend is behind.
+// LogTunerEventsDropped renders log.tunerEventsDropped.
 func LogTunerEventsDropped(l *i18n.Localizer) string {
 	return plain(l, "log.tunerEventsDropped")
 }
 
-// LogTunerRunFailed Native diagnostic event: measurement engine stopped with an error.
+// LogTunerRunFailed renders log.tunerRunFailed.
 func LogTunerRunFailed(l *i18n.Localizer) string {
 	return plain(l, "log.tunerRunFailed")
 }
 
-// LogTunerSettingRejected Native diagnostic event: rejected an out-of-range setting.
+// LogTunerSettingRejected renders log.tunerSettingRejected.
 func LogTunerSettingRejected(l *i18n.Localizer) string {
 	return plain(l, "log.tunerSettingRejected")
 }
 
-// LogTunerStartFailed Native diagnostic event: failed to build the input source.
+// LogTunerStartFailed renders log.tunerStartFailed.
 func LogTunerStartFailed(l *i18n.Localizer) string {
 	return plain(l, "log.tunerStartFailed")
 }
 
-// LogTunerStarted Native diagnostic event: measurement engine started.
+// LogTunerStarted renders log.tunerStarted.
 func LogTunerStarted(l *i18n.Localizer) string {
 	return plain(l, "log.tunerStarted")
 }
 
-// LogTunerStopped Native diagnostic event: measurement engine stopped.
+// LogTunerStopped renders log.tunerStopped.
 func LogTunerStopped(l *i18n.Localizer) string {
 	return plain(l, "log.tunerStopped")
 }
 
-// LogTunerTonePlayFailed Native diagnostic event: reference tone playback failed.
+// LogTunerTonePlayFailed renders log.tunerTonePlayFailed.
 func LogTunerTonePlayFailed(l *i18n.Localizer) string {
 	return plain(l, "log.tunerTonePlayFailed")
 }
 
-// LogTunerTonePlaying Native diagnostic event: playing reference tone.
+// LogTunerTonePlaying renders log.tunerTonePlaying.
 func LogTunerTonePlaying(l *i18n.Localizer) string {
 	return plain(l, "log.tunerTonePlaying")
 }
 
-// LogVolumeRestore Audio diagnostic: automatic volume could not restore the input level.
+// LogVolumeRestore renders log.volumeRestore.
 func LogVolumeRestore(l *i18n.Localizer) string {
 	return plain(l, "log.volumeRestore")
 }
 
-// LogVolumeStepFailed Audio diagnostic: automatic volume could not set the input level.
+// LogVolumeStepFailed renders log.volumeStepFailed.
 func LogVolumeStepFailed(l *i18n.Localizer) string {
 	return plain(l, "log.volumeStepFailed")
 }
 
-// LogVolumeUnavailable Audio diagnostic: automatic volume cannot reach the device's input level.
+// LogVolumeUnavailable renders log.volumeUnavailable.
 func LogVolumeUnavailable(l *i18n.Localizer) string {
 	return plain(l, "log.volumeUnavailable")
 }
 
-// LogWindowStateLoadFailed Native diagnostic event: failed to load window state.
+// LogWindowStateLoadFailed renders log.windowStateLoadFailed.
 func LogWindowStateLoadFailed(l *i18n.Localizer) string {
 	return plain(l, "log.windowStateLoadFailed")
 }
 
-// LogWindowStateSaveFailed Native diagnostic event: failed to save window state.
+// LogWindowStateSaveFailed renders log.windowStateSaveFailed.
 func LogWindowStateSaveFailed(l *i18n.Localizer) string {
 	return plain(l, "log.windowStateSaveFailed")
 }
 
-// ReportErrorInvalidDate tuning report and export: error.invalidDate.
+// ReportErrorInvalidDate renders report.error.invalidDate.
 func ReportErrorInvalidDate(l *i18n.Localizer) string {
 	return plain(l, "report.error.invalidDate")
 }
 
-// ReportErrorInvalidFormat tuning report and export: error.invalidFormat.
+// ReportErrorInvalidFormat renders report.error.invalidFormat.
 func ReportErrorInvalidFormat(l *i18n.Localizer) string {
 	return plain(l, "report.error.invalidFormat")
 }
 
-// ReportErrorNoBrowser tuning report and export: error.noBrowser.
+// ReportErrorNoBrowser renders report.error.noBrowser.
 func ReportErrorNoBrowser(l *i18n.Localizer) string {
 	return plain(l, "report.error.noBrowser")
 }
 
-// ReportErrorOpenFailed tuning report and export: error.openFailed.
+// ReportErrorOpenFailed renders report.error.openFailed.
 func ReportErrorOpenFailed(l *i18n.Localizer) string {
 	return plain(l, "report.error.openFailed")
 }
 
-// ReportErrorRenderFailed tuning report and export: error.renderFailed.
+// ReportErrorRenderFailed renders report.error.renderFailed.
 func ReportErrorRenderFailed(l *i18n.Localizer) string {
 	return plain(l, "report.error.renderFailed")
 }
 
-// ReportErrorWriteFailed tuning report and export: error.writeFailed.
+// ReportErrorWriteFailed renders report.error.writeFailed.
 func ReportErrorWriteFailed(l *i18n.Localizer) string {
 	return plain(l, "report.error.writeFailed")
 }
 
-// ReportFactsCurve tuning report and export: facts.curve.
+// ReportFactsCurve renders report.facts.curve.
 func ReportFactsCurve(l *i18n.Localizer) string {
 	return plain(l, "report.facts.curve")
 }
 
-// ReportFactsCurveNone tuning report and export: facts.curveNone.
+// ReportFactsCurveNone renders report.facts.curveNone.
 func ReportFactsCurveNone(l *i18n.Localizer) string {
 	return plain(l, "report.facts.curveNone")
 }
 
-// ReportFactsCurveUnnamed tuning report and export: facts.curveUnnamed.
+// ReportFactsCurveUnnamed renders report.facts.curveUnnamed.
 func ReportFactsCurveUnnamed(l *i18n.Localizer) string {
 	return plain(l, "report.facts.curveUnnamed")
 }
 
-// ReportFactsEmpty tuning report and export: facts.empty.
-func ReportFactsEmpty(l *i18n.Localizer) string {
-	return plain(l, "report.facts.empty")
-}
-
-// ReportFactsInstrument tuning report and export: facts.instrument.
-func ReportFactsInstrument(l *i18n.Localizer) string {
-	return plain(l, "report.facts.instrument")
-}
-
-// ReportFactsReference tuning report and export: facts.reference.
+// ReportFactsReference renders report.facts.reference.
 func ReportFactsReference(l *i18n.Localizer) string {
 	return plain(l, "report.facts.reference")
 }
 
-// ReportFactsTolerance tuning report and export: facts.tolerance.
+// ReportFactsTolerance renders report.facts.tolerance.
 func ReportFactsTolerance(l *i18n.Localizer) string {
 	return plain(l, "report.facts.tolerance")
 }
@@ -545,7 +922,7 @@ type ReportFactsToleranceValueParams struct {
 	Unit string
 }
 
-// ReportFactsToleranceValue tuning report and export: facts.toleranceValue. Parameters: beat, reed, unit.
+// ReportFactsToleranceValue renders report.facts.toleranceValue.
 func ReportFactsToleranceValue(l *i18n.Localizer, p ReportFactsToleranceValueParams) string {
 	data := map[string]any{
 		"Beat": p.Beat,
@@ -555,7 +932,7 @@ func ReportFactsToleranceValue(l *i18n.Localizer, p ReportFactsToleranceValuePar
 	return withData(l, "report.facts.toleranceValue", data)
 }
 
-// ReportFactsTranspose tuning report and export: facts.transpose.
+// ReportFactsTranspose renders report.facts.transpose.
 func ReportFactsTranspose(l *i18n.Localizer) string {
 	return plain(l, "report.facts.transpose")
 }
@@ -566,7 +943,7 @@ type ReportFactsTransposeValueParams struct {
 	Sounds string
 }
 
-// ReportFactsTransposeValue tuning report and export: facts.transposeValue. Parameters: key, sounds.
+// ReportFactsTransposeValue renders report.facts.transposeValue.
 func ReportFactsTransposeValue(l *i18n.Localizer, p ReportFactsTransposeValueParams) string {
 	data := map[string]any{
 		"Key":    p.Key,
@@ -581,7 +958,7 @@ type ReportFooterGeneratedParams struct {
 	At  string
 }
 
-// ReportFooterGenerated tuning report and export: footer.generated. Parameters: app, at.
+// ReportFooterGenerated renders report.footer.generated.
 func ReportFooterGenerated(l *i18n.Localizer, p ReportFooterGeneratedParams) string {
 	data := map[string]any{
 		"App": p.App,
@@ -595,7 +972,7 @@ type ReportGraphEditedParams struct {
 	Mark string
 }
 
-// ReportGraphEdited tuning report and export: graph.edited. Parameters: mark.
+// ReportGraphEdited renders report.graph.edited.
 func ReportGraphEdited(l *i18n.Localizer, p ReportGraphEditedParams) string {
 	data := map[string]any{
 		"Mark": p.Mark,
@@ -608,7 +985,7 @@ type ReportHeadBeatParams struct {
 	Pair string
 }
 
-// ReportHeadBeat tuning report and export: head.beat. Parameters: pair.
+// ReportHeadBeat renders report.head.beat.
 func ReportHeadBeat(l *i18n.Localizer, p ReportHeadBeatParams) string {
 	data := map[string]any{
 		"Pair": p.Pair,
@@ -616,25 +993,12 @@ func ReportHeadBeat(l *i18n.Localizer, p ReportHeadBeatParams) string {
 	return withData(l, "report.head.beat", data)
 }
 
-// ReportHeadReedParams are the placeholders of report.head.reed.
-type ReportHeadReedParams struct {
-	Index int
-}
-
-// ReportHeadReed Report column heading; index is the one-based reed number.
-func ReportHeadReed(l *i18n.Localizer, p ReportHeadReedParams) string {
-	data := map[string]any{
-		"Index": p.Index,
-	}
-	return withData(l, "report.head.reed", data)
-}
-
 // ReportLegendErrorCentsParams are the placeholders of report.legend.error.cents.
 type ReportLegendErrorCentsParams struct {
 	A4 string
 }
 
-// ReportLegendErrorCents tuning report and export: legend.error.cents. Parameters: a4.
+// ReportLegendErrorCents renders report.legend.error.cents.
 func ReportLegendErrorCents(l *i18n.Localizer, p ReportLegendErrorCentsParams) string {
 	data := map[string]any{
 		"A4": p.A4,
@@ -642,12 +1006,12 @@ func ReportLegendErrorCents(l *i18n.Localizer, p ReportLegendErrorCentsParams) s
 	return withData(l, "report.legend.error.cents", data)
 }
 
-// ReportLegendErrorKey tuning report and export: legend.error.key.
+// ReportLegendErrorKey renders report.legend.error.key.
 func ReportLegendErrorKey(l *i18n.Localizer) string {
 	return plain(l, "report.legend.error.key")
 }
 
-// ReportLegendErrorNoCurve tuning report and export: legend.error.noCurve.
+// ReportLegendErrorNoCurve renders report.legend.error.noCurve.
 func ReportLegendErrorNoCurve(l *i18n.Localizer) string {
 	return plain(l, "report.legend.error.noCurve")
 }
@@ -657,7 +1021,7 @@ type ReportLegendErrorReferenceParams struct {
 	A4 string
 }
 
-// ReportLegendErrorReference tuning report and export: legend.error.reference. Parameters: a4.
+// ReportLegendErrorReference renders report.legend.error.reference.
 func ReportLegendErrorReference(l *i18n.Localizer, p ReportLegendErrorReferenceParams) string {
 	data := map[string]any{
 		"A4": p.A4,
@@ -665,32 +1029,32 @@ func ReportLegendErrorReference(l *i18n.Localizer, p ReportLegendErrorReferenceP
 	return withData(l, "report.legend.error.reference", data)
 }
 
-// ReportLegendOutShort tuning report and export: legend.out.short.
+// ReportLegendOutShort renders report.legend.out.short.
 func ReportLegendOutShort(l *i18n.Localizer) string {
 	return plain(l, "report.legend.out.short")
 }
 
-// ReportLegendTakesKey tuning report and export: legend.takes.key.
+// ReportLegendTakesKey renders report.legend.takes.key.
 func ReportLegendTakesKey(l *i18n.Localizer) string {
 	return plain(l, "report.legend.takes.key")
 }
 
-// ReportLegendTakesShort tuning report and export: legend.takes.short.
+// ReportLegendTakesShort renders report.legend.takes.short.
 func ReportLegendTakesShort(l *i18n.Localizer) string {
 	return plain(l, "report.legend.takes.short")
 }
 
-// ReportMarkEdited tuning report and export: mark.edited.
+// ReportMarkEdited renders report.mark.edited.
 func ReportMarkEdited(l *i18n.Localizer) string {
 	return plain(l, "report.mark.edited")
 }
 
-// ReportMarkOut tuning report and export: mark.out.
+// ReportMarkOut renders report.mark.out.
 func ReportMarkOut(l *i18n.Localizer) string {
 	return plain(l, "report.mark.out")
 }
 
-// ReportSummaryAllIn tuning report and export: summary.allIn.
+// ReportSummaryAllIn renders report.summary.allIn.
 func ReportSummaryAllIn(l *i18n.Localizer) string {
 	return plain(l, "report.summary.allIn")
 }
@@ -700,7 +1064,7 @@ type ReportSummaryBeatsParams struct {
 	PluralCount int
 }
 
-// ReportSummaryBeats tuning report and export: summary.beats. Parameters: pluralCount.
+// ReportSummaryBeats renders report.summary.beats.
 func ReportSummaryBeats(l *i18n.Localizer, p ReportSummaryBeatsParams) string {
 	data := map[string]any{
 		"PluralCount": p.PluralCount,
@@ -717,7 +1081,7 @@ type ReportSummaryLineParams struct {
 	Reeds string
 }
 
-// ReportSummaryLine tuning report and export: summary.line. Parameters: beats, max, min, notes, reeds.
+// ReportSummaryLine renders report.summary.line.
 func ReportSummaryLine(l *i18n.Localizer, p ReportSummaryLineParams) string {
 	data := map[string]any{
 		"Beats": p.Beats,
@@ -734,7 +1098,7 @@ type ReportSummaryNotesParams struct {
 	PluralCount int
 }
 
-// ReportSummaryNotes tuning report and export: summary.notes. Parameters: pluralCount.
+// ReportSummaryNotes renders report.summary.notes.
 func ReportSummaryNotes(l *i18n.Localizer, p ReportSummaryNotesParams) string {
 	data := map[string]any{
 		"PluralCount": p.PluralCount,
@@ -749,7 +1113,7 @@ type ReportSummaryOutParams struct {
 	Reeds       string
 }
 
-// ReportSummaryOut tuning report and export: summary.out. Parameters: beats, pluralCount, reeds.
+// ReportSummaryOut renders report.summary.out.
 func ReportSummaryOut(l *i18n.Localizer, p ReportSummaryOutParams) string {
 	data := map[string]any{
 		"Beats":       p.Beats,
@@ -764,7 +1128,7 @@ type ReportSummaryReedsParams struct {
 	PluralCount int
 }
 
-// ReportSummaryReeds tuning report and export: summary.reeds. Parameters: pluralCount.
+// ReportSummaryReeds renders report.summary.reeds.
 func ReportSummaryReeds(l *i18n.Localizer, p ReportSummaryReedsParams) string {
 	data := map[string]any{
 		"PluralCount": p.PluralCount,
@@ -777,7 +1141,7 @@ type ReportSummaryReedsShortParams struct {
 	PluralCount int
 }
 
-// ReportSummaryReedsShort tuning report and export: summary.reedsShort. Parameters: pluralCount.
+// ReportSummaryReedsShort renders report.summary.reedsShort.
 func ReportSummaryReedsShort(l *i18n.Localizer, p ReportSummaryReedsShortParams) string {
 	data := map[string]any{
 		"PluralCount": p.PluralCount,
@@ -790,7 +1154,7 @@ type ReportTableBassTitleParams struct {
 	Unit string
 }
 
-// ReportTableBassTitle tuning report and export: table.bassTitle. Parameters: unit.
+// ReportTableBassTitle renders report.table.bassTitle.
 func ReportTableBassTitle(l *i18n.Localizer, p ReportTableBassTitleParams) string {
 	data := map[string]any{
 		"Unit": p.Unit,
@@ -798,22 +1162,17 @@ func ReportTableBassTitle(l *i18n.Localizer, p ReportTableBassTitleParams) strin
 	return withData(l, "report.table.bassTitle", data)
 }
 
-// ReportTableCurr tuning report and export: table.curr.
+// ReportTableCurr renders report.table.curr.
 func ReportTableCurr(l *i18n.Localizer) string {
 	return plain(l, "report.table.curr")
 }
 
-// ReportTableErr tuning report and export: table.err.
+// ReportTableErr renders report.table.err.
 func ReportTableErr(l *i18n.Localizer) string {
 	return plain(l, "report.table.err")
 }
 
-// ReportTableNote tuning report and export: table.note.
-func ReportTableNote(l *i18n.Localizer) string {
-	return plain(l, "report.table.note")
-}
-
-// ReportTableRegister tuning report and export: table.register.
+// ReportTableRegister renders report.table.register.
 func ReportTableRegister(l *i18n.Localizer) string {
 	return plain(l, "report.table.register")
 }
@@ -823,7 +1182,7 @@ type ReportTableTitleParams struct {
 	Unit string
 }
 
-// ReportTableTitle tuning report and export: table.title. Parameters: unit.
+// ReportTableTitle renders report.table.title.
 func ReportTableTitle(l *i18n.Localizer, p ReportTableTitleParams) string {
 	data := map[string]any{
 		"Unit": p.Unit,
@@ -831,42 +1190,22 @@ func ReportTableTitle(l *i18n.Localizer, p ReportTableTitleParams) string {
 	return withData(l, "report.table.title", data)
 }
 
-// ReportTitle tuning report and export: title.
+// ReportTitle renders report.title.
 func ReportTitle(l *i18n.Localizer) string {
 	return plain(l, "report.title")
 }
 
-// ReportUnitCentsName tuning report and export: unit.cents.name.
+// ReportUnitCentsName renders report.unit.cents.name.
 func ReportUnitCentsName(l *i18n.Localizer) string {
 	return plain(l, "report.unit.cents.name")
 }
 
-// ReportUnitCentsSymbol tuning report and export: unit.cents.symbol.
+// ReportUnitCentsSymbol renders report.unit.cents.symbol.
 func ReportUnitCentsSymbol(l *i18n.Localizer) string {
 	return plain(l, "report.unit.cents.symbol")
 }
 
-// ReportUnitReferenceName tuning report and export: unit.reference.name.
+// ReportUnitReferenceName renders report.unit.reference.name.
 func ReportUnitReferenceName(l *i18n.Localizer) string {
 	return plain(l, "report.unit.reference.name")
-}
-
-// ReportUnitReferenceSymbol tuning report and export: unit.reference.symbol.
-func ReportUnitReferenceSymbol(l *i18n.Localizer) string {
-	return plain(l, "report.unit.reference.symbol")
-}
-
-// TrayQuit system tray menu: quit.
-func TrayQuit(l *i18n.Localizer) string {
-	return plain(l, "tray.quit")
-}
-
-// TrayShow system tray menu: show.
-func TrayShow(l *i18n.Localizer) string {
-	return plain(l, "tray.show")
-}
-
-// TrayTooltip system tray menu: tooltip.
-func TrayTooltip(l *i18n.Localizer) string {
-	return plain(l, "tray.tooltip")
 }

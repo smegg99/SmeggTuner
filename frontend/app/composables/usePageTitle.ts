@@ -4,9 +4,9 @@ import { useShell } from '~/composables/useShell'
 import type { View } from '~/composables/useShell'
 
 const TITLES: Partial<Record<View, string>> = {
-  settings: 'routes.settings',
-  soundcard: 'settings.calibration.screen.title',
-  calibrate: 'calibrate.title',
+  settings: 'common.routes.settings',
+  soundcard: 'settings.calibration.label',
+  calibrate: 'tuner.calibrate.title',
 }
 
 export function usePageTitle() {

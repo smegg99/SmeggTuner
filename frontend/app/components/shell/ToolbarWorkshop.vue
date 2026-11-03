@@ -4,15 +4,15 @@
     <template v-if="openSession">
       <v-btn
         :disabled="busy"
-        :title="t('workshop.exit')"
-        :aria-label="t('workshop.exit')"
+        :title="t('session.workshop.exit')"
+        :aria-label="t('session.workshop.exit')"
         class="tone-key"
         style="--key-tone: rgb(var(--v-theme-reed))"
         prepend-icon="mdi-arrow-left"
         :data-icon="'mdi-arrow-left'"
         @click="back"
       >
-        <span class="exit-label">{{ t('workshop.exit') }}</span>
+        <span class="exit-label">{{ t('session.workshop.exit') }}</span>
       </v-btn>
 
       <span class="rule" />
@@ -20,8 +20,8 @@
       <!-- Calibrate: the guided sweep, here because it works on this session's instrument. -->
       <UiToolKey
         icon="mdi-tune-vertical"
-        :label="t('calibrate.start')"
-        :title="t('calibrate.start')"
+        :label="t('settings.calibration.start')"
+        :title="t('settings.calibration.start')"
         @click="setView('calibrate')"
       />
 
@@ -29,9 +29,9 @@
 
       <UiToolKey
         icon="mdi-printer-outline"
-        :label="t('workshop.print')"
+        :label="t('session.workshop.print')"
         :disabled="!notes"
-        :title="t('workshop.print')"
+        :title="t('session.workshop.print')"
         @click="ask('print')"
       />
       <UiToolKey
@@ -50,8 +50,8 @@
       />
       <UiToolKey
         icon="mdi-import"
-        :label="t('workshop.import')"
-        :title="t('workshop.import')"
+        :label="t('session.workshop.import')"
+        :title="t('session.workshop.import')"
         @click="ask('import')"
       />
     </template>

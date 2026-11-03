@@ -46,8 +46,8 @@
 
     <ConfirmDialog
       v-model="confirmClear"
-      :title="t('curve.clearAllTitle')"
-      :message="t('curve.clearAllConfirm')"
+      :title="t('session.curve.clearAllTitle')"
+      :message="t('session.curve.clearAllConfirm')"
       @confirm="clearAll"
     />
 
@@ -112,7 +112,7 @@ const banks = computed(() => active.value?.instrument?.banks ?? [])
 function rankLabel(index: number): string {
   const list = banks.value
   if (list.length === reedCount.value && index < list.length) return String(list[index])
-  return t('record.table.reed', { index: index + 1 })
+  return t('common.reed', { index: index + 1 })
 }
 
 const rankItems = computed<ToolItem[]>(() =>

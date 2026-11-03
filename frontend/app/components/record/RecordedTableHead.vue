@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th class="head head--note">
-        {{ t('record.table.note') }}
+        {{ t('common.note') }}
       </th>
       <th
         v-for="head in reedHeads"

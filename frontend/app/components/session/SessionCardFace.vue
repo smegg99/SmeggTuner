@@ -4,7 +4,7 @@
   <button
     type="button"
     class="card__open"
-    :title="t('workshop.open')"
+    :title="t('session.workshop.open')"
     @click="emit('open')"
   >
     <span class="card__pic">

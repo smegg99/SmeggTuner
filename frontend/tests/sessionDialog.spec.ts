@@ -59,24 +59,24 @@ async function open() {
 }
 
 const name = () => wrapper.get('input[aria-label="session.dialog.name"]')
-const accordionName = () => wrapper.get('input[aria-label="instrument.name"]')
+const accordionName = () => wrapper.get('input[aria-label="session.instrument.name"]')
 const start = () => wrapper.findAllComponents(VBtn).find(button => button.text() === 'session.dialog.start')!
 
 describe('new session dialog', () => {
   it.each(['', '   '])('rejects blank instrument name %j in the field before saving', async (blank) => {
     await open()
     await wrapper.get('.describe').trigger('click')
-    expect(wrapper.text()).not.toContain('instrument.nameRequired')
+    expect(wrapper.text()).not.toContain('session.instrument.nameRequired')
     await accordionName().setValue(blank)
     await start().trigger('click')
     await flushPromises()
     expect(library.save).not.toHaveBeenCalled()
     expect(wrapper.emitted('submit')).toBeUndefined()
-    expect(wrapper.text()).toContain('instrument.nameRequired')
+    expect(wrapper.text()).toContain('session.instrument.nameRequired')
     expect(accordionName().attributes('aria-invalid')).toBe('true')
 
     await accordionName().setValue('Morino')
-    expect(wrapper.text()).not.toContain('instrument.nameRequired')
+    expect(wrapper.text()).not.toContain('session.instrument.nameRequired')
     await start().trigger('click')
     await flushPromises()
     expect(library.save).toHaveBeenCalledTimes(1)
@@ -92,7 +92,7 @@ describe('new session dialog', () => {
     await wrapper.get('.describe').trigger('click')
     await accordionName().setValue('  Morino  ')
     await name().setValue('My session')
-    await wrapper.get('input[aria-label="instrument.a4"]').setValue('440.5')
+    await wrapper.get('input[aria-label="session.instrument.a4"]').setValue('440.5')
     await start().trigger('click')
     await flushPromises()
     expect(wrapper.get('.form__error[role="alert"]').text()).toBe(key)
@@ -146,13 +146,13 @@ describe('new session dialog', () => {
     await open()
     await wrapper.get('.describe').trigger('click')
     await start().trigger('click')
-    expect(wrapper.text()).toContain('instrument.nameRequired')
+    expect(wrapper.text()).toContain('session.instrument.nameRequired')
     await wrapper.setProps({ modelValue: false })
     vi.setSystemTime(new Date('2026-10-27T12:00:00Z'))
     await wrapper.setProps({ modelValue: true })
     await flushPromises()
     expect((name().element as HTMLInputElement).value).toContain('2026-10-27')
     await wrapper.get('.describe').trigger('click')
-    expect(wrapper.text()).not.toContain('instrument.nameRequired')
+    expect(wrapper.text()).not.toContain('session.instrument.nameRequired')
   })
 })

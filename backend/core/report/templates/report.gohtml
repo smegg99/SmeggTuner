@@ -172,7 +172,7 @@ a { color: inherit; text-decoration: none; }
 
 <dl class="facts">
   <div>
-    <dt>{{T "report.facts.instrument"}}</dt>
+    <dt>{{T "common.accordion"}}</dt>
     <dd>{{with .Identity.Accordion}}{{.}}{{else}}-{{end}}{{with .Identity.Serial}} / {{.}}{{end}}</dd>
   </div>
   <div>
@@ -260,7 +260,7 @@ a { color: inherit; text-decoration: none; }
 <table>
   <thead>
     <tr>
-      <th class="note" rowspan="2">{{T "report.table.note"}}</th>
+      <th class="note" rowspan="2">{{T "common.note"}}</th>
       {{if .MultiRegister}}<th class="note" rowspan="2">{{T "report.table.register"}}</th>{{end}}
       {{range $i, $reed := .Reeds}}<th colspan="2" class="sep">{{$.Head $i}}</th>{{end}}
       {{range .Pairs}}<th colspan="2" class="sep">{{Tf "report.head.beat" "Pair" .Key}}</th>{{end}}
@@ -307,7 +307,7 @@ a { color: inherit; text-decoration: none; }
 <table>
   <caption>{{$.Head $i}}</caption>
   <thead>
-    <tr><th class="note">{{T "report.table.note"}}</th><th>{{T "report.table.curr"}}</th><th>{{T "report.table.err"}}</th></tr>
+    <tr><th class="note">{{T "common.note"}}</th><th>{{T "report.table.curr"}}</th><th>{{T "report.table.err"}}</th></tr>
   </thead>
   <tbody>
     {{range $row := $.Rows}}
@@ -329,7 +329,7 @@ a { color: inherit; text-decoration: none; }
 <table>
   <caption>{{Tf "report.head.beat" "Pair" $pair.Key}}</caption>
   <thead>
-    <tr><th class="note">{{T "report.table.note"}}</th><th>{{T "report.table.curr"}}</th><th>{{T "report.table.err"}}</th></tr>
+    <tr><th class="note">{{T "common.note"}}</th><th>{{T "report.table.curr"}}</th><th>{{T "report.table.err"}}</th></tr>
   </thead>
   <tbody>
     {{range $row := $.Rows}}

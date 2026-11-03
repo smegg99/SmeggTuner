@@ -10,7 +10,7 @@
       :items="sections"
       item-title="label"
       item-value="value"
-      :aria-label="t('sessionPage.tabs.accordion')"
+      :aria-label="t('common.accordion')"
       hide-details
     />
     <!-- Not saved by a key: every committed change is written. The one thing that cannot be
@@ -95,10 +95,10 @@ import { frozenByReadings } from '~/utils/accordion'
 const compact = useCompactLayout()
 const section = ref('identity')
 const sections = computed(() => [
-  ...['identity', 'reference', 'voices', 'keyboard', 'bass'].map(value => ({ value, label: t(`instrument.sections.${value}`) })),
-  { value: 'registerBuilder', label: t('instrument.builder.title') },
-  { value: 'bassBuilder', label: t('instrument.bass.build') },
-  { value: 'tolerance', label: t('instrument.tolerance') },
+  ...['identity', 'reference', 'voices', 'keyboard', 'bass'].map(value => ({ value, label: t(`session.instrument.sections.${value}`) })),
+  { value: 'registerBuilder', label: t('session.instrument.builder.title') },
+  { value: 'bassBuilder', label: t('session.instrument.bass.build') },
+  { value: 'tolerance', label: t('session.instrument.tolerance') },
 ])
 const visible = (value: string) => !compact.value || section.value === value
 

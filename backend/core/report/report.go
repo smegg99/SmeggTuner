@@ -192,5 +192,5 @@ func (r *Report) Head(i int) string {
 	if i >= 0 && i < len(r.Banks) {
 		return string(r.Banks[i])
 	}
-	return i18n.ReportHeadReed(i18n.Localizer(), i18n.ReportHeadReedParams{Index: i + 1})
+	return i18n.CommonReed(i18n.Localizer(), i18n.CommonReedParams{Index: i + 1})
 }

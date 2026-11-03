@@ -12,9 +12,14 @@
       >{{ line ? t(line.key, line.params) : '' }}</span>
 
       <UiToolKey
+        :label="t('settings.calibration.open')"
+        :title="t('settings.calibration.openHint')"
+        @click="setView('soundcard')"
+      />
+      <UiToolKey
         v-if="running"
-        :label="t('settings.calibration.cancel')"
-        :title="t('settings.calibration.cancel')"
+        :label="t('common.cancel')"
+        :title="t('common.cancel')"
         @click="cancelCalibration"
       />
       <UiToolKey

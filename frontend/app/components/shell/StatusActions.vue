@@ -8,37 +8,37 @@
       :href="DOWNLOADS_URL"
       target="_blank"
       rel="noopener"
-      :title="t('web.downloads.title')"
+      :title="t('tuner.web.downloads.title')"
     >
       <v-icon
         icon="mdi-download-outline"
         class="status__action-icon"
       />
-      <span class="status__action-label">{{ t('web.downloads.title') }}</span>
+      <span class="status__action-label">{{ t('tuner.web.downloads.title') }}</span>
     </a>
     <button
       type="button"
       class="status__action"
-      :title="t('about.helpTitle')"
+      :title="t('common.about.helpTitle')"
       @click="helpOpen = true"
     >
       <v-icon
         icon="mdi-help-circle-outline"
         class="status__action-icon"
       />
-      <span class="status__action-label">{{ t('about.helpTitle') }}</span>
+      <span class="status__action-label">{{ t('common.about.helpTitle') }}</span>
     </button>
     <button
       type="button"
       class="status__action"
-      :title="t('about.aboutTitle')"
+      :title="t('common.about.aboutTitle')"
       @click="aboutOpen = true"
     >
       <v-icon
         icon="mdi-information-outline"
         class="status__action-icon"
       />
-      <span class="status__action-label">{{ t('about.aboutTitle') }}</span>
+      <span class="status__action-label">{{ t('common.about.aboutTitle') }}</span>
     </button>
 
     <ShellHelpDialog v-model="helpOpen" />

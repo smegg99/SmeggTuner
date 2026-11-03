@@ -7,11 +7,11 @@ func TestDottedKeysResolve(t *testing.T) {
 	defer SetLocale("en")
 
 	SetLocale("en")
-	if got := T("tray.show"); got != "Show" {
-		t.Fatalf("T(tray.show) = %q, want Show", got)
+	if got := T("common.tray.show"); got != "Show" {
+		t.Fatalf("T(common.tray.show) = %q, want Show", got)
 	}
-	if got := T("app.name"); got != "SmeggTuner" {
-		t.Fatalf("T(app.name) = %q", got)
+	if got := T("common.app.name"); got != "SmeggTuner" {
+		t.Fatalf("T(common.app.name) = %q", got)
 	}
 }
 
@@ -20,14 +20,14 @@ func TestLocaleSwitchAndMatching(t *testing.T) {
 
 	// Region suffixes must match to the base language.
 	SetLocale("pl-PL")
-	if got := T("tray.show"); got == "Show" || got == "tray.show" {
-		t.Fatalf("T(tray.show) after SetLocale(pl-PL) = %q, want Polish translation", got)
+	if got := T("common.tray.show"); got == "Show" || got == "common.tray.show" {
+		t.Fatalf("T(common.tray.show) after SetLocale(pl-PL) = %q, want Polish translation", got)
 	}
 
 	// Unknown locales fall back to the default language.
 	SetLocale("xx")
-	if got := T("tray.show"); got != "Show" {
-		t.Fatalf("T(tray.show) after SetLocale(xx) = %q, want Show", got)
+	if got := T("common.tray.show"); got != "Show" {
+		t.Fatalf("T(common.tray.show) after SetLocale(xx) = %q, want Show", got)
 	}
 }
 

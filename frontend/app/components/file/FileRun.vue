@@ -2,8 +2,8 @@
   <span class="run">
     <v-btn
       variant="text"
-      :title="playing ? t('file.pause') : t('file.play')"
-      :aria-label="playing ? t('file.pause') : t('file.play')"
+      :title="playing ? t('tuner.file.pause') : t('tuner.file.play')"
+      :aria-label="playing ? t('tuner.file.pause') : t('tuner.file.play')"
       class="tone-key"
       :style="{ '--key-tone': `rgb(var(--v-theme-${playing ? 'warn' : 'goal'}))` }"
       :icon="playing ? 'mdi-pause' : 'mdi-play'"
@@ -12,9 +12,9 @@
     />
     <v-btn
       variant="text"
-      :title="t('file.stop')"
+      :title="t('tuner.file.stop')"
       :disabled="!running"
-      :aria-label="t('file.stop')"
+      :aria-label="t('tuner.file.stop')"
       class="tone-key"
       style="--key-tone: rgb(var(--v-theme-reed))"
       :icon="'mdi-stop'"

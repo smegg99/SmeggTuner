@@ -83,7 +83,7 @@
           :disabled="busy || notesTooLong"
           @click="submit"
         >
-          {{ t('record.report.export') }}
+          {{ t('common.export') }}
         </v-btn>
       </template>
     </UiDialogCard>

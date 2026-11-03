@@ -7,7 +7,7 @@
          already has, and they build the next one rather than being one. -->
     <span
       class="bass__h"
-    >{{ t('instrument.bass.build') }}</span>
+    >{{ t('session.instrument.bass.build') }}</span>
 
     <div
       class="bass__feet"
@@ -26,7 +26,7 @@
     <UiFormField
       v-slot="{ id }"
       class="bass__field"
-      :label="t('instrument.bass.registerName')"
+      :label="t('session.instrument.bass.registerName')"
     >
       <!-- Name and key inside the field, so the key lines up with the input rather than with
            the label above it. -->
@@ -38,12 +38,12 @@
           :maxlength="MAX_SWITCH_NAME"
           hide-details="auto"
           autocomplete="off"
-          :aria-label="t('instrument.bass.registerName')"
+          :aria-label="t('session.instrument.bass.registerName')"
           @keyup.enter="addRegister()"
         />
         <UiToolKey
           icon="mdi-plus"
-          :label="t('instrument.builder.add')"
+          :label="t('session.instrument.builder.add')"
           :disabled="!canAdd"
           :title="addHint"
           @click="addRegister"
@@ -79,9 +79,9 @@ const canAdd = computed(() => canAddBass(registers.value, draft.value, draftName
 // Why the key is off, in the words the situation calls for.
 const addHint = computed(() => {
   if (canAdd.value) return ''
-  if (full.value) return t('instrument.bass.full', { n: MAX_BASS_REGISTERS })
+  if (full.value) return t('session.instrument.bass.full', { n: MAX_BASS_REGISTERS })
   if (!draft.value.length || !draftName.value.trim()) return ''
-  return t('instrument.builder.already')
+  return t('session.instrument.builder.already')
 })
 
 function toggleFoot(f: number) {

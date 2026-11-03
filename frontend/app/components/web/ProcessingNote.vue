@@ -9,7 +9,7 @@
       icon="mdi-alert-outline"
       size="16"
     />
-    {{ t('web.processingOn', { list: processing.map(p => t(`web.processing.${p}`)).join(', ') }) }}
+    {{ t('tuner.web.processingOn', { list: processing.map(p => t(`tuner.web.processing.${p}`)).join(', ') }) }}
   </p>
 </template>
 

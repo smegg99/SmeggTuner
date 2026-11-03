@@ -2,38 +2,38 @@
 <template>
   <v-dialog
     v-model="open"
-    :aria-label="t('curve.helpTitle')"
+    :aria-label="t('session.curve.helpTitle')"
     width="var(--dlg-sm)"
   >
     <UiDialogCard
-      :title="t('curve.helpTitle')"
+      :title="t('session.curve.helpTitle')"
       @close="open = false"
     >
       <div class="help">
         <p
           class="help__lead"
         >
-          {{ t('curve.help.lead') }}
+          {{ t('session.curve.help.lead') }}
         </p>
 
         <dl class="help__marks">
           <div
             class="help__mark"
           >
-            <dt>{{ t('curve.help.setTitle') }}</dt>
-            <dd>{{ t('curve.help.set') }}</dd>
+            <dt>{{ t('session.curve.help.setTitle') }}</dt>
+            <dd>{{ t('session.curve.help.set') }}</dd>
           </div>
           <div
             class="help__mark"
           >
-            <dt>{{ t('curve.help.interpTitle') }}</dt>
-            <dd>{{ t('curve.help.interp') }}</dd>
+            <dt>{{ t('session.curve.help.interpTitle') }}</dt>
+            <dd>{{ t('session.curve.help.interp') }}</dd>
           </div>
           <div
             class="help__mark"
           >
-            <dt>{{ t('curve.help.hzTitle') }}</dt>
-            <dd>{{ t('curve.help.hz') }}</dd>
+            <dt>{{ t('session.curve.help.hzTitle') }}</dt>
+            <dd>{{ t('session.curve.help.hz') }}</dd>
           </div>
         </dl>
       </div>

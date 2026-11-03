@@ -4,11 +4,11 @@
       v-show="mode !== 'builder'"
       class="bass__row"
     >
-      <span class="bass__label">{{ t('instrument.bass.voices') }}</span>
+      <span class="bass__label">{{ t('session.instrument.bass.voices') }}</span>
       <UiToolGroup
         :model-value="reeds"
         :items="COUNTS"
-        :label="t('instrument.bass.voices')"
+        :label="t('session.instrument.bass.voices')"
         @update:model-value="n => setReeds(n as number)"
       />
     </div>
@@ -20,14 +20,14 @@
       v-if="reeds === 0"
       class="bass__none"
     >
-      {{ t('instrument.bass.hint') }}
+      {{ t('session.instrument.bass.hint') }}
     </p>
 
     <template v-else>
       <InstrumentRegisterList
         v-show="mode !== 'builder'"
         :items="items"
-        :empty="t('instrument.bass.fixed')"
+        :empty="t('session.instrument.bass.fixed')"
         @remove="removeRegister"
       />
 
@@ -55,7 +55,7 @@ const { t } = useI18n()
 
 // None, or the counts machines are built with; four and five are the common ones.
 const COUNTS: ToolItem[] = [
-  { value: 0, label: t('instrument.bass.none') },
+  { value: 0, label: t('common.none') },
   ...[2, 3, 4, 5, 6].map(n => ({ value: n, label: String(n) })),
 ]
 

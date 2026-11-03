@@ -3,7 +3,7 @@
     <UiToolKey
       icon="mdi-chevron-down"
       :disabled="model !== 0 && model <= NOTE_MIN"
-      :title="t('instrument.range.down')"
+      :title="t('session.instrument.range.down')"
       @click="bump(-1)"
     />
 
@@ -16,7 +16,7 @@
     <UiToolKey
       icon="mdi-chevron-up"
       :disabled="model !== 0 && model >= NOTE_MAX"
-      :title="t('instrument.range.up')"
+      :title="t('session.instrument.range.up')"
       @click="bump(1)"
     />
 
@@ -25,7 +25,7 @@
       <UiToolKey
         v-if="model !== 0"
         icon="mdi-close"
-        :title="t('instrument.range.clear')"
+        :title="t('session.instrument.range.clear')"
         @click="model = 0"
       />
     </span>

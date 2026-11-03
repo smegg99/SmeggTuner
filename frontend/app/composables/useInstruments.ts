@@ -64,8 +64,8 @@ export function useInstruments() {
   // Hands Go only a path; Go opens, decodes (so a non-image fails there) and caps it - not the webview.
   async function setImage(id: string) {
     const path = await SessionService.OpenImageDialog(
-      t('instrument.file.imageTitle'),
-      t('instrument.file.imageFilter'),
+      t('session.instrument.file.imageTitle'),
+      t('session.instrument.file.imageFilter'),
     )
     if (!path) return false
 
@@ -82,8 +82,8 @@ export function useInstruments() {
   // importFile reads a .stif (accordion and photograph) onto the shelf.
   async function importFile(): Promise<InstrumentTemplate | undefined> {
     const path = await SessionService.OpenInstrumentDialog(
-      t('instrument.file.openTitle'),
-      t('instrument.file.filterName'),
+      t('session.instrument.file.openTitle'),
+      t('session.instrument.file.filterName'),
     )
     if (!path) return undefined
 
@@ -98,8 +98,8 @@ export function useInstruments() {
     const path = await SessionService.SaveFileDialog(
       'instrument',
       suggested,
-      t('instrument.file.exportTitle'),
-      t('instrument.file.filterName'),
+      t('session.instrument.file.exportTitle'),
+      t('session.instrument.file.filterName'),
     )
     if (!path) return false
 

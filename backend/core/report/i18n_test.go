@@ -11,14 +11,14 @@ import (
 // The locale is process-global, so every test here restores it.
 
 // rawKey catches a message ID that reached the page instead of its text.
-var rawKey = regexp.MustCompile(`report\.[a-z]+\.[a-zA-Z]+`)
+var rawKey = regexp.MustCompile(`(?:common|report)\.[a-zA-Z]+(?:\.[a-zA-Z]+)*`)
 
 func TestSheetIsEnglishByDefault(t *testing.T) {
 	defer i18n.SetLocale("en")
 	i18n.SetLocale("en")
 
 	out := text(t, sheet(t, musette(t)))
-	for _, want := range []string{"Tuning table", "Tolerance", "Note", "Curr"} {
+	for _, want := range []string{"Tuning table", "Tolerance", "Note", "Curr", "Accordion", "Reed 1"} {
 		if !strings.Contains(out, want) {
 			t.Errorf("the sheet does not say %q", want)
 		}
@@ -65,7 +65,7 @@ func TestPolishSheetIsPolish(t *testing.T) {
 	i18n.SetLocale("pl")
 	out := text(t, sheet(t, musette(t)))
 
-	for _, want := range []string{"Tabela strojenia", "Tolerancja", "Dźwięk", "Jest"} {
+	for _, want := range []string{"Tabela strojenia", "Tolerancja", "Dźwięk", "Jest", "Akordeon", "Głos 1"} {
 		if !strings.Contains(out, want) {
 			t.Errorf("the Polish sheet does not say %q", want)
 		}

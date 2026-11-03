@@ -2,12 +2,12 @@
 <template>
   <v-dialog
     v-model="open"
-    :aria-label="t('session.dialog.newTitle')"
+    :aria-label="t('session.new')"
     width="var(--dlg-md)"
     :persistent="busy"
   >
     <UiDialogCard
-      :title="t('session.dialog.newTitle')"
+      :title="t('session.new')"
       :busy="busy"
       @close="open = false"
     >
@@ -15,7 +15,7 @@
         <UiFormField
           v-if="mode === 'pick'"
 
-          :label="t('session.dialog.instrument')"
+          :label="t('common.accordion')"
         >
           <SessionAccordionPicker
             v-model="templateId"
