@@ -21,6 +21,8 @@ stroik, porównaj odczyt z tunerem, któremu ufasz.
   <img src="assets/screenshots/smeggtuner-recording-analysis.png" alt="Trzy stroiki C4 zmierzone z nagrania" width="760">
 </p>
 
+[Jak używać SmeggTuner, ze zdjęciami](USAGE.pl.md).
+
 ## Co potrafi
 
 Tuner mierzy dźwięki, oktawy albo akordy. W trybie Dźwięki pokazuje stroiki jednej nuty, w trybach
@@ -120,6 +122,9 @@ formatowanie, vet, tłumaczenia, typy i lint, niczego nie zmieniając.
 Tłumaczenia leżą w `i18n/locales/{en,pl}`, a schemat ustawień w `backend/common/config/config.cue`.
 `just generate` odtwarza wszystko, co z nich powstaje, a do tego bindingi, ikony i pliki pomocnicze
 S99Wails.
+
+Zobacz [instrukcję tłumaczenia](i18n/README.md) (po angielsku).
+`just locales` odtwarza tylko tłumaczenia, a `just check-locales` je sprawdza.
 
 `just web` buduje wersję przeglądarkową do `dist/web`. `just release` przepuszcza wszystkie
 sprawdzenia i buduje każdy cel do `dist/release/<wersja>`; APK na Androida potrzebuje klucza do

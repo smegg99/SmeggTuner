@@ -21,6 +21,8 @@ trust before you file a reed.
   <img src="assets/screenshots/smeggtuner-recording-analysis.png" alt="Three reeds of C4 read from a recording" width="760">
 </p>
 
+[How to use SmeggTuner, with pictures](USAGE.md).
+
 ## What it does
 
 Tones reads the reeds of one note; Octaves and Chords read across notes. Deviation is in Dirk's units
@@ -116,6 +118,9 @@ types and lint without rewriting anything.
 Locales live in `i18n/locales/{en,pl}` and the settings schema in
 `backend/common/config/config.cue`; `just generate` rebuilds everything made from them, plus the
 bindings, icons and S99Wails helpers.
+
+To translate the app, follow the [translation guide](i18n/README.md).
+`just locales` regenerates only translations; `just check-locales` validates them.
 
 `just web` builds the browser edition into `dist/web`. `just release` runs the checks and builds every
 target into `dist/release/<version>`; the Android APK needs the signing keystore described in
