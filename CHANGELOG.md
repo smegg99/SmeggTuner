@@ -9,8 +9,7 @@ Commercial use is still allowed. Copies previously released under MIT retain the
 The About dialog groups smegg.me and the license button with the project links in two rows. The full
 license is available offline in a narrower dialog with its own scrollable text area.
 
-`just android-release` builds the signed APK and app bundle with one password prompt. Frontend
-dependencies now match the shared layer, and build commands select the pinned pnpm version correctly.
+Frontend dependencies now match the shared layer, and build commands select the pinned pnpm version correctly.
 Go was updated to 1.27.4 and Wails to 3.1.0.
 
 The Workshop remains hidden. Android and the web version are still experimental.
@@ -41,7 +40,6 @@ uprawnienia wynikające z MIT.
 Okno "O programie" grupuje odnośnik do smegg.me i przycisk licencji z odnośnikami projektu w dwóch
 rzędach. Pełna licencja jest dostępna bez internetu, w węższym oknie z osobnym przewijanym polem tekstowym.
 
-`just android-release` buduje podpisany plik APK i pakiet aplikacji po jednokrotnym podaniu hasła.
 Zależności frontendu są zgodne ze wspólną warstwą, a polecenia budujące wybierają właściwą wersję pnpm.
 Zaktualizowano Go do wersji 1.27.4, a Wails do 3.1.0.
 
