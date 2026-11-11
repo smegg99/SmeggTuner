@@ -1,6 +1,6 @@
 # Android development
 
-The Android host is generated from Wails v3.0.0-beta.34, the version pinned in
+The Android host is generated from Wails v3.1.0, the version pinned in
 `go.mod`. Use `go tool wails3`; a global `wails3` installation may differ.
 
 `build/android-support/config.json` owns Android toolchain versions, package ID,
@@ -63,6 +63,7 @@ just android build             # build an ARM64 debug APK
 just android install amd64     # install and launch the existing emulator APK
 just android package           # ARM64 release APK
 just android bundle            # ARM64 Android App Bundle
+just android-release           # signed ARM64 APK and AAB, one password prompt
 just android help              # less common Android operations
 ```
 
@@ -74,7 +75,7 @@ Gradle packages the Go library built by the recipes. After changing Go or the
 frontend, run `just android build` again before using Android Studio's Run button.
 Each recipe stages exactly one freshly compiled ABI. Outputs are separated by
 mode and architecture, for example
-`bin/android/debug/amd64/smeggtuner-1.4.0-debug-amd64.apk`. Release APKs and AABs
+`bin/android/debug/amd64/smeggtuner-1.4.3-debug-amd64.apk`. Release APKs and AABs
 use `bin/android/release/<arch>/`. Verification rejects unexpected ABIs, stale
 native libraries, wrong build modes, package/version/SDK mismatches and invalid
 signatures or alignment. Release verification also checks the signing certificate
@@ -281,16 +282,22 @@ does not certify phone hardware.
 
 ## Distribution signing
 
-The maintained release commands require all four signing variables and fail
-before building when any is missing. Supply an upload key outside the repository:
+Put the existing upload key at `~/.android-keys/smeggtuner-upload.jks`, with alias
+`smeggtuner`, then run:
 
 ```sh
-export ANDROID_KEYSTORE_FILE=/absolute/path/to/upload.jks
-export ANDROID_KEY_ALIAS=smeggtuner
-read -rs ANDROID_KEYSTORE_PASSWORD; export ANDROID_KEYSTORE_PASSWORD
-read -rs ANDROID_KEY_PASSWORD; export ANDROID_KEY_PASSWORD
-just android bundle
+just android-release
 ```
+
+The command prompts once, without echoing the password, and builds both the signed
+APK and AAB under `bin/android/release/arm64/`. The key password defaults to the
+keystore password. `just android package` and `just android bundle` use the same
+defaults when only one format is needed. Add `amd64` to select x86_64.
+
+Override `ANDROID_KEYSTORE_FILE` and `ANDROID_KEY_ALIAS` for another upload key.
+For automation, supply `ANDROID_KEYSTORE_PASSWORD` in the process environment;
+set `ANDROID_KEY_PASSWORD` only when it differs. Unattended builds fail before
+compilation if a readable key or password is missing.
 
 Do not commit keystores or passwords. Back up the upload key separately. SDK
 target, signing, native alignment and store policy still need release checks.

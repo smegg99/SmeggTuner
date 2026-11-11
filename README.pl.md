@@ -50,7 +50,7 @@ raporty) jest w 1.4 wyłączony. Warsztat wróci w którymś z kolejnych wydań.
 | | Profesjonalny Accordion Tuner Dirka | SmeggTuner 1.4 |
 |---|---|---|
 | Cena | 298 EUR i 148 EUR za moduł nagrywania i raportów | Za darmo |
-| Kod | Zamknięty | MIT |
+| Kod | Zamknięty | AGPL-3.0-only |
 | Systemy | Windows, macOS | Linux, Windows; Android i przeglądarka eksperymentalnie |
 | Stroiki naraz | 3 | 3 |
 | Dźwięki, oktawy, akordy | Tak | Tak |
@@ -64,7 +64,7 @@ Ceny ze strony [dirksprojects.com](https://www.dirksprojects.com/), stan z paźd
 ## Plany
 
 - [ ] Powrót Warsztatu
-- [ ] Wersja przeglądarkowa pod adresem app.smeggtuner.com
+- [X] Wersja przeglądarkowa pod adresem app.smeggtuner.com
 - [ ] Testy na większej liczbie akordeonów, mikrofonów i kart dźwiękowych
 - [ ] macOS i iOS, kiedy będę miał na czym je testować
 
@@ -98,7 +98,7 @@ Co się zmieniło, opisuje [CHANGELOG.md](CHANGELOG.md).
 
 ## Budowanie
 
-Budować można tylko na Linuksie. Potrzebujesz Go 1.27 z cgo, nagłówków GTK 3 i WebKit2GTK 4.1
+Budować można tylko na Linuksie. Potrzebujesz Go 1.27.4 z cgo, nagłówków GTK 3 i WebKit2GTK 4.1
 (`libgtk-3-dev libwebkit2gtk-4.1-dev` w Debianie i Ubuntu, `gtk3-devel webkit2gtk4.1-devel`
 w Fedorze), Node.js `^22.22.3 || ^24.15.0 || >=26.0.0`, pnpm 11.3.0, [just](https://github.com/casey/just),
 Pythona 3 i `rsvg-convert`. Obok tego repozytorium muszą leżeć klony
@@ -145,4 +145,14 @@ ustawienia.
 
 ## Licencja
 
-MIT, szczegóły w [LICENSE](LICENSE).
+Copyright (c) 2026 Smegg99.
+
+SmeggTuner jest udostępniany na licencji GNU Affero General Public License, wyłącznie w wersji 3
+(`AGPL-3.0-only`). Szczegóły w [LICENSE](LICENSE).
+
+Rozpowszechniane wersje pochodne muszą zachować licencję AGPL i udostępniać odbiorcom odpowiadający
+im kod źródłowy. Zmodyfikowane wersje obsługujące użytkowników przez sieć muszą również oferować im
+odpowiadający tym wersjom kod źródłowy. Użytek komercyjny i sprzedaż są dozwolone.
+
+Komponenty zewnętrzne zachowują własne licencje. Kopie wcześniej wydane na MIT zachowują uprawnienia
+wynikające z MIT; ta zmiana ich nie cofa.

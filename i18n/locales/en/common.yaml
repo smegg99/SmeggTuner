@@ -74,8 +74,10 @@ title.uncalibrated:
 
 # Application and About dialog
 about.aboutTitle: {value: "About"}
+about.authorWebsite: {value: "Smegg99's personal website (smegg.me)"}
 about.commit: {value: "Build"}
 about.donate: {value: "Support on Ko-fi"}
+about.license: {value: "License"}
 about.mascot: {value: "A cat playing the accordion"}
 about.publisher: {value: "By Smegg99"}
 about.tagline: {value: "Free and open source accordion tuning program."}

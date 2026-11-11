@@ -82,18 +82,18 @@ code = major * 1_000_000 + minor * 1000 + patch
 if not 0 < code <= 2_100_000_000:
     raise ValueError("Android version code outside Play Store range")
 for old, new in [
-    ('applicationId "com.wails.app"', f'applicationId "{CONFIG["applicationId"]}"'),
-    ('compileSdk 35', f'compileSdk {CONFIG["targetSdk"]}'),
-    ('minSdk 21', f'minSdk {CONFIG["minSdk"]}'),
-    ('targetSdk 35', f'targetSdk {CONFIG["targetSdk"]}'),
-    ('versionCode 1', f'versionCode {code}'),
-    ('versionName "1.0"', f'versionName "{version}"'),
-    ('    buildFeatures {', f'    buildToolsVersion "{CONFIG["buildTools"]}"\n    ndkVersion "{CONFIG["ndk"]}"\n\n    buildFeatures {{'),
-    ('        applicationId ', f'        buildConfigField "int", "MIN_WEBVIEW_MAJOR", "{CONFIG["webViewMinMajor"]}"\n        applicationId '),
+    ('applicationId = "com.wails.app"', f'applicationId = "{CONFIG["applicationId"]}"'),
+    ('compileSdk = 36', f'compileSdk = {CONFIG["targetSdk"]}'),
+    ('minSdk = 21', f'minSdk = {CONFIG["minSdk"]}'),
+    ('targetSdk = 36', f'targetSdk = {CONFIG["targetSdk"]}'),
+    ('versionCode = 1', f'versionCode = {code}'),
+    ('versionName = "1.0"', f'versionName = "{version}"'),
+    ('    buildFeatures {', f'    buildToolsVersion = "{CONFIG["buildTools"]}"\n    ndkVersion = "{CONFIG["ndk"]}"\n\n    buildFeatures {{'),
+    ('        applicationId = ', f'        buildConfigField "int", "MIN_WEBVIEW_MAJOR", "{CONFIG["webViewMinMajor"]}"\n        applicationId = '),
 ]:
     replace(gradle, old, new)
 replace(gradle, "jniLibs.srcDirs = ['src/main/jniLibs']", "jniLibs.srcDirs = [providers.gradleProperty('wailsJniDir').getOrElse('src/main/jniLibs')]")
-replace(OUT / "build.gradle", "version '8.7.3'", f"version '{CONFIG['agp']}'")
+replace(OUT / "build.gradle", "version '9.0.1'", f"version '{CONFIG['agp']}'")
 wrapper = OUT / "gradle/wrapper/gradle-wrapper.properties"
 replace(wrapper, "gradle-9.2.1-bin.zip", f"gradle-{CONFIG['gradle']}-bin.zip")
 with wrapper.open("a") as f:

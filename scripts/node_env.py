@@ -60,10 +60,22 @@ if __name__ == "__main__":
             print(selected)
         else:
             require(len(sys.argv) > 1, "Usage: node_env.py --print-bin | COMMAND [ARGUMENTS]")
+            command = sys.argv[1:]
+            if command[0] == "pnpm":
+                directory = ROOT / "frontend"
+                for flag in ("--dir", "-C"):
+                    if flag in command:
+                        index = command.index(flag) + 1
+                        require(index < len(command), f"{flag} requires a directory")
+                        directory = Path(command[index]).resolve()
+                        command[index] = str(directory)
+                        break
+                # Corepack chooses packageManager from cwd before pnpm reads --dir.
+                os.chdir(directory)
             environment = os.environ.copy()
             if selected:
                 environment["PATH"] = selected + os.pathsep + environment["PATH"]
-            os.execvpe(sys.argv[1], sys.argv[1:], environment)
+            os.execvpe(command[0], command, environment)
     except (RuntimeError, OSError, subprocess.CalledProcessError) as error:
         detail = error.output if isinstance(error, subprocess.CalledProcessError) else str(error)
         print(f"Node environment: {detail}", file=sys.stderr)

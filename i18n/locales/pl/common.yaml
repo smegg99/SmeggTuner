@@ -74,8 +74,10 @@ title.uncalibrated:
 
 # Application and About dialog
 about.aboutTitle: {value: "O programie"}
+about.authorWebsite: {value: "Strona osobista Smegg99 (smegg.me)"}
 about.commit: {value: "Kompilacja"}
 about.donate: {value: "Wesprzyj na Ko-fi"}
+about.license: {value: "Licencja"}
 about.mascot: {value: "Kot grający na akordeonie"}
 about.publisher: {value: "Autor: Smegg99"}
 about.tagline: {value: "Wolny program do strojenia akordeonów o otwartym kodzie."}

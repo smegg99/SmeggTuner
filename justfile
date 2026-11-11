@@ -84,6 +84,10 @@ emulator name="smeggtuner-api37" *args:
 android action="run" *args:
     bash build/android-support/android.sh "$@"
 
+# Build signed APK and AAB with the default upload key; ask once for its password.
+android-release arch="arm64":
+    bash build/android-support/android.sh release "$1"
+
 # Run SDK adb (default: devices); ANDROID_SERIAL selects the device.
 adb *args="devices":
     bash build/android-support/android.sh adb "$@"

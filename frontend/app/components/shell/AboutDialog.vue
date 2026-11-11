@@ -43,19 +43,63 @@
         </dl>
 
         <div class="about__links">
-          <a
-            v-for="link in links"
-            :key="link.url"
-            class="about__link"
-            :href="link.url"
-            @click.prevent="visit(link.url)"
+          <div
+            v-for="(row, index) in linkRows"
+            :key="index"
+            class="about__link-row"
           >
-            <v-icon
-              :icon="link.icon"
-              class="about__link-icon"
-            />
-            {{ link.label }}
-          </a>
+            <a
+              v-for="link in row"
+              :key="link.url"
+              class="about__link"
+              :href="link.url"
+              :aria-label="link.url === authorUrl ? t('common.about.authorWebsite') : undefined"
+              @click.prevent="visit(link.url)"
+            >
+              <AuthorMark
+                v-if="link.url === authorUrl"
+                class="about__author-mark"
+                aria-hidden="true"
+              />
+              <v-icon
+                v-else
+                :icon="link.icon"
+                class="about__link-icon"
+              />
+              {{ link.label }}
+            </a>
+            <v-dialog
+              v-if="index === linkRows.length - 1"
+              v-model="licenseOpen"
+              :aria-label="t('common.about.license')"
+              width="640"
+            >
+              <template #activator="{ props: licenseActivator }">
+                <button
+                  v-bind="licenseActivator"
+                  type="button"
+                  class="about__link"
+                >
+                  <v-icon
+                    icon="mdi-scale-balance"
+                    class="about__link-icon"
+                  />
+                  {{ t('common.about.license') }}
+                </button>
+              </template>
+              <UiDialogCard
+                :title="t('common.about.license')"
+                @close="licenseOpen = false"
+              >
+                <pre
+                  class="license-text"
+                  tabindex="0"
+                  role="region"
+                  :aria-label="t('common.about.license')"
+                >{{ licenseText }}</pre>
+              </UiDialogCard>
+            </v-dialog>
+          </div>
         </div>
       </div>
     </UiDialogCard>
@@ -63,18 +107,24 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import * as BrowserService from '~~bindings/github.com/smegg99/s99wails/v2/services/browser/service.js'
+import AuthorMark from '../../../../assets/smegg99.svg'
+import licenseText from '../../../../LICENSE?raw'
 
 const { t } = useI18n()
+const licenseOpen = ref(false)
+const authorUrl = 'https://smegg.me'
 
 // External links open in the system browser via s99wails, never inside the webview.
-const links = computed(() => [
+const linkRows = computed(() => [[
   { url: 'https://qr2g.it/1R', icon: 'mdi-github', label: 'GitHub' },
   { url: 'https://linkedin.smegg.me', icon: 'mdi-linkedin', label: 'LinkedIn' },
+  { url: authorUrl, icon: '', label: 'smegg.me' },
+], [
   { url: 'https://smeggtuner.com', icon: 'mdi-web', label: t('common.website') },
   { url: 'https://ko-fi.com/smegg99', icon: 'mdi-coffee-outline', label: t('common.about.donate') },
-])
+]])
 
 const open = defineModel<boolean>({ required: true })
 
@@ -119,6 +169,29 @@ function visit(url: string) {
   margin: 0;
 }
 
+.about__author-mark {
+  flex-shrink: 0;
+  height: 18px;
+  width: 18px;
+}
+
+.license-text {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  margin: 0;
+  max-height: min(480px, calc(100dvh - 160px));
+  overflow: auto;
+  overflow-wrap: anywhere;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  white-space: pre-wrap;
+}
+
+.license-text:focus-visible {
+  outline: 2px solid rgb(var(--v-theme-accent));
+  outline-offset: 2px;
+}
+
 .about__publisher {
   color: rgb(var(--v-theme-ink3));
   font-size: 12px;
@@ -157,20 +230,31 @@ function visit(url: string) {
 }
 
 .about__links {
+  display: grid;
+  gap: 12px;
+  padding-block-start: var(--gap);
+}
+
+.about__link-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 12px;
   justify-content: center;
-  padding-block-start: var(--gap);
 }
 
 .about__link {
   align-items: center;
+  background: none;
+  border: 0;
+  cursor: pointer;
   color: rgb(var(--v-theme-accent));
   display: flex;
-  font-size: 14px;
+  font-family: inherit;
+  font-size: 13px;
   font-weight: 600;
   gap: var(--gap);
+  line-height: inherit;
+  padding: 0;
   text-decoration: none;
 }
 

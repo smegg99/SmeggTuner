@@ -1,10 +1,10 @@
 {
 	"fixed": {
-		"file_version": "1.4.2"
+		"file_version": "1.4.3"
 	},
 	"info": {
 		"0000": {
-			"ProductVersion": "1.4.2",
+			"ProductVersion": "1.4.3",
 			"CompanyName": "Smegg99",
 			"FileDescription": "Free and open-source accordion tuner.",
 			"LegalCopyright": "Copyright (c) 2026 Smegg99",

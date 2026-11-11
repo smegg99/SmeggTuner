@@ -14,7 +14,7 @@ maintainer: "Smegg99"
 description: "Free and open-source accordion tuner."
 vendor: "Smegg99"
 homepage: "https://smeggtuner.com"
-license: "MIT"
+license: "AGPL-3.0-only"
 release: "1"
 
 contents:

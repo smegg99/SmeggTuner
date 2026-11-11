@@ -72,8 +72,7 @@ windows() {
 android() {
     local arch=$1 name="$app-$version-android-$1"
     local base="bin/android/release/$arch/$app-$version-release-$arch"
-    bash build/android-support/android.sh package "$arch" || return 1
-    bash build/android-support/android.sh bundle "$arch" || return 1
+    bash build/android-support/android.sh release "$arch" || return 1
     require "$base.apk"
     require "$base.aab"
     cp -f -- "$base.apk" "$out/$name.apk"

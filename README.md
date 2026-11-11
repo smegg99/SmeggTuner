@@ -48,7 +48,7 @@ reports) is switched off in 1.4. The code is still here and comes back in a late
 | | Dirk's professional Accordion Tuner | SmeggTuner 1.4 |
 |---|---|---|
 | Price | 298 EUR, plus 148 EUR for recording and reports | Free |
-| Source | Closed | MIT |
+| Source | Closed | AGPL-3.0-only |
 | Systems | Windows, macOS | Linux, Windows; Android and browser, experimental |
 | Reeds at once | 3 | 3 |
 | Tones, Octaves, Chords | Yes | Yes |
@@ -62,7 +62,7 @@ Prices from [dirksprojects.com](https://www.dirksprojects.com/), October 2026.
 ## Plans
 
 - [ ] The Workshop back
-- [ ] The browser edition at app.smeggtuner.com
+- [X] The browser edition at app.smeggtuner.com
 - [ ] More accordions, microphones and sound cards tested
 - [ ] macOS and iOS, once I have the hardware to test them
 
@@ -95,7 +95,7 @@ Prices from [dirksprojects.com](https://www.dirksprojects.com/), October 2026.
 
 ## Build
 
-Linux only. Requires Go 1.27 with cgo, the GTK 3 and WebKit2GTK 4.1 headers
+Linux only. Requires Go 1.27.4 with cgo, the GTK 3 and WebKit2GTK 4.1 headers
 (`libgtk-3-dev libwebkit2gtk-4.1-dev` on Debian and Ubuntu, `gtk3-devel webkit2gtk4.1-devel` on
 Fedora), Node.js `^22.22.3 || ^24.15.0 || >=26.0.0`, pnpm 11.3.0, [just](https://github.com/casey/just),
 Python 3 and `rsvg-convert`. [S99AB](https://github.com/smegg99/S99AB),
@@ -140,4 +140,14 @@ window naming the file and the setting.
 
 ## License
 
-MIT, see [LICENSE](LICENSE).
+Copyright (c) 2026 Smegg99.
+
+SmeggTuner is licensed under the GNU Affero General Public License, version 3 only
+(`AGPL-3.0-only`). See [LICENSE](LICENSE).
+
+Distributed derivatives must remain under the AGPL and provide corresponding source code to
+recipients. Modified versions used to serve users over a network must also offer their corresponding
+source to those users. Commercial use and sale are allowed.
+
+Third-party components retain their own licenses. Copies previously released under MIT retain their
+MIT permissions; this change does not revoke them.

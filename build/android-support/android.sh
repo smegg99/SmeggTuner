@@ -4,6 +4,7 @@ set -euo pipefail
 android_support="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 cd "$android_support/../.."
 source "$android_support/env.sh"
+source "$android_support/signing.sh"
 
 config() {
     python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))[sys.argv[2]])' "$android_support/config.json" "$1"
@@ -90,6 +91,7 @@ just emulator [AVD] [emulator options]  Start a virtual device
 just android                          Build, install and launch on the selected device
 just android check                    Test the existing debug APK on an emulator
 just android logs                     Follow app logs
+just android-release [arm64|amd64]     Build signed APK and AAB (one password prompt)
 just adb [arguments]                  Run adb (default: list devices)
 
 Set ANDROID_SERIAL when more than one device is connected.
@@ -154,6 +156,7 @@ HELP
         [[ "$action" != build ]] || mode=debug
         select_artifact "${2:-arm64}" "$mode"
         if [[ "$mode" == release ]]; then
+            android_signing
             ANDROID_KEYSTORE_FILE="$(preflight signing)"
             export ANDROID_KEYSTORE_FILE
         fi
@@ -197,6 +200,12 @@ HELP
             rm -f -- "$artifact"
             fail 'Android package verification failed; rejected artifact removed'
         fi
+        ;;
+    release)
+        select_artifact "${2:-arm64}" release
+        android_signing
+        bash "$android_support/android.sh" package "$arch"
+        exec bash "$android_support/android.sh" bundle "$arch"
         ;;
     install) install_app "${2:-arm64}" "${3:-debug}" ;;
     phone-info) python3 -B "$android_support/phone.py" ;;

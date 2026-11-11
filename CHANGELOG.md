@@ -1,14 +1,17 @@
 <!-- lang:en -->
 
-## SmeggTuner 1.4.2
+## SmeggTuner 1.4.3
 
-The new signal generator plays up to four tones together, with a separate tuning offset for each.
-Choose a pure tone or a reed-like sound to tune by ear. Volume sliders now show the level as a
-percentage when you point at them or drag them.
+SmeggTuner now uses AGPL-3.0-only instead of MIT. Distributed derivatives must provide their
+corresponding source code, and modified versions offered over a network must offer it to their users.
+Commercial use is still allowed. Copies previously released under MIT retain their MIT permissions.
 
-The app has a refreshed icon, and the English and Polish usage guides explain every button and card with
-annotated screenshots. Translation files were reorganized and have their own guide for translators.
-The Linux AppImage is smaller.
+The About dialog now links to smegg.me and includes an offline license viewer with a scrollable text
+area. Its links are arranged in two rows.
+
+`just android-release` builds the signed APK and app bundle with one password prompt. Frontend
+dependencies now match the shared layer, and build commands select the pinned pnpm version correctly.
+Go was updated to 1.27.4 and Wails to 3.1.0.
 
 The Workshop remains hidden. Android and the web version are still experimental.
 
@@ -28,15 +31,19 @@ iOS and macOS are not currently supported.
 
 <!-- lang:pl -->
 
-## SmeggTuner 1.4.2
+## SmeggTuner 1.4.3
 
-Nowy generator sygnału odtwarza do czterech tonów naraz, z osobną odchyłką stroju dla każdego.
-Do strojenia na słuch można wybrać czysty ton albo dźwięk podobny do stroika. Suwaki głośności
-pokazują teraz poziom w procentach po najechaniu myszką i podczas przesuwania.
+SmeggTuner korzysta teraz z licencji AGPL-3.0-only zamiast MIT. Rozpowszechniane wersje pochodne muszą
+udostępniać odpowiadający im kod źródłowy, a zmodyfikowane wersje oferowane przez sieć muszą oferować
+go swoim użytkownikom. Użytek komercyjny nadal jest dozwolony. Kopie wcześniej wydane na MIT zachowują
+uprawnienia wynikające z MIT.
 
-Aplikacja ma odświeżoną ikonę, a polska i angielska instrukcja obsługi opisują każdy przycisk i panel na zrzutach
-ekranu ze strzałkami. Pliki tłumaczeń zostały uporządkowane i mają osobną instrukcję dla tłumaczy.
-Plik AppImage dla Linuksa zajmuje mniej miejsca.
+Okno "O programie" zawiera teraz odnośnik do smegg.me i podgląd licencji dostępny bez internetu,
+z przewijanym polem tekstowym. Odnośniki zostały ułożone w dwóch rzędach.
+
+`just android-release` buduje podpisany plik APK i pakiet aplikacji po jednokrotnym podaniu hasła.
+Zależności frontendu są zgodne ze wspólną warstwą, a polecenia budujące wybierają właściwą wersję pnpm.
+Zaktualizowano Go do wersji 1.27.4, a Wails do 3.1.0.
 
 Warsztat pozostaje ukryty. Wersje na Androida i do przeglądarki nadal są eksperymentalne.
 

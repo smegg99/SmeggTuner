@@ -38,6 +38,11 @@ func CommonAboutAboutTitle(l *i18n.Localizer) string {
 	return plain(l, "common.about.aboutTitle")
 }
 
+// CommonAboutAuthorWebsite renders common.about.authorWebsite.
+func CommonAboutAuthorWebsite(l *i18n.Localizer) string {
+	return plain(l, "common.about.authorWebsite")
+}
+
 // CommonAboutCommit renders common.about.commit.
 func CommonAboutCommit(l *i18n.Localizer) string {
 	return plain(l, "common.about.commit")
@@ -161,6 +166,11 @@ func CommonAboutHelpShortcutsZoom(l *i18n.Localizer) string {
 // CommonAboutHelpTitle renders common.about.helpTitle.
 func CommonAboutHelpTitle(l *i18n.Localizer) string {
 	return plain(l, "common.about.helpTitle")
+}
+
+// CommonAboutLicense renders common.about.license.
+func CommonAboutLicense(l *i18n.Localizer) string {
+	return plain(l, "common.about.license")
 }
 
 // CommonAboutMascot renders common.about.mascot.

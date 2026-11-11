@@ -5,6 +5,7 @@ package i18n
 // Keys, for call sites that need the string rather than the accessor.
 const (
 	KeyCommonAboutAboutTitle                   = "common.about.aboutTitle"
+	KeyCommonAboutAuthorWebsite                = "common.about.authorWebsite"
 	KeyCommonAboutCommit                       = "common.about.commit"
 	KeyCommonAboutDonate                       = "common.about.donate"
 	KeyCommonAboutHelpEverywhereArrows         = "common.about.help.everywhere.arrows"
@@ -30,6 +31,7 @@ const (
 	KeyCommonAboutHelpShortcutsTitle           = "common.about.help.shortcuts.title"
 	KeyCommonAboutHelpShortcutsZoom            = "common.about.help.shortcuts.zoom"
 	KeyCommonAboutHelpTitle                    = "common.about.helpTitle"
+	KeyCommonAboutLicense                      = "common.about.license"
 	KeyCommonAboutMascot                       = "common.about.mascot"
 	KeyCommonAboutPublisher                    = "common.about.publisher"
 	KeyCommonAboutTagline                      = "common.about.tagline"

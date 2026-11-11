@@ -30,8 +30,10 @@ ANDROID_BUILD = """#!/usr/bin/env bash
 set -eu
 out=bin/android/release/$2
 mkdir -p "$out"
-case "$1" in package) ext=apk ;; bundle) ext=aab ;; *) exit 9 ;; esac
-echo artifact > "$out/smeggtuner-1.2.3-release-$2.$ext"
+[[ "$1" == release ]] || exit 9
+for ext in apk aab; do
+    echo artifact > "$out/smeggtuner-1.2.3-release-$2.$ext"
+done
 """
 PACKAGE = """#!/usr/bin/env bash
 set -eu
