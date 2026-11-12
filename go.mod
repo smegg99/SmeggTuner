@@ -13,7 +13,7 @@ require (
 	github.com/joho/godotenv v1.5.1
 	github.com/mattn/go-sqlite3 v1.14.52
 	github.com/nicksnyder/go-i18n/v2 v2.6.1
-	github.com/smegg99/s99ab v1.8.1
+	github.com/smegg99/s99base v1.0.0
 	github.com/smegg99/s99config v1.1.1
 	github.com/smegg99/s99logger v1.3.1
 	github.com/smegg99/s99wails/v2 v2.1.1
@@ -200,3 +200,7 @@ tool (
 	github.com/smegg99/s99wails/v2/frontendgen
 	github.com/wailsapp/wails/v3/cmd/wails3
 )
+
+replace github.com/smegg99/s99wails/v2 => ../S99Wails
+
+replace github.com/smegg99/s99base => ../S99Base

@@ -4,7 +4,7 @@ package app
 import (
 	"embed"
 
-	"github.com/smegg99/s99ab/work/applife"
+	"github.com/smegg99/s99base/work/applife"
 	"github.com/smegg99/s99wails/v2/shell/crash"
 
 	"smegg.me/smeggtuner/backend/common/config"
