@@ -101,12 +101,10 @@ func run(launch func() error, failed func(startupFailure)) (exitCode int) {
 // cleanup closes every owner in reverse construction order, then tells the crash watcher the exit was clean.
 func cleanup() error {
 	logger.Info(i18n.KeyLogCleaningUp)
+	// Outside the shutdown deadline: a closer that runs out of time must not cost the watcher its clean exit.
+	defer crash.Done()
 	// Wails may have stopped services already; partial startup still needs every owner closed.
 	return applife.New(applife.Options{Closers: []applife.Closer{
-		applife.CloserFunc(func() error {
-			crash.Done()
-			return nil
-		}),
 		applife.CloserFunc(logger.Close),
 		named("datastore", datastore.Close),
 		named("session", sessionSvc.ServiceShutdown),
