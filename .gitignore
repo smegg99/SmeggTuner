@@ -45,7 +45,7 @@ frontend/node_modules
 # AppImage staging: create:appimage copies the binary and icon here.
 /build/linux/appimage/
 build/windows/nsis/MicrosoftEdgeWebview2Setup.exe
-smeggtuner
+/smeggtuner
 
 # Runtime config (generated from the CUE schema on first run)
 /config.json
@@ -87,4 +87,3 @@ __pycache__/
 # The web edition deploy/app/fetch.sh unpacks on the server.
 /deploy/app/site
 /deploy/app/site.old
-CHANGELOG.md
