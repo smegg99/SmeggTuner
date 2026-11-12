@@ -1,16 +1,17 @@
 <!-- lang:en -->
 
-## SmeggTuner 1.4.3
+## SmeggTuner 1.4.4
 
-SmeggTuner now uses AGPL-3.0-only instead of MIT. Distributed derivatives must provide corresponding
-source code to recipients, and modified versions offered over a network must offer it to their users.
-Commercial use is still allowed. Copies previously released under MIT retain their MIT permissions.
+Desktop builds now check for new releases automatically. Update checks can be disabled in Settings,
+individual releases can be skipped, and the bundled changelog appears once after an upgrade in the
+selected language.
 
-The About dialog groups smegg.me and the license button with the project links in two rows. The full
-license is available offline in a narrower dialog with its own scrollable text area.
+The privacy policy and illustrated how-to guide are now available offline in English and Polish.
+About opens both documents and the full license; Help opens the guide. The policy is also available
+at [smeggtuner.com/privacy](https://smeggtuner.com/privacy).
 
-Frontend dependencies now match the shared layer, and build commands select the pinned pnpm version correctly.
-Go was updated to 1.27.4 and Wails to 3.1.0.
+Removed unused Android permissions and fixed external links opening in the system browser.
+Fixed clean-exit reporting when shutdown cleanup times out.
 
 The Workshop remains hidden. Android and the web version are still experimental.
 
@@ -30,18 +31,20 @@ iOS and macOS are not currently supported.
 
 <!-- lang:pl -->
 
-## SmeggTuner 1.4.3
+## SmeggTuner 1.4.4
 
-SmeggTuner korzysta teraz z licencji AGPL-3.0-only zamiast MIT. Rozpowszechniane wersje pochodne muszą
-udostępniać odbiorcom odpowiadający im kod źródłowy, a zmodyfikowane wersje oferowane przez sieć muszą oferować
-go swoim użytkownikom. Użytek komercyjny nadal jest dozwolony. Kopie wcześniej wydane na MIT zachowują
-uprawnienia wynikające z MIT.
+Wersja komputerowa automatycznie sprawdza dostępność nowych wydań. Sprawdzanie aktualizacji można
+wyłączyć w Ustawieniach, a wybrane wydanie pominąć. Po aktualizacji lista zmian wyświetla się raz,
+w wybranym języku, bez potrzeby połączenia z internetem.
 
-Okno "O programie" grupuje odnośnik do smegg.me i przycisk licencji z odnośnikami projektu w dwóch
-rzędach. Pełna licencja jest dostępna bez internetu, w węższym oknie z osobnym przewijanym polem tekstowym.
+Polityka prywatności i ilustrowana instrukcja obsługi są teraz dostępne bez internetu po polsku
+i po angielsku. Można je otworzyć razem z pełnym tekstem licencji w oknie "O programie".
+Pomoc otwiera instrukcję. Polityka jest też dostępna na
+[smeggtuner.com/pl/privacy](https://smeggtuner.com/pl/privacy).
 
-Zależności frontendu są zgodne ze wspólną warstwą, a polecenia budujące wybierają właściwą wersję pnpm.
-Zaktualizowano Go do wersji 1.27.4, a Wails do 3.1.0.
+Usunięto nieużywane uprawnienia Androida i naprawiono otwieranie zewnętrznych odnośników w przeglądarce
+systemowej. Poprawiono zapisywanie informacji o prawidłowym zamknięciu aplikacji, gdy sprzątanie zasobów
+przekroczy limit czasu.
 
 Warsztat pozostaje ukryty. Wersje na Androida i do przeglądarki nadal są eksperymentalne.
 

@@ -78,7 +78,7 @@ Gradle packages the Go library built by the recipes. After changing Go or the
 frontend, run `just android build` again before using Android Studio's Run button.
 Each recipe stages exactly one freshly compiled ABI. Outputs are separated by
 mode and architecture, for example
-`bin/android/debug/amd64/smeggtuner-1.4.3-debug-amd64.apk`. Release APKs and AABs
+`bin/android/debug/amd64/smeggtuner-1.4.4-debug-amd64.apk`. Release APKs and AABs
 use `bin/android/release/<arch>/`. Verification rejects unexpected ABIs, stale
 native libraries, wrong build modes, package/version/SDK mismatches and invalid
 signatures or alignment. Release verification also checks the signing certificate

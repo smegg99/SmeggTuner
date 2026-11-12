@@ -2,4 +2,4 @@
 package app
 
 // version is VERSION, written by scripts/sync-version.mjs.
-const version = "1.4.3"
+const version = "1.4.4"
