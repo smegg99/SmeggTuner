@@ -1,5 +1,10 @@
 {
   "applicationId": "me.smegg.smeggtuner",
+  "permissions": [
+    "android.permission.INTERNET",
+    "android.permission.ACCESS_NETWORK_STATE",
+    "android.permission.RECORD_AUDIO"
+  ],
   "minSdk": 21,
   "webViewMinMajor": 95,
   "targetSdk": 37,

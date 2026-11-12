@@ -191,6 +191,28 @@ try {
   launch()
   assert.equal(await call('tuner', 'IsRunning'), false, 'Resume must not silently restart capture')
   record('resume leaves capture stopped')
+  await evaluate(`document.querySelector('button[title="About"]').click()`)
+  await until(() => evaluate('Boolean(document.querySelector(".about"))'), 'About did not render')
+  const privacyURL = 'https://smeggtuner.com/privacy'
+  screenshot('about')
+  await evaluate(`document.querySelector('.about [data-document="privacy"]').click()`)
+  await until(() => evaluate(`(() => {
+    const policy = document.querySelector('.document')
+    return policy?.textContent.length > 7000 && policy.textContent.includes('support@smegg.me')
+      && policy.querySelectorAll('h3').length === 8
+  })()`), 'Bundled privacy policy did not render in the app')
+  screenshot('privacy')
+  record('About opens the complete bundled privacy policy')
+  await evaluate(`document.querySelector('.document a[href="${privacyURL}"]').click()`)
+  // Android can redact the path in dumpsys; the clicked link above supplies the exact URL.
+  await until(() => adb('shell', 'dumpsys', 'activity', 'activities').includes('dat=https://smeggtuner.com'),
+    'Online policy link did not open an external browser')
+  record('Optional online policy opens the system browser', privacyURL)
+  launch()
+  adb('shell', 'input', 'keyevent', 'KEYCODE_BACK')
+  await until(() => evaluate('!document.querySelector(".document")'), 'Policy did not close')
+  adb('shell', 'input', 'keyevent', 'KEYCODE_BACK')
+  await until(() => evaluate('!document.querySelector(".v-dialog.v-overlay--active")'), 'About did not close')
   previousSession = await call('session', 'Active')
   if (previousSession) await call('session', 'Save')
   const session = await call('session', 'Create', { name: `Android acceptance ${Date.now()}`, instrument: { reedCount: 1, a4: 440, lo: 69, hi: 71 } })

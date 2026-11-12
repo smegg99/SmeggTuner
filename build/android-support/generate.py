@@ -6,6 +6,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
+import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = Path(__file__).resolve().parent
@@ -196,6 +197,31 @@ replace(activity, '        setContentView(R.layout.activity_main);', '''        
         });
         androidx.core.view.ViewCompat.requestApplyInsets(content);''')
 replace(OUT / "app/src/main/res/values/strings.xml", 'Wails App', 'SmeggTuner')
+
+# Keep the Wails host's unused capabilities out of the app's permission surface.
+android_ns = "http://schemas.android.com/apk/res/android"
+tools_ns = "http://schemas.android.com/tools"
+ET.register_namespace("android", android_ns)
+ET.register_namespace("tools", tools_ns)
+tree = ET.parse(manifest)
+root = tree.getroot()
+for permission in root.findall("uses-permission"):
+    if permission.get(f"{{{android_ns}}}name") not in CONFIG["permissions"]:
+        permission.set(f"{{{tools_ns}}}node", "remove")
+# AndroidX Biometric otherwise merges its older fingerprint permission back in.
+ET.SubElement(root, "uses-permission", {
+    f"{{{android_ns}}}name": "android.permission.USE_FINGERPRINT",
+    f"{{{tools_ns}}}node": "remove",
+})
+for queries in root.findall("queries"):
+    root.remove(queries)
+application = root.find("application")
+for service in application.findall("service"):
+    if service.get(f"{{{android_ns}}}name") == ".WailsForegroundService":
+        application.remove(service)
+ET.indent(tree, space="    ")
+tree.write(manifest, encoding="utf-8", xml_declaration=True)
+
 for density, size in [("mdpi", 48), ("hdpi", 72), ("xhdpi", 96), ("xxhdpi", 144), ("xxxhdpi", 192)]:
     directory = OUT / f"app/src/main/res/mipmap-{density}"
     for name in ["ic_launcher.png", "ic_launcher_round.png"]:

@@ -1,5 +1,8 @@
 # Android development
 
+For Google Play privacy declarations, the public policy URL and submission
+steps, see [Google Play release](GooglePlay.md).
+
 The Android host is generated from Wails v3.1.0, the version pinned in
 `go.mod`. Use `go tool wails3`; a global `wails3` installation may differ.
 

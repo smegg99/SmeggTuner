@@ -168,6 +168,14 @@ def verify_signing(path, bundle, tools, mode):
     require(actual == expected, "Artifact signing certificate does not match ANDROID_KEY_ALIAS")
 
 
+def verify_permissions(permissions):
+    expected = set(CONFIG["permissions"])
+    expected.add(CONFIG["applicationId"] + ".DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION")
+    actual = set(permissions)
+    require(actual == expected,
+            f"Packaged permissions differ from the privacy audit: unexpected={sorted(actual - expected)}, missing={sorted(expected - actual)}")
+
+
 def verify(path, arch, mode, staged=None):
     require(arch in ABI and mode in ("debug", "release"), "Expected arm64|amd64 and debug|release")
     version = (ROOT / "VERSION").read_text().strip()
@@ -187,7 +195,9 @@ def verify(path, arch, mode, staged=None):
             if staged:
                 require(hashlib.sha256(library.read_bytes()).digest() == hashlib.sha256(staged.read_bytes()).digest(), "Packaged native library differs from staged build")
         if bundle:
-            manifest = dict(bundle_manifest(archive.read("base/manifest/AndroidManifest.xml")))
+            entries = list(bundle_manifest(archive.read("base/manifest/AndroidManifest.xml")))
+            verify_permissions(attrs.get("name", "") for name, attrs in entries if name.startswith("uses-permission"))
+            manifest = dict(entries)
             attrs = manifest["manifest"]
             require((attrs.get("package"), attrs.get("versionName"), attrs.get("versionCode")) == (CONFIG["applicationId"], version, code), "AAB package ID/version mismatch")
             sdk = manifest["uses-sdk"]
@@ -195,6 +205,8 @@ def verify(path, arch, mode, staged=None):
             require((manifest["application"].get("debuggable") == "true") == (mode == "debug"), "AAB debuggable mode mismatch")
             print("AAB verified; ZIP page alignment applies to APKs generated from the bundle.")
         else:
+            permissions = run(str(tools / "aapt"), "dump", "permissions", str(path))
+            verify_permissions(re.findall(r"^uses-permission(?:-sdk-\d+)?: name='([^']+)'", permissions, re.M))
             badging = run(str(tools / "aapt"), "dump", "badging", str(path))
             for text in (f"name='{CONFIG['applicationId']}'", f"versionCode='{code}'", f"versionName='{version}'", f"sdkVersion:'{CONFIG['minSdk']}'", f"targetSdkVersion:'{CONFIG['targetSdk']}'", f"native-code: '{ABI[arch]}'"):
                 require(text in badging, f"{path}: APK metadata missing {text}")
