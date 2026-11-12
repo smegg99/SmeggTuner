@@ -74,12 +74,15 @@ title.uncalibrated:
 
 # Application and About dialog
 about.aboutTitle: {value: "About"}
-about.authorWebsite: {value: "Smegg99's personal website (smegg.me)"}
 about.commit: {value: "Build"}
 about.donate: {value: "Support on Ko-fi"}
 about.license: {value: "License"}
+about.privacy: {value: "Privacy policy"}
+about.guide: {value: "How to use SmeggTuner"}
+about.onlineVersion: {value: "Open online version"}
+about.support: {value: "Support"}
 about.mascot: {value: "A cat playing the accordion"}
-about.publisher: {value: "By Smegg99"}
+about.publisher: {value: "By smegg99"}
 about.tagline: {value: "Free and open source accordion tuning program."}
 about.untagged: {value: "development build"}
 about.version: {value: "Version"}
@@ -87,31 +90,6 @@ app.description: {value: "Free and open-source accordion tuner."}
 app.name: {value: "SmeggTuner"}
 
 # Help dialog and keyboard instructions
-about.help.everywhere.arrows: {value: "Step the pinned note (Tune)"}
-about.help.everywhere.hold: {value: "Hold stable readings on or off"}
-about.help.everywhere.manual: {value: "Auto or pinned note"}
-about.help.everywhere.record: {value: "Start or stop recording"}
-about.help.everywhere.rooms: {value: "Tune, Workshop, Settings"}
-about.help.everywhere.roomsTuner: {value: "Tune, Settings"}
-about.help.everywhere.step: {value: "Step the pinned note"}
-about.help.everywhere.takeNow: {value: "Take the reading now"}
-about.help.everywhere.title: {value: "Everywhere"}
-about.help.everywhere.undo: {value: "Undo the last reading"}
-
-about.help.intro:
-  value: "Measures accordion reeds against a reference pitch. A session keeps one accordion's readings."
-
-about.help.introTuner: {value: "Measures accordion reeds against a reference pitch."}
-about.help.rooms.settings: {value: "Microphone, readings and appearance."}
-about.help.rooms.title: {value: "Main views"}
-about.help.rooms.tune: {value: "Measure reeds and beats from a microphone or a WAV file."}
-about.help.rooms.workshop: {value: "Sessions, instruments and reports."}
-about.help.shortcuts.fit: {value: "Fit the file or the selection"}
-about.help.shortcuts.homeEnd: {value: "Jump to the selection start or end"}
-about.help.shortcuts.mute: {value: "Mute the speakers"}
-about.help.shortcuts.space: {value: "Play or pause"}
-about.help.shortcuts.title: {value: "Playback keys (file open)"}
-about.help.shortcuts.zoom: {value: "Zoom in or out"}
 about.helpTitle: {value: "Help"}
 
 # System tray

@@ -32,6 +32,10 @@ generate:
 locales:
     go tool loc build -c i18n/config.cue
 
+# Copy the bundled privacy policy to the website (pass --check to verify only).
+privacy-site *args:
+    python3 -B scripts/sync-privacy.py ../SmeggTunerSite {{ args }}
+
 # Validate translations, generated output and references without building the app.
 check-locales:
     go tool loc check -c i18n/config.cue

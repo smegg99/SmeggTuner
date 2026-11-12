@@ -172,6 +172,15 @@
   max-width: calc(100% - 32px);
   max-height: calc(100% - 32px);
 }
+.v-overlay-container.v-overlay-container .v-dialog > .v-overlay__content.info-dialog {
+  width: var(--dlg-lg);
+  height: min(640px, calc(100% - 32px));
+  overflow: clip;
+}
+.v-overlay-container.v-overlay-container .info-dialog > .dlg {
+  height: 100%;
+  max-height: 100%;
+}
 .v-overlay-container.v-overlay-container .dlg__body .dialog-warn {
   color: rgb(var(--v-theme-ink2)); font-size: 13px; line-height: 1.5; margin: 0;
 }

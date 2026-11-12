@@ -38,11 +38,6 @@ func CommonAboutAboutTitle(l *i18n.Localizer) string {
 	return plain(l, "common.about.aboutTitle")
 }
 
-// CommonAboutAuthorWebsite renders common.about.authorWebsite.
-func CommonAboutAuthorWebsite(l *i18n.Localizer) string {
-	return plain(l, "common.about.authorWebsite")
-}
-
 // CommonAboutCommit renders common.about.commit.
 func CommonAboutCommit(l *i18n.Localizer) string {
 	return plain(l, "common.about.commit")
@@ -53,114 +48,9 @@ func CommonAboutDonate(l *i18n.Localizer) string {
 	return plain(l, "common.about.donate")
 }
 
-// CommonAboutHelpEverywhereArrows renders common.about.help.everywhere.arrows.
-func CommonAboutHelpEverywhereArrows(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.everywhere.arrows")
-}
-
-// CommonAboutHelpEverywhereHold renders common.about.help.everywhere.hold.
-func CommonAboutHelpEverywhereHold(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.everywhere.hold")
-}
-
-// CommonAboutHelpEverywhereManual renders common.about.help.everywhere.manual.
-func CommonAboutHelpEverywhereManual(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.everywhere.manual")
-}
-
-// CommonAboutHelpEverywhereRecord renders common.about.help.everywhere.record.
-func CommonAboutHelpEverywhereRecord(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.everywhere.record")
-}
-
-// CommonAboutHelpEverywhereRooms renders common.about.help.everywhere.rooms.
-func CommonAboutHelpEverywhereRooms(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.everywhere.rooms")
-}
-
-// CommonAboutHelpEverywhereRoomsTuner renders common.about.help.everywhere.roomsTuner.
-func CommonAboutHelpEverywhereRoomsTuner(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.everywhere.roomsTuner")
-}
-
-// CommonAboutHelpEverywhereStep renders common.about.help.everywhere.step.
-func CommonAboutHelpEverywhereStep(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.everywhere.step")
-}
-
-// CommonAboutHelpEverywhereTakeNow renders common.about.help.everywhere.takeNow.
-func CommonAboutHelpEverywhereTakeNow(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.everywhere.takeNow")
-}
-
-// CommonAboutHelpEverywhereTitle renders common.about.help.everywhere.title.
-func CommonAboutHelpEverywhereTitle(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.everywhere.title")
-}
-
-// CommonAboutHelpEverywhereUndo renders common.about.help.everywhere.undo.
-func CommonAboutHelpEverywhereUndo(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.everywhere.undo")
-}
-
-// CommonAboutHelpIntro renders common.about.help.intro.
-func CommonAboutHelpIntro(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.intro")
-}
-
-// CommonAboutHelpIntroTuner renders common.about.help.introTuner.
-func CommonAboutHelpIntroTuner(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.introTuner")
-}
-
-// CommonAboutHelpRoomsSettings renders common.about.help.rooms.settings.
-func CommonAboutHelpRoomsSettings(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.rooms.settings")
-}
-
-// CommonAboutHelpRoomsTitle renders common.about.help.rooms.title.
-func CommonAboutHelpRoomsTitle(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.rooms.title")
-}
-
-// CommonAboutHelpRoomsTune renders common.about.help.rooms.tune.
-func CommonAboutHelpRoomsTune(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.rooms.tune")
-}
-
-// CommonAboutHelpRoomsWorkshop renders common.about.help.rooms.workshop.
-func CommonAboutHelpRoomsWorkshop(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.rooms.workshop")
-}
-
-// CommonAboutHelpShortcutsFit renders common.about.help.shortcuts.fit.
-func CommonAboutHelpShortcutsFit(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.shortcuts.fit")
-}
-
-// CommonAboutHelpShortcutsHomeEnd renders common.about.help.shortcuts.homeEnd.
-func CommonAboutHelpShortcutsHomeEnd(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.shortcuts.homeEnd")
-}
-
-// CommonAboutHelpShortcutsMute renders common.about.help.shortcuts.mute.
-func CommonAboutHelpShortcutsMute(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.shortcuts.mute")
-}
-
-// CommonAboutHelpShortcutsSpace renders common.about.help.shortcuts.space.
-func CommonAboutHelpShortcutsSpace(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.shortcuts.space")
-}
-
-// CommonAboutHelpShortcutsTitle renders common.about.help.shortcuts.title.
-func CommonAboutHelpShortcutsTitle(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.shortcuts.title")
-}
-
-// CommonAboutHelpShortcutsZoom renders common.about.help.shortcuts.zoom.
-func CommonAboutHelpShortcutsZoom(l *i18n.Localizer) string {
-	return plain(l, "common.about.help.shortcuts.zoom")
+// CommonAboutGuide renders common.about.guide.
+func CommonAboutGuide(l *i18n.Localizer) string {
+	return plain(l, "common.about.guide")
 }
 
 // CommonAboutHelpTitle renders common.about.helpTitle.
@@ -178,9 +68,24 @@ func CommonAboutMascot(l *i18n.Localizer) string {
 	return plain(l, "common.about.mascot")
 }
 
+// CommonAboutOnlineVersion renders common.about.onlineVersion.
+func CommonAboutOnlineVersion(l *i18n.Localizer) string {
+	return plain(l, "common.about.onlineVersion")
+}
+
+// CommonAboutPrivacy renders common.about.privacy.
+func CommonAboutPrivacy(l *i18n.Localizer) string {
+	return plain(l, "common.about.privacy")
+}
+
 // CommonAboutPublisher renders common.about.publisher.
 func CommonAboutPublisher(l *i18n.Localizer) string {
 	return plain(l, "common.about.publisher")
+}
+
+// CommonAboutSupport renders common.about.support.
+func CommonAboutSupport(l *i18n.Localizer) string {
+	return plain(l, "common.about.support")
 }
 
 // CommonAboutTagline renders common.about.tagline.

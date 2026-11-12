@@ -114,8 +114,8 @@ export default defineNuxtConfig({
     },
     worker: { format: 'es' },
     define: { __SMEGGTUNER_WEB__: JSON.stringify(web) },
-    // Artwork masters and the About dialog's bundled license live at the repository root.
-    server: { fs: { allow: [path.resolve(__dirname, '../assets'), path.resolve(__dirname, '../LICENSE')] } },
+    // Artwork and the bundled documents live at the repository root.
+    server: { fs: { allow: [path.resolve(__dirname, '..')] } },
     resolve: { dedupe: ['vue', 'vuetify', 'vue-i18n', 'pinia'] },
     plugins: [
       wailsPlugin(bindingsDir),

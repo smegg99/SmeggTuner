@@ -1,14 +1,18 @@
 # SmeggTuner: jak używać
 
-[English](USAGE.md) | Polski - Wersja komputerowa 1.4.2
+[English](USAGE.md) | Polski - SmeggTuner 1.4
 
 [Pierwsze użycie](#pierwsze-użycie) | [Ekran](#ekran-strojenia) | [Przyciski](#wszystkie-przyciski-paska) | [Ustawienia](#ustawienia) | [Dźwięk wzorcowy](#generator-sygnału) | [Pliki WAV](#nagrania-wav) | [Kalibracja](#kalibracja-karty-dźwiękowej)
 
 **Najedź myszką na przycisk i chwilę poczekaj. Podpowiedź wyjaśni, do czego służy. Nie trzeba klikać. Kliknij obrazek, aby go powiększyć.** Kolorowy przycisk jest wybrany; wyszarzony jest niedostępny w obecnym trybie.
 
+Ta instrukcja i ilustracje są dostępne bez internetu przez **Pomoc** lub **O programie -> Jak używać SmeggTunera**. **O programie -> Polityka prywatności** opisuje sposób przetwarzania danych, również bez połączenia z internetem.
+
+Na Androidzie zezwól na użycie mikrofonu, gdy aplikacja o to poprosi. Po odmowie nadal możesz analizować plik WAV. Przechwytywanie dźwięku zatrzymuje się po opuszczeniu aplikacji. Na Androidzie i w wersji przeglądarkowej cały panel dopasowuje się do ekranu. Obróć telefon, aby uzyskać większy widok. Ustawienia dotyczące tylko komputera, na przykład zasobnika systemowego, nie dotyczą Androida.
+
 ## Pierwsze użycie
 
-1. [Pobierz i zainstaluj](README.pl.md#pobieranie) -> otwórz **SmeggTuner** z menu aplikacji.
+1. [Pobierz i zainstaluj](README.md#download) -> otwórz **SmeggTuner** z menu aplikacji.
 2. Podłącz mikrofon -> otwórz menu z mikrofonem -> wybierz go.
 3. Na początek wybierz w akordeonie rejestr z jednym głosem. Zostaw włączone **Auto**, **Dźwięki** i **Głosy 1**.
 4. Kliknij zielony trójkąt **Start**. Jeśli pojawi się pytanie: **Kalibruj teraz** -> poczekaj około minuty -> **Wróć** -> ponownie **Start**.
@@ -64,7 +68,7 @@ W małym oknie **Wejście / Nuty / Widmo** stają się zakładkami. Przycisk ste
 | **19** | Strojenie | Wróć do ekranu strojenia. |
 | **20** | Ustawienia | Otwórz ustawienia opisane niżej. |
 | **21** | Pomoc | Pokaż instrukcję w aplikacji i skróty klawiaturowe. Zamknij przyciskiem **X**. |
-| **22** | O programie | Pokaż wersję, informacje o kompilacji oraz odnośniki do GitHuba, LinkedIna, strony i wsparcia autora. Odnośniki otwierają przeglądarkę. Zamknij przyciskiem **X**. |
+| **22** | O programie | Pokaż wersję oraz dostępną bez internetu instrukcję obsługi, politykę prywatności i licencję. Odnośniki do strony, GitHuba i wsparcia otwierają się poza aplikacją. Zamknij przyciskiem **X**. |
 
 ## Ustawienia
 

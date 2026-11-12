@@ -49,7 +49,7 @@ const { t } = useI18n()
   border-radius: var(--app-radius-panel);
   max-height: min(720px, calc(100dvh - 32px));
   min-height: 0;
-  overflow: hidden;
+  overflow: clip;
 }
 /* As tall as the main bar at every window size (useBarHeight), so a dialog's head lines up with it. */
 .dlg :deep(.panel__head) {
@@ -75,12 +75,13 @@ const { t } = useI18n()
   flex: 0 0 auto;
   color: rgb(var(--v-theme-ink2));
 }
-.dlg :deep(.panel__body) { overflow: hidden; }
+.dlg :deep(.panel__body) { overflow: clip; }
 .dlg__body {
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
+  scroll-padding-block: 24px;
   padding: 16px;
   font-size: 13px;
   line-height: 1.5;

@@ -1,10 +1,14 @@
 # SmeggTuner: how to use it
 
-English | [Polski](USAGE.pl.md) - Desktop version 1.4.2
+English | [Polski](USAGE.pl.md) - SmeggTuner 1.4
 
 [First use](#first-use) | [Screen](#the-tuning-screen) | [Buttons](#every-toolbar-button) | [Settings](#settings) | [Reference sound](#signal-generator) | [WAV files](#wav-recordings) | [Calibration](#sound-card-calibration)
 
 **Hover over a button and wait a moment to see what it does. No click needed. Click a picture to enlarge it.** A coloured button is selected; a pale button is unavailable in the current mode.
+
+This guide and its pictures are available offline through **Help** or **About -> How to use SmeggTuner**. **About -> Privacy policy** explains how the app handles your data, also without an internet connection.
+
+On Android, allow microphone access when asked. You can still analyze a WAV file if you refuse. Audio capture stops when you leave the app. On Android and in the browser edition, the full instrument panel scales to the screen; rotate your phone for a larger view. Desktop-only settings, such as the system tray, do not apply on Android.
 
 ## First use
 
@@ -64,7 +68,7 @@ On a small window, **Input / Notes / Spectrum** become tabs. The tuning-controls
 | **19** | Tune | Return to the tuning screen. |
 | **20** | Settings | Open the settings described below. |
 | **21** | Help | Show the built-in instructions and keyboard shortcuts. Close with **X**. |
-| **22** | About | Show the version, build information, and links to GitHub, LinkedIn, the website and donations. Links open in your browser. Close with **X**. |
+| **22** | About | Show the version, offline usage guide, privacy policy and license. Website, GitHub, support and donation links open outside the app. Close with **X**. |
 
 ## Settings
 
