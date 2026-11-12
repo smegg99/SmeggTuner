@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # build/android-support/webview-fixture.py
-"""Install the pinned AOSP WebView baseline on an API 21/23/28 SDK test emulator."""
+"""Install the pinned AOSP WebView baseline on an API 21/23/24/28 SDK test emulator."""
 import base64
 import hashlib
 import json
@@ -34,12 +34,12 @@ def certificate(pem):
 
 
 if not re.fullmatch(r"emulator-\d+", SERIAL):
-    raise SystemExit("Set ANDROID_SERIAL to a dedicated API 21/23/28 SDK emulator")
+    raise SystemExit("Set ANDROID_SERIAL to a dedicated API 21/23/24/28 SDK emulator")
 if adb("shell", "getprop", "ro.kernel.qemu") != "1":
     raise SystemExit("WebView fixture installation requires a virtual SDK device")
 api = adb("shell", "getprop", "ro.build.version.sdk")
-if api not in ("21", "23", "28") or adb("shell", "getprop", "ro.product.cpu.abi") != "x86_64":
-    raise SystemExit("This fixture is only for the API 21/23/28 AOSP-provider x86_64 matrix images")
+if api not in ("21", "23", "24", "28") or adb("shell", "getprop", "ro.product.cpu.abi") != "x86_64":
+    raise SystemExit("This fixture is only for the API 21/23/24/28 AOSP-provider x86_64 matrix images")
 installed = adb("shell", "pm", "path", "com.android.webview")
 if not installed.startswith("package:") or "\n" in installed:
     raise SystemExit("The SDK image must provide com.android.webview")

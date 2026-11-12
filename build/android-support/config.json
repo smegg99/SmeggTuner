@@ -5,7 +5,7 @@
     "android.permission.ACCESS_NETWORK_STATE",
     "android.permission.RECORD_AUDIO"
   ],
-  "minSdk": 21,
+  "minSdk": 24,
   "webViewMinMajor": 95,
   "targetSdk": 37,
   "platform": "37.0",
@@ -17,6 +17,7 @@
   "devices": {
     "smeggtuner-api21": "system-images;android-21;google_apis;x86_64",
     "smeggtuner-api23": "system-images;android-23;google_apis;x86_64",
+    "smeggtuner-api24": "system-images;android-24;default;x86_64",
     "smeggtuner-api28": "system-images;android-28;google_apis;x86_64",
     "smeggtuner-api28-aosp": "system-images;android-28;default;x86_64",
     "smeggtuner-api30": "system-images;android-30;google_apis;x86_64",

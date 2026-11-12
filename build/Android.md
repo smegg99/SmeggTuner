@@ -20,7 +20,7 @@ under `~/.local/bin`. Android Studio also has an application-menu entry.
 Android commands select JDK 21 without changing the system Java version. Set
 `ANDROID_JAVA_HOME` to use another compatible JDK. Set `ANDROID_HOME` to use a
 different SDK location. Android commands select NDK 28.2.13676358 explicitly;
-this release still supports API 21 and emits native libraries with 16 KB page
+this release requires API 24 and emits native libraries with 16 KB page
 alignment by default.
 
 On another Linux workstation, install Android Studio and Android command-line
@@ -78,7 +78,7 @@ Gradle packages the Go library built by the recipes. After changing Go or the
 frontend, run `just android build` again before using Android Studio's Run button.
 Each recipe stages exactly one freshly compiled ABI. Outputs are separated by
 mode and architecture, for example
-`bin/android/debug/amd64/smeggtuner-1.4.4-debug-amd64.apk`. Release APKs and AABs
+`bin/android/debug/amd64/smeggtuner-1.4.5-debug-amd64.apk`. Release APKs and AABs
 use `bin/android/release/<arch>/`. Verification rejects unexpected ABIs, stale
 native libraries, wrong build modes, package/version/SDK mismatches and invalid
 signatures or alignment. Release verification also checks the signing certificate
@@ -118,15 +118,18 @@ checking whether API 21/22 provide them.
 
 ## Android range
 
-The installation floor is Android 5.0/API 21. Compile and target SDK are API 37.
+The installation floor is Android 7.0 Nougat/API 24. Compile and target SDK are API 37.
 These are separate settings: targeting a recent SDK does not raise `minSdk`.
+Android 5.x and 6.x cannot install 1.4.5 or newer. The API 21/23 images remain
+available for testing rejection below the minimum and earlier app releases.
 The framework builds only ARM64 and x86_64. Older ARM32-only phones need an
 additional Wails/native build path and are not supported by these recipes.
 
 | AVD | Image | Purpose |
 | --- | --- | --- |
-| `smeggtuner-api21` | API 21 | Installation floor, pre-runtime permissions |
-| `smeggtuner-api23` | API 23 | Runtime microphone permissions |
+| `smeggtuner-api21` | API 21 | Below the installation floor |
+| `smeggtuner-api23` | API 23 | Below the installation floor |
+| `smeggtuner-api24` | API 24, AOSP | Installation floor and runtime permissions |
 | `smeggtuner-api28` | API 28 | Older devices and WebView |
 | `smeggtuner-api28-aosp` | API 28, AOSP | Updatable AOSP WebView baseline |
 | `smeggtuner-api30` | API 30 | Scoped storage generation |
@@ -134,7 +137,7 @@ additional Wails/native build path and are not supported by these recipes.
 | `smeggtuner-api37` | API 37.0 | Current base API |
 | `smeggtuner-api37-16k` | API 37.2, 16 KB | Recent release and native page alignment |
 
-Choose one with `just emulator smeggtuner-api23`. For automated checks,
+Choose one with `just emulator smeggtuner-api24`. For automated checks,
 `bash build/android-support/android.sh emulator smeggtuner-api37 -no-window
 -no-audio -gpu swiftshader` starts it without using the desktop.
 
@@ -229,7 +232,7 @@ Close. Its result is `blocked_by_webview`, not a successful application test.
 Providers 37 (API 21), 44 (API 23), 66/69 (API 28 AOSP/Google) and 83 (API 30)
 have passed this recovery check. Such stock configurations cannot run the frontend.
 
-The API 21/23 images and the API 28 AOSP image can exercise the browser baseline
+The API 24 and API 28 AOSP images can exercise the browser baseline
 with a pinned x86_64 AOSP WebView fixture:
 
 ```sh
@@ -242,7 +245,7 @@ The fixture downloads WebView 95.0.4638.74 from the official AOSP repository at
 and checks its SHA-256. Like the AOSP image build's `default_dev_cert` rule, it
 signs this prebuilt with the public
 [AOSP development key](https://android.googlesource.com/platform/build/+/refs/tags/android-12.1.0_r1/target/product/security/).
-The installer requires an x86_64 API 21/23/28 SDK emulator whose existing provider
+The installer requires an x86_64 API 21/23/24/28 SDK emulator whose existing provider
 already uses that certificate. Android performs a normal
 signed package update. It never changes a provider allowlist or installs on a
 physical device. Downloaded keys exist only in a temporary directory. Evidence
@@ -282,6 +285,9 @@ API 37 also passed launch after denying microphone permission, capture failure
 reporting and workshop navigation without that permission. Display-cutout variants
 and real microphone accuracy still need separate acceptance. A working emulator
 does not certify phone hardware.
+
+API 21/23 results above describe versions before 1.4.5; those devices no longer
+meet the installation minimum.
 
 ## Distribution signing
 

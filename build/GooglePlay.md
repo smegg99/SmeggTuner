@@ -87,6 +87,10 @@ Upload the newly generated AAB from `bin/android/release/arm64/`, not a debug
 APK or an older bundle in Gradle's intermediate output directory. Review Play
 App Signing and retain the upload key securely.
 
+The installation minimum is API 24 (Android 7.0), which meets the minimum SDK
+requirement for [Google Play automatic protection](https://support.google.com/googleplay/android-developer/answer/10183279?hl=en).
+This does not enable protection; its settings are managed in Play Console.
+
 The configured target is API 37. The current submission minimum is API 36;
 verify the [target API requirements](https://support.google.com/googleplay/android-developer/answer/11926878?hl=en)
 when submitting. Native libraries must also work on 16 KB devices. Run an
