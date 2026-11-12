@@ -3,6 +3,8 @@
 <template>
   <v-app v-cloak>
     <ShellAppWindow />
+    <UiDialogHost />
+    <UpdatePrompts v-if="promptsReady" />
     <!-- The window starts underneath; the boot screen dissolves off it. -->
     <Transition name="boot">
       <ShellBootScreen v-if="booting" />
@@ -11,8 +13,10 @@
 </template>
 
 <script setup lang="ts">
+import { defineComponent } from 'vue'
 import * as LoggerService from '~~bindings/github.com/smegg99/s99wails/v2/services/logger/service.js'
-import { installCrashHeartbeat, installFrontendLogBridge } from '~/composables/s99wails'
+import { useDisplay } from 'vuetify'
+import { installCrashHeartbeat, installFrontendLogBridge, isWails, updateActions } from '~/composables/s99wails'
 import { useConfigSync } from '~/composables/useConfigSync'
 import { initializeThemeSync } from '~/composables/useThemeSync'
 import { filterResizeNotice } from '~/utils/resizeNotice'
@@ -21,11 +25,24 @@ import { filterResizeNotice } from '~/utils/resizeNotice'
 const BOOT_MS = 700
 
 // The window is mounted above the router so a route change never tears down a running engine's subscriptions; rooms are switched by state, not routes.
-useConfigSync()
+const { config, ready } = useConfigSync()
 initializeThemeSync()
+const { platform } = useDisplay()
+const { locale } = useI18n()
+const promptsReady = ref(false)
+if (isWails() && !platform.value.android) {
+  watchEffect(() => {
+    if (ready.value && locale.value === config.preferences.language) promptsReady.value = true
+  })
+}
+const UpdatePrompts = defineComponent({
+  setup() {
+    useUpdatePrompts(updateActions)
+    return () => null
+  },
+})
 
 // Routes uncaught errors and unhandled rejections to the Go log; installed for the window's life, a no-op outside the desktop.
-const { locale } = useI18n()
 useHead(() => ({ htmlAttrs: { lang: locale.value } }))
 const log = useLogger()
 const disposeNotice = filterResizeNotice(() => log.debug('log.frontendResizeNotice'))

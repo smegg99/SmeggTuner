@@ -63,6 +63,8 @@ accent.pick: {value: "Wybierz kolor"}
 accent.pickTitle: {value: "Kolor akcentu"}
 closeToTray: {value: "Minimalizuj do zasobnika po zamknięciu okna"}
 closeToTrayHint: {value: "Zamknięcie okna zostawia aplikację w zasobniku"}
+checkUpdates: {value: "Sprawdzaj aktualizacje", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdatesHint: {value: "Szuka nowszej wersji na GitHubie", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "Język interfejsu"}
 languageLabel: {value: "Język"}
 themeHint: {value: "Systemowy, jasny lub ciemny"}

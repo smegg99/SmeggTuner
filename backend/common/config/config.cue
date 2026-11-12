@@ -29,6 +29,7 @@ package config
 	accent_color:  string | *"#2563eb"   @go(AccentColor)
 	language:      #Language | *"en"     @go(Language)
 	close_to_tray: bool | *true          @go(CloseToTray)
+	check_updates: bool | *true          @go(CheckUpdates)
 }
 
 #Audio: {

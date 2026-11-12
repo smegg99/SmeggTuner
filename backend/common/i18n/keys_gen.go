@@ -156,6 +156,7 @@ const (
 	KeyLogTunerStopped                         = "log.tunerStopped"
 	KeyLogTunerTonePlayFailed                  = "log.tunerTonePlayFailed"
 	KeyLogTunerTonePlaying                     = "log.tunerTonePlaying"
+	KeyLogUpdateCheckFailed                    = "log.updateCheckFailed"
 	KeyLogVolumeRestore                        = "log.volumeRestore"
 	KeyLogVolumeStepFailed                     = "log.volumeStepFailed"
 	KeyLogVolumeUnavailable                    = "log.volumeUnavailable"

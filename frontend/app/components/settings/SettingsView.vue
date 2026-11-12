@@ -56,6 +56,7 @@
           <SettingsAppearanceAccentControl />
           <SettingsAppearanceLanguageSelect />
           <SettingsAppearanceTrayToggle v-if="!WEB" />
+          <SettingsAppearanceUpdateToggle v-if="!WEB" />
         </UiFormSection>
         <LazyWebDiagnostics v-if="WEB" />
       </div>

@@ -1,0 +1,78 @@
+// The shared release notes use the same frame and text scale as app dialogs.
+.v-overlay-container.v-overlay-container .v-dialog > .v-overlay__content:has(> .s99ab-release-notes-dialog) {
+  width: min(var(--dlg-md), calc(100% - 32px));
+}
+
+.v-overlay-container.v-overlay-container .s99ab-release-notes-dialog {
+  max-height: min(480px, calc(100dvh - 32px));
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid rgb(var(--v-theme-line));
+  border-radius: var(--app-radius-panel);
+  background: rgb(var(--v-theme-chrome));
+
+  > .panel__head {
+    box-sizing: border-box;
+    height: var(--app-bar-h, 48px);
+    min-height: 0;
+    flex-wrap: nowrap;
+    gap: 16px;
+    padding: 0 12px 0 16px;
+    border-color: rgb(var(--v-theme-lineSoft));
+  }
+
+  .panel__title {
+    color: rgb(var(--v-theme-ink));
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.35;
+    text-transform: none;
+  }
+
+  > .panel__body {
+    gap: 0;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .s99ab-dialog__body {
+    flex: 1 1 auto;
+    gap: 8px;
+    overscroll-behavior: contain;
+    padding: 16px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .s99ab-dialog__actions {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px 16px;
+    border-top: 1px solid rgb(var(--v-theme-lineSoft));
+  }
+
+  .s99ab-md {
+    line-height: inherit;
+
+    p, .s99ab-md__list {
+      margin-bottom: 8px;
+      font-size: inherit;
+    }
+
+    .s99ab-md__heading {
+      margin: 16px 0 8px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0;
+      line-height: 1.35;
+    }
+
+    .s99ab-md__heading--label {
+      font-size: 12px;
+    }
+
+    > :first-child { margin-top: 0; }
+    > :last-child { margin-bottom: 0; }
+  }
+}

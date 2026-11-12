@@ -17,6 +17,9 @@ const dir = path.dirname(fileURLToPath(import.meta.url))
  */
 export default defineConfig({
   plugins: [vue()],
+  server: {
+    fs: { allow: ['..', '../../S99AB'].map(file => path.resolve(dir, file)) },
+  },
   resolve: {
     dedupe: ['vue', 'vuetify'],
     alias: {

@@ -1,5 +1,5 @@
 // app/composables/useConfigSync.ts
-import { effectScope, reactive, watch } from 'vue'
+import { effectScope, reactive, readonly, ref, watch } from 'vue'
 import { Events } from '@wailsio/runtime'
 import * as ConfigService from '~~bindings/smegg.me/smeggtuner/backend/services/config/service.js'
 import { Config } from '~~bindings/smegg.me/smeggtuner/backend/common/config/models.js'
@@ -9,7 +9,7 @@ const SAVE_DEBOUNCE_MS = 250
 
 const config = reactive(new Config())
 let started = false
-let ready = false
+const ready = ref(false)
 let applyingBackendConfig = false
 let saveTimer: ReturnType<typeof setTimeout> | null = null
 let saving: Promise<void> | null = null
@@ -62,11 +62,11 @@ function applyFromBackend(source: Partial<Config>, changes: Changes = {}) {
   applyingBackendConfig = true
   Object.assign(config, Config.createFrom(merge(JSON.parse(lastSyncedJson), changes)))
   applyingBackendConfig = false
-  ready = true
+  ready.value = true
 }
 
 function mergeFromBackend(source: Partial<Config>) {
-  const changes = ready ? diff(JSON.parse(lastSyncedJson), JSON.parse(serialize())) : {}
+  const changes = ready.value ? diff(JSON.parse(lastSyncedJson), JSON.parse(serialize())) : {}
   applyFromBackend(source, changes)
 }
 
@@ -85,7 +85,7 @@ async function refreshDeferred(log: ReturnType<typeof useLogger>) {
 }
 
 async function saveConfigNow(log: ReturnType<typeof useLogger>) {
-  if (!ready || applyingBackendConfig) return
+  if (!ready.value || applyingBackendConfig) return
 
   clearSaveTimer()
   if (saving) return saving
@@ -119,7 +119,7 @@ async function saveConfigNow(log: ReturnType<typeof useLogger>) {
 }
 
 function scheduleSave(log: ReturnType<typeof useLogger>) {
-  if (!ready || applyingBackendConfig) return
+  if (!ready.value || applyingBackendConfig) return
 
   clearSaveTimer()
   saveTimer = setTimeout(() => {
@@ -163,6 +163,7 @@ export function useConfigSync() {
 
   return {
     config,
+    ready: readonly(ready),
     saveConfigNow: () => saveConfigNow(log),
   }
 }

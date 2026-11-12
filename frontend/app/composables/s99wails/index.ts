@@ -37,3 +37,10 @@ export {
   type CrashKind,
   type CrashReport,
 } from './crashScreen'
+export {
+  updateActions,
+  type UpdateActions,
+  type UpdateNotes,
+  type UpdateRelease,
+  type UpdateState,
+} from './updateCheck'

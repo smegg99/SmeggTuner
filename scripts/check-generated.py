@@ -14,6 +14,7 @@ FILES = (
     'backend/common/i18n/keys_gen.go',
     'backend/common/i18n/messages_gen.go',
     'backend/common/i18n/loc-manifest.json',
+    'backend/internal/releasenotes/CHANGELOG.md',
     'build/appicon.png',
     'build/appicon.icon/Assets/smeggtuner-cat.svg',
 )

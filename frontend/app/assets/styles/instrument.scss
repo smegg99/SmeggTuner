@@ -1,4 +1,5 @@
 @use './instrument-fields';
+@use './release-notes';
 
 // SmeggTuner's instrument face, applied to the shared controls and surfaces.
 // The graphite workbench uses Goptivum's spacing and outlined surfaces.
@@ -174,12 +175,14 @@
 .v-overlay-container.v-overlay-container .dlg__body .dialog-warn {
   color: rgb(var(--v-theme-ink2)); font-size: 13px; line-height: 1.5; margin: 0;
 }
-.v-overlay-container.v-overlay-container .dlg__foot .v-btn {
+.v-overlay-container.v-overlay-container .dlg__foot .v-btn,
+.v-overlay-container.v-overlay-container .s99ab-release-notes-dialog .s99ab-dialog__actions .v-btn {
   height: auto; min-height: 32px; min-width: 88px;
   border: 1px solid rgb(var(--v-theme-line)); padding: 6px 14px; line-height: 1.35;
   white-space: normal;
 }
-.v-overlay-container.v-overlay-container .dlg__foot .v-btn:not([class*='bg-']) {
+.v-overlay-container.v-overlay-container .dlg__foot .v-btn:not([class*='bg-']),
+.v-overlay-container.v-overlay-container .s99ab-release-notes-dialog .s99ab-dialog__actions .v-btn:not([class*='bg-']) {
   background: rgb(var(--v-theme-raised)); color: rgb(var(--v-theme-ink));
 }
 .v-overlay-container.v-overlay-container .v-tooltip > .v-overlay__content {

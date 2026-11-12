@@ -29,6 +29,8 @@ type Preferences struct {
 	Language string `json:"language"`
 
 	CloseToTray bool `json:"close_to_tray"`
+
+	CheckUpdates bool `json:"check_updates"`
 }
 
 type LoggerConfig struct {

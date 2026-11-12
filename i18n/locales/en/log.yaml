@@ -18,6 +18,7 @@ reinitLogger: {value: "Reconfiguring logger from configuration"}
 runFailed: {value: "Application run failed"}
 secondInstance: {value: "Second instance launched, focusing existing window"}
 trayIconFailed: {value: "Failed to load tray icon"}
+updateCheckFailed: {value: "Update check failed", description: "Update check or stored release-note state failed; logged without a dialog."}
 windowStateLoadFailed: {value: "Failed to load window state"}
 windowStateSaveFailed: {value: "Failed to save window state"}
 

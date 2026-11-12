@@ -1,3 +1,4 @@
+// backend/internal/app/window.go
 package app
 
 import (
@@ -39,6 +40,7 @@ func applicationOptions(onSecondInstance func(application.SecondInstanceData)) a
 			})),
 			application.NewService(browserservice.New(logger.Underlying())),
 			application.NewService(&crash.Heartbeat{}),
+			application.NewService(updateSvc),
 			application.NewService(audioSvc),
 			application.NewService(sessionSvc),
 			application.NewService(recordSvc),

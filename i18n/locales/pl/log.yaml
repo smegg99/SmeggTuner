@@ -18,6 +18,7 @@ reinitLogger: {value: "Stosowanie ustawień dziennika"}
 runFailed: {value: "Błąd działania aplikacji"}
 secondInstance: {value: "Uruchomiono drugą instancję; pokazano istniejące okno"}
 trayIconFailed: {value: "Nie udało się wczytać ikony zasobnika"}
+updateCheckFailed: {value: "Sprawdzanie aktualizacji nie powiodło się", description: "Update check or stored release-note state failed; logged without a dialog."}
 windowStateLoadFailed: {value: "Nie udało się wczytać położenia i rozmiaru okna"}
 windowStateSaveFailed: {value: "Nie udało się zapisać położenia i rozmiaru okna"}
 

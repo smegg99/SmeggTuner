@@ -237,6 +237,7 @@ export class Preferences {
     "accent_color": string;
     "language": string;
     "close_to_tray": boolean;
+    "check_updates": boolean;
 
     /** Creates a new Preferences instance. */
     constructor($$source: Partial<Preferences> = {}) {
@@ -254,6 +255,9 @@ export class Preferences {
         }
         if (!("close_to_tray" in $$source)) {
             this["close_to_tray"] = false;
+        }
+        if (!("check_updates" in $$source)) {
+            this["check_updates"] = false;
         }
 
         Object.assign(this, $$source);

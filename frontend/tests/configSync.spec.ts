@@ -81,6 +81,18 @@ afterEach(() => {
 })
 
 describe('config autosave ordering', () => {
+  it('reports readiness only after loading backend config', async () => {
+    const read = pending()
+    backend.get.mockReturnValueOnce(read.promise)
+    const sync = await start()
+    expect(sync.ready.value).toBe(false)
+    server.preferences.language = 'pl'
+    read.resolve(clone(server))
+    await flush()
+    expect(sync.ready.value).toBe(true)
+    expect(sync.config.preferences.language).toBe('pl')
+  })
+
   it('keeps only one write active and waits for the latest edit when explicitly flushed', async () => {
     const first = pending()
     const second = pending()

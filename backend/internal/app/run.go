@@ -8,6 +8,7 @@ import (
 	"github.com/smegg99/s99wails/v2/shell/crash"
 	"github.com/smegg99/s99wails/v2/shell/editkeys"
 	"github.com/smegg99/s99wails/v2/shell/tray"
+	"github.com/smegg99/s99wails/v2/shell/update"
 	"github.com/smegg99/s99wails/v2/shell/windowstate"
 	"github.com/wailsapp/wails/v3/pkg/application"
 
@@ -43,6 +44,8 @@ func setupDesktop(app *application.App, window *application.WebviewWindow) func(
 	if !application.System.IsDesktop() {
 		return func() {}
 	}
+	updateSvc.State(i18n.Current())
+	stopUpdates := update.Schedule(updateSvc)
 	editkeys.Watch(window, func(err error) { logger.Warn(i18n.KeyLogRunFailed, logger.Err(err)) })
 	stopBeat := crash.Beat()
 
@@ -62,6 +65,7 @@ func setupDesktop(app *application.App, window *application.WebviewWindow) func(
 	setupLocaleSync(trayMgr)
 	stopThemeWatcher := themeservice.RegisterThemeWatcher(app)
 	return func() {
+		stopUpdates()
 		stopBeat()
 		stopThemeWatcher()
 		trayMgr.Close()

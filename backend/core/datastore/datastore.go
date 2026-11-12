@@ -29,6 +29,7 @@ func allModels() []any {
 		&session.Session{},
 		&session.Template{},
 		&windowState{},
+		&updateMemory{},
 	}
 }
 

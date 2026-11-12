@@ -4,7 +4,8 @@
     "accent_mode": "auto",
     "accent_color": "#2563eb",
     "language": "en",
-    "close_to_tray": true
+    "close_to_tray": true,
+    "check_updates": true
   },
   "logger": {
     "verbose": false,

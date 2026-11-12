@@ -63,6 +63,8 @@ accent.pick: {value: "Pick a colour"}
 accent.pickTitle: {value: "Accent colour"}
 closeToTray: {value: "Minimize to tray on close"}
 closeToTrayHint: {value: "Closing the window keeps the app in the tray"}
+checkUpdates: {value: "Check for updates", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdatesHint: {value: "Looks for a newer version on GitHub", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "Interface language"}
 languageLabel: {value: "Language"}
 themeHint: {value: "System, light or dark"}

@@ -845,6 +845,11 @@ func LogTunerTonePlaying(l *i18n.Localizer) string {
 	return plain(l, "log.tunerTonePlaying")
 }
 
+// LogUpdateCheckFailed Update check or stored release-note state failed; logged without a dialog.
+func LogUpdateCheckFailed(l *i18n.Localizer) string {
+	return plain(l, "log.updateCheckFailed")
+}
+
 // LogVolumeRestore renders log.volumeRestore.
 func LogVolumeRestore(l *i18n.Localizer) string {
 	return plain(l, "log.volumeRestore")
