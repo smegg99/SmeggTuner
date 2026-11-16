@@ -37,5 +37,9 @@ func run() error {
 		return err
 	}
 	out.WriteByte('\n')
+	// An unchanged file is left alone: `just dev` watches it, and a write would start the next build from this one.
+	if current, err := os.ReadFile("defaults.json"); err == nil && bytes.Equal(current, out.Bytes()) {
+		return nil
+	}
 	return os.WriteFile("defaults.json", out.Bytes(), 0o644)
 }

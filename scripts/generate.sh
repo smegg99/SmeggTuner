@@ -10,7 +10,9 @@ python3 scripts/node_env.py node scripts/sync-version.mjs
 go generate ./backend/common/... ./backend/internal/...
 go generate ./backend
 rsvg-convert -w 1024 -h 1024 assets/smeggtuner-app-icon.svg -o build/appicon.png
-# The macOS icon bundle carries its own copy of the glyph; icon.json sets the tile.
-cp assets/smeggtuner-cat.svg build/appicon.icon/Assets/smeggtuner-cat.svg
+# The macOS icon bundle carries its own copy of the glyph; icon.json sets the tile. An unchanged copy is left
+# alone: `just dev` watches it, and a write would start the next build from this one.
+cmp -s assets/smeggtuner-cat.svg build/appicon.icon/Assets/smeggtuner-cat.svg \
+    || cp assets/smeggtuner-cat.svg build/appicon.icon/Assets/smeggtuner-cat.svg
 go tool wails3 generate icons -input build/appicon.png -windowsfilename build/windows/icon.ico \
     -iconcomposerinput build/appicon.icon -macfilename build/darwin/icons.icns -macassetdir build/darwin
