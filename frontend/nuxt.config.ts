@@ -53,6 +53,14 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/eslint',
   ],
+  // Smegglect is a development overlay from the sibling repository: `nuxt dev` loads it through build/inspect,
+  // and scripts/build.sh sets SMEGGLECT_DEBUG=1 for debug builds only. Production builds never resolve it.
+  plugins: process.env.SMEGGLECT_DEBUG === '1'
+    ? [{ src: '~/debug/smegglect', mode: 'client' }]
+    : [],
+  $development: {
+    modules: ['./build/inspect'],
+  },
   ssr: false,
   devtools: { enabled: true },
   app: {

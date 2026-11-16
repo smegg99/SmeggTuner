@@ -31,7 +31,7 @@ func applicationOptions(onSecondInstance func(application.SecondInstanceData)) a
 		Logger:      logger.Wails(),
 		// A panic in a binding, event or menu callback reaches the crash watcher instead of a bare exit.
 		PanicHandler: crash.PanicHandler,
-		Services: []application.Service{
+		Services: append([]application.Service{
 			application.NewService(&configservice.Service{}),
 			application.NewService(loggerservice.New(logger.Underlying())),
 			application.NewService(&themeservice.Service{}),
@@ -46,7 +46,7 @@ func applicationOptions(onSecondInstance func(application.SecondInstanceData)) a
 			application.NewService(recordSvc),
 			application.NewService(reportSvc),
 			application.NewService(tunerSvc),
-		},
+		}, smegglectServices()...),
 		Assets: application.AssetOptions{
 			Handler: application.AssetFileServerFS(assets),
 			// Instrument images served at /instruments/<id>/image, streamed and cached, not base64'd through a binding. See ImageMiddleware.

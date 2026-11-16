@@ -13,3 +13,7 @@ allowBuilds:
 # each demanding a from-scratch reinstall of the other's. packageManager pins them to one
 # version; this makes any remaining layout migration reinstall without stopping a build to ask.
 confirmModulesPurge: false
+
+# Smegglect is our own debug overlay, used at its newest release from the day it is published.
+minimumReleaseAgeExclude:
+  - smegglect

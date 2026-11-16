@@ -10,6 +10,9 @@ dev_mode:
     file: ['*.gen.go', '*_gen.go', '*.gen.ts', 'loc-manifest.json', 'appicon.png', 'icon.ico', 'icons.icns', 'Assets.car']
     watched_extension: ['*.go', '*.vue', '*.ts', '*.scss', '*.json', '*.yaml', '*.cue', '*.svg', '*.py', '*.sh', '*.yml', '*.gohtml']
   executes:
+    # The Smegglect bridge, once for the whole session; the debug window reaches it through the Smegglect service.
+    - cmd: just bridge
+      type: background
     - cmd: just build debug
       type: blocking
     - cmd: ./bin/smeggtuner

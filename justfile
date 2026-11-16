@@ -20,9 +20,14 @@ build mode="production":
 run mode="production": (build mode)
     ./bin/smeggtuner
 
-# Watch sources, rebuild and restart the debug app on your desktop.
+# Watch sources, rebuild and restart the debug app on your desktop, with the Smegglect bridge running.
 dev:
     go tool wails3 tool watcher -config build/dev.yml
+
+# Run the bridge that hands Smegglect reports from a debug build to Claude Code (`just dev` starts it). It keeps
+# its address in frontend/, where .mcp.json and `nuxt dev` look for it.
+bridge:
+    python3 scripts/node_env.py node frontend/node_modules/smegglect/dist/bridge-cli.js serve --root frontend --origin wails://wails
 
 # Regenerate version, config types, locales, tray and app icons, bindings and Wails helpers.
 generate:

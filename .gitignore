@@ -42,6 +42,10 @@ frontend/.output-web
 frontend/.web-assets
 frontend/.nuxt
 frontend/node_modules
+# Smegglect's sent issues and agent wiring: local to this machine.
+frontend/.smegglect/
+/.mcp.json
+/.claude/
 # AppImage staging: create:appimage copies the binary and icon here.
 /build/linux/appimage/
 build/windows/nsis/MicrosoftEdgeWebview2Setup.exe
