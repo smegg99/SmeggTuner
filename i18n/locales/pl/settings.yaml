@@ -67,6 +67,11 @@ checkUpdates: {value: "Sprawdzaj aktualizacje", description: "Desktop settings c
 checkUpdatesHint: {value: "Szuka nowszej wersji na GitHubie", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "Język interfejsu"}
 languageLabel: {value: "Język"}
+phoneLayout.hint: {value: "Nadaje oknu rozmiar telefonu, do testowania układu z Androida", description: "Debug builds only."}
+phoneLayout.label: {value: "Układ telefonu", description: "Debug builds only."}
+phoneLayout.landscape: {value: "Poziomo", description: "Debug builds only. The phone held on its side."}
+phoneLayout.off: {value: "Wyłączony", description: "Debug builds only. The normal desktop window."}
+phoneLayout.portrait: {value: "Pionowo", description: "Debug builds only. The phone held upright."}
 themeHint: {value: "Systemowy, jasny lub ciemny"}
 themeLabel: {value: "Motyw"}
 themes.auto: {value: "Systemowy"}

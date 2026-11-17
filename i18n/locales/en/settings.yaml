@@ -67,6 +67,11 @@ checkUpdates: {value: "Check for updates", description: "Desktop settings checkb
 checkUpdatesHint: {value: "Looks for a newer version on GitHub", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "Interface language"}
 languageLabel: {value: "Language"}
+phoneLayout.hint: {value: "Sizes the window like a phone, to test the Android layout", description: "Debug builds only."}
+phoneLayout.label: {value: "Phone layout", description: "Debug builds only."}
+phoneLayout.landscape: {value: "Landscape", description: "Debug builds only. The phone held on its side."}
+phoneLayout.off: {value: "Off", description: "Debug builds only. The normal desktop window."}
+phoneLayout.portrait: {value: "Portrait", description: "Debug builds only. The phone held upright."}
 themeHint: {value: "System, light or dark"}
 themeLabel: {value: "Theme"}
 themes.auto: {value: "System"}

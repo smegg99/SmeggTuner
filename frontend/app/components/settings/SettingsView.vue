@@ -67,6 +67,11 @@
             <SettingsAppearanceLanguageSelect />
             <SettingsAppearanceTrayToggle v-if="!WEB" />
             <SettingsAppearanceUpdateToggle v-if="!WEB" />
+            <!-- Only a debug build has any: utils/debugSettings.ts. -->
+            <component
+              :is="debugSettings"
+              v-if="debugSettings"
+            />
           </UiFormSection>
           <LazyWebDiagnostics v-if="WEB" />
         </div>
@@ -76,6 +81,7 @@
 </template>
 
 <script setup lang="ts">
+import { debugSettings } from '~/utils/debugSettings'
 import { WEB, WORKSHOP } from '~/utils/features'
 
 const { t } = useI18n()
