@@ -16,7 +16,7 @@ require (
 	github.com/smegg99/s99base v1.0.0
 	github.com/smegg99/s99config v1.1.1
 	github.com/smegg99/s99logger v1.3.1
-	github.com/smegg99/s99wails/v2 v2.1.1
+	github.com/smegg99/s99wails/v2 v2.2.0
 	github.com/wailsapp/task/v3 v3.40.1-patched3
 	github.com/wailsapp/wails/v3 v3.1.0
 	golang.org/x/image v0.47.0
@@ -200,7 +200,3 @@ tool (
 	github.com/smegg99/s99wails/v2/frontendgen
 	github.com/wailsapp/wails/v3/cmd/wails3
 )
-
-replace github.com/smegg99/s99wails/v2 => ../S99Wails
-
-replace github.com/smegg99/s99base => ../S99Base
