@@ -1,4 +1,5 @@
-// Leaf module: it never imports the sessions composable.
+// Leaf module: it never imports the sessions composable. It sits in a subfolder so Nuxt does not
+// auto-import it: names like `error` and `loading` would become template globals and clash with props.
 import { ref, shallowRef } from 'vue'
 import { Events } from '@wailsio/runtime'
 import type { ActiveDTO, ErrorDTO, SessionDTO } from '~~bindings/smegg.me/smeggtuner/backend/services/session/models.js'

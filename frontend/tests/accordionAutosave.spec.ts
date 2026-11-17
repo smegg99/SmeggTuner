@@ -4,7 +4,7 @@ import { flushPromises, mount } from '@vue/test-utils'
 import { nextTick, shallowRef } from 'vue'
 import AccordionPanel from '~/components/session/AccordionPanel.vue'
 import { flushEdits } from '~/composables/pendingEdits'
-import { error } from '~/composables/sessionStore'
+import { error } from '~/composables/session/sessionStore'
 import type { Instrument, InstrumentTemplate } from '~/types/session'
 
 const backend = vi.hoisted(() => ({ set: vi.fn(), save: vi.fn() }))

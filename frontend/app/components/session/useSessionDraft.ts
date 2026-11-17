@@ -3,7 +3,7 @@ import { computed, reactive, ref, watch, type Ref } from 'vue'
 import { sessionNameFor } from '~/utils/accordion'
 import { A4_DEFAULT, A4_MAX, A4_MIN, A4_STEP } from '~/utils/reference'
 import type { SessionDraft } from '~/types/session'
-import { keyOf } from '~/composables/sessionStore'
+import { keyOf } from '~/composables/session/sessionStore'
 
 export function useSessionDraft(open: Ref<boolean>, saving: () => boolean, submitted: (draft: SessionDraft) => void) {
   const { d } = useI18n()

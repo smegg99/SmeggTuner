@@ -43,7 +43,7 @@ import { useShell } from '~/composables/useShell'
 import { useTuner } from '~/composables/useTuner'
 import { registerPendingEdit } from '~/composables/pendingEdits'
 import { registerBackStep } from '~/composables/useBackNavigation'
-import { error, keyOf } from '~/composables/sessionStore'
+import { error, keyOf } from '~/composables/session/sessionStore'
 import * as SessionService from '~~bindings/smegg.me/smeggtuner/backend/services/session/service.js'
 
 // The engine stays live across this view; AppWindow owns its lifecycle.

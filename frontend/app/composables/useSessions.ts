@@ -1,6 +1,6 @@
 import { computed } from 'vue'
 import * as SessionService from '~~bindings/smegg.me/smeggtuner/backend/services/session/service.js'
-import { active, busy, ensureSubscribed, error, keyOf, list, loading, run } from '~/composables/sessionStore'
+import { active, busy, ensureSubscribed, error, keyOf, list, loading, run } from '~/composables/session/sessionStore'
 import { useSessionCurve } from '~/composables/sessionCurve'
 import { flushEdits } from './pendingEdits'
 import type { SessionDTO } from '~~bindings/smegg.me/smeggtuner/backend/services/session/models.js'

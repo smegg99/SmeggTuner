@@ -2,7 +2,7 @@
 import { onBeforeUnmount, onMounted, watch } from 'vue'
 import { useShell } from './useShell'
 import { useSessions } from './useSessions'
-import { error, keyOf } from './sessionStore'
+import { error, keyOf } from './session/sessionStore'
 
 const steps: (() => Promise<boolean>)[] = []
 

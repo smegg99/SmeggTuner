@@ -40,7 +40,7 @@ import { WEB, WORKSHOP } from '~/utils/features'
 // Belongs to the window, not a view, so it survives switching between rooms.
 import { computed, onBeforeUnmount, watch } from 'vue'
 import { useSessionProgress } from '~/composables/useSessionProgress'
-import { error as sessionError } from '~/composables/sessionStore'
+import { error as sessionError } from '~/composables/session/sessionStore'
 
 const ERROR_SHOWN_MS = 6000
 

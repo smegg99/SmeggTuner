@@ -4,7 +4,7 @@ import { onBeforeUnmount, ref, watch, type ComputedRef, type Ref } from 'vue'
 import * as SessionService from '~~bindings/smegg.me/smeggtuner/backend/services/session/service.js'
 import type { InstrumentTemplate } from '~/types/session'
 import { registerPendingEdit } from '~/composables/pendingEdits'
-import { error, keyOf } from '~/composables/sessionStore'
+import { error, keyOf } from '~/composables/session/sessionStore'
 
 // Long enough that typing a name is one write, short enough that leaving the tab never races it.
 const AUTOSAVE_MS = 600
