@@ -27,8 +27,8 @@ importers:
         specifier: ^1.4.8
         version: 1.4.8(pinia@4.1.0(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vue@3.5.45(typescript@6.0.3)))(vue@3.5.45(typescript@6.0.3))
       '@smegg99/s99ab':
-        specifier: link:../../S99AB
-        version: link:../../S99AB
+        specifier: github:smegg99/S99AB#v2.0.0
+        version: https://codeload.github.com/smegg99/S99AB/tar.gz/770ae978b3b4f9f293045c73702ca20bdf6f5af8(@mdi/font@7.4.47)(@pinia/colada@1.4.8(pinia@4.1.0(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vue@3.5.45(typescript@6.0.3)))(vue@3.5.45(typescript@6.0.3)))(nuxt@4.6.4(1b4f26cb08c8960633398a02028aad0c))(pinia@4.1.0(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vue@3.5.45(typescript@6.0.3)))(sass-embedded@1.106.1)(vue-i18n@11.4.18(vue@3.5.45(typescript@6.0.3)))(vue-router@5.4.0(@pinia/colada@1.4.8(pinia@4.1.0(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vue@3.5.45(typescript@6.0.3)))(vue@3.5.45(typescript@6.0.3)))(@vue/compiler-sfc@3.5.45)(esbuild@0.28.2)(pinia@4.1.0(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vue@3.5.45(typescript@6.0.3)))(rolldown@1.2.18)(rollup@4.68.2)(vite@8.3.7(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.106.1)(sass@1.106.1)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.45(typescript@6.0.3))(webpack@5.112.2(esbuild@0.28.2)(lightningcss@1.33.0)(postcss@8.5.32)))(vue@3.5.45(typescript@6.0.3))(vuetify@4.3.1)(zod@4.6.7)
       '@wailsio/runtime':
         specifier: 3.1.0
         version: 3.1.0
@@ -122,7 +122,7 @@ importers:
         version: 3.3.14(typescript@6.0.3)
       vuetify:
         specifier: ^4.3.1
-        version: 4.3.1(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vite-plugin-vuetify@2.1.3)(vue-i18n@11.4.18(vue@3.5.45(typescript@6.0.3)))(vue@3.5.45(typescript@6.0.3))
+        version: 4.3.1(@material/material-color-utilities@0.4.0)(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vite-plugin-vuetify@2.1.3)(vue-i18n@11.4.18(vue@3.5.45(typescript@6.0.3)))(vue@3.5.45(typescript@6.0.3))
 
 packages:
 
@@ -897,6 +897,9 @@ packages:
     resolution: {integrity: sha512-uwPAhccfFJlsfCxMYTwOdVfOz3xqyj8xYL3zJj8f0pb30tLohnnFPhLuqp4/qoEz8sNxe4SESZedcBojRefIzg==}
     engines: {node: '>=18'}
     hasBin: true
+
+  '@material/material-color-utilities@0.4.0':
+    resolution: {integrity: sha512-dlq6VExJReb8dhjj3a/yTigr3ncNwoFmL5Iy2ENtbDX03EmNeOEdZ+vsaGrj7RTuO+mB7L58II4LCsl4NpM8uw==}
 
   '@mdi/font@7.4.47':
     resolution: {integrity: sha512-43MtGpd585SNzHZPcYowu/84Vz2a2g31TvPMTm9uTiCSWzaheQySUcSyUH/46fPnuPQWof2yd0pGBtzee/IQWw==}
@@ -1962,6 +1965,29 @@ packages:
   '@sindresorhus/merge-streams@4.0.0':
     resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
     engines: {node: '>=18'}
+
+  '@smegg99/s99ab@https://codeload.github.com/smegg99/S99AB/tar.gz/770ae978b3b4f9f293045c73702ca20bdf6f5af8':
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/smegg99/S99AB/tar.gz/770ae978b3b4f9f293045c73702ca20bdf6f5af8}
+    version: 2.0.0
+    peerDependencies:
+      '@firecms/neat': ^0.8.0 || ^1.0.0
+      '@mdi/font': ^7.4.47
+      '@pinia/colada': ^1.3.0
+      nuxt: ^4.6.4
+      pinia: ^3.0.0 || ^4.0.0
+      sass-embedded: ^1.100.0
+      vue: ^3.5.0
+      vue-i18n: ^11.4.18
+      vue-router: ^5.0.0
+      vuetify: ^4.0.0
+      zod: ^4.6.7
+    peerDependenciesMeta:
+      '@firecms/neat':
+        optional: true
+      vue-i18n:
+        optional: true
+      zod:
+        optional: true
 
   '@speed-highlight/core@1.2.24':
     resolution: {integrity: sha512-qeW2e1l78afw8VhRPfPQ1Gjj+KU5XFQ/OFV5ti6eTa9bruO7mJyZtA4vw0ofqmA3tKCkROE9xLk3VZoeRc98nw==}
@@ -6479,6 +6505,8 @@ snapshots:
       - encoding
       - supports-color
 
+  '@material/material-color-utilities@0.4.0': {}
+
   '@mdi/font@7.4.47': {}
 
   '@miyaneee/rollup-plugin-json5@1.2.0(rollup@4.68.2)':
@@ -7609,6 +7637,21 @@ snapshots:
 
   '@sindresorhus/merge-streams@4.0.0': {}
 
+  ? '@smegg99/s99ab@https://codeload.github.com/smegg99/S99AB/tar.gz/770ae978b3b4f9f293045c73702ca20bdf6f5af8(@mdi/font@7.4.47)(@pinia/colada@1.4.8(pinia@4.1.0(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vue@3.5.45(typescript@6.0.3)))(vue@3.5.45(typescript@6.0.3)))(nuxt@4.6.4(1b4f26cb08c8960633398a02028aad0c))(pinia@4.1.0(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vue@3.5.45(typescript@6.0.3)))(sass-embedded@1.106.1)(vue-i18n@11.4.18(vue@3.5.45(typescript@6.0.3)))(vue-router@5.4.0(@pinia/colada@1.4.8(pinia@4.1.0(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vue@3.5.45(typescript@6.0.3)))(vue@3.5.45(typescript@6.0.3)))(@vue/compiler-sfc@3.5.45)(esbuild@0.28.2)(pinia@4.1.0(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vue@3.5.45(typescript@6.0.3)))(rolldown@1.2.18)(rollup@4.68.2)(vite@8.3.7(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.106.1)(sass@1.106.1)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.45(typescript@6.0.3))(webpack@5.112.2(esbuild@0.28.2)(lightningcss@1.33.0)(postcss@8.5.32)))(vue@3.5.45(typescript@6.0.3))(vuetify@4.3.1)(zod@4.6.7)'
+  : dependencies:
+      '@material/material-color-utilities': 0.4.0
+      '@mdi/font': 7.4.47
+      '@pinia/colada': 1.4.8(pinia@4.1.0(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vue@3.5.45(typescript@6.0.3)))(vue@3.5.45(typescript@6.0.3))
+      nuxt: 4.6.4(1b4f26cb08c8960633398a02028aad0c)
+      pinia: 4.1.0(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vue@3.5.45(typescript@6.0.3))
+      sass-embedded: 1.106.1
+      vue: 3.5.45(typescript@6.0.3)
+      vue-router: 5.4.0(@pinia/colada@1.4.8(pinia@4.1.0(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vue@3.5.45(typescript@6.0.3)))(vue@3.5.45(typescript@6.0.3)))(@vue/compiler-sfc@3.5.45)(esbuild@0.28.2)(pinia@4.1.0(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vue@3.5.45(typescript@6.0.3)))(rolldown@1.2.18)(rollup@4.68.2)(vite@8.3.7(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.106.1)(sass@1.106.1)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.45(typescript@6.0.3))(webpack@5.112.2(esbuild@0.28.2)(lightningcss@1.33.0)(postcss@8.5.32))
+      vuetify: 4.3.1(@material/material-color-utilities@0.4.0)(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vite-plugin-vuetify@2.1.3)(vue-i18n@11.4.18(vue@3.5.45(typescript@6.0.3)))(vue@3.5.45(typescript@6.0.3))
+    optionalDependencies:
+      vue-i18n: 11.4.18(vue@3.5.45(typescript@6.0.3))
+      zod: 4.6.7
+
   '@speed-highlight/core@1.2.24': {}
 
   '@stylistic/eslint-plugin@5.10.0(eslint@10.13.0(jiti@2.7.0))':
@@ -8339,12 +8382,13 @@ snapshots:
     dependencies:
       upath: 2.0.1
       vue: 3.5.45(typescript@6.0.3)
-      vuetify: 4.3.1(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vite-plugin-vuetify@2.1.3)(vue-i18n@11.4.18(vue@3.5.45(typescript@6.0.3)))(vue@3.5.45(typescript@6.0.3))
+      vuetify: 4.3.1(@material/material-color-utilities@0.4.0)(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vite-plugin-vuetify@2.1.3)(vue-i18n@11.4.18(vue@3.5.45(typescript@6.0.3)))(vue@3.5.45(typescript@6.0.3))
 
-  '@vuetify/v0@1.3.0(@vue/devtools-api@8.2.1)(vue-i18n@11.4.18(vue@3.5.45(typescript@6.0.3)))(vue@3.5.45(typescript@6.0.3))':
+  '@vuetify/v0@1.3.0(@material/material-color-utilities@0.4.0)(@vue/devtools-api@8.2.1)(vue-i18n@11.4.18(vue@3.5.45(typescript@6.0.3)))(vue@3.5.45(typescript@6.0.3))':
     dependencies:
       vue: 3.5.45(typescript@6.0.3)
     optionalDependencies:
+      '@material/material-color-utilities': 0.4.0
       '@vue/devtools-api': 8.2.1
       vue-i18n: 11.4.18(vue@3.5.45(typescript@6.0.3))
 
@@ -11408,7 +11452,7 @@ snapshots:
       upath: 2.0.1
       vite: 8.3.7(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.106.1)(sass@1.106.1)(terser@5.51.2)(yaml@2.9.1)
       vue: 3.5.45(typescript@6.0.3)
-      vuetify: 4.3.1(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vite-plugin-vuetify@2.1.3)(vue-i18n@11.4.18(vue@3.5.45(typescript@6.0.3)))(vue@3.5.45(typescript@6.0.3))
+      vuetify: 4.3.1(@material/material-color-utilities@0.4.0)(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vite-plugin-vuetify@2.1.3)(vue-i18n@11.4.18(vue@3.5.45(typescript@6.0.3)))(vue@3.5.45(typescript@6.0.3))
     transitivePeerDependencies:
       - supports-color
 
@@ -11593,9 +11637,9 @@ snapshots:
     optionalDependencies:
       typescript: 6.0.3
 
-  vuetify@4.3.1(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vite-plugin-vuetify@2.1.3)(vue-i18n@11.4.18(vue@3.5.45(typescript@6.0.3)))(vue@3.5.45(typescript@6.0.3)):
+  vuetify@4.3.1(@material/material-color-utilities@0.4.0)(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vite-plugin-vuetify@2.1.3)(vue-i18n@11.4.18(vue@3.5.45(typescript@6.0.3)))(vue@3.5.45(typescript@6.0.3)):
     dependencies:
-      '@vuetify/v0': 1.3.0(@vue/devtools-api@8.2.1)(vue-i18n@11.4.18(vue@3.5.45(typescript@6.0.3)))(vue@3.5.45(typescript@6.0.3))
+      '@vuetify/v0': 1.3.0(@material/material-color-utilities@0.4.0)(@vue/devtools-api@8.2.1)(vue-i18n@11.4.18(vue@3.5.45(typescript@6.0.3)))(vue@3.5.45(typescript@6.0.3))
       vue: 3.5.45(typescript@6.0.3)
     optionalDependencies:
       typescript: 6.0.3

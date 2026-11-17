@@ -24,7 +24,7 @@
     "@mdi/font": "^7.4.47",
     "@nuxtjs/i18n": "^10.6.0",
     "@pinia/colada": "^1.4.8",
-    "@smegg99/s99ab": "link:../../S99AB",
+    "@smegg99/s99ab": "github:smegg99/S99AB#v2.0.0",
     "@wailsio/runtime": "3.1.0",
     "chart.js": "^4.6.1",
     "chartjs-plugin-dragdata": "^2.3.1",
