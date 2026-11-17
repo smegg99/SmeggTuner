@@ -84,6 +84,13 @@ native libraries, wrong build modes, package/version/SDK mismatches and invalid
 signatures or alignment. Release verification also checks the signing certificate
 against `ANDROID_KEY_ALIAS` in the supplied keystore.
 
+Release builds use R8 full mode and resource shrinking. The owned
+`build/android-support/proguard-rules.pro` preserves the Wails JNI entry points.
+AAB verification requires the embedded deobfuscation mapping and at least 25%
+obfuscation, optimization and shrinking in R8's packaged statistics.
+`WindowLayout.java` owns system-bar, display-cutout and keyboard insets; the
+AppCompat theme avoids bundling unused Material dialogs.
+
 Android builds use the frontend's pinned pnpm, a frozen lockfile and read-only
 Go module resolution. They rebuild the frontend, including linked layer sources,
 before compiling Go. Android commands select a compatible installed Node version

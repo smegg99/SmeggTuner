@@ -94,6 +94,14 @@ for old, new in [
 ]:
     replace(gradle, old, new)
 replace(gradle, "jniLibs.srcDirs = ['src/main/jniLibs']", "jniLibs.srcDirs = [providers.gradleProperty('wailsJniDir').getOrElse('src/main/jniLibs')]")
+replace(gradle, 'minifyEnabled = false', 'minifyEnabled = true\n            shrinkResources = true')
+replace(gradle, "    implementation 'com.google.android.material:material:1.11.0'", "    implementation 'androidx.core:core:1.19.1'")
+replace(gradle, 'dependencies {', '''dependencies {
+    // Tink's published Android artifact omits its compile-time annotation dependencies.
+    compileOnly 'com.google.errorprone:error_prone_annotations:2.51.0'
+    compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
+''')
+shutil.copyfile(SOURCE / "proguard-rules.pro", OUT / "app/proguard-rules.pro")
 replace(OUT / "build.gradle", "version '9.0.1'", f"version '{CONFIG['agp']}'")
 wrapper = OUT / "gradle/wrapper/gradle-wrapper.properties"
 replace(wrapper, "gradle-9.2.1-bin.zip", f"gradle-{CONFIG['gradle']}-bin.zip")

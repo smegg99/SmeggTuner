@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- build/android-support/res/values/themes.xml -->
+<resources>
+    <style name="Theme.WailsApp" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/wails_blue</item>
+        <item name="colorPrimaryDark">@color/wails_blue_dark</item>
+        <item name="colorAccent">@color/wails_blue</item>
+        <item name="android:windowBackground">@color/wails_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
+</resources>

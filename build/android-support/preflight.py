@@ -176,6 +176,34 @@ def verify_permissions(permissions):
             f"Packaged permissions differ from the privacy audit: unexpected={sorted(actual - expected)}, missing={sorted(expected - actual)}")
 
 
+def verify_optimization(archive, bundle, mode):
+    if mode != "release":
+        return
+    dex = [name for name in archive.namelist() if name.endswith(".dex")]
+    require(dex, "Release artifact has no DEX code")
+    for name in dex:
+        markers = re.findall(rb'~~R8(\{[^\x00]+\})', archive.read(name))
+        require(markers, f"{name}: release DEX was not built with R8")
+        for marker in markers:
+            data = json.loads(marker)
+            require(data.get("compilation-mode") == "release" and data.get("r8-mode") == "full",
+                    f"{name}: release DEX requires R8 full mode")
+    if not bundle:
+        return
+    metadata = "BUNDLE-METADATA/com.android.tools/r8.json"
+    mapping = "BUNDLE-METADATA/com.android.tools.build.obfuscation/proguard.map"
+    require(metadata in archive.namelist() and mapping in archive.namelist(),
+            "Release AAB is missing R8 metadata or its deobfuscation mapping")
+    require(archive.read(mapping).strip(), "Release AAB has an empty deobfuscation mapping")
+    data = json.loads(archive.read(metadata))
+    for option in ("isObfuscationEnabled", "isOptimizationsEnabled", "isShrinkingEnabled"):
+        require(data.get("options", {}).get(option) is True, f"Release AAB: {option} must be enabled")
+    for metric in ("noObfuscationPercentage", "noOptimizationPercentage", "noShrinkingPercentage"):
+        value = data.get("stats", {}).get(metric)
+        require(type(value) in (int, float) and 0 <= value <= 75,
+                f"Release AAB: {metric}={value}; each R8 optimization score must reach 25%")
+
+
 def verify(path, arch, mode, staged=None):
     require(arch in ABI and mode in ("debug", "release"), "Expected arm64|amd64 and debug|release")
     version = (ROOT / "VERSION").read_text().strip()
@@ -185,6 +213,7 @@ def verify(path, arch, mode, staged=None):
     bundle = path.suffix == ".aab"
     require(path.suffix in (".apk", ".aab"), "Artifact must be APK or AAB")
     with zipfile.ZipFile(path) as archive:
+        verify_optimization(archive, bundle, mode)
         libs = [item for item in archive.namelist() if item.endswith(".so")]
         member = f"{'base/' if bundle else ''}lib/{ABI[arch]}/libwails.so"
         require(libs == [member], f"{path}: expected only {member}, found {libs}")
