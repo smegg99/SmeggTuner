@@ -257,9 +257,19 @@ func CommonTitleProgress(l *i18n.Localizer, p CommonTitleProgressParams) string 
 	return withData(l, "common.title.progress", data)
 }
 
+// CommonTitleRoomAbout renders common.title.room.about.
+func CommonTitleRoomAbout(l *i18n.Localizer) string {
+	return plain(l, "common.title.room.about")
+}
+
 // CommonTitleRoomCalibrate renders common.title.room.calibrate.
 func CommonTitleRoomCalibrate(l *i18n.Localizer) string {
 	return plain(l, "common.title.room.calibrate")
+}
+
+// CommonTitleRoomHelp renders common.title.room.help.
+func CommonTitleRoomHelp(l *i18n.Localizer) string {
+	return plain(l, "common.title.room.help")
 }
 
 // CommonTitleRoomSettings renders common.title.room.settings.

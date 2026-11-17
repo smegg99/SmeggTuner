@@ -37,7 +37,11 @@
       />
       {{ caption }}
     </span>
-    <TunerA4Stepper class="note__a4" />
+    <!-- A compact window stands A4 beside the note instead (TunerView). -->
+    <TunerA4Stepper
+      v-if="!compact"
+      class="note__a4"
+    />
   </div>
 </template>
 
@@ -47,6 +51,7 @@ import { useReadoutStatus, type ReadoutStatus } from '~/composables/useReadoutSt
 import { useTuner } from '~/composables/useTuner'
 
 const { t } = useI18n()
+const compact = useCompactLayout()
 const { noteName, label, lock, running, state, scalePitch, transpose } = useTuner()
 
 const rawStatus = computed<ReadoutStatus>(() => {
@@ -77,7 +82,7 @@ const octave = computed(() => noteName.value.match(/-?\d+$/)?.[0] ?? '')
   display: grid;
   grid-template-areas: "glyph" "hz" "status" "a4";
   grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: minmax(0, 1fr) 18px 16px 26px;
+  grid-template-rows: minmax(0, 1fr) 18px 16px var(--s99ab-control-h-dense);
   align-items: center;
   row-gap: 3px;
   min-width: 0;
@@ -96,28 +101,31 @@ const octave = computed(() => noteName.value.match(/-?\d+$/)?.[0] ?? '')
 .note--quiet { background-color: rgba(var(--v-theme-warn), 0.14); border-color: rgb(var(--v-theme-warn)); }
 .note--quiet .note__status, .note--quiet .note__glyph { color: rgb(var(--v-theme-warn)); }
 
-/* What the three rows under it leave, as a font size: 100cqh is the card. */
+/* What the three rows under it leave, as a font size: 100cqh is the card. The plain size is for a
+   WebView older than container units. The name is a line of text across the whole card, centred as
+   text: a box shrunk to the name keeps, in WebKit, the width it had at an earlier font size when the
+   card's height changes the size, and the name then wraps or sits off centre. */
 .note__glyph {
   grid-area: glyph;
   display: grid;
-  place-items: center;
+  align-items: center;
+  text-align: center;
+  white-space: nowrap;
   min-height: 0;
   min-width: 0;
   overflow: hidden;
   color: rgb(var(--v-theme-ink));
-  font-size: clamp(26px, calc(100cqh - 82px), 88px);
+  font-size: 32px;
+  font-size: clamp(26px, calc(100cqh - 56px - var(--s99ab-control-h-dense)), 88px);
   font-weight: 500;
   line-height: 1;
 }
-.note__glyph--chord { font-size: clamp(20px, calc((100cqh - 82px) * 0.6), 44px); }
-.note__pitch { display: inline-grid; grid-template-columns: auto auto; align-items: baseline; justify-content: center; }
-.note__pitch > span { text-align: right; }
+.note__glyph--chord { font-size: 22px; font-size: clamp(20px, calc((100cqh - 56px - var(--s99ab-control-h-dense)) * 0.6), 44px); }
 .note__pitch i {
   color: rgb(var(--v-theme-ink3));
   font-size: 0.42em;
   font-style: normal;
   font-weight: 400;
-  text-align: left;
 }
 
 .note__hz {
@@ -146,30 +154,64 @@ const octave = computed(() => noteName.value.match(/-?\d+$/)?.[0] ?? '')
 .note--locked .note__status { color: rgb(var(--v-theme-ink)); font-weight: 700; }
 .note__a4 { grid-area: a4; }
 
-@media (max-width: 959px), (max-height: 559px) {
+/* Where the tuner gives the note a strip's height instead of a card's (portrait, and a landscape too
+   short for the card): the note at the left, its state over its pitch beside it. */
+@media (max-width: 959px) and (min-height: 560px), (max-width: 559px), (max-height: 399px) {
   .note {
     container-type: normal;
-    grid-template-areas: "glyph status" "glyph hz" "glyph a4";
-    grid-template-columns: 80px minmax(0, 1fr);
-    grid-template-rows: 18px 18px 26px;
+    grid-template-areas: "glyph status" "glyph hz";
+    grid-template-columns: minmax(64px, auto) minmax(0, 1fr);
+    grid-template-rows: 18px 18px;
     align-content: center;
-    column-gap: 8px;
+    column-gap: var(--gap-wide);
+    row-gap: 0;
+    padding: 0 var(--gap-wide);
     text-align: left;
   }
-  .note__glyph { font-size: 32px; }
+  /* A fixed size cannot outgrow the strip, and a lowercase note name keeps its descender. */
+  .note__glyph { font-size: 36px; overflow: visible; }
   .note__glyph--chord { font-size: 22px; }
   .note__hz { justify-content: start; }
-  .note__a4 { justify-content: start; }
 }
-@media (max-height: 559px) and (min-width: 560px) {
+
+/* A phone on its side keeps the card, read at a glance from a stand: the state heads it, the note takes
+   all that is left, as large as the card's height and width allow, and its pitch closes the card in a
+   size that carries as far. */
+@media (min-width: 560px) and (min-height: 400px) and (max-height: 559px) {
   .note {
-    grid-template-areas: "glyph status hz" "glyph a4 a4";
-    grid-template-columns: 52px minmax(0, 1fr) 94px;
-    grid-template-rows: 18px 26px;
-    column-gap: 6px;
+    grid-template-areas: "status" "glyph" "hz";
+    grid-template-rows: 18px minmax(0, 1fr) 24px;
+    padding: var(--gap);
   }
-  .note__glyph { font-size: 28px; }
-  .note__glyph--chord { font-size: 17px; }
-  .note__hz { font-size: 13px; justify-content: end; }
+  .note__status { font-size: 13px; line-height: 18px; text-align: left; }
+  .note__hz { font-size: 16px; line-height: 24px; }
+  .note__glyph {
+    font-size: 32px;
+    font-size: clamp(32px, min(calc(100cqh - 48px), 32cqw), 120px);
+  }
+  .note__glyph--chord {
+    font-size: 22px;
+    font-size: clamp(20px, min(calc((100cqh - 48px) * 0.6), 18cqw), 72px);
+  }
+}
+
+/* A landscape phone wide enough for the note keys in the top bar (TunerView): the note is an indicator
+   in a row of keys, at their height: the strip's layout, smaller. */
+@media (min-width: 780px) and (max-height: 559px) {
+  .note {
+    container-type: normal;
+    grid-template-areas: "glyph status" "glyph hz";
+    grid-template-columns: minmax(40px, auto) minmax(0, 1fr);
+    grid-template-rows: 16px 18px;
+    align-content: center;
+    column-gap: 12px;
+    row-gap: 0;
+    padding: 0 12px;
+    text-align: left;
+  }
+  .note__glyph { font-size: 26px; overflow: visible; }
+  .note__glyph--chord { font-size: 18px; }
+  .note__hz { justify-content: start; font-size: 13px; line-height: 18px; }
+  .note__status { font-size: 11px; line-height: 16px; text-align: left; }
 }
 </style>

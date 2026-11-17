@@ -157,6 +157,7 @@ calibration.status.unreliable: {value: "Unreliable, readings are not corrected"}
 groups.appearance: {value: "Appearance"}
 groups.detection: {value: "Detection"}
 groups.microphone: {value: "Microphone"}
+groups.output: {value: "Output", description: "Settings section shown on a phone, holding the output volume."}
 groups.readings: {value: "Readings"}
 groups.report: {value: "Workshop details"}
 

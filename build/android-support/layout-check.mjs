@@ -62,8 +62,8 @@ export async function checkLayout({ evaluate, adb, uiXML, until, screenshot, rec
     })()`), `Keyboard obscured the focused ${name}`)
     screenshot('keyboard')
     adb('shell', 'input', 'keyevent', 'KEYCODE_BACK')
-    await until(() => evaluate('Math.abs(visualViewport.offsetLeft) <= 1 && Math.abs(visualViewport.offsetTop) <= 1 && visualViewport.width >= innerWidth - 1'), 'Closing the keyboard left the desktop zoomed or panned')
-    record(`native keyboard keeps the ${name} visible and restores the fitted desktop`)
+    await until(() => evaluate('Math.abs(visualViewport.offsetLeft) <= 1 && Math.abs(visualViewport.offsetTop) <= 1 && visualViewport.width >= innerWidth - 1'), 'Closing the keyboard left the page zoomed or panned')
+    record(`native keyboard keeps the ${name} visible and restores the layout`)
   }
   try {
     await click('Tune')
@@ -75,21 +75,21 @@ export async function checkLayout({ evaluate, adb, uiXML, until, screenshot, rec
       return views.length === ${workshop ? 3 : 2} && views.every(rect => rect.width > 0 && rect.left >= 0 && rect.right <= innerWidth)
         && document.documentElement.scrollWidth <= innerWidth && { width: innerWidth, height: innerHeight }
     })()`), 'Landscape clipped navigation')
-    assert.equal(await evaluate('document.querySelectorAll(".tuner__tabs").length'), 0, 'The desktop plots must not be replaced by mobile tabs')
-    assert.equal(await evaluate('document.querySelectorAll(".window__navigation").length'), 0, 'Navigation must stay in the desktop toolbar')
+    assert.equal(await evaluate('document.querySelectorAll(".tuner__tabs").length'), 1, 'A phone must pick its one plot with tabs')
+    assert.equal(await evaluate('document.querySelectorAll(".window__navigation").length'), 0, 'Landscape must keep navigation in the toolbar')
     await until(() => evaluate(`(() => {
-      const canvases = [...document.querySelectorAll('.tuner canvas')].map(canvas => canvas.getBoundingClientRect())
+      const canvases = [...document.querySelectorAll('.tuner canvas')].map(canvas => canvas.getBoundingClientRect()).filter(rect => rect.height > 0)
       const scrolling = [...document.querySelectorAll('.window, .window *')].some(element => {
         const rect = element.getBoundingClientRect()
         return rect.height > 0 && element.clientHeight > 0 && element.scrollHeight > element.clientHeight + 2
           && /auto|scroll/.test(getComputedStyle(element).overflowY)
       })
-      return innerWidth >= 960 && innerHeight >= 640 && canvases.length === 4
+      return visualViewport.scale === 1 && canvases.length === 2
         && canvases.every(rect => rect.height >= 30 && rect.width > 0 && rect.bottom <= visualViewport.height + 1)
         && !scrolling
-    })()`), 'The scaled desktop must show all four plots without scrolling')
+    })()`), 'The phone layout must show the picked plot and the ruler at full size without scrolling')
     screenshot('landscape')
-    record('scaled desktop layout keeps all plots and toolbar navigation visible', layout)
+    record('phone layout keeps the picked plot, the ruler and toolbar navigation visible', layout)
     await checkSettings('landscape')
     adb('shell', 'settings', 'put', 'system', 'user_rotation', '0')
     await until(() => evaluate('innerHeight > innerWidth'), 'Emulator did not rotate to portrait')

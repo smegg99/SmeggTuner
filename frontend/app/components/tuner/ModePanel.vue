@@ -1,18 +1,10 @@
 <template>
-  <div class="modes">
-    <v-select
-      v-if="compact"
-      class="modes__select"
-      :model-value="mode"
-      :items="MODES"
-      item-title="label"
-      item-value="value"
-      :aria-label="t('tuner.panel.modeLabel')"
-      hide-details
-      @update:model-value="v => v !== mode && setMode(v as PanelMode)"
-    />
+  <div
+    class="modes"
+    :class="{ 'modes--row': compact }"
+  >
     <UiToolGroup
-      v-else
+      class="modes__kinds"
       :model-value="mode"
       :items="MODES"
       :label="t('tuner.panel.modeLabel')"
@@ -100,8 +92,11 @@ function toggle(b: ShownBox) {
 }
 
 .modes__reeds { display: flex; align-items: center; gap: var(--s99ab-control-gap); }
-.modes__select { flex: 1 1 120px; min-width: 0; max-width: 220px; }
 .modes__reeds :deep(.key) { min-width: var(--s99ab-control-h); }
+
+/* A row of its own in compact windows: the mode keys share what the reed keys leave. */
+.modes--row > .modes__kinds { flex: 1 1 auto; max-width: 320px; min-width: 0; }
+.modes--row > .modes__kinds :deep(.key) { flex: 1 1 0; min-width: 0; }
 
 .modes__label {
   color: rgb(var(--v-theme-ink3));
@@ -113,7 +108,8 @@ function toggle(b: ShownBox) {
   cursor: default;
 }
 
-@media (max-width: 380px) {
-  .modes__label { display: none; }
+/* The row is the window's width in portrait and under half of it on a landscape phone. */
+@media (max-width: 419px), (max-height: 559px) {
+  .modes--row .modes__label { display: none; }
 }
 </style>

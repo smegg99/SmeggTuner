@@ -159,7 +159,7 @@ for resource in (SOURCE / "res").rglob("*.xml"):
     target.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(resource, target)
 activity = OUT / "app/src/main/java/com/wails/app/MainActivity.java"
-# Honor the app's fitted desktop viewport on Android.
+# Honor the page's viewport meta on Android, as a browser does.
 replace(activity, '        settings.setJavaScriptEnabled(true);', '        settings.setJavaScriptEnabled(true);\n        settings.setUseWideViewPort(true);')
 replace(activity, '        super.onCreate(savedInstanceState);', '''        super.onCreate(savedInstanceState);
         if (!WebViewRequirement.allowed(this)) {

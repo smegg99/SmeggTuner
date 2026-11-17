@@ -55,7 +55,9 @@ title.progress:
     room: {type: string}
     total: {type: string}
 
+title.room.about: {value: "o programie"}
 title.room.calibrate: {value: "kalibracja"}
+title.room.help: {value: "pomoc"}
 title.room.settings: {value: "ustawienia"}
 title.room.soundcard: {value: "karta dźwiękowa"}
 title.room.tune: {value: "strojenie"}

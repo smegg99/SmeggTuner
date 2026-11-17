@@ -1,5 +1,6 @@
 <template>
   <UiFormField
+    row
     :label="t('settings.beatUnitLabel')"
     :hint="t('settings.beatUnitHint')"
   >

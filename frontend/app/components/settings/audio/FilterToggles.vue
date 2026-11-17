@@ -1,5 +1,6 @@
 <template>
   <UiFormField
+    row
     :label="t('settings.humFilterLabel')"
     :hint="running ? t('settings.lockedWhileRunning') : t('settings.humFilterHint')"
   >

@@ -1,6 +1,7 @@
 <template>
   <UiPanel
     class="file tuner-panel"
+    :class="{ 'file--volume': withVolume }"
     flush
   >
     <template #head>
@@ -11,21 +12,26 @@
         v-if="!compact"
         :with-volume="withVolume"
       />
-      <v-menu
-        v-else
-        :close-on-content-click="false"
-      >
-        <template #activator="{ props: menu }">
-          <UiToolKey
-            v-bind="menu"
-            icon="mdi-tune-variant"
-            :title="t('tuner.controls')"
-          />
-        </template>
-        <div class="file-options">
+      <!-- A compact window keeps the keys in this bar whenever the panel is wide enough for them, and
+           folds them under one key only when it is not: the panel's width decides, in the styles below. -->
+      <template v-else>
+        <span class="file__keys">
           <FileTransport :with-volume="withVolume" />
-        </div>
-      </v-menu>
+        </span>
+        <v-menu :close-on-content-click="false">
+          <template #activator="{ props: menu }">
+            <UiToolKey
+              v-bind="menu"
+              class="file__more"
+              icon="mdi-tune-variant"
+              :title="t('tuner.controls')"
+            />
+          </template>
+          <div class="file-options">
+            <FileTransport :with-volume="withVolume" />
+          </div>
+        </v-menu>
+      </template>
 
       <span class="file__sp" />
 
@@ -71,7 +77,9 @@ onMounted(refresh)
   border-color: transparent;
 }
 
+/* A size container, so the head can tell whether its keys fit (see the end of these styles). */
 .file {
+  container-type: inline-size;
   min-height: 0;
 }
 
@@ -127,5 +135,17 @@ onMounted(refresh)
 }
 @media (max-height: 359px) and (min-width: 560px) {
   .file :deep(.panel__head) { min-height: 28px; padding-block: 0; }
+}
+
+/* The compact head: every key inline when the panel has the width for them, with the output level a
+   wider need still; under the controls key otherwise, and in a WebView older than container queries. */
+.file__keys { display: none; }
+@container (min-width: 660px) {
+  .file:not(.file--volume) .file__keys { display: contents; }
+  .file:not(.file--volume) .file__more { display: none; }
+}
+@container (min-width: 830px) {
+  .file--volume .file__keys { display: contents; }
+  .file--volume .file__more { display: none; }
 }
 </style>

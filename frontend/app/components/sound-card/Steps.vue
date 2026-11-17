@@ -32,7 +32,7 @@ const { t } = useI18n()
 .sc__steps { align-items: center; display: flex; gap: var(--gap); }
 .sc__step { align-items: center; display: flex; flex: 0 0 auto; gap: var(--gap); opacity: 0.4; }
 .sc__step--on, .sc__step--past { opacity: 1; }
-.sc__stepsep { background: rgb(var(--v-theme-line)); flex: 0 0 29px; height: 1px; }
+.sc__stepsep { background: rgb(var(--v-theme-line)); flex: 0 1 29px; height: 1px; min-width: 8px; }
 
 .sc__stepno {
   align-items: center;

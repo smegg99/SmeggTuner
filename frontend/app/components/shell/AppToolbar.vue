@@ -3,7 +3,7 @@
     ref="bar"
     class="bar"
   >
-    <!-- Narrow windows keep navigation beside the source and put note controls below. -->
+    <!-- Compact windows keep the input and output here; the tuner gives the note keys a row of its own. -->
     <template v-if="view === 'tune'">
       <div class="bar__top">
         <ShellToolbarTransport />
@@ -13,11 +13,13 @@
 
         <ShellToolbarSource />
         <ShellToolbarSoundCard v-if="!WEB" />
+        <ShellToolbarAudio v-if="compact && !WEB" />
       </div>
 
+      <!-- Wide windows carry the note keys here; so does a landscape phone with the width for them. -->
       <div
-        v-if="!compact"
-        class="bar__low"
+        v-if="!compact || barTools"
+        class="bar__low bar__low--keys"
       >
         <div class="bar__divider bar__divider--joint group-rule" />
 
@@ -27,24 +29,6 @@
 
         <ShellToolbarReading />
       </div>
-      <v-menu
-        v-else
-        :close-on-content-click="false"
-        location="bottom end"
-      >
-        <template #activator="{ props }">
-          <v-btn
-            v-bind="props"
-            icon="mdi-tune"
-            :title="t('tuner.controls')"
-            :aria-label="t('tuner.controls')"
-          />
-        </template>
-        <div class="tuning-menu">
-          <ShellToolbarNote />
-          <ShellToolbarReading />
-        </div>
-      </v-menu>
     </template>
 
     <ShellToolbarPage
@@ -74,11 +58,13 @@
       class="bar__spacer"
     />
 
+    <!-- A landscape phone: square marks, Help and About first and the rooms at the far end. -->
     <ShellToolbarViews
       v-if="!compact || landscape"
       ref="views"
       class="bar__views"
-      :labelled="labelled"
+      :labelled="labelled && !compact"
+      reading-first
     />
     <!-- Measures the named keys while only their marks show; never seen or reached. -->
     <ShellToolbarViews
@@ -96,6 +82,7 @@ import { useTemplateRef } from 'vue'
 import { usePageTitle } from '~/composables/usePageTitle'
 import { useShell } from '~/composables/useShell'
 import { useBarHeight } from '~/composables/useBarHeight'
+import { useWideLandscapeLayout } from '~/composables/useCompactLayout'
 import { useViewLabels } from '~/composables/useViewLabels'
 import { WEB, WORKSHOP } from '~/utils/features'
 
@@ -107,7 +94,8 @@ defineProps<{
 const { view, openSession } = useShell()
 const compact = useCompactLayout()
 const landscape = useLandscapeLayout()
-const { t, locale } = useI18n()
+const barTools = useWideLandscapeLayout()
+const { locale } = useI18n()
 const title = usePageTitle()
 
 const bar = useTemplateRef<HTMLElement>('bar')
@@ -148,15 +136,17 @@ useBarHeight(bar)
   display: contents;
 }
 
-/* A narrow bar keeps every control and its label, the input picker at full width, and tightens round
-   them: keys a little smaller, the reed keys without their caption, a shorter slider, closer groups. */
-@container (max-width: 1120px) {
-  .bar > * { --s99ab-control-h: 26px; }
-  .bar :deep(.modes__label) { display: none; }
-  .bar :deep(.tuner-volume) { flex-basis: 44px; width: 44px; }
-  .bar :deep(.note) { width: 40px; }
-  .bar :deep(.key:not(.key--icon)) { padding-inline: 6px; }
-  .bar :deep(.group-rule) { margin-inline: 0; }
+/* A narrow desktop bar keeps every control and its label, the input picker at full width, and tightens
+   round them: keys a little smaller, the reed keys without their caption, a shorter slider, closer groups. */
+@media (min-width: 960px) and (min-height: 560px) {
+  @container (max-width: 1120px) {
+    .bar > * { --s99ab-control-h: 26px; }
+    .bar :deep(.modes__label) { display: none; }
+    .bar :deep(.tuner-volume) { flex-basis: 44px; width: 44px; }
+    .bar :deep(.note) { width: 40px; }
+    .bar :deep(.key:not(.key--icon)) { padding-inline: 6px; }
+    .bar :deep(.group-rule) { margin-inline: 0; }
+  }
 }
 
 @media (max-width: 959px), (max-height: 559px) {
@@ -180,17 +170,14 @@ useBarHeight(bar)
   .bar__divider--joint { display: none; }
   .bar__divider { display: none; }
   .bar :deep(.source-key) { flex: 1 1 auto; width: 0 !important; min-width: 0; }
-}
 
-.tuning-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: min(360px, calc(100vw - 24px));
-  padding: 12px;
-  border: 1px solid rgb(var(--v-theme-line));
-  border-radius: var(--app-radius-panel);
-  background: rgb(var(--v-theme-chrome));
+  /* A bar wider than a portrait phone stops stretching the input picker: it keeps one width and the
+     rooms go to the far end. */
+  @container (min-width: 520px) {
+    .bar__top { flex: 0 1 auto; }
+    .bar__low--keys { flex: 0 0 auto; }
+    .bar__spacer { display: block; }
+    .bar :deep(.source-key) { flex: 0 1 auto; width: 240px !important; }
+  }
 }
-.tuning-menu :deep(.note-tools) { flex-wrap: wrap; gap: 8px !important; }
 </style>

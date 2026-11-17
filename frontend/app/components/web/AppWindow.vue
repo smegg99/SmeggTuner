@@ -7,10 +7,10 @@
   >
     <div
       class="window"
-      :class="{ 'window--plain': compact && !landscape && view === 'settings', 'window--navigation': compact && !landscape }"
+      :class="{ 'window--plain': page, 'window--navigation': compact && !landscape }"
     >
       <ShellAppToolbar
-        v-if="!compact || landscape || view !== 'settings'"
+        v-if="!page"
         class="window__bar"
         :notes="0"
       />
@@ -28,6 +28,8 @@
           <TunerView />
         </div>
         <SettingsView v-if="view === 'settings'" />
+        <ShellHelpView v-else-if="view === 'help'" />
+        <ShellAboutView v-else-if="view === 'about'" />
       </div>
       <ShellToolbarViews
         v-if="compact && !landscape"
@@ -46,7 +48,7 @@
 import { useAudioDevices } from '~/composables/useAudioDevices'
 import { useConfigSync } from '~/composables/useConfigSync'
 import { initializeThemeSync } from '~/composables/useThemeSync'
-import { useShell } from '~/composables/useShell'
+import { PAGE_ROOMS, READING_ROOMS, useShell } from '~/composables/useShell'
 import { useWebEngine } from '~/web/useWebEngine'
 import { useWakeLock } from '~/web/wakeLock'
 
@@ -56,14 +58,18 @@ initializeThemeSync()
 const { view, setView } = useShell()
 const compact = useCompactLayout()
 const landscape = useLandscapeLayout()
+// A page to read takes the bar's height too where the rooms have a row of their own.
+const page = computed(() => compact.value && !landscape.value && PAGE_ROOMS.includes(view.value))
 const { running, stop } = useTuner()
 const { micOpen, openMic, closeMic } = useWebEngine()
 const { refresh: refreshDevices } = useAudioDevices()
 
-// Only two rooms exist here; anything else the shared toolbar might ask for lands back on the tuner.
-watch(view, (room) => {
-  if (room !== 'tune' && room !== 'settings') void setView('tune')
-  if (room !== 'tune' && running.value) void stop()
+// Only the tuner, the settings and, in a compact window, Help and About exist here; anything else the
+// shared toolbar might ask for lands back on the tuner. Reading the guide does not end a measurement.
+watch([view, compact], ([room, small]) => {
+  const reading = small && READING_ROOMS.includes(room)
+  if (room !== 'tune' && room !== 'settings' && !reading) void setView('tune')
+  if (room !== 'tune' && !reading && running.value) void stop()
 }, { immediate: true })
 
 // The microphone is open exactly while the engine runs, so the browser's recording indicator means what it says;
@@ -97,7 +103,7 @@ useWakeLock(running)
 .window__view > * { grid-area: 1 / 1; min-height: 0; min-width: 0; }
 .window__tune { display: grid; grid-template-rows: auto minmax(0, 1fr); min-height: 0; min-width: 0; }
 .window__navigation { display: flex; gap: var(--s99ab-control-gap); min-width: 0; }
-.window__navigation :deep(.key) { flex: 1 1 0; min-width: 0; height: 44px; }
+.window__navigation :deep(.key:not(.key--icon)) { flex: 1 1 0; min-width: 0; }
 .window__navigation :deep(.key__label) { display: inline; }
 @media (max-width: 959px), (max-height: 559px) {
   .instrument-frame { --s99ab-frame-inset: 6px; gap: 4px; padding-bottom: 2px; }

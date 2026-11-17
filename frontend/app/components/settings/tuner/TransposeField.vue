@@ -1,5 +1,6 @@
 <template>
   <UiFormField
+    row
     :label="t('tuner.reference.transpose')"
     :hint="t(why || 'tuner.reference.transposeHint')"
   >

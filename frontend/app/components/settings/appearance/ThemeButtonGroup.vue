@@ -1,5 +1,6 @@
 <template>
   <UiFormField
+    row
     :label="t('settings.themeLabel')"
     :hint="t('settings.themeHint')"
   >

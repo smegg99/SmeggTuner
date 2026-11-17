@@ -4,7 +4,11 @@
     :class="{ 'box--beat': box.kind === 'beat', 'box--out': box.out, 'box--dim': box.dimmed }"
   >
     <div class="box__top">
-      <span class="box__label">{{ label }}</span>
+      <!-- A narrow box (five on a phone) has no room for a beat's full name. -->
+      <span class="box__label">
+        <span class="box__name">{{ label }}</span>
+        <span class="box__name box__name--short">{{ shortLabel }}</span>
+      </span>
       <span class="box__unit">{{ t(`common.unitSymbol.${box.unit}`) }}</span>
     </div>
 
@@ -58,6 +62,13 @@ const label = computed(() => {
   const [lo, hi] = b.pair ?? [b.index, b.index + 1]
   return t('tuner.boxes.beat', { a: lo, b: hi })
 })
+// The pair alone: the box stands between its two reeds, in the beat's own shade.
+const shortLabel = computed(() => {
+  const b = props.box
+  if (b.kind !== 'beat') return label.value
+  const [lo, hi] = b.pair ?? [b.index, b.index + 1]
+  return `${lo}-${hi}`
+})
 
 // Formatting only, at the readout's own precision; the value comes from the DTO.
 function format(value: number): string {
@@ -103,15 +114,20 @@ function format(value: number): string {
   white-space: nowrap;
 }
 
+.box__name--short { display: none; }
+
 .box__unit {
   color: rgb(var(--v-theme-ink3));
   font-size: 11px;
   margin-left: auto;
 }
 
-/* Five boxes on a phone: the label keeps the room, the unit is in the ruler's header anyway. */
+/* Five boxes on a phone: the label keeps the room, in its short form, and the unit is in the ruler's
+   header anyway. */
 @container (max-width: 90px) {
   .box__unit { display: none; }
+  .box__name { display: none; }
+  .box__name--short { display: inline; }
 }
 
 .box__value {
@@ -172,5 +188,12 @@ function format(value: number): string {
   .box__value { font-size: 18px; }
   .box__foot { font-size: 10px; }
   .box__foot b { font-size: 11px; }
+}
+/* Five boxes in a landscape phone's left column: five digits still fit. */
+@container (max-width: 55px) {
+  .box__value { font-size: 15px; }
+}
+@container (max-width: 45px) {
+  .box__value { font-size: 14px; }
 }
 </style>

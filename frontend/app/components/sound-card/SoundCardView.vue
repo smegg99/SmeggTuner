@@ -126,7 +126,8 @@ onBeforeUnmount(() => {
 .sc__column {
   display: grid;
   flex: 0 0 auto;
-  grid-template-rows: 24px minmax(0, 1fr) 30px;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 24px minmax(0, 1fr) var(--s99ab-control-h);
   height: 500px;
   justify-items: center;
   margin-block: auto;
@@ -165,4 +166,28 @@ onBeforeUnmount(() => {
 
 .sc__actions { display: grid; gap: var(--gap); grid-template-columns: 140px 140px; }
 .sc__key { justify-content: center; width: 100%; }
+
+/* A compact window is a screen, not a scroll: the column is as tall as the room, and the one-line text may
+   take two lines where a phone held upright is too narrow for it. */
+@media (max-width: 959px), (max-height: 559px) {
+  .sc__column { height: 100%; max-height: 500px; }
+  .sc__text p { white-space: normal; }
+}
+/* A phone on its side has no height for one group: the outcome on the left, its figures on the right. */
+@media (max-height: 559px) and (min-width: 560px) {
+  .sc__column { max-width: 760px; row-gap: var(--gap); }
+  .sc__middle {
+    display: grid;
+    grid-template-areas: "figure meter" "figure stats" "text stats";
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    align-content: center;
+    align-items: center;
+    gap: var(--gap) 24px;
+  }
+  .sc__figure { grid-area: figure; height: 72px; }
+  .sc__text { grid-area: text; align-self: start; }
+  .sc__middle > :deep(.sc__meter) { grid-area: meter; }
+  .sc__middle > :deep(.sc__stats) { grid-area: stats; align-self: start; width: 100%; }
+}
 </style>

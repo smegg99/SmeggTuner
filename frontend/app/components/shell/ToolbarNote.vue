@@ -43,28 +43,8 @@
       <span class="group-rule" />
     </template>
 
-    <div
-      v-if="!WEB"
-      class="note-audio"
-    >
-      <!-- The app's own output level for file playback and every tone, the note strip's included; the key
-           mutes them all and keeps the level. -->
-      <UiLevelControl
-        :model-value="volume"
-        :on="!muted"
-        :active="muted"
-        :title="t('tuner.output.volume')"
-        :toggle-title="muted ? t('tuner.output.unmute') : t('tuner.output.mute')"
-        @toggle="setMuted(!muted)"
-        @update:model-value="setVolume"
-      />
-      <UiToolKey
-        icon="mdi-sine-wave"
-        :title="t('tuner.signal.open')"
-        :active="signalOpen"
-        @click="setSignalOpen(!signalOpen)"
-      />
-    </div>
+    <!-- Compact windows carry the output keys in the top bar, beside the input. -->
+    <ShellToolbarAudio v-if="!WEB && !compact" />
   </div>
 </template>
 
@@ -72,8 +52,6 @@
 import { computed } from 'vue'
 import { AUTO_NOTE, useTuner } from '~/composables/useTuner'
 import { useConfigSync } from '~/composables/useConfigSync'
-import { useOutputLevel } from '~/composables/useOutputLevel'
-import { useSignal } from '~/composables/useSignal'
 import { noteName } from '~/utils/tuning'
 import { WEB } from '~/utils/features'
 
@@ -82,8 +60,6 @@ const { t } = useI18n()
 const { config } = useConfigSync()
 const { note, manualNote, mode, sessionReeds, setAuto, stepNote } = useTuner()
 const compact = useCompactLayout()
-const { volume, muted, setVolume, setMuted } = useOutputLevel()
-const { open: signalOpen, setOpen: setSignalOpen } = useSignal()
 
 const manual = computed(() => manualNote.value !== AUTO_NOTE)
 const chords = computed(() => !sessionReeds.value && mode.value === 'chords')
@@ -97,7 +73,7 @@ const pinnedName = computed(() => {
 </script>
 
 <style scoped>
-.note-step, .note-audio { display: flex; align-items: center; gap: var(--s99ab-control-gap); flex: 0 0 auto; }
+.note-step { display: flex; align-items: center; gap: var(--s99ab-control-gap); flex: 0 0 auto; }
 
 .note {
   font-family: var(--font-mono);

@@ -1,29 +1,15 @@
 <template>
   <div class="boxes">
-    <UiToolKey
-      v-if="pages > 1"
-      icon="mdi-chevron-left"
-      :title="t('common.previous')"
-      :disabled="page === 0"
-      @click="page--"
-    />
     <TunerValueBox
-      v-for="(box, i) in shownBoxes"
+      v-for="(box, i) in boxes"
       :key="`${box.kind}-${i}`"
       :box="box"
-    />
-    <UiToolKey
-      v-if="pages > 1"
-      icon="mdi-chevron-right"
-      :title="t('common.next')"
-      :disabled="page >= pages - 1"
-      @click="page++"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed } from 'vue'
 import { buildBoxes } from '~/utils/boxes'
 import type { RankSlot } from '~/utils/boxes'
 import { bassSlotsOf, octaveOf } from '~/utils/feet'
@@ -35,11 +21,8 @@ import { useErrorReference } from '~/composables/useErrorReference'
 import { useSessions } from '~/composables/useSessions'
 import { useTuner } from '~/composables/useTuner'
 
-const { t } = useI18n()
-const compact = useCompactLayout()
-const page = ref(0)
-
 // One box per slot plus a beat between each adjacent pair; flex row fits 1..8 slots (nothing assumes three).
+// Every box is on screen at every window size: a narrow one shortens its label and its digits (TunerValueBox).
 // DOM not canvas, so the readout stays selectable and screen-readable.
 const { panels, reedErrors, beatErrors, reeds, reedCount, mode, reedBoxes, octaveOffsets } = useTuner()
 const { active } = useSessions()
@@ -95,11 +78,6 @@ const boxes = computed(() => buildBoxes({
   tolerance: tolerance.value,
   beatTolerance: beatTolerance.value,
 }))
-const pages = computed(() => compact.value ? Math.ceil(boxes.value.length / 3) : 1)
-const shownBoxes = computed(() => compact.value ? boxes.value.slice(page.value * 3, page.value * 3 + 3) : boxes.value)
-watch(pages, (count) => {
-  page.value = Math.max(0, Math.min(page.value, count - 1))
-})
 </script>
 
 <style scoped>
@@ -108,5 +86,4 @@ watch(pages, (count) => {
   gap: var(--gap);
   min-height: 0;
 }
-.boxes > .key { align-self: center; flex: 0 0 auto; }
 </style>

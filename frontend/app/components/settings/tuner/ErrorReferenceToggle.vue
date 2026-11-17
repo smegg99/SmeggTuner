@@ -1,5 +1,6 @@
 <template>
   <UiFormField
+    row
     :label="t('settings.errorReference')"
     :hint="t('settings.errorReferenceHint')"
   >

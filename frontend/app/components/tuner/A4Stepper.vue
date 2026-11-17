@@ -1,6 +1,9 @@
 <template>
   <!-- Inline: A4 is typed into the field. -->
-  <div class="a4">
+  <div
+    class="a4"
+    :class="{ 'a4--panel': panel }"
+  >
     <label
       class="a4__field"
       :class="{ 'a4__field--off': !!why }"
@@ -28,6 +31,11 @@ import { useConfigSync } from '~/composables/useConfigSync'
 import { useSessions } from '~/composables/useSessions'
 import { useTuner } from '~/composables/useTuner'
 import { a4Refusal, parseA4 } from '~/utils/reference'
+
+defineProps<{
+  /** on its own beside the note, at the note's height: a compact window, where the note's card has no room for it */
+  panel?: boolean
+}>()
 
 // The engine's A4; with a session open it is the session's.
 const { t } = useI18n()
@@ -64,7 +72,7 @@ function commit(event: Event) {
 
 <style scoped>
 .a4 {
-  --s99ab-control-h: 26px;
+  --s99ab-control-h: var(--s99ab-control-h-dense);
   align-items: center;
   display: flex;
   justify-content: center;
@@ -112,5 +120,23 @@ function commit(event: Event) {
   padding: 0;
   text-align: right;
   width: 100%;
+}
+
+/* On its own beside the note: as tall as the note, the name over a number large enough to tap and read. */
+.a4--panel { align-items: stretch; }
+.a4--panel .a4__field {
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  height: auto;
+  width: 104px;
+  border-radius: var(--app-radius-panel);
+}
+.a4--panel .a4__name { text-align: center; }
+.a4--panel .a4__input { font-size: 16px; text-align: center; }
+/* In a row of keys (TunerView's wide landscape) it is one line again. */
+@media (min-width: 780px) and (max-height: 559px) {
+  .a4--panel .a4__field { flex-direction: row; gap: 8px; width: 128px; padding-inline: 12px; border-radius: var(--s99ab-radius); }
+  .a4--panel .a4__input { font-size: 14px; text-align: right; }
 }
 </style>

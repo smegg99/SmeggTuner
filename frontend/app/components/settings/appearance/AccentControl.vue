@@ -1,5 +1,6 @@
 <template>
   <UiFormField
+    row
     :label="t('settings.accent.label')"
     :hint="t(WEB ? 'tuner.web.accent.hint' : 'settings.accent.hint')"
   >

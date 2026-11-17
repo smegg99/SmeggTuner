@@ -5,6 +5,8 @@ import type { View } from '~/composables/useShell'
 
 const TITLES: Partial<Record<View, string>> = {
   settings: 'common.routes.settings',
+  help: 'common.about.helpTitle',
+  about: 'common.about.aboutTitle',
   soundcard: 'settings.calibration.label',
   calibrate: 'tuner.calibrate.title',
 }

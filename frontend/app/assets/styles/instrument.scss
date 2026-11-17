@@ -181,6 +181,7 @@
   height: 100%;
   max-height: 100%;
 }
+.v-overlay-container.v-overlay-container .v-dialog > .v-overlay__content.about-dialog { width: var(--dlg-md); }
 .v-overlay-container.v-overlay-container .dlg__body .dialog-warn {
   color: rgb(var(--v-theme-ink2)); font-size: 13px; line-height: 1.5; margin: 0;
 }
@@ -284,13 +285,16 @@ html[data-input='pointer'] .v-overlay-container.v-overlay-container .tuner-menu 
   outline-offset: 1px;
 }
 
-// Fixed mobile screens use explicit tabs/pages; never a scrollable window.
+// Fixed mobile screens use explicit tabs/pages; never a scrollable window. One scale for all of
+// them: keys are the touch height, fields inside a card the dense one, the note and ruler strips one height.
+$touch-key-h: 40px;
 @media (max-width: 959px), (max-height: 559px) {
   :root:root {
     --gap: 6px;
-    --s99ab-control-h: 40px;
+    --s99ab-control-h: #{$touch-key-h};
     --s99ab-control-h-dense: 32px;
     --s99ab-strip-h: 30px;
+    --app-readout-h: 64px;
   }
   .v-application.v-application .shelf .s99ab-state { min-height: 0; height: 100%; }
   .v-application.v-application .panel__head { flex-wrap: nowrap; }
@@ -301,4 +305,40 @@ html[data-input='pointer'] .v-overlay-container.v-overlay-container .tuner-menu 
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+  // A document and the About panel take the whole screen there, not a card floating in it.
+  .v-overlay-container.v-overlay-container .v-dialog > .v-overlay__content.info-dialog,
+  .v-overlay-container.v-overlay-container .v-dialog > .v-overlay__content.about-dialog {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+  }
+  .v-overlay-container.v-overlay-container .info-dialog > .dlg,
+  .v-overlay-container.v-overlay-container .about-dialog > .dlg {
+    height: 100%;
+    max-height: 100%;
+    border: 0;
+    border-radius: 0;
+  }
+  // A list's rows are as tall as a key there.
+  .v-overlay-container.v-overlay-container .tuner-menu .v-list-item { min-height: #{$touch-key-h}; }
+  .v-overlay-container.v-overlay-container .tuner-menu .v-list-item-title { font-size: 13px; }
+  // A field is as tall as the keys beside it there.
+  .v-application.v-application .v-field, .v-overlay-container.v-overlay-container .v-field {
+    --v-input-control-height: #{$touch-key-h};
+  }
+  .v-application.v-application .v-field__input, .v-overlay-container.v-overlay-container .v-field__input,
+  .v-application.v-application .v-select .v-field__input, .v-overlay-container.v-overlay-container .v-select .v-field__input,
+  .v-application.v-application .v-text-field:where(:not(.v-select):not(.v-textarea)) .v-field__input,
+  .v-overlay-container.v-overlay-container .v-text-field:where(:not(.v-select):not(.v-textarea)) .v-field__input {
+    min-height: #{$touch-key-h};
+  }
+  // Settings keep a finger's distance between one row and the next there.
+  .v-application.v-application .settings .form-section.tuner-section > .form-section__grid { gap: calc(2 * var(--gap)); }
+  // The recording's play, stop and controls keys are worked with a finger there.
+  .v-application.v-application .file > .panel__head { --s99ab-control-h: #{$touch-key-h}; }
+  // A dialog's foot is a row of keys there, not the dense strip a panel's foot is elsewhere.
+  .v-overlay-container.v-overlay-container .dlg > .panel__foot { --s99ab-control-h: #{$touch-key-h}; }
+  .v-overlay-container.v-overlay-container .dlg__foot .v-btn { min-height: var(--s99ab-control-h); }
 }

@@ -1,5 +1,6 @@
 <template>
   <UiFormField
+    row
     :label="t('settings.detectionLabel')"
     :hint="t(`settings.detection.${detection}Hint`)"
   >

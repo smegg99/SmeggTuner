@@ -13,9 +13,6 @@
         class="dlg__close"
         icon="mdi-close"
         variant="text"
-        :width="32"
-        :height="32"
-        :min-height="32"
         :disabled="busy"
         :title="t('common.close')"
         :aria-label="t('common.close')"
@@ -73,6 +70,9 @@ const { t } = useI18n()
 }
 .dlg .dlg__close {
   flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  min-height: 32px;
   color: rgb(var(--v-theme-ink2));
 }
 .dlg :deep(.panel__body) { overflow: clip; }
@@ -97,5 +97,18 @@ const { t } = useI18n()
   justify-content: flex-end;
   align-items: center;
   gap: 8px;
+}
+
+/* A compact window is worked with a finger: the close key and the foot's buttons take the control
+   height, the buttons share the foot's width, and the text is a size larger. */
+@media (max-width: 959px), (max-height: 559px) {
+  .dlg :deep(.panel__head) { padding-inline-end: 4px; }
+  .dlg .dlg__close {
+    width: var(--s99ab-control-h);
+    height: var(--s99ab-control-h);
+    min-height: var(--s99ab-control-h);
+  }
+  .dlg__body { font-size: var(--s99ab-font-size); }
+  .dlg__foot :deep(.v-btn) { flex: 1 1 auto; }
 }
 </style>

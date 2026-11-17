@@ -18,3 +18,10 @@ export function usePagedLayout() {
   const { width, height } = useDisplay()
   return computed(() => width.value < 960 || height.value < 560)
 }
+
+/** A landscape phone wide enough for the note keys in the top bar: the tuner then gives the plot its whole
+ *  width. The same sizes as the media queries of TunerView and NotePanel. */
+export function useWideLandscapeLayout() {
+  const { width, height } = useDisplay()
+  return computed(() => width.value >= 780 && height.value < 560)
+}

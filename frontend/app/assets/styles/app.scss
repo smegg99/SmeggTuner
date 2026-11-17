@@ -30,10 +30,22 @@
   width: 100%;
 }
 
+// A list never takes more than about half the window's height, so it opens under or over its key and
+// scrolls there, not across it.
 .tuner-menu {
   min-width: 135px;
   max-width: min(404px, 95vw);
+  max-height: min(310px, 55vh);
+  overflow-y: auto;
 }
+
+// A select's list is exactly as wide as its field: a long name is cut short, the list does not outgrow
+// the field or stop short of its end. Settings keeps the field itself from stretching (SettingsView).
+.v-select__content > .v-sheet {
+  width: 0;
+  min-width: 100%;
+}
+.v-select__content .tuner-menu { max-width: none; }
 
 .tuner-menu .v-list-item-title {
   overflow: hidden;

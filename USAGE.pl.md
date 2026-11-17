@@ -8,7 +8,7 @@
 
 Ta instrukcja i ilustracje są dostępne bez internetu przez **Pomoc** lub **O programie -> Jak używać SmeggTunera**. **O programie -> Polityka prywatności** opisuje sposób przetwarzania danych, również bez połączenia z internetem.
 
-Na Androidzie zezwól na użycie mikrofonu, gdy aplikacja o to poprosi. Po odmowie nadal możesz analizować plik WAV. Przechwytywanie dźwięku zatrzymuje się po opuszczeniu aplikacji. Na Androidzie i w wersji przeglądarkowej cały panel dopasowuje się do ekranu. Obróć telefon, aby uzyskać większy widok. Ustawienia dotyczące tylko komputera, na przykład zasobnika systemowego, nie dotyczą Androida.
+Na Androidzie zezwól na użycie mikrofonu, gdy aplikacja o to poprosi. Po odmowie nadal możesz analizować plik WAV. Przechwytywanie dźwięku zatrzymuje się po opuszczeniu aplikacji. Na telefonie stroik pokazuje jeden wykres naraz: zakładki nad nim przełączają Wejście, Nuty i Widmo. Głośność wyjścia jest tam w **Ustawieniach**, a **Pomoc** i **O programie** to osobne widoki obok **Strojenia** i **Ustawień**. Ustawienia dotyczące tylko komputera, na przykład zasobnika systemowego, nie dotyczą Androida.
 
 ## Pierwsze użycie
 

@@ -43,7 +43,6 @@ const web = process.env.SMEGGTUNER_EDITION === 'web'
 const browserTarget: string | string[] = web
   ? ['safari16.4', 'chrome111', 'firefox115', 'edge111']
   : `chrome${androidConfig.webViewMinMajor}`
-// Browser and Android share the fitted instrument viewport.
 const desktopOnlyPlugins = ['/plugins/editKeys.ts']
 
 export default defineNuxtConfig({
@@ -67,6 +66,8 @@ export default defineNuxtConfig({
     pageTransition: false,
     layoutTransition: false,
     head: {
+      // The interface never scrolls or zooms as a page; this also stops the zoom a focused text field starts.
+      viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
       style: [
         {
           // Prevent flash before Vuetify/JS loads. The actual theme is applied

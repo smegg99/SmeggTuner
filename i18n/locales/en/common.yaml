@@ -55,7 +55,9 @@ title.progress:
     room: {type: string}
     total: {type: string}
 
+title.room.about: {value: "about"}
 title.room.calibrate: {value: "calibration"}
+title.room.help: {value: "help"}
 title.room.settings: {value: "settings"}
 title.room.soundcard: {value: "sound card"}
 title.room.tune: {value: "tuning"}

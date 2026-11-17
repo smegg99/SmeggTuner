@@ -1,12 +1,14 @@
 <template>
   <UiFormField
     v-slot="{ id }"
+    row
     :label="t('settings.languageLabel')"
     :hint="t('settings.languageHint')"
   >
     <v-select
       :id="id"
       v-model="language"
+      class="language"
       :items="languageItems"
       item-title="label"
       item-value="value"
@@ -43,3 +45,8 @@ const languageItems = computed(() =>
   localeItems.value.map(l => ({ value: l.code, label: l.name })),
 )
 </script>
+
+<style scoped>
+/* A language's name is short: the field is as wide as that, not as its column. */
+.language { flex: 0 0 auto; width: 160px; }
+</style>

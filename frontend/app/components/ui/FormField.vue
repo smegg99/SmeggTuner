@@ -1,5 +1,8 @@
 <template>
-  <div class="field">
+  <div
+    class="field"
+    :class="{ 'field--row': row }"
+  >
     <!-- The hint hovers on the label rather than taking a paragraph under every input. -->
     <label
       class="field__label"
@@ -31,6 +34,8 @@ defineProps<{
   label: string
   hint?: string
   error?: string
+  /** a short control: a compact window puts it on its label's row, at the far end */
+  row?: boolean
 }>()
 
 const id = useId()
@@ -66,5 +71,20 @@ const id = useId()
 .field__error {
   color: rgb(var(--v-theme-warn));
   font-size: 11px;
+}
+
+/* A compact window is read at arm's length and has width to spare beside a short control: the label is
+   a size larger, and a row field puts its control at the far end of the label's row. A control too
+   wide for that takes the next line, still at the far end. */
+@media (max-width: 959px), (max-height: 559px) {
+  .field__label { font-size: 13px; }
+  .field--row {
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-tight) 12px;
+  }
+  .field--row > .field__control { margin-inline-start: auto; }
+  .field--row > .field__error { flex: 1 0 100%; }
 }
 </style>

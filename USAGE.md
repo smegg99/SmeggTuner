@@ -8,7 +8,7 @@ English | [Polski](USAGE.pl.md) - SmeggTuner 1.4
 
 This guide and its pictures are available offline through **Help** or **About -> How to use SmeggTuner**. **About -> Privacy policy** explains how the app handles your data, also without an internet connection.
 
-On Android, allow microphone access when asked. You can still analyze a WAV file if you refuse. Audio capture stops when you leave the app. On Android and in the browser edition, the full instrument panel scales to the screen; rotate your phone for a larger view. Desktop-only settings, such as the system tray, do not apply on Android.
+On Android, allow microphone access when asked. You can still analyze a WAV file if you refuse. Audio capture stops when you leave the app. On a phone, the tuner shows one plot at a time: the tabs above it switch between Input, Notes and Spectrum. The output volume is in **Settings** there, and **Help** and **About** are rooms of their own beside **Tune** and **Settings**. Desktop-only settings, such as the system tray, do not apply on Android.
 
 ## First use
 

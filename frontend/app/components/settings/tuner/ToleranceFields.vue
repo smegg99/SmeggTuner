@@ -1,6 +1,7 @@
 <template>
   <UiFormField
     v-slot="{ id }"
+    row
     :label="t('settings.toleranceLabel')"
     :hint="t('settings.toleranceHint')"
   >
@@ -70,9 +71,11 @@ const { draft: beatDraft, commit: commitBeat } = useDraftNumber(
   gap: var(--gap);
 }
 
+/* A tolerance is a number of a few digits: the field is as wide as that, not as half its column. */
 .tol__one {
   display: flex;
-  flex: 1 1 0;
+  flex: 0 0 auto;
+  width: 96px;
   flex-direction: column;
   gap: var(--gap-tight);
   min-width: 0;

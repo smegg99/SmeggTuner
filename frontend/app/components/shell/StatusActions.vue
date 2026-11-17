@@ -1,6 +1,7 @@
 <!-- app/components/shell/StatusActions.vue -->
 <template>
-  <!-- The window bar's own keys: the downloads page in the web edition, Help and About. -->
+  <!-- The window bar's own keys: the downloads page in the web edition, Help and About. A compact window
+       has Help and About as rooms instead (ShellToolbarViews). -->
   <div class="status__actions">
     <a
       v-if="WEB"
@@ -17,6 +18,7 @@
       <span class="status__action-label">{{ t('tuner.web.downloads.title') }}</span>
     </a>
     <button
+      v-if="!compact"
       type="button"
       class="status__action"
       :title="t('common.about.helpTitle')"
@@ -29,6 +31,7 @@
       <span class="status__action-label">{{ t('common.about.helpTitle') }}</span>
     </button>
     <button
+      v-if="!compact"
       type="button"
       class="status__action"
       :title="t('common.about.aboutTitle')"
@@ -51,6 +54,7 @@ import { ref } from 'vue'
 import { DOWNLOADS_URL, WEB } from '~/utils/features'
 
 const { t } = useI18n()
+const compact = useCompactLayout()
 const aboutOpen = ref(false)
 const helpOpen = ref(false)
 </script>

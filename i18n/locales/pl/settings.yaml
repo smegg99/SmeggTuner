@@ -154,6 +154,7 @@ calibration.status.unreliable: {value: "Niepewna, odczyty nie są poprawiane"}
 groups.appearance: {value: "Wygląd"}
 groups.detection: {value: "Wykrywanie"}
 groups.microphone: {value: "Mikrofon"}
+groups.output: {value: "Wyjście", description: "Settings section shown on a phone, holding the output volume."}
 groups.readings: {value: "Odczyty"}
 groups.report: {value: "Dane warsztatu"}
 
