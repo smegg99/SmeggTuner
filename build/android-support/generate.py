@@ -184,18 +184,8 @@ replace(activity, '''    @Override
     }
 ''', '')
 replace(manifest, '        android:allowBackup="true"', '        android:allowBackup="true"\n        android:enableOnBackInvokedCallback="true"')
-# The WebView occupies the safe drawing area; CSS and overlays use its viewport.
 replace(activity, '        setContentView(R.layout.activity_main);', '''        setContentView(R.layout.activity_main);
-        android.view.View content = findViewById(R.id.main_container);
-        androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(content, (view, insets) -> {
-            androidx.core.graphics.Insets safe = insets.getInsets(
-                    androidx.core.view.WindowInsetsCompat.Type.systemBars()
-                    | androidx.core.view.WindowInsetsCompat.Type.displayCutout()
-                    | androidx.core.view.WindowInsetsCompat.Type.ime());
-            view.setPadding(safe.left, safe.top, safe.right, safe.bottom);
-            return insets;
-        });
-        androidx.core.view.ViewCompat.requestApplyInsets(content);''')
+        WindowLayout.install(getWindow(), findViewById(R.id.main_container));''')
 replace(OUT / "app/src/main/res/values/strings.xml", 'Wails App', 'SmeggTuner')
 
 # Keep the Wails host's unused capabilities out of the app's permission surface.
