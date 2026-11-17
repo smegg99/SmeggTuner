@@ -55,9 +55,9 @@ unitHint: {value: "Centy lub jednostki 0,06 % nuty"}
 unitLabel: {value: "Jednostka odchyłki"}
 
 # Appearance, language and window behavior
-accent.auto: {value: "Pulpit"}
+accent.auto: {value: "Systemowy"}
 accent.custom: {value: "Własny"}
-accent.hint: {value: "Akcent pulpitu lub własny kolor"}
+accent.hint: {value: "Akcent systemowy lub własny kolor"}
 accent.label: {value: "Akcent"}
 accent.pick: {value: "Wybierz kolor"}
 accent.pickTitle: {value: "Kolor akcentu"}

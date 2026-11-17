@@ -13,11 +13,11 @@
       />
 
       <button
-        v-if="accent === ACCENT_MODE.CUSTOM"
         type="button"
         class="accent__pick"
         :style="{ background: accentColor || '#000000' }"
         :title="t('settings.accent.pick')"
+        :disabled="accent !== ACCENT_MODE.CUSTOM"
         @click="openPicker"
       />
     </div>
@@ -112,5 +112,10 @@ const accentItems = computed<ToolItem[]>(() =>
   border-radius: 2px;
   cursor: pointer;
   flex: 0 0 auto;
+}
+
+.accent__pick:disabled {
+  cursor: default;
+  opacity: 0.38;
 }
 </style>

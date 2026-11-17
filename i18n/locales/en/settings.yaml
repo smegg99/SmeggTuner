@@ -55,9 +55,9 @@ unitHint: {value: "Cents, or units of 0.06 % of the note"}
 unitLabel: {value: "Deviation unit"}
 
 # Appearance, language and window behavior
-accent.auto: {value: "Desktop"}
+accent.auto: {value: "System"}
 accent.custom: {value: "Custom"}
-accent.hint: {value: "Desktop accent or your own colour"}
+accent.hint: {value: "System accent or your own colour"}
 accent.label: {value: "Accent"}
 accent.pick: {value: "Pick a colour"}
 accent.pickTitle: {value: "Accent colour"}
