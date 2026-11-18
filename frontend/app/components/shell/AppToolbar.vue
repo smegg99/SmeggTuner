@@ -139,7 +139,9 @@ useBarHeight(bar)
 /* A narrow desktop bar keeps every control and its label, the input picker at full width, and tightens
    round them: keys a little smaller, the reed keys without their caption, a shorter slider, closer groups. */
 @media (min-width: 960px) and (min-height: 560px) {
-  @container (max-width: 1120px) {
+  .bar { flex-wrap: wrap; }
+
+  @container (max-width: 1280px) {
     .bar > * { --s99ab-control-h: 26px; }
     .bar :deep(.modes__label) { display: none; }
     .bar :deep(.tuner-volume) { flex-basis: 44px; width: 44px; }

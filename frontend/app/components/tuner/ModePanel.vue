@@ -94,9 +94,10 @@ function toggle(b: ShownBox) {
 .modes__reeds { display: flex; align-items: center; gap: var(--s99ab-control-gap); }
 .modes__reeds :deep(.key) { min-width: var(--s99ab-control-h); }
 
-/* A row of its own in compact windows: the mode keys share what the reed keys leave. */
-.modes--row > .modes__kinds { flex: 1 1 auto; max-width: 320px; min-width: 0; }
-.modes--row > .modes__kinds :deep(.key) { flex: 1 1 0; min-width: 0; }
+/* Keep translated mode names readable. The reed keys move together if they need a second row. */
+.modes--row { flex-wrap: wrap; row-gap: var(--s99ab-control-gap); }
+.modes--row > .modes__kinds { flex: 1 1 max-content; max-width: 320px; min-width: 0; }
+.modes--row > .modes__kinds :deep(.key) { flex: 1 0 auto; }
 
 .modes__label {
   color: rgb(var(--v-theme-ink3));

@@ -206,7 +206,10 @@ watch(file, (value) => {
     "ruler"
     "boxes";
   grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: var(--app-readout-h) var(--s99ab-control-h) auto var(--s99ab-control-h) minmax(0, 1fr) var(--app-readout-h) auto;
+  grid-template-rows: var(--app-readout-h) auto auto var(--s99ab-control-h) minmax(0, 1fr) var(--app-readout-h) auto;
+}
+@media (max-width: 959px) and (min-height: 560px) {
+  .tuner__tools { flex-wrap: wrap; }
 }
 .tuner--compact .tuner__input,
 .tuner--compact .tuner__notes,
