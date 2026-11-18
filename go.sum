@@ -402,8 +402,6 @@ github.com/smegg99/s99base v1.0.0 h1:ZeO12UvLeOO7guocD1Yo5UDGEnSTHn4/2yqmwlLNKk0
 github.com/smegg99/s99base v1.0.0/go.mod h1:KJHUDjLc1BiH/PJkYennC8JpdDhg9ZSjv/YQv4GJfEU=
 github.com/smegg99/s99config v1.1.1 h1:Q1tUkb6LjQR83omWhu2mPJ97J36iUCQFiOvTHUHglM4=
 github.com/smegg99/s99config v1.1.1/go.mod h1:xFO8ZiNXiJ/bGVXA4NXIFG9qV902JRi1wLqhgot6viw=
-github.com/smegg99/s99locale v1.1.1 h1:4zgU+695MN9N3zJ3cB0rz1yWQDdjYd/O60a54M1Ctt0=
-github.com/smegg99/s99locale v1.1.1/go.mod h1:XAUhh92p6UxZDEgK4BV08jRLzFnj4XYdq/BhDvpNUVU=
 github.com/smegg99/s99locale v1.1.2 h1:quRS4kAkT5w85swPKy5WffjXqdMAMl22uSERobqylsc=
 github.com/smegg99/s99locale v1.1.2/go.mod h1:XAUhh92p6UxZDEgK4BV08jRLzFnj4XYdq/BhDvpNUVU=
 github.com/smegg99/s99logger v1.3.1 h1:w/Mn735tRVGlL8aQFAmur9ZkGFfaO4gSVqF/3rjCO18=

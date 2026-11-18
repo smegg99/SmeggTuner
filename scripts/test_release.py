@@ -90,6 +90,24 @@ class ReleaseTests(unittest.TestCase):
         self.assertEqual(files, ["SHA256SUMS", "smeggtuner-1.2.3-windows-amd64-installer.exe",
                                  "smeggtuner-1.2.3-windows-amd64.exe"])
 
+    def test_windows_sync_keeps_desktop_assets_and_skips_other_build_outputs(self):
+        sync = """if [[ "$1" == sync ]]; then
+    mkdir -p checkout/{backend/frontend/public,build/linux/appimage,frontend/{.output-web,.web-assets}}
+    touch checkout/backend/frontend/public/index.html checkout/build/linux/appimage/linuxdeploy
+    touch checkout/frontend/.output-web/index.html checkout/frontend/.web-assets/engine.wasm
+    touch checkout/upload.jks
+    tar -cf sync.tar checkout
+    unset TAR_OPTIONS
+    tar -tf sync.tar checkout/backend/frontend/public/index.html >/dev/null
+    for skipped in build/linux/appimage frontend/.output-web frontend/.web-assets upload.jks; do
+        if tar --list --file=sync.tar "checkout/$skipped" >/dev/null 2>&1; then exit 1; fi
+    done
+    exit 0
+fi"""
+        windows = WINDOWS_BUILD.replace('if [[ "$1" == sync ]]; then exit 0; fi', sync)
+        result, _, _ = self.run_release("windows/amd64", windows=windows)
+        self.assertEqual(result.returncode, 0, result.stderr)
+
     def test_complete_android_release(self):
         result, files, _ = self.run_release("android/arm64")
         self.assertEqual(result.returncode, 0, result.stderr)

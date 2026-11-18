@@ -55,7 +55,16 @@ linux() {
 windows() {
     local arch=$1 name="$app-$version-windows-$1" f
     [[ "$arch" == amd64 ]] || { echo "ERR: no windows/$arch lab VM" >&2; return 1; }
-    ./testlab/lab.sh sync "$lab" && ./testlab/lab.sh package "$lab" || return 1
+    # The lab archives the working tree, including generated files. Keep the desktop
+    # frontend in backend/frontend/public, but skip other platforms' staging trees.
+    local filters='--exclude=build/linux/appimage --exclude=.output-web --exclude=.web-assets --exclude=.smegglect --exclude=*.jks --exclude=*.keystore'
+    local started=$SECONDS
+    echo "Syncing Windows sources and desktop assets to $lab..."
+    TAR_OPTIONS="${TAR_OPTIONS:+$TAR_OPTIONS }$filters" ./testlab/lab.sh sync "$lab" </dev/null || return 1
+    echo "Sync finished in $((SECONDS - started))s. Building and fetching Windows executables..."
+    started=$SECONDS
+    ./testlab/lab.sh package "$lab" </dev/null || return 1
+    echo "Windows packaging and download finished in $((SECONDS - started))s."
     local portable=() installers=()
     for f in "bin/lab-out/$lab"/*.exe; do
         case "$f" in *installer*) installers+=("$f") ;; *) portable+=("$f") ;; esac
