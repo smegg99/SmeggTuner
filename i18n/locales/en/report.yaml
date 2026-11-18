@@ -4,7 +4,7 @@
 # Plurals: one = 1; other = 0, 2, 3, ...
 
 # Report title and instrument details
-facts.curve: {value: "Goal curve"}
+facts.curve: {value: "Target curve"}
 facts.curveNone: {value: "none"}
 facts.curveUnnamed: {value: "unnamed"}
 facts.reference: {value: "Reference A4 (this pass)"}
@@ -59,15 +59,15 @@ graph.edited:
     mark: {type: string}
 
 legend.error.cents:
-  value: "File toward zero. Cents from the tempered scale at {a4} Hz."
+  value: "File each reed to bring its error toward zero. Curr for a reed is its offset in cents from the tempered scale at A4 = {a4} Hz."
   placeholders:
     a4: {type: string}
 
-legend.error.key: {value: "Error = Curr - Goal."}
-legend.error.noCurve: {value: "No goal curve: Goal is zero, Error is deviation from the scale."}
+legend.error.key: {value: "Err = Curr minus target."}
+legend.error.noCurve: {value: "Without a target curve, the reed target is zero and Err is the deviation from the scale."}
 
 legend.error.reference:
-  value: "File toward zero. Units of 0.06 % of the note frequency, from the tempered scale at {a4} Hz."
+  value: "File each reed to bring its error toward zero. Reed offsets are relative to the tempered scale at A4 = {a4} Hz. One unit is 0.06% of the note frequency."
   placeholders:
     a4: {type: string}
 

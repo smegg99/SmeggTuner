@@ -37,9 +37,9 @@ calibrationFinished: {value: "Zakończono kalibrację karty dźwiękowej"}
 calibrationNoDevice: {value: "Nie udało się otworzyć urządzenia do kalibracji"}
 calibrationStarted: {value: "Rozpoczęto kalibrację karty dźwiękowej"}
 deviceStoreFailed: {value: "Nie udało się zapisać ustawień urządzenia wejściowego"}
-micBlocksDropped: {value: "Odbiorca nie nadąża za mikrofonem; pomijanie bloków"}
+micBlocksDropped: {value: "Przetwarzanie sygnału z mikrofonu nie nadąża. Pominięto bloki próbek."}
 micDeviceLost: {value: "Urządzenie wejściowe nieoczekiwanie zatrzymało przechwytywanie"}
-volumeRestore: {value: "Nie udało się przywrócić poziomu wejściowego"}
+volumeRestore: {value: "Po zakończeniu automatycznej regulacji nie udało się przywrócić poziomu wejściowego."}
 volumeStepFailed: {value: "Nie udało się zmienić poziomu wejściowego"}
 volumeUnavailable: {value: "Automatyczna regulacja nie ma dostępu do poziomu wejściowego urządzenia"}
 
@@ -72,7 +72,7 @@ sessionCurveImported: {value: "Zaimportowano krzywą docelową"}
 sessionDeleted: {value: "Usunięto sesję"}
 sessionLoadFailed: {value: "Nie udało się wczytać sesji"}
 sessionOpened: {value: "Otwarto sesję"}
-sessionReedsClamped: {value: "Instrument ma więcej głosów niż obsługuje pomiar; ograniczono ich liczbę"}
+sessionReedsClamped: {value: "Liczba brzmiących stroików przekracza możliwości detektora. Ograniczono liczbę mierzonych stroików."}
 sessionRejected: {value: "Odrzucono nieprawidłową zmianę sesji"}
 sessionSaveFailed: {value: "Nie udało się zapisać sesji"}
 

@@ -12,13 +12,13 @@ autoVolume.saveFailed: {value: "บันทึกการตั้งค่า
 autoVolume.unsupported: {value: "อุปกรณ์นี้ไม่รองรับการปรับระดับสัญญาณขาเข้า"}
 humFilter50: {value: "50 Hz"}
 humFilter60: {value: "60 Hz"}
-humFilterHint: {value: "กรองเสียงฮัมจากไฟบ้าน: 50 Hz ในยุโรป และ 60 Hz ในอเมริกา"}
+humFilterHint: {value: "เลือกความถี่ไฟบ้านในพื้นที่เพื่อกรองเสียงฮัมจากระบบไฟ"}
 humFilterLabel: {value: "ตัวกรองเสียงฮัมจากไฟบ้าน"}
-lockedWhileRunning: {value: "หยุดเครื่องตั้งเสียงก่อนเปลี่ยนแหล่งเสียงขาเข้า"}
+lockedWhileRunning: {value: "หยุดวัดก่อนเปลี่ยนแหล่งเสียงขาเข้า"}
 
 # Detection and reference pitch
-continuousManual: {value: "อัปเดตค่าของโน้ตที่ตรึงไว้ต่อเนื่อง"}
-continuousManualHint: {value: "อัปเดตค่าของโน้ตที่ตรึงไว้ก่อนที่ค่าจะนิ่ง"}
+continuousManual: {value: "แสดงค่าของโน้ตที่เลือกเองอย่างต่อเนื่อง"}
+continuousManualHint: {value: "เมื่อเลือกโน้ตเอง ให้แสดงค่าที่วัดได้แม้ค่ายังไม่นิ่ง"}
 detection.balanced: {value: "สมดุล"}
 detection.balancedHint: {value: "เปลี่ยนโน้ตในเวลาประมาณครึ่งวินาที"}
 detection.fast: {value: "เร็ว"}
@@ -26,17 +26,17 @@ detection.fastHint: {value: "เปลี่ยนโน้ตเร็วที
 detection.steady: {value: "นิ่ง"}
 detection.steadyHint: {value: "ใช้วิธีเดิม เปลี่ยนโน้ตช้า"}
 detectionLabel: {value: "การตรวจจับโน้ต"}
-lockA4: {value: "ล็อกระดับเสียงอ้างอิง"}
+lockA4: {value: "ล็อกความถี่อ้างอิง A4"}
 lockA4Hint: {value: "ป้องกันการเปลี่ยนค่า A4 ในเครื่องตั้งเสียง"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "เฮิรตซ์ หรือหน่วยละ 0.06% ของความถี่โน้ต"}
+beatUnitHint: {value: "แสดงบีตเป็นเฮิรตซ์ หรือใช้หน่วยเดียวกับที่เลือกไว้สำหรับค่าคลาดเคลื่อนของลิ้นเสียง"}
 beatUnitLabel: {value: "หน่วยของบีต"}
 errorReference: {value: "ค่าอ้างอิงสำหรับค่าคลาดเคลื่อน"}
-errorReferenceGoal: {value: "ระดับเสียงเป้าหมาย"}
+errorReferenceGoal: {value: "ค่าเป้าหมาย"}
 
 errorReferenceHint:
-  value: "แสดงค่าคลาดเคลื่อนเทียบกับระดับเสียงในบันไดเสียงหรือเป้าหมายการตั้งเสียง เมื่อใช้เป้าหมายเป็นเกณฑ์ ค่าที่อ่านได้จะเป็นศูนย์เมื่อถึงเป้าหมาย"
+  value: "เลือกแสดงส่วนต่างจากระดับเสียงตามบันไดเสียง หรือจากเป้าหมายการตั้งเสียง เมื่อเทียบกับเป้าหมาย ค่าจะเป็นศูนย์เมื่อตั้งได้ตรงเป้า"
 errorReferenceScale: {value: "บันไดเสียง"}
 scaleNamingHint: {value: "วิธีแสดงชื่อโน้ต"}
 scaleNamingLabel: {value: "การเรียกชื่อโน้ต"}
@@ -60,7 +60,7 @@ accent.pick: {value: "เลือกสี"}
 accent.pickTitle: {value: "สีเน้น"}
 closeToTray: {value: "ย่อไปที่ถาดระบบเมื่อปิด"}
 closeToTrayHint: {value: "เมื่อปิดหน้าต่าง แอปจะยังอยู่ในถาดระบบ"}
-checkUpdates: {value: "ตรวจสอบการอัปเดต", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdates: {value: "ตรวจสอบรุ่นใหม่อัตโนมัติ", description: "Desktop settings checkbox enabling GitHub update checks."}
 checkUpdatesHint: {value: "ค้นหาเวอร์ชันใหม่บน GitHub", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "ภาษาที่แสดงบนหน้าจอ"}
 languageLabel: {value: "ภาษา"}
@@ -109,11 +109,11 @@ calibration.screen.phase.preparing: {value: "รอให้สัญญาณ�
 calibration.screen.phase.settling: {value: "กำลังรอให้ค่าที่วัดจากนาฬิกานิ่ง"}
 
 calibration.screen.pitch:
-  value: "คิดเป็น {pitch} เท่ากันทุกโน้ต"
+  value: "ความคลาดเคลื่อนของนาฬิกานี้เทียบเท่ากับระดับเสียงคลาดไป {pitch} ทุกโน้ต"
   placeholders:
     pitch: {type: string}
 
-calibration.screen.preparing: {value: "กำลังเตรียมสัญญาณขาเข้า"}
+calibration.screen.preparing: {value: "กำลังรอให้สัญญาณขาเข้านิ่ง"}
 calibration.screen.retry: {value: "ยังไม่ได้ชดเชยค่าที่วัดได้ ให้ปิดแอปเสียงอื่นแล้วลองใหม่"}
 calibration.screen.return: {value: "กลับ"}
 calibration.screen.stat.dropouts: {value: "จำนวนครั้งที่สัญญาณขาด"}
@@ -163,4 +163,4 @@ groups.report: {value: "ข้อมูลห้องงานช่าง"}
 # Report letterhead
 report.address: {value: "ที่อยู่"}
 report.name: {value: "ชื่อห้องงานช่าง"}
-report.nameHint: {value: "แสดงในรายงานที่ส่งออกเมื่อเปิดใช้หัวจดหมาย"}
+report.nameHint: {value: "เมื่อเปิดใช้หัวรายงาน ชื่อนี้จะปรากฏในรายงานที่ส่งออก"}

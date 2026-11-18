@@ -38,8 +38,8 @@ table.bassTitle:
   placeholders:
     unit: {type: string}
 
-table.curr: {value: "Gem."}
-table.err: {value: "Fout"}
+table.curr: {value: "Meting"}
+table.err: {value: "Afw."}
 table.register: {value: "Register"}
 
 table.title:
@@ -59,15 +59,15 @@ graph.edited:
     mark: {type: string}
 
 legend.error.cents:
-  value: "Vijl totdat het verschil tussen de gemeten waarde en de doelwaarde nul nadert. In cent ten opzichte van de gelijkzwevende stemming bij {a4} Hz."
+  value: "Vijl tot de afwijking van de doelwaarde nul nadert. De meting staat in cent ten opzichte van de gelijkzwevende stemming met A4 op {a4} Hz."
   placeholders:
     a4: {type: string}
 
-legend.error.key: {value: "Fout = gemeten - doel."}
-legend.error.noCurve: {value: "Zonder doelcurve is de doelwaarde nul en is de fout de afwijking van de toonladder."}
+legend.error.key: {value: "Afw. = meting − doelwaarde."}
+legend.error.noCurve: {value: "Zonder doelcurve is de doelwaarde nul. De afwijking is dan het verschil ten opzichte van de gelijkzwevende stemming."}
 
 legend.error.reference:
-  value: "Vijl totdat het verschil tussen de gemeten waarde en de doelwaarde nul nadert. In eenheden van 0,06% van de toonfrequentie ten opzichte van de gelijkzwevende stemming bij {a4} Hz."
+  value: "Vijl tot de afwijking van de doelwaarde nul nadert. De meting is relatief aan de gelijkzwevende stemming met A4 op {a4} Hz. Eén eenheid is 0,06% van de toonfrequentie."
   placeholders:
     a4: {type: string}
 

@@ -5,12 +5,12 @@
 # Recording controls
 arm.hint: {value: "Zaznamenať meranie pri každom ustálení tónu (Enter ho zaznamená ihneď)"}
 arm.needsSession: {value: "Ak chcete zaznamenávať merania, otvorte reláciu"}
-arm.warmup: {value: "Záznam je vypnutý. Môžete voľne hrať, nič sa neukladá. Stlačením spustíte záznam."}
-undo.hint: {value: "Vrátiť posledný záznam"}
+arm.warmup: {value: "Merania sa neukladajú. Môžete voľne hrať. Stlačením zapnete ukladanie meraní."}
+undo.hint: {value: "Zrušiť záznam posledného merania"}
 
 # Readings table and compact columns
 mobile.current: {value: "Namerané"}
-mobile.error: {value: "Odchýlka"}
+mobile.error: {value: "Od cieľa"}
 
 table.beat:
   value: Ráz {pair}
@@ -29,7 +29,7 @@ table.graphHint: {value: "Porovnajte každý jazýček s jeho cieľovou hodnotou
 
 table.graphLabel: {value: "Odchýlky jazýčkov pri zaznamenaných tónoch"}
 table.helpTitle: {value: "O tejto tabuľke"}
-table.label: {value: "Zaznamenané ladenie"}
+table.label: {value: "Zaznamenané merania"}
 table.latest: {value: "Posledný záznam odstránite klávesom Backspace"}
 table.manual: {value: "Upravené"}
 table.manualHint: {value: "Jedna z hodnôt v tomto riadku bola zadaná ručne."}
@@ -46,7 +46,7 @@ table.notes:
     count:
       type: integer
 
-table.unitHint: {value: "Odchýlky jazýčkov sa uvádzajú v jednotkách vybraných v Nastaveniach. Rázy sa podľa voľby na paneli nástrojov uvádzajú v hertzoch alebo v jednotkách odchýlky."}
+table.unitHint: {value: "Jednotku odchýlky jazýčkov vyberiete v nastaveniach. Na paneli nad tabuľkou môžete prepnúť frekvenciu rázov medzi Hz a jednotkou odchýlky."}
 
 # Report export dialog
 report.csv: {value: "CSV"}

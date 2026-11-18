@@ -3,14 +3,14 @@
 # Editing guide: ../../README.md.
 
 # Recording controls
-arm.hint: {value: "Tallenna mittaus aina sävelen lukittuessa (Enter tallentaa heti)"}
-arm.needsSession: {value: "Avaa istunto tallennusta varten"}
-arm.warmup: {value: "Tallennus ei ole käynnissä. Voit soittaa vapaasti, mitään ei tallenneta. Aloita tallennus painamalla."}
+arm.hint: {value: "Vakaat lukemat tallennetaan. Lopeta painamalla tästä tai tallenna nykyinen lukema heti Enterillä."}
+arm.needsSession: {value: "Avaa istunto mittausten tallennusta varten"}
+arm.warmup: {value: "Voit soittaa vapaasti. Aloita mittausten tallennus painamalla tätä painiketta."}
 undo.hint: {value: "Kumoa viimeinen mittaus"}
 
 # Readings table and compact columns
 mobile.current: {value: "Mitattu"}
-mobile.error: {value: "Poikkeama"}
+mobile.error: {value: "Ero tavoitteesta"}
 
 table.beat:
   value: "Huojunta {pair}"
@@ -21,17 +21,17 @@ table.delete: {value: "Poista tämä lukema"}
 table.deleteHint: {value: "Poista lukema pysyvästi. Korvaa se soittamalla ja tallentamalla nuotti uudelleen."}
 table.deleteTitle: {value: "Poistetaanko lukema?"}
 table.editHint: {value: "Muokkaa arvoa napsauttamalla tai painamalla Enter"}
-table.empty: {value: "Aloita tallennus ja soita sitten nuotteja tallentaaksesi lukemat."}
+table.empty: {value: "Ota mittausten tallennus käyttöön ja soita nuotteja."}
 table.graph: {value: "Kaavio"}
 
 table.graphHint:
   value: "Vertaa kutakin kieltä sen tavoitteeseen. Valitse rivi napsauttamalla pylvästä. Napsauta uudelleen valitaksesi seuraavan rekisterin."
-table.graphLabel: {value: "Kielten virheet tallennetuissa nuoteissa"}
+table.graphLabel: {value: "Kielten poikkeamat tavoitearvoista nuoteittain"}
 table.helpTitle: {value: "Tietoja taulukosta"}
-table.label: {value: "Tallennettu viritys"}
+table.label: {value: "Tallennetut viritysmittaukset"}
 table.latest: {value: "Viimeisin mittaus: poista askelpalauttimella"}
 table.manual: {value: "Muokattu"}
-table.manualHint: {value: "Tämän rivin arvo syötettiin käsin äänen mittaamisen sijaan."}
+table.manualHint: {value: "Yksi tämän rivin arvoista on syötetty käsin."}
 
 table.notes:
   plural:
@@ -43,7 +43,7 @@ table.notes:
     count: {type: integer}
 
 table.unitHint:
-  value: "Kielten poikkeamien yksikkö valitaan asetuksissa. Huojunnat näytetään hertseinä tai poikkeaman yksiköissä työkalurivin valinnan mukaan."
+  value: "Valitse kielten poikkeaman yksikkö asetuksista. Työkaluriviltä voit vaihtaa huojuntalukemat hertseistä samaan yksikköön."
 # Report export dialog
 report.csv: {value: "CSV"}
 report.date: {value: "Päivämäärä"}

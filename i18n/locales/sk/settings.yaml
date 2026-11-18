@@ -17,8 +17,8 @@ humFilterLabel: {value: "Filter sieťového brumu"}
 lockedWhileRunning: {value: "Pred zmenou zvukového vstupu zastavte ladičku."}
 
 # Detection and reference pitch
-continuousManual: {value: "Priebežne aktualizovať pripnutý tón"}
-continuousManualHint: {value: "Aktualizovať meranie pripnutého tónu už pred jeho ustálením"}
+continuousManual: {value: "Priebežne merať ručne vybraný tón"}
+continuousManualHint: {value: "Zobrazovať hodnoty aj pred ustálením merania."}
 detection.balanced: {value: "Vyvážená"}
 detection.balancedHint: {value: "Prepne na iný tón približne za pol sekundy"}
 detection.fast: {value: "Rýchla"}
@@ -26,16 +26,16 @@ detection.fastHint: {value: "Prepína tóny najrýchlejšie, môže však zachyt
 detection.steady: {value: "Stabilná"}
 detection.steadyHint: {value: "Pôvodný spôsob detekcie, pomalé prepínanie tónov"}
 detectionLabel: {value: "Detekcia tónov"}
-lockA4: {value: "Uzamknúť referenčnú frekvenciu"}
+lockA4: {value: "Uzamknúť frekvenciu A4"}
 lockA4Hint: {value: "Zabráni zmene frekvencie A4 v ladičke"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "Hertze alebo jednotky po 0,06 % frekvencie tónu"}
-beatUnitLabel: {value: "Jednotka rázu"}
-errorReference: {value: "Vzťažná hodnota odchýlky"}
-errorReferenceGoal: {value: "Cieľ"}
+beatUnitHint: {value: "Rázy v hertzoch alebo v rovnakej jednotke, akú zvolíte pre odchýlky jazýčkov."}
+beatUnitLabel: {value: "Jednotka frekvencie rázov"}
+errorReference: {value: "Základ na výpočet odchýlky"}
+errorReferenceGoal: {value: "Cieľová hodnota"}
 
-errorReferenceHint: {value: "Zobrazí odchýlku od tónu stupnice alebo od cieľového ladenia. Pri dosiahnutí cieľa je odchýlka voči cieľu nulová."}
+errorReferenceHint: {value: "Odchýlku jazýčka môžete merať od tónu rovnomerne temperovanej stupnice alebo od výšky, na ktorú chcete jazýček naladiť. Pri druhej voľbe znamená nula zhodu s cieľovou výškou."}
 
 errorReferenceScale: {value: "Stupnica"}
 scaleNamingHint: {value: "Spôsob pomenovania tónov"}
@@ -45,7 +45,7 @@ scaleNamings.cdefgah: {value: "C D E F G A H (nemecké, zvýšené tóny napr. C
 scaleNamings.doremi: {value: "Do Re Mi (solmizácia)"}
 scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (poľské)"}
 toleranceBeat: {value: "Ráz"}
-toleranceHint: {value: "Povolená odchýlka, pri ktorej sa jazýček alebo ráz ešte považuje za naladený"}
+toleranceHint: {value: "Najväčšia prípustná odchýlka ladenia jazýčka alebo frekvencie rázu od cieľovej hodnoty."}
 toleranceLabel: {value: "Tolerancie"}
 toleranceReed: {value: "Jazýček"}
 unitHint: {value: "Centy alebo jednotky po 0,06 % frekvencie tónu"}
@@ -76,7 +76,7 @@ themes.dark: {value: "Tmavý"}
 themes.light: {value: "Svetlý"}
 
 # Sound-card calibration
-calibration.askBody: {value: "Nekalibrovaný vzorkovací kmitočet môže spôsobiť malú stálu chybu merania. Kalibrácia trvá asi minútu a nepotrebuje zvuk."}
+calibration.askBody: {value: "Nepresná vzorkovacia frekvencia zvukovej karty môže spôsobiť malú stálu chybu merania. Kalibrácia trvá asi minútu. Nemusíte pri nej hrať."}
 
 calibration.askCalibrate: {value: "Kalibrovať teraz"}
 calibration.askContinue: {value: "Pokračovať bez korekcie"}
@@ -134,7 +134,7 @@ calibration.screen.steps.done: {value: "Hotovo"}
 calibration.screen.steps.measure: {value: "Meranie"}
 calibration.screen.steps.prepare: {value: "Príprava"}
 calibration.screen.traceEmpty: {value: "Tu sa počas merania vykresľuje odchýlka vzorkovacieho kmitočtu."}
-calibration.screen.unreliable: {value: "Vzorkovací kmitočet sa neustálil"}
+calibration.screen.unreliable: {value: "Nameraná frekvencia sa neustálila"}
 calibration.start: {value: "Kalibrovať"}
 calibration.startHint: {value: "Zmerať vzorkovací kmitočet vstupu"}
 
@@ -163,7 +163,7 @@ groups.appearance: {value: "Vzhľad"}
 groups.detection: {value: "Detekcia"}
 groups.microphone: {value: "Mikrofón"}
 groups.output: {value: "Výstup", description: "Settings section shown on a phone, holding the output volume."}
-groups.readings: {value: "Merania"}
+groups.readings: {value: "Zobrazenie hodnôt"}
 groups.report: {value: "Údaje o dielni"}
 
 # Report letterhead

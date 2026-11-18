@@ -3,7 +3,7 @@ close: {value: "Zavřít"}
 copied: {value: "Zkopírováno"}
 copy: {value: "Kopírovat hlášení"}
 details: {value: "Podrobnosti"}
-email: {value: "Odeslat hlášení e-mailem"}
+email: {value: "Připravit e-mail s hlášením"}
 failed:
   value: "Akce se nezdařila: {error}"
   placeholders:
@@ -12,8 +12,8 @@ file:
   value: "Soubor: {path}"
   placeholders:
     path: {type: string}
-kill: {value: "Ukončit a odeslat hlášení"}
-logs: {value: "Zobrazit soubor protokolu"}
+kill: {value: "Ukončit aplikaci a vytvořit hlášení"}
+logs: {value: "Ukázat soubor protokolu ve složce"}
 messageConfig:
   value: "Soubor nastavení se nepodařilo přečíst. Opravte jej nebo odstraňte a znovu spusťte {app}."
   placeholders:
@@ -22,7 +22,7 @@ messageCrash:
   value: "V aplikaci {app} došlo k chybě. Odešlete hlášení, aby bylo možné chybu opravit, a poté aplikaci znovu spusťte."
   placeholders:
     app: {type: string}
-messageHang: {value: "Aplikace může probíhající operaci ještě dokončit. Vyčkejte, nebo ji ukončete a odešlete hlášení."}
+messageHang: {value: "Aplikace ještě může operaci dokončit. Můžete počkat nebo aplikaci ukončit a vytvořit hlášení o chybě."}
 messageHangStopped:
   value: "Aplikace {app} byla ukončena, když nereagovala. Odešlete hlášení, aby bylo možné chybu opravit, a poté aplikaci znovu spusťte."
   placeholders:

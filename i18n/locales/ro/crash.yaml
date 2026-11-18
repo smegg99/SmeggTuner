@@ -3,7 +3,7 @@ close: {value: "Închide"}
 copied: {value: "Copiat"}
 copy: {value: "Copiază raportul"}
 details: {value: "Detalii"}
-email: {value: "Trimite raportul prin e-mail"}
+email: {value: "Compune un e-mail cu raportul"}
 failed:
   value: "Operațiunea a eșuat: {error}"
   placeholders:
@@ -12,8 +12,8 @@ file:
   value: "Fișier: {path}"
   placeholders:
     path: {type: string}
-kill: {value: "Închide și raportează"}
-logs: {value: "Afișează fișierul jurnal"}
+kill: {value: "Închide forțat și generează raportul"}
+logs: {value: "Arată fișierul jurnal în dosar"}
 messageConfig:
   value: "Fișierul de setări nu a putut fi citit. Corectează-l sau șterge-l, apoi repornește {app}."
   placeholders:
@@ -22,7 +22,7 @@ messageCrash:
   value: "A apărut o eroare internă în {app}. Trimite raportul pentru ca problema să poată fi remediată, apoi repornește aplicația."
   placeholders:
     app: {type: string}
-messageHang: {value: "Este posibil ca operațiunea să se încheie. Așteaptă sau închide aplicația și trimite un raport."}
+messageHang: {value: "Este posibil ca aplicația să termine operațiunea. Poți aștepta sau o poți închide forțat pentru a genera raportul."}
 messageHangStopped:
   value: "Aplicația {app} a fost închisă în timp ce nu răspundea. Trimite raportul pentru ca problema să poată fi remediată, apoi repornește aplicația."
   placeholders:

@@ -39,7 +39,7 @@ table.bassTitle:
     unit: {type: string}
 
 table.curr: {value: "Målt"}
-table.err: {value: "Fejl"}
+table.err: {value: "Afv."}
 table.register: {value: "Register"}
 
 table.title:
@@ -59,15 +59,15 @@ graph.edited:
     mark: {type: string}
 
 legend.error.cents:
-  value: "Fil, så fejlen i forhold til målet nærmer sig nul. Værdier i cent fra den ligesvævende temperatur ved {a4} Hz."
+  value: "Fil, så afvigelsen fra målværdien nærmer sig nul. Den målte værdi angives i cent i forhold til ligesvævende stemning med A4 på {a4} Hz."
   placeholders:
     a4: {type: string}
 
-legend.error.key: {value: "Fejl = målt - mål."}
-legend.error.noCurve: {value: "Uden målkurve er målet nul, og fejlen er afvigelsen fra skalaen."}
+legend.error.key: {value: "Afv. = målt værdi − målværdi."}
+legend.error.noCurve: {value: "Uden målkurve er målværdien nul. Afvigelsen måles da i forhold til ligesvævende stemning."}
 
 legend.error.reference:
-  value: "Fil, så fejlen i forhold til målet nærmer sig nul. Værdier i enheder på 0,06 % af tonens frekvens fra den ligesvævende temperatur ved {a4} Hz."
+  value: "Fil, så afvigelsen fra målværdien nærmer sig nul. Målingen er i forhold til ligesvævende stemning med A4 på {a4} Hz. Én enhed er 0,06 % af tonens frekvens."
   placeholders:
     a4: {type: string}
 

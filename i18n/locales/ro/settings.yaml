@@ -5,7 +5,7 @@
 # Microphone and input level
 audioDeviceHint: {value: "Microfonul folosit pentru măsurare"}
 audioDeviceLabel: {value: "Dispozitiv de intrare"}
-audioDeviceSystemDefault: {value: "Implicit în sistem"}
+audioDeviceSystemDefault: {value: "Dispozitivul implicit al sistemului"}
 autoVolume.hint: {value: "Reglează nivelul microfonului în timpul măsurării"}
 autoVolume.label: {value: "Volum de intrare automat"}
 autoVolume.saveFailed: {value: "Nu s-a putut salva setarea volumului de intrare."}
@@ -17,8 +17,8 @@ humFilterLabel: {value: "Filtru de brum de rețea"}
 lockedWhileRunning: {value: "Oprește acordorul pentru a schimba intrarea audio."}
 
 # Detection and reference pitch
-continuousManual: {value: "Actualizează continuu nota fixată"}
-continuousManualHint: {value: "Actualizează măsurarea notei fixate înainte de stabilizare"}
+continuousManual: {value: "Actualizează continuu valoarea notei selectate manual"}
+continuousManualHint: {value: "Afișează valorile măsurate chiar înainte ca ele să se stabilizeze."}
 detection.balanced: {value: "Echilibrată"}
 detection.balancedHint: {value: "Trece la altă notă în aproximativ o jumătate de secundă"}
 detection.fast: {value: "Rapidă"}
@@ -26,16 +26,16 @@ detection.fastHint: {value: "Schimbă nota cel mai rapid, dar poate fixa o notă
 detection.steady: {value: "Stabilă"}
 detection.steadyHint: {value: "Comportamentul inițial, cu trecere lentă de la o notă la alta"}
 detectionLabel: {value: "Detectarea notelor"}
-lockA4: {value: "Blochează frecvența de referință"}
+lockA4: {value: "Blochează frecvența de referință A4"}
 lockA4Hint: {value: "Împiedică modificarea frecvenței A4 în acordor"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "Hertzi sau unități de 0,06 % din frecvența notei"}
-beatUnitLabel: {value: "Unitatea bătăilor"}
-errorReference: {value: "Referința abaterii"}
-errorReferenceGoal: {value: "Țintă"}
+beatUnitHint: {value: "Afișează bătăile în hertzi sau în aceeași unitate pe care ai ales-o pentru abaterile anciilor."}
+beatUnitLabel: {value: "Unitatea frecvenței bătăilor"}
+errorReference: {value: "Reper pentru calculul abaterii"}
+errorReferenceGoal: {value: "Valoare țintă"}
 
-errorReferenceHint: {value: "Afișează abaterea față de frecvența notei din gamă sau față de ținta de acordaj. La atingerea țintei, abaterea față de aceasta este zero."}
+errorReferenceHint: {value: "Poți măsura abaterea ancii față de nota din gama temperată sau față de înălțimea la care vrei să acordezi ancia. În al doilea caz, zero înseamnă că ancia a ajuns la înălțimea dorită."}
 
 errorReferenceScale: {value: "Gamă"}
 scaleNamingHint: {value: "Cum sunt denumite notele"}
@@ -45,7 +45,7 @@ scaleNamings.cdefgah: {value: "C D E F G A H (german, cu diez: C#)"}
 scaleNamings.doremi: {value: "Do Re Mi (solfegiu)"}
 scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (polonez)"}
 toleranceBeat: {value: "Bătăi"}
-toleranceHint: {value: "Abaterea maximă la care ancia sau bătăile se consideră încă acordate"}
+toleranceHint: {value: "Abaterea maximă admisă față de țintă pentru înălțimea anciilor sau frecvența bătăilor."}
 toleranceLabel: {value: "Toleranțe"}
 toleranceReed: {value: "Ancie"}
 unitHint: {value: "Cenți sau unități de 0,06 % din frecvența notei"}
@@ -76,7 +76,7 @@ themes.dark: {value: "Închisă"}
 themes.light: {value: "Deschisă"}
 
 # Sound-card calibration
-calibration.askBody: {value: "Un ceas de eșantionare necalibrat poate produce o mică eroare constantă de măsurare. Calibrarea durează aproximativ un minut și nu necesită sunet."}
+calibration.askBody: {value: "O mică abatere a frecvenței de eșantionare a plăcii de sunet poate introduce o eroare constantă în măsurători. Calibrarea durează aproximativ un minut. Nu trebuie să cânți."}
 
 calibration.askCalibrate: {value: "Calibrează acum"}
 calibration.askContinue: {value: "Continuă fără corecție"}
@@ -96,7 +96,7 @@ calibration.screen.calibrated:
     percent:
       type: string
 
-calibration.screen.calibrating: {value: "Se măsoară ceasul plăcii de sunet"}
+calibration.screen.calibrating: {value: "Se măsoară frecvența reală de eșantionare a plăcii de sunet"}
 
 calibration.screen.how: {value: "Măsurarea înălțimii sunetului poate avea o mică eroare constantă. Calibrarea durează circa un minut, fără sunet."}
 
@@ -134,7 +134,7 @@ calibration.screen.steps.done: {value: "Gata"}
 calibration.screen.steps.measure: {value: "Măsurare"}
 calibration.screen.steps.prepare: {value: "Pregătire"}
 calibration.screen.traceEmpty: {value: "Aici se trasează abaterea ceasului în timpul măsurării."}
-calibration.screen.unreliable: {value: "Ceasul nu s-a stabilizat"}
+calibration.screen.unreliable: {value: "Frecvența de eșantionare măsurată nu s-a stabilizat"}
 calibration.start: {value: "Calibrează"}
 calibration.startHint: {value: "Măsoară ceasul de eșantionare al intrării"}
 
@@ -163,7 +163,7 @@ groups.appearance: {value: "Aspect"}
 groups.detection: {value: "Detectare"}
 groups.microphone: {value: "Microfon"}
 groups.output: {value: "Ieșire", description: "Settings section shown on a phone, holding the output volume."}
-groups.readings: {value: "Măsurători"}
+groups.readings: {value: "Afișarea valorilor"}
 groups.report: {value: "Datele atelierului"}
 
 # Report letterhead

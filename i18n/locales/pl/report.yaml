@@ -4,14 +4,14 @@
 # Plurals: one = 1; few = 2, 3, 4, 22; many = 0, 5, 12, 21; other = fractions.
 
 # Report title and instrument details
-facts.curve: {value: "Krzywa docelowa"}
+facts.curve: {value: "Krzywa docelowa strojenia"}
 facts.curveNone: {value: "brak"}
 facts.curveUnnamed: {value: "bez nazwy"}
-facts.reference: {value: "Odniesienie A4 (ten przebieg)"}
+facts.reference: {value: "Częstotliwość A4 w tej serii pomiarów"}
 facts.tolerance: {value: "Tolerancja"}
 
 facts.toleranceValue:
-  value: "{reed} {unit} na głosie / {beat} {unit} na dudnieniu"
+  value: "stroik: {reed} {unit} / dudnienie: {beat} {unit}"
   placeholders:
     beat: {type: string}
     reed: {type: string}
@@ -38,8 +38,8 @@ table.bassTitle:
   placeholders:
     unit: {type: string}
 
-table.curr: {value: "Jest"}
-table.err: {value: "Popr."}
+table.curr: {value: "Pom."}
+table.err: {value: "Błąd"}
 table.register: {value: "Rejestr"}
 
 table.title:
@@ -59,23 +59,24 @@ graph.edited:
     mark: {type: string}
 
 legend.error.cents:
-  value: "Piłuj w stronę zera. Centy od skali równomiernie temperowanej przy {a4} Hz."
+  value: "Przy piłowaniu stroika dąż do zerowego błędu względem celu. Dla stroika kolumna Pom. podaje odchyłkę w centach od skali równomiernie temperowanej przy A4 = {a4} Hz."
   placeholders:
     a4: {type: string}
 
-legend.error.key: {value: "Poprawka = Jest - Cel."}
-legend.error.noCurve: {value: "Brak krzywej docelowej: Cel to zero, Poprawka to odchyłka od skali."}
+legend.error.key: {value: "Błąd = pomiar − wartość docelowa."}
+legend.error.noCurve: {value: "Bez krzywej docelowej odchyłka docelowa stroika wynosi zero, więc błąd jest równy zmierzonej odchyłce od skali."}
 
 legend.error.reference:
   value: >-
-    Piłuj w stronę zera. Jednostki 0,06 % częstotliwości dźwięku, od skali równomiernie
-    temperowanej przy {a4} Hz.
+    Przy piłowaniu stroika dąż do zerowego błędu względem celu. Odchyłkę stroika mierzy się od
+    skali równomiernie temperowanej przy A4 = {a4} Hz. Jednostka to 0,06% częstotliwości
+    dźwięku.
   placeholders:
     a4: {type: string}
 
 legend.out.short: {value: "poza tolerancją"}
 legend.takes.key: {value: "xN"}
-legend.takes.short: {value: "nagrane wielokrotnie, pokazano ostatnie"}
+legend.takes.short: {value: "dźwięk zmierzono kilkakrotnie, pokazano ostatni pomiar"}
 mark.edited: {value: "R"}
 mark.out: {value: "!"}
 
@@ -136,10 +137,10 @@ summary.reeds:
   plural:
     argument: pluralCount
     forms:
-      one: "{pluralCount} odczyt głosu"
-      few: "{pluralCount} odczyty głosów"
-      many: "{pluralCount} odczytów głosów"
-      other: "{pluralCount} odczytu głosów"
+      one: "{pluralCount} odczyt stroika"
+      few: "{pluralCount} odczyty stroików"
+      many: "{pluralCount} odczytów stroików"
+      other: "{pluralCount} odczytu stroika"
   placeholders:
     pluralCount: {type: integer}
 
@@ -147,10 +148,10 @@ summary.reedsShort:
   plural:
     argument: pluralCount
     forms:
-      one: "{pluralCount} głos"
-      few: "{pluralCount} głosy"
-      many: "{pluralCount} głosów"
-      other: "{pluralCount} głosu"
+      one: "{pluralCount} stroik"
+      few: "{pluralCount} stroiki"
+      many: "{pluralCount} stroików"
+      other: "{pluralCount} stroika"
   placeholders:
     pluralCount: {type: integer}
 
@@ -160,9 +161,8 @@ error.invalidFormat: {value: "W tym formacie raportu nie da się zapisać."}
 
 error.noBrowser:
   value: >-
-    PDF składa przeglądarka, a na tym komputerze nie ma Chrome ani Chromium. Zainstaluj jedną z
-    nich albo wyeksportuj kartę jako HTML i wydrukuj ją.
-
+    Do utworzenia PDF potrzebna jest przeglądarka Chrome lub Chromium. Zainstaluj jedną z nich
+    albo wyeksportuj kartę jako HTML i wydrukuj ją z przeglądarki.
 error.openFailed:
   value: "Raport został zapisany, ale żadna przeglądarka go nie otworzyła. Otwórz plik samodzielnie."
 

@@ -3,16 +3,16 @@
 # Editing guide: ../../README.md.
 
 # Buttons and shared labels
-accept: {value: "同意する"}
+accept: {value: "適用"}
 back: {value: "戻る"}
 cancel: {value: "キャンセル"}
 close: {value: "閉じる"}
 delete: {value: "削除"}
 export: {value: "エクスポート"}
-next: {value: "次へ"}
+next: {value: "次のページ"}
 "no": {value: "いいえ"}
 none: {value: "なし"}
-previous: {value: "前へ"}
+previous: {value: "前のページ"}
 website: {value: "ウェブサイト"}
 "yes": {value: "はい"}
 
@@ -76,13 +76,13 @@ title.uncalibrated:
 
 # Application and About dialog
 about.aboutTitle: {value: "このアプリについて"}
-about.commit: {value: "ビルド"}
-about.donate: {value: "Ko-fi で支援"}
+about.commit: {value: "ビルド識別子"}
+about.donate: {value: "Ko-fi で寄付する"}
 about.license: {value: "ライセンス"}
 about.privacy: {value: "プライバシーポリシー"}
 about.guide: {value: "SmeggTuner の使い方"}
 about.onlineVersion: {value: "オンライン版を開く"}
-about.support: {value: "サポート"}
+about.support: {value: "メールで問い合わせる"}
 about.mascot: {value: "アコーディオンを弾く猫"}
 about.publisher: {value: "開発者：smegg99"}
 about.tagline: {value: "無料で使えるオープンソースのアコーディオン調律ソフトです。"}
@@ -96,7 +96,7 @@ about.helpTitle: {value: "ヘルプ"}
 
 # System tray
 tray.quit: {value: "終了"}
-tray.show: {value: "表示"}
+tray.show: {value: "ウィンドウを表示"}
 
 linkNewTab:
   value: "{text}（新しいタブで開きます）"

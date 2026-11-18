@@ -9,10 +9,10 @@ cancel: {value: "Cancel"}
 close: {value: "Close"}
 delete: {value: "Delete"}
 export: {value: "Export"}
-next: {value: "Next"}
+next: {value: "Next page"}
 "no": {value: "No"}
 none: {value: "None"}
-previous: {value: "Previous"}
+previous: {value: "Previous page"}
 website: {value: "Website"}
 "yes": {value: "Yes"}
 
@@ -77,12 +77,12 @@ title.uncalibrated:
 # Application and About dialog
 about.aboutTitle: {value: "About"}
 about.commit: {value: "Build"}
-about.donate: {value: "Support on Ko-fi"}
+about.donate: {value: "Donate on Ko-fi"}
 about.license: {value: "License"}
 about.privacy: {value: "Privacy policy"}
 about.guide: {value: "How to use SmeggTuner"}
-about.onlineVersion: {value: "Open online version"}
-about.support: {value: "Support"}
+about.onlineVersion: {value: "Open document in browser"}
+about.support: {value: "Email support"}
 about.mascot: {value: "A cat playing the accordion"}
 about.publisher: {value: "By smegg99"}
 about.tagline: {value: "Free and open source accordion tuning program."}

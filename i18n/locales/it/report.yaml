@@ -59,21 +59,21 @@ graph.edited:
     mark: {type: string}
 
 legend.error.cents:
-  value: "Lima l'ancia per portare l'errore a zero. Scostamento in cent dalla scala temperata a {a4} Hz."
+  value: "Lima ogni ancia per portare l’errore verso zero. Per le ance, «Mis.» indica lo scostamento in cent dalla scala temperata con La4 = {a4} Hz."
   placeholders:
     a4: {type: string}
 
-legend.error.key: {value: "Errore = misura - obiettivo."}
-legend.error.noCurve: {value: "Senza curva obiettivo, l'obiettivo è zero e l'errore è lo scostamento dalla scala."}
+legend.error.key: {value: "Errore = valore misurato − valore atteso."}
+legend.error.noCurve: {value: "Senza una curva di riferimento, lo scostamento atteso è zero. L’errore coincide quindi con lo scostamento misurato rispetto alla scala temperata."}
 
 legend.error.reference:
-  value: "Lima l'ancia per portare l'errore a zero. Lo scostamento dalla scala temperata a {a4} Hz è espresso in unità dello 0,06% della frequenza della nota."
+  value: "Lima ogni ancia per portare l’errore verso zero. Gli scostamenti delle ance si misurano rispetto alla scala temperata con La4 = {a4} Hz. Un’unità corrisponde allo 0,06% della frequenza della nota."
   placeholders:
     a4: {type: string}
 
 legend.out.short: {value: "fuori tolleranza"}
 legend.takes.key: {value: "xN"}
-legend.takes.short: {value: "più acquisizioni, è mostrata l'ultima"}
+legend.takes.short: {value: "nota misurata più volte, è indicata l’ultima misura"}
 mark.edited: {value: "M"}
 mark.out: {value: "!"}
 

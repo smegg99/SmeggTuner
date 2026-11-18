@@ -59,21 +59,21 @@ graph.edited:
     mark: {type: string}
 
 legend.error.cents:
-  value: "Lima la lengüeta para acercar el error a cero. Desviación en cents respecto a la escala temperada a {a4} Hz."
+  value: "Lima cada lengüeta para acercar el error a cero. Para las lengüetas, «Med.» indica la desviación en cents respecto a la escala temperada con la4 = {a4} Hz."
   placeholders:
     a4: {type: string}
 
-legend.error.key: {value: "Error = medición - objetivo."}
-legend.error.noCurve: {value: "Sin curva objetivo, el objetivo es cero y el error es la desviación respecto a la escala."}
+legend.error.key: {value: "Error = valor medido − valor objetivo."}
+legend.error.noCurve: {value: "Sin una curva de referencia, la desviación prevista es cero. El error coincide con la desviación medida respecto a la escala temperada."}
 
 legend.error.reference:
-  value: "Lima la lengüeta para acercar el error a cero. La desviación respecto a la escala temperada a {a4} Hz se expresa en unidades del 0,06 % de la frecuencia de la nota."
+  value: "Lima cada lengüeta para acercar el error a cero. Las desviaciones de las lengüetas se miden respecto a la escala temperada con la4 = {a4} Hz. Una unidad equivale al 0,06 % de la frecuencia de la nota."
   placeholders:
     a4: {type: string}
 
 legend.out.short: {value: "fuera de tolerancia"}
 legend.takes.key: {value: "xN"}
-legend.takes.short: {value: "varias tomas, se muestra la última"}
+legend.takes.short: {value: "nota medida varias veces, se muestra la última medición"}
 mark.edited: {value: "M"}
 mark.out: {value: "!"}
 

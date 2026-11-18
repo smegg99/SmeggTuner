@@ -56,8 +56,8 @@ tunerTonePlaying: {value: "Tiek atskaņots atsauces tonis"}
 # Sessions, readings and reports
 recordCleared: {value: "Mērījumu cikls notīrīts"}
 recordEdited: {value: "Mērījums labots manuāli"}
-recordRejected: {value: "Ieraksta pieprasījums noraidīts"}
-recordTake: {value: "Mērījums ierakstīts"}
+recordRejected: {value: "Mēlītes rādījuma labojums noraidīts: mērījumā nav šīs mēlītes rādījuma"}
+recordTake: {value: "Mērījums saglabāts"}
 recordUndone: {value: "Pēdējais mērījums atsaukts"}
 reportFailed: {value: "Neizdevās ierakstīt skaņošanas pārskatu"}
 reportOpenFailed: {value: "Neizdevās atvērt skaņošanas pārskatu"}
@@ -72,7 +72,7 @@ sessionCurveImported: {value: "Mērķlīkne importēta"}
 sessionDeleted: {value: "Sesija dzēsta"}
 sessionLoadFailed: {value: "Neizdevās ielādēt sesiju"}
 sessionOpened: {value: "Sesija atvērta"}
-sessionReedsClamped: {value: "Instrumentā skan vairāk mēlīšu, nekā dzinis spēj atšķirt; apstrādājamo mēlīšu skaits tiek ierobežots"}
+sessionReedsClamped: {value: "Vienlaikus skan vairāk mēlīšu, nekā skaņotājs spēj atšķirt. Mērāmo mēlīšu skaits ir ierobežots."}
 sessionRejected: {value: "Nederīgas sesijas izmaiņas noraidītas"}
 sessionSaveFailed: {value: "Neizdevās saglabāt sesiju"}
 

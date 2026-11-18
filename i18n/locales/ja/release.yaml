@@ -9,7 +9,7 @@ updateBody:
   placeholders:
     current: {type: string}
     latest: {type: string}
-updateDownload: {value: "ダウンロード"}
+updateDownload: {value: "ダウンロードページを開く"}
 updateIgnore: {value: "このバージョンをスキップ"}
 updateLater: {value: "後で"}
 updateTitle: {value: "新しいバージョンがあります"}

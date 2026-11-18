@@ -58,7 +58,7 @@ recordCleared: {value: "Seria de măsurători a fost golită"}
 recordEdited: {value: "Înregistrarea a fost modificată manual"}
 recordRejected: {value: "Cererea de înregistrare a fost respinsă"}
 recordTake: {value: "Măsurătoarea a fost înregistrată"}
-recordUndone: {value: "Ultima înregistrare a fost anulată"}
+recordUndone: {value: "Salvarea ultimei măsurători a fost anulată"}
 reportFailed: {value: "Nu s-a putut salva raportul de acordaj"}
 reportOpenFailed: {value: "Nu s-a putut deschide raportul de acordaj"}
 reportOpened: {value: "Raportul de acordaj a fost transmis browserului"}

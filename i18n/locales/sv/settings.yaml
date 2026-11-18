@@ -4,25 +4,25 @@
 
 # Microphone and input level
 audioDeviceHint: {value: "Mikrofon för mätning"}
-audioDeviceLabel: {value: "Inmatningsenhet"}
+audioDeviceLabel: {value: "Ljudingång"}
 audioDeviceSystemDefault: {value: "Systemstandard"}
 autoVolume.hint: {value: "Justerar mikrofonnivån under mätningen"}
 autoVolume.label: {value: "Automatisk ingångsnivå"}
-autoVolume.saveFailed: {value: "Inställningen för ingångsnivå kunde inte sparas."}
+autoVolume.saveFailed: {value: "Inställningen för automatisk nivåreglering kunde inte sparas."}
 autoVolume.unsupported: {value: "Ingångsnivån kan inte justeras på den här enheten."}
 humFilter50: {value: "50 Hz"}
 humFilter60: {value: "60 Hz"}
-humFilterHint: {value: "Tar bort nätbrum: 50 Hz i Europa, 60 Hz i Amerika"}
+humFilterHint: {value: "Välj elnätets frekvens för att filtrera bort nätbrum"}
 humFilterLabel: {value: "Nätbrumsfilter"}
-lockedWhileRunning: {value: "Stoppa stämapparaten för att byta ljudingång."}
+lockedWhileRunning: {value: "Stoppa mätningen innan du byter ljudingång."}
 
 # Detection and reference pitch
-continuousManual: {value: "Uppdatera en fäst ton kontinuerligt"}
-continuousManualHint: {value: "Uppdatera en fäst ton tills mätningen låses"}
+continuousManual: {value: "Visa löpande mätvärden vid manuellt tonval"}
+continuousManualHint: {value: "Visar även mätvärden som ännu inte är stabila"}
 detection.balanced: {value: "Balanserad"}
 detection.balancedHint: {value: "Byter ton på ungefär en halv sekund"}
 detection.fast: {value: "Snabb"}
-detection.fastHint: {value: "Byter ton snabbast men kan låsa på fel ton"}
+detection.fastHint: {value: "Reagerar snabbast på tonbyten, men kan identifiera fel ton"}
 detection.steady: {value: "Stabil"}
 detection.steadyHint: {value: "Ursprungligt beteende, långsamt tonbyte"}
 detectionLabel: {value: "Tonidentifiering"}
@@ -30,14 +30,14 @@ lockA4: {value: "Lås referenstonen"}
 lockA4Hint: {value: "Hindrar att A4 ändras i stämapparaten"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "Hertz eller enheter om 0,06 % av tonens frekvens"}
+beatUnitHint: {value: "Visa svävningar i hertz eller i den enhet du valt för stämtungornas avvikelser"}
 beatUnitLabel: {value: "Enhet för svävning"}
 errorReference: {value: "Referens för avvikelse"}
 errorReferenceGoal: {value: "Målvärde"}
 
 errorReferenceHint:
-  value: "Visa avvikelsen från skalans tonhöjd eller från stämmålet. Vid målet är avvikelsen från målet noll."
-errorReferenceScale: {value: "Skala"}
+  value: "Välj om avvikelsen ska visas mot tonens liksvävande stämning eller mot målvärdet. Med målvärdet som referens visas noll när målet är uppnått."
+errorReferenceScale: {value: "Liksvävande stämning"}
 scaleNamingHint: {value: "Hur tonerna benämns"}
 scaleNamingLabel: {value: "Tonnamn"}
 scaleNamings.cdefgab: {value: "C D E F G A B (internationellt, korsförtecken som C#)"}
@@ -45,7 +45,7 @@ scaleNamings.cdefgah: {value: "C D E F G A H (tyskt, korsförtecken som C#)"}
 scaleNamings.doremi: {value: "Do Re Mi (solmisation)"}
 scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (polskt)"}
 toleranceBeat: {value: "Svävning"}
-toleranceHint: {value: "Hur mycket en stämtunga eller svävning får avvika och ändå räknas som stämd"}
+toleranceHint: {value: "Hur mycket en stämtunga eller svävning får avvika från sitt målvärde"}
 toleranceLabel: {value: "Toleranser"}
 toleranceReed: {value: "Stämtunga"}
 unitHint: {value: "Cent eller enheter om 0,06 % av tonens frekvens"}
@@ -60,7 +60,7 @@ accent.pick: {value: "Välj en färg"}
 accent.pickTitle: {value: "Accentfärg"}
 closeToTray: {value: "Minimera till meddelandefältet vid stängning"}
 closeToTrayHint: {value: "När fönstret stängs ligger appen kvar i meddelandefältet"}
-checkUpdates: {value: "Sök efter uppdateringar", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdates: {value: "Sök automatiskt efter uppdateringar", description: "Desktop settings checkbox enabling GitHub update checks."}
 checkUpdatesHint: {value: "Söker efter en nyare version på GitHub", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "Gränssnittets språk"}
 languageLabel: {value: "Språk"}
@@ -84,7 +84,7 @@ calibration.askTitle: {value: "Ljudkortet är inte kalibrerat"}
 calibration.hint: {value: "Korrigerar ljudkortets klockfel. Tar ungefär en minut och kräver inget ljud."}
 calibration.label: {value: "Kalibrering av ljudkort"}
 calibration.open: {value: "Öppna"}
-calibration.openHint: {value: "Visa kalibreringsskärmen utan att mäta"}
+calibration.openHint: {value: "Öppna kalibreringsvyn utan att starta kalibreringen"}
 calibration.saveFailed: {value: "Kalibreringen kunde inte sparas. Stämapparaten använder det tidigare sparade tillståndet."}
 calibration.screen.again: {value: "Kalibrera igen"}
 calibration.screen.bar.confirming: {value: "Bekräftar"}
@@ -109,11 +109,11 @@ calibration.screen.phase.preparing: {value: "Väntar tills ingången stabilisera
 calibration.screen.phase.settling: {value: "Väntar på ett stabilt klockvärde."}
 
 calibration.screen.pitch:
-  value: "Det motsvarar {pitch} vid varje ton."
+  value: "Det motsvarar ett tonhöjdsfel på {pitch} för varje ton."
   placeholders:
     pitch: {type: string}
 
-calibration.screen.preparing: {value: "Värmer upp ingången"}
+calibration.screen.preparing: {value: "Förbereder ljudingången"}
 calibration.screen.retry: {value: "Mätvärdena förblir okorrigerade. Stäng andra ljudappar och försök igen."}
 calibration.screen.return: {value: "Tillbaka"}
 calibration.screen.stat.dropouts: {value: "Avbrott"}
@@ -129,10 +129,10 @@ calibration.screen.steadiness:
     target: {type: string}
 
 calibration.screen.steps.done: {value: "Klar"}
-calibration.screen.steps.measure: {value: "Mät"}
-calibration.screen.steps.prepare: {value: "Uppvärmning"}
+calibration.screen.steps.measure: {value: "Mätning"}
+calibration.screen.steps.prepare: {value: "Förberedelse"}
 calibration.screen.traceEmpty: {value: "Här visas klockavvikelsen under mätningen."}
-calibration.screen.unreliable: {value: "Klockan blev aldrig stabil"}
+calibration.screen.unreliable: {value: "Mätningen av ljudkortets klocka blev aldrig stabil"}
 calibration.start: {value: "Kalibrera"}
 calibration.startHint: {value: "Mät ingångens samplingsklocka"}
 
@@ -142,7 +142,7 @@ calibration.status.calibrated:
     percent: {type: string}
 
 calibration.status.calibrating:
-  value: "Kalibrerar, {seconds} s ({percent} %), {progress} % klart"
+  value: "Kalibrering: {seconds} s, klockavvikelse {percent} %, {progress} % klart"
   placeholders:
     percent: {type: string}
     progress: {type: string}

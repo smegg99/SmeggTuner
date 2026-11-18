@@ -9,10 +9,10 @@ cancel: {value: "Avbryt"}
 close: {value: "Stäng"}
 delete: {value: "Ta bort"}
 export: {value: "Exportera"}
-next: {value: "Nästa"}
+next: {value: "Nästa sida"}
 "no": {value: "Nej"}
 none: {value: "Inga"}
-previous: {value: "Föregående"}
+previous: {value: "Föregående sida"}
 website: {value: "Webbplats"}
 "yes": {value: "Ja"}
 
@@ -75,14 +75,14 @@ title.uncalibrated:
     title: {type: string}
 
 # Application and About dialog
-about.aboutTitle: {value: "Om"}
+about.aboutTitle: {value: "Om SmeggTuner"}
 about.commit: {value: "Byggversion"}
-about.donate: {value: "Stöd på Ko-fi"}
+about.donate: {value: "Donera via Ko-fi"}
 about.license: {value: "Licens"}
 about.privacy: {value: "Integritetspolicy"}
 about.guide: {value: "Så använder du SmeggTuner"}
-about.onlineVersion: {value: "Öppna webbversionen"}
-about.support: {value: "Support"}
+about.onlineVersion: {value: "Öppna dokumentet i webbläsaren"}
+about.support: {value: "Mejla supporten"}
 about.mascot: {value: "En katt som spelar dragspel"}
 about.publisher: {value: "Av smegg99"}
 about.tagline: {value: "Gratis program med öppen källkod för dragspelsstämning."}

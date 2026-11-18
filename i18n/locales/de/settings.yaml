@@ -4,25 +4,25 @@
 
 # Microphone and input level
 audioDeviceHint: {value: "Mikrofon für die Messung"}
-audioDeviceLabel: {value: "Eingabegerät"}
+audioDeviceLabel: {value: "Audioeingang"}
 audioDeviceSystemDefault: {value: "Systemstandard"}
 autoVolume.hint: {value: "Regelt den Mikrofonpegel während der Messung"}
 autoVolume.label: {value: "Automatischer Eingangspegel"}
-autoVolume.saveFailed: {value: "Der Eingangspegel konnte nicht gespeichert werden."}
+autoVolume.saveFailed: {value: "Die Einstellung für die automatische Pegelregelung konnte nicht gespeichert werden."}
 autoVolume.unsupported: {value: "Bei diesem Gerät lässt sich der Eingangspegel nicht einstellen."}
 humFilter50: {value: "50 Hz"}
 humFilter60: {value: "60 Hz"}
-humFilterHint: {value: "Filtert Netzbrummen: 50 Hz in Europa, 60 Hz in Amerika"}
+humFilterHint: {value: "Wähle die örtliche Netzfrequenz, um Netzbrummen herauszufiltern"}
 humFilterLabel: {value: "Netzbrummfilter"}
-lockedWhileRunning: {value: "Zum Wechseln des Audioeingangs das Stimmgerät anhalten."}
+lockedWhileRunning: {value: "Beende die Messung, bevor du den Audioeingang wechselst."}
 
 # Detection and reference pitch
-continuousManual: {value: "Einen fixierten Ton fortlaufend aktualisieren"}
-continuousManualHint: {value: "Fixierten Ton aktualisieren, bis die Messung stabil ist"}
+continuousManual: {value: "Messwerte bei manueller Tonwahl laufend anzeigen"}
+continuousManualHint: {value: "Zeigt auch Messwerte an, die noch nicht stabil sind"}
 detection.balanced: {value: "Ausgewogen"}
 detection.balancedHint: {value: "Erkennt Tonwechsel nach etwa einer halben Sekunde"}
 detection.fast: {value: "Schnell"}
-detection.fastHint: {value: "Schnellster Tonwechsel, kann einen falschen Ton einrasten lassen"}
+detection.fastHint: {value: "Reagiert am schnellsten auf Tonwechsel, kann aber den falschen Ton erkennen"}
 detection.steady: {value: "Stabil"}
 detection.steadyHint: {value: "Ursprüngliches Verhalten, langsamer Tonwechsel"}
 detectionLabel: {value: "Tonerkennung"}
@@ -30,14 +30,14 @@ lockA4: {value: "Kammerton sperren"}
 lockA4Hint: {value: "Verhindert Änderungen an A4 im Stimmgerät"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "Hertz oder Einheiten von 0,06 % der Tonfrequenz"}
+beatUnitHint: {value: "Schwebungen in Hertz oder in derselben Einheit wie die Stimmzungenabweichung anzeigen"}
 beatUnitLabel: {value: "Schwebungseinheit"}
 errorReference: {value: "Bezug für Abweichungen"}
 errorReferenceGoal: {value: "Sollwert"}
 
 errorReferenceHint:
-  value: "Abweichung von der Skala oder vom Stimmziel anzeigen. Am Stimmziel beträgt die zielbezogene Abweichung null."
-errorReferenceScale: {value: "Tonskala"}
+  value: "Wähle, ob die Anzeige die Abweichung vom gleichstufigen Ton oder vom Sollwert zeigt. Beim Sollwert bedeutet null, dass das Stimmziel erreicht ist."
+errorReferenceScale: {value: "Gleichstufige Stimmung"}
 scaleNamingHint: {value: "Wie Töne benannt werden"}
 scaleNamingLabel: {value: "Tonnamen"}
 scaleNamings.cdefgab: {value: "C D E F G A B (international, Kreuze als C#)"}
@@ -45,7 +45,7 @@ scaleNamings.cdefgah: {value: "C D E F G A H (deutsch, Kreuze als C#)"}
 scaleNamings.doremi: {value: "Do Re Mi (Solfège)"}
 scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (polnisch)"}
 toleranceBeat: {value: "Schwebung"}
-toleranceHint: {value: "Zulässige Abweichung einer Stimmzunge oder Schwebung für die Einstufung als gestimmt"}
+toleranceHint: {value: "Wie weit Stimmzunge und Schwebung vom jeweiligen Sollwert abweichen dürfen"}
 toleranceLabel: {value: "Toleranzen"}
 toleranceReed: {value: "Stimmzunge"}
 unitHint: {value: "Cent oder Einheiten von 0,06 % der Tonfrequenz"}
@@ -60,7 +60,7 @@ accent.pick: {value: "Farbe auswählen"}
 accent.pickTitle: {value: "Akzentfarbe"}
 closeToTray: {value: "Beim Schließen in den Infobereich minimieren"}
 closeToTrayHint: {value: "Beim Schließen des Fensters bleibt die App im Infobereich"}
-checkUpdates: {value: "Nach Updates suchen", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdates: {value: "Automatisch nach Updates suchen", description: "Desktop settings checkbox enabling GitHub update checks."}
 checkUpdatesHint: {value: "Sucht auf GitHub nach einer neueren Version", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "Sprache der Benutzeroberfläche"}
 languageLabel: {value: "Sprache"}
@@ -84,7 +84,7 @@ calibration.askTitle: {value: "Diese Soundkarte ist nicht kalibriert"}
 calibration.hint: {value: "Korrigiert den Taktfehler der Soundkarte. Dauert etwa eine Minute, kein Ton erforderlich."}
 calibration.label: {value: "Soundkartenkalibrierung"}
 calibration.open: {value: "Öffnen"}
-calibration.openHint: {value: "Kalibrierungsansicht ohne Messung anzeigen"}
+calibration.openHint: {value: "Kalibrierungsansicht öffnen, ohne die Kalibrierung zu starten"}
 calibration.saveFailed: {value: "Die Kalibrierung konnte nicht gespeichert werden. Das Stimmgerät verwendet den zuvor gespeicherten Stand."}
 calibration.screen.again: {value: "Erneut kalibrieren"}
 calibration.screen.bar.confirming: {value: "Überprüfung"}
@@ -109,11 +109,11 @@ calibration.screen.phase.preparing: {value: "Der Eingang stabilisiert sich, bevo
 calibration.screen.phase.settling: {value: "Warten auf einen stabilen Taktmesswert."}
 
 calibration.screen.pitch:
-  value: "Das entspricht bei jedem Ton {pitch}."
+  value: "Entsprechender Tonhöhenfehler bei jedem Ton: {pitch}."
   placeholders:
     pitch: {type: string}
 
-calibration.screen.preparing: {value: "Eingang läuft an"}
+calibration.screen.preparing: {value: "Audioeingang wird vorbereitet"}
 calibration.screen.retry: {value: "Die Messwerte bleiben unkorrigiert. Schließe andere Audioanwendungen und versuche es erneut."}
 calibration.screen.return: {value: "Zurück"}
 calibration.screen.stat.dropouts: {value: "Aussetzer"}
@@ -129,10 +129,10 @@ calibration.screen.steadiness:
     target: {type: string}
 
 calibration.screen.steps.done: {value: "Fertig"}
-calibration.screen.steps.measure: {value: "Messen"}
-calibration.screen.steps.prepare: {value: "Warmlauf"}
+calibration.screen.steps.measure: {value: "Messung"}
+calibration.screen.steps.prepare: {value: "Vorbereitung"}
 calibration.screen.traceEmpty: {value: "Hier erscheint die Taktabweichung während der Messung."}
-calibration.screen.unreliable: {value: "Der Takt wurde nicht stabil"}
+calibration.screen.unreliable: {value: "Kein stabiler Taktmesswert"}
 calibration.start: {value: "Kalibrieren"}
 calibration.startHint: {value: "Abtasttakt des Eingangs messen"}
 
@@ -142,7 +142,7 @@ calibration.status.calibrated:
     percent: {type: string}
 
 calibration.status.calibrating:
-  value: "Kalibrierung, {seconds} s ({percent} %), {progress} % abgeschlossen"
+  value: "Kalibrierung: {seconds} s, Taktabweichung {percent} %, Fortschritt {progress} %"
   placeholders:
     percent: {type: string}
     progress: {type: string}

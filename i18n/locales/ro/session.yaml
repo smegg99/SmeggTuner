@@ -44,12 +44,12 @@ title: {value: "Sesiuni"}
 # Session dialog and tabs
 dialog.backToList: {value: "Alege un acordeon acordat anterior"}
 dialog.describeNew: {value: "Descrie un acordeon nou…"}
-dialog.forgetAccordion: {value: "Uită acest acordeon"}
+dialog.forgetAccordion: {value: "Elimină acordeonul din bibliotecă"}
 dialog.loadAccordion: {value: "Încarcă din fișier…"}
 dialog.name: {value: "Numele sesiunii"}
 dialog.nameHint: {value: "Folosește numele instrumentului sau al clientului pentru a identifica sesiunea."}
 dialog.pickAccordion: {value: "Care acordeon?"}
-dialog.start: {value: "Pornește"}
+dialog.start: {value: "Începe sesiunea"}
 page.mobile.curve: {value: "Ținte"}
 page.mobile.recorded: {value: "Măsurători"}
 
@@ -69,7 +69,7 @@ instrument.a4: {value: "Frecvență de referință"}
 
 instrument.a4Hint: {value: "Frecvența de referință A4 în hertzi. Noile sesiuni pentru acest instrument vor folosi această valoare."}
 
-instrument.bass.build: {value: "Înălțimile în picioare ale vocilor din următorul registru"}
+instrument.bass.build: {value: "Vocile următorului registru de bași (în picioare)"}
 instrument.bass.fixed: {value: "Fără registre de bași: mecanismul este fix și toate vocile sună mereu."}
 
 instrument.bass.full:
@@ -145,7 +145,7 @@ curve.clearAllHint: {value: "Elimină toate punctele de ancorare și păstrează
 curve.clearAllTitle: {value: "Ștergi întreaga curbă?"}
 curve.entryUnit: {value: "Unitate de introducere"}
 
-curve.help.hz: {value: "Cu Hz introduci ținta în hertzi, raportată la A4 = 440 Hz, ca în lista de referință a bătăilor. Astfel, ținta nu se deplasează odată cu A4 al sesiunii. Opțiunea Înregistrate suprapune măsurătorile sesiunii peste listă. În meniul Listă poți ajusta punctele de ancorare după ele sau copia lista altei sesiuni."}
+curve.help.hz: {value: "Dacă alegi Hz, abaterea țintă se raportează la La4 = 440 Hz, ca în lista de referință a bătăilor. Schimbarea frecvenței La4 a sesiunii nu modifică ținta introdusă. Cu butonul Măsurători suprapui valorile din această sesiune pe grafic. În meniul Listă poți ajusta curba după ele sau poți copia lista altei sesiuni."}
 
 curve.help.hzTitle: {value: "Hz și măsurători"}
 
@@ -162,8 +162,8 @@ curve.helpTitle: {value: "Bătăile dorite"}
 curve.interpolate: {value: "Interpolare"}
 curve.interpolateHint: {value: "Urmează linia dintre punctele de ancorare. Dacă dezactivezi opțiunea, valoarea fiecărui punct se păstrează până la următorul."}
 curve.menu.ends: {value: "Dincolo de punctele de ancorare"}
-curve.menu.extendHigh: {value: "Continuă peste punctul cel mai înalt"}
-curve.menu.extendLow: {value: "Continuă sub punctul cel mai jos"}
+curve.menu.extendHigh: {value: "Prelungește curba spre notele mai înalte"}
+curve.menu.extendLow: {value: "Prelungește curba spre notele mai grave"}
 curve.menu.fit: {value: "Ajustează după măsurătorile sesiunii"}
 
 curve.menu.fitBody:
@@ -188,7 +188,7 @@ curve.menu.replaceBody: {value: "Punctele de ancorare vor fi înlocuite cu cele 
 curve.menu.replaceConfirm: {value: "Înlocuiește"}
 curve.menu.replaceTitle: {value: "Înlocuiești lista bătăilor?"}
 curve.rank: {value: "Rând de ancii"}
-curve.recorded: {value: "Înregistrate"}
+curve.recorded: {value: "Măsurători"}
 curve.recordedHint: {value: "Afișează pe grafic măsurătorile acestei sesiuni"}
 curve.remove: {value: "Elimină"}
 curve.removeHint: {value: "Elimină din curbă punctul de ancorare al acestei note."}
@@ -238,7 +238,7 @@ readings.notes:
 workshop.exit: {value: "Ieși din sesiune"}
 workshop.import: {value: "Importă"}
 workshop.open: {value: "Deschide"}
-workshop.print: {value: "Tipărește fișa"}
+workshop.print: {value: "Exportă fișa de acordaj…"}
 
 # Session errors
 error.fitFailed: {value: "Nu s-a putut ajusta o curbă după această serie de măsurători."}

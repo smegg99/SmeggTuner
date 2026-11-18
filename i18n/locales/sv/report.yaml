@@ -38,8 +38,8 @@ table.bassTitle:
   placeholders:
     unit: {type: string}
 
-table.curr: {value: "Uppm."}
-table.err: {value: "Fel"}
+table.curr: {value: "Mätt"}
+table.err: {value: "Avv."}
 table.register: {value: "Register"}
 
 table.title:
@@ -59,15 +59,15 @@ graph.edited:
     mark: {type: string}
 
 legend.error.cents:
-  value: "Fila så att felet i förhållande till målvärdet närmar sig noll. Värden i cent från liksvävande temperatur vid {a4} Hz."
+  value: "Fila så att avvikelsen från målvärdet närmar sig noll. Mätvärdet anges i cent i förhållande till liksvävande stämning med A4 på {a4} Hz."
   placeholders:
     a4: {type: string}
 
-legend.error.key: {value: "Fel = uppmätt - mål."}
-legend.error.noCurve: {value: "Utan målkurva är målet noll och felet är avvikelsen från skalan."}
+legend.error.key: {value: "Avv. = mätvärde − målvärde."}
+legend.error.noCurve: {value: "Utan målkurva är målvärdet noll. Avvikelsen mäts då mot liksvävande stämning."}
 
 legend.error.reference:
-  value: "Fila så att felet i förhållande till målvärdet närmar sig noll. Värden i enheter om 0,06 % av tonens frekvens från liksvävande temperatur vid {a4} Hz."
+  value: "Fila så att avvikelsen från målvärdet närmar sig noll. Mätvärdet gäller i förhållande till liksvävande stämning med A4 på {a4} Hz. En enhet är 0,06 % av tonens frekvens."
   placeholders:
     a4: {type: string}
 

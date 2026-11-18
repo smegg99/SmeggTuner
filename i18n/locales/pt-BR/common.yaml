@@ -9,10 +9,10 @@ cancel: {value: "Cancelar"}
 close: {value: "Fechar"}
 delete: {value: "Excluir"}
 export: {value: "Exportar"}
-next: {value: "Próximo"}
+next: {value: "Próxima página"}
 "no": {value: "Não"}
 none: {value: "Nenhum"}
-previous: {value: "Anterior"}
+previous: {value: "Página anterior"}
 website: {value: "Site"}
 "yes": {value: "Sim"}
 
@@ -76,13 +76,13 @@ title.uncalibrated:
 
 # Application and About dialog
 about.aboutTitle: {value: "Sobre"}
-about.commit: {value: "Compilação"}
-about.donate: {value: "Apoiar no Ko-fi"}
+about.commit: {value: "Revisão Git"}
+about.donate: {value: "Fazer uma doação pelo Ko-fi"}
 about.license: {value: "Licença"}
 about.privacy: {value: "Política de privacidade"}
 about.guide: {value: "Como usar o SmeggTuner"}
-about.onlineVersion: {value: "Abrir a versão online"}
-about.support: {value: "Suporte"}
+about.onlineVersion: {value: "Abrir o documento no navegador"}
+about.support: {value: "Escrever para o suporte"}
 about.mascot: {value: "Um gato tocando acordeão"}
 about.publisher: {value: "Por smegg99"}
 about.tagline: {value: "Programa livre e gratuito para afinar acordeões."}

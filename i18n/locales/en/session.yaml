@@ -9,7 +9,7 @@ card.a4:
   placeholders:
     hz: {type: string}
 
-card.changed: {value: "The accordion on the shelf has changed since this session was recorded."}
+card.changed: {value: "The instrument library entry has changed since this session was saved."}
 card.hasCurve: {value: "Goal curve set"}
 
 card.readings:
@@ -39,9 +39,9 @@ new: {value: "New session"}
 title: {value: "Sessions"}
 
 # Session dialog and tabs
-dialog.backToList: {value: "Pick one already tuned"}
-dialog.describeNew: {value: "Describe a new one..."}
-dialog.forgetAccordion: {value: "Forget this accordion"}
+dialog.backToList: {value: "Choose from the instrument library"}
+dialog.describeNew: {value: "Describe a new accordion..."}
+dialog.forgetAccordion: {value: "Remove accordion from library"}
 dialog.loadAccordion: {value: "Load from file..."}
 dialog.name: {value: "Session name"}
 dialog.nameHint: {value: "Use an instrument or customer name to identify the session."}
@@ -60,10 +60,9 @@ accordion.columnsRefused:
 
 accordion.frozen:
   value: >-
-    The reference pitch and reed ranks cannot change after readings are recorded. You can still
-    add registers using the existing ranks.
-
-accordion.frozenShort: {value: "Ranks locked"}
+    Once readings are saved, their reference pitch, transposition and reed ranks are fixed.
+    You can still add registers using the existing ranks.
+accordion.frozenShort: {value: "Reed ranks locked"}
 accordion.remember: {value: "Save to instrument library"}
 accordion.rememberHint: {value: "Save this session's instrument to the library for use in future sessions."}
 
@@ -73,17 +72,17 @@ instrument.a4: {value: "Reference pitch"}
 instrument.a4Hint:
   value: "Reference frequency of A4 in hertz. New sessions for this instrument use this value."
 
-instrument.bass.build: {value: "Feet the next switch sounds"}
-instrument.bass.fixed: {value: "No bass registers: a fixed machine, every voice always sounds."}
+instrument.bass.build: {value: "Select the ranks for the new bass register"}
+instrument.bass.fixed: {value: "No bass register switches. All bass ranks sound together."}
 
 instrument.bass.full:
   value: "A bass machine here carries at most {n} switches"
   placeholders:
     n: {type: string}
 
-instrument.bass.hint: {value: "Declare how many voices the bass sounds; most machines have four or five."}
+instrument.bass.hint: {value: "Set the number of bass reed ranks. Most bass mechanisms have four or five."}
 instrument.bass.registerName: {value: "Switch name"}
-instrument.bass.voices: {value: "Bass voices"}
+instrument.bass.voices: {value: "Bass reed ranks"}
 instrument.beatTolerance: {value: "Beat tolerance"}
 instrument.builder.add: {value: "Add"}
 instrument.builder.already: {value: "That switch is already described"}
@@ -105,28 +104,27 @@ instrument.nameRequired: {value: "Enter an accordion name."}
 instrument.photo: {value: "Photograph"}
 instrument.range.backwards: {value: "The highest note must not be lower than the lowest note."}
 instrument.range.clear: {value: "Clear"}
-instrument.range.down: {value: "Lower"}
+instrument.range.down: {value: "One semitone lower"}
 
 instrument.range.hint:
-  value: "Optional. The lowest and highest key. You can also set it by ear during calibration."
+  value: "Optional. Enter the lowest and highest notes, or play the end keys during instrument calibration."
 
 instrument.range.label: {value: "Keyboard range"}
 instrument.range.to: {value: "to"}
-instrument.range.up: {value: "Higher"}
+instrument.range.up: {value: "One semitone higher"}
 
 instrument.registersHint:
   value: >-
-    Click the dots of each switch's symbol - the circle engraved on the accordion - or pick a
-    common one. What it sounds is read straight off the dots.
-
+    Match the symbol on the accordion's switch. Select the 4' and 16' ranks that sound and the
+    number of 8' ranks, then add the register.
 instrument.registersSubtitle: {value: "The treble-side switches, and the ranks each one sounds."}
 
 instrument.says:
   plural:
     argument: reeds
     forms:
-      one: "Reed ranks {banks}. The widest switch sounds {reeds} reed."
-      other: "Reed ranks {banks}. The widest switch sounds {reeds} reeds."
+      one: "Reed ranks: {banks}. At most {reeds} reed can sound per note in one register."
+      other: "Reed ranks: {banks}. At most {reeds} reeds can sound per note in one register."
   placeholders:
     banks: {type: string}
     reeds: {type: integer}
@@ -140,27 +138,23 @@ instrument.tolerance: {value: "Reed tolerance"}
 
 instrument.toleranceHint:
   value: >-
-    Allowed reed deviation in units of 0.06% of the note frequency. Readings outside this range
-    are marked out of tune.
-
+    Allowed error relative to the reed target, in units of 0.06% of the note frequency. Larger
+    errors are marked out of tune.
 # Target curve editor
 curve.clearAll: {value: "Clear curve"}
 
 curve.clearAllConfirm:
   value: >-
-    Every anchor is taken out. The goal goes back to the scale pitch for every note, and the tuner
-    becomes a plain indicator.
-
+    All anchor points will be removed. Every reed target will return to scale pitch.
 curve.clearAllHint: {value: "Take every anchor out and leave the goal at the scale pitch."}
 curve.clearAllTitle: {value: "Clear the whole curve?"}
 curve.entryUnit: {value: "Entry unit"}
 
 curve.help.hz:
   value: >-
-    Hz enters a goal in hertz, read at A4 = 440 Hz as the reference beat list does, so it does not
-    move with the session's A4. Recorded lays this session's readings over the list, and List can
-    fit the anchors to them or copy another session's list.
-
+    In Hz, enter a pitch offset using A4 = 440 Hz. The value shown here stays the same when
+    the session's A4 changes. Show readings overlays the session measurements. Use List to fit
+    the curve to them or copy a list from another session.
 curve.help.hzTitle: {value: "Hz and readings"}
 
 curve.help.interp:
@@ -172,22 +166,20 @@ curve.help.interpTitle: {value: "Between the points"}
 
 curve.help.lead:
   value: >-
-    The goal you are tuning toward: how far each reed should sit from its scale pitch, note by
-    note. A recorded reed is read against this, so the table calls it in or out against your
-    target, not against dead-centre.
-
+    Set how far above or below scale pitch each reed should sound on each note. The table
+    compares the measurement with this target and marks readings outside tolerance.
 curve.help.set:
   value: >-
     Pick a note and a value and press Set, or drag a point on the chart up or down. Each rank is
     its own line, and the one you are editing is highlighted.
 
 curve.help.setTitle: {value: "Setting a point"}
-curve.helpTitle: {value: "Desired beatings"}
+curve.helpTitle: {value: "Target reed offsets and beats"}
 curve.interpolate: {value: "Interpolate"}
 curve.interpolateHint: {value: "Follow the line between anchors. Off, each anchor holds until the next one."}
 curve.menu.ends: {value: "Beyond the anchors"}
-curve.menu.extendHigh: {value: "Continue above the highest"}
-curve.menu.extendLow: {value: "Continue below the lowest"}
+curve.menu.extendHigh: {value: "Extend to higher notes"}
+curve.menu.extendLow: {value: "Extend to lower notes"}
 curve.menu.fit: {value: "Fit to this session's readings"}
 
 curve.menu.fitBody:
@@ -207,7 +199,7 @@ curve.menu.replaceBody: {value: "The anchors are replaced by the other list, wit
 curve.menu.replaceConfirm: {value: "Replace"}
 curve.menu.replaceTitle: {value: "Replace the beat list?"}
 curve.rank: {value: "Rank"}
-curve.recorded: {value: "Recorded"}
+curve.recorded: {value: "Show readings"}
 curve.recordedHint: {value: "Show this session's readings on the graph"}
 curve.remove: {value: "Remove"}
 curve.removeHint: {value: "Take this note’s anchor out of the curve."}
@@ -250,16 +242,15 @@ readings.notes:
 workshop.exit: {value: "Exit session"}
 workshop.import: {value: "Import"}
 workshop.open: {value: "Open"}
-workshop.print: {value: "Print card"}
+workshop.print: {value: "Export tuning card"}
 
 # Session errors
 error.fitFailed: {value: "Could not fit a curve to that pass."}
 
 error.hasReadings:
   value: >-
-    This session already holds readings: they were all measured against its reference and reed
-    count, so neither can change now.
-
+    This session already has readings. Their reference pitch, transposition and reed layout
+    cannot change.
 error.imageUnreadable: {value: "That photograph would not open."}
 error.instrumentName: {value: "Give the accordion a name so you can find it again."}
 error.invalidA4: {value: "The reference pitch must be between 430 and 450 Hz."}

@@ -4,10 +4,10 @@
 # Plurals: one, other (locale cardinal rules).
 
 # Recording controls
-arm.hint: {value: "Registra un'acquisizione ogni volta che la misura si stabilizza (Invio per acquisire subito)"}
-arm.needsSession: {value: "Apri una sessione per registrare"}
+arm.hint: {value: "Le letture stabili vengono salvate. Premi per interrompere o usa Invio per salvare subito la misura corrente."}
+arm.needsSession: {value: "Apri una sessione per salvare le misure"}
 arm.warmup: {value: "Registrazione delle misure disattivata. Suona liberamente, nessuna misura viene salvata. Premi per iniziare a registrare le misure."}
-undo.hint: {value: "Annulla l'ultima acquisizione"}
+undo.hint: {value: "Annulla il salvataggio dell’ultima misura"}
 
 # Readings table and compact columns
 mobile.current: {value: "Misura"}
@@ -19,18 +19,18 @@ table.beat:
     pair: {type: string}
 
 table.delete: {value: "Rimuovi questa misurazione"}
-table.deleteHint: {value: "Elimina definitivamente questa misurazione. Per sostituirla, suona e registra di nuovo la nota."}
+table.deleteHint: {value: "La misura viene eliminata definitivamente. Per sostituirla, suona di nuovo la nota e salva la nuova misura."}
 table.deleteTitle: {value: "Rimuovere questa misurazione?"}
 table.editHint: {value: "Fai clic o premi Invio per modificare il valore"}
-table.empty: {value: "Avvia la registrazione, poi suona le note per salvarne le misurazioni."}
+table.empty: {value: "Attiva il salvataggio delle misure, poi suona le note da aggiungere alla tabella."}
 table.graph: {value: "Grafico"}
 
 table.graphHint:
   value: "Confronta ogni ancia con il suo obiettivo. Fai clic su una colonna per selezionare la riga corrispondente, poi di nuovo per selezionare il registro successivo."
-table.graphLabel: {value: "Errori delle ance per ogni nota registrata"}
+table.graphLabel: {value: "Scostamento di ogni ancia dal valore previsto, nota per nota"}
 table.helpTitle: {value: "Informazioni sulla tabella"}
-table.label: {value: "Accordatura registrata"}
-table.latest: {value: "Ultima acquisizione: premi Backspace per rimuoverla"}
+table.label: {value: "Misure di accordatura salvate"}
+table.latest: {value: "Ultima misura salvata. Premi Backspace per eliminarla."}
 table.manual: {value: "Modificato"}
 table.manualHint: {value: "Un valore di questa riga è stato inserito a mano anziché misurato."}
 
@@ -65,5 +65,5 @@ report.pdf: {value: "PDF"}
 report.title: {value: "Scheda di accordatura"}
 
 # Recording errors
-error.takeNotFound: {value: "Questa acquisizione non è più presente nella passata."}
+error.takeNotFound: {value: "Questa misura non è più presente nella serie."}
 error.unexpected: {value: "Operazione non riuscita. Consulta il registro per i dettagli."}

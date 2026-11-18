@@ -54,11 +54,11 @@ tunerTonePlayFailed: {value: "Impossible de jouer le son de référence"}
 tunerTonePlaying: {value: "Lecture du son de référence"}
 
 # Sessions, readings and reports
-recordCleared: {value: "Passage effacé"}
-recordEdited: {value: "Prise modifiée à la main"}
-recordRejected: {value: "Demande d'enregistrement refusée"}
+recordCleared: {value: "Mesures du passage effacées"}
+recordEdited: {value: "Mesure corrigée manuellement"}
+recordRejected: {value: "Demande d’enregistrement de mesure refusée"}
 recordTake: {value: "Mesure enregistrée"}
-recordUndone: {value: "Dernière prise annulée"}
+recordUndone: {value: "Enregistrement de la dernière mesure annulé"}
 reportFailed: {value: "Impossible d'écrire le rapport d'accordage"}
 reportOpenFailed: {value: "Impossible d'ouvrir le rapport d'accordage"}
 reportOpened: {value: "Rapport d'accordage transmis au navigateur"}
@@ -72,7 +72,7 @@ sessionCurveImported: {value: "Courbe cible importée"}
 sessionDeleted: {value: "Session supprimée"}
 sessionLoadFailed: {value: "Impossible de charger la session"}
 sessionOpened: {value: "Session ouverte"}
-sessionReedsClamped: {value: "L'instrument fait sonner plus d'anches que le moteur ne peut en distinguer. Le moteur applique sa limite."}
+sessionReedsClamped: {value: "Le registre fait sonner plus d’anches que le détecteur ne peut en distinguer. Seules les anches qu’il peut séparer seront mesurées."}
 sessionRejected: {value: "Modification de session non valide refusée"}
 sessionSaveFailed: {value: "Impossible d'enregistrer la session"}
 

@@ -54,11 +54,11 @@ tunerTonePlayFailed: {value: "Não foi possível reproduzir o som de referência
 tunerTonePlaying: {value: "A reproduzir o som de referência"}
 
 # Sessions, readings and reports
-recordCleared: {value: "Passagem apagada"}
-recordEdited: {value: "Tomada editada manualmente"}
-recordRejected: {value: "Pedido de gravação rejeitado"}
+recordCleared: {value: "Medições da passagem apagadas"}
+recordEdited: {value: "Medição alterada manualmente"}
+recordRejected: {value: "Pedido de registo da medição rejeitado"}
 recordTake: {value: "Medição registada"}
-recordUndone: {value: "Última tomada anulada"}
+recordUndone: {value: "Registo da última medição anulado"}
 reportFailed: {value: "Não foi possível escrever o relatório de afinação"}
 reportOpenFailed: {value: "Não foi possível abrir o relatório de afinação"}
 reportOpened: {value: "Relatório de afinação enviado para o navegador"}
@@ -72,7 +72,7 @@ sessionCurveImported: {value: "Curva-alvo importada"}
 sessionDeleted: {value: "Sessão eliminada"}
 sessionLoadFailed: {value: "Não foi possível carregar a sessão"}
 sessionOpened: {value: "Sessão aberta"}
-sessionReedsClamped: {value: "O instrumento faz soar mais palhetas do que o motor consegue distinguir. O motor aplica o seu limite."}
+sessionReedsClamped: {value: "O registo faz soar mais palhetas do que o detetor consegue distinguir. Serão medidas menos palhetas."}
 sessionRejected: {value: "Alteração inválida da sessão rejeitada"}
 sessionSaveFailed: {value: "Não foi possível guardar a sessão"}
 

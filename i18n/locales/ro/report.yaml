@@ -67,18 +67,16 @@ graph.edited:
       type: string
 
 legend.error.cents:
-  value: Pilește ancia astfel încât abaterea să se apropie de zero. Valorile sunt exprimate în cenți față de gama
-    temperată, cu referința la {a4} Hz.
+  value: "Prin pilire, apropie de zero diferența față de țintă. Valoarea măsurată indică abaterea în cenți față de temperamentul egal, cu La4 = {a4} Hz."
   placeholders:
     a4:
       type: string
 
-legend.error.key: {value: "Abatere = valoare măsurată − țintă."}
+legend.error.key: {value: "Abaterea față de țintă = valoarea măsurată − valoarea țintă."}
 legend.error.noCurve: {value: "Fără curbă țintă, ținta este zero, iar abaterea se măsoară față de gamă."}
 
 legend.error.reference:
-  value: Pilește ancia astfel încât abaterea să se apropie de zero. Abaterea față de gama temperată, cu referința
-    la {a4} Hz, se exprimă în unități de 0,06 % din frecvența notei.
+  value: "Prin pilire, apropie de zero diferența față de țintă. Valoarea măsurată indică abaterea față de temperamentul egal, cu La4 = {a4} Hz. O unitate reprezintă 0,06 % din frecvența notei."
   placeholders:
     a4:
       type: string
@@ -104,9 +102,9 @@ summary.beats:
   plural:
     argument: pluralCount
     forms:
-      one: '{pluralCount} bătaie'
-      few: '{pluralCount} bătăi'
-      other: '{pluralCount} de bătăi'
+      one: '{pluralCount} măsurătoare a frecvenței bătăilor'
+      few: '{pluralCount} măsurători ale frecvenței bătăilor'
+      other: '{pluralCount} de măsurători ale frecvenței bătăilor'
   placeholders:
     pluralCount:
       type: integer

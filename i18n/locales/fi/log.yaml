@@ -56,7 +56,7 @@ tunerTonePlaying: {value: "Toistetaan vertailuääntä"}
 # Sessions, readings and reports
 recordCleared: {value: "Mittauskierros tyhjennetty"}
 recordEdited: {value: "Mittausta muokattu käsin"}
-recordRejected: {value: "Tallennuspyyntö hylätty"}
+recordRejected: {value: "Kielen lukeman muokkaus hylättiin: mittaus ei sisällä tämän kielen lukemaa"}
 recordTake: {value: "Mittaus tallennettu"}
 recordUndone: {value: "Viimeinen mittaus kumottu"}
 reportFailed: {value: "Viritysraportin kirjoitus epäonnistui"}
@@ -72,7 +72,7 @@ sessionCurveImported: {value: "Tavoitekäyrä tuotu"}
 sessionDeleted: {value: "Istunto poistettu"}
 sessionLoadFailed: {value: "Istunnon lataus epäonnistui"}
 sessionOpened: {value: "Istunto avattu"}
-sessionReedsClamped: {value: "Soittimessa soi enemmän kieliä kuin mittausmoottori erottaa, rajoitetaan käsiteltävien kielten määrää"}
+sessionReedsClamped: {value: "Kieliä soi yhtä aikaa enemmän kuin viritin pystyy erottamaan. Mitattavien kielten määrää rajoitettiin."}
 sessionRejected: {value: "Virheellinen istuntomuutos hylätty"}
 sessionSaveFailed: {value: "Istunnon tallennus epäonnistui"}
 

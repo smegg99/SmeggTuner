@@ -5,7 +5,7 @@
 # Microphone and input level
 audioDeviceHint: {value: "Микрофон для измерений"}
 audioDeviceLabel: {value: "Устройство ввода"}
-audioDeviceSystemDefault: {value: "По умолчанию в системе"}
+audioDeviceSystemDefault: {value: "Устройство по умолчанию"}
 autoVolume.hint: {value: "Регулирует уровень микрофона во время измерения"}
 autoVolume.label: {value: "Автоматическая регулировка входного уровня"}
 autoVolume.saveFailed: {value: "Не удалось сохранить настройку входного уровня."}
@@ -17,8 +17,8 @@ humFilterLabel: {value: "Фильтр сетевого фона"}
 lockedWhileRunning: {value: "Чтобы изменить звуковой вход, остановите тюнер."}
 
 # Detection and reference pitch
-continuousManual: {value: "Непрерывно обновлять показания выбранной ноты"}
-continuousManualHint: {value: "Обновлять показания выбранной ноты до их стабилизации"}
+continuousManual: {value: "Непрерывно обновлять показания при ручном выборе ноты"}
+continuousManualHint: {value: "Показывать результаты, даже пока показания ещё не установились."}
 detection.balanced: {value: "Сбалансированное"}
 detection.balancedHint: {value: "Переключается на другую ноту примерно за полсекунды"}
 detection.fast: {value: "Быстрое"}
@@ -26,16 +26,16 @@ detection.fastHint: {value: "Быстрее всего переключает н
 detection.steady: {value: "Устойчивое"}
 detection.steadyHint: {value: "Исходный режим с медленным переключением между нотами"}
 detectionLabel: {value: "Распознавание нот"}
-lockA4: {value: "Заблокировать опорную частоту"}
+lockA4: {value: "Заблокировать частоту A4"}
 lockA4Hint: {value: "Запрещает изменять частоту A4 в тюнере"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "Герцы или единицы по 0,06 % частоты ноты"}
-beatUnitLabel: {value: "Единицы биений"}
-errorReference: {value: "Точка отсчёта отклонения"}
-errorReferenceGoal: {value: "Цель"}
+beatUnitHint: {value: "Показывать биения в герцах или в тех же единицах, которые выбраны для отклонений язычков."}
+beatUnitLabel: {value: "Единица частоты биений"}
+errorReference: {value: "Отсчёт отклонения"}
+errorReferenceGoal: {value: "Целевое значение"}
 
-errorReferenceHint: {value: "Показывает отклонение от частоты ноты в звукоряде или от цели настройки. При достижении цели отклонение относительно неё равно нулю."}
+errorReferenceHint: {value: "Отклонение язычка можно отсчитывать от ноты равномерно темперированного строя или от высоты, на которую нужно настроить язычок. Во втором случае ноль означает, что нужная высота достигнута."}
 
 errorReferenceScale: {value: "Звукоряд"}
 scaleNamingHint: {value: "Как обозначаются ноты"}
@@ -45,7 +45,7 @@ scaleNamings.cdefgah: {value: "C D E F G A H (немецкие, с диезом:
 scaleNamings.doremi: {value: "Do Re Mi (сольфеджио)"}
 scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (польские)"}
 toleranceBeat: {value: "Биения"}
-toleranceHint: {value: "Допустимое отклонение, при котором язычок или биения ещё считаются настроенными"}
+toleranceHint: {value: "Насколько высота звука язычка или частота биений может отличаться от цели и оставаться в пределах допуска."}
 toleranceLabel: {value: "Допуски"}
 toleranceReed: {value: "Язычок"}
 unitHint: {value: "Центы или единицы по 0,06 % частоты ноты"}
@@ -76,7 +76,7 @@ themes.dark: {value: "Тёмная"}
 themes.light: {value: "Светлая"}
 
 # Sound-card calibration
-calibration.askBody: {value: "Некалиброванная тактовая частота дискретизации может давать небольшую постоянную погрешность. Калибровка занимает около минуты и не требует звука."}
+calibration.askBody: {value: "Если реальная частота дискретизации звуковой карты отличается от номинальной, возникает небольшая систематическая погрешность. Калибровка занимает около минуты. Играть при этом не нужно."}
 
 calibration.askCalibrate: {value: "Калибровать сейчас"}
 calibration.askContinue: {value: "Продолжить без поправки"}
@@ -96,7 +96,7 @@ calibration.screen.calibrated:
     percent:
       type: string
 
-calibration.screen.calibrating: {value: "Измеряется тактовая частота звуковой карты"}
+calibration.screen.calibrating: {value: "Измеряется фактическая частота дискретизации звуковой карты"}
 
 calibration.screen.how: {value: "При измерении высоты тона возможна небольшая постоянная погрешность. Калибровка занимает около минуты, звук не нужен."}
 
@@ -134,7 +134,7 @@ calibration.screen.steps.done: {value: "Готово"}
 calibration.screen.steps.measure: {value: "Измерение"}
 calibration.screen.steps.prepare: {value: "Подготовка"}
 calibration.screen.traceEmpty: {value: "Здесь во время измерения строится график отклонения тактовой частоты."}
-calibration.screen.unreliable: {value: "Тактовая частота не стабилизировалась"}
+calibration.screen.unreliable: {value: "Измеренная частота дискретизации не стабилизировалась"}
 calibration.start: {value: "Калибровать"}
 calibration.startHint: {value: "Измерить тактовую частоту дискретизации на входе"}
 
@@ -169,4 +169,4 @@ groups.report: {value: "Данные мастерской"}
 # Report letterhead
 report.address: {value: "Адрес"}
 report.name: {value: "Название мастерской"}
-report.nameHint: {value: "Отображается в экспортированных отчётах при включённой фирменной шапке."}
+report.nameHint: {value: "Если включён фирменный бланк, это название появится в отчёте."}

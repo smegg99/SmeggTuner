@@ -8,7 +8,7 @@ card.a4:
   placeholders:
     hz: {type: string}
 
-card.changed: {value: "이 세션을 기록한 뒤 악기 보관함의 아코디언 정보가 변경되었습니다."}
+card.changed: {value: "이 세션을 저장한 뒤 악기 보관함의 아코디언 정보가 변경되었습니다."}
 card.hasCurve: {value: "목표 곡선 설정됨"}
 
 card.readings:
@@ -37,9 +37,9 @@ new: {value: "새 세션"}
 title: {value: "세션"}
 
 # Session dialog and tabs
-dialog.backToList: {value: "이전에 조율한 악기 선택"}
+dialog.backToList: {value: "악기 보관함에서 선택"}
 dialog.describeNew: {value: "새 악기 정보 입력…"}
-dialog.forgetAccordion: {value: "이 아코디언 등록 해제"}
+dialog.forgetAccordion: {value: "보관함에서 이 아코디언 삭제"}
 dialog.loadAccordion: {value: "파일에서 불러오기…"}
 dialog.name: {value: "세션 이름"}
 dialog.nameHint: {value: "악기 이름이나 고객 이름으로 세션을 구분하세요."}
@@ -81,7 +81,7 @@ instrument.builder.add: {value: "추가"}
 instrument.builder.already: {value: "이미 등록된 스위치입니다"}
 instrument.builder.high: {value: "4′ 피콜로"}
 instrument.builder.low: {value: "16′ 베이스"}
-instrument.builder.middle: {value: "8′ 리드"}
+instrument.builder.middle: {value: "8′ 중음 리드 열"}
 instrument.builder.none: {value: "아직 스위치가 없습니다. 아래에서 각 스위치가 울릴 리드 열을 선택하세요."}
 instrument.builder.remove: {value: "이 레지스터 삭제"}
 instrument.builder.title: {value: "스위치 추가"}
@@ -97,14 +97,14 @@ instrument.nameRequired: {value: "아코디언 이름을 입력하세요."}
 instrument.photo: {value: "사진"}
 instrument.range.backwards: {value: "최고음은 최저음보다 낮을 수 없습니다."}
 instrument.range.clear: {value: "지우기"}
-instrument.range.down: {value: "낮추기"}
+instrument.range.down: {value: "반음 내리기"}
 
 instrument.range.hint:
   value: "선택 사항입니다. 가장 낮은 건반과 높은 건반을 지정하거나 보정할 때 직접 연주해 설정할 수 있습니다."
 
 instrument.range.label: {value: "건반 음역"}
-instrument.range.to: {value: "부터"}
-instrument.range.up: {value: "높이기"}
+instrument.range.to: {value: "~"}
+instrument.range.up: {value: "반음 올리기"}
 
 instrument.registersHint:
   value: "악기에 새겨진 원형 스위치 기호의 점을 클릭하거나 흔한 조합을 선택하세요. 어떤 리드 열이 울리는지는 점의 위치로 결정됩니다."
@@ -114,7 +114,7 @@ instrument.says:
   plural:
     argument: reeds
     forms:
-      other: "리드 열: {banks}. 가장 많은 열을 사용하는 스위치는 리드 {reeds}개를 울립니다."
+      other: "리드 열: {banks}. 레지스터 하나에서 한 음에 리드가 최대 {reeds}개까지 함께 울립니다."
   placeholders:
     banks: {type: string}
     reeds: {type: integer}
@@ -127,18 +127,18 @@ instrument.sections.voices: {value: "레지스터"}
 instrument.tolerance: {value: "리드 허용 오차"}
 
 instrument.toleranceHint:
-  value: "해당 음 주파수의 0.06%를 한 단위로 하는 리드 허용 편차입니다. 범위를 벗어난 측정값은 조율이 맞지 않는 것으로 표시됩니다."
+  value: "리드 음높이가 목표에서 벗어나도 되는 범위입니다. 한 단위는 해당 음 주파수의 0.06%이며, 범위를 벗어난 측정값에는 표시가 붙습니다."
 # Target curve editor
 curve.clearAll: {value: "곡선 지우기"}
 
 curve.clearAllConfirm:
-  value: "모든 기준점을 제거합니다. 각 음의 목표가 음계 음높이로 돌아가며 튜너는 편차만 표시합니다."
+  value: "모든 기준점을 삭제합니다. 각 리드의 목표 음높이가 음계의 음높이로 돌아갑니다."
 curve.clearAllHint: {value: "모든 기준점을 제거하고 목표를 음계 음높이로 되돌립니다."}
 curve.clearAllTitle: {value: "곡선 전체를 지울까요?"}
 curve.entryUnit: {value: "입력 단위"}
 
 curve.help.hz:
-  value: "Hz를 선택하면 기준 맥놀이 목록과 같이 A4 = 440 Hz 기준으로 음계 음높이에서 벗어날 목표 편차를 Hz로 입력하므로 세션의 A4가 달라져도 값은 변하지 않습니다. ‘기록됨’으로 세션 측정값을 겹쳐 보고 ‘목록’에서 기준점을 값에 맞추거나 다른 세션의 목록을 복사할 수 있습니다."
+  value: "Hz를 선택하면 음계의 음높이에서 얼마나 벗어나게 할지 A4 = 440 Hz 기준으로 입력합니다. 세션의 A4를 바꿔도 여기 표시되는 값은 그대로입니다. ‘측정값 표시’를 켜면 그래프에 이 세션의 측정값이 겹쳐 보입니다. ‘목록’에서 측정값에 곡선을 맞추거나 다른 세션의 목록을 복사할 수 있습니다."
 curve.help.hzTitle: {value: "헤르츠와 측정값"}
 
 curve.help.interp:
@@ -150,12 +150,12 @@ curve.help.lead:
 curve.help.set:
   value: "음과 값을 선택하고 ‘설정’을 누르거나 그래프의 점을 위아래로 드래그하세요. 각 리드 열에는 별도의 선이 있고 편집 중인 선은 강조 표시됩니다."
 curve.help.setTitle: {value: "기준점 설정"}
-curve.helpTitle: {value: "목표 맥놀이"}
+curve.helpTitle: {value: "리드의 목표 편차와 맥놀이"}
 curve.interpolate: {value: "보간"}
 curve.interpolateHint: {value: "기준점 사이의 선을 따릅니다. 끄면 다음 점까지 같은 값을 유지합니다."}
 curve.menu.ends: {value: "기준점 범위 밖"}
-curve.menu.extendHigh: {value: "최고점 위로 연장"}
-curve.menu.extendLow: {value: "최저점 아래로 연장"}
+curve.menu.extendHigh: {value: "높은 음역으로 연장"}
+curve.menu.extendLow: {value: "낮은 음역으로 연장"}
 curve.menu.fit: {value: "이 세션의 측정값에 맞추기"}
 
 curve.menu.fitBody:
@@ -174,7 +174,7 @@ curve.menu.replaceBody: {value: "다른 목록의 기준점과 설정으로 교�
 curve.menu.replaceConfirm: {value: "교체"}
 curve.menu.replaceTitle: {value: "맥놀이 목록을 교체할까요?"}
 curve.rank: {value: "리드 열"}
-curve.recorded: {value: "기록됨"}
+curve.recorded: {value: "측정값 표시"}
 curve.recordedHint: {value: "이 세션의 측정값을 그래프에 표시"}
 curve.remove: {value: "제거"}
 curve.removeHint: {value: "곡선에서 이 음의 기준점을 제거합니다."}
@@ -216,13 +216,13 @@ readings.notes:
 workshop.exit: {value: "세션 나가기"}
 workshop.import: {value: "가져오기"}
 workshop.open: {value: "열기"}
-workshop.print: {value: "조율 카드 인쇄"}
+workshop.print: {value: "조율 카드 내보내기"}
 
 # Session errors
 error.fitFailed: {value: "해당 측정 회차에 곡선을 맞추지 못했습니다."}
 
 error.hasReadings:
-  value: "이 세션에 이미 측정값이 있어 측정에 사용한 기준 음높이와 리드 수를 변경할 수 없습니다."
+  value: "이미 측정값이 있어 측정 당시의 기준 음높이와 리드 열 구성을 바꿀 수 없습니다."
 error.imageUnreadable: {value: "해당 사진을 열 수 없습니다."}
 error.instrumentName: {value: "나중에 찾을 수 있도록 아코디언 이름을 입력하세요."}
 error.invalidA4: {value: "기준 음높이는 430~450 Hz여야 합니다."}

@@ -8,7 +8,7 @@ card.a4:
   placeholders:
     hz: {type: string}
 
-card.changed: {value: "乐器库中的这台手风琴自本次会话记录后已被修改。"}
+card.changed: {value: "自上次保存此会话后，乐器库中这台手风琴的资料已有更改。"}
 card.hasCurve: {value: "已设置目标曲线"}
 
 card.readings:
@@ -37,9 +37,9 @@ new: {value: "新建会话"}
 title: {value: "会话"}
 
 # Session dialog and tabs
-dialog.backToList: {value: "选择调过音的手风琴"}
+dialog.backToList: {value: "从乐器库选择"}
 dialog.describeNew: {value: "填写新乐器资料…"}
-dialog.forgetAccordion: {value: "移除此手风琴档案"}
+dialog.forgetAccordion: {value: "从乐器库移除此手风琴"}
 dialog.loadAccordion: {value: "从文件加载…"}
 dialog.name: {value: "会话名称"}
 dialog.nameHint: {value: "可用乐器或客户名称标识此会话。"}
@@ -81,7 +81,7 @@ instrument.builder.add: {value: "添加"}
 instrument.builder.already: {value: "该开关已设置"}
 instrument.builder.high: {value: "4′ 短笛"}
 instrument.builder.low: {value: "16′ 低音"}
-instrument.builder.middle: {value: "8′ 簧片"}
+instrument.builder.middle: {value: "8′ 中音簧组"}
 instrument.builder.none: {value: "尚无开关。请在下方选择各开关启用的簧组。"}
 instrument.builder.remove: {value: "移除此变音器"}
 instrument.builder.title: {value: "添加开关"}
@@ -97,14 +97,14 @@ instrument.nameRequired: {value: "请输入手风琴名称。"}
 instrument.photo: {value: "照片"}
 instrument.range.backwards: {value: "最高音不能低于最低音。"}
 instrument.range.clear: {value: "清除"}
-instrument.range.down: {value: "降低"}
+instrument.range.down: {value: "降低一个半音"}
 
 instrument.range.hint:
   value: "可选。指定最低音键和最高音键，也可在校准时通过演奏来设置。"
 
 instrument.range.label: {value: "键盘音域"}
 instrument.range.to: {value: "至"}
-instrument.range.up: {value: "升高"}
+instrument.range.up: {value: "升高一个半音"}
 
 instrument.registersHint:
   value: "点击各变音器符号中的圆点（即琴上刻着的圆形标记），或选择常用组合。圆点直接表示启用的簧组。"
@@ -114,7 +114,7 @@ instrument.says:
   plural:
     argument: reeds
     forms:
-      other: "簧组：{banks}。启用簧片最多的开关可同时发出 {reeds} 个簧片的声音。"
+      other: "簧组：{banks}。选用一个变音器时，每个音最多有 {reeds} 片簧片同时发声。"
   placeholders:
     banks: {type: string}
     reeds: {type: integer}
@@ -127,18 +127,18 @@ instrument.sections.voices: {value: "变音器"}
 instrument.tolerance: {value: "簧片容差"}
 
 instrument.toleranceHint:
-  value: "簧片允许的偏差，每单位为该音频率的 0.06%。超出范围的读数会标为音不准。"
+  value: "簧片实测音高与目标音高的最大允许偏差。每单位为该音频率的 0.06%，超出容差的读数会标为未调准。"
 # Target curve editor
 curve.clearAll: {value: "清除曲线"}
 
 curve.clearAllConfirm:
-  value: "将移除全部锚点。每个音的目标都会恢复为音阶音高，调音器将只显示偏差。"
+  value: "所有锚点都将移除，各簧片的目标音高将恢复为音阶音高。"
 curve.clearAllHint: {value: "移除全部锚点，将目标恢复为音阶音高。"}
 curve.clearAllTitle: {value: "清除整条曲线？"}
 curve.entryUnit: {value: "输入单位"}
 
 curve.help.hz:
-  value: "选择 Hz 时，以 A4 = 440 Hz 输入目标赫兹值，与参考拍频表相同，不随本会话的 A4 改变。“已记录”可在表上叠加本会话的读数；通过“列表”可按读数拟合锚点或复制其他会话的列表。"
+  value: "以 Hz 输入的是相对于音阶音高的目标偏差，统一按 A4 = 440 Hz 换算，不随会话的 A4 改变。选择“显示读数”可在图上叠加本会话的测量值。在“列表”中可按读数拟合曲线，或从其他会话复制列表。"
 curve.help.hzTitle: {value: "赫兹与读数"}
 
 curve.help.interp:
@@ -150,12 +150,12 @@ curve.help.lead:
 curve.help.set:
   value: "选择音符和数值后按“设置”，也可上下拖动图中的点。每个簧组各有一条线，正在编辑的线会高亮。"
 curve.help.setTitle: {value: "设置锚点"}
-curve.helpTitle: {value: "期望拍频"}
+curve.helpTitle: {value: "簧片目标偏差与拍频"}
 curve.interpolate: {value: "插值"}
 curve.interpolateHint: {value: "沿锚点连线取值。关闭时，各锚点的值保持到下一锚点。"}
 curve.menu.ends: {value: "锚点范围外"}
-curve.menu.extendHigh: {value: "将曲线延伸至最高锚点音符以上的音域"}
-curve.menu.extendLow: {value: "将曲线延伸至最低锚点音符以下的音域"}
+curve.menu.extendHigh: {value: "延伸至更高音"}
+curve.menu.extendLow: {value: "延伸至更低音"}
 curve.menu.fit: {value: "拟合本会话的读数"}
 
 curve.menu.fitBody:
@@ -174,7 +174,7 @@ curve.menu.replaceBody: {value: "现有锚点将被另一列表的锚点及设�
 curve.menu.replaceConfirm: {value: "替换"}
 curve.menu.replaceTitle: {value: "替换拍频列表？"}
 curve.rank: {value: "簧组"}
-curve.recorded: {value: "已记录"}
+curve.recorded: {value: "显示读数"}
 curve.recordedHint: {value: "在图中显示本次会话的读数"}
 curve.remove: {value: "移除"}
 curve.removeHint: {value: "从曲线中移除此音的锚点。"}
@@ -216,13 +216,13 @@ readings.notes:
 workshop.exit: {value: "退出会话"}
 workshop.import: {value: "导入"}
 workshop.open: {value: "打开"}
-workshop.print: {value: "打印调音卡"}
+workshop.print: {value: "导出调音卡"}
 
 # Session errors
 error.fitFailed: {value: "无法根据该轮测量拟合曲线。"}
 
 error.hasReadings:
-  value: "此会话已有读数，测量时使用的基准音高和簧片数都不能再更改。"
+  value: "会话已有读数，不能更改测量时使用的基准音高和簧组配置。"
 error.imageUnreadable: {value: "无法打开该照片。"}
 error.instrumentName: {value: "请为手风琴命名，以便日后查找。"}
 error.invalidA4: {value: "基准音高必须在 430 至 450 Hz 之间。"}

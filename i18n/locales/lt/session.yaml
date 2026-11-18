@@ -40,9 +40,9 @@ new: {value: "Naujas seansas"}
 title: {value: "Seansai"}
 
 # Session dialog and tabs
-dialog.backToList: {value: "Pasirinkti anksčiau derintą instrumentą"}
+dialog.backToList: {value: "Pasirinkti iš instrumentų bibliotekos"}
 dialog.describeNew: {value: "Aprašyti naują instrumentą…"}
-dialog.forgetAccordion: {value: "Pamiršti šį akordeoną"}
+dialog.forgetAccordion: {value: "Pašalinti akordeoną iš instrumentų bibliotekos"}
 dialog.loadAccordion: {value: "Įkelti iš failo…"}
 dialog.name: {value: "Seanso pavadinimas"}
 dialog.nameHint: {value: "Seansui atpažinti naudokite instrumento pavadinimą arba kliento vardą."}
@@ -57,8 +57,8 @@ accordion.a4Locked: {value: "Fiksuota: pagal šią vertę jau įrašyti seanso m
 accordion.columnsRefused:
   value: "Pakeitus būtų pakeistos jau įrašytų rodmenų liežuvėlių eilės. Pakeitimas neįrašytas. Atkurkite ankstesnes eiles arba sukurkite naują seansą."
 accordion.frozen:
-  value: "Įrašius rodmenis nebegalima keisti atskaitos dažnio ir liežuvėlių eilių. Vis dar galima pridėti registrų, naudojančių esamas eiles."
-accordion.frozenShort: {value: "Liežuvėlių eilės užrakintos"}
+  value: "Išsaugojus matavimus nebegalima keisti atskaitos dažnio, transponavimo ir liežuvėlių eilių. Iš esamų eilių vis dar galite sudaryti naujus registrus."
+accordion.frozenShort: {value: "Liežuvėlių eilės užfiksuotos"}
 accordion.remember: {value: "Įrašyti į instrumentų biblioteką"}
 accordion.rememberHint: {value: "Įrašykite šio seanso instrumentą į biblioteką, kad galėtumėte jį naudoti būsimuose seansuose."}
 
@@ -68,17 +68,17 @@ instrument.a4: {value: "Atskaitos dažnis"}
 instrument.a4Hint:
   value: "A4 atskaitos dažnis hercais. Ši vertė naudojama naujuose instrumento seansuose."
 
-instrument.bass.build: {value: "Kito jungiklio balsų aukščiai pėdomis"}
-instrument.bass.fixed: {value: "Bosų registrų nėra: mechanizmas nekintamas, visada skamba visi balsai."}
+instrument.bass.build: {value: "Pasirinkite naujo bosų registro liežuvėlių eiles"}
+instrument.bass.fixed: {value: "Bosų pusėje nėra registrų jungiklių. Visos bosų liežuvėlių eilės skamba kartu."}
 
 instrument.bass.full:
   value: "Čia bosų mechanizmo jungiklių riba yra {n}"
   placeholders:
     n: {type: string}
 
-instrument.bass.hint: {value: "Nurodykite, kiek balsų skamba bosuose. Daugumoje mechanizmų jų keturi arba penki."}
+instrument.bass.hint: {value: "Nurodykite bosų liežuvėlių eilių skaičių. Dauguma bosų mechanizmų turi keturias arba penkias eiles."}
 instrument.bass.registerName: {value: "Jungiklio pavadinimas"}
-instrument.bass.voices: {value: "Bosų balsai"}
+instrument.bass.voices: {value: "Bosų liežuvėlių eilės"}
 instrument.beatTolerance: {value: "Leistina plakimo paklaida"}
 instrument.builder.add: {value: "Pridėti"}
 instrument.builder.already: {value: "Šis jungiklis jau aprašytas"}
@@ -100,27 +100,27 @@ instrument.nameRequired: {value: "Įveskite akordeono pavadinimą."}
 instrument.photo: {value: "Nuotrauka"}
 instrument.range.backwards: {value: "Aukščiausia nata negali būti žemesnė už žemiausią."}
 instrument.range.clear: {value: "Išvalyti"}
-instrument.range.down: {value: "Žemyn"}
+instrument.range.down: {value: "Pustoniu žemiau"}
 
 instrument.range.hint:
-  value: "Neprivaloma. Žemiausias ir aukščiausias klavišai. Diapazoną galima nustatyti ir iš klausos kalibruojant."
+  value: "Jei norite, įveskite žemiausią ir aukščiausią natas. Diapazoną taip pat galite nustatyti kalibruodami instrumentą: pagrokite abi kraštines natas."
 
 instrument.range.label: {value: "Klaviatūros diapazonas"}
 instrument.range.to: {value: "iki"}
-instrument.range.up: {value: "Aukštyn"}
+instrument.range.up: {value: "Pustoniu aukščiau"}
 
 instrument.registersHint:
-  value: "Spustelėkite kiekvieno jungiklio ženklo (akordeone išgraviruoto apskritimo) taškus arba pasirinkite įprastą ženklą. Taškai tiesiogiai nurodo skambančias eiles."
+  value: "Pagal akordeono registro jungiklio ženklą nurodykite, ar skamba 4′ ir 16′ liežuvėlių eilės ir kiek 8′ eilių įjungta. Tada pridėkite registrą."
 instrument.registersSubtitle: {value: "Diskanto pusės jungikliai ir jų įjungiamos liežuvėlių eilės."}
 
 instrument.says:
   plural:
     argument: reeds
     forms:
-      one: "Liežuvėlių eilės: {banks}. Įjungus plačiausią registrą skamba {reeds} liežuvėlis."
-      few: "Liežuvėlių eilės: {banks}. Įjungus plačiausią registrą skamba {reeds} liežuvėliai."
-      many: "Liežuvėlių eilės: {banks}. Įjungus plačiausią registrą skamba {reeds} liežuvėlio."
-      other: "Liežuvėlių eilės: {banks}. Įjungus plačiausią registrą skamba {reeds} liežuvėlių."
+      one: "Liežuvėlių eilės: {banks}. Grojant vieną natą vienu metu gali skambėti daugiausia {reeds} liežuvėlis."
+      few: "Liežuvėlių eilės: {banks}. Grojant vieną natą vienu metu gali skambėti daugiausia {reeds} liežuvėliai."
+      many: "Liežuvėlių eilės: {banks}. Grojant vieną natą vienu metu gali skambėti daugiausia {reeds} liežuvėlio."
+      other: "Liežuvėlių eilės: {banks}. Grojant vieną natą vienu metu gali skambėti daugiausia {reeds} liežuvėlių."
   placeholders:
     banks: {type: string}
     reeds: {type: integer}
@@ -133,7 +133,7 @@ instrument.sections.voices: {value: "Registrai"}
 instrument.tolerance: {value: "Leistina liežuvėlio paklaida"}
 
 instrument.toleranceHint:
-  value: "Leidžiamas liežuvėlio nuokrypis matuojamas vienetais po 0,06 % natos dažnio. Ribas peržengę rodmenys žymimi kaip nederantys."
+  value: "Leistinas skirtumas nuo siekiamo liežuvėlio nuokrypio. Vienas vienetas lygus 0,06 % natos dažnio. Didesnis skirtumas žymimas kaip nepatenkantis į leistinas ribas."
 # Target curve editor
 curve.clearAll: {value: "Išvalyti kreivę"}
 
@@ -144,7 +144,7 @@ curve.clearAllTitle: {value: "Išvalyti visą kreivę?"}
 curve.entryUnit: {value: "Įvesties vienetai"}
 
 curve.help.hz:
-  value: "Pasirinkę Hz tikslą įveskite hercais, kai A4 = 440 Hz, kaip atskaitos plakimų sąraše. Todėl seanso A4 tikslo nekeičia. „Įrašyta“ ant sąrašo uždeda seanso rodmenis. Meniu „Sąrašas“ galite pritaikyti atramos taškus rodmenims arba nukopijuoti kito seanso sąrašą."
+  value: "Hercais įvesta siekiama vertė apskaičiuojama pagal A4 = 440 Hz, kaip ir atskaitos plakimų sąraše. Ji nesikeičia keičiant seanso A4. Įjungus „Įrašyta“, grafike matomi ir seanso rodmenys. Meniu „Sąrašas“ galite pritaikyti atramos taškus pagal rodmenis arba nukopijuoti kito seanso sąrašą."
 curve.help.hzTitle: {value: "Hercai ir rodmenys"}
 
 curve.help.interp:
@@ -152,16 +152,16 @@ curve.help.interp:
 curve.help.interpTitle: {value: "Tarp taškų"}
 
 curve.help.lead:
-  value: "Derinimo tikslas kiekvienai natai nurodo, kiek kiekvienas liežuvėlis turi nukrypti nuo jos aukščio gamoje. Įrašytas liežuvėlio rodmuo lyginamas su šiuo tikslu. Lentelėje atitiktis vertinama pagal tikslą, o ne pagal nulį."
+  value: "Kiekvienai natai nustatykite, kiek kiekvieno liežuvėlio garso aukštis turėtų skirtis nuo gamos natos aukščio. Lentelėje išmatuotas nuokrypis lyginamas su šia siekiama verte ir rodoma, ar skirtumas patenka į leistinas ribas."
 curve.help.set:
   value: "Pasirinkite natą ir vertę ir spauskite „Nustatyti“ arba vilkite grafiko tašką aukštyn ar žemyn. Kiekvienai eilei skirta atskira linija; keičiama linija paryškinta."
 curve.help.setTitle: {value: "Taško nustatymas"}
-curve.helpTitle: {value: "Pageidaujami plakimai"}
+curve.helpTitle: {value: "Siekiami liežuvėlių nuokrypiai ir plakimai"}
 curve.interpolate: {value: "Interpoliuoti"}
 curve.interpolateHint: {value: "Sekti liniją tarp atramos taškų. Išjungus taško vertė galioja iki kito taško."}
 curve.menu.ends: {value: "Už atramos taškų"}
-curve.menu.extendHigh: {value: "Tęsti virš aukščiausio"}
-curve.menu.extendLow: {value: "Tęsti žemiau žemiausio"}
+curve.menu.extendHigh: {value: "Pratęsti iki aukštesnių natų"}
+curve.menu.extendLow: {value: "Pratęsti iki žemesnių natų"}
 curve.menu.fit: {value: "Pritaikyti prie šio seanso rodmenų"}
 
 curve.menu.fitBody:
@@ -228,13 +228,13 @@ readings.notes:
 workshop.exit: {value: "Išeiti iš seanso"}
 workshop.import: {value: "Importuoti"}
 workshop.open: {value: "Atverti"}
-workshop.print: {value: "Spausdinti kortelę"}
+workshop.print: {value: "Eksportuoti derinimo kortelę"}
 
 # Session errors
 error.fitFailed: {value: "Nepavyko pritaikyti kreivės šio etapo matavimams."}
 
 error.hasReadings:
-  value: "Seanse jau yra rodmenų. Jie gauti pagal esamą atskaitos dažnį ir liežuvėlių skaičių, todėl šių verčių keisti nebegalima."
+  value: "Seanse jau yra išsaugotų matavimų. Jų atskaitos dažnio, transponavimo ir liežuvėlių eilių išdėstymo nebegalima keisti."
 error.imageUnreadable: {value: "Nepavyko atverti nuotraukos."}
 error.instrumentName: {value: "Suteikite akordeonui pavadinimą, kad vėliau jį rastumėte."}
 error.invalidA4: {value: "Atskaitos dažnis turi būti nuo 430 iki 450 Hz."}
@@ -252,7 +252,7 @@ error.loadFailed: {value: "Nepavyko perskaityti seanso."}
 error.noBassMachine: {value: "Šiam akordeonui nenurodytas bosų mechanizmas."}
 error.noBassRegister: {value: "Akordeonas neturi tokio bosų registro."}
 error.noCurve: {value: "Šis seansas neturi tikslinės kreivės."}
-error.noReadings: {value: "Šiame seanse dar nieko neįrašyta."}
+error.noReadings: {value: "Šiame seanse dar nėra išsaugotų matavimų."}
 error.noRegister: {value: "Akordeonas neturi tokio registro."}
 error.noSession: {value: "Neatvertas joks seansas."}
 error.notAnImage: {value: "Šis failas nėra nuotrauka."}

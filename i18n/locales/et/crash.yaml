@@ -3,7 +3,7 @@ close: {value: "Sulge"}
 copied: {value: "Kopeeritud"}
 copy: {value: "Kopeeri aruanne"}
 details: {value: "Üksikasjad"}
-email: {value: "Saada aruanne e-postiga"}
+email: {value: "Ava aruanne e-kirjana"}
 failed:
   value: "Toiming ebaõnnestus: {error}"
   placeholders:
@@ -12,27 +12,27 @@ file:
   value: "Fail: {path}"
   placeholders:
     path: {type: string}
-kill: {value: "Sulge ja saada aruanne"}
-logs: {value: "Näita logifaili"}
+kill: {value: "Sulge ja koosta aruanne"}
+logs: {value: "Näita logifaili kaustas"}
 messageConfig:
   value: "Seadete faili ei saanud lugeda. Paranda või kustuta see ning käivita {app} uuesti."
   placeholders:
     app: {type: string}
 messageCrash:
-  value: "Rakenduses {app} tekkis sisemine viga. Saada aruanne, et viga saaks parandada, ja käivita rakendus uuesti."
+  value: "{app} lõpetas ootamatult töö. Soovi korral saada aruanne kasutajatoele ja käivita rakendus uuesti."
   placeholders:
     app: {type: string}
-messageHang: {value: "Rakendus võib poolelioleva toimingu veel lõpule viia. Oota või sulge rakendus ja saada aruanne."}
+messageHang: {value: "Rakendus võib toimingu veel lõpule viia. Võid oodata või rakenduse sulgeda. Sulgemisel koostatakse veaaruanne."}
 messageHangStopped:
-  value: "{app} suleti ajal, mil see ei vastanud. Saada aruanne, et viga saaks parandada, ja käivita rakendus uuesti."
+  value: "{app} ei vastanud ja suleti. Võid saata aruande kasutajatoele või rakenduse uuesti käivitada."
   placeholders:
     app: {type: string}
 messageKilled:
-  value: "{app} suleti enne, kui see jõudis veast teatada. Saada aruanne ja käivita rakendus uuesti."
+  value: "{app} suleti enne, kui see jõudis põhjusest teatada. Võid saata olemasoleva teabe kasutajatoele või rakenduse uuesti käivitada."
   placeholders:
     app: {type: string}
 messageOom:
-  value: "Süsteemil sai mälu otsa ja {app} suleti. Saada aruanne ja käivita rakendus uuesti."
+  value: "Süsteemil sai mälu otsa ja see sulges rakenduse {app}. Võid saata aruande kasutajatoele või rakenduse uuesti käivitada."
   placeholders:
     app: {type: string}
 messageStartup:

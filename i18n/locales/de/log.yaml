@@ -44,7 +44,7 @@ volumeStepFailed: {value: "Automatische Pegelregelung konnte den Eingangspegel n
 volumeUnavailable: {value: "Automatische Pegelregelung hat keinen Zugriff auf den Eingangspegel des Geräts"}
 
 # Tuner engine
-tunerEventsDropped: {value: "Messereignisse verworfen, die Oberfläche kommt nicht nach"}
+tunerEventsDropped: {value: "Messereignisse verworfen, weil die Oberfläche mit der Anzeige nicht nachkommt"}
 tunerRunFailed: {value: "Messmodul mit Fehler gestoppt"}
 tunerSettingRejected: {value: "Einstellung außerhalb des zulässigen Bereichs abgewiesen"}
 tunerStartFailed: {value: "Eingangsquelle konnte nicht eingerichtet werden"}
@@ -56,8 +56,8 @@ tunerTonePlaying: {value: "Referenzton wird wiedergegeben"}
 # Sessions, readings and reports
 recordCleared: {value: "Messdurchgang geleert"}
 recordEdited: {value: "Messung manuell bearbeitet"}
-recordRejected: {value: "Aufnahmeanforderung abgewiesen"}
-recordTake: {value: "Messung aufgezeichnet"}
+recordRejected: {value: "Änderung am Messwert abgelehnt: Stimmzunge in dieser Messung nicht vorhanden"}
+recordTake: {value: "Messwert gespeichert"}
 recordUndone: {value: "Letzte Messung rückgängig gemacht"}
 reportFailed: {value: "Stimmbericht konnte nicht geschrieben werden"}
 reportOpenFailed: {value: "Stimmbericht konnte nicht geöffnet werden"}
@@ -72,7 +72,7 @@ sessionCurveImported: {value: "Sollkurve importiert"}
 sessionDeleted: {value: "Sitzung gelöscht"}
 sessionLoadFailed: {value: "Sitzung konnte nicht geladen werden"}
 sessionOpened: {value: "Sitzung geöffnet"}
-sessionReedsClamped: {value: "Mehr Stimmzungen klingen als auflösbar. Messung auf die unterstützte Anzahl begrenzt"}
+sessionReedsClamped: {value: "Für die Sitzung sind mehr Stimmzungen angegeben, als gleichzeitig messbar sind. Die Messung wurde auf die unterstützte Anzahl begrenzt"}
 sessionRejected: {value: "Ungültige Sitzungsänderung abgewiesen"}
 sessionSaveFailed: {value: "Sitzung konnte nicht gespeichert werden"}
 
@@ -93,8 +93,8 @@ frontendError: {value: "Unerwarteter Anwendungsfehler"}
 frontendRejection: {value: "Aktion in der Anwendung fehlgeschlagen"}
 frontendResizeNotice: {value: "Layoutänderung auf das nächste Bild verschoben (ResizeObserver-Meldung des Browsers)"}
 frontendSettingFailed: {value: "Stimmgeräteinstellung konnte nicht geändert werden"}
-frontendTunerStartFailed: {value: "Stimmgerät konnte nicht gestartet werden"}
+frontendTunerStartFailed: {value: "Messung konnte nicht gestartet werden"}
 frontendTunerStateFailed: {value: "Status des Stimmgeräts konnte nicht gelesen werden"}
-frontendTunerStopFailed: {value: "Stimmgerät konnte nicht gestoppt werden"}
+frontendTunerStopFailed: {value: "Messung konnte nicht gestoppt werden"}
 frontendTunerTonePlayFailed: {value: "Referenzton konnte nicht wiedergegeben werden"}
 frontendTunerToneStopFailed: {value: "Referenzton konnte nicht gestoppt werden"}

@@ -87,13 +87,13 @@ title.uncalibrated:
 
 # Application and About dialog
 about.aboutTitle: {value: "Despre"}
-about.commit: {value: "Compilare"}
-about.donate: {value: "Susține pe Ko-fi"}
+about.commit: {value: "Identificator de compilare"}
+about.donate: {value: "Susține financiar proiectul pe Ko-fi"}
 about.license: {value: "Licență"}
 about.privacy: {value: "Politica de confidențialitate"}
 about.guide: {value: "Cum se utilizează SmeggTuner"}
 about.onlineVersion: {value: "Deschide versiunea online"}
-about.support: {value: "Asistență"}
+about.support: {value: "Scrie echipei de asistență"}
 about.mascot: {value: "O pisică cântând la acordeon"}
 about.publisher: {value: "Autor: smegg99"}
 about.tagline: {value: "Program gratuit, cu sursă deschisă, pentru acordarea acordeoanelor."}

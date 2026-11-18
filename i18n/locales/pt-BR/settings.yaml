@@ -5,20 +5,20 @@
 # Microphone and input level
 audioDeviceHint: {value: "Microfone usado nas medições"}
 audioDeviceLabel: {value: "Dispositivo de entrada"}
-audioDeviceSystemDefault: {value: "Padrão do sistema"}
+audioDeviceSystemDefault: {value: "Microfone padrão do sistema"}
 autoVolume.hint: {value: "Ajusta o nível do microfone durante a medição"}
 autoVolume.label: {value: "Volume de entrada automático"}
 autoVolume.saveFailed: {value: "Não foi possível salvar a configuração de volume de entrada."}
 autoVolume.unsupported: {value: "Não é possível ajustar o nível de entrada deste dispositivo."}
 humFilter50: {value: "50 Hz"}
 humFilter60: {value: "60 Hz"}
-humFilterHint: {value: "Remove o zumbido da rede elétrica: 50 Hz na Europa e 60 Hz na América"}
+humFilterHint: {value: "Escolha a frequência da rede elétrica para filtrar o zumbido."}
 humFilterLabel: {value: "Filtro do zumbido da rede elétrica"}
 lockedWhileRunning: {value: "Pare o afinador para mudar a entrada de áudio."}
 
 # Detection and reference pitch
-continuousManual: {value: "Atualizar continuamente a nota fixada"}
-continuousManualHint: {value: "Atualiza a medição da nota fixada antes de estabilizar"}
+continuousManual: {value: "Leitura contínua da nota selecionada"}
+continuousManualHint: {value: "Atualiza a leitura da nota escolhida mesmo antes de ela se estabilizar"}
 detection.balanced: {value: "Equilibrada"}
 detection.balancedHint: {value: "Muda de nota em cerca de meio segundo"}
 detection.fast: {value: "Rápida"}
@@ -26,17 +26,17 @@ detection.fastHint: {value: "Muda de nota o mais rápido possível, mas pode fix
 detection.steady: {value: "Estável"}
 detection.steadyHint: {value: "Comportamento original, com mudanças de nota lentas"}
 detectionLabel: {value: "Detecção de notas"}
-lockA4: {value: "Bloquear a frequência de referência"}
+lockA4: {value: "Bloquear a frequência do lá4"}
 lockA4Hint: {value: "Impede a alteração do lá4 no afinador"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "Hertz ou unidades de 0,06 % da frequência da nota"}
+beatUnitHint: {value: "Em hertz ou na mesma unidade escolhida para o desvio das palhetas"}
 beatUnitLabel: {value: "Unidade dos batimentos"}
 errorReference: {value: "Referência do desvio"}
-errorReferenceGoal: {value: "Alvo"}
+errorReferenceGoal: {value: "Valor-alvo"}
 
 errorReferenceHint:
-  value: "Mostra o desvio em relação à altura da escala ou ao alvo de afinação. Quando o alvo é atingido, o desvio em relação a ele é zero."
+  value: "Meça o desvio em relação à escala temperada ou ao valor-alvo. Com o valor-alvo, a leitura chega a zero quando a palheta atinge o desvio desejado para aquela nota."
 errorReferenceScale: {value: "Escala"}
 scaleNamingHint: {value: "Sistema usado para dar nome às notas"}
 scaleNamingLabel: {value: "Nomes das notas"}
@@ -45,7 +45,7 @@ scaleNamings.cdefgah: {value: "C D E F G A H (alemão, sustenidos como C#)"}
 scaleNamings.doremi: {value: "Dó Ré Mi (solfejo)"}
 scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (polonês)"}
 toleranceBeat: {value: "Batimento"}
-toleranceHint: {value: "Desvio máximo admissível para que uma palheta ou um batimento seja considerado afinado"}
+toleranceHint: {value: "Diferença máxima aceita entre a medição e o valor desejado para uma palheta ou um batimento."}
 toleranceLabel: {value: "Tolerâncias"}
 toleranceReed: {value: "Palheta"}
 unitHint: {value: "Cents ou unidades de 0,06 % da frequência da nota"}
@@ -60,7 +60,7 @@ accent.pick: {value: "Escolher uma cor"}
 accent.pickTitle: {value: "Cor de destaque"}
 closeToTray: {value: "Minimizar para a área de notificação ao fechar"}
 closeToTrayHint: {value: "Ao fechar a janela, o aplicativo permanece na área de notificação"}
-checkUpdates: {value: "Verificar atualizações", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdates: {value: "Verificar atualizações automaticamente", description: "Desktop settings checkbox enabling GitHub update checks."}
 checkUpdatesHint: {value: "Procura uma versão mais recente no GitHub", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "Idioma da interface"}
 languageLabel: {value: "Idioma"}
@@ -109,7 +109,7 @@ calibration.screen.phase.preparing: {value: "Aguardando a estabilização da ent
 calibration.screen.phase.settling: {value: "Aguardando a estabilização da leitura do relógio."}
 
 calibration.screen.pitch:
-  value: "Equivale a {pitch} em cada nota."
+  value: "Erro de afinação equivalente em cada nota: {pitch}."
   placeholders:
     pitch: {type: string}
 
@@ -129,8 +129,8 @@ calibration.screen.steadiness:
     target: {type: string}
 
 calibration.screen.steps.done: {value: "Concluído"}
-calibration.screen.steps.measure: {value: "Medir"}
-calibration.screen.steps.prepare: {value: "Preparar"}
+calibration.screen.steps.measure: {value: "Medição"}
+calibration.screen.steps.prepare: {value: "Preparação"}
 calibration.screen.traceEmpty: {value: "O desvio do relógio é traçado aqui durante a medição."}
 calibration.screen.unreliable: {value: "O relógio não estabilizou"}
 calibration.start: {value: "Calibrar"}

@@ -9,7 +9,7 @@ updateBody:
   placeholders:
     current: {type: string}
     latest: {type: string}
-updateDownload: {value: "Descargar"}
+updateDownload: {value: "Ver descargas"}
 updateIgnore: {value: "Omitir esta versión"}
 updateLater: {value: "Más tarde"}
 updateTitle: {value: "Hay una versión más reciente disponible"}

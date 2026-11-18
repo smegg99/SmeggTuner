@@ -38,7 +38,7 @@ table.bassTitle:
     unit: {type: string}
 
 table.curr: {value: "Mēr."}
-table.err: {value: "Kļūda"}
+table.err: {value: "Starp."}
 table.register: {value: "Reģistrs"}
 
 table.title:
@@ -58,15 +58,15 @@ graph.edited:
     mark: {type: string}
 
 legend.error.cents:
-  value: "Vīlējiet, tuvinot kļūdu nullei. Vērtības centos attiecībā pret vienmērīgi temperēto skaņojumu, kur A4 ir {a4} Hz."
+  value: "Vīlējot mēlīti, tuviniet nullei starpību starp mērījumu un mērķvērtību. Izmērītā novirze ir norādīta centos attiecībā pret vienmērīgi temperēto skaņojumu pie A4 = {a4} Hz."
   placeholders:
     a4: {type: string}
 
-legend.error.key: {value: "Kļūda = mērījums − mērķis."}
-legend.error.noCurve: {value: "Nav mērķlīknes: mērķis ir nulle, kļūda ir novirze no skaņkārtas."}
+legend.error.key: {value: "Starpība = izmērītā vērtība − mērķvērtība."}
+legend.error.noCurve: {value: "Ja nav mērķlīknes, mērķvērtība ir nulle. Starpība rāda novirzi no nots augstuma skaņkārtā."}
 
 legend.error.reference:
-  value: "Vīlējiet, tuvinot kļūdu nullei. Vienība ir 0,06 % no nots frekvences attiecībā pret vienmērīgi temperēto skaņojumu, kur A4 ir {a4} Hz."
+  value: "Vīlējot mēlīti, tuviniet nullei starpību starp mērījumu un mērķvērtību. Novirzi mēra attiecībā pret vienmērīgi temperēto skaņojumu pie A4 = {a4} Hz. Viena vienība ir 0,06 % no nots frekvences."
   placeholders:
     a4: {type: string}
 
@@ -89,9 +89,9 @@ summary.beats:
   plural:
     argument: pluralCount
     forms:
-      zero: "{pluralCount} pulsāciju"
-      one: "{pluralCount} pulsācija"
-      other: "{pluralCount} pulsācijas"
+      zero: "{pluralCount} izmērītu mēlīšu pāru"
+      one: "{pluralCount} izmērīts mēlīšu pāris"
+      other: "{pluralCount} izmērīti mēlīšu pāri"
   placeholders:
     pluralCount: {type: integer}
 

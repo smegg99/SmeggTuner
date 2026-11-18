@@ -1,6 +1,6 @@
 # S99AB release notes and update prompts (hu).
 notesTitle:
-  value: "A(z) {version} verzió újdonságai"
+  value: "Újdonságok ebben a verzióban: {version}"
   placeholders:
     version: {type: string}
 notTranslated: {value: "A kiadási megjegyzésekhez még nincs fordítás."}
@@ -9,7 +9,7 @@ updateBody:
   placeholders:
     current: {type: string}
     latest: {type: string}
-updateDownload: {value: "Letöltés"}
+updateDownload: {value: "Letöltési oldal megnyitása"}
 updateIgnore: {value: "Verzió kihagyása"}
 updateLater: {value: "Később"}
 updateTitle: {value: "Újabb verzió érhető el"}

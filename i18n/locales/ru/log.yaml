@@ -58,7 +58,7 @@ recordCleared: {value: "Серия измерений очищена"}
 recordEdited: {value: "Запись изменена вручную"}
 recordRejected: {value: "Запрос на запись отклонён"}
 recordTake: {value: "Измерение записано"}
-recordUndone: {value: "Последняя запись отменена"}
+recordUndone: {value: "Запись последнего измерения отменена"}
 reportFailed: {value: "Не удалось сохранить отчёт о настройке"}
 reportOpenFailed: {value: "Не удалось открыть отчёт о настройке"}
 reportOpened: {value: "Отчёт о настройке передан браузеру"}

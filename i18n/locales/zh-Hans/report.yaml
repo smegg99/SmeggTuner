@@ -58,7 +58,7 @@ graph.edited:
     mark: {type: string}
 
 legend.error.cents:
-  value: "锉修簧片，使误差趋近于零。数值为相对于 A4 = {a4} Hz 平均律音高的音分偏差。"
+  value: "锉修簧片时，使误差趋近于零。簧片的实测栏以音分表示相对于平均律音高的偏差，基准为 A4 = {a4} Hz。"
   placeholders:
     a4: {type: string}
 
@@ -89,7 +89,7 @@ summary.beats:
   plural:
     argument: pluralCount
     forms:
-      other: "{pluralCount} 个拍频"
+      other: "{pluralCount} 项拍频读数"
   placeholders:
     pluralCount: {type: integer}
 
@@ -114,7 +114,7 @@ summary.out:
   plural:
     argument: pluralCount
     forms:
-      other: "{pluralCount} 项超出容差（{reeds}，{beats}）。"
+      other: "{pluralCount} 个音有读数超出容差（{reeds}，{beats}）。"
   placeholders:
     beats: {type: string}
     pluralCount: {type: integer}
@@ -132,7 +132,7 @@ summary.reedsShort:
   plural:
     argument: pluralCount
     forms:
-      other: "{pluralCount} 个簧片"
+      other: "{pluralCount} 片簧片"
   placeholders:
     pluralCount: {type: integer}
 

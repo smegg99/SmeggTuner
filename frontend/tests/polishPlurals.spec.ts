@@ -36,19 +36,19 @@ describe('generated locale messages through vue-i18n', () => {
 
   it('uses the plural category for the counted argument, independently of other numbers', () => {
     expect(translator('pl')('tuner.panel.boxOctave', { box: 3, octaves: 2 }, 2))
-      .toBe('Pole 3: 2 oktawy nad podstawą')
+      .toBe('Pole 3: 2 oktawy powyżej dźwięku podstawowego')
     expect(translator('en')('tuner.panel.boxOctave', { box: 2, octaves: 1 }, 1))
       .toBe('Box 2: 1 octave above the base')
   })
 
   it('resolves instrument plurals inside the session catalog', () => {
     expect(translator('pl')('session.instrument.says', { banks: 'L M M', reeds: 3 }, 3))
-      .toBe('Chóry głosowe L M M. Najszerszy rejestr uruchamia 3 głosy.')
+      .toBe('Chóry: L M M. W jednym rejestrze klawisz uruchamia najwyżej 3 stroiki.')
   })
 
   it.each([
     ['en', 'Reed 3', 'Accordion', 'u'],
-    ['pl', 'Głos 3', 'Akordeon', 'j'],
+    ['pl', 'Stroik 3', 'Akordeon', 'j'],
   ] as const)('resolves shared reading and report labels in %s', (locale, reed, accordion, unit) => {
     const t = translator(locale)
     expect(t('common.reed', { index: 3 })).toBe(reed)

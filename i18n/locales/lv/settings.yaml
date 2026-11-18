@@ -5,20 +5,20 @@
 # Microphone and input level
 audioDeviceHint: {value: "Mērīšanai izmantotais mikrofons"}
 audioDeviceLabel: {value: "Ievades ierīce"}
-audioDeviceSystemDefault: {value: "Sistēmas noklusējums"}
+audioDeviceSystemDefault: {value: "Sistēmas noklusējuma mikrofons"}
 autoVolume.hint: {value: "Mērīšanas laikā regulē mikrofona līmeni"}
 autoVolume.label: {value: "Automātisks ievades skaļums"}
 autoVolume.saveFailed: {value: "Neizdevās saglabāt ievades skaļuma iestatījumu."}
 autoVolume.unsupported: {value: "Šai ierīcei nevar regulēt ievades līmeni."}
 humFilter50: {value: "50 Hz"}
 humFilter60: {value: "60 Hz"}
-humFilterHint: {value: "Slāpē elektrotīkla dūkoņu: Eiropā 50 Hz, Amerikā 60 Hz"}
+humFilterHint: {value: "Lai slāpētu elektrotīkla dūkoņu, izvēlieties vietējā elektrotīkla frekvenci"}
 humFilterLabel: {value: "Elektrotīkla dūkoņas filtrs"}
 lockedWhileRunning: {value: "Lai mainītu skaņas ievadi, apturiet skaņotāju."}
 
 # Detection and reference pitch
-continuousManual: {value: "Nepārtraukti atjaunināt piespraustās nots rādījumu"}
-continuousManualHint: {value: "Atjaunināt piespraustās nots rādījumu pirms tā nofiksēšanās"}
+continuousManual: {value: "Nepārtraukti atjaunināt manuāli izvēlētās nots rādījumu"}
+continuousManualHint: {value: "Rādīt mērījuma izmaiņas, vēl pirms rādījums nostabilizējas"}
 detection.balanced: {value: "Līdzsvarota"}
 detection.balancedHint: {value: "Nomaina noti aptuveni pussekundē"}
 detection.fast: {value: "Ātra"}
@@ -30,13 +30,13 @@ lockA4: {value: "Bloķēt atsauces frekvenci"}
 lockA4Hint: {value: "Neļauj skaņotājā mainīt A4 frekvenci"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "Herci vai vienības, kas atbilst 0,06 % no nots frekvences"}
+beatUnitHint: {value: "Herci vai tā pati mērvienība, kas izvēlēta mēlīšu novirzēm"}
 beatUnitLabel: {value: "Pulsācijas mērvienība"}
 errorReference: {value: "Novirzes atskaites punkts"}
-errorReferenceGoal: {value: "Mērķis"}
+errorReferenceGoal: {value: "Mērķvērtība"}
 
 errorReferenceHint:
-  value: "Rādīt novirzi no skaņkārtas nots augstuma vai skaņošanas mērķa. Sasniedzot mērķi, novirze no tā ir nulle."
+  value: "Salīdziniet mēlītes skaņas augstumu ar noti skaņkārtā vai ar vēlamo skaņojumu. Otrajā gadījumā rādījums ir nulle, kad mēlīte skan vēlamajā augstumā."
 errorReferenceScale: {value: "Skaņkārta"}
 scaleNamingHint: {value: "Kā tiek apzīmētas notis"}
 scaleNamingLabel: {value: "Nošu apzīmējumi"}
@@ -45,7 +45,7 @@ scaleNamings.cdefgah: {value: "C D E F G A H (vācu sistēma, diēzi kā C#)"}
 scaleNamings.doremi: {value: "Do Re Mi (solfedžo)"}
 scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (poļu sistēma)"}
 toleranceBeat: {value: "Pulsācija"}
-toleranceHint: {value: "Lielākā mēlītes vai pulsācijas novirze, pie kuras skaņojumu uzskata par pareizu"}
+toleranceHint: {value: "Cik lielā mērā mēlītes skaņas augstums vai pulsācijas frekvence drīkst atšķirties no mērķvērtības, lai skaņojums vēl būtu pieņemams"}
 toleranceLabel: {value: "Pielaides"}
 toleranceReed: {value: "Mēlīte"}
 unitHint: {value: "Centi vai vienības, kas atbilst 0,06 % no nots frekvences"}
@@ -60,7 +60,7 @@ accent.pick: {value: "Izvēlēties krāsu"}
 accent.pickTitle: {value: "Akcenta krāsa"}
 closeToTray: {value: "Aizverot minimizēt paziņojumu apgabalā"}
 closeToTrayHint: {value: "Pēc loga aizvēršanas lietotne paliek paziņojumu apgabalā"}
-checkUpdates: {value: "Pārbaudīt atjauninājumus", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdates: {value: "Automātiski pārbaudīt atjauninājumus", description: "Desktop settings checkbox enabling GitHub update checks."}
 checkUpdatesHint: {value: "Meklē jaunāku versiju GitHub vietnē", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "Saskarnes valoda"}
 languageLabel: {value: "Valoda"}
@@ -81,7 +81,7 @@ calibration.askBody:
 calibration.askCalibrate: {value: "Kalibrēt tagad"}
 calibration.askContinue: {value: "Turpināt bez korekcijas"}
 calibration.askTitle: {value: "Šī skaņas karte nav kalibrēta"}
-calibration.hint: {value: "Koriģē skaņas kartes taktsģeneratora kļūdu. Ilgst aptuveni minūti, skaņa nav nepieciešama."}
+calibration.hint: {value: "Koriģē skaņas kartes diskretizācijas frekvences novirzi. Mērīšana ilgst aptuveni minūti, spēlēt nav nepieciešams."}
 calibration.label: {value: "Skaņas kartes kalibrēšana"}
 calibration.open: {value: "Atvērt"}
 calibration.openHint: {value: "Atvērt kalibrēšanas skatu, nesākot mērīšanu"}
@@ -109,16 +109,16 @@ calibration.screen.phase.preparing: {value: "Pirms taktsģeneratora mērīšanas
 calibration.screen.phase.settling: {value: "Tiek gaidīts, līdz taktsģeneratora rādījums nostabilizēsies."}
 
 calibration.screen.pitch:
-  value: "Katrai notij tas atbilst novirzei {pitch}."
+  value: "Atbilstošā skaņas augstuma novirze visām notīm: {pitch}."
   placeholders:
     pitch: {type: string}
 
-calibration.screen.preparing: {value: "Ievades iesildīšana"}
+calibration.screen.preparing: {value: "Gaida, līdz ievades signāls nostabilizējas"}
 calibration.screen.retry: {value: "Rādījumi paliek nekoriģēti. Aizveriet citas audio lietotnes un mēģiniet vēlreiz."}
 calibration.screen.return: {value: "Atgriezties"}
 calibration.screen.stat.dropouts: {value: "Pārrāvumi"}
 calibration.screen.stat.elapsed: {value: "Pagājis"}
-calibration.screen.stat.offset: {value: "Taktsģeneratora novirze"}
+calibration.screen.stat.offset: {value: "Takts frekvences novirze"}
 calibration.screen.stat.rate: {value: "Diskretizācijas frekvence"}
 calibration.screen.stat.steadiness: {value: "Stabilitāte"}
 

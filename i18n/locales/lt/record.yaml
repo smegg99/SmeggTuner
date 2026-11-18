@@ -3,14 +3,14 @@
 # Editing guide: ../../README.md.
 
 # Recording controls
-arm.hint: {value: "Įrašyti matavimą kaskart užfiksavus natą („Enter“ įrašo iškart)"}
-arm.needsSession: {value: "Norėdami įrašyti, atverkite seansą"}
-arm.warmup: {value: "Neįrašoma. Galite laisvai groti, niekas nesaugoma. Paspauskite, kad pradėtumėte įrašymą."}
+arm.hint: {value: "Nusistovėję rodmenys išsaugomi. Spustelėkite, kad sustabdytumėte įrašymą, arba paspauskite „Enter“, kad iškart išsaugotumėte dabartinį rodmenį."}
+arm.needsSession: {value: "Norėdami išsaugoti matavimus, atverkite seansą"}
+arm.warmup: {value: "Galite laisvai groti. Paspauskite šį mygtuką, kai norėsite pradėti saugoti matavimus."}
 undo.hint: {value: "Atšaukti paskutinį matavimą"}
 
 # Readings table and compact columns
 mobile.current: {value: "Išmatuota"}
-mobile.error: {value: "Nuokrypis"}
+mobile.error: {value: "Skirtumas nuo siekiamos vertės"}
 
 table.beat:
   value: "Plakimas {pair}"
@@ -21,17 +21,17 @@ table.delete: {value: "Pašalinti šį rodmenį"}
 table.deleteHint: {value: "Rodmuo bus pašalintas visam laikui. Norėdami jį pakeisti, dar kartą pagrokite ir įrašykite natą."}
 table.deleteTitle: {value: "Pašalinti šį rodmenį?"}
 table.editHint: {value: "Vertę keiskite spustelėdami arba paspausdami „Enter“"}
-table.empty: {value: "Pradėkite įrašymą, tada grokite natas, kad išsaugotumėte rodmenis."}
+table.empty: {value: "Įjunkite matavimų įrašymą ir grokite natas."}
 table.graph: {value: "Grafikas"}
 
 table.graphHint:
   value: "Palyginkite kiekvieną liežuvėlį su jo tiksline verte. Spustelėkite stulpelį, kad pasirinktumėte eilutę, ir dar kartą, kad pasirinktumėte kitą registrą."
-table.graphLabel: {value: "Kiekvienos įrašytos natos liežuvėlių paklaidos"}
+table.graphLabel: {value: "Liežuvėlių nuokrypiai nuo siekiamų verčių pagal įrašytas natas"}
 table.helpTitle: {value: "Apie šią lentelę"}
-table.label: {value: "Įrašytas derinimas"}
+table.label: {value: "Išsaugoti derinimo matavimai"}
 table.latest: {value: "Įrašyta paskiausiai: „Backspace“ pašalina"}
 table.manual: {value: "Pakeista"}
-table.manualHint: {value: "Šios eilutės vertė įvesta ranka, o ne išmatuota iš garso."}
+table.manualHint: {value: "Šioje eilutėje yra rankiniu būdu įvesta vertė."}
 
 table.notes:
   plural:
@@ -45,7 +45,7 @@ table.notes:
     count: {type: integer}
 
 table.unitHint:
-  value: "Liežuvėlių nuokrypiai rodomi nustatymuose pasirinktais vienetais. Plakimai rodomi hercais arba nuokrypio vienetais, kaip pasirinkta įrankių juostoje."
+  value: "Liežuvėlių nuokrypio vienetą pasirinkite nustatymuose. Įrankių juostoje galite pakeisti plakimo rodmenų vienetą iš hercų į tą patį nuokrypio vienetą."
 # Report export dialog
 report.csv: {value: "CSV"}
 report.date: {value: "Data"}

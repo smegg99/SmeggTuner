@@ -16,29 +16,29 @@ soundcard.running: {value: "Калибровка звуковой карты"}
 soundcard.uncalibrated: {value: "Звуковая карта не откалибрована. Калибровать"}
 soundcard.unreliable: {value: "Калибровка ненадёжна. Повторить калибровку"}
 source.analyze: {value: "Анализировать запись…"}
-source.default: {value: "По умолчанию в системе"}
+source.default: {value: "Устройство по умолчанию"}
 source.noDevices: {value: "Микрофоны не найдены"}
 source.refresh: {value: "Обновить список устройств"}
-transport.fileHint: {value: "Запись воспроизводится с её собственной панели"}
+transport.fileHint: {value: "Для воспроизведения WAV нажмите кнопку на панели записи."}
 transport.start: {value: "Пуск"}
 transport.stop: {value: "Стоп"}
 
 # Modes, registers and note selection
 bassRegister.all: {value: "Весь басовый механизм"}
-bassRegister.hint: {value: "Включённый басовый регистр"}
+bassRegister.hint: {value: "Выбрать включённый басовый регистр"}
 controls: {value: "Управление настройкой"}
 mode.auto: {value: "Авто"}
-mode.autoHint: {value: "Разрешить тюнеру определять ноту"}
-mode.pinHint: {value: "Закрепить эту ноту"}
-mode.pinned: {value: "Закреплённая нота"}
-notes.clickToPin: {value: "щёлкните, чтобы закрепить"}
-notes.label: {value: "Ноты от E0 до C9. Щёлкните по ноте, чтобы закрепить её."}
+mode.autoHint: {value: "Определять ноту автоматически"}
+mode.pinHint: {value: "Выбрать эту ноту для измерения вручную"}
+mode.pinned: {value: "Нота выбрана вручную. Нажмите, чтобы вернуться к автоопределению."}
+notes.clickToPin: {value: "нажмите на ноту для измерения"}
+notes.label: {value: "Ноты от E0 до C9. Щёлкните по ноте, которую хотите измерить."}
 notes.range: {value: "От E0 до C9"}
 notes.title: {value: "Ноты"}
 notes.tracking: {value: "отслеживание"}
 panel.boxBase: {value: "Основная нота измеряется всегда"}
 panel.boxChord: {value: "В режиме аккордов измеряются все три ноты"}
-panel.boxLast: {value: "Хотя бы одно поле должно оставаться включённым"}
+panel.boxLast: {value: "Хотя бы один канал измерения должен оставаться включённым"}
 
 panel.boxOctave:
   plural:
@@ -72,14 +72,14 @@ panel.bySession:
     n:
       type: integer
 
-panel.locked: {value: "Фиксация"}
+panel.locked: {value: "Стабильно"}
 panel.modeHints.chords: {value: "Аккорды из трёх нот"}
 panel.modeHints.octaves: {value: "Нота и её верхние октавы"}
-panel.modeHints.tones: {value: "Одна нота, до трёх язычков"}
+panel.modeHints.tones: {value: "Одна сыгранная нота: измерение до трёх язычков одновременно"}
 panel.modeLabel: {value: "Что измеряется"}
 panel.modes.chords: {value: "Аккорды"}
 panel.modes.octaves: {value: "Октавы"}
-panel.modes.tones: {value: "Тоны"}
+panel.modes.tones: {value: "Одна нота"}
 panel.quiet: {value: "Слишком тихо"}
 panel.recorded: {value: "Записано"}
 panel.reeds: {value: "Язычки"}
@@ -96,34 +96,34 @@ reeds.count:
     n:
       type: integer
 
-register.hint: {value: "Включённый регистр"}
+register.hint: {value: "Выбрать включённый на инструменте регистр"}
 register.lockedPlaying: {value: "Чтобы сменить регистр, остановите воспроизведение."}
 side.bass: {value: "Басы"}
-side.hint: {value: "Дискантовая или басовая сторона"}
+side.hint: {value: "Переключить дискант и басы"}
 side.treble: {value: "Дискант"}
 step.noteDown: {value: "На полутон ниже"}
 step.noteUp: {value: "На полутон выше"}
 # Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
-signal.add: {value: "Добавить тон"}
+signal.add: {value: "Добавить голос"}
 signal.cents: {value: "Отклонение от ноты в центах"}
 signal.down: {value: "На полутон ниже (стрелка влево, на октаву — стрелка вниз)"}
-signal.open: {value: "Генератор сигнала воспроизводит чистый тон для настройки язычка"}
+signal.open: {value: "Показать или скрыть генератор опорных тонов"}
 signal.play: {value: "Воспроизвести"}
-signal.playHint: {value: "Воспроизвести ноту со всеми заданными тонами. Если нота ещё не выбрана, используется первая услышанная (пробел)"}
-signal.remove: {value: "Удалить этот тон"}
+signal.playHint: {value: "Воспроизвести выбранную ноту всеми заданными голосами. Если нота не выбрана, прозвучит первая распознанная (пробел)."}
+signal.remove: {value: "Убрать этот голос"}
 signal.stop: {value: "Стоп"}
-signal.stopHint: {value: "Остановить тон (пробел)"}
+signal.stopHint: {value: "Остановить опорный тон (пробел)"}
 signal.title: {value: "Генератор сигнала"}
 signal.up: {value: "На полутон выше (стрелка вправо, на октаву — стрелка вверх)"}
 signal.wave.hint: {value: "В звуке язычка есть обертоны, поэтому на них тоже слышны биения"}
-signal.wave.reed: {value: "Язычок"}
+signal.wave.reed: {value: "Звук язычка"}
 signal.wave.sine: {value: "Синусоида"}
 
 # Reference pitch and units
 reference.a4Locked: {value: "Заблокировано в параметрах"}
 reference.a4Type: {value: "Введите частоту A4 от 430 до 450 Гц"}
 reference.frozen: {value: "Изменение заблокировано: в сеансе уже есть измерения"}
-reference.transpose: {value: "Транспонировать"}
+reference.transpose: {value: "Транспонирование"}
 reference.transposeDown: {value: "На полутон меньше"}
 reference.transposeHint: {value: "На сколько полутонов клавиши звучат выше своих обозначений"}
 reference.transposeMode: {value: "Аккорды и октавы измеряются без транспонирования"}
@@ -148,7 +148,7 @@ boxes.beat:
     b:
       type: string
 
-boxes.goal: {value: "цель"}
+boxes.goal: {value: "целевое знач."}
 boxes.hzOnly: {value: "только в Гц"}
 boxes.notHeard: {value: "не слышно"}
 
@@ -175,10 +175,10 @@ spectrum.label: {value: "Частотный спектр отслеживаем�
 spectrum.title: {value: "Спектр"}
 
 # Hold, noise learning and tuner state
-hold.hint: {value: "Удерживать стабильные показания (H)"}
+hold.hint: {value: "Автоматически удерживать показания после стабилизации (H)"}
 state.deviceLost: {value: "Вход потерян"}
 state.initializing: {value: "Измерение шума в помещении"}
-state.running: {value: "Прослушивание"}
+state.running: {value: "Приём сигнала"}
 state.stopped: {value: "Остановлено"}
 state.tooQuiet: {value: "Слишком тихо. Играйте громче или подойдите ближе"}
 warmup.quiet: {value: "Соблюдайте тишину"}
@@ -195,7 +195,7 @@ file.play: {value: "Воспроизвести"}
 file.stop: {value: "Остановить и вернуться к началу выделения"}
 file.toEnd: {value: "К концу выделения"}
 file.toStart: {value: "К началу выделения"}
-file.unmute: {value: "Воспроизводить запись со звуком"}
+file.unmute: {value: "Включить звук записи"}
 file.volume: {value: "Громкость воспроизведения"}
 
 file.waveform:
@@ -215,7 +215,7 @@ calibrate.range.again: {value: "Начать заново"}
 
 calibrate.range.backwards: {value: "Верхняя нота не может быть ниже нижней. Измерьте диапазон ещё раз."}
 
-calibrate.range.capture: {value: "Зафиксировать"}
+calibrate.range.capture: {value: "Запомнить ноту"}
 calibrate.range.highest: {value: "Верхняя"}
 calibrate.range.lowest: {value: "Нижняя"}
 calibrate.range.next: {value: "Перейти к калибровке язычков"}
@@ -252,7 +252,7 @@ calibrate.sweep.progress:
     total:
       type: string
 
-calibrate.sweep.redoRange: {value: "Заново измерить клавиатуру"}
+calibrate.sweep.redoRange: {value: "Заново измерить диапазон клавиатуры"}
 calibrate.sweep.review: {value: "Показать карту настройки"}
 calibrate.sweep.skip: {value: "Пропустить"}
 
@@ -278,7 +278,7 @@ web.mic.denied: {value: "Доступ к микрофону запрещён. Р
 
 web.mic.failed: {value: "Не удалось открыть микрофон."}
 web.mic.none: {value: "Микрофон не найден."}
-web.mic.unsupported: {value: "Этот браузер не может записывать звук."}
+web.mic.unsupported: {value: "Этот браузер не поддерживает захват звука с микрофона."}
 web.notice.background: {value: "На фоновой вкладке обработка звука может приостановиться."}
 web.notice.native: {value: "Для точных измерений используйте установленное приложение."}
 web.notice.ok: {value: "Понятно"}
@@ -309,14 +309,14 @@ error.invalidBox: {value: "Такого поля язычка нет."}
 error.invalidMode: {value: "Тюнер измеряет тоны, октавы или аккорды."}
 error.invalidNote: {value: "Эта нота вне диапазона тюнера."}
 error.invalidTranspose: {value: "Диапазон транспонирования — от 0 до 11 полутонов."}
-error.lastBox: {value: "Хотя бы одно поле должно оставаться включённым."}
+error.lastBox: {value: "Нельзя отключить последний активный канал измерения."}
 error.noDevices: {value: "Микрофон не найден. Подключите его и обновите список устройств."}
 error.playbackFailed: {value: "Не удалось воспроизвести опорный тон."}
 
 error.sampleRate: {value: "При этой опорной частоте и транспонировании частота дискретизации входа слишком низка для верхних нот. Используйте запись с частотой дискретизации не менее 44,1 кГц."}
 
-error.sessionDecides: {value: "Состав измерения определяется регистром открытого сеанса."}
+error.sessionDecides: {value: "Какие язычки измерять, определяет регистр, выбранный в открытом сеансе."}
 error.signalVoices: {value: "Можно воспроизвести от одного до четырёх тонов, каждый в пределах 100 центов от выбранной ноты."}
-error.toneNeedsManual: {value: "Чтобы воспроизвести тон, закрепите ноту."}
+error.toneNeedsManual: {value: "Чтобы воспроизвести опорный тон, сначала выберите ноту вручную."}
 error.transposeMode: {value: "Аккорды и октавы измеряются без транспонирования."}
 error.unexpected: {value: "Произошла ошибка. Подробности см. в журнале."}

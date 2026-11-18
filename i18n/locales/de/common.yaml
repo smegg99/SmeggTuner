@@ -9,10 +9,10 @@ cancel: {value: "Abbrechen"}
 close: {value: "Schließen"}
 delete: {value: "Löschen"}
 export: {value: "Exportieren"}
-next: {value: "Weiter"}
+next: {value: "Nächste Seite"}
 "no": {value: "Nein"}
 none: {value: "Keine"}
-previous: {value: "Vorherige"}
+previous: {value: "Vorherige Seite"}
 website: {value: "Website"}
 "yes": {value: "Ja"}
 
@@ -75,14 +75,14 @@ title.uncalibrated:
     title: {type: string}
 
 # Application and About dialog
-about.aboutTitle: {value: "Über"}
+about.aboutTitle: {value: "Über SmeggTuner"}
 about.commit: {value: "Build"}
-about.donate: {value: "Auf Ko-fi unterstützen"}
+about.donate: {value: "Auf Ko-fi spenden"}
 about.license: {value: "Lizenz"}
 about.privacy: {value: "Datenschutzerklärung"}
 about.guide: {value: "SmeggTuner verwenden"}
-about.onlineVersion: {value: "Onlineversion öffnen"}
-about.support: {value: "Hilfe und Support"}
+about.onlineVersion: {value: "Dokument im Browser öffnen"}
+about.support: {value: "E-Mail an den Support"}
 about.mascot: {value: "Eine Katze spielt Akkordeon"}
 about.publisher: {value: "Von smegg99"}
 about.tagline: {value: "Kostenloses, quelloffenes Programm zum Stimmen von Akkordeons."}

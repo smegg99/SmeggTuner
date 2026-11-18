@@ -9,10 +9,10 @@ cancel: {value: "Annuleren"}
 close: {value: "Sluiten"}
 delete: {value: "Verwijderen"}
 export: {value: "Exporteren"}
-next: {value: "Volgende"}
+next: {value: "Volgende pagina"}
 "no": {value: "Nee"}
 none: {value: "Geen"}
-previous: {value: "Vorige"}
+previous: {value: "Vorige pagina"}
 website: {value: "Website"}
 "yes": {value: "Ja"}
 
@@ -75,14 +75,14 @@ title.uncalibrated:
     title: {type: string}
 
 # Application and About dialog
-about.aboutTitle: {value: "Over"}
+about.aboutTitle: {value: "Over SmeggTuner"}
 about.commit: {value: "Build"}
-about.donate: {value: "Steunen op Ko-fi"}
+about.donate: {value: "Doneren via Ko-fi"}
 about.license: {value: "Licentie"}
 about.privacy: {value: "Privacybeleid"}
 about.guide: {value: "SmeggTuner gebruiken"}
-about.onlineVersion: {value: "Onlineversie openen"}
-about.support: {value: "Ondersteuning"}
+about.onlineVersion: {value: "Document in de browser openen"}
+about.support: {value: "Support mailen"}
 about.mascot: {value: "Een kat die accordeon speelt"}
 about.publisher: {value: "Door smegg99"}
 about.tagline: {value: "Gratis programma met open broncode om accordeons te stemmen."}

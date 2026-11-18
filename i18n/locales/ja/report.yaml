@@ -58,7 +58,7 @@ graph.edited:
     mark: {type: string}
 
 legend.error.cents:
-  value: "誤差がゼロに近づくようにリードを削ります。値は A4 = {a4} Hz の平均律からの偏差をセントで示します。"
+  value: "誤差がゼロに近づくようにリードを削ります。リードの実測欄は、A4 = {a4} Hz の平均律の音高からのずれをセントで示します。"
   placeholders:
     a4: {type: string}
 
@@ -89,7 +89,7 @@ summary.beats:
   plural:
     argument: pluralCount
     forms:
-      other: "うなり {pluralCount} 組"
+      other: "うなりの測定値 {pluralCount} 件"
   placeholders:
     pluralCount: {type: integer}
 
@@ -114,7 +114,7 @@ summary.out:
   plural:
     argument: pluralCount
     forms:
-      other: "許容範囲外 {pluralCount} 件（{reeds}、{beats}）。"
+      other: "許容範囲を外れた音は {pluralCount} 音（{reeds}、{beats}）です。"
   placeholders:
     beats: {type: string}
     pluralCount: {type: integer}

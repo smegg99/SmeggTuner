@@ -9,7 +9,7 @@ updateBody:
   placeholders:
     current: {type: string}
     latest: {type: string}
-updateDownload: {value: "Ladda ner"}
+updateDownload: {value: "Öppna nedladdningssidan"}
 updateIgnore: {value: "Hoppa över den här versionen"}
 updateLater: {value: "Senare"}
 updateTitle: {value: "En nyare version är tillgänglig"}

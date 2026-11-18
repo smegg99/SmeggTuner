@@ -4,13 +4,13 @@
 
 # Recording controls
 arm.hint: {value: "Записывать измерение при каждой фиксации ноты (Enter запишет его сразу)"}
-arm.needsSession: {value: "Для записи откройте сеанс"}
-arm.warmup: {value: "Запись выключена. Можно играть свободно, ничего не сохраняется. Нажмите, чтобы начать запись."}
-undo.hint: {value: "Отменить последнюю запись"}
+arm.needsSession: {value: "Чтобы сохранять измерения, откройте сеанс."}
+arm.warmup: {value: "Можно свободно играть: результаты измерений пока не сохраняются. Нажмите, чтобы начать их сохранять."}
+undo.hint: {value: "Отменить запись последнего измерения"}
 
 # Readings table and compact columns
 mobile.current: {value: "Измерено"}
-mobile.error: {value: "Отклонение"}
+mobile.error: {value: "От цели"}
 
 table.beat:
   value: Биения {pair}
@@ -29,7 +29,7 @@ table.graphHint: {value: "Сравните каждый язычок с его �
 
 table.graphLabel: {value: "Отклонения язычков для каждой записанной ноты"}
 table.helpTitle: {value: "Об этой таблице"}
-table.label: {value: "Запись настройки"}
+table.label: {value: "Сохранённые измерения"}
 table.latest: {value: "Последняя запись. Для удаления нажмите Backspace"}
 table.manual: {value: "Изменено"}
 table.manualHint: {value: "Одно из значений в этой строке введено вручную, а не измерено тюнером."}
@@ -46,7 +46,7 @@ table.notes:
     count:
       type: integer
 
-table.unitHint: {value: "Отклонения язычков указаны в единицах, выбранных в параметрах. Биения отображаются в герцах или в единицах отклонения в зависимости от выбора на панели инструментов."}
+table.unitHint: {value: "Единицу отклонения язычков можно выбрать в параметрах. На панели над таблицей выберите, как показывать частоту биений — в герцах или в тех же единицах, что и отклонение."}
 
 # Report export dialog
 report.csv: {value: "CSV"}

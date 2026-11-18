@@ -16,23 +16,23 @@ soundcard.running: {value: "Hangkártya kalibrálása"}
 soundcard.uncalibrated: {value: "A hangkártya nincs kalibrálva. Kalibrálás"}
 soundcard.unreliable: {value: "Megbízhatatlan kalibrálás. Újrakalibrálás"}
 source.analyze: {value: "Felvétel elemzése…"}
-source.default: {value: "Rendszer alapértelmezése"}
+source.default: {value: "A rendszer alapértelmezett eszköze"}
 source.noDevices: {value: "Nincs elérhető mikrofon"}
 source.refresh: {value: "Eszközlista frissítése"}
-transport.fileHint: {value: "A felvétel a saját paneljén indítható el"}
+transport.fileHint: {value: "A WAV-felvételt a lejátszópanelen indíthatja el."}
 transport.start: {value: "Indítás"}
 transport.stop: {value: "Leállítás"}
 
 # Modes, registers and note selection
 bassRegister.all: {value: "Teljes basszusmechanika"}
-bassRegister.hint: {value: "A bekapcsolt basszusregiszter"}
+bassRegister.hint: {value: "A megszólaltatott basszusregiszter kiválasztása"}
 controls: {value: "Hangolási vezérlők"}
 mode.auto: {value: "Automatikus"}
 mode.autoHint: {value: "A hang automatikus felismerése"}
-mode.pinHint: {value: "Hang rögzítése"}
-mode.pinned: {value: "Rögzített hang"}
-notes.clickToPin: {value: "rögzítés kattintással"}
-notes.label: {value: "Hangok E0 és C9 között. Kattintással rögzíthet egy hangot."}
+mode.pinHint: {value: "Ennek a hangnak a kézi kiválasztása méréshez"}
+mode.pinned: {value: "Kézzel kiválasztott hang. Kattintson az automatikus felismeréshez."}
+notes.clickToPin: {value: "kattintson a mérendő hangra"}
+notes.label: {value: "Hangok E0 és C9 között. Kattintson arra a hangra, amelyet mérni szeretne."}
 notes.range: {value: "E0–C9"}
 notes.title: {value: "Hangok"}
 notes.tracking: {value: "követés"}
@@ -71,11 +71,11 @@ panel.bySession:
 panel.locked: {value: "Stabil"}
 panel.modeHints.chords: {value: "Háromhangú akkordok"}
 panel.modeHints.octaves: {value: "Egy hang és felső oktávjai"}
-panel.modeHints.tones: {value: "Egy hang, legfeljebb három síp"}
+panel.modeHints.tones: {value: "Egy leütött hangon legfeljebb három síp mérése egyszerre"}
 panel.modeLabel: {value: "Mit mérjen a hangoló?"}
 panel.modes.chords: {value: "Akkordok"}
 panel.modes.octaves: {value: "Oktávok"}
-panel.modes.tones: {value: "Hangok"}
+panel.modes.tones: {value: "Egy hang"}
 panel.quiet: {value: "Túl halk"}
 panel.recorded: {value: "Rögzítve"}
 panel.reeds: {value: "Sípok"}
@@ -90,27 +90,27 @@ reeds.count:
     n:
       type: integer
 
-register.hint: {value: "A bekapcsolt regiszter"}
+register.hint: {value: "A megszólaltatott regiszter kiválasztása"}
 register.lockedPlaying: {value: "Regiszterváltás előtt állítsa le a lejátszást."}
 side.bass: {value: "Basszus"}
-side.hint: {value: "Diszkant- vagy basszusoldal"}
+side.hint: {value: "Váltás a diszkant- és a basszusoldal között"}
 side.treble: {value: "Diszkant"}
 step.noteDown: {value: "Egy félhanggal lejjebb"}
 step.noteUp: {value: "Egy félhanggal feljebb"}
 # Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
-signal.add: {value: "Hang hozzáadása"}
+signal.add: {value: "Szólam hozzáadása"}
 signal.cents: {value: "Eltérés a hangtól centben"}
 signal.down: {value: "Egy félhanggal lejjebb (balra nyíl, egy oktávval lejjebb: lefelé nyíl)"}
-signal.open: {value: "Jelgenerátor: tiszta hangot ad a síp hangolásához"}
+signal.open: {value: "A referenciahang-generátor megjelenítése vagy elrejtése"}
 signal.play: {value: "Lejátszás"}
-signal.playHint: {value: "A kiválasztott hang lejátszása az összes beállított tónussal. Ha még nincs kiválasztva hang, az elsőként felismert hang szólal meg (szóköz)"}
-signal.remove: {value: "Hang eltávolítása"}
+signal.playHint: {value: "A kiválasztott hang megszólaltatása az összes beállított szólammal. Ha még nem választott hangot, az első felismert hang szólal meg (szóköz)."}
+signal.remove: {value: "Szólam eltávolítása"}
 signal.stop: {value: "Leállítás"}
-signal.stopHint: {value: "Hang leállítása (szóköz)"}
+signal.stopHint: {value: "Referenciahang leállítása (szóköz)"}
 signal.title: {value: "Jelgenerátor"}
 signal.up: {value: "Egy félhanggal feljebb (jobbra nyíl, egy oktávval feljebb: felfelé nyíl)"}
 signal.wave.hint: {value: "A síp hangjában felhangok is vannak, így azok lebegése is hallható"}
-signal.wave.reed: {value: "Síp"}
+signal.wave.reed: {value: "Síphang"}
 signal.wave.sine: {value: "Szinusz"}
 
 # Reference pitch and units
@@ -169,10 +169,10 @@ spectrum.label: {value: "A követett hang frekvenciaspektruma"}
 spectrum.title: {value: "Spektrum"}
 
 # Hold, noise learning and tuner state
-hold.hint: {value: "Stabil mérési értékek kimerevítése (H)"}
+hold.hint: {value: "A kijelzett érték automatikus kimerevítése, amint stabil (H)"}
 state.deviceLost: {value: "A bemenet megszakadt"}
 state.initializing: {value: "A helyiség zajának mérése"}
-state.running: {value: "Figyelés"}
+state.running: {value: "Hang figyelése"}
 state.stopped: {value: "Leállítva"}
 state.tooQuiet: {value: "Túl halk, játsszon hangosabban vagy menjen közelebb"}
 warmup.quiet: {value: "Maradjon csendben"}
@@ -189,7 +189,7 @@ file.play: {value: "Lejátszás"}
 file.stop: {value: "Leállítás és visszatérés a kijelölés elejére"}
 file.toEnd: {value: "A kijelölés végére"}
 file.toStart: {value: "A kijelölés elejére"}
-file.unmute: {value: "Felvétel lejátszása hanggal"}
+file.unmute: {value: "Felvétel némításának feloldása"}
 file.volume: {value: "Lejátszási hangerő"}
 
 file.waveform:
@@ -209,7 +209,7 @@ calibrate.range.again: {value: "Újrakezdés"}
 
 calibrate.range.backwards: {value: "A legmagasabb hang nem lehet mélyebb a legmélyebbnél. Mérje meg újra a hangterjedelmet."}
 
-calibrate.range.capture: {value: "Rögzítés"}
+calibrate.range.capture: {value: "Hang megjegyzése"}
 calibrate.range.highest: {value: "Legmagasabb"}
 calibrate.range.lowest: {value: "Legmélyebb"}
 calibrate.range.next: {value: "Tovább a sípok kalibrálásához"}
@@ -244,7 +244,7 @@ calibrate.sweep.progress:
     total:
       type: string
 
-calibrate.sweep.redoRange: {value: "Billentyűzet újramérése"}
+calibrate.sweep.redoRange: {value: "Hangterjedelem újbóli mérése"}
 calibrate.sweep.review: {value: "Hangolási lap megtekintése"}
 calibrate.sweep.skip: {value: "Kihagyás"}
 
@@ -270,7 +270,7 @@ web.mic.denied: {value: "A mikrofon használata nincs engedélyezve. Engedélyez
 
 web.mic.failed: {value: "Nem sikerült megnyitni a mikrofont."}
 web.mic.none: {value: "Nem található mikrofon."}
-web.mic.unsupported: {value: "Ez a böngésző nem tud hangot rögzíteni."}
+web.mic.unsupported: {value: "Ez a böngésző nem támogatja a mikrofon használatát hangbemenetként."}
 web.notice.background: {value: "Háttérbe helyezett lapon a hangfeldolgozás szünetelhet."}
 web.notice.native: {value: "Pontos méréshez a telepített alkalmazást használja."}
 web.notice.ok: {value: "Értem"}
@@ -301,14 +301,14 @@ error.invalidBox: {value: "Nincs ilyen sípmező."}
 error.invalidMode: {value: "A hangoló hangokat, oktávokat vagy akkordokat mér."}
 error.invalidNote: {value: "Ez a hang kívül esik a hangoló mérési tartományán."}
 error.invalidTranspose: {value: "A transzponálás 0 és 11 félhang közötti lehet."}
-error.lastBox: {value: "Legalább egy mezőnek aktívnak kell maradnia."}
+error.lastBox: {value: "Az utolsó aktív mérőmező nem kapcsolható ki."}
 error.noDevices: {value: "Nem található mikrofon. Csatlakoztasson egyet, és frissítse az eszközlistát."}
 error.playbackFailed: {value: "Nem sikerült lejátszani a referenciahangot."}
 
 error.sampleRate: {value: "A bemeneti mintavételi frekvencia ennél a referenciahangnál és transzponálásnál túl alacsony a legmagasabb hangokhoz. Használjon legalább 44,1 kHz-es felvételt."}
 
-error.sessionDecides: {value: "A megnyitott munkamenet regisztere határozza meg, mit mér a hangoló."}
+error.sessionDecides: {value: "A mért sípokat a megnyitott munkamenetben kiválasztott regiszter határozza meg."}
 error.signalVoices: {value: "Egy-négy hang szólaltatható meg, mindegyik legfeljebb 100 centtel térhet el a kiválasztott hangtól."}
-error.toneNeedsManual: {value: "A lejátszáshoz előbb rögzítsen egy hangot."}
+error.toneNeedsManual: {value: "A referenciahang megszólaltatásához előbb válassza ki kézzel a hangot."}
 error.transposeMode: {value: "Az akkordok és az oktávok mérése transzponálás nélkül történik."}
 error.unexpected: {value: "Hiba történt. A részleteket a naplóban találja."}

@@ -3,7 +3,7 @@ close: {value: "Cerrar"}
 copied: {value: "Copiado"}
 copy: {value: "Copiar informe"}
 details: {value: "Detalles"}
-email: {value: "Enviar informe por correo"}
+email: {value: "Preparar un correo con el informe"}
 failed:
   value: "No se pudo completar la operación: {error}"
   placeholders:
@@ -12,27 +12,27 @@ file:
   value: "Archivo: {path}"
   placeholders:
     path: {type: string}
-kill: {value: "Cerrar e informar del problema"}
-logs: {value: "Mostrar archivo de registro"}
+kill: {value: "Forzar el cierre y preparar el informe"}
+logs: {value: "Mostrar el archivo de registro en su carpeta"}
 messageConfig:
   value: "No se pudo leer el archivo de configuración. Corrígelo o elimínalo y vuelve a iniciar {app}."
   placeholders:
     app: {type: string}
 messageCrash:
-  value: "Se ha producido un error interno en {app}. Envía el informe para ayudar a corregirlo y reinicia la aplicación."
+  value: "{app} se cerró de forma inesperada. Puedes compartir el informe con el soporte técnico y reiniciar la aplicación."
   placeholders:
     app: {type: string}
-messageHang: {value: "Es posible que la operación aún pueda completarse. Espera o cierra la aplicación y envía un informe."}
+messageHang: {value: "Es posible que la operación aún termine. Puedes esperar o cerrar la aplicación para ver el informe de diagnóstico."}
 messageHangStopped:
-  value: "Se cerró {app} mientras no respondía. Envía el informe para ayudar a corregir el problema y reinicia la aplicación."
+  value: "Se cerró {app} después de que dejara de responder. Puedes compartir el informe con el soporte técnico o reiniciar la aplicación."
   placeholders:
     app: {type: string}
 messageKilled:
-  value: "Se cerró {app} antes de que pudiera informar del problema. Envía el informe y reinicia la aplicación."
+  value: "{app} se cerró antes de poder indicar la causa del problema. Puedes compartir los detalles disponibles con el soporte técnico o reiniciar la aplicación."
   placeholders:
     app: {type: string}
 messageOom:
-  value: "El sistema se quedó sin memoria y cerró {app}. Envía el informe y reinicia la aplicación."
+  value: "El sistema se quedó sin memoria y cerró {app}. Puedes compartir el informe con el soporte técnico o reiniciar la aplicación."
   placeholders:
     app: {type: string}
 messageStartup:

@@ -3,22 +3,22 @@
 # Editing guide: ../../README.md.
 
 # Buttons and shared labels
-accept: {value: "接受"}
+accept: {value: "套用"}
 back: {value: "返回"}
 cancel: {value: "取消"}
 close: {value: "關閉"}
 delete: {value: "刪除"}
 export: {value: "匯出"}
-next: {value: "下一步"}
+next: {value: "下一頁"}
 "no": {value: "否"}
 none: {value: "無"}
-previous: {value: "上一步"}
+previous: {value: "上一頁"}
 website: {value: "網站"}
 "yes": {value: "是"}
 
 # Musical labels and unit symbols
 accordion: {value: "手風琴"}
-note: {value: "音符"}
+note: {value: "音名"}
 
 reed:
   value: "簧片 {index}"
@@ -76,13 +76,13 @@ title.uncalibrated:
 
 # Application and About dialog
 about.aboutTitle: {value: "關於"}
-about.commit: {value: "構建版本"}
-about.donate: {value: "在 Ko-fi 上支援開發"}
+about.commit: {value: "建置識別碼"}
+about.donate: {value: "透過 Ko-fi 贊助開發"}
 about.license: {value: "授權條款"}
 about.privacy: {value: "隱私權政策"}
 about.guide: {value: "SmeggTuner 使用指南"}
 about.onlineVersion: {value: "開啟線上版本"}
-about.support: {value: "技術支援"}
+about.support: {value: "寫信聯絡技術支援"}
 about.mascot: {value: "一隻拉手風琴的貓"}
 about.publisher: {value: "作者：smegg99"}
 about.tagline: {value: "免費開放原始碼的手風琴調音軟體。"}
@@ -96,7 +96,7 @@ about.helpTitle: {value: "幫助"}
 
 # System tray
 tray.quit: {value: "退出"}
-tray.show: {value: "顯示"}
+tray.show: {value: "顯示主視窗"}
 
 linkNewTab:
   value: "{text}（在新分頁中開啟）"

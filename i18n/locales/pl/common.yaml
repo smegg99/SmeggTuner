@@ -9,11 +9,11 @@ cancel: {value: "Anuluj"}
 close: {value: "Zamknij"}
 delete: {value: "Usuń"}
 export: {value: "Eksportuj"}
-next: {value: "Następna"}
+next: {value: "Następna strona"}
 "no": {value: "Nie"}
 none: {value: "Brak"}
-previous: {value: "Poprzednia"}
-website: {value: "Strona"}
+previous: {value: "Poprzednia strona"}
+website: {value: "Strona internetowa"}
 "yes": {value: "Tak"}
 
 # Musical labels and unit symbols
@@ -21,7 +21,7 @@ accordion: {value: "Akordeon"}
 note: {value: "Dźwięk"}
 
 reed:
-  value: "Głos {index}"
+  value: "Stroik {index}"
   placeholders:
     index: {type: integer}
 
@@ -77,18 +77,18 @@ title.uncalibrated:
 # Application and About dialog
 about.aboutTitle: {value: "O programie"}
 about.commit: {value: "Kompilacja"}
-about.donate: {value: "Wesprzyj na Ko-fi"}
+about.donate: {value: "Wesprzyj projekt na Ko-fi"}
 about.license: {value: "Licencja"}
 about.privacy: {value: "Polityka prywatności"}
 about.guide: {value: "Jak używać SmeggTunera"}
-about.onlineVersion: {value: "Otwórz wersję na stronie"}
-about.support: {value: "Wsparcie"}
+about.onlineVersion: {value: "Otwórz dokument w przeglądarce"}
+about.support: {value: "Napisz do pomocy technicznej"}
 about.mascot: {value: "Kot grający na akordeonie"}
-about.publisher: {value: "Autor: Smegg99"}
-about.tagline: {value: "Wolny program do strojenia akordeonów o otwartym kodzie."}
+about.publisher: {value: "Autor: smegg99"}
+about.tagline: {value: "Bezpłatny program do strojenia akordeonów z otwartym kodem źródłowym."}
 about.untagged: {value: "wersja rozwojowa"}
 about.version: {value: "Wersja"}
-app.description: {value: "Wolna i otwarta aplikacja do strojenia akordeonów."}
+app.description: {value: "Bezpłatny tuner do akordeonów z otwartym kodem źródłowym."}
 app.name: {value: "SmeggTuner"}
 
 # Help dialog and keyboard instructions

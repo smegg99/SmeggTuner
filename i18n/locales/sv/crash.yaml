@@ -3,7 +3,7 @@ close: {value: "Stäng"}
 copied: {value: "Kopierat"}
 copy: {value: "Kopiera rapport"}
 details: {value: "Detaljer"}
-email: {value: "Skicka rapport via e-post"}
+email: {value: "Skriv mejl med rapporten"}
 failed:
   value: "Åtgärden misslyckades: {error}"
   placeholders:
@@ -12,27 +12,27 @@ file:
   value: "Fil: {path}"
   placeholders:
     path: {type: string}
-kill: {value: "Stäng och rapportera"}
-logs: {value: "Visa loggfil"}
+kill: {value: "Stäng appen och visa rapporten"}
+logs: {value: "Visa loggfilen i filhanteraren"}
 messageConfig:
   value: "Det gick inte att läsa inställningsfilen. Rätta till eller ta bort filen och starta sedan {app} igen."
   placeholders:
     app: {type: string}
 messageCrash:
-  value: "Ett internt fel uppstod i {app}. Skicka rapporten så att felet kan åtgärdas och starta sedan om programmet."
+  value: "{app} avslutades oväntat. Du kan skicka rapporten till supporten och starta om appen."
   placeholders:
     app: {type: string}
-messageHang: {value: "Programmet kan fortfarande hinna slutföra uppgiften. Vänta eller stäng programmet och skicka en rapport."}
+messageHang: {value: "Appen kanske fortfarande arbetar. Du kan vänta eller stänga appen för att se felrapporten."}
 messageHangStopped:
-  value: "{app} stängdes när programmet inte svarade. Skicka rapporten och starta sedan om programmet."
+  value: "{app} svarade inte och stängdes. Du kan skicka rapporten till supporten eller starta om appen."
   placeholders:
     app: {type: string}
 messageKilled:
-  value: "{app} stängdes innan programmet hann rapportera felet. Skicka rapporten och starta sedan om programmet."
+  value: "{app} stängdes innan orsaken kunde registreras. Du kan skicka de tillgängliga uppgifterna till supporten eller starta om appen."
   placeholders:
     app: {type: string}
 messageOom:
-  value: "Minnet tog slut och systemet stängde {app}. Skicka rapporten och starta sedan om programmet."
+  value: "Minnet tog slut och systemet stängde {app}. Du kan skicka rapporten till supporten eller starta om appen."
   placeholders:
     app: {type: string}
 messageStartup:

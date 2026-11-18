@@ -8,7 +8,7 @@ card.a4:
   placeholders:
     hz: {type: string}
 
-card.changed: {value: "このセッションの記録後に、楽器ライブラリのアコーディオン情報が変更されました。"}
+card.changed: {value: "このセッションを保存した後で、楽器ライブラリのアコーディオン情報が変更されました。"}
 card.hasCurve: {value: "目標曲線設定済み"}
 
 card.readings:
@@ -37,9 +37,9 @@ new: {value: "新規セッション"}
 title: {value: "セッション"}
 
 # Session dialog and tabs
-dialog.backToList: {value: "調律したことのある楽器を選ぶ"}
+dialog.backToList: {value: "楽器ライブラリから選ぶ"}
 dialog.describeNew: {value: "新しい楽器の情報を入力…"}
-dialog.forgetAccordion: {value: "このアコーディオンの登録を解除"}
+dialog.forgetAccordion: {value: "このアコーディオンをライブラリから削除"}
 dialog.loadAccordion: {value: "ファイルから読み込む…"}
 dialog.name: {value: "セッション名"}
 dialog.nameHint: {value: "楽器名や依頼者名を付けるとセッションを識別できます。"}
@@ -81,7 +81,7 @@ instrument.builder.add: {value: "追加"}
 instrument.builder.already: {value: "そのスイッチは登録済みです"}
 instrument.builder.high: {value: "4′ ピッコロ"}
 instrument.builder.low: {value: "16′ バス"}
-instrument.builder.middle: {value: "8′ リード"}
+instrument.builder.middle: {value: "8′ 中音リード列"}
 instrument.builder.none: {value: "スイッチは未登録です。下で各スイッチが鳴らすリード列を選んでください。"}
 instrument.builder.remove: {value: "このレジスターを削除"}
 instrument.builder.title: {value: "スイッチを追加"}
@@ -97,14 +97,14 @@ instrument.nameRequired: {value: "アコーディオンの名前を入力して�
 instrument.photo: {value: "写真"}
 instrument.range.backwards: {value: "最高音は最低音以上にしてください。"}
 instrument.range.clear: {value: "クリア"}
-instrument.range.down: {value: "下げる"}
+instrument.range.down: {value: "半音下げる"}
 
 instrument.range.hint:
   value: "任意です。最低鍵と最高鍵を指定します。校正時に実際に音を出して設定することもできます。"
 
 instrument.range.label: {value: "鍵盤の音域"}
 instrument.range.to: {value: "～"}
-instrument.range.up: {value: "上げる"}
+instrument.range.up: {value: "半音上げる"}
 
 instrument.registersHint:
   value: "楽器に刻まれた丸いレジスター記号の点をクリックするか、一般的な組み合わせを選びます。鳴るリード列は点の配置で決まります。"
@@ -114,7 +114,7 @@ instrument.says:
   plural:
     argument: reeds
     forms:
-      other: "リード列：{banks}。最も多くの列を使うスイッチではリードが {reeds} 枚鳴ります。"
+      other: "リード列：{banks}。1 つのレジスターで、1 音につき最大 {reeds} 枚のリードが鳴ります。"
   placeholders:
     banks: {type: string}
     reeds: {type: integer}
@@ -127,18 +127,18 @@ instrument.sections.voices: {value: "レジスター"}
 instrument.tolerance: {value: "リードの許容差"}
 
 instrument.toleranceHint:
-  value: "リードに許容する偏差です。各音の周波数の 0.06 % を 1 単位とし、範囲外の測定値には調律範囲外の印が付きます。"
+  value: "リードの音高が目標からずれてもよい範囲です。その音の周波数の 0.06% を 1 単位とし、範囲を超えた測定値には印が付きます。"
 # Target curve editor
 curve.clearAll: {value: "曲線をクリア"}
 
 curve.clearAllConfirm:
-  value: "すべての制御点を削除します。各音の目標は音階の音高に戻り、チューナーは偏差を示すだけになります。"
+  value: "すべての制御点を削除します。各リードの目標は音階の音高に戻ります。"
 curve.clearAllHint: {value: "すべての制御点を外し、音階の音高を目標に戻します。"}
 curve.clearAllTitle: {value: "曲線全体をクリアしますか？"}
 curve.entryUnit: {value: "入力単位"}
 
 curve.help.hz:
-  value: "Hz では基準のうなり表と同じく A4 = 440 Hz 換算で目標を入力するため、セッションの A4 を変えても値は動きません。「記録済み」で今回の測定値を重ね、「リスト」で測定値に制御点を合わせたり、別のセッションのリストをコピーしたりできます。"
+  value: "Hz を選ぶと、音階の音高からの目標偏差を A4 = 440 Hz 換算で入力できます。セッションの A4 を変えても、この値は変わりません。「測定値を表示」で今回の測定値をグラフに重ねられます。「リスト」では測定値に曲線を合わせるか、別のセッションのリストをコピーできます。"
 curve.help.hzTitle: {value: "ヘルツと測定値"}
 
 curve.help.interp:
@@ -150,12 +150,12 @@ curve.help.lead:
 curve.help.set:
   value: "音と値を選んで「設定」を押すか、グラフの点を上下にドラッグします。リード列ごとに線があり、編集中の線が強調表示されます。"
 curve.help.setTitle: {value: "制御点の設定"}
-curve.helpTitle: {value: "目標のうなり"}
+curve.helpTitle: {value: "リードの目標偏差とうなり"}
 curve.interpolate: {value: "補間"}
 curve.interpolateHint: {value: "制御点の間を線で補間します。オフでは次の点まで同じ値を保ちます。"}
 curve.menu.ends: {value: "制御点の範囲外"}
-curve.menu.extendHigh: {value: "最高点より上に延長"}
-curve.menu.extendLow: {value: "最低点より下に延長"}
+curve.menu.extendHigh: {value: "高音側に延長"}
+curve.menu.extendLow: {value: "低音側に延長"}
 curve.menu.fit: {value: "このセッションの測定値に合わせる"}
 
 curve.menu.fitBody:
@@ -174,7 +174,7 @@ curve.menu.replaceBody: {value: "別のリストの制御点と設定で置き�
 curve.menu.replaceConfirm: {value: "置き換え"}
 curve.menu.replaceTitle: {value: "うなりリストを置き換えますか？"}
 curve.rank: {value: "リード列"}
-curve.recorded: {value: "記録済み"}
+curve.recorded: {value: "測定値を表示"}
 curve.recordedHint: {value: "このセッションの測定値をグラフに表示"}
 curve.remove: {value: "削除"}
 curve.removeHint: {value: "この音の制御点を曲線から削除します。"}
@@ -216,13 +216,13 @@ readings.notes:
 workshop.exit: {value: "セッションを終了"}
 workshop.import: {value: "インポート"}
 workshop.open: {value: "開く"}
-workshop.print: {value: "調律カードを印刷"}
+workshop.print: {value: "調律カードを書き出す"}
 
 # Session errors
 error.fitFailed: {value: "この測定回の値に曲線を合わせられませんでした。"}
 
 error.hasReadings:
-  value: "このセッションには記録済みの測定値があるため、測定に使った基準ピッチとリード数は変更できません。"
+  value: "測定値が保存されているため、測定時の基準ピッチとリード列の構成は変更できません。"
 error.imageUnreadable: {value: "その写真を開けませんでした。"}
 error.instrumentName: {value: "後で見つけられるようにアコーディオンに名前を付けてください。"}
 error.invalidA4: {value: "基準ピッチは 430～450 Hz にしてください。"}

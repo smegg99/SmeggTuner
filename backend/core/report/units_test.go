@@ -31,7 +31,7 @@ func TestTheSheetPrintsCentsWhenAsked(t *testing.T) {
 		t.Errorf("tolerance printed as %v cents", cents.Summary.Tolerance)
 	}
 
-	if out := text(t, cents); !strings.Contains(out, "Tuning table (cents)") || !strings.Contains(out, "Cents from the tempered scale") {
+	if out := text(t, cents); !strings.Contains(out, "Tuning table (cents)") || !strings.Contains(out, "offset in cents from the tempered scale") {
 		t.Error("a cents sheet does not say it is in cents")
 	}
 	if out := text(t, ref); !strings.Contains(out, "Tuning table (units of 0.06 %)") {

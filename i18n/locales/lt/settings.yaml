@@ -5,20 +5,20 @@
 # Microphone and input level
 audioDeviceHint: {value: "Matavimams naudojamas mikrofonas"}
 audioDeviceLabel: {value: "Įvesties įrenginys"}
-audioDeviceSystemDefault: {value: "Numatytasis sistemos įrenginys"}
+audioDeviceSystemDefault: {value: "Numatytasis sistemos mikrofonas"}
 autoVolume.hint: {value: "Matuojant reguliuoja mikrofono lygį"}
 autoVolume.label: {value: "Automatinis įvesties garsumas"}
 autoVolume.saveFailed: {value: "Nepavyko įrašyti įvesties garsumo nustatymo."}
 autoVolume.unsupported: {value: "Šio įrenginio įvesties lygio reguliuoti negalima."}
 humFilter50: {value: "50 Hz"}
 humFilter60: {value: "60 Hz"}
-humFilterHint: {value: "Slopina elektros tinklo ūžesį: Europoje 50 Hz, Amerikoje 60 Hz"}
+humFilterHint: {value: "Norėdami slopinti elektros tinklo ūžesį, pasirinkite vietinio tinklo dažnį"}
 humFilterLabel: {value: "Elektros tinklo ūžesio filtras"}
 lockedWhileRunning: {value: "Norėdami pakeisti garso įvestį, sustabdykite derintuvą."}
 
 # Detection and reference pitch
-continuousManual: {value: "Nuolat atnaujinti prisegtos natos rodmenį"}
-continuousManualHint: {value: "Atnaujinti prisegtos natos rodmenį dar prieš jam nusistovint"}
+continuousManual: {value: "Nuolat atnaujinti rankiniu būdu pasirinktos natos rodmenį"}
+continuousManualHint: {value: "Rodyti kintančią matavimo vertę dar prieš jai nusistovint"}
 detection.balanced: {value: "Subalansuotas"}
 detection.balancedHint: {value: "Natą pakeičia maždaug per pusę sekundės"}
 detection.fast: {value: "Greitas"}
@@ -30,13 +30,13 @@ lockA4: {value: "Užrakinti atskaitos dažnį"}
 lockA4Hint: {value: "Neleidžia derintuve keisti A4 dažnio"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "Hercai arba vienetai po 0,06 % natos dažnio"}
+beatUnitHint: {value: "Hercai arba tas pats vienetas, kurį pasirinkote liežuvėlių nuokrypiams"}
 beatUnitLabel: {value: "Plakimo vienetai"}
 errorReference: {value: "Nuokrypio atskaita"}
-errorReferenceGoal: {value: "Tikslas"}
+errorReferenceGoal: {value: "Siekiama vertė"}
 
 errorReferenceHint:
-  value: "Rodyti nuokrypį nuo gamos natos aukščio arba nuo derinimo tikslo. Pasiekus tikslą, nuokrypis nuo jo lygus nuliui."
+  value: "Pasirinkite, su kuo lyginti liežuvėlio garso aukštį: su gamos natos aukščiu ar su siekiamu aukščiu. Antruoju atveju rodmuo lygus nuliui, kai liežuvėlis skamba norimu aukščiu."
 errorReferenceScale: {value: "Gama"}
 scaleNamingHint: {value: "Kaip žymimos natos"}
 scaleNamingLabel: {value: "Natų pavadinimai"}
@@ -45,7 +45,7 @@ scaleNamings.cdefgah: {value: "C D E F G A H (vokiška sistema, diezai žymimi C
 scaleNamings.doremi: {value: "Do Re Mi (solfedžio)"}
 scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (lenkiška sistema)"}
 toleranceBeat: {value: "Plakimas"}
-toleranceHint: {value: "Didžiausias liežuvėlio arba plakimo nuokrypis, kuriam esant derinimas dar laikomas tinkamu"}
+toleranceHint: {value: "Kiek liežuvėlio garso aukštis ar plakimo dažnis gali skirtis nuo siekiamos vertės, kad derinimas dar būtų laikomas tinkamu"}
 toleranceLabel: {value: "Leistinos paklaidos"}
 toleranceReed: {value: "Liežuvėlis"}
 unitHint: {value: "Centai arba vienetai po 0,06 % natos dažnio"}
@@ -60,7 +60,7 @@ accent.pick: {value: "Pasirinkti spalvą"}
 accent.pickTitle: {value: "Paryškinimo spalva"}
 closeToTray: {value: "Užveriant suskleisti į pranešimų sritį"}
 closeToTrayHint: {value: "Užvėrus langą programa lieka pranešimų srityje"}
-checkUpdates: {value: "Tikrinti, ar yra naujinių", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdates: {value: "Automatiškai tikrinti, ar yra naujinių", description: "Desktop settings checkbox enabling GitHub update checks."}
 checkUpdatesHint: {value: "Ieško naujesnės versijos „GitHub“", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "Sąsajos kalba"}
 languageLabel: {value: "Kalba"}
@@ -81,7 +81,7 @@ calibration.askBody:
 calibration.askCalibrate: {value: "Kalibruoti dabar"}
 calibration.askContinue: {value: "Tęsti be pataisos"}
 calibration.askTitle: {value: "Ši garso plokštė nesukalibruota"}
-calibration.hint: {value: "Ištaiso garso plokštės laikrodžio paklaidą. Trunka apie minutę, garso nereikia."}
+calibration.hint: {value: "Kompensuoja garso plokštės diskretizavimo dažnio paklaidą. Matavimas trunka apie minutę, groti nereikia."}
 calibration.label: {value: "Garso plokštės kalibravimas"}
 calibration.open: {value: "Atverti"}
 calibration.openHint: {value: "Rodyti kalibravimo langą nepradedant matavimo"}
@@ -109,7 +109,7 @@ calibration.screen.phase.preparing: {value: "Prieš matuojant laikrodžio dažn�
 calibration.screen.phase.settling: {value: "Laukiama, kol nusistovės laikrodžio rodmuo."}
 
 calibration.screen.pitch:
-  value: "Kiekvienai natai tai atitinka {pitch} nuokrypį."
+  value: "Atitinkama garso aukščio paklaida visoms natoms: {pitch}."
   placeholders:
     pitch: {type: string}
 
@@ -118,7 +118,7 @@ calibration.screen.retry: {value: "Rodmenys lieka nekoreguoti. Užverkite kitas 
 calibration.screen.return: {value: "Grįžti"}
 calibration.screen.stat.dropouts: {value: "Trūkiai"}
 calibration.screen.stat.elapsed: {value: "Praėjo"}
-calibration.screen.stat.offset: {value: "Laikrodžio nuokrypis"}
+calibration.screen.stat.offset: {value: "Takto dažnio nuokrypis"}
 calibration.screen.stat.rate: {value: "Diskretizavimo dažnis"}
 calibration.screen.stat.steadiness: {value: "Stabilumas"}
 

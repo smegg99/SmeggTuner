@@ -3,7 +3,7 @@ close: {value: "Schließen"}
 copied: {value: "Kopiert"}
 copy: {value: "Bericht kopieren"}
 details: {value: "Details"}
-email: {value: "Bericht per E-Mail senden"}
+email: {value: "E-Mail mit Bericht vorbereiten"}
 failed:
   value: "Vorgang fehlgeschlagen: {error}"
   placeholders:
@@ -12,31 +12,31 @@ file:
   value: "Datei: {path}"
   placeholders:
     path: {type: string}
-kill: {value: "Beenden und Fehler melden"}
-logs: {value: "Protokolldatei anzeigen"}
+kill: {value: "App beenden und Bericht ansehen"}
+logs: {value: "Protokolldatei im Dateimanager zeigen"}
 messageConfig:
-  value: "Die Einstellungsdatei konnte nicht gelesen werden. Korrigieren oder löschen Sie die Datei und starten Sie {app} erneut."
+  value: "Die Einstellungsdatei lässt sich nicht lesen. Korrigiere oder lösche sie und starte {app} neu."
   placeholders:
     app: {type: string}
 messageCrash:
-  value: "In {app} ist ein interner Fehler aufgetreten. Senden Sie den Bericht, damit der Fehler behoben werden kann, und starten Sie die Anwendung neu."
+  value: "{app} wurde unerwartet beendet. Du kannst den Bericht an den Support schicken und die App neu starten."
   placeholders:
     app: {type: string}
-messageHang: {value: "Der laufende Vorgang kann noch abgeschlossen werden. Warten Sie oder schließen Sie die Anwendung und senden Sie einen Bericht."}
+messageHang: {value: "Der Vorgang läuft möglicherweise noch. Du kannst warten oder die App beenden, um den Diagnosebericht anzusehen."}
 messageHangStopped:
-  value: "{app} wurde beendet, als die Anwendung nicht mehr reagierte. Senden Sie den Bericht und starten Sie die Anwendung neu."
+  value: "{app} hat nicht mehr reagiert und wurde beendet. Du kannst den Bericht an den Support schicken oder die App neu starten."
   placeholders:
     app: {type: string}
 messageKilled:
-  value: "{app} wurde beendet, bevor die Anwendung den Fehler melden konnte. Senden Sie den Bericht und starten Sie die Anwendung neu."
+  value: "{app} wurde beendet, bevor die Ursache erfasst werden konnte. Du kannst die verfügbaren Angaben an den Support schicken oder die App neu starten."
   placeholders:
     app: {type: string}
 messageOom:
-  value: "Das System hat {app} wegen Speichermangels beendet. Senden Sie den Bericht und starten Sie die Anwendung neu."
+  value: "Das System hat {app} wegen Speichermangels beendet. Du kannst den Bericht an den Support schicken oder die App neu starten."
   placeholders:
     app: {type: string}
 messageStartup:
-  value: "Beheben Sie die unten angegebene Ursache und starten Sie {app} erneut."
+  value: "Behebe die unten angegebene Ursache und starte {app} neu."
   placeholders:
     app: {type: string}
 restart: {value: "Neu starten"}

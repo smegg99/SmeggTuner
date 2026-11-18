@@ -58,7 +58,7 @@ recordCleared: {value: "Séria meraní vymazaná"}
 recordEdited: {value: "Záznam ručne upravený"}
 recordRejected: {value: "Požiadavka na záznam odmietnutá"}
 recordTake: {value: "Meranie zaznamenané"}
-recordUndone: {value: "Posledný záznam vrátený späť"}
+recordUndone: {value: "Záznam posledného merania zrušený"}
 reportFailed: {value: "Nepodarilo sa uložiť protokol o ladení"}
 reportOpenFailed: {value: "Nepodarilo sa otvoriť protokol o ladení"}
 reportOpened: {value: "Protokol o ladení odovzdaný prehliadaču"}
@@ -72,7 +72,7 @@ sessionCurveImported: {value: "Cieľová krivka importovaná"}
 sessionDeleted: {value: "Relácia odstránená"}
 sessionLoadFailed: {value: "Nepodarilo sa načítať reláciu"}
 sessionOpened: {value: "Relácia otvorená"}
-sessionReedsClamped: {value: "Na nástroji znie viac jazýčkov, než merací modul rozlíši. Ich počet sa v module obmedzil"}
+sessionReedsClamped: {value: "Na nástroji znie viac jazýčkov, než merací modul rozlíši. Počet meraných jazýčkov bol obmedzený."}
 sessionRejected: {value: "Neplatná zmena relácie odmietnutá"}
 sessionSaveFailed: {value: "Nepodarilo sa uložiť reláciu"}
 

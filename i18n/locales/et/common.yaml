@@ -4,10 +4,10 @@
 "close": {value: "Sulge"}
 "delete": {value: "Kustuta"}
 "export": {value: "Ekspordi"}
-"next": {value: "Edasi"}
+"next": {value: "Järgmine leht"}
 "no": {value: "Ei"}
 "none": {value: "Puudub"}
-"previous": {value: "Eelmine"}
+"previous": {value: "Eelmine leht"}
 "website": {value: "Veebisait"}
 "yes": {value: "Jah"}
 "accordion": {value: "Akordion"}
@@ -56,13 +56,13 @@
   placeholders:
     title: {"type": "string"}
 "about.aboutTitle": {value: "Teave"}
-"about.commit": {value: "Järk"}
-"about.donate": {value: "Toeta Ko-fi kaudu"}
+"about.commit": {value: "Git-revisjon"}
+"about.donate": {value: "Anneta Ko-fi kaudu"}
 "about.license": {value: "Litsents"}
 "about.privacy": {value: "Privaatsuspõhimõtted"}
 "about.guide": {value: "SmeggTuneri kasutamine"}
-"about.onlineVersion": {value: "Ava veebiversioon"}
-"about.support": {value: "Kasutajatugi"}
+"about.onlineVersion": {value: "Loe veebis"}
+"about.support": {value: "Kirjuta kasutajatoele"}
 "about.mascot": {value: "Akordioni mängiv kass"}
 "about.publisher": {value: "Autor: smegg99"}
 "about.tagline": {value: "Tasuta avatud lähtekoodiga akordioni häälestamise programm."}

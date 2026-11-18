@@ -44,7 +44,7 @@ volumeStepFailed: {value: "Automatisk volymreglering kunde inte ställa in ingå
 volumeUnavailable: {value: "Automatisk volymreglering kommer inte åt enhetens ingångsnivå"}
 
 # Tuner engine
-tunerEventsDropped: {value: "Mäthändelser hoppades över eftersom gränssnittet ligger efter"}
+tunerEventsDropped: {value: "Mäthändelser hoppades över eftersom visningen släpar efter"}
 tunerRunFailed: {value: "Mätmotorn stannade med ett fel"}
 tunerSettingRejected: {value: "Avvisade en inställning utanför tillåtet intervall"}
 tunerStartFailed: {value: "Kunde inte skapa ingångskällan"}
@@ -56,8 +56,8 @@ tunerTonePlaying: {value: "Spelar upp referenstonen"}
 # Sessions, readings and reports
 recordCleared: {value: "Mätomgången tömd"}
 recordEdited: {value: "Mätningen har redigerats manuellt"}
-recordRejected: {value: "Begäran om registrering avvisades"}
-recordTake: {value: "Mätningen har registrerats"}
+recordRejected: {value: "Ändringen avvisades: Den valda stämtungan saknas i mätningen"}
+recordTake: {value: "Mätvärde sparat"}
 recordUndone: {value: "Senaste mätningen har ångrats"}
 reportFailed: {value: "Kunde inte skriva stämrapporten"}
 reportOpenFailed: {value: "Kunde inte öppna stämrapporten"}
@@ -72,7 +72,7 @@ sessionCurveImported: {value: "Målkurvan har importerats"}
 sessionDeleted: {value: "Sessionen har raderats"}
 sessionLoadFailed: {value: "Kunde inte läsa in sessionen"}
 sessionOpened: {value: "Sessionen har öppnats"}
-sessionReedsClamped: {value: "Fler stämtungor ljuder än mätmotorn kan urskilja. Antalet begränsas"}
+sessionReedsClamped: {value: "Sessionen anger fler stämtungor än vad som kan mätas samtidigt. Antalet tungor i mätningen har begränsats"}
 sessionRejected: {value: "Ogiltig sessionsändring avvisades"}
 sessionSaveFailed: {value: "Kunde inte spara sessionen"}
 
@@ -93,8 +93,8 @@ frontendError: {value: "Oväntat programfel"}
 frontendRejection: {value: "Åtgärden i programmet misslyckades"}
 frontendResizeNotice: {value: "Layoutändringen sköts upp till nästa bildruta (ResizeObserver-meddelande från webbläsaren)"}
 frontendSettingFailed: {value: "Kunde inte ändra stämapparatens inställning"}
-frontendTunerStartFailed: {value: "Kunde inte starta stämapparaten"}
+frontendTunerStartFailed: {value: "Kunde inte starta mätningen"}
 frontendTunerStateFailed: {value: "Kunde inte läsa stämapparatens status"}
-frontendTunerStopFailed: {value: "Kunde inte stoppa stämapparaten"}
+frontendTunerStopFailed: {value: "Kunde inte stoppa mätningen"}
 frontendTunerTonePlayFailed: {value: "Kunde inte spela upp referenstonen"}
 frontendTunerToneStopFailed: {value: "Kunde inte stoppa referenstonen"}

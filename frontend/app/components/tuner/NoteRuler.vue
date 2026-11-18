@@ -2,7 +2,7 @@
   <UiPanelCanvas
     ref="panel"
     :title="t('tuner.notes.title')"
-    :label="t('tuner.notes.label')"
+    :label="t(chords ? 'tuner.notes.range' : 'tuner.notes.label')"
     :renderer="renderer"
     interactive
     @pointerdown="onPress"
@@ -13,7 +13,7 @@
   >
     <template #meta>
       <span v-if="hovered">
-        <b>{{ hovered }}</b>, {{ t('tuner.notes.clickToPin') }}
+        <b>{{ hovered }}</b><template v-if="hoverHint">, {{ hoverHint }}</template>
       </span>
       <span v-else>
         {{ t('tuner.notes.range') }}, {{ t('tuner.notes.tracking') }}
@@ -29,6 +29,7 @@ import { bandAt, useNotesRender } from '~/composables/render/useNotesRender'
 import { useConfigSync } from '~/composables/useConfigSync'
 import { useOutputLevel } from '~/composables/useOutputLevel'
 import { NOTE_MIN, useTuner } from '~/composables/useTuner'
+import { WEB } from '~/utils/features'
 import { noteName as nameOf } from '~/utils/tuning'
 
 const { t } = useI18n()
@@ -99,6 +100,10 @@ function onLeave() {
 
 // Chords picks its own notes; services/tuner refuses a pin there, so a press only sounds the tone.
 const chords = computed(() => !sessionReeds.value && mode.value === 'chords')
+const hoverHint = computed(() => {
+  if (!chords.value) return t('tuner.notes.clickToPin')
+  return WEB || muted.value ? '' : t('tuner.signal.play')
+})
 
 // pointerdown, not click: a tone heard on release arrives too late.
 function onPress(event: PointerEvent) {

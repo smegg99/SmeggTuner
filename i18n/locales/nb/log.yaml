@@ -44,7 +44,7 @@ volumeStepFailed: {value: "Automatisk volumkontroll kunne ikke stille inn inngan
 volumeUnavailable: {value: "Automatisk volumkontroll har ikke tilgang til enhetens inngangsnivå"}
 
 # Tuner engine
-tunerEventsDropped: {value: "Målehendelser hoppet over fordi grensesnittet ligger etter"}
+tunerEventsDropped: {value: "Målehendelser hoppet over fordi visningen ligger etter"}
 tunerRunFailed: {value: "Målemotoren stoppet med en feil"}
 tunerSettingRejected: {value: "Avviste en innstilling utenfor tillatt område"}
 tunerStartFailed: {value: "Kunne ikke opprette inngangskilden"}
@@ -56,8 +56,8 @@ tunerTonePlaying: {value: "Spiller av referansetonen"}
 # Sessions, readings and reports
 recordCleared: {value: "Målerunden tømt"}
 recordEdited: {value: "Måling redigert manuelt"}
-recordRejected: {value: "Forespørsel om registrering avvist"}
-recordTake: {value: "Måling registrert"}
+recordRejected: {value: "Endringen ble avvist: Den valgte stemtungen mangler i målingen"}
+recordTake: {value: "Måleverdi lagret"}
 recordUndone: {value: "Siste måling angret"}
 reportFailed: {value: "Kunne ikke skrive stemmerapporten"}
 reportOpenFailed: {value: "Kunne ikke åpne stemmerapporten"}
@@ -72,7 +72,7 @@ sessionCurveImported: {value: "Målkurven er importert"}
 sessionDeleted: {value: "Økten er slettet"}
 sessionLoadFailed: {value: "Kunne ikke laste inn økten"}
 sessionOpened: {value: "Økten er åpnet"}
-sessionReedsClamped: {value: "Flere stemtunger klinger enn målemotoren kan skille. Antallet begrenses"}
+sessionReedsClamped: {value: "Økten angir flere stemtunger enn det er mulig å måle samtidig. Antallet tunger i målingen er begrenset"}
 sessionRejected: {value: "Ugyldig øktendring avvist"}
 sessionSaveFailed: {value: "Kunne ikke lagre økten"}
 
@@ -93,8 +93,8 @@ frontendError: {value: "Uventet programfeil"}
 frontendRejection: {value: "Operasjonen i programmet mislyktes"}
 frontendResizeNotice: {value: "Layoutendring utsatt til neste bilde (ResizeObserver-melding fra nettleseren)"}
 frontendSettingFailed: {value: "Kunne ikke endre stemmeapparatets innstilling"}
-frontendTunerStartFailed: {value: "Kunne ikke starte stemmeapparatet"}
+frontendTunerStartFailed: {value: "Kunne ikke starte målingen"}
 frontendTunerStateFailed: {value: "Kunne ikke lese stemmeapparatets status"}
-frontendTunerStopFailed: {value: "Kunne ikke stoppe stemmeapparatet"}
+frontendTunerStopFailed: {value: "Kunne ikke stoppe målingen"}
 frontendTunerTonePlayFailed: {value: "Kunne ikke spille av referansetonen"}
 frontendTunerToneStopFailed: {value: "Kunne ikke stoppe referansetonen"}

@@ -1,9 +1,9 @@
-"arm.hint": {value: "Salvesta mõõtevõte iga lukustumise korral (Enter salvestab kohe ühe)"}
-"arm.needsSession": {value: "Salvestamiseks ava seanss"}
-"arm.warmup": {value: "Ei salvesta: mängi vabalt, midagi ei salvestata. Vajuta salvestamise alustamiseks."}
+"arm.hint": {value: "Stabiilsed näidud salvestatakse. Vajuta lõpetamiseks või salvesta praegune näit kohe klahviga Enter."}
+"arm.needsSession": {value: "Mõõtetulemuste salvestamiseks ava seanss"}
+"arm.warmup": {value: "Mängi vabalt. Mõõtetulemuste salvestamiseks vajuta seda nuppu."}
 "undo.hint": {value: "Võta viimane mõõtevõte tagasi"}
 "mobile.current": {value: "Mõõdetud"}
-"mobile.error": {value: "Kõrvalekalle"}
+"mobile.error": {value: "Vahe sihist"}
 "table.beat":
   value: "Tuiklemine {pair}"
   placeholders:
@@ -12,15 +12,15 @@
 "table.deleteHint": {value: "Eemalda see näit jäädavalt. Selle asendamiseks mängi nooti ja salvesta uuesti."}
 "table.deleteTitle": {value: "Kas eemaldada see näit?"}
 "table.editHint": {value: "Väärtuse muutmiseks klõpsa või vajuta Enter"}
-"table.empty": {value: "Alusta salvestamist ja mängi noote, et näidud salvestada."}
+"table.empty": {value: "Lülita näitude salvestamine sisse ja mängi noote."}
 "table.graph": {value: "Graafik"}
 "table.graphHint": {value: "Võrdle iga keelt selle sihtväärtusega. Klõpsa tulbal rea valimiseks; klõpsa uuesti järgmise registri valimiseks."}
-"table.graphLabel": {value: "Iga salvestatud noodi keelte vead"}
+"table.graphLabel": {value: "Keelte kõrvalekalded sihist salvestatud nootide kaupa"}
 "table.helpTitle": {value: "Teave selle tabeli kohta"}
-"table.label": {value: "Salvestatud häälestus"}
+"table.label": {value: "Salvestatud häälestusmõõtmised"}
 "table.latest": {value: "Viimati salvestatud: Backspace eemaldab selle"}
 "table.manual": {value: "Muudetud"}
-"table.manualHint": {value: "Selle rea väärtus on sisestatud käsitsi, mitte mõõdetud helist."}
+"table.manualHint": {value: "Selles reas on käsitsi sisestatud väärtus."}
 "table.notes":
   plural:
     argument: count
@@ -29,7 +29,7 @@
       other: "{count} nooti"
   placeholders:
     count: {"type": "integer"}
-"table.unitHint": {value: "Keelte kõrvalekalded kasutavad seadetes valitud ühikut. Tuiklemine kasutab hertse või kõrvalekalde ühikut, olenevalt tööriistariba valikust."}
+"table.unitHint": {value: "Keelte kõrvalekalde ühiku saad valida seadetes. Tuiklemise näidud saad tööriistaribal lülitada hertsidelt samale ühikule."}
 "report.csv": {value: "CSV"}
 "report.date": {value: "Kuupäev"}
 "report.format": {value: "Vorming"}

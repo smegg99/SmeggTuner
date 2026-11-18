@@ -14,32 +14,32 @@ output.mute: {value: "Stummschalten"}
 output.unmute: {value: "Ton einschalten"}
 output.volume: {value: "Ausgabelautstärke"}
 soundcard.running: {value: "Soundkarte wird kalibriert"}
-soundcard.uncalibrated: {value: "Soundkarte nicht kalibriert. Jetzt kalibrieren"}
-soundcard.unreliable: {value: "Kalibrierung unzuverlässig. Erneut kalibrieren"}
+soundcard.uncalibrated: {value: "Soundkarte nicht kalibriert. Kalibrierung öffnen"}
+soundcard.unreliable: {value: "Messwert unzuverlässig. Soundkartenkalibrierung öffnen"}
 source.analyze: {value: "Aufnahme analysieren…"}
 source.default: {value: "Systemstandard"}
 source.noDevices: {value: "Keine Mikrofone gefunden"}
 source.refresh: {value: "Geräteliste aktualisieren"}
-transport.fileHint: {value: "Starte die Wiedergabe der WAV-Aufnahme in ihrem eigenen Bedienfeld."}
-transport.start: {value: "Starten"}
-transport.stop: {value: "Stopp"}
+transport.fileHint: {value: "WAV-Aufnahme im Wiedergabefeld starten."}
+transport.start: {value: "Messung mit Mikrofon starten"}
+transport.stop: {value: "Messung mit Mikrofon stoppen"}
 
 # Modes, registers and note selection
-bassRegister.all: {value: "Gesamte Bassmechanik"}
-bassRegister.hint: {value: "Eingeschaltetes Bassregister"}
+bassRegister.all: {value: "Alle Basschöre"}
+bassRegister.hint: {value: "Bassregister wählen"}
 controls: {value: "Stimmfunktionen"}
 mode.auto: {value: "Automatisch"}
 mode.autoHint: {value: "Ton vom Stimmgerät erkennen lassen"}
-mode.pinHint: {value: "Diesen Ton fixieren"}
-mode.pinned: {value: "Fixierter Ton"}
-notes.clickToPin: {value: "zum Fixieren klicken"}
-notes.label: {value: "Töne von E0 bis C9. Zum Fixieren einen Ton anklicken."}
+mode.pinHint: {value: "Diesen Ton messen"}
+mode.pinned: {value: "Zur automatischen Tonerkennung wechseln"}
+notes.clickToPin: {value: "für die Messung auswählen"}
+notes.label: {value: "Töne von E0 bis C9. Wähle den Ton, den du messen möchtest."}
 notes.range: {value: "E0 bis C9"}
 notes.title: {value: "Töne"}
-notes.tracking: {value: "wird verfolgt"}
+notes.tracking: {value: "aktueller Ton"}
 panel.boxBase: {value: "Der Grundton wird immer gemessen"}
 panel.boxChord: {value: "Bei Akkorden werden alle drei Töne gemessen"}
-panel.boxLast: {value: "Mindestens ein Feld bleibt aktiviert"}
+panel.boxLast: {value: "Die letzte Auswahl lässt sich nicht abwählen"}
 
 panel.boxOctave:
   plural:
@@ -65,16 +65,16 @@ panel.bySession:
   placeholders:
     n: {type: integer}
 
-panel.locked: {value: "Eingerastet"}
+panel.locked: {value: "Messwert stabil"}
 panel.modeHints.chords: {value: "Akkorde aus drei Tönen"}
 panel.modeHints.octaves: {value: "Ein Ton mit seinen oberen Oktaven"}
-panel.modeHints.tones: {value: "Ein Ton, bis zu drei Stimmzungen"}
+panel.modeHints.tones: {value: "Ein gespielter Ton mit bis zu drei Stimmzungen"}
 panel.modeLabel: {value: "Was gemessen wird"}
 panel.modes.chords: {value: "Akkorde"}
 panel.modes.octaves: {value: "Oktaven"}
-panel.modes.tones: {value: "Töne"}
+panel.modes.tones: {value: "Einzelton"}
 panel.quiet: {value: "Zu leise"}
-panel.recorded: {value: "Aufgezeichnet"}
+panel.recorded: {value: "Messwert gespeichert"}
 panel.reeds: {value: "Stimmzungen"}
 
 reeds.count:
@@ -86,34 +86,34 @@ reeds.count:
   placeholders:
     n: {type: integer}
 
-register.hint: {value: "Eingeschaltetes Register"}
+register.hint: {value: "Register wählen"}
 register.lockedPlaying: {value: "Zum Registerwechsel die Wiedergabe anhalten."}
 side.bass: {value: "Bass"}
-side.hint: {value: "Diskant- oder Bassseite"}
+side.hint: {value: "Zwischen Diskant und Bass wechseln"}
 side.treble: {value: "Diskant"}
 step.noteDown: {value: "Einen Halbton tiefer"}
 step.noteUp: {value: "Einen Halbton höher"}
 # Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
 signal.add: {value: "Ton hinzufügen"}
-signal.cents: {value: "Abweichung vom Bezugston in Cent (− tiefer, + höher)"}
+signal.cents: {value: "Tonhöhenversatz zum gewählten Ton in Cent"}
 signal.down: {value: "Einen Halbton tiefer (Pfeil links, Pfeil unten für eine Oktave)"}
-signal.open: {value: "Signalgenerator: erzeugt einen reinen Bezugston zum Stimmen einer Stimmzunge"}
-signal.play: {value: "Wiedergeben"}
-signal.playHint: {value: "Ton mit allen eingestellten Klängen spielen. Ohne gewählten Ton wird der erste erkannte gespielt (Leertaste)"}
+signal.open: {value: "Signalgenerator für Referenztöne ein- oder ausblenden"}
+signal.play: {value: "Ton spielen"}
+signal.playHint: {value: "Alle eingestellten Töne zur gewählten oder zuletzt erkannten Note spielen. Ist noch keine Note bekannt, beginnt die Wiedergabe beim ersten erkannten Ton (Leertaste)."}
 signal.remove: {value: "Diesen Ton entfernen"}
 signal.stop: {value: "Stopp"}
 signal.stopHint: {value: "Ton anhalten (Leertaste)"}
 signal.title: {value: "Signalgenerator"}
 signal.up: {value: "Einen Halbton höher (Pfeil rechts, Pfeil oben für eine Oktave)"}
-signal.wave.hint: {value: "Eine Stimmzunge erzeugt Obertöne, an denen ebenfalls Schwebungen hörbar sind"}
-signal.wave.reed: {value: "Stimmzunge"}
+signal.wave.hint: {value: "Beim Zungenklang entstehen auch zwischen den Obertönen hörbare Schwebungen."}
+signal.wave.reed: {value: "Zungenklang"}
 signal.wave.sine: {value: "Sinus"}
 
 # Reference pitch and units
 reference.a4Locked: {value: "In den Einstellungen gesperrt"}
-reference.a4Type: {value: "A4 in Hertz eingeben, 430 bis 450"}
+reference.a4Type: {value: "Frequenz des Kammertons A4 eingeben (430 bis 450 Hz)"}
 reference.frozen: {value: "Gesperrt: Die Sitzung enthält bereits Messwerte"}
-reference.transpose: {value: "Transponieren"}
+reference.transpose: {value: "Transposition"}
 reference.transposeDown: {value: "Einen Halbton weniger"}
 reference.transposeHint: {value: "Anzahl der Halbtöne, um die Tasten höher klingen als bezeichnet"}
 reference.transposeMode: {value: "Akkorde und Oktaven werden untransponiert gemessen"}
@@ -130,7 +130,7 @@ unit.reference: {value: "Einheiten"}
 
 # Live readings and graphs
 boxes.beat:
-  value: "Schwebung {a} zu {b}"
+  value: "Schwebung {a}–{b}"
   placeholders:
     a: {type: string}
     b: {type: string}
@@ -145,7 +145,7 @@ boxes.reed:
     n: {type: string}
 
 boxes.reedBank:
-  value: "Stimmzunge {bank}"
+  value: "Chor {bank}"
   placeholders:
     bank: {type: string}
 
@@ -159,18 +159,18 @@ spectrum.label: {value: "Frequenzspektrum des verfolgten Tons"}
 spectrum.title: {value: "Spektrum"}
 
 # Hold, noise learning and tuner state
-hold.hint: {value: "Stabile Messwerte halten (H)"}
-state.deviceLost: {value: "Eingangssignal verloren"}
+hold.hint: {value: "Stabile Messwerte automatisch festhalten (H)"}
+state.deviceLost: {value: "Audioeingang nicht mehr verfügbar"}
 state.initializing: {value: "Raumgeräusch wird gemessen"}
-state.running: {value: "Warte auf Ton"}
+state.running: {value: "Messung läuft"}
 state.stopped: {value: "Angehalten"}
 state.tooQuiet: {value: "Zu leise. Lauter spielen oder näher ans Mikrofon gehen"}
-warmup.quiet: {value: "Bitte still sein"}
+warmup.quiet: {value: "Für die Rauschmessung bitte leise sein"}
 
 # WAV files and waveform controls
 file.clearSelection: {value: "Gesamte Aufnahme auswählen"}
 file.fit: {value: "Gesamte Aufnahme anzeigen"}
-file.loop: {value: "Auswahl wiederholen"}
+file.loop: {value: "Auswahl in Schleife abspielen"}
 file.mute: {value: "Aufnahme stummschalten"}
 file.openFilter: {value: "WAV-Audio"}
 file.openTitle: {value: "WAV-Aufnahme auswählen"}
@@ -198,10 +198,10 @@ calibrate.range.again: {value: "Neu beginnen"}
 calibrate.range.backwards:
   value: "Der höchste Ton darf nicht tiefer als der tiefste sein. Miss den Tonumfang erneut."
 
-calibrate.range.capture: {value: "Erfassen"}
+calibrate.range.capture: {value: "Ton übernehmen"}
 calibrate.range.highest: {value: "Höchster Ton"}
 calibrate.range.lowest: {value: "Tiefster Ton"}
-calibrate.range.next: {value: "Weiter zur Stimmzungenkalibrierung"}
+calibrate.range.next: {value: "Weiter zur Messung der Stimmzungen"}
 calibrate.range.playHigh: {value: "Spiele jetzt die höchste Taste."}
 calibrate.range.playLow: {value: "Spiele die tiefste Taste."}
 calibrate.range.step: {value: "Die Klaviatur"}
@@ -209,7 +209,7 @@ calibrate.status.captured: {value: "Erfasst"}
 calibrate.status.holding: {value: "Ton gleichmäßig halten"}
 calibrate.status.loud: {value: "Zu laut"}
 calibrate.status.play: {value: "Spiele einen Ton"}
-calibrate.sweep.bassAll: {value: "Bass - gesamte Mechanik"}
+calibrate.sweep.bassAll: {value: "Bass – alle Chöre"}
 
 calibrate.sweep.done:
   plural:
@@ -230,7 +230,7 @@ calibrate.sweep.progress:
     done: {type: string}
     total: {type: string}
 
-calibrate.sweep.redoRange: {value: "Klaviatur erneut erfassen"}
+calibrate.sweep.redoRange: {value: "Tonumfang erneut erfassen"}
 calibrate.sweep.review: {value: "Stimmkarte ansehen"}
 calibrate.sweep.skip: {value: "Überspringen"}
 
@@ -258,9 +258,9 @@ web.mic.denied:
 
 web.mic.failed: {value: "Mikrofon konnte nicht geöffnet werden."}
 web.mic.none: {value: "Kein Mikrofon gefunden."}
-web.mic.unsupported: {value: "Dieser Browser kann kein Audio aufnehmen."}
+web.mic.unsupported: {value: "Dieser Browser unterstützt keine Mikrofoneingabe."}
 web.notice.background: {value: "Bei einem Tab im Hintergrund kann die Audioverarbeitung pausieren."}
-web.notice.native: {value: "Für genaue Messungen die installierte App verwenden."}
+web.notice.native: {value: "Für zuverlässigere Messwerte die installierte App verwenden."}
 web.notice.ok: {value: "Verstanden"}
 
 web.notice.processing:
@@ -285,11 +285,11 @@ error.deviceGone: {value: "Dieses Mikrofon ist nicht mehr angeschlossen."}
 error.deviceLost: {value: "Das Mikrofon reagiert nicht mehr. Das Stimmgerät wurde angehalten."}
 error.fileUnreadable: {value: "Die Aufnahme konnte nicht gelesen werden. Sie muss im WAV-Format vorliegen."}
 error.invalidA4: {value: "Der Kammerton muss zwischen 430 und 450 Hz liegen."}
-error.invalidBox: {value: "Dieses Stimmzungenfeld existiert nicht."}
-error.invalidMode: {value: "Das Stimmgerät misst Töne, Oktaven oder Akkorde."}
+error.invalidBox: {value: "Diese Stimmzunge oder Oktavlage kann nicht ausgewählt werden."}
+error.invalidMode: {value: "Wähle Einzelton, Oktaven oder Akkorde."}
 error.invalidNote: {value: "Dieser Ton liegt außerhalb des Messbereichs."}
 error.invalidTranspose: {value: "Transponierung ist um 0 bis 11 Halbtöne möglich."}
-error.lastBox: {value: "Mindestens ein Feld bleibt aktiviert."}
+error.lastBox: {value: "Mindestens eine Messoption muss ausgewählt bleiben."}
 error.noDevices: {value: "Kein Mikrofon gefunden. Schließe eines an und aktualisiere die Geräteliste."}
 error.playbackFailed: {value: "Der Referenzton konnte nicht wiedergegeben werden."}
 
@@ -298,6 +298,6 @@ error.sampleRate:
 error.sessionDecides: {value: "Das Register der geöffneten Sitzung legt fest, was gemessen wird."}
 error.signalVoices:
   value: "Ein bis vier Töne spielen, jeweils höchstens 100 Cent vom gewählten Ton entfernt."
-error.toneNeedsManual: {value: "Zum Abspielen eines Tons die gewünschte Note fixieren."}
+error.toneNeedsManual: {value: "Wähle den Ton manuell aus, um ihn abzuspielen."}
 error.transposeMode: {value: "Akkorde und Oktaven werden untransponiert gemessen."}
 error.unexpected: {value: "Ein Fehler ist aufgetreten. Einzelheiten stehen im Protokoll."}

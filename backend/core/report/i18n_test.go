@@ -75,7 +75,7 @@ func TestPolishSheetIsPolish(t *testing.T) {
 	i18n.SetLocale("pl")
 	out := text(t, sheet(t, musette(t)))
 
-	for _, want := range []string{"Tabela strojenia", "Tolerancja", "Dźwięk", "Jest", "Akordeon", "Głos 1"} {
+	for _, want := range []string{"Tabela strojenia", "Tolerancja", "Dźwięk", "Pom.", "Akordeon", "Stroik 1"} {
 		if !strings.Contains(out, want) {
 			t.Errorf("the Polish sheet does not say %q", want)
 		}

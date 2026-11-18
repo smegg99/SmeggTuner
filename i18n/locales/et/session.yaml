@@ -38,9 +38,9 @@ new: {value: "Uus seanss"}
 title: {value: "Seansid"}
 
 # Session dialog and tabs
-dialog.backToList: {value: "Vali varem häälestatud pill"}
+dialog.backToList: {value: "Vali pillikogust"}
 dialog.describeNew: {value: "Kirjelda uut pilli…"}
-dialog.forgetAccordion: {value: "Unusta see akordion"}
+dialog.forgetAccordion: {value: "Eemalda akordion pillikogust"}
 dialog.loadAccordion: {value: "Laadi failist…"}
 dialog.name: {value: "Seansi nimi"}
 dialog.nameHint: {value: "Kasuta seansi eristamiseks pilli või kliendi nime."}
@@ -55,8 +55,8 @@ accordion.a4Locked: {value: "Fikseeritud: seansi näidud on juba selle väärtus
 accordion.columnsRefused:
   value: "Muudatus mõjutaks olemasolevate näitude keeleridu. Muudatust ei salvestatud. Taasta varasemad keeleread või loo uus seanss."
 accordion.frozen:
-  value: "Pärast näitude salvestamist ei saa võrdluskõrgust ega keeleridu muuta. Olemasolevaid keeleridu kasutavaid registreid saab veel lisada."
-accordion.frozenShort: {value: "Keeleread lukustatud"}
+  value: "Pärast mõõtetulemuste salvestamist ei saa enam muuta võrdlussagedust, transponeerimist ega keeleridu. Olemasolevatest keeleridadest saab endiselt lisada registreid."
+accordion.frozenShort: {value: "Keeleread lukus"}
 accordion.remember: {value: "Salvesta pillikogusse"}
 accordion.rememberHint: {value: "Salvesta seansi pill kogusse, et seda hiljem teistes seanssides kasutada."}
 
@@ -66,17 +66,17 @@ instrument.a4: {value: "Võrdluskõrgus"}
 instrument.a4Hint:
   value: "A4 võrdlussagedus hertsides. Selle pilli uued seansid kasutavad seda väärtust."
 
-instrument.bass.build: {value: "Järgmise lüliti keeleread jalgades"}
-instrument.bass.fixed: {value: "Bassiregistreid pole: fikseeritud mehhanismil kõlavad alati kõik hääled."}
+instrument.bass.build: {value: "Vali uue bassiregistri keeleread"}
+instrument.bass.fixed: {value: "Bassiregistreid ei saa vahetada. Kõik bassi keeleread kõlavad koos."}
 
 instrument.bass.full:
   value: "Bassimehhanismil saab siin olla kuni {n} lülitit"
   placeholders:
     n: {type: string}
 
-instrument.bass.hint: {value: "Määra bassi häälte arv. Enamikul mehhanismidel on neid neli või viis."}
+instrument.bass.hint: {value: "Määra bassi keeleridade arv. Enamikul bassimehhanismidel on neid neli või viis."}
 instrument.bass.registerName: {value: "Lüliti nimi"}
-instrument.bass.voices: {value: "Bassihääled"}
+instrument.bass.voices: {value: "Bassi keeleread"}
 instrument.beatTolerance: {value: "Tuiklemise tolerants"}
 instrument.builder.add: {value: "Lisa"}
 instrument.builder.already: {value: "See lüliti on juba kirjeldatud"}
@@ -98,25 +98,25 @@ instrument.nameRequired: {value: "Sisesta akordioni nimi."}
 instrument.photo: {value: "Foto"}
 instrument.range.backwards: {value: "Kõrgeim noot ei tohi olla madalaimast madalam."}
 instrument.range.clear: {value: "Tühjenda"}
-instrument.range.down: {value: "Madalamale"}
+instrument.range.down: {value: "Pooltooni võrra madalamale"}
 
 instrument.range.hint:
-  value: "Valikuline. Madalaim ja kõrgeim klahv. Ulatuse saab kalibreerimisel määrata ka kuulmise järgi."
+  value: "Soovi korral sisesta madalaim ja kõrgeim noot. Klaviatuuri ulatuse saad määrata ka pilli kalibreerimisel, mängides äärmisi noote."
 
 instrument.range.label: {value: "Klaviatuuri ulatus"}
 instrument.range.to: {value: "kuni"}
-instrument.range.up: {value: "Kõrgemale"}
+instrument.range.up: {value: "Pooltooni võrra kõrgemale"}
 
 instrument.registersHint:
-  value: "Klõpsa iga registrilüliti tähise punktidel (akordionile graveeritud ring) või vali levinud tähis. Punktid näitavad otse, millised keeleread kõlavad."
+  value: "Vaata pilli registrilüliti tähist. Vali selle järgi, kas kõlavad 4′ ja 16′ keeleread ning mitu 8′ keelerida on sisse lülitatud. Seejärel lisa register."
 instrument.registersSubtitle: {value: "Meloodiapoolsed lülitid ja iga lülitiga kõlavad keeleread."}
 
 instrument.says:
   plural:
     argument: reeds
     forms:
-      one: "Keeleread: {banks}. Kõige laiema registriga kõlab {reeds} keel."
-      other: "Keeleread: {banks}. Kõige laiema registriga kõlab {reeds} keelt."
+      one: "Keeleread: {banks}. Ühe noodi kohta saab korraga kõlada kuni {reeds} keel."
+      other: "Keeleread: {banks}. Ühe noodi kohta saab korraga kõlada kuni {reeds} keelt."
   placeholders:
     banks: {type: string}
     reeds: {type: integer}
@@ -129,7 +129,7 @@ instrument.sections.voices: {value: "Registrid"}
 instrument.tolerance: {value: "Keele tolerants"}
 
 instrument.toleranceHint:
-  value: "Keele lubatud kõrvalekalle ühikutes, millest igaüks on 0,06% noodi sagedusest. Piire ületavad näidud märgitakse häälest ära olevaks."
+  value: "Lubatud erinevus keele sihthälbest. Üks ühik on 0,06% noodi sagedusest. Suurem erinevus märgitakse lubatust suuremaks."
 # Target curve editor
 curve.clearAll: {value: "Tühjenda kõver"}
 
@@ -140,7 +140,7 @@ curve.clearAllTitle: {value: "Kas tühjendada kogu kõver?"}
 curve.entryUnit: {value: "Sisestusühik"}
 
 curve.help.hz:
-  value: "Hz korral sisestatakse siht hertsides, lähtudes A4 = 440 Hz nagu tuiklemise võrdlusloendis. Seansi A4 muutmine sihti ei nihuta. „Salvestatud“ kuvab seansi näidud loendi peal. Menüüs „Loend“ saab tugipunktid näitudega sobitada või kopeerida teise seansi loendi."
+  value: "Kui sisestad sihtväärtuse hertsides, kasutatakse tuiklemise võrdlusloendi sagedust A4 = 440 Hz. Seansi A4 muutmine seda sihtväärtust ei muuda. „Salvestatud“ näitab graafikul ka seansi mõõtetulemusi. Menüüst „Loend“ saad tugipunktid mõõtetulemustega sobitada või kopeerida teise seansi loendi."
 curve.help.hzTitle: {value: "Hertsid ja näidud"}
 
 curve.help.interp:
@@ -148,16 +148,16 @@ curve.help.interp:
 curve.help.interpTitle: {value: "Punktide vahel"}
 
 curve.help.lead:
-  value: "Häälestuse siht näitab noot noodi haaval, kui palju peaks iga keel helirea kõrgusest kõrvale kalduma. Salvestatud keelt võrreldakse selle sihiga. Tabel hindab, kas näit jääb sihi lubatud piiridesse, selle asemel et võrrelda seda nulliga."
+  value: "Määra iga noodi jaoks, kui palju peaks iga keele kõrgus erinema helirea noodi kõrgusest. Tabel võrdleb mõõdetud kõrvalekallet selle sihtväärtusega ja näitab, kas vahe jääb lubatud piiridesse."
 curve.help.set:
   value: "Vali noot ja väärtus ning vajuta „Määra“ või lohista graafiku punkti üles või alla. Igal keelereal on oma joon ja muudetav joon on esile tõstetud."
 curve.help.setTitle: {value: "Punkti määramine"}
-curve.helpTitle: {value: "Soovitud tuiklemine"}
+curve.helpTitle: {value: "Keelte sihthälbed ja tuiklemine"}
 curve.interpolate: {value: "Interpoleeri"}
 curve.interpolateHint: {value: "Järgi tugipunktide vahelist joont. Väljalülitatuna kehtib punkti väärtus järgmise punktini."}
 curve.menu.ends: {value: "Tugipunktidest väljaspool"}
-curve.menu.extendHigh: {value: "Jätka kõrgeimast kõrgemale"}
-curve.menu.extendLow: {value: "Jätka madalaimast madalamale"}
+curve.menu.extendHigh: {value: "Pikenda kõrgemate nootideni"}
+curve.menu.extendLow: {value: "Pikenda madalamate nootideni"}
 curve.menu.fit: {value: "Sobita seansi näitudega"}
 
 curve.menu.fitBody:
@@ -220,13 +220,13 @@ readings.notes:
 workshop.exit: {value: "Välju seansist"}
 workshop.import: {value: "Impordi"}
 workshop.open: {value: "Ava"}
-workshop.print: {value: "Prindi kaart"}
+workshop.print: {value: "Ekspordi häälestuskaart"}
 
 # Session errors
 error.fitFailed: {value: "Kõverat ei saanud selle mõõtevooruga sobitada."}
 
 error.hasReadings:
-  value: "Seansil on juba näidud. Need mõõdeti selle võrdluskõrguse ja keelte arvu põhjal, nii et kumbagi ei saa enam muuta."
+  value: "Seansis on juba salvestatud mõõtetulemusi. Nende võrdlussagedust, transponeerimist ega keeleridade paigutust ei saa enam muuta."
 error.imageUnreadable: {value: "Fotot ei saanud avada."}
 error.instrumentName: {value: "Anna akordionile nimi, et selle hiljem üles leiaksid."}
 error.invalidA4: {value: "Võrdlussagedus peab olema vahemikus 430 kuni 450 Hz."}
@@ -244,7 +244,7 @@ error.loadFailed: {value: "Seanssi ei saanud lugeda."}
 error.noBassMachine: {value: "Sellele akordionile pole bassimehhanismi määratud."}
 error.noBassRegister: {value: "Akordionil pole sellist bassiregistrit."}
 error.noCurve: {value: "Sellel seansil pole sihtkõverat."}
-error.noReadings: {value: "Selles seansis pole veel midagi salvestatud."}
+error.noReadings: {value: "Selles seansis pole veel ühtegi mõõtetulemust salvestatud."}
 error.noRegister: {value: "Akordionil pole sellist registrit."}
 error.noSession: {value: "Ükski seanss pole avatud."}
 error.notAnImage: {value: "See fail ei ole foto."}

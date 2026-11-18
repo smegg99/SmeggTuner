@@ -87,13 +87,13 @@ title.uncalibrated:
 
 # Application and About dialog
 about.aboutTitle: {value: "Névjegy"}
-about.commit: {value: "Összeállítás"}
-about.donate: {value: "Támogatás a Ko-fi oldalon"}
+about.commit: {value: "Buildazonosító"}
+about.donate: {value: "Adományozás a Ko-fin"}
 about.license: {value: "Licenc"}
 about.privacy: {value: "Adatvédelmi tájékoztató"}
 about.guide: {value: "A SmeggTuner használata"}
 about.onlineVersion: {value: "Online változat megnyitása"}
-about.support: {value: "Támogatás"}
+about.support: {value: "E-mail az ügyfélszolgálatnak"}
 about.mascot: {value: "Harmonikázó macska"}
 about.publisher: {value: "Készítette: smegg99"}
 about.tagline: {value: "Ingyenes, nyílt forráskódú harmonikahangoló program."}

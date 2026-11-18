@@ -3,14 +3,14 @@
 # Editing guide: ../../README.md.
 
 # Recording controls
-arm.hint: {value: "每次锁定音高时记录一次读数（按 Enter 立即记录）"}
+arm.hint: {value: "正在自动记录稳定读数。点击可停止记录，按 Enter 可立即记录。"}
 arm.needsSession: {value: "打开调音会话以记录读数"}
 arm.warmup: {value: "尚未记录，可自由演奏，不会保存读数。按下即可开始记录。"}
 undo.hint: {value: "撤销上一次记录"}
 
 # Readings table and compact columns
 mobile.current: {value: "实测值"}
-mobile.error: {value: "偏差"}
+mobile.error: {value: "与目标之差"}
 
 table.beat:
   value: "拍频 {pair}"
@@ -25,7 +25,7 @@ table.empty: {value: "开始记录后，演奏音符即可保存读数。"}
 table.graph: {value: "图表"}
 
 table.graphHint:
-  value: "对照各簧片的目标值。点击一列选中对应行，再次点击可选择下一个变音器。"
+  value: "图中比较各簧片的实测值与目标值。点击柱条可选中表中对应行，再次点击可切换到下一个变音器。"
 table.graphLabel: {value: "各已记录音符的簧片误差"}
 table.helpTitle: {value: "关于此表"}
 table.label: {value: "调音记录"}

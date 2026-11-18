@@ -67,17 +67,16 @@ graph.edited:
       type: string
 
 legend.error.cents:
-  value: Pilováním jazýčku přibližte odchylku k nule. Údaje jsou v centech vůči temperované stupnici při {a4} Hz.
+  value: "Pilováním snižujte rozdíl od cíle k nule. Naměřená hodnota je odchylka v centech od rovnoměrně temperovaného ladění při A4 = {a4} Hz."
   placeholders:
     a4:
       type: string
 
-legend.error.key: {value: "Odchylka = naměřená hodnota − cíl."}
+legend.error.key: {value: "Odchylka od cíle = naměřená hodnota − cílová hodnota."}
 legend.error.noCurve: {value: "Bez cílové křivky je cíl nulový a odchylka se počítá od stupnice."}
 
 legend.error.reference:
-  value: Pilováním jazýčku přibližte odchylku k nule. Odchylka od temperované stupnice při {a4} Hz se uvádí v jednotkách
-    po 0,06 % frekvence tónu.
+  value: "Pilováním snižujte rozdíl od cíle k nule. Naměřená hodnota je odchylka od rovnoměrně temperovaného ladění při A4 = {a4} Hz. Jedna jednotka odpovídá 0,06 % frekvence daného tónu."
   placeholders:
     a4:
       type: string
@@ -103,10 +102,10 @@ summary.beats:
   plural:
     argument: pluralCount
     forms:
-      one: '{pluralCount} zázněj'
-      few: '{pluralCount} zázněje'
-      many: '{pluralCount} zázněje'
-      other: '{pluralCount} záznějů'
+      one: '{pluralCount} měření záznějů'
+      few: '{pluralCount} měření záznějů'
+      many: '{pluralCount} měření záznějů'
+      other: '{pluralCount} měření záznějů'
   placeholders:
     pluralCount:
       type: integer

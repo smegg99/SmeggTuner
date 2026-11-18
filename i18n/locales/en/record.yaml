@@ -4,14 +4,14 @@
 # Plurals: one = 1; other = 0, 2, 3, ...
 
 # Recording controls
-arm.hint: {value: "Record a take on every lock (Enter takes one now)"}
-arm.needsSession: {value: "Open a session to record"}
-arm.warmup: {value: "Not recording: play freely, nothing is saved. Press to start recording."}
-undo.hint: {value: "Undo the last take"}
+arm.hint: {value: "Saving stable readings. Press to stop, or press Enter to save a reading now."}
+arm.needsSession: {value: "Open a session to save readings"}
+arm.warmup: {value: "Play freely without saving readings. Press to start saving them."}
+undo.hint: {value: "Undo the last saved reading"}
 
 # Readings table and compact columns
 mobile.current: {value: "Measured"}
-mobile.error: {value: "Deviation"}
+mobile.error: {value: "Error"}
 
 table.beat:
   value: "Beating {pair}"
@@ -19,10 +19,10 @@ table.beat:
     pair: {type: string}
 
 table.delete: {value: "Remove this reading"}
-table.deleteHint: {value: "Permanently remove this reading. Play and record the note again to replace it."}
+table.deleteHint: {value: "This permanently removes the reading. To replace it, play the note again and save the new measurement."}
 table.deleteTitle: {value: "Remove this reading?"}
 table.editHint: {value: "Click or press Enter to edit the value"}
-table.empty: {value: "Start recording, then play notes to save readings."}
+table.empty: {value: "Turn on measurement recording, then play notes to save readings."}
 table.graph: {value: "Graph"}
 
 table.graphHint:
@@ -30,12 +30,12 @@ table.graphHint:
     Compare each reed with its target. Click a column to select its row; click again to select the
     next register.
 
-table.graphLabel: {value: "Each recorded note's reed errors"}
+table.graphLabel: {value: "Reed errors for each measured note"}
 table.helpTitle: {value: "About this table"}
-table.label: {value: "Recorded tuning"}
-table.latest: {value: "Recorded last: Backspace removes it"}
+table.label: {value: "Saved tuning measurements"}
+table.latest: {value: "Last saved reading (Backspace to remove)"}
 table.manual: {value: "Edited"}
-table.manualHint: {value: "A value in this row was typed, not heard."}
+table.manualHint: {value: "A value in this row was entered by hand."}
 
 table.notes:
   plural:
@@ -74,5 +74,5 @@ report.pdf: {value: "PDF"}
 report.title: {value: "Tuning card"}
 
 # Recording errors
-error.takeNotFound: {value: "That take is no longer in the pass."}
+error.takeNotFound: {value: "That reading is no longer in this pass."}
 error.unexpected: {value: "The operation failed. See the log for details."}

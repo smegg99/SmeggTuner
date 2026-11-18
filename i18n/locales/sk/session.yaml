@@ -45,12 +45,12 @@ title: {value: "Relácie"}
 # Session dialog and tabs
 dialog.backToList: {value: "Vybrať už ladený akordeón"}
 dialog.describeNew: {value: "Opísať nový akordeón…"}
-dialog.forgetAccordion: {value: "Zabudnúť tento akordeón"}
+dialog.forgetAccordion: {value: "Odobrať akordeón z knižnice"}
 dialog.loadAccordion: {value: "Načítať zo súboru…"}
 dialog.name: {value: "Názov relácie"}
 dialog.nameHint: {value: "Na ľahké rozpoznanie relácie použite názov nástroja alebo meno zákazníka."}
 dialog.pickAccordion: {value: "Ktorý akordeón?"}
-dialog.start: {value: "Spustiť"}
+dialog.start: {value: "Začať reláciu"}
 page.mobile.curve: {value: "Cieľové hodnoty"}
 page.mobile.recorded: {value: "Merania"}
 
@@ -70,7 +70,7 @@ instrument.a4: {value: "Referenčná frekvencia"}
 
 instrument.a4Hint: {value: "Referenčná frekvencia A4 v hertzoch. Nové relácie pre tento nástroj použijú túto hodnotu."}
 
-instrument.bass.build: {value: "Stopové výšky ďalšieho registra"}
+instrument.bass.build: {value: "Hlasy ďalšieho basového registra (v stopách)"}
 instrument.bass.fixed: {value: "Bez basových registrov: mechanizmus je pevný a všetky hlasy znejú stále."}
 
 instrument.bass.full:
@@ -147,7 +147,7 @@ curve.clearAllHint: {value: "Odstráni všetky oporné body a nastaví cieľ na 
 curve.clearAllTitle: {value: "Vymazať celú krivku?"}
 curve.entryUnit: {value: "Jednotka zadávania"}
 
-curve.help.hz: {value: "Pri voľbe Hz zadávate cieľ v hertzoch vzhľadom na A4 = 440 Hz, rovnako ako v referenčnom zozname rázov. Zmenou A4 v relácii sa preto cieľ neposunie. Voľba Zaznamenané pridá do grafu merania tejto relácie. V ponuke Zoznam môžete podľa nich preložiť oporné body alebo skopírovať zoznam inej relácie."}
+curve.help.hz: {value: "Pri zadávaní v Hz sa cieľová odchýlka prepočítava pre A4 = 440 Hz, rovnako ako v referenčnom zozname rázov. Zmena A4 v relácii teda zadaný cieľ neposunie. Tlačidlom Merania zobrazíte v grafe hodnoty z tejto relácie. V ponuke Zoznam môžete podľa nich vytvoriť krivku alebo prevziať zoznam z inej relácie."}
 
 curve.help.hzTitle: {value: "Hz a merania"}
 
@@ -164,8 +164,8 @@ curve.helpTitle: {value: "Požadované rázy"}
 curve.interpolate: {value: "Interpolovať"}
 curve.interpolateHint: {value: "Medzi opornými bodmi sleduje spojnicu. Pri vypnutí sa hodnota každého bodu zachová až do ďalšieho."}
 curve.menu.ends: {value: "Za krajnými bodmi"}
-curve.menu.extendHigh: {value: "Pokračovať nad najvyšším bodom"}
-curve.menu.extendLow: {value: "Pokračovať pod najnižším bodom"}
+curve.menu.extendHigh: {value: "Predĺžiť krivku k vyšším tónom"}
+curve.menu.extendLow: {value: "Predĺžiť krivku k nižším tónom"}
 curve.menu.fit: {value: "Preložiť podľa meraní tejto relácie"}
 
 curve.menu.fitBody:
@@ -188,7 +188,7 @@ curve.menu.replaceBody: {value: "Oporné body sa nahradia bodmi druhého zoznamu
 curve.menu.replaceConfirm: {value: "Nahradiť"}
 curve.menu.replaceTitle: {value: "Nahradiť zoznam rázov?"}
 curve.rank: {value: "Hlasový rad"}
-curve.recorded: {value: "Zaznamenané"}
+curve.recorded: {value: "Merania"}
 curve.recordedHint: {value: "Zobraziť merania tejto relácie v grafe"}
 curve.remove: {value: "Odobrať"}
 curve.removeHint: {value: "Odstráni oporný bod tohto tónu z krivky."}
@@ -239,7 +239,7 @@ readings.notes:
 workshop.exit: {value: "Opustiť reláciu"}
 workshop.import: {value: "Importovať"}
 workshop.open: {value: "Otvoriť"}
-workshop.print: {value: "Vytlačiť ladiaci list"}
+workshop.print: {value: "Exportovať ladiaci list…"}
 
 # Session errors
 error.fitFailed: {value: "Podľa tejto série meraní sa nepodarilo preložiť krivku."}

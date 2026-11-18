@@ -4,14 +4,14 @@
 # Plurals: one = 1; other = 0, 2, 3, ...
 
 # Recording controls
-arm.hint: {value: "Bij elke stabiele detectie een meting vastleggen (Enter legt er direct één vast)"}
+arm.hint: {value: "Stabiele meetwaarden worden opgeslagen. Klik hier om te stoppen of druk op Enter om de huidige meting direct op te slaan."}
 arm.needsSession: {value: "Open een sessie om metingen vast te leggen"}
-arm.warmup: {value: "Metingen opslaan staat uit. Speel gerust, er worden geen meetwaarden opgeslagen. Druk om meetwaarden te gaan opslaan."}
-undo.hint: {value: "Laatste meting ongedaan maken"}
+arm.warmup: {value: "Je kunt vrij spelen zonder meetwaarden op te slaan. Klik hier om ze in de sessie vast te leggen."}
+undo.hint: {value: "Laatst opgeslagen meting ongedaan maken"}
 
 # Readings table and compact columns
 mobile.current: {value: "Gemeten"}
-mobile.error: {value: "Afwijking"}
+mobile.error: {value: "Verschil"}
 
 table.beat:
   value: "Zweving {pair}"
@@ -22,14 +22,14 @@ table.delete: {value: "Deze meting verwijderen"}
 table.deleteHint: {value: "Verwijder deze meting definitief. Speel de noot opnieuw en leg de meting vast om deze te vervangen."}
 table.deleteTitle: {value: "Deze meting verwijderen?"}
 table.editHint: {value: "Klik of druk op Enter om de waarde te bewerken"}
-table.empty: {value: "Start de opname en speel noten om metingen op te slaan."}
+table.empty: {value: "Schakel het vastleggen van metingen in en speel de noten die je wilt meten."}
 table.graph: {value: "Grafiek"}
 
 table.graphHint:
   value: "Vergelijk elke tong met haar doelwaarde. Klik op een kolom om de bijbehorende rij te kiezen en klik opnieuw voor het volgende register."
-table.graphLabel: {value: "Tongafwijkingen per vastgelegde noot"}
+table.graphLabel: {value: "Afwijking van de doelwaarde per tong voor elke gemeten noot"}
 table.helpTitle: {value: "Over deze tabel"}
-table.label: {value: "Vastgelegde stemming"}
+table.label: {value: "Opgeslagen stemmetingen"}
 table.latest: {value: "Laatst vastgelegd. Verwijderen met Backspace"}
 table.manual: {value: "Bewerkt"}
 table.manualHint: {value: "Een waarde in deze rij is met de hand ingevoerd."}
@@ -44,7 +44,7 @@ table.notes:
     count: {type: integer}
 
 table.unitHint:
-  value: "Tongafwijkingen worden weergegeven in de eenheid uit de instellingen. Voor zwevingen geldt hertz of de afwijkingseenheid, zoals gekozen in de werkbalk."
+  value: "De afwijking per tong staat in de eenheid uit de instellingen. Voor zwevingen kies je op de werkbalk dezelfde eenheid of hertz."
 # Report export dialog
 report.csv: {value: "CSV"}
 report.date: {value: "Datum"}

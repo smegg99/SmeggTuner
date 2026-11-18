@@ -9,7 +9,7 @@ card.a4:
   placeholders:
     hz: {type: string}
 
-card.changed: {value: "Instrumentet i biblioteket er endret siden denne økten ble registrert."}
+card.changed: {value: "Instrumentet i biblioteket er endret siden økten ble lagret."}
 card.hasCurve: {value: "Målkurve angitt"}
 
 card.readings:
@@ -39,24 +39,24 @@ new: {value: "Ny økt"}
 title: {value: "Økter"}
 
 # Session dialog and tabs
-dialog.backToList: {value: "Velg et tidligere stemt instrument"}
+dialog.backToList: {value: "Velg instrument fra biblioteket"}
 dialog.describeNew: {value: "Beskriv et nytt instrument..."}
-dialog.forgetAccordion: {value: "Glem dette trekkspillet"}
+dialog.forgetAccordion: {value: "Fjern trekkspillet fra biblioteket"}
 dialog.loadAccordion: {value: "Last fra fil..."}
 dialog.name: {value: "Øktnavn"}
 dialog.nameHint: {value: "Bruk instrumentets eller kundens navn for å kjenne igjen økten."}
 dialog.pickAccordion: {value: "Hvilket trekkspill?"}
-dialog.start: {value: "Start"}
+dialog.start: {value: "Opprett økt"}
 page.mobile.curve: {value: "Målverdier"}
 page.mobile.recorded: {value: "Målinger"}
 
 # Instrument editing restrictions
-accordion.a4Locked: {value: "Låst: Økten inneholder allerede målinger med denne innstillingen."}
+accordion.a4Locked: {value: "Kammertonen er låst. Økten inneholder allerede målinger med denne A4-frekvensen."}
 
 accordion.columnsRefused:
   value: "Endringen ville endre stemmene som brukes i eksisterende målinger, og ble ikke lagret. Gjenopprett de tidligere stemmene eller opprett en ny økt."
 accordion.frozen:
-  value: "Når målinger er registrert, kan ikke kammertonen og stemmene endres. Du kan fortsatt legge til registre med de eksisterende stemmene."
+  value: "Når målinger er lagret, er kammertonen, transponeringen og stemmene låst. Du kan fortsatt legge til registre med de eksisterende stemmene."
 accordion.frozenShort: {value: "Stemmer låst"}
 accordion.remember: {value: "Lagre i instrumentbiblioteket"}
 accordion.rememberHint: {value: "Lagre øktens instrument i biblioteket til fremtidige økter."}
@@ -67,8 +67,8 @@ instrument.a4: {value: "Kammertone"}
 instrument.a4Hint:
   value: "Referansefrekvensen for A4 i hertz. Nye økter for instrumentet bruker denne verdien."
 
-instrument.bass.build: {value: "Fotlengder for neste registerknapp"}
-instrument.bass.fixed: {value: "Ingen bassregistre: fast bassmekanikk der alle stemmer alltid klinger."}
+instrument.bass.build: {value: "Velg fotleier for det nye bassregisteret"}
+instrument.bass.fixed: {value: "Ingen registerbrytere på bassiden. Alle stemmene i bassen klinger samtidig."}
 
 instrument.bass.full:
   value: "En bassmekanikk kan her ha høyst {n} registerknapper"
@@ -102,22 +102,22 @@ instrument.range.clear: {value: "Tøm"}
 instrument.range.down: {value: "En halvtone ned"}
 
 instrument.range.hint:
-  value: "Valgfritt. Den laveste og høyeste tangenten. Omfanget kan også stilles inn etter gehør under kalibreringen."
+  value: "Valgfritt. Angi den laveste og den høyeste tonen. Du kan også spille dem når du kalibrerer instrumentet, og lagre tonene appen gjenkjenner."
 
 instrument.range.label: {value: "Klaviaturets omfang"}
 instrument.range.to: {value: "til"}
 instrument.range.up: {value: "En halvtone opp"}
 
 instrument.registersHint:
-  value: "Klikk på prikkene i symbolet på hver registerknapp, sirkelen som er gravert på trekkspillet, eller velg et vanlig symbol. Prikkene bestemmer hvilke stemmer som klinger."
+  value: "Følg symbolet på trekkspillets registerknapp. Velg de 4′- og 16′-stemmene som klinger, angi antallet 8′-stemmer og legg til registeret."
 instrument.registersSubtitle: {value: "Registerknappene på diskantsiden og stemmene hver knapp aktiverer."}
 
 instrument.says:
   plural:
     argument: reeds
     forms:
-      one: "Stemmer: {banks}. Det fyldigste registeret aktiverer {reeds} stemtunge."
-      other: "Stemmer: {banks}. Det fyldigste registeret aktiverer {reeds} stemtunger."
+      one: "Stemmer: {banks}. Høyst {reeds} stemtunge klinger per tone."
+      other: "Stemmer: {banks}. Høyst {reeds} stemtunger klinger per tone."
   placeholders:
     banks: {type: string}
     reeds: {type: integer}
@@ -130,18 +130,18 @@ instrument.sections.voices: {value: "Registre"}
 instrument.tolerance: {value: "Toleranse for stemtunger"}
 
 instrument.toleranceHint:
-  value: "Tillatt stemtungeavvik i enheter på 0,06 % av tonens frekvens. Målinger utenfor området merkes som ustemte."
+  value: "Tillatt avvik fra stemtungens målverdi, i enheter på 0,06 % av tonens frekvens. Større avvik markeres som ustemte."
 # Target curve editor
 curve.clearAll: {value: "Tøm kurven"}
 
 curve.clearAllConfirm:
-  value: "Alle støttepunkter fjernes. Målet blir igjen skalaens tonehøyde for hver tone, og stemmeapparatet fungerer som en enkel indikator."
+  value: "Alle støttepunkter fjernes. Hver stemtunges målverdi går tilbake til skalaens tonehøyde."
 curve.clearAllHint: {value: "Fjern alle støttepunkter og bruk skalaens tonehøyder som mål."}
 curve.clearAllTitle: {value: "Tømme hele kurven?"}
 curve.entryUnit: {value: "Inndataenhet"}
 
 curve.help.hz:
-  value: "Med Hz angis målet i hertz ved A4 = 440 Hz som i referanseslaglisten. Det endres derfor ikke med øktens A4. Registrert viser øktens målinger oppå listen. Under Liste kan du tilpasse støttepunktene til målingene eller kopiere listen fra en annen økt."
+  value: "Målverdier i hertz gjelder ved A4 = 440 Hz uavhengig av øktens kammertone. Velg Målinger for å vise øktens målinger i grafen. Under Liste kan du tilpasse støttepunktene til målingene eller hente en liste fra en annen økt."
 curve.help.hzTitle: {value: "Hz og målinger"}
 
 curve.help.interp:
@@ -149,16 +149,16 @@ curve.help.interp:
 curve.help.interpTitle: {value: "Mellom punktene"}
 
 curve.help.lead:
-  value: "Stemmemålet angir for hver tone hvor langt hver stemtunge skal ligge fra skalaens tonehøyde. Tabellen vurderer den registrerte stemtungen mot målet ditt, også når det avviker fra skalaen."
+  value: "Stemmemålet angir for hver tone hvor mye høyere eller lavere hver stemtunge skal ligge enn skalaens tonehøyde. Tabellen viser om den målte verdien ligger innenfor toleransen rundt målverdien."
 curve.help.set:
   value: "Velg en tone og en verdi og trykk på Angi, eller dra et punkt opp eller ned i grafen. Hver stemme har sin egen linje, og den du redigerer, er fremhevet."
 curve.help.setTitle: {value: "Angi et punkt"}
-curve.helpTitle: {value: "Ønskede slag"}
+curve.helpTitle: {value: "Målverdier for stemtunger og slag"}
 curve.interpolate: {value: "Interpoler"}
 curve.interpolateHint: {value: "Følg linjen mellom støttepunktene. Ellers gjelder hvert punkt frem til det neste."}
 curve.menu.ends: {value: "Utenfor støttepunktene"}
-curve.menu.extendHigh: {value: "Fortsett over det høyeste punktet"}
-curve.menu.extendLow: {value: "Fortsett under det laveste punktet"}
+curve.menu.extendHigh: {value: "Forleng kurven til toner over den høyeste angitte tonen"}
+curve.menu.extendLow: {value: "Forleng kurven til toner under den laveste angitte tonen"}
 curve.menu.fit: {value: "Tilpass til målingene i denne økten"}
 
 curve.menu.fitBody:
@@ -178,7 +178,7 @@ curve.menu.replaceBody: {value: "Støttepunktene erstattes av den andre listen m
 curve.menu.replaceConfirm: {value: "Erstatt"}
 curve.menu.replaceTitle: {value: "Erstatte slaglisten?"}
 curve.rank: {value: "Stemme"}
-curve.recorded: {value: "Registrert"}
+curve.recorded: {value: "Målinger"}
 curve.recordedHint: {value: "Vis målingene fra denne økten i grafen"}
 curve.remove: {value: "Fjern"}
 curve.removeHint: {value: "Fjern tonens støttepunkt fra kurven."}
@@ -221,13 +221,13 @@ readings.notes:
 workshop.exit: {value: "Avslutt økt"}
 workshop.import: {value: "Importer"}
 workshop.open: {value: "Åpne"}
-workshop.print: {value: "Skriv ut stemmekort"}
+workshop.print: {value: "Eksporter stemmekort"}
 
 # Session errors
 error.fitFailed: {value: "Kunne ikke tilpasse en kurve til målerunden."}
 
 error.hasReadings:
-  value: "Målingene i økten bygger på øktens kammertone og antall stemtunger. Ingen av delene kan lenger endres."
+  value: "Økten inneholder allerede målinger. Derfor kan ikke kammertonen, transponeringen eller inndelingen i stemmer endres."
 error.imageUnreadable: {value: "Bildet kunne ikke åpnes."}
 error.instrumentName: {value: "Gi trekkspillet et navn så du finner det igjen."}
 error.invalidA4: {value: "Kammertonen må ligge mellom 430 og 450 Hz."}

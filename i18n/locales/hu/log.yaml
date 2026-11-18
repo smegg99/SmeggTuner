@@ -72,7 +72,7 @@ sessionCurveImported: {value: "Célgörbe importálva"}
 sessionDeleted: {value: "Munkamenet törölve"}
 sessionLoadFailed: {value: "Nem sikerült betölteni a munkamenetet"}
 sessionOpened: {value: "Munkamenet megnyitva"}
-sessionReedsClamped: {value: "A hangszeren több síp szól, mint amennyit a mérőmodul el tud különíteni. A modul a kezelhető számra korlátozta a sípokat"}
+sessionReedsClamped: {value: "Több síp szól egyszerre, mint amennyit a mérőmodul meg tud különböztetni. A modul csak az általa kezelhető számú sípot méri."}
 sessionRejected: {value: "Érvénytelen munkamenet-módosítás elutasítva"}
 sessionSaveFailed: {value: "Nem sikerült menteni a munkamenetet"}
 

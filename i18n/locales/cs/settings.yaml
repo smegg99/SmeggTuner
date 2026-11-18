@@ -17,8 +17,8 @@ humFilterLabel: {value: "Filtr síťového brumu"}
 lockedWhileRunning: {value: "Před změnou zvukového vstupu zastavte ladičku."}
 
 # Detection and reference pitch
-continuousManual: {value: "Průběžně aktualizovat připnutý tón"}
-continuousManualHint: {value: "Aktualizovat měření připnutého tónu už před jeho ustálením"}
+continuousManual: {value: "Průběžně měřit ručně vybraný tón"}
+continuousManualHint: {value: "Zobrazovat hodnoty i před ustálením měření."}
 detection.balanced: {value: "Vyvážená"}
 detection.balancedHint: {value: "Přepne na jiný tón přibližně za půl sekundy"}
 detection.fast: {value: "Rychlá"}
@@ -26,16 +26,16 @@ detection.fastHint: {value: "Přepíná tóny nejrychleji, může však zachytit
 detection.steady: {value: "Stabilní"}
 detection.steadyHint: {value: "Původní způsob detekce, pomalé přepínání tónů"}
 detectionLabel: {value: "Detekce tónů"}
-lockA4: {value: "Uzamknout referenční frekvenci"}
+lockA4: {value: "Uzamknout frekvenci A4"}
 lockA4Hint: {value: "Zabrání změně frekvence A4 v ladičce"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "Hertzy nebo jednotky po 0,06 % frekvence tónu"}
-beatUnitLabel: {value: "Jednotka zázněje"}
-errorReference: {value: "Vztažná hodnota odchylky"}
-errorReferenceGoal: {value: "Cíl"}
+beatUnitHint: {value: "Zázněje v hertzech nebo ve stejné jednotce, jakou zvolíte pro odchylky jazýčků."}
+beatUnitLabel: {value: "Jednotka frekvence záznějů"}
+errorReference: {value: "Reference pro výpočet odchylky"}
+errorReferenceGoal: {value: "Cílová hodnota"}
 
-errorReferenceHint: {value: "Zobrazí odchylku od tónu stupnice nebo od cílového ladění. Při dosažení cíle je odchylka vůči cíli nulová."}
+errorReferenceHint: {value: "Odchylku jazýčku můžete měřit od tónu rovnoměrně temperované stupnice nebo od výšky, na kterou chcete jazýček naladit. Při druhé volbě znamená nula shodu s cílovou výškou."}
 
 errorReferenceScale: {value: "Stupnice"}
 scaleNamingHint: {value: "Způsob pojmenování tónů"}
@@ -45,7 +45,7 @@ scaleNamings.cdefgah: {value: "C D E F G A H (německé, zvýšené tóny např.
 scaleNamings.doremi: {value: "Do Re Mi (solmizace)"}
 scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (polské)"}
 toleranceBeat: {value: "Zázněj"}
-toleranceHint: {value: "Povolená odchylka, při níž se jazýček nebo zázněj ještě považuje za naladěný"}
+toleranceHint: {value: "Největší přípustná odchylka ladění jazýčku nebo frekvence zázněje od cílové hodnoty."}
 toleranceLabel: {value: "Tolerance"}
 toleranceReed: {value: "Jazýček"}
 unitHint: {value: "Centy nebo jednotky po 0,06 % frekvence tónu"}
@@ -76,7 +76,7 @@ themes.dark: {value: "Tmavý"}
 themes.light: {value: "Světlý"}
 
 # Sound-card calibration
-calibration.askBody: {value: "Nekalibrovaný vzorkovací kmitočet může způsobit malou stálou chybu měření. Kalibrace trvá asi minutu a nepotřebuje zvuk."}
+calibration.askBody: {value: "Nepřesná vzorkovací frekvence zvukové karty může způsobit malou stálou chybu měření. Kalibrace trvá asi minutu. Nemusíte při ní hrát."}
 
 calibration.askCalibrate: {value: "Kalibrovat nyní"}
 calibration.askContinue: {value: "Pokračovat bez korekce"}
@@ -134,7 +134,7 @@ calibration.screen.steps.done: {value: "Hotovo"}
 calibration.screen.steps.measure: {value: "Měření"}
 calibration.screen.steps.prepare: {value: "Příprava"}
 calibration.screen.traceEmpty: {value: "Zde se během měření vykresluje odchylka vzorkovacího kmitočtu."}
-calibration.screen.unreliable: {value: "Vzorkovací kmitočet se neustálil"}
+calibration.screen.unreliable: {value: "Naměřená frekvence se neustálila"}
 calibration.start: {value: "Kalibrovat"}
 calibration.startHint: {value: "Změřit vzorkovací kmitočet vstupu"}
 
@@ -163,7 +163,7 @@ groups.appearance: {value: "Vzhled"}
 groups.detection: {value: "Detekce"}
 groups.microphone: {value: "Mikrofon"}
 groups.output: {value: "Výstup", description: "Settings section shown on a phone, holding the output volume."}
-groups.readings: {value: "Měření"}
+groups.readings: {value: "Zobrazení hodnot"}
 groups.report: {value: "Údaje o dílně"}
 
 # Report letterhead

@@ -14,13 +14,11 @@
 </template>
 
 <script setup lang="ts">
-import type { ToolItem } from '@smegg99/s99ab/types'
 import { computed } from 'vue'
 import { useConfigSync } from '~/composables/useConfigSync'
+import { useBeatUnitItems } from '~/composables/useDeviationUnit'
 
 type BeatUnit = 'hz' | 'reference'
-
-const UNITS: readonly BeatUnit[] = ['hz', 'reference']
 
 const { t } = useI18n()
 const { config } = useConfigSync()
@@ -33,7 +31,5 @@ const unit = computed<BeatUnit>({
   },
 })
 
-const unitItems = computed<ToolItem[]>(() =>
-  UNITS.map(value => ({ value, label: t(`tuner.unit.${value}`) })),
-)
+const unitItems = useBeatUnitItems()
 </script>

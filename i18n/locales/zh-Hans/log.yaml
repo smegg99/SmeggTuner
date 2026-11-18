@@ -28,7 +28,7 @@ audioDeviceGone: {value: "所选音频采集设备已断开"}
 audioDevicesListed: {value: "已列出音频采集设备"}
 audioDialogFailed: {value: "文件对话框出错"}
 audioDialogUnavailable: {value: "应用未运行时收到了文件对话框请求"}
-audioFileUnreadable: {value: "无法打开录音"}
+audioFileUnreadable: {value: "无法打开录音文件"}
 audioNoDevices: {value: "没有可用的音频采集设备"}
 audioSourceSelected: {value: "已选择输入源"}
 audioSpeakerUnavailable: {value: "没有输出设备，文件将静音播放"}
@@ -72,7 +72,7 @@ sessionCurveImported: {value: "已导入目标曲线"}
 sessionDeleted: {value: "会话已删除"}
 sessionLoadFailed: {value: "无法加载会话"}
 sessionOpened: {value: "会话已打开"}
-sessionReedsClamped: {value: "发声的簧片数超过引擎的分辨能力，已将测量数限制为引擎支持的上限"}
+sessionReedsClamped: {value: "所选变音器同时发声的簧片数超出检测上限，将只测量其中一部分。"}
 sessionRejected: {value: "已拒绝无效的会话修改"}
 sessionSaveFailed: {value: "无法保存会话"}
 
@@ -93,8 +93,8 @@ frontendError: {value: "应用发生意外错误"}
 frontendRejection: {value: "应用操作失败"}
 frontendResizeNotice: {value: "布局更新已推迟到下一帧（浏览器 ResizeObserver 通知）"}
 frontendSettingFailed: {value: "无法更改调音器设置"}
-frontendTunerStartFailed: {value: "无法启动调音器"}
+frontendTunerStartFailed: {value: "无法开始测量"}
 frontendTunerStateFailed: {value: "无法读取调音器状态"}
-frontendTunerStopFailed: {value: "无法停止调音器"}
+frontendTunerStopFailed: {value: "无法停止测量"}
 frontendTunerTonePlayFailed: {value: "无法播放参考音"}
 frontendTunerToneStopFailed: {value: "无法停止参考音"}

@@ -43,12 +43,12 @@ title: {value: "Munkamenetek"}
 # Session dialog and tabs
 dialog.backToList: {value: "Korábban hangolt harmonika kiválasztása"}
 dialog.describeNew: {value: "Új harmonika adatainak megadása…"}
-dialog.forgetAccordion: {value: "Harmonika elfelejtése"}
+dialog.forgetAccordion: {value: "Harmonika eltávolítása a gyűjteményből"}
 dialog.loadAccordion: {value: "Betöltés fájlból…"}
 dialog.name: {value: "Munkamenet neve"}
 dialog.nameHint: {value: "A munkamenet azonosításához használja a hangszer vagy a megrendelő nevét."}
 dialog.pickAccordion: {value: "Melyik harmonika?"}
-dialog.start: {value: "Indítás"}
+dialog.start: {value: "Munkamenet indítása"}
 page.mobile.curve: {value: "Célértékek"}
 page.mobile.recorded: {value: "Mérési értékek"}
 
@@ -68,7 +68,7 @@ instrument.a4: {value: "Referenciahang"}
 
 instrument.a4Hint: {value: "Az A4 referenciahang frekvenciája hertzben. A hangszer új munkamenetei ezt az értéket használják."}
 
-instrument.bass.build: {value: "A következő regiszterben megszólaló sípsorok lábszáma"}
+instrument.bass.build: {value: "A következő basszusregiszter sípsorai (láb)"}
 instrument.bass.fixed: {value: "Nincsenek basszusregiszterek: a mechanika rögzített, mindig minden sípsor megszólal."}
 
 instrument.bass.full:
@@ -143,7 +143,7 @@ curve.clearAllHint: {value: "Az összes vezérlőpont törlése és a célérté
 curve.clearAllTitle: {value: "Törli a teljes görbét?"}
 curve.entryUnit: {value: "Beviteli egység"}
 
-curve.help.hz: {value: "Hz választásakor a célt hertzben adja meg, A4 = 440 Hz referenciával, ahogyan a lebegési referencialista is teszi. Így a cél nem tolódik el a munkamenet A4 értékével. A Rögzítve kapcsoló a munkamenet méréseit is megjeleníti a listán. A Lista menüben hozzájuk illesztheti a vezérlőpontokat, vagy átmásolhatja egy másik munkamenet listáját."}
+curve.help.hz: {value: "Hz-ben a céleltérés az A4 = 440 Hz alaphoz tartozik, akárcsak a lebegési referencialistában. A munkamenet A4 frekvenciájának módosításával a megadott cél nem változik. A Mérések gombbal a grafikonon is megjelenítheti a munkamenet méréseit. A Lista menüben görbét illeszthet rájuk, vagy átmásolhatja egy másik munkamenet listáját."}
 
 curve.help.hzTitle: {value: "Hz és mért értékek"}
 
@@ -160,8 +160,8 @@ curve.helpTitle: {value: "Kívánt lebegés"}
 curve.interpolate: {value: "Interpoláció"}
 curve.interpolateHint: {value: "A vezérlőpontokat összekötő vonalat követi. Kikapcsolva a pont értéke a következőig marad érvényben."}
 curve.menu.ends: {value: "A szélső pontokon túl"}
-curve.menu.extendHigh: {value: "Folytatás a legmagasabb pont felett"}
-curve.menu.extendLow: {value: "Folytatás a legmélyebb pont alatt"}
+curve.menu.extendHigh: {value: "Görbe folytatása a magasabb hangok felé"}
+curve.menu.extendLow: {value: "Görbe folytatása a mélyebb hangok felé"}
 curve.menu.fit: {value: "Illesztés a munkamenet méréseire"}
 
 curve.menu.fitBody:
@@ -182,7 +182,7 @@ curve.menu.replaceBody: {value: "A vezérlőpontok helyére a másik lista pontj
 curve.menu.replaceConfirm: {value: "Csere"}
 curve.menu.replaceTitle: {value: "Lecseréli a lebegési listát?"}
 curve.rank: {value: "Sípsor"}
-curve.recorded: {value: "Rögzítve"}
+curve.recorded: {value: "Mérések"}
 curve.recordedHint: {value: "A munkamenet méréseinek megjelenítése a grafikonon"}
 curve.remove: {value: "Eltávolítás"}
 curve.removeHint: {value: "Eltávolítja a görbéről az ehhez a hanghoz tartozó vezérlőpontot."}
@@ -231,7 +231,7 @@ readings.notes:
 workshop.exit: {value: "Kilépés a munkamenetből"}
 workshop.import: {value: "Importálás"}
 workshop.open: {value: "Megnyitás"}
-workshop.print: {value: "Hangolási lap nyomtatása"}
+workshop.print: {value: "Hangolási lap exportálása…"}
 
 # Session errors
 error.fitFailed: {value: "Nem sikerült görbét illeszteni erre a mérési sorozatra."}

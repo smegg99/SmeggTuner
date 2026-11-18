@@ -38,7 +38,7 @@ table.bassTitle:
     unit: {type: string}
 
 table.curr: {value: "Mit."}
-table.err: {value: "Virhe"}
+table.err: {value: "Ero"}
 table.register: {value: "Rekisteri"}
 
 table.title:
@@ -58,15 +58,15 @@ graph.edited:
     mark: {type: string}
 
 legend.error.cents:
-  value: "Viilaa, kunnes virhe lähestyy nollaa. Arvot ovat senttejä suhteessa tasavireiseen asteikkoon, kun A4 on {a4} Hz."
+  value: "Viilaa kieltä niin, että ero tavoitearvoon lähestyy nollaa. Mitattu arvo kertoo poikkeaman sentteinä tasavireisen asteikon sävelestä, kun A4 = {a4} Hz."
   placeholders:
     a4: {type: string}
 
-legend.error.key: {value: "Virhe = mitattu − tavoite."}
-legend.error.noCurve: {value: "Ei tavoitekäyrää: tavoite on nolla, virhe on poikkeama asteikon sävelkorkeudesta."}
+legend.error.key: {value: "Ero = mitattu arvo − tavoitearvo."}
+legend.error.noCurve: {value: "Ilman tavoitekäyrää tavoitearvo on nolla. Ero kertoo poikkeaman asteikon sävelestä."}
 
 legend.error.reference:
-  value: "Viilaa, kunnes virhe lähestyy nollaa. Yksikkö on 0,06 % sävelen taajuudesta suhteessa tasavireiseen asteikkoon, kun A4 on {a4} Hz."
+  value: "Viilaa kieltä niin, että ero tavoitearvoon lähestyy nollaa. Poikkeaman vertailukohtana on tasavireisen asteikon sävel, kun A4 = {a4} Hz. Yksi yksikkö on 0,06 % sävelen taajuudesta."
   placeholders:
     a4: {type: string}
 
@@ -89,8 +89,8 @@ summary.beats:
   plural:
     argument: pluralCount
     forms:
-      one: "{pluralCount} huojunta"
-      other: "{pluralCount} huojuntaa"
+      one: "{pluralCount} mitattu kielipari"
+      other: "{pluralCount} mitattua kieliparia"
   placeholders:
     pluralCount: {type: integer}
 

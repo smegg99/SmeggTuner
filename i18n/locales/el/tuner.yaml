@@ -3,7 +3,7 @@
 # Editing guide: ../../README.md.
 
 # Input, output and playback
-input.relearnHint: {value: "Νέα εκμάθηση θορύβου βάθους (4 s ησυχίας)"}
+input.relearnHint: {value: "Νέα μέτρηση θορύβου περιβάλλοντος (4 s ησυχίας)"}
 input.tooStrong: {value: "Πολύ ισχυρό σήμα"}
 input.unreliable: {value: "Αναξιόπιστο σήμα"}
 inputPanel.label: {value: "Σήμα εισόδου"}
@@ -13,32 +13,32 @@ output.mute: {value: "Σίγαση"}
 output.unmute: {value: "Άρση σίγασης"}
 output.volume: {value: "Ένταση εξόδου"}
 soundcard.running: {value: "Βαθμονόμηση κάρτας ήχου"}
-soundcard.uncalibrated: {value: "Η κάρτα ήχου δεν έχει βαθμονομηθεί. Βαθμονόμηση"}
-soundcard.unreliable: {value: "Αναξιόπιστη βαθμονόμηση. Νέα βαθμονόμηση"}
+soundcard.uncalibrated: {value: "Η κάρτα ήχου δεν έχει βαθμονομηθεί. Άνοιγμα βαθμονόμησης."}
+soundcard.unreliable: {value: "Αναξιόπιστο αποτέλεσμα. Άνοιγμα βαθμονόμησης κάρτας ήχου."}
 source.analyze: {value: "Ανάλυση ηχογράφησης…"}
-source.default: {value: "Προεπιλογή συστήματος"}
+source.default: {value: "Προεπιλεγμένο μικρόφωνο"}
 source.noDevices: {value: "Δεν βρέθηκαν μικρόφωνα"}
 source.refresh: {value: "Ανανέωση λίστας συσκευών"}
-transport.fileHint: {value: "Η ηχογράφηση αναπαράγεται από τη δική της καρτέλα"}
-transport.start: {value: "Έναρξη"}
-transport.stop: {value: "Διακοπή"}
+transport.fileHint: {value: "Ξεκινήστε την αναπαραγωγή από το πλαίσιο του αρχείου WAV"}
+transport.start: {value: "Έναρξη μέτρησης"}
+transport.stop: {value: "Διακοπή μέτρησης"}
 
 # Modes, registers and note selection
-bassRegister.all: {value: "Όλος ο μηχανισμός"}
+bassRegister.all: {value: "Όλες οι σειρές καλαμιών των μπάσων"}
 bassRegister.hint: {value: "Το επιλεγμένο ρετζίστερ μπάσων"}
 controls: {value: "Στοιχεία ελέγχου κουρδίσματος"}
 mode.auto: {value: "Αυτόματα"}
 mode.autoHint: {value: "Αφήστε το χορδιστήρι να εντοπίσει τη νότα"}
-mode.pinHint: {value: "Καρφίτσωμα αυτής της νότας"}
-mode.pinned: {value: "Καρφιτσωμένη νότα"}
-notes.clickToPin: {value: "κλικ για καρφίτσωμα"}
-notes.label: {value: "Νότες από E0 έως C9. Κάντε κλικ σε μία για να την καρφιτσώσετε."}
+mode.pinHint: {value: "Χειροκίνητη επιλογή αυτής της νότας"}
+mode.pinned: {value: "Επιστροφή στην αυτόματη ανίχνευση νότας"}
+notes.clickToPin: {value: "επιλέξτε νότα για μέτρηση"}
+notes.label: {value: "Νότες από E0 έως C9. Επιλέξτε με κλικ τη νότα που θέλετε να μετρήσετε."}
 notes.range: {value: "E0 έως C9"}
 notes.title: {value: "Νότες"}
 notes.tracking: {value: "παρακολούθηση"}
 panel.boxBase: {value: "Η βασική νότα μετριέται πάντα"}
 panel.boxChord: {value: "Στις συγχορδίες μετρώνται και οι τρεις φθόγγοι"}
-panel.boxLast: {value: "Τουλάχιστον ένα πλαίσιο μένει ενεργό"}
+panel.boxLast: {value: "Πρέπει να παραμείνει επιλεγμένος τουλάχιστον ένας ήχος για μέτρηση"}
 
 panel.boxOctave:
   plural:
@@ -64,16 +64,16 @@ panel.bySession:
   placeholders:
     n: {type: integer}
 
-panel.locked: {value: "Κλείδωμα"}
-panel.modeHints.chords: {value: "Τρίφωνες συγχορδίες"}
+panel.locked: {value: "Σταθερή ένδειξη"}
+panel.modeHints.chords: {value: "Συγχορδία τριών νοτών"}
 panel.modeHints.octaves: {value: "Μια νότα με τις επάνω οκτάβες της"}
-panel.modeHints.tones: {value: "Μία νότα, έως τρία καλάμια"}
+panel.modeHints.tones: {value: "Μία νότα με 1–3 καλάμια ταυτόχρονα"}
 panel.modeLabel: {value: "Αντικείμενο μέτρησης"}
 panel.modes.chords: {value: "Συγχορδίες"}
 panel.modes.octaves: {value: "Οκτάβες"}
-panel.modes.tones: {value: "Φθόγγοι"}
+panel.modes.tones: {value: "Μία νότα"}
 panel.quiet: {value: "Πολύ χαμηλή ένταση"}
-panel.recorded: {value: "Καταγράφηκε"}
+panel.recorded: {value: "Η ένδειξη αποθηκεύτηκε"}
 panel.reeds: {value: "Καλάμια"}
 
 reeds.count:
@@ -85,7 +85,7 @@ reeds.count:
   placeholders:
     n: {type: integer}
 
-register.hint: {value: "Το επιλεγμένο ρετζίστερ"}
+register.hint: {value: "Επιλογή του ενεργού ρετζίστρου του οργάνου"}
 register.lockedPlaying: {value: "Σταματήστε την αναπαραγωγή για να αλλάξετε ρετζίστερ."}
 side.bass: {value: "Μπάσα"}
 side.hint: {value: "Πλευρά πρίμων ή μπάσων"}
@@ -96,16 +96,16 @@ step.noteUp: {value: "Ένα ημιτόνιο πάνω"}
 signal.add: {value: "Προσθήκη τόνου"}
 signal.cents: {value: "Απόκλιση από τη νότα σε σεντ"}
 signal.down: {value: "Ένα ημιτόνιο κάτω (αριστερό βέλος, κάτω βέλος για οκτάβα)"}
-signal.open: {value: "Η γεννήτρια σήματος παίζει μια καθαρή νότα ως αναφορά για το κούρδισμα του καλαμιού"}
+signal.open: {value: "Εμφάνιση ή απόκρυψη της γεννήτριας τόνων αναφοράς"}
 signal.play: {value: "Αναπαραγωγή"}
-signal.playHint: {value: "Αναπαραγωγή της νότας με όλους τους τόνους ή, αν δεν υπάρχει ακόμη νότα, της πρώτης που θα ακουστεί (πλήκτρο διαστήματος)."}
+signal.playHint: {value: "Αναπαραγωγή όλων των τόνων με βάση την επιλεγμένη νότα ή την τελευταία που ανιχνεύτηκε. Αν δεν υπάρχει ακόμη νότα, η αναπαραγωγή ξεκινά μόλις ανιχνευτεί η πρώτη (πλήκτρο διαστήματος)."}
 signal.remove: {value: "Αφαίρεση αυτού του τόνου"}
 signal.stop: {value: "Διακοπή"}
 signal.stopHint: {value: "Διακοπή τόνου (πλήκτρο διαστήματος)"}
 signal.title: {value: "Γεννήτρια σήματος"}
 signal.up: {value: "Ένα ημιτόνιο πάνω (δεξί βέλος, επάνω βέλος για οκτάβα)"}
-signal.wave.hint: {value: "Ο ήχος του καλαμιού έχει αρμονικές, οπότε ακούγονται διακροτήματα και σε αυτές"}
-signal.wave.reed: {value: "Καλάμι"}
+signal.wave.hint: {value: "Ο ήχος του καλαμιού του ακορντεόν περιέχει αρμονικές. Ακούγονται διακροτήματα και ανάμεσα στις αρμονικές."}
+signal.wave.reed: {value: "Χροιά γλωσσίδας"}
 signal.wave.sine: {value: "Ημίτονο"}
 
 # Reference pitch and units
@@ -134,9 +134,9 @@ boxes.beat:
     a: {type: string}
     b: {type: string}
 
-boxes.goal: {value: "στόχος"}
+boxes.goal: {value: "επιθυμητό"}
 boxes.hzOnly: {value: "μόνο σε Hz"}
-boxes.notHeard: {value: "δεν ακούγεται"}
+boxes.notHeard: {value: "δεν ανιχνεύτηκε"}
 
 boxes.reed:
   value: "Καλάμι {n}"
@@ -144,7 +144,7 @@ boxes.reed:
     n: {type: string}
 
 boxes.reedBank:
-  value: "Καλάμι {bank}"
+  value: "Σειρά καλαμιών {bank}"
   placeholders:
     bank: {type: string}
 
@@ -158,7 +158,7 @@ spectrum.label: {value: "Το φάσμα συχνοτήτων της υπό πα
 spectrum.title: {value: "Φάσμα"}
 
 # Hold, noise learning and tuner state
-hold.hint: {value: "Διατήρηση σταθερών ενδείξεων (H)"}
+hold.hint: {value: "Αυτόματη διατήρηση της σταθερής ένδειξης στην οθόνη (H)"}
 state.deviceLost: {value: "Χάθηκε η είσοδος"}
 state.initializing: {value: "Μέτρηση θορύβου του χώρου"}
 state.running: {value: "Ακρόαση"}
@@ -200,7 +200,7 @@ calibrate.range.backwards:
 calibrate.range.capture: {value: "Καταγραφή"}
 calibrate.range.highest: {value: "Ψηλότερη"}
 calibrate.range.lowest: {value: "Χαμηλότερη"}
-calibrate.range.next: {value: "Συνέχεια στη βαθμονόμηση καλαμιών"}
+calibrate.range.next: {value: "Συνέχεια στη μέτρηση των καλαμιών"}
 calibrate.range.playHigh: {value: "Παίξτε τώρα το ψηλότερο πλήκτρο."}
 calibrate.range.playLow: {value: "Παίξτε το χαμηλότερο πλήκτρο."}
 calibrate.range.step: {value: "Πληκτρολόγιο"}
@@ -208,7 +208,7 @@ calibrate.status.captured: {value: "Καταγράφηκε"}
 calibrate.status.holding: {value: "Κρατήστε τη νότα σταθερή"}
 calibrate.status.loud: {value: "Πολύ δυνατά"}
 calibrate.status.play: {value: "Παίξτε μια νότα"}
-calibrate.sweep.bassAll: {value: "Μπάσα – όλος ο μηχανισμός"}
+calibrate.sweep.bassAll: {value: "Μπάσα – όλες οι σειρές καλαμιών"}
 
 calibrate.sweep.done:
   plural:
@@ -229,14 +229,14 @@ calibrate.sweep.progress:
     done: {type: string}
     total: {type: string}
 
-calibrate.sweep.redoRange: {value: "Νέα μέτρηση του πληκτρολογίου"}
+calibrate.sweep.redoRange: {value: "Νέα μέτρηση της έκτασης του πληκτρολογίου"}
 calibrate.sweep.review: {value: "Προβολή καρτέλας"}
 calibrate.sweep.skip: {value: "Παράλειψη"}
 
 calibrate.sweep.soloTeaches:
-  value: "Με τη σάρωση ενός μονόφωνου ρετζίστρου η εφαρμογή μαθαίνει και τον ήχο της συγκεκριμένης φωνής."
+  value: "Όταν μετράτε κάθε νότα με ρετζίστερ μίας σειράς καλαμιών, η εφαρμογή μαθαίνει και τη χροιά της σειράς."
 
-calibrate.sweep.startPlain: {value: "Έναρξη σάρωσης"}
+calibrate.sweep.startPlain: {value: "Έναρξη μέτρησης νοτών"}
 calibrate.sweep.step: {value: "Καλάμια"}
 calibrate.sweep.stop: {value: "Διακοπή"}
 calibrate.title: {value: "Βαθμονόμηση"}
@@ -257,9 +257,9 @@ web.mic.denied:
 
 web.mic.failed: {value: "Δεν ήταν δυνατή η ενεργοποίηση του μικροφώνου."}
 web.mic.none: {value: "Δεν βρέθηκε μικρόφωνο."}
-web.mic.unsupported: {value: "Αυτός ο περιηγητής δεν μπορεί να καταγράψει ήχο."}
+web.mic.unsupported: {value: "Αυτός ο περιηγητής δεν υποστηρίζει είσοδο ήχου από μικρόφωνο."}
 web.notice.background: {value: "Σε καρτέλα παρασκηνίου ο ήχος μπορεί να διακοπεί προσωρινά."}
-web.notice.native: {value: "Για ακριβείς μετρήσεις χρησιμοποιήστε την εγκατεστημένη εφαρμογή."}
+web.notice.native: {value: "Για πιο αξιόπιστες μετρήσεις χρησιμοποιήστε την εγκατεστημένη εφαρμογή."}
 web.notice.ok: {value: "Κατάλαβα"}
 
 web.notice.processing:
@@ -285,7 +285,7 @@ error.deviceLost: {value: "Το μικρόφωνο σταμάτησε να απ�
 error.fileUnreadable: {value: "Δεν ήταν δυνατή η ανάγνωση της ηχογράφησης. Πρέπει να είναι αρχείο WAV."}
 error.invalidA4: {value: "Η συχνότητα αναφοράς πρέπει να είναι από 430 έως 450 Hz."}
 error.invalidBox: {value: "Δεν υπάρχει τέτοιο πλαίσιο καλαμιού."}
-error.invalidMode: {value: "Το χορδιστήρι μετρά φθόγγους, οκτάβες ή συγχορδίες."}
+error.invalidMode: {value: "Επιλέξτε μέτρηση μίας νότας, οκτάβων ή συγχορδιών."}
 error.invalidNote: {value: "Η νότα βρίσκεται έξω από το εύρος ανίχνευσης του χορδιστηριού."}
 error.invalidTranspose: {value: "Η μεταφορά είναι από 0 έως 11 ημιτόνια."}
 error.lastBox: {value: "Τουλάχιστον ένα πλαίσιο μένει ενεργό."}
@@ -297,6 +297,6 @@ error.sampleRate:
 error.sessionDecides: {value: "Το ρετζίστερ της ανοιχτής συνεδρίας καθορίζει τι θα μετρηθεί."}
 error.signalVoices:
   value: "Παίξτε από έναν έως τέσσερις τόνους, καθέναν σε απόσταση έως 100 σεντ από τη νότα."
-error.toneNeedsManual: {value: "Καρφιτσώστε μια νότα για να ακουστεί ο τόνος της."}
+error.toneNeedsManual: {value: "Επιλέξτε χειροκίνητα μια νότα για να ακούσετε τον τόνο αναφοράς της."}
 error.transposeMode: {value: "Οι συγχορδίες και οι οκτάβες μετρώνται χωρίς μεταφορά."}
 error.unexpected: {value: "Παρουσιάστηκε σφάλμα. Δείτε το αρχείο καταγραφής για λεπτομέρειες."}

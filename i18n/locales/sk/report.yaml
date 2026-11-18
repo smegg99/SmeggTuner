@@ -67,18 +67,16 @@ graph.edited:
       type: string
 
 legend.error.cents:
-  value: Pilovaním jazýčka priblížte odchýlku k nule. Údaje sú v centoch vzhľadom na temperovanú stupnicu pri {a4}
-    Hz.
+  value: "Pilovaním zmenšujte rozdiel oproti cieľu k nule. Nameraná hodnota je odchýlka v centoch od rovnomerne temperovaného ladenia pri A4 = {a4} Hz."
   placeholders:
     a4:
       type: string
 
-legend.error.key: {value: "Odchýlka = nameraná hodnota − cieľ."}
+legend.error.key: {value: "Odchýlka od cieľa = nameraná hodnota − cieľová hodnota."}
 legend.error.noCurve: {value: "Bez cieľovej krivky je cieľ nulový a odchýlka sa počíta od stupnice."}
 
 legend.error.reference:
-  value: Pilovaním jazýčka priblížte odchýlku k nule. Odchýlka od temperovanej stupnice pri {a4} Hz sa uvádza v jednotkách
-    po 0,06 % frekvencie tónu.
+  value: "Pilovaním zmenšujte rozdiel oproti cieľu k nule. Nameraná hodnota je odchýlka od rovnomerne temperovaného ladenia pri A4 = {a4} Hz. Jedna jednotka zodpovedá 0,06 % frekvencie daného tónu."
   placeholders:
     a4:
       type: string
@@ -104,10 +102,10 @@ summary.beats:
   plural:
     argument: pluralCount
     forms:
-      one: '{pluralCount} ráz'
-      few: '{pluralCount} rázy'
-      many: '{pluralCount} rázu'
-      other: '{pluralCount} rázov'
+      one: '{pluralCount} meranie rázov'
+      few: '{pluralCount} merania rázov'
+      many: '{pluralCount} merania rázov'
+      other: '{pluralCount} meraní rázov'
   placeholders:
     pluralCount:
       type: integer

@@ -3,14 +3,14 @@
 # Editing guide: ../../README.md.
 
 # Recording controls
-arm.hint: {value: "음이 확정될 때마다 측정값 기록(Enter를 누르면 즉시 기록)"}
+arm.hint: {value: "안정된 측정값을 자동 기록 중입니다. 누르면 기록이 멈추고 Enter를 누르면 현재 값을 바로 기록합니다."}
 arm.needsSession: {value: "측정값을 기록하려면 세션을 여세요"}
 arm.warmup: {value: "기록 중이 아닙니다. 자유롭게 연주하세요. 값을 저장하려면 눌러서 기록을 시작하세요."}
 undo.hint: {value: "마지막 기록 취소"}
 
 # Readings table and compact columns
 mobile.current: {value: "측정값"}
-mobile.error: {value: "편차"}
+mobile.error: {value: "목표와의 차이"}
 
 table.beat:
   value: "맥놀이 {pair}"
@@ -25,7 +25,7 @@ table.empty: {value: "기록을 시작한 뒤 음을 연주하면 측정값이 �
 table.graph: {value: "그래프"}
 
 table.graphHint:
-  value: "각 리드를 목표값과 비교합니다. 열을 클릭해 해당 행을 선택하고 다시 클릭해 다음 레지스터를 선택하세요."
+  value: "각 리드의 측정값을 목표값과 비교합니다. 그래프의 막대를 누르면 표에서 해당 행이 선택되고, 다시 누르면 다음 레지스터로 넘어갑니다."
 table.graphLabel: {value: "기록한 음별 리드 오차"}
 table.helpTitle: {value: "이 표에 대하여"}
 table.label: {value: "조율 기록"}

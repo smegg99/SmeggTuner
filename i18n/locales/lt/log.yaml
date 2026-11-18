@@ -55,8 +55,8 @@ tunerTonePlaying: {value: "Leidžiamas atskaitos tonas"}
 
 # Sessions, readings and reports
 recordCleared: {value: "Matavimo etapo duomenys išvalyti"}
-recordEdited: {value: "Matmuo pataisytas ranka"}
-recordRejected: {value: "Atmesta įrašymo užklausa"}
+recordEdited: {value: "Matavimo rodmuo pataisytas rankiniu būdu"}
+recordRejected: {value: "Liežuvėlio rodmens pakeitimas atmestas: šio liežuvėlio rodmens matavime nėra"}
 recordTake: {value: "Matavimo rodmuo įrašytas"}
 recordUndone: {value: "Paskutinis matavimas atšauktas"}
 reportFailed: {value: "Nepavyko įrašyti derinimo ataskaitos"}
@@ -72,7 +72,7 @@ sessionCurveImported: {value: "Tikslinė kreivė importuota"}
 sessionDeleted: {value: "Seansas pašalintas"}
 sessionLoadFailed: {value: "Nepavyko įkelti seanso"}
 sessionOpened: {value: "Seansas atvertas"}
-sessionReedsClamped: {value: "Skamba daugiau liežuvėlių, nei modulis gali atskirti; ribojamas analizuojamų liežuvėlių skaičius"}
+sessionReedsClamped: {value: "Vienu metu skamba daugiau liežuvėlių, nei derintuvas gali atskirti. Matuojamų liežuvėlių skaičius apribotas."}
 sessionRejected: {value: "Atmestas netinkamas seanso pakeitimas"}
 sessionSaveFailed: {value: "Nepavyko įrašyti seanso"}
 

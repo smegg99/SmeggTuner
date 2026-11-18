@@ -3,7 +3,7 @@ close: {value: "Fechar"}
 copied: {value: "Copiado"}
 copy: {value: "Copiar relatório"}
 details: {value: "Detalhes"}
-email: {value: "Enviar relatório por e-mail"}
+email: {value: "Preparar e-mail com o relatório"}
 failed:
   value: "A operação falhou: {error}"
   placeholders:
@@ -12,27 +12,27 @@ file:
   value: "Ficheiro: {path}"
   placeholders:
     path: {type: string}
-kill: {value: "Fechar e comunicar o problema"}
-logs: {value: "Mostrar ficheiro de registo"}
+kill: {value: "Forçar o fecho e preparar o relatório"}
+logs: {value: "Mostrar o ficheiro de registo na pasta"}
 messageConfig:
   value: "Não foi possível ler o ficheiro de definições. Corrija-o ou elimine-o e volte a iniciar o {app}."
   placeholders:
     app: {type: string}
 messageCrash:
-  value: "Ocorreu um erro interno no {app}. Envie o relatório para ajudar a corrigir o problema e reinicie a aplicação."
+  value: "O {app} fechou inesperadamente. Pode partilhar o relatório com a assistência e reiniciar a aplicação."
   placeholders:
     app: {type: string}
-messageHang: {value: "A operação em curso ainda pode terminar. Aguarde ou feche a aplicação e envie um relatório."}
+messageHang: {value: "A operação ainda pode terminar. Pode aguardar ou fechar a aplicação para consultar o relatório de diagnóstico."}
 messageHangStopped:
-  value: "O {app} foi fechado enquanto não respondia. Envie o relatório para ajudar a corrigir o problema e reinicie a aplicação."
+  value: "O {app} foi fechado por ter deixado de responder. Pode partilhar o relatório com a assistência ou reiniciar a aplicação."
   placeholders:
     app: {type: string}
 messageKilled:
-  value: "O {app} foi fechado antes de conseguir comunicar o problema. Envie o relatório e reinicie a aplicação."
+  value: "O {app} fechou antes de poder indicar a causa do problema. Pode partilhar os dados disponíveis com a assistência ou reiniciar a aplicação."
   placeholders:
     app: {type: string}
 messageOom:
-  value: "A memória do sistema esgotou-se e o {app} foi fechado. Envie o relatório e reinicie a aplicação."
+  value: "A memória do sistema esgotou-se e o {app} foi fechado. Pode partilhar o relatório com a assistência ou reiniciar a aplicação."
   placeholders:
     app: {type: string}
 messageStartup:

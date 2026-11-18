@@ -38,7 +38,7 @@ table.bassTitle:
     unit: {type: string}
 
 table.curr: {value: "Išm."}
-table.err: {value: "Pakl."}
+table.err: {value: "Skirt."}
 table.register: {value: "Registras"}
 
 table.title:
@@ -58,15 +58,15 @@ graph.edited:
     mark: {type: string}
 
 legend.error.cents:
-  value: "Dildykite, kad paklaida artėtų prie nulio. Vertės centais lyginamos su tolygiai temperuota gama, kai A4 yra {a4} Hz."
+  value: "Dildydami liežuvėlį mažinkite skirtumą nuo siekiamos vertės iki nulio. Išmatuotas nuokrypis pateiktas centais nuo tolygiai temperuotos gamos natos aukščio, kai A4 = {a4} Hz."
   placeholders:
     a4: {type: string}
 
-legend.error.key: {value: "Paklaida = išmatuota vertė − tikslinė vertė."}
-legend.error.noCurve: {value: "Tikslinės kreivės nėra: tikslinė vertė lygi nuliui, paklaida yra nuokrypis nuo gamos."}
+legend.error.key: {value: "Skirtumas = išmatuota vertė − siekiama vertė."}
+legend.error.noCurve: {value: "Jei nėra tikslinės kreivės, siekiama vertė lygi nuliui. Skirtumas rodo nuokrypį nuo gamos natos aukščio."}
 
 legend.error.reference:
-  value: "Dildykite, kad paklaida artėtų prie nulio. Vienetas lygus 0,06 % natos dažnio. Atskaita – tolygiai temperuota gama, kai A4 yra {a4} Hz."
+  value: "Dildydami liežuvėlį mažinkite skirtumą nuo siekiamos vertės iki nulio. Nuokrypio atskaita yra tolygiai temperuotos gamos natos aukštis, kai A4 = {a4} Hz. Vienas vienetas lygus 0,06 % natos dažnio."
   placeholders:
     a4: {type: string}
 
@@ -89,10 +89,10 @@ summary.beats:
   plural:
     argument: pluralCount
     forms:
-      one: "{pluralCount} plakimas"
-      few: "{pluralCount} plakimai"
-      many: "{pluralCount} plakimo"
-      other: "{pluralCount} plakimų"
+      one: "{pluralCount} išmatuota liežuvėlių pora"
+      few: "{pluralCount} išmatuotos liežuvėlių poros"
+      many: "{pluralCount} išmatuotos liežuvėlių poros"
+      other: "{pluralCount} išmatuotų liežuvėlių porų"
   placeholders:
     pluralCount: {type: integer}
 

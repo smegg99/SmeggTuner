@@ -4,14 +4,14 @@
 # Plurals: one = 1; other = 0, 2, 3, ...
 
 # Recording controls
-arm.hint: {value: "Bei jedem Einrasten eine Messung speichern (Enter speichert sofort)"}
-arm.needsSession: {value: "Zum Aufzeichnen eine Sitzung öffnen"}
-arm.warmup: {value: "Aufzeichnung aus. Spiele frei, es wird nichts gespeichert. Zum Aufzeichnen drücken."}
-undo.hint: {value: "Letzte Messung rückgängig machen"}
+arm.hint: {value: "Stabile Messwerte werden gespeichert. Zum Beenden hier drücken. Enter speichert den aktuellen Wert sofort."}
+arm.needsSession: {value: "Zum Speichern von Messwerten eine Sitzung öffnen"}
+arm.warmup: {value: "Du kannst spielen, ohne Messwerte zu speichern. Drücke hier, um die Messwerte in der Sitzung zu speichern."}
+undo.hint: {value: "Zuletzt gespeicherten Messwert zurücknehmen"}
 
 # Readings table and compact columns
 mobile.current: {value: "Gemessen"}
-mobile.error: {value: "Abweichung"}
+mobile.error: {value: "Differenz"}
 
 table.beat:
   value: "Schwebung {pair}"
@@ -22,14 +22,14 @@ table.delete: {value: "Messwert entfernen"}
 table.deleteHint: {value: "Diesen Messwert endgültig entfernen. Um ihn zu ersetzen, den Ton erneut spielen und aufzeichnen."}
 table.deleteTitle: {value: "Diesen Messwert entfernen?"}
 table.editHint: {value: "Zum Bearbeiten klicken oder Enter drücken"}
-table.empty: {value: "Aufzeichnung starten und Töne spielen, um Messwerte zu speichern."}
+table.empty: {value: "Schalte das Speichern der Messwerte ein und spiele die gewünschten Töne."}
 table.graph: {value: "Diagramm"}
 
 table.graphHint:
   value: "Vergleiche jede Stimmzunge mit ihrem Sollwert. Klicke auf eine Säule, um ihre Zeile auszuwählen, und erneut für das nächste Register."
-table.graphLabel: {value: "Stimmzungenabweichungen je aufgezeichnetem Ton"}
+table.graphLabel: {value: "Abweichung jeder Stimmzunge vom Sollwert je gemessenem Ton"}
 table.helpTitle: {value: "Über diese Tabelle"}
-table.label: {value: "Aufgezeichnete Stimmung"}
+table.label: {value: "Gespeicherte Stimmwerte"}
 table.latest: {value: "Zuletzt aufgezeichnet. Rücktaste zum Entfernen"}
 table.manual: {value: "Bearbeitet"}
 table.manualHint: {value: "Ein Wert in dieser Zeile wurde von Hand eingegeben."}
@@ -44,7 +44,7 @@ table.notes:
     count: {type: integer}
 
 table.unitHint:
-  value: "Stimmzungenabweichungen werden in der unter Einstellungen gewählten Einheit angezeigt. Für Schwebungen gilt je nach Auswahl in der Werkzeugleiste Hertz oder die Abweichungseinheit."
+  value: "Die Abweichung der Stimmzungen erscheint in der Einheit aus den Einstellungen. Für Schwebungen wählst du in der Werkzeugleiste dieselbe Einheit oder Hertz."
 # Report export dialog
 report.csv: {value: "CSV"}
 report.date: {value: "Datum"}

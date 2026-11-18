@@ -3,7 +3,7 @@
 # Editing guide: ../../README.md.
 
 # Input, output and playback
-input.relearnHint: {value: "Iš naujo nustatyti foninį triukšmą (4 s tylos)"}
+input.relearnHint: {value: "Iš naujo išmatuoti foninį triukšmą (4 s tylos)"}
 input.tooStrong: {value: "Signalas per stiprus"}
 input.unreliable: {value: "Signalas nepatikimas"}
 inputPanel.label: {value: "Įvesties signalas"}
@@ -13,32 +13,32 @@ output.mute: {value: "Nutildyti"}
 output.unmute: {value: "Įjungti garsą"}
 output.volume: {value: "Išvesties garsumas"}
 soundcard.running: {value: "Kalibruojama garso plokštė"}
-soundcard.uncalibrated: {value: "Garso plokštė nesukalibruota. Kalibruoti"}
-soundcard.unreliable: {value: "Kalibravimas nepatikimas. Kalibruoti iš naujo"}
+soundcard.uncalibrated: {value: "Garso plokštė nesukalibruota. Atverti kalibravimą."}
+soundcard.unreliable: {value: "Kalibravimo rezultatas nepatikimas. Atverti garso plokštės kalibravimą."}
 source.analyze: {value: "Analizuoti įrašą…"}
-source.default: {value: "Numatytasis sistemos įrenginys"}
+source.default: {value: "Numatytasis mikrofonas"}
 source.noDevices: {value: "Mikrofonų nerasta"}
 source.refresh: {value: "Atnaujinti įrenginių sąrašą"}
-transport.fileHint: {value: "Įrašas leidžiamas iš jo kortelės"}
-transport.start: {value: "Pradėti"}
-transport.stop: {value: "Stabdyti"}
+transport.fileHint: {value: "Paleiskite WAV įrašą jo atkūrimo skydelyje"}
+transport.start: {value: "Pradėti matuoti"}
+transport.stop: {value: "Stabdyti matavimą"}
 
 # Modes, registers and note selection
-bassRegister.all: {value: "Visas bosų mechanizmas"}
+bassRegister.all: {value: "Visos bosų liežuvėlių eilės"}
 bassRegister.hint: {value: "Įjungtas bosų registras"}
 controls: {value: "Derinimo valdikliai"}
 mode.auto: {value: "Automatinis"}
 mode.autoHint: {value: "Leisti derintuvui atpažinti natą"}
-mode.pinHint: {value: "Prisegti šią natą"}
-mode.pinned: {value: "Prisegta nata"}
-notes.clickToPin: {value: "spustelėkite, kad prisegtumėte"}
-notes.label: {value: "Natos nuo E0 iki C9. Spustelėkite natą, kad ją prisegtumėte."}
+mode.pinHint: {value: "Pasirinkti šią natą rankiniu būdu"}
+mode.pinned: {value: "Grįžti prie automatinio natų atpažinimo"}
+notes.clickToPin: {value: "pasirinkite matuojamą natą"}
+notes.label: {value: "Natos nuo E0 iki C9. Spustelėkite natą, kurią norite matuoti."}
 notes.range: {value: "E0–C9"}
 notes.title: {value: "Natos"}
 notes.tracking: {value: "sekama"}
 panel.boxBase: {value: "Pagrindinė nata matuojama visada"}
 panel.boxChord: {value: "Akordų režimu matuojami visi trys garsai"}
-panel.boxLast: {value: "Bent vienas laukelis lieka įjungtas"}
+panel.boxLast: {value: "Bent vienas matuojamas garsas turi likti pasirinktas"}
 
 panel.boxOctave:
   plural:
@@ -68,16 +68,16 @@ panel.bySession:
   placeholders:
     n: {type: integer}
 
-panel.locked: {value: "Užfiksuota"}
+panel.locked: {value: "Stabilus rodmuo"}
 panel.modeHints.chords: {value: "Trijų natų akordai"}
 panel.modeHints.octaves: {value: "Nata ir jos viršutinės oktavos"}
-panel.modeHints.tones: {value: "Viena nata, iki trijų liežuvėlių"}
+panel.modeHints.tones: {value: "Viena grojama nata, 1–3 liežuvėliai vienu metu"}
 panel.modeLabel: {value: "Kas matuojama"}
 panel.modes.chords: {value: "Akordai"}
 panel.modes.octaves: {value: "Oktavos"}
-panel.modes.tones: {value: "Tonai"}
+panel.modes.tones: {value: "Viena nata"}
 panel.quiet: {value: "Per tylu"}
-panel.recorded: {value: "Įrašyta"}
+panel.recorded: {value: "Rodmuo išsaugotas"}
 panel.reeds: {value: "Liežuvėliai"}
 
 reeds.count:
@@ -91,7 +91,7 @@ reeds.count:
   placeholders:
     n: {type: integer}
 
-register.hint: {value: "Įjungtas registras"}
+register.hint: {value: "Pasirinkti instrumente įjungtą registrą"}
 register.lockedPlaying: {value: "Norėdami pakeisti registrą, sustabdykite atkūrimą."}
 side.bass: {value: "Bosai"}
 side.hint: {value: "Diskanto arba bosų pusė"}
@@ -102,16 +102,16 @@ step.noteUp: {value: "Pustoniu aukštyn"}
 signal.add: {value: "Pridėti toną"}
 signal.cents: {value: "Nuokrypis nuo natos centais"}
 signal.down: {value: "Pustoniu žemyn (rodyklė kairėn, oktavai – rodyklė žemyn)"}
-signal.open: {value: "Signalų generatorius leidžia gryną natą liežuvėliui derinti"}
+signal.open: {value: "Rodyti arba slėpti atskaitos tono generatorių"}
 signal.play: {value: "Leisti"}
-signal.playHint: {value: "Leisti natą visais tonais. Jei natos dar nėra, naudoti pirmą išgirstą (tarpo klavišas)."}
+signal.playHint: {value: "Leisti visus tonus pagal rankiniu būdu pasirinktą arba paskutinę atpažintą natą. Jei natos dar nėra, atkūrimas prasidės atpažinus pirmąją (tarpo klavišas)."}
 signal.remove: {value: "Pašalinti šį toną"}
 signal.stop: {value: "Stabdyti"}
 signal.stopHint: {value: "Stabdyti toną (tarpo klavišas)"}
 signal.title: {value: "Signalų generatorius"}
 signal.up: {value: "Pustoniu aukštyn (rodyklė dešinėn, oktavai – rodyklė aukštyn)"}
-signal.wave.hint: {value: "Liežuvėlio garsas turi obertonų, todėl plakimas girdimas ir juose"}
-signal.wave.reed: {value: "Liežuvėlis"}
+signal.wave.hint: {value: "Akordeono liežuvėlio garsas turi obertonų. Tarp jų taip pat girdimas plakimas."}
+signal.wave.reed: {value: "Liežuvėlio tembras"}
 signal.wave.sine: {value: "Sinusoidė"}
 
 # Reference pitch and units
@@ -129,7 +129,7 @@ reference.transposed:
   placeholders:
     n: {type: string}
 
-unit.cents: {value: "Centas"}
+unit.cents: {value: "Centai"}
 unit.hz: {value: "Hz"}
 unit.reference: {value: "Vienetai"}
 
@@ -140,9 +140,9 @@ boxes.beat:
     a: {type: string}
     b: {type: string}
 
-boxes.goal: {value: "tikslas"}
+boxes.goal: {value: "tikslinė vertė"}
 boxes.hzOnly: {value: "tik Hz"}
-boxes.notHeard: {value: "negirdėti"}
+boxes.notHeard: {value: "neaptikta"}
 
 boxes.reed:
   value: "Liežuvėlis {n}"
@@ -150,7 +150,7 @@ boxes.reed:
     n: {type: string}
 
 boxes.reedBank:
-  value: "Liežuvėlis {bank}"
+  value: "Liežuvėlių eilė {bank}"
   placeholders:
     bank: {type: string}
 
@@ -164,7 +164,7 @@ spectrum.label: {value: "Sekamos natos dažnių spektras"}
 spectrum.title: {value: "Spektras"}
 
 # Hold, noise learning and tuner state
-hold.hint: {value: "Išlaikyti stabilius rodmenis ekrane (H)"}
+hold.hint: {value: "Automatiškai išlaikyti nusistovėjusį rodmenį ekrane (H)"}
 state.deviceLost: {value: "Nutrūko įvestis"}
 state.initializing: {value: "Matuojamas patalpos triukšmas"}
 state.running: {value: "Klausomasi"}
@@ -206,7 +206,7 @@ calibrate.range.backwards:
 calibrate.range.capture: {value: "Užfiksuoti"}
 calibrate.range.highest: {value: "Aukščiausia"}
 calibrate.range.lowest: {value: "Žemiausia"}
-calibrate.range.next: {value: "Pereiti prie liežuvėlių kalibravimo"}
+calibrate.range.next: {value: "Pereiti prie liežuvėlių matavimo"}
 calibrate.range.playHigh: {value: "Dabar pagrokite aukščiausiu klavišu."}
 calibrate.range.playLow: {value: "Pagrokite žemiausiu klavišu."}
 calibrate.range.step: {value: "Klaviatūra"}
@@ -214,7 +214,7 @@ calibrate.status.captured: {value: "Užfiksuota"}
 calibrate.status.holding: {value: "Laikykite natą tolygiai"}
 calibrate.status.loud: {value: "Per garsiai"}
 calibrate.status.play: {value: "Pagrokite natą"}
-calibrate.sweep.bassAll: {value: "Bosai – visas mechanizmas"}
+calibrate.sweep.bassAll: {value: "Bosai – visos liežuvėlių eilės"}
 
 calibrate.sweep.done:
   plural:
@@ -237,14 +237,14 @@ calibrate.sweep.progress:
     done: {type: string}
     total: {type: string}
 
-calibrate.sweep.redoRange: {value: "Iš naujo išmatuoti klaviatūrą"}
+calibrate.sweep.redoRange: {value: "Iš naujo išmatuoti klaviatūros diapazoną"}
 calibrate.sweep.review: {value: "Rodyti kortelę"}
 calibrate.sweep.skip: {value: "Praleisti"}
 
 calibrate.sweep.soloTeaches:
-  value: "Tikrinant vienbalsį registrą programa taip pat išmoksta atpažinti to balso skambesį."
+  value: "Matuojant kiekvieną natą registre, kuriame skamba viena liežuvėlių eilė, programa išmoksta atpažinti ir tos eilės tembrą."
 
-calibrate.sweep.startPlain: {value: "Pradėti patikrą"}
+calibrate.sweep.startPlain: {value: "Pradėti matuoti natas"}
 calibrate.sweep.step: {value: "Liežuvėliai"}
 calibrate.sweep.stop: {value: "Stabdyti"}
 calibrate.title: {value: "Kalibruoti"}
@@ -265,9 +265,9 @@ web.mic.denied:
 
 web.mic.failed: {value: "Nepavyko atverti mikrofono."}
 web.mic.none: {value: "Mikrofono nerasta."}
-web.mic.unsupported: {value: "Ši naršyklė negali įrašyti garso."}
+web.mic.unsupported: {value: "Ši naršyklė nepalaiko mikrofono įvesties."}
 web.notice.background: {value: "Fone veikiančioje kortelėje garsas gali būti pristabdytas."}
-web.notice.native: {value: "Tiksliems matavimams naudokite įdiegtą programą."}
+web.notice.native: {value: "Patikimesniems matavimams naudokite įdiegtą programą."}
 web.notice.ok: {value: "Supratau"}
 
 web.notice.processing:
@@ -293,7 +293,7 @@ error.deviceLost: {value: "Mikrofonas nebeatsakė, todėl derintuvas sustabdytas
 error.fileUnreadable: {value: "Nepavyko perskaityti įrašo. Reikalingas WAV failas."}
 error.invalidA4: {value: "Atskaitos dažnis turi būti nuo 430 iki 450 Hz."}
 error.invalidBox: {value: "Tokio liežuvėlio laukelio nėra."}
-error.invalidMode: {value: "Derintuvas matuoja tonus, oktavas arba akordus."}
+error.invalidMode: {value: "Pasirinkite vienos natos, oktavų arba akordų matavimą."}
 error.invalidNote: {value: "Nata nepatenka į derintuvo sekamą diapazoną."}
 error.invalidTranspose: {value: "Transponuoti galima nuo 0 iki 11 pustonių."}
 error.lastBox: {value: "Bent vienas laukelis lieka įjungtas."}
@@ -305,6 +305,6 @@ error.sampleRate:
 error.sessionDecides: {value: "Ką matuoti, nustato atverto seanso registras."}
 error.signalVoices:
   value: "Leiskite nuo vieno iki keturių tonų, kiekvieną ne toliau kaip per 100 centų nuo natos."
-error.toneNeedsManual: {value: "Prisekite natą, kad išgirstumėte jos toną."}
+error.toneNeedsManual: {value: "Norėdami paleisti atskaitos toną, pasirinkite natą rankiniu būdu."}
 error.transposeMode: {value: "Akordai ir oktavos matuojami netransponuojant."}
 error.unexpected: {value: "Įvyko klaida. Daugiau informacijos rasite žurnale."}

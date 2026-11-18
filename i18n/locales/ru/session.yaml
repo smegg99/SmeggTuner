@@ -45,12 +45,12 @@ title: {value: "Сеансы"}
 # Session dialog and tabs
 dialog.backToList: {value: "Выбрать ранее настраивавшийся аккордеон"}
 dialog.describeNew: {value: "Описать новый аккордеон…"}
-dialog.forgetAccordion: {value: "Забыть этот аккордеон"}
+dialog.forgetAccordion: {value: "Убрать аккордеон из библиотеки"}
 dialog.loadAccordion: {value: "Загрузить из файла…"}
 dialog.name: {value: "Название сеанса"}
 dialog.nameHint: {value: "Для обозначения сеанса используйте название инструмента или имя заказчика."}
 dialog.pickAccordion: {value: "Какой аккордеон?"}
-dialog.start: {value: "Начать"}
+dialog.start: {value: "Начать сеанс"}
 page.mobile.curve: {value: "Цели"}
 page.mobile.recorded: {value: "Показания"}
 
@@ -70,7 +70,7 @@ instrument.a4: {value: "Опорная частота"}
 
 instrument.a4Hint: {value: "Опорная частота A4 в герцах. Новые сеансы для этого инструмента используют это значение."}
 
-instrument.bass.build: {value: "Высоты голосов следующего регистра в футах"}
+instrument.bass.build: {value: "Голоса следующего басового регистра (в футах)"}
 instrument.bass.fixed: {value: "Басовых регистров нет: механизм фиксированный, все голоса звучат всегда."}
 
 instrument.bass.full:
@@ -147,7 +147,7 @@ curve.clearAllHint: {value: "Удалить все опорные точки и 
 curve.clearAllTitle: {value: "Очистить всю кривую?"}
 curve.entryUnit: {value: "Единица ввода"}
 
-curve.help.hz: {value: "При выборе Гц цель задаётся в герцах при A4 = 440 Гц, как в эталонном списке биений. Она не меняется при изменении A4 в сеансе. Переключатель «Записанные» накладывает измерения этого сеанса на список. В меню «Список» можно подогнать опорные точки по измерениям или скопировать список другого сеанса."}
+curve.help.hz: {value: "При вводе в герцах целевое отклонение задаётся при A4 = 440 Гц, как в эталонном списке биений. Смена опорной частоты сеанса не меняет заданную цель. Кнопка «Измерения» показывает на графике измерения сеанса. В меню «Список» можно построить по ним кривую или скопировать список из другого сеанса."}
 
 curve.help.hzTitle: {value: "Герцы и показания"}
 
@@ -164,8 +164,8 @@ curve.helpTitle: {value: "Желаемые биения"}
 curve.interpolate: {value: "Интерполяция"}
 curve.interpolateHint: {value: "Следовать линии между опорными точками. При выключении значение каждой точки сохраняется до следующей."}
 curve.menu.ends: {value: "За пределами опорных точек"}
-curve.menu.extendHigh: {value: "Продолжить выше верхней точки"}
-curve.menu.extendLow: {value: "Продолжить ниже нижней точки"}
+curve.menu.extendHigh: {value: "Продолжить кривую к более высоким нотам"}
+curve.menu.extendLow: {value: "Продолжить кривую к более низким нотам"}
 curve.menu.fit: {value: "Подогнать по измерениям сеанса"}
 
 curve.menu.fitBody:
@@ -188,7 +188,7 @@ curve.menu.replaceBody: {value: "Опорные точки будут замен
 curve.menu.replaceConfirm: {value: "Заменить"}
 curve.menu.replaceTitle: {value: "Заменить список биений?"}
 curve.rank: {value: "Ряд язычков"}
-curve.recorded: {value: "Записанные"}
+curve.recorded: {value: "Измерения"}
 curve.recordedHint: {value: "Показать измерения этого сеанса на графике"}
 curve.remove: {value: "Удалить"}
 curve.removeHint: {value: "Удаляет с кривой опорную точку этой ноты."}
@@ -239,7 +239,7 @@ readings.notes:
 workshop.exit: {value: "Выйти из сеанса"}
 workshop.import: {value: "Импорт"}
 workshop.open: {value: "Открыть"}
-workshop.print: {value: "Распечатать карту"}
+workshop.print: {value: "Экспортировать карту настройки…"}
 
 # Session errors
 error.fitFailed: {value: "Не удалось построить кривую по этой серии измерений."}

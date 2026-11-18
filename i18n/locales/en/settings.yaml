@@ -12,13 +12,13 @@ autoVolume.saveFailed: {value: "Could not save the input volume setting."}
 autoVolume.unsupported: {value: "Input level control is unavailable for this device."}
 humFilter50: {value: "50 Hz"}
 humFilter60: {value: "60 Hz"}
-humFilterHint: {value: "Removes mains hum: 50 Hz in Europe, 60 Hz in America"}
+humFilterHint: {value: "Select the local mains frequency to filter out electrical hum"}
 humFilterLabel: {value: "Mains hum filter"}
 lockedWhileRunning: {value: "Stop the tuner to change the audio input."}
 
 # Detection and reference pitch
-continuousManual: {value: "Continuously update a pinned note"}
-continuousManualHint: {value: "Update a pinned note before it locks"}
+continuousManual: {value: "Show live readings for a manually selected note"}
+continuousManualHint: {value: "Update the reading even before the pitch stabilizes"}
 detection.balanced: {value: "Balanced"}
 detection.balancedHint: {value: "Switches notes in about half a second"}
 detection.fast: {value: "Fast"}
@@ -30,16 +30,15 @@ lockA4: {value: "Lock reference pitch"}
 lockA4Hint: {value: "Stops A4 being changed in the tuner"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "Hertz, or units of 0.06 % of the note"}
+beatUnitHint: {value: "Hertz or the same unit selected for reed deviations"}
 beatUnitLabel: {value: "Beat unit"}
 errorReference: {value: "Deviation reference"}
 errorReferenceGoal: {value: "Target"}
 
 errorReferenceHint:
   value: >-
-    Show deviation from the scale pitch or from the tuning target. At the target, the
-    target-relative reading is zero.
-
+    Measure deviation from the scale pitch or from the reed's target pitch. With Target
+    selected, zero means the reed matches its target.
 errorReferenceScale: {value: "Scale"}
 scaleNamingHint: {value: "How notes are named"}
 scaleNamingLabel: {value: "Note naming"}
@@ -48,10 +47,10 @@ scaleNamings.cdefgah: {value: "C D E F G A H (German, sharps as C#)"}
 scaleNamings.doremi: {value: "Do Re Mi (solfege)"}
 scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (Polish)"}
 toleranceBeat: {value: "Beat"}
-toleranceHint: {value: "How far off a reed or beat may be and still count as in tune"}
+toleranceHint: {value: "Maximum error allowed for a reed or beat to count as in tune"}
 toleranceLabel: {value: "Tolerances"}
 toleranceReed: {value: "Reed"}
-unitHint: {value: "Cents, or units of 0.06 % of the note"}
+unitHint: {value: "Cents, or units of 0.06% of the note frequency"}
 unitLabel: {value: "Deviation unit"}
 
 # Appearance, language and window behavior
@@ -63,7 +62,7 @@ accent.pick: {value: "Pick a colour"}
 accent.pickTitle: {value: "Accent colour"}
 closeToTray: {value: "Minimize to tray on close"}
 closeToTrayHint: {value: "Closing the window keeps the app in the tray"}
-checkUpdates: {value: "Check for updates", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdates: {value: "Automatically check for updates", description: "Desktop settings checkbox enabling GitHub update checks."}
 checkUpdatesHint: {value: "Looks for a newer version on GitHub", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "Interface language"}
 languageLabel: {value: "Language"}
@@ -87,7 +86,7 @@ calibration.askBody:
 calibration.askCalibrate: {value: "Calibrate now"}
 calibration.askContinue: {value: "Continue uncorrected"}
 calibration.askTitle: {value: "This sound card is not calibrated"}
-calibration.hint: {value: "Fixes the sound card clock error. About a minute, no sound needed."}
+calibration.hint: {value: "Compensates for input sample clock error. Takes about a minute and needs no sound."}
 calibration.label: {value: "Sound card calibration"}
 calibration.open: {value: "Open"}
 calibration.openHint: {value: "Show the calibration screen without measuring"}
@@ -115,7 +114,7 @@ calibration.screen.phase.preparing: {value: "Letting the input settle before its
 calibration.screen.phase.settling: {value: "Waiting for the clock reading to hold still."}
 
 calibration.screen.pitch:
-  value: "That is {pitch} at every note."
+  value: "Equivalent pitch error at every note: {pitch}."
   placeholders:
     pitch: {type: string}
 

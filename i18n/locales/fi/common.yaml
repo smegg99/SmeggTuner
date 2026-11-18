@@ -9,10 +9,10 @@ cancel: {value: "Peruuta"}
 close: {value: "Sulje"}
 delete: {value: "Poista"}
 export: {value: "Vie"}
-next: {value: "Seuraava"}
+next: {value: "Seuraava sivu"}
 "no": {value: "Ei"}
 none: {value: "Ei mitään"}
-previous: {value: "Edellinen"}
+previous: {value: "Edellinen sivu"}
 website: {value: "Verkkosivusto"}
 "yes": {value: "Kyllä"}
 
@@ -37,7 +37,7 @@ color.value: {value: "Kirkkaus"}
 # Navigation and window titles
 routes.navigation: {value: "Päänavigaatio"}
 routes.settings: {value: "Asetukset"}
-routes.tune: {value: "Viritä"}
+routes.tune: {value: "Viritys"}
 routes.workshop: {value: "Verstas"}
 
 title.count:
@@ -76,13 +76,13 @@ title.uncalibrated:
 
 # Application and About dialog
 about.aboutTitle: {value: "Tietoja"}
-about.commit: {value: "Koontiversio"}
-about.donate: {value: "Tue Ko-fissa"}
+about.commit: {value: "Git-tunniste"}
+about.donate: {value: "Lahjoita Ko-fin kautta"}
 about.license: {value: "Lisenssi"}
 about.privacy: {value: "Tietosuojakäytäntö"}
 about.guide: {value: "SmeggTunerin käyttöohje"}
-about.onlineVersion: {value: "Avaa verkkoversio"}
-about.support: {value: "Tuki"}
+about.onlineVersion: {value: "Lue verkossa"}
+about.support: {value: "Lähetä viesti tukeen"}
 about.mascot: {value: "Harmonikkaa soittava kissa"}
 about.publisher: {value: "Tekijä: smegg99"}
 about.tagline: {value: "Ilmainen avoimen lähdekoodin ohjelma harmonikan viritykseen."}

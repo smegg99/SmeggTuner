@@ -4,13 +4,13 @@
 
 # Recording controls
 arm.hint: {value: "Înregistrează o măsurătoare la fiecare stabilizare a notei (Enter o înregistrează imediat)"}
-arm.needsSession: {value: "Deschide o sesiune pentru a înregistra"}
-arm.warmup: {value: "Înregistrarea este oprită. Poți cânta liber, nu se salvează nimic. Apasă pentru a începe înregistrarea."}
-undo.hint: {value: "Anulează ultima înregistrare"}
+arm.needsSession: {value: "Deschide o sesiune ca să poți salva măsurătorile."}
+arm.warmup: {value: "Poți cânta liber: valorile măsurate nu se salvează. Apasă pentru a începe să le salvezi."}
+undo.hint: {value: "Anulează salvarea ultimei măsurători"}
 
 # Readings table and compact columns
 mobile.current: {value: "Valoare măsurată"}
-mobile.error: {value: "Abatere"}
+mobile.error: {value: "Abatere față de țintă"}
 
 table.beat:
   value: Bătăi {pair}
@@ -29,7 +29,7 @@ table.graphHint: {value: "Compară fiecare ancie cu valoarea ei țintă. Fă cli
 
 table.graphLabel: {value: "Abaterile anciilor pentru fiecare notă înregistrată"}
 table.helpTitle: {value: "Despre acest tabel"}
-table.label: {value: "Acordaj înregistrat"}
+table.label: {value: "Măsurători salvate"}
 table.latest: {value: "Ultima înregistrare. Apasă Backspace pentru a o șterge"}
 table.manual: {value: "Modificat"}
 table.manualHint: {value: "O valoare de pe acest rând a fost introdusă manual, nu măsurată."}
@@ -45,7 +45,7 @@ table.notes:
     count:
       type: integer
 
-table.unitHint: {value: "Abaterile anciilor sunt exprimate în unitatea aleasă în Setări. Bătăile sunt exprimate în hertzi sau în unitatea abaterii, conform opțiunii din bara de instrumente."}
+table.unitHint: {value: "Alege în Setări unitatea pentru abaterile anciilor. Din bara de deasupra tabelului poți afișa frecvența bătăilor în Hz sau în aceeași unitate ca abaterile."}
 
 # Report export dialog
 report.csv: {value: "CSV"}

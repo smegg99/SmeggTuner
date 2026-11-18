@@ -3,7 +3,7 @@ close: {value: "Sulje"}
 copied: {value: "Kopioitu"}
 copy: {value: "Kopioi raportti"}
 details: {value: "Lisätiedot"}
-email: {value: "Lähetä raportti sähköpostitse"}
+email: {value: "Avaa raportti sähköpostiluonnoksena"}
 failed:
   value: "Toiminto epäonnistui: {error}"
   placeholders:
@@ -12,27 +12,27 @@ file:
   value: "Tiedosto: {path}"
   placeholders:
     path: {type: string}
-kill: {value: "Sulje ja ilmoita ongelmasta"}
-logs: {value: "Näytä lokitiedosto"}
+kill: {value: "Sulje ja luo raportti"}
+logs: {value: "Näytä lokitiedosto kansiossa"}
 messageConfig:
   value: "Asetustiedostoa ei voitu lukea. Korjaa tai poista tiedosto ja käynnistä {app} uudelleen."
   placeholders:
     app: {type: string}
 messageCrash:
-  value: "Sovelluksessa {app} tapahtui sisäinen virhe. Lähetä raportti virheen selvittämistä varten ja käynnistä sovellus uudelleen."
+  value: "{app} sulkeutui odottamatta. Voit lähettää raportin tukeen ja käynnistää sovelluksen uudelleen."
   placeholders:
     app: {type: string}
-messageHang: {value: "Sovellus saattaa vielä saada tehtävänsä valmiiksi. Voit odottaa tai sulkea sovelluksen ja lähettää raportin."}
+messageHang: {value: "Sovellus saattaa vielä saada tehtävänsä valmiiksi. Voit odottaa tai sulkea sovelluksen, jolloin saat virheraportin."}
 messageHangStopped:
-  value: "{app} suljettiin, kun se ei vastannut. Lähetä raportti virheen selvittämistä varten ja käynnistä sovellus uudelleen."
+  value: "{app} suljettiin, koska se ei vastannut. Voit lähettää raportin tukeen tai käynnistää sovelluksen uudelleen."
   placeholders:
     app: {type: string}
 messageKilled:
-  value: "{app} suljettiin ennen kuin se ehti ilmoittaa virheestä. Lähetä raportti ja käynnistä sovellus uudelleen."
+  value: "{app} sulkeutui ennen kuin se ehti ilmoittaa syyn. Voit lähettää saatavilla olevat tiedot tukeen tai käynnistää sovelluksen uudelleen."
   placeholders:
     app: {type: string}
 messageOom:
-  value: "Järjestelmän muisti loppui, ja {app} suljettiin. Lähetä raportti ja käynnistä sovellus uudelleen."
+  value: "Järjestelmän muisti loppui ja {app} suljettiin. Voit lähettää raportin tukeen tai käynnistää sovelluksen uudelleen."
   placeholders:
     app: {type: string}
 messageStartup:

@@ -5,20 +5,20 @@
 # Microphone and input level
 audioDeviceHint: {value: "Mõõtmiseks kasutatav mikrofon"}
 audioDeviceLabel: {value: "Sisendseade"}
-audioDeviceSystemDefault: {value: "Süsteemi vaikevalik"}
+audioDeviceSystemDefault: {value: "Süsteemi vaikemikrofon"}
 autoVolume.hint: {value: "Reguleerib mõõtmise ajal mikrofoni sisendtaset"}
 autoVolume.label: {value: "Automaatne sisendtaseme reguleerimine"}
 autoVolume.saveFailed: {value: "Sisendtaseme seadet ei saanud salvestada."}
 autoVolume.unsupported: {value: "Selle seadme sisendtaset ei saa reguleerida."}
 humFilter50: {value: "50 Hz"}
 humFilter60: {value: "60 Hz"}
-humFilterHint: {value: "Eemaldab võrgumüra: Euroopas 50 Hz, Ameerikas 60 Hz"}
+humFilterHint: {value: "Vali elektrivõrgu sagedus, et summutada võrgusurinat"}
 humFilterLabel: {value: "Võrgumüra filter"}
 lockedWhileRunning: {value: "Helisisendi vahetamiseks peata häälestaja."}
 
 # Detection and reference pitch
-continuousManual: {value: "Uuenda kinnitatud noodi näitu pidevalt"}
-continuousManualHint: {value: "Uuenda kinnitatud noodi näitu juba enne lukustumist"}
+continuousManual: {value: "Uuenda käsitsi valitud noodi näitu pidevalt"}
+continuousManualHint: {value: "Näita muutuvaid mõõtetulemusi juba enne näidu stabiliseerumist"}
 detection.balanced: {value: "Tasakaalustatud"}
 detection.balancedHint: {value: "Vahetab nooti umbes poole sekundiga"}
 detection.fast: {value: "Kiire"}
@@ -30,13 +30,13 @@ lockA4: {value: "Lukusta võrdluskõrgus"}
 lockA4Hint: {value: "Takistab A4 muutmist häälestajas"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "Hertsid või ühikud, millest igaüks on 0,06% noodi sagedusest"}
+beatUnitHint: {value: "Hertsid või sama ühik, mille valisid keelte kõrvalekaldele"}
 beatUnitLabel: {value: "Tuiklemise ühik"}
 errorReference: {value: "Kõrvalekalde võrdlusalus"}
 errorReferenceGoal: {value: "Sihtväärtus"}
 
 errorReferenceHint:
-  value: "Näita kõrvalekallet helirea noodi kõrgusest või häälestuse sihtväärtusest. Sihtväärtuse saavutamisel on kõrvalekalle sellest null."
+  value: "Vali, kas võrdled keele helikõrgust helirea noodi või soovitud häälestusega. Teisel juhul on näit null, kui keel kõlab soovitud kõrgusel."
 errorReferenceScale: {value: "Helirida"}
 scaleNamingHint: {value: "Kuidas noote nimetatakse"}
 scaleNamingLabel: {value: "Noodinimed"}
@@ -45,7 +45,7 @@ scaleNamings.cdefgah: {value: "C D E F G A H (saksa, dieesid kujul C#)"}
 scaleNamings.doremi: {value: "Do Re Mi (solfedžo)"}
 scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (poola)"}
 toleranceBeat: {value: "Tuiklemine"}
-toleranceHint: {value: "Keele või tuiklemise suurim lubatud kõrvalekalle, mille puhul häälestus loetakse õigeks"}
+toleranceHint: {value: "Kui palju võib keele helikõrgus või tuiklemissagedus sihtväärtusest erineda, et häälestus loetaks sobivaks"}
 toleranceLabel: {value: "Lubatud kõrvalekalded"}
 toleranceReed: {value: "Keel"}
 unitHint: {value: "Sendid või ühikud, millest igaüks on 0,06% noodi sagedusest"}
@@ -60,7 +60,7 @@ accent.pick: {value: "Vali värv"}
 accent.pickTitle: {value: "Rõhuvärv"}
 closeToTray: {value: "Minimeeri sulgemisel süsteemisalve"}
 closeToTrayHint: {value: "Akna sulgemisel jääb rakendus süsteemisalve"}
-checkUpdates: {value: "Kontrolli uuendusi", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdates: {value: "Otsi uuendusi automaatselt", description: "Desktop settings checkbox enabling GitHub update checks."}
 checkUpdatesHint: {value: "Otsib GitHubist uuemat versiooni", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "Kasutajaliidese keel"}
 languageLabel: {value: "Keel"}
@@ -81,7 +81,7 @@ calibration.askBody:
 calibration.askCalibrate: {value: "Kalibreeri kohe"}
 calibration.askContinue: {value: "Jätka paranduseta"}
 calibration.askTitle: {value: "See helikaart on kalibreerimata"}
-calibration.hint: {value: "Parandab helikaardi kella vea. Võtab umbes minuti, heli pole vaja."}
+calibration.hint: {value: "Korrigeerib helikaardi diskreetimissageduse viga. Võtab umbes minuti, pilli pole vaja mängida."}
 calibration.label: {value: "Helikaardi kalibreerimine"}
 calibration.open: {value: "Ava"}
 calibration.openHint: {value: "Ava kalibreerimiskuva mõõtmist alustamata"}
@@ -109,7 +109,7 @@ calibration.screen.phase.preparing: {value: "Enne kella mõõtmist lastakse sise
 calibration.screen.phase.settling: {value: "Oodatakse kella näidu stabiliseerumist."}
 
 calibration.screen.pitch:
-  value: "See vastab igal noodil kõrvalekaldele {pitch}."
+  value: "Sama sagedusviga väljendub kõigil nootidel helikõrguse hälbena {pitch}."
   placeholders:
     pitch: {type: string}
 
@@ -118,7 +118,7 @@ calibration.screen.retry: {value: "Näidud jäävad parandamata. Sulge teised he
 calibration.screen.return: {value: "Tagasi"}
 calibration.screen.stat.dropouts: {value: "Katkestused"}
 calibration.screen.stat.elapsed: {value: "Kulunud aeg"}
-calibration.screen.stat.offset: {value: "Kella nihe"}
+calibration.screen.stat.offset: {value: "Taktsageduse hälve"}
 calibration.screen.stat.rate: {value: "Diskreetimissagedus"}
 calibration.screen.stat.steadiness: {value: "Stabiilsus"}
 

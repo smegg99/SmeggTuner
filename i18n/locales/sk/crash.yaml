@@ -3,7 +3,7 @@ close: {value: "Zavrieť"}
 copied: {value: "Skopírované"}
 copy: {value: "Kopírovať hlásenie"}
 details: {value: "Podrobnosti"}
-email: {value: "Odoslať hlásenie e-mailom"}
+email: {value: "Pripraviť e-mail s hlásením"}
 failed:
   value: "Akcia sa nepodarila: {error}"
   placeholders:
@@ -12,8 +12,8 @@ file:
   value: "Súbor: {path}"
   placeholders:
     path: {type: string}
-kill: {value: "Ukončiť a odoslať hlásenie"}
-logs: {value: "Zobraziť súbor denníka"}
+kill: {value: "Ukončiť aplikáciu a vytvoriť hlásenie"}
+logs: {value: "Zobraziť súbor denníka v priečinku"}
 messageConfig:
   value: "Súbor s nastaveniami sa nepodarilo prečítať. Opravte ho alebo odstráňte a znova spustite {app}."
   placeholders:
@@ -22,7 +22,7 @@ messageCrash:
   value: "V aplikácii {app} sa vyskytla chyba. Odošlite hlásenie, aby bolo možné chybu opraviť, a potom aplikáciu znova spustite."
   placeholders:
     app: {type: string}
-messageHang: {value: "Aplikácia môže prebiehajúcu operáciu ešte dokončiť. Počkajte alebo ju ukončite a odošlite hlásenie."}
+messageHang: {value: "Aplikácia ešte môže operáciu dokončiť. Môžete počkať alebo aplikáciu ukončiť a vytvoriť hlásenie o chybe."}
 messageHangStopped:
   value: "Aplikácia {app} bola ukončená, keď nereagovala. Odošlite hlásenie, aby bolo možné chybu opraviť, a potom aplikáciu znova spustite."
   placeholders:

@@ -3,7 +3,7 @@
 # Editing guide: ../../README.md.
 
 # Input, output and playback
-input.relearnHint: {value: "Atkārtoti noteikt fona troksni (4 s klusuma)"}
+input.relearnHint: {value: "Vēlreiz izmērīt fona troksni (4 s klusuma)"}
 input.tooStrong: {value: "Signāls pārāk spēcīgs"}
 input.unreliable: {value: "Signāls neuzticams"}
 inputPanel.label: {value: "Ievades signāls"}
@@ -13,32 +13,32 @@ output.mute: {value: "Izslēgt skaņu"}
 output.unmute: {value: "Ieslēgt skaņu"}
 output.volume: {value: "Izvades skaļums"}
 soundcard.running: {value: "Tiek kalibrēta skaņas karte"}
-soundcard.uncalibrated: {value: "Skaņas karte nav kalibrēta. Kalibrēt"}
-soundcard.unreliable: {value: "Kalibrējums neuzticams. Kalibrēt vēlreiz"}
+soundcard.uncalibrated: {value: "Skaņas karte nav kalibrēta. Atvērt kalibrēšanu."}
+soundcard.unreliable: {value: "Kalibrēšanas rezultāts nav uzticams. Atvērt skaņas kartes kalibrēšanu."}
 source.analyze: {value: "Analizēt ierakstu…"}
-source.default: {value: "Sistēmas noklusējums"}
+source.default: {value: "Noklusējuma mikrofons"}
 source.noDevices: {value: "Nav atrasts neviens mikrofons"}
 source.refresh: {value: "Atsvaidzināt ierīču sarakstu"}
-transport.fileHint: {value: "Ierakstu atskaņo tā kartītē"}
-transport.start: {value: "Sākt"}
-transport.stop: {value: "Apturēt"}
+transport.fileHint: {value: "Sāciet atskaņošanu WAV faila panelī"}
+transport.start: {value: "Sākt mērīšanu"}
+transport.stop: {value: "Apturēt mērīšanu"}
 
 # Modes, registers and note selection
-bassRegister.all: {value: "Viss basu mehānisms"}
+bassRegister.all: {value: "Visas basu mēlīšu rindas"}
 bassRegister.hint: {value: "Ieslēgtais basu reģistrs"}
 controls: {value: "Skaņošanas vadība"}
 mode.auto: {value: "Automātiski"}
 mode.autoHint: {value: "Ļaut skaņotājam noteikt noti"}
-mode.pinHint: {value: "Piespraust šo noti"}
-mode.pinned: {value: "Piespraustā nots"}
-notes.clickToPin: {value: "noklikšķiniet, lai piespraustu"}
-notes.label: {value: "Notis no E0 līdz C9. Noklikšķiniet uz nots, lai to piespraustu."}
+mode.pinHint: {value: "Izvēlēties šo noti manuāli"}
+mode.pinned: {value: "Atgriezties pie automātiskas nots noteikšanas"}
+notes.clickToPin: {value: "izvēlieties mērāmo noti"}
+notes.label: {value: "Notis no E0 līdz C9. Noklikšķiniet uz nots, kuru vēlaties mērīt."}
 notes.range: {value: "E0 līdz C9"}
 notes.title: {value: "Notis"}
 notes.tracking: {value: "sekošana"}
 panel.boxBase: {value: "Pamatskaņu mēra vienmēr"}
 panel.boxChord: {value: "Akordu režīmā mēra visas trīs skaņas"}
-panel.boxLast: {value: "Vismaz vienam laukam jāpaliek ieslēgtam"}
+panel.boxLast: {value: "Vismaz vienai mērāmajai skaņai jāpaliek izvēlētai"}
 
 panel.boxOctave:
   plural:
@@ -66,16 +66,16 @@ panel.bySession:
   placeholders:
     n: {type: integer}
 
-panel.locked: {value: "Nofiksēts"}
-panel.modeHints.chords: {value: "Trīsskaņu akordi"}
+panel.locked: {value: "Stabils rādījums"}
+panel.modeHints.chords: {value: "Triju nošu akords"}
 panel.modeHints.octaves: {value: "Nots un tās augšējās oktāvas"}
-panel.modeHints.tones: {value: "Viena nots, līdz trim mēlītēm"}
+panel.modeHints.tones: {value: "Viena spēlēta nots, 1–3 mēlītes vienlaikus"}
 panel.modeLabel: {value: "Ko mērīt"}
 panel.modes.chords: {value: "Akordi"}
 panel.modes.octaves: {value: "Oktāvas"}
-panel.modes.tones: {value: "Toņi"}
+panel.modes.tones: {value: "Viena nots"}
 panel.quiet: {value: "Pārāk kluss"}
-panel.recorded: {value: "Ierakstīts"}
+panel.recorded: {value: "Rādījums saglabāts"}
 panel.reeds: {value: "Mēlītes"}
 
 reeds.count:
@@ -88,7 +88,7 @@ reeds.count:
   placeholders:
     n: {type: integer}
 
-register.hint: {value: "Ieslēgtais reģistrs"}
+register.hint: {value: "Izvēlēties instrumentā ieslēgto reģistru"}
 register.lockedPlaying: {value: "Lai mainītu reģistru, apturiet atskaņošanu."}
 side.bass: {value: "Basi"}
 side.hint: {value: "Melodijas vai basu puse"}
@@ -99,16 +99,16 @@ step.noteUp: {value: "Par pustoni augstāk"}
 signal.add: {value: "Pievienot toni"}
 signal.cents: {value: "Novirze no nots centos"}
 signal.down: {value: "Par pustoni zemāk (kreisā bultiņa, par oktāvu – lejupbultiņa)"}
-signal.open: {value: "Signālu ģenerators atskaņo tīru noti, pēc kuras skaņot mēlīti"}
+signal.open: {value: "Parādīt vai paslēpt atsauces toņa ģeneratoru"}
 signal.play: {value: "Atskaņot"}
-signal.playHint: {value: "Atskaņot noti ar visiem toņiem. Ja nots vēl nav, izmantot pirmo sadzirdēto (atstarpes taustiņš)."}
+signal.playHint: {value: "Atskaņot visus toņus manuāli izvēlētās vai pēdējās noteiktās nots augstumā. Ja nots vēl nav, atskaņošana sāksies ar pirmo noteikto noti (atstarpes taustiņš)."}
 signal.remove: {value: "Noņemt šo toni"}
 signal.stop: {value: "Apturēt"}
 signal.stopHint: {value: "Apturēt toni (atstarpes taustiņš)"}
 signal.title: {value: "Signālu ģenerators"}
 signal.up: {value: "Par pustoni augstāk (labā bultiņa, par oktāvu – augšupbultiņa)"}
-signal.wave.hint: {value: "Mēlītes skaņai ir virstoņi, tāpēc pulsāciju var dzirdēt arī tajos"}
-signal.wave.reed: {value: "Mēlīte"}
+signal.wave.hint: {value: "Akordeona mēlītes skaņā ir virstoņi. Pulsāciju var dzirdēt arī starp tiem."}
+signal.wave.reed: {value: "Mēlītes tembrs"}
 signal.wave.sine: {value: "Sinusoīda"}
 
 # Reference pitch and units
@@ -126,7 +126,7 @@ reference.transposed:
   placeholders:
     n: {type: string}
 
-unit.cents: {value: "Cents"}
+unit.cents: {value: "Centi"}
 unit.hz: {value: "Hz"}
 unit.reference: {value: "Vienības"}
 
@@ -137,9 +137,9 @@ boxes.beat:
     a: {type: string}
     b: {type: string}
 
-boxes.goal: {value: "mērķis"}
+boxes.goal: {value: "mērķvērtība"}
 boxes.hzOnly: {value: "tikai Hz"}
-boxes.notHeard: {value: "nav dzirdama"}
+boxes.notHeard: {value: "nav noteikta"}
 
 boxes.reed:
   value: "Mēlīte {n}"
@@ -147,7 +147,7 @@ boxes.reed:
     n: {type: string}
 
 boxes.reedBank:
-  value: "Mēlīte {bank}"
+  value: "Mēlīšu rinda {bank}"
   placeholders:
     bank: {type: string}
 
@@ -161,7 +161,7 @@ spectrum.label: {value: "Izsekotās nots frekvenču spektrs"}
 spectrum.title: {value: "Spektrs"}
 
 # Hold, noise learning and tuner state
-hold.hint: {value: "Paturēt stabilos rādījumus ekrānā (H)"}
+hold.hint: {value: "Automātiski paturēt stabilo rādījumu ekrānā (H)"}
 state.deviceLost: {value: "Ievade zaudēta"}
 state.initializing: {value: "Tiek mērīts telpas troksnis"}
 state.running: {value: "Klausās"}
@@ -203,7 +203,7 @@ calibrate.range.backwards:
 calibrate.range.capture: {value: "Fiksēt"}
 calibrate.range.highest: {value: "Augstākā"}
 calibrate.range.lowest: {value: "Zemākā"}
-calibrate.range.next: {value: "Turpināt ar mēlīšu kalibrēšanu"}
+calibrate.range.next: {value: "Turpināt ar mēlīšu mērīšanu"}
 calibrate.range.playHigh: {value: "Tagad nospēlējiet augstāko taustiņu."}
 calibrate.range.playLow: {value: "Nospēlējiet zemāko taustiņu."}
 calibrate.range.step: {value: "Klaviatūra"}
@@ -211,7 +211,7 @@ calibrate.status.captured: {value: "Fiksēts"}
 calibrate.status.holding: {value: "Turiet noti vienmērīgi"}
 calibrate.status.loud: {value: "Pārāk skaļš"}
 calibrate.status.play: {value: "Nospēlējiet noti"}
-calibrate.sweep.bassAll: {value: "Basi – viss mehānisms"}
+calibrate.sweep.bassAll: {value: "Basi – visas mēlīšu rindas"}
 
 calibrate.sweep.done:
   plural:
@@ -233,14 +233,14 @@ calibrate.sweep.progress:
     done: {type: string}
     total: {type: string}
 
-calibrate.sweep.redoRange: {value: "Vēlreiz izmērīt klaviatūru"}
+calibrate.sweep.redoRange: {value: "Vēlreiz izmērīt klaviatūras diapazonu"}
 calibrate.sweep.review: {value: "Skatīt karti"}
 calibrate.sweep.skip: {value: "Izlaist"}
 
 calibrate.sweep.soloTeaches:
-  value: "Pārbaudot vienbalsīgu reģistru, lietotne apgūst arī šīs balss skanējumu."
+  value: "Mērot katru noti reģistrā, kurā skan tikai viena mēlīšu rinda, lietotne apgūst arī šīs rindas tembru."
 
-calibrate.sweep.startPlain: {value: "Sākt pārbaudi"}
+calibrate.sweep.startPlain: {value: "Sākt nošu mērīšanu"}
 calibrate.sweep.step: {value: "Mēlītes"}
 calibrate.sweep.stop: {value: "Apturēt"}
 calibrate.title: {value: "Kalibrēt"}
@@ -261,9 +261,9 @@ web.mic.denied:
 
 web.mic.failed: {value: "Neizdevās atvērt mikrofonu."}
 web.mic.none: {value: "Mikrofons netika atrasts."}
-web.mic.unsupported: {value: "Šis pārlūks nevar ierakstīt skaņu."}
+web.mic.unsupported: {value: "Šis pārlūks neatbalsta mikrofona ievadi."}
 web.notice.background: {value: "Fona cilnē skaņa var tikt pauzēta."}
-web.notice.native: {value: "Precīziem mērījumiem izmantojiet instalēto lietotni."}
+web.notice.native: {value: "Uzticamākiem mērījumiem izmantojiet instalēto lietotni."}
 web.notice.ok: {value: "Sapratu"}
 
 web.notice.processing:
@@ -289,7 +289,7 @@ error.deviceLost: {value: "Mikrofons pārstāja reaģēt, un skaņotājs tika ap
 error.fileUnreadable: {value: "Neizdevās nolasīt ierakstu. Tam jābūt WAV failam."}
 error.invalidA4: {value: "Atsauces frekvencei jābūt no 430 līdz 450 Hz."}
 error.invalidBox: {value: "Šāda mēlītes lauka nav."}
-error.invalidMode: {value: "Skaņotājs mēra toņus, oktāvas vai akordus."}
+error.invalidMode: {value: "Izvēlieties vienas nots, oktāvu vai akordu mērīšanu."}
 error.invalidNote: {value: "Nots ir ārpus skaņotāja izsekošanas diapazona."}
 error.invalidTranspose: {value: "Transponēšanas diapazons ir no 0 līdz 11 pustoņiem."}
 error.lastBox: {value: "Vismaz vienam laukam jāpaliek ieslēgtam."}
@@ -301,6 +301,6 @@ error.sampleRate:
 error.sessionDecides: {value: "Mērāmo nosaka atvērtās sesijas reģistrs."}
 error.signalVoices:
   value: "Atskaņojiet vienu līdz četrus toņus, katru ne tālāk par 100 centiem no nots."
-error.toneNeedsManual: {value: "Lai atskaņotu toni, piespraudiet noti."}
+error.toneNeedsManual: {value: "Lai atskaņotu atsauces toni, izvēlieties noti manuāli."}
 error.transposeMode: {value: "Akordus un oktāvas mēra bez transponēšanas."}
 error.unexpected: {value: "Radās kļūda. Sīkāku informāciju skatiet žurnālā."}

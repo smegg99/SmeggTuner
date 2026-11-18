@@ -28,7 +28,7 @@ audioDeviceGone: {value: "選択した録音デバイスが見つからなくな
 audioDevicesListed: {value: "録音デバイスを列挙しました"}
 audioDialogFailed: {value: "ファイルダイアログでエラーが発生しました"}
 audioDialogUnavailable: {value: "アプリが起動していない状態でファイルダイアログが要求されました"}
-audioFileUnreadable: {value: "録音を開けませんでした"}
+audioFileUnreadable: {value: "録音ファイルを開けませんでした"}
 audioNoDevices: {value: "使用可能な録音デバイスがありません"}
 audioSourceSelected: {value: "入力ソースを選択しました"}
 audioSpeakerUnavailable: {value: "出力デバイスがないため、ファイルは無音で再生されます"}
@@ -72,7 +72,7 @@ sessionCurveImported: {value: "目標曲線を読み込みました"}
 sessionDeleted: {value: "セッションを削除しました"}
 sessionLoadFailed: {value: "セッションを読み込めませんでした"}
 sessionOpened: {value: "セッションを開きました"}
-sessionReedsClamped: {value: "発音中のリード数がエンジンの識別能力を超えたため、測定数を上限に制限しました"}
+sessionReedsClamped: {value: "選択したレジスターで鳴るリードの数が検出上限を超えたため、一部のリードだけを測定します。"}
 sessionRejected: {value: "無効なセッション変更を拒否しました"}
 sessionSaveFailed: {value: "セッションを保存できませんでした"}
 
@@ -93,8 +93,8 @@ frontendError: {value: "アプリで予期しないエラーが発生しまし�
 frontendRejection: {value: "アプリの操作に失敗しました"}
 frontendResizeNotice: {value: "レイアウト変更を次のフレームに延期しました（ブラウザーの ResizeObserver 通知）"}
 frontendSettingFailed: {value: "チューナー設定を変更できませんでした"}
-frontendTunerStartFailed: {value: "チューナーを開始できませんでした"}
+frontendTunerStartFailed: {value: "測定を開始できませんでした"}
 frontendTunerStateFailed: {value: "チューナーの状態を読み取れませんでした"}
-frontendTunerStopFailed: {value: "チューナーを停止できませんでした"}
+frontendTunerStopFailed: {value: "測定を停止できませんでした"}
 frontendTunerTonePlayFailed: {value: "基準音を再生できませんでした"}
 frontendTunerToneStopFailed: {value: "基準音を停止できませんでした"}

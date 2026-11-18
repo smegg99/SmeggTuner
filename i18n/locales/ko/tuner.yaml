@@ -3,7 +3,7 @@
 # Editing guide: ../../README.md.
 
 # Input, output and playback
-input.relearnHint: {value: "배경 소음 다시 학습(4초간 조용히 유지)"}
+input.relearnHint: {value: "배경 소음 다시 측정(4초간 소리를 내지 마세요)"}
 input.tooStrong: {value: "신호가 너무 강합니다"}
 input.unreliable: {value: "신호를 신뢰할 수 없습니다"}
 inputPanel.label: {value: "입력 신호"}
@@ -15,30 +15,30 @@ output.volume: {value: "출력 음량"}
 soundcard.running: {value: "사운드 카드 보정 중"}
 soundcard.uncalibrated: {value: "사운드 카드가 보정되지 않았습니다. 보정하기"}
 soundcard.unreliable: {value: "보정 결과가 불안정합니다. 다시 보정하기"}
-source.analyze: {value: "녹음 분석…"}
+source.analyze: {value: "녹음 파일 분석…"}
 source.default: {value: "시스템 기본값"}
 source.noDevices: {value: "마이크를 찾을 수 없습니다"}
 source.refresh: {value: "장치 목록 새로 고침"}
-transport.fileHint: {value: "녹음은 해당 녹음 카드에서 재생합니다"}
-transport.start: {value: "시작"}
-transport.stop: {value: "중지"}
+transport.fileHint: {value: "WAV 패널에서 재생을 시작하세요"}
+transport.start: {value: "마이크 측정 시작"}
+transport.stop: {value: "마이크 측정 중지"}
 
 # Modes, registers and note selection
-bassRegister.all: {value: "전체 베이스 장치"}
-bassRegister.hint: {value: "현재 선택한 베이스 스위치"}
+bassRegister.all: {value: "베이스 리드 열 전체"}
+bassRegister.hint: {value: "사용할 베이스 레지스터 선택"}
 controls: {value: "조율 제어"}
 mode.auto: {value: "자동"}
 mode.autoHint: {value: "튜너가 음을 자동으로 찾습니다"}
-mode.pinHint: {value: "이 음 고정"}
-mode.pinned: {value: "고정한 음"}
-notes.clickToPin: {value: "클릭하여 고정"}
-notes.label: {value: "E0부터 C9까지의 음입니다. 클릭하여 고정하세요."}
+mode.pinHint: {value: "이 음을 수동으로 선택"}
+mode.pinned: {value: "수동 선택 중. 누르면 자동 감지로 전환"}
+notes.clickToPin: {value: "측정할 음으로 선택"}
+notes.label: {value: "E0~C9에서 측정할 음을 선택하세요."}
 notes.range: {value: "E0~C9"}
 notes.title: {value: "음"}
 notes.tracking: {value: "추적 중"}
 panel.boxBase: {value: "기본음은 항상 측정합니다"}
 panel.boxChord: {value: "화음 모드는 세 음을 모두 측정합니다"}
-panel.boxLast: {value: "측정 칸을 하나 이상 켜 두세요"}
+panel.boxLast: {value: "리드를 하나 이상 선택하세요"}
 
 panel.boxOctave:
   plural:
@@ -62,16 +62,16 @@ panel.bySession:
   placeholders:
     n: {type: integer}
 
-panel.locked: {value: "잠금"}
+panel.locked: {value: "측정값 안정"}
 panel.modeHints.chords: {value: "세 음으로 이루어진 화음"}
 panel.modeHints.octaves: {value: "한 음과 그 위 옥타브 음"}
-panel.modeHints.tones: {value: "한 음에 리드 최대 3개"}
-panel.modeLabel: {value: "측정 대상"}
+panel.modeHints.tones: {value: "한 음을 낼 때 함께 울리는 리드 1~3개 측정"}
+panel.modeLabel: {value: "측정 모드"}
 panel.modes.chords: {value: "화음"}
 panel.modes.octaves: {value: "옥타브"}
 panel.modes.tones: {value: "단음"}
 panel.quiet: {value: "소리가 너무 작습니다"}
-panel.recorded: {value: "기록됨"}
+panel.recorded: {value: "측정값 저장됨"}
 panel.reeds: {value: "리드"}
 
 reeds.count:
@@ -82,7 +82,7 @@ reeds.count:
   placeholders:
     n: {type: integer}
 
-register.hint: {value: "현재 선택한 레지스터"}
+register.hint: {value: "사용할 레지스터 선택"}
 register.lockedPlaying: {value: "레지스터를 바꾸려면 재생을 중지하세요."}
 side.bass: {value: "베이스"}
 side.hint: {value: "트레블 쪽 또는 베이스 쪽"}
@@ -93,16 +93,16 @@ step.noteUp: {value: "반음 올리기"}
 signal.add: {value: "소리 추가"}
 signal.cents: {value: "해당 음과의 차이(센트)"}
 signal.down: {value: "반음 내리기(왼쪽 화살표, 아래쪽 화살표는 한 옥타브)"}
-signal.open: {value: "신호 발생기: 리드 조율의 기준이 되는 깨끗한 음을 냅니다"}
+signal.open: {value: "기준음 발생기 열기"}
 signal.play: {value: "재생"}
-signal.playHint: {value: "설정한 모든 소리를 겹쳐 해당 음을 재생합니다. 선택한 음이 없으면 처음 감지한 음을 재생합니다(스페이스바)"}
+signal.playHint: {value: "선택한 음이나 마지막으로 감지한 음을 기준으로 설정한 소리를 모두 재생합니다. 아직 음이 없으면 첫 음이 감지될 때까지 기다립니다(스페이스바)."}
 signal.remove: {value: "이 소리 제거"}
 signal.stop: {value: "중지"}
 signal.stopHint: {value: "소리 중지(스페이스바)"}
 signal.title: {value: "신호 발생기"}
 signal.up: {value: "반음 올리기(오른쪽 화살표, 위쪽 화살표는 한 옥타브)"}
-signal.wave.hint: {value: "리드 소리에는 배음이 있어 배음에서도 맥놀이가 들립니다"}
-signal.wave.reed: {value: "리드음"}
+signal.wave.hint: {value: "리드 음색에는 배음이 있어 배음끼리 만드는 맥놀이도 들립니다"}
+signal.wave.reed: {value: "리드 음색"}
 signal.wave.sine: {value: "사인파"}
 
 # Reference pitch and units
@@ -126,14 +126,14 @@ unit.reference: {value: "상대 단위"}
 
 # Live readings and graphs
 boxes.beat:
-  value: "리드 {a}와 {b} 사이의 맥놀이"
+  value: "리드 {a}–{b} 간 맥놀이"
   placeholders:
     a: {type: string}
     b: {type: string}
 
-boxes.goal: {value: "목표"}
+boxes.goal: {value: "목표값"}
 boxes.hzOnly: {value: "Hz로만 표시"}
-boxes.notHeard: {value: "소리 미감지"}
+boxes.notHeard: {value: "감지되지 않음"}
 
 boxes.reed:
   value: "리드 {n}"
@@ -141,7 +141,7 @@ boxes.reed:
     n: {type: string}
 
 boxes.reedBank:
-  value: "리드 {bank}"
+  value: "리드 열 {bank}"
   placeholders:
     bank: {type: string}
 
@@ -155,10 +155,10 @@ spectrum.label: {value: "추적 중인 음의 주파수 스펙트럼"}
 spectrum.title: {value: "스펙트럼"}
 
 # Hold, noise learning and tuner state
-hold.hint: {value: "안정된 측정값 유지(H)"}
+hold.hint: {value: "측정값이 안정되면 자동으로 표시 고정(H)"}
 state.deviceLost: {value: "입력 끊김"}
 state.initializing: {value: "실내 소음 측정 중"}
-state.running: {value: "소리 듣는 중"}
+state.running: {value: "오디오 입력 중"}
 state.stopped: {value: "중지됨"}
 state.tooQuiet: {value: "소리가 너무 작습니다. 더 크게 연주하거나 마이크에 가까이 가세요"}
 warmup.quiet: {value: "조용히 해 주세요"}
@@ -194,18 +194,18 @@ calibrate.range.again: {value: "처음부터 다시 시작"}
 calibrate.range.backwards:
   value: "최고음은 최저음보다 낮을 수 없습니다. 음역을 다시 측정하세요."
 
-calibrate.range.capture: {value: "측정값 채취"}
+calibrate.range.capture: {value: "이 음으로 확정"}
 calibrate.range.highest: {value: "최고음"}
 calibrate.range.lowest: {value: "최저음"}
-calibrate.range.next: {value: "리드 보정으로 계속"}
+calibrate.range.next: {value: "리드 측정으로 이동"}
 calibrate.range.playHigh: {value: "이제 가장 높은 건반을 연주하세요."}
 calibrate.range.playLow: {value: "가장 낮은 건반을 연주하세요."}
 calibrate.range.step: {value: "건반"}
-calibrate.status.captured: {value: "측정값 채취됨"}
+calibrate.status.captured: {value: "확정됨"}
 calibrate.status.holding: {value: "음을 일정하게 유지하세요"}
 calibrate.status.loud: {value: "소리가 너무 큽니다"}
 calibrate.status.play: {value: "음 하나를 연주하세요"}
-calibrate.sweep.bassAll: {value: "베이스: 전체 장치"}
+calibrate.sweep.bassAll: {value: "베이스 리드 열 전체"}
 
 calibrate.sweep.done:
   plural:
@@ -242,20 +242,20 @@ web.accent.default: {value: "기본값"}
 web.accent.hint: {value: "앱 기본색을 사용하거나 색을 직접 선택합니다"}
 web.diagnostics.copied: {value: "복사됨"}
 web.diagnostics.copy: {value: "진단 정보 복사"}
-web.diagnostics.empty: {value: "마이크 세부 정보를 보려면 튜너를 시작하세요."}
+web.diagnostics.empty: {value: "마이크 측정을 시작하면 마이크 세부 정보를 볼 수 있습니다."}
 web.diagnostics.title: {value: "진단 정보"}
 web.downloads.title: {value: "앱 다운로드"}
 web.experimental: {value: "실험판"}
 web.loadFailed: {value: "이 브라우저에서 측정 엔진을 시작하지 못했습니다."}
 
 web.mic.denied:
-  value: "마이크 접근이 거부되었습니다. 브라우저 설정에서 허용한 후 튜너를 다시 시작하세요."
+  value: "마이크 사용이 차단되었습니다. 브라우저 설정에서 허용한 뒤 측정을 다시 시작하세요."
 
 web.mic.failed: {value: "마이크를 열 수 없습니다."}
 web.mic.none: {value: "마이크를 찾을 수 없습니다."}
 web.mic.unsupported: {value: "이 브라우저는 오디오를 녹음할 수 없습니다."}
 web.notice.background: {value: "백그라운드 탭에서는 오디오가 일시 정지될 수 있습니다."}
-web.notice.native: {value: "정확한 측정에는 설치형 앱을 사용하세요."}
+web.notice.native: {value: "더 안정적으로 측정하려면 설치형 앱을 사용하세요."}
 web.notice.ok: {value: "확인"}
 
 web.notice.processing:
@@ -277,7 +277,7 @@ web.slow:
 error.a4Locked: {value: "설정에서 기준 음높이가 잠겨 있습니다."}
 error.chordsAuto: {value: "화음 모드는 음을 자동으로 선택합니다."}
 error.deviceGone: {value: "해당 마이크의 연결이 끊겼습니다."}
-error.deviceLost: {value: "마이크가 응답하지 않아 튜너가 중지되었습니다."}
+error.deviceLost: {value: "마이크가 응답하지 않아 측정이 중지되었습니다."}
 error.fileUnreadable: {value: "녹음을 읽을 수 없습니다. WAV 파일을 선택하세요."}
 error.invalidA4: {value: "기준 음높이는 430~450 Hz여야 합니다."}
 error.invalidBox: {value: "해당 리드 측정 칸이 없습니다."}
@@ -293,6 +293,6 @@ error.sampleRate:
 error.sessionDecides: {value: "열린 세션의 레지스터가 측정 대상을 결정합니다."}
 error.signalVoices:
   value: "소리를 1~4개 재생할 수 있으며 각각 해당 음에서 100센트 이내여야 합니다."
-error.toneNeedsManual: {value: "기준음을 재생하려면 먼저 음을 고정하세요."}
+error.toneNeedsManual: {value: "기준음을 재생하려면 먼저 음을 직접 선택하세요."}
 error.transposeMode: {value: "화음과 옥타브는 이조 없이 측정합니다"}
 error.unexpected: {value: "오류가 발생했습니다. 자세한 내용은 로그를 확인하세요."}

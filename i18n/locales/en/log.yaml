@@ -55,10 +55,10 @@ tunerTonePlaying: {value: "Playing reference tone"}
 
 # Sessions, readings and reports
 recordCleared: {value: "Pass cleared"}
-recordEdited: {value: "Take edited by hand"}
+recordEdited: {value: "Measurement edited manually"}
 recordRejected: {value: "Rejected a record request"}
-recordTake: {value: "Take recorded"}
-recordUndone: {value: "Last take undone"}
+recordTake: {value: "Measurement saved"}
+recordUndone: {value: "Last saved measurement removed"}
 reportFailed: {value: "Failed to write the tuning report"}
 reportOpenFailed: {value: "Failed to open the tuning report"}
 reportOpened: {value: "Tuning report handed to the browser"}
@@ -72,7 +72,7 @@ sessionCurveImported: {value: "Goal curve imported"}
 sessionDeleted: {value: "Session deleted"}
 sessionLoadFailed: {value: "Failed to load the session"}
 sessionOpened: {value: "Session opened"}
-sessionReedsClamped: {value: "Instrument sounds more reeds than the engine resolves, clamping the engine"}
+sessionReedsClamped: {value: "Register exceeds the detector's reed limit. Fewer reeds will be measured."}
 sessionRejected: {value: "Rejected an invalid session change"}
 sessionSaveFailed: {value: "Failed to save the session"}
 

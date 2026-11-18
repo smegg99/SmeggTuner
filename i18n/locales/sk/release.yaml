@@ -9,7 +9,7 @@ updateBody:
   placeholders:
     current: {type: string}
     latest: {type: string}
-updateDownload: {value: "Stiahnuť"}
+updateDownload: {value: "Otvoriť stránku na stiahnutie"}
 updateIgnore: {value: "Preskočiť túto verziu"}
 updateLater: {value: "Neskôr"}
 updateTitle: {value: "K dispozícii je novšia verzia"}

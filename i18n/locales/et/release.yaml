@@ -9,7 +9,7 @@ updateBody:
   placeholders:
     current: {type: string}
     latest: {type: string}
-updateDownload: {value: "Laadi alla"}
+updateDownload: {value: "Ava allalaadimisleht"}
 updateIgnore: {value: "Jäta see versioon vahele"}
 updateLater: {value: "Hiljem"}
 updateTitle: {value: "Saadaval on uuem versioon"}

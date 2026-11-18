@@ -3,22 +3,22 @@
 # Editing guide: ../../README.md.
 
 # Buttons and shared labels
-accept: {value: "동의"}
+accept: {value: "적용"}
 back: {value: "뒤로"}
 cancel: {value: "취소"}
 close: {value: "닫기"}
 delete: {value: "삭제"}
 export: {value: "내보내기"}
-next: {value: "다음"}
+next: {value: "다음 페이지"}
 "no": {value: "아니요"}
 none: {value: "없음"}
-previous: {value: "이전"}
+previous: {value: "이전 페이지"}
 website: {value: "웹사이트"}
 "yes": {value: "예"}
 
 # Musical labels and unit symbols
 accordion: {value: "아코디언"}
-note: {value: "음"}
+note: {value: "음이름"}
 
 reed:
   value: "리드 {index}"
@@ -76,13 +76,13 @@ title.uncalibrated:
 
 # Application and About dialog
 about.aboutTitle: {value: "앱 정보"}
-about.commit: {value: "빌드"}
-about.donate: {value: "Ko-fi에서 후원"}
+about.commit: {value: "빌드 식별자"}
+about.donate: {value: "Ko-fi로 개발 후원"}
 about.license: {value: "라이선스"}
 about.privacy: {value: "개인정보 처리방침"}
 about.guide: {value: "SmeggTuner 사용법"}
 about.onlineVersion: {value: "온라인 버전 열기"}
-about.support: {value: "지원"}
+about.support: {value: "이메일로 문의"}
 about.mascot: {value: "아코디언을 연주하는 고양이"}
 about.publisher: {value: "개발자 smegg99"}
 about.tagline: {value: "무료 오픈 소스 아코디언 조율 프로그램입니다."}
@@ -96,7 +96,7 @@ about.helpTitle: {value: "도움말"}
 
 # System tray
 tray.quit: {value: "종료"}
-tray.show: {value: "표시"}
+tray.show: {value: "창 표시"}
 
 linkNewTab:
   value: "{text}(새 탭에서 열림)"

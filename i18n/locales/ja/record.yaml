@@ -3,14 +3,14 @@
 # Editing guide: ../../README.md.
 
 # Recording controls
-arm.hint: {value: "音が確定するたびに測定値を記録します（Enter で今すぐ記録）"}
+arm.hint: {value: "安定した測定値を自動記録中。押すと記録を停止します。Enter で今すぐ記録できます。"}
 arm.needsSession: {value: "測定値を記録するにはセッションを開いてください"}
 arm.warmup: {value: "記録は停止中です。自由に演奏できます。測定値を保存するには押してください。"}
 undo.hint: {value: "直前の記録を取り消す"}
 
 # Readings table and compact columns
 mobile.current: {value: "測定値"}
-mobile.error: {value: "偏差"}
+mobile.error: {value: "目標との差"}
 
 table.beat:
   value: "うなり {pair}"
@@ -25,7 +25,7 @@ table.empty: {value: "記録を開始して音を鳴らすと、測定値が保�
 table.graph: {value: "グラフ"}
 
 table.graphHint:
-  value: "各リードの測定値と目標値を比較します。列をクリックすると対応する行を選択し、もう一度クリックすると次のレジスターを選択します。"
+  value: "各リードの測定値と目標値を比較します。グラフの棒をクリックすると表の該当行を選択し、もう一度クリックすると次のレジスターに切り替わります。"
 table.graphLabel: {value: "記録した音ごとのリードの誤差"}
 table.helpTitle: {value: "この表について"}
 table.label: {value: "調律記録"}

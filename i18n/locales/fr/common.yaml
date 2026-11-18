@@ -9,10 +9,10 @@ cancel: {value: "Annuler"}
 close: {value: "Fermer"}
 delete: {value: "Supprimer"}
 export: {value: "Exporter"}
-next: {value: "Suivant"}
+next: {value: "Page suivante"}
 "no": {value: "Non"}
 none: {value: "Aucun"}
-previous: {value: "Précédent"}
+previous: {value: "Page précédente"}
 website: {value: "Site web"}
 "yes": {value: "Oui"}
 
@@ -76,13 +76,13 @@ title.uncalibrated:
 
 # Application and About dialog
 about.aboutTitle: {value: "À propos"}
-about.commit: {value: "Compilation"}
-about.donate: {value: "Soutenir sur Ko-fi"}
+about.commit: {value: "Révision Git"}
+about.donate: {value: "Faire un don sur Ko-fi"}
 about.license: {value: "Licence"}
 about.privacy: {value: "Politique de confidentialité"}
 about.guide: {value: "Utiliser SmeggTuner"}
-about.onlineVersion: {value: "Ouvrir la version en ligne"}
-about.support: {value: "Assistance"}
+about.onlineVersion: {value: "Ouvrir le document dans le navigateur"}
+about.support: {value: "Écrire à l’assistance"}
 about.mascot: {value: "Un chat jouant de l'accordéon"}
 about.publisher: {value: "Par smegg99"}
 about.tagline: {value: "Logiciel d'accordage d'accordéon libre et gratuit."}

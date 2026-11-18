@@ -3,7 +3,7 @@ close: {value: "Sluiten"}
 copied: {value: "Gekopieerd"}
 copy: {value: "Rapport kopiëren"}
 details: {value: "Details"}
-email: {value: "Rapport e-mailen"}
+email: {value: "E-mail met rapport opstellen"}
 failed:
   value: "De bewerking is mislukt: {error}"
   placeholders:
@@ -12,27 +12,27 @@ file:
   value: "Bestand: {path}"
   placeholders:
     path: {type: string}
-kill: {value: "Afsluiten en probleem melden"}
-logs: {value: "Logbestand tonen"}
+kill: {value: "App sluiten en rapport bekijken"}
+logs: {value: "Logbestand in bestandsbeheer tonen"}
 messageConfig:
   value: "Het instellingenbestand kan niet worden gelezen. Herstel of verwijder het bestand en start {app} opnieuw."
   placeholders:
     app: {type: string}
 messageCrash:
-  value: "Er is een interne fout opgetreden in {app}. Stuur het rapport om het probleem te helpen oplossen en start de toepassing opnieuw."
+  value: "{app} is onverwacht gestopt. Je kunt het rapport naar de helpdesk sturen en de app opnieuw starten."
   placeholders:
     app: {type: string}
-messageHang: {value: "De bewerking kan nog worden voltooid. Wacht even of sluit de toepassing en stuur een rapport."}
+messageHang: {value: "De bewerking loopt mogelijk nog. Je kunt wachten of de app sluiten om het diagnoserapport te bekijken."}
 messageHangStopped:
-  value: "{app} is afgesloten terwijl de toepassing niet reageerde. Stuur het rapport en start de toepassing opnieuw."
+  value: "{app} reageerde niet meer en is afgesloten. Je kunt het rapport naar de helpdesk sturen of de app opnieuw starten."
   placeholders:
     app: {type: string}
 messageKilled:
-  value: "{app} is afgesloten voordat de toepassing het probleem kon melden. Stuur het rapport en start de toepassing opnieuw."
+  value: "{app} is afgesloten voordat de oorzaak kon worden vastgelegd. Je kunt de beschikbare gegevens naar de helpdesk sturen of de app opnieuw starten."
   placeholders:
     app: {type: string}
 messageOom:
-  value: "Het systeem had onvoldoende geheugen en heeft {app} afgesloten. Stuur het rapport en start de toepassing opnieuw."
+  value: "Het systeem had te weinig geheugen en heeft {app} afgesloten. Je kunt het rapport naar de helpdesk sturen of de app opnieuw starten."
   placeholders:
     app: {type: string}
 messageStartup:
@@ -55,7 +55,7 @@ titleHangStopped: {value: "De toepassing reageerde niet meer"}
 titleKilled: {value: "De toepassing is onverwacht afgesloten"}
 titleStart: {value: "De toepassing kon niet worden gestart"}
 wait: {value: "Wachten"}
-windowCrash: {value: "vastgelopen"}
+windowCrash: {value: "gecrasht"}
 windowHang: {value: "reageert niet"}
 windowHangStopped: {value: "reageerde niet meer"}
 windowKilled: {value: "onverwacht afgesloten"}

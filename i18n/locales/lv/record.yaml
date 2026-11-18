@@ -3,14 +3,14 @@
 # Editing guide: ../../README.md.
 
 # Recording controls
-arm.hint: {value: "Ierakstīt mērījumu ikreiz, kad nots nofiksējas (Enter ieraksta uzreiz)"}
-arm.needsSession: {value: "Lai ierakstītu, atveriet sesiju"}
-arm.warmup: {value: "Ieraksts nav sākts: spēlējiet brīvi, nekas netiek saglabāts. Nospiediet, lai sāktu ierakstu."}
+arm.hint: {value: "Stabilie rādījumi tiek saglabāti. Nospiediet šo pogu, lai pārtrauktu saglabāšanu, vai Enter, lai uzreiz saglabātu pašreizējo rādījumu."}
+arm.needsSession: {value: "Lai saglabātu mērījumus, atveriet sesiju"}
+arm.warmup: {value: "Varat brīvi spēlēt. Lai sāktu saglabāt mērījumus, nospiediet šo pogu."}
 undo.hint: {value: "Atsaukt pēdējo mērījumu"}
 
 # Readings table and compact columns
 mobile.current: {value: "Izmērīts"}
-mobile.error: {value: "Novirze"}
+mobile.error: {value: "Starpība no mērķvērtības"}
 
 table.beat:
   value: "Pulsācija {pair}"
@@ -21,17 +21,17 @@ table.delete: {value: "Noņemt šo rādījumu"}
 table.deleteHint: {value: "Rādījums tiks neatgriezeniski noņemts. Lai to aizstātu, vēlreiz nospēlējiet un ierakstiet noti."}
 table.deleteTitle: {value: "Vai noņemt šo rādījumu?"}
 table.editHint: {value: "Lai mainītu vērtību, noklikšķiniet vai nospiediet Enter"}
-table.empty: {value: "Sāciet ierakstu un spēlējiet notis, lai saglabātu rādījumus."}
+table.empty: {value: "Ieslēdziet mērījumu saglabāšanu un spēlējiet notis."}
 table.graph: {value: "Diagramma"}
 
 table.graphHint:
   value: "Salīdziniet katru mēlīti ar tās mērķvērtību. Noklikšķiniet uz stabiņa, lai atlasītu rindu, un vēlreiz, lai atlasītu nākamo reģistru."
-table.graphLabel: {value: "Mēlīšu kļūdas katrai ierakstītajai notij"}
+table.graphLabel: {value: "Mēlīšu novirzes no mērķvērtības katrai saglabātajai notij"}
 table.helpTitle: {value: "Par šo tabulu"}
-table.label: {value: "Ierakstītais skaņojums"}
+table.label: {value: "Saglabātie skaņojuma mērījumi"}
 table.latest: {value: "Pēdējais ieraksts: Backspace to noņem"}
 table.manual: {value: "Labots"}
-table.manualHint: {value: "Šīs rindas vērtība ievadīta manuāli, nevis izmērīta no skaņas."}
+table.manualHint: {value: "Šajā rindā ir manuāli ievadīta vērtība."}
 
 table.notes:
   plural:
@@ -44,7 +44,7 @@ table.notes:
     count: {type: integer}
 
 table.unitHint:
-  value: "Mēlīšu novirzēm izmanto iestatījumos izvēlēto mērvienību. Pulsāciju rāda hercos vai novirzes mērvienībās atkarībā no rīkjoslas izvēles."
+  value: "Mēlīšu novirzes mērvienību izvēlas iestatījumos. Rīkjoslā var pārslēgt pulsācijas rādījumus no herciem uz to pašu mērvienību."
 # Report export dialog
 report.csv: {value: "CSV"}
 report.date: {value: "Datums"}

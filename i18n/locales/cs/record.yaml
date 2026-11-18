@@ -4,13 +4,13 @@
 
 # Recording controls
 arm.hint: {value: "Zaznamenat měření při každém ustálení tónu (Enter ho zaznamená ihned)"}
-arm.needsSession: {value: "Pro záznam otevřete relaci"}
-arm.warmup: {value: "Záznam je vypnutý. Můžete volně hrát, nic se neukládá. Stisknutím spustíte záznam."}
-undo.hint: {value: "Vrátit poslední záznam"}
+arm.needsSession: {value: "Pro ukládání měření otevřete relaci."}
+arm.warmup: {value: "Měření se neukládají. Můžete volně hrát. Stisknutím zapnete ukládání měření."}
+undo.hint: {value: "Odvolat záznam posledního měření"}
 
 # Readings table and compact columns
 mobile.current: {value: "Naměřeno"}
-mobile.error: {value: "Odchylka"}
+mobile.error: {value: "Od cíle"}
 
 table.beat:
   value: Zázněj {pair}
@@ -29,7 +29,7 @@ table.graphHint: {value: "Porovnejte každý jazýček s jeho cílovou hodnotou.
 
 table.graphLabel: {value: "Odchylky jazýčků u zaznamenaných tónů"}
 table.helpTitle: {value: "O této tabulce"}
-table.label: {value: "Zaznamenané ladění"}
+table.label: {value: "Zaznamenaná měření"}
 table.latest: {value: "Poslední záznam odstraníte klávesou Backspace"}
 table.manual: {value: "Upraveno"}
 table.manualHint: {value: "Jedna z hodnot v tomto řádku byla zadána ručně."}
@@ -46,7 +46,7 @@ table.notes:
     count:
       type: integer
 
-table.unitHint: {value: "Odchylky jazýčků se uvádějí v jednotkách vybraných v Nastavení. Zázněje se podle volby na panelu nástrojů uvádějí v hertzech nebo v jednotkách odchylky."}
+table.unitHint: {value: "Jednotku odchylky jazýčků zvolíte v nastavení. Na panelu nad tabulkou můžete přepnout frekvenci záznějů mezi Hz a jednotkou odchylky."}
 
 # Report export dialog
 report.csv: {value: "CSV"}

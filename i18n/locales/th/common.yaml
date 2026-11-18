@@ -3,16 +3,16 @@
 # Editing guide: ../../README.md.
 
 # Buttons and shared labels
-accept: {value: "ยอมรับ"}
+accept: {value: "ใช้สีนี้"}
 back: {value: "ย้อนกลับ"}
 cancel: {value: "ยกเลิก"}
 close: {value: "ปิด"}
 delete: {value: "ลบ"}
 export: {value: "ส่งออก"}
-next: {value: "ถัดไป"}
+next: {value: "หน้าถัดไป"}
 "no": {value: "ไม่ใช่"}
 none: {value: "ไม่มี"}
-previous: {value: "ก่อนหน้า"}
+previous: {value: "หน้าก่อนหน้า"}
 website: {value: "เว็บไซต์"}
 "yes": {value: "ใช่"}
 
@@ -76,13 +76,13 @@ title.uncalibrated:
 
 # Application and About dialog
 about.aboutTitle: {value: "เกี่ยวกับ"}
-about.commit: {value: "บิลด์"}
-about.donate: {value: "สนับสนุนผ่าน Ko-fi"}
+about.commit: {value: "รหัสบิลด์"}
+about.donate: {value: "ร่วมสมทบทุนผ่าน Ko-fi"}
 about.license: {value: "สัญญาอนุญาต"}
 about.privacy: {value: "นโยบายความเป็นส่วนตัว"}
 about.guide: {value: "วิธีใช้ SmeggTuner"}
 about.onlineVersion: {value: "เปิดฉบับออนไลน์"}
-about.support: {value: "ติดต่อฝ่ายสนับสนุน"}
+about.support: {value: "ติดต่อฝ่ายช่วยเหลือทางอีเมล"}
 about.mascot: {value: "แมวกำลังเล่นแอคคอร์เดียน"}
 about.publisher: {value: "พัฒนาโดย smegg99"}
 about.tagline: {value: "โปรแกรมตั้งเสียงแอคคอร์เดียนแบบโอเพนซอร์สที่ใช้ได้ฟรี"}
@@ -96,7 +96,7 @@ about.helpTitle: {value: "วิธีใช้"}
 
 # System tray
 tray.quit: {value: "ออก"}
-tray.show: {value: "แสดง"}
+tray.show: {value: "แสดงหน้าต่างแอป"}
 
 linkNewTab:
   value: "{text} (เปิดในแท็บใหม่)"

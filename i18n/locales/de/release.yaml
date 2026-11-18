@@ -5,11 +5,11 @@ notesTitle:
     version: {type: string}
 notTranslated: {value: "Diese Versionshinweise wurden noch nicht übersetzt."}
 updateBody:
-  value: "Sie verwenden Version {current}. Die neueste Version ist {latest}."
+  value: "Du verwendest Version {current}. Die neueste Version ist {latest}."
   placeholders:
     current: {type: string}
     latest: {type: string}
-updateDownload: {value: "Herunterladen"}
+updateDownload: {value: "Downloadseite öffnen"}
 updateIgnore: {value: "Diese Version überspringen"}
 updateLater: {value: "Später"}
 updateTitle: {value: "Eine neuere Version ist verfügbar"}

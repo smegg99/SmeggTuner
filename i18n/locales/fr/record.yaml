@@ -4,10 +4,10 @@
 # Plurals: one, other (locale cardinal rules).
 
 # Recording controls
-arm.hint: {value: "Enregistrer une prise à chaque stabilisation (Entrée pour en faire une maintenant)"}
-arm.needsSession: {value: "Ouvrez une session pour enregistrer"}
+arm.hint: {value: "Les mesures stables sont enregistrées. Appuyez pour arrêter ou utilisez Entrée pour enregistrer la mesure actuelle."}
+arm.needsSession: {value: "Ouvrez une session pour enregistrer des mesures"}
 arm.warmup: {value: "Enregistrement des mesures désactivé. Jouez librement, aucune mesure n’est conservée. Appuyez pour commencer à les enregistrer."}
-undo.hint: {value: "Annuler la dernière prise"}
+undo.hint: {value: "Annuler la dernière mesure enregistrée"}
 
 # Readings table and compact columns
 mobile.current: {value: "Mesure"}
@@ -19,18 +19,18 @@ table.beat:
     pair: {type: string}
 
 table.delete: {value: "Supprimer cette mesure"}
-table.deleteHint: {value: "Supprime définitivement cette mesure. Pour la remplacer, rejouez la note et enregistrez-la à nouveau."}
+table.deleteHint: {value: "La suppression est définitive. Pour obtenir une nouvelle mesure, rejouez la note et enregistrez la valeur."}
 table.deleteTitle: {value: "Supprimer cette mesure ?"}
 table.editHint: {value: "Cliquez ou appuyez sur Entrée pour modifier la valeur"}
-table.empty: {value: "Lancez l'enregistrement puis jouez des notes pour en conserver les mesures."}
+table.empty: {value: "Activez l’enregistrement des mesures, puis jouez les notes à ajouter au tableau."}
 table.graph: {value: "Graphique"}
 
 table.graphHint:
   value: "Comparez chaque anche à sa cible. Cliquez sur une colonne pour sélectionner la ligne correspondante, puis cliquez à nouveau pour sélectionner le registre suivant."
-table.graphLabel: {value: "Écart des anches pour chaque note enregistrée"}
+table.graphLabel: {value: "Écart de chaque anche par rapport à sa cible, note par note"}
 table.helpTitle: {value: "À propos de ce tableau"}
-table.label: {value: "Accordage enregistré"}
-table.latest: {value: "Dernière prise : Retour arrière pour la supprimer"}
+table.label: {value: "Mesures d’accordage enregistrées"}
+table.latest: {value: "Dernière mesure enregistrée. Retour arrière pour la supprimer."}
 table.manual: {value: "Modifié"}
 table.manualHint: {value: "Une valeur de cette ligne a été saisie à la main."}
 
@@ -65,5 +65,5 @@ report.pdf: {value: "PDF"}
 report.title: {value: "Fiche d'accordage"}
 
 # Recording errors
-error.takeNotFound: {value: "Cette prise ne figure plus dans ce passage."}
+error.takeNotFound: {value: "Cette mesure ne figure plus dans cette série."}
 error.unexpected: {value: "L'opération a échoué. Consultez le journal pour plus de détails."}

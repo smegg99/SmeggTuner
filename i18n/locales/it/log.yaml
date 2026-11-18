@@ -54,11 +54,11 @@ tunerTonePlayFailed: {value: "Impossibile riprodurre il suono di riferimento"}
 tunerTonePlaying: {value: "Riproduzione del suono di riferimento"}
 
 # Sessions, readings and reports
-recordCleared: {value: "Passata cancellata"}
-recordEdited: {value: "Acquisizione modificata a mano"}
-recordRejected: {value: "Richiesta di registrazione rifiutata"}
-recordTake: {value: "Acquisizione registrata"}
-recordUndone: {value: "Ultima acquisizione annullata"}
+recordCleared: {value: "Misure della passata cancellate"}
+recordEdited: {value: "Misura modificata a mano"}
+recordRejected: {value: "Richiesta di salvataggio della misura rifiutata"}
+recordTake: {value: "Misura salvata"}
+recordUndone: {value: "Salvataggio dell’ultima misura annullato"}
 reportFailed: {value: "Impossibile scrivere il rapporto di accordatura"}
 reportOpenFailed: {value: "Impossibile aprire il rapporto di accordatura"}
 reportOpened: {value: "Rapporto di accordatura passato al browser"}
@@ -72,7 +72,7 @@ sessionCurveImported: {value: "Curva obiettivo importata"}
 sessionDeleted: {value: "Sessione eliminata"}
 sessionLoadFailed: {value: "Impossibile caricare la sessione"}
 sessionOpened: {value: "Sessione aperta"}
-sessionReedsClamped: {value: "Lo strumento fa suonare più ance di quante il motore possa distinguere. Il motore applica il proprio limite."}
+sessionReedsClamped: {value: "Il numero di ance attive nel registro supera il limite del rilevatore. Verranno misurate meno ance."}
 sessionRejected: {value: "Modifica della sessione non valida rifiutata"}
 sessionSaveFailed: {value: "Impossibile salvare la sessione"}
 

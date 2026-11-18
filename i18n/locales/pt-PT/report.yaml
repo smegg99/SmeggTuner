@@ -59,21 +59,21 @@ graph.edited:
     mark: {type: string}
 
 legend.error.cents:
-  value: "Lime a palheta para aproximar o erro de zero. Desvio em cents em relação à escala temperada a {a4} Hz."
+  value: "Lime cada palheta para aproximar o erro de zero. Para as palhetas, «Med.» indica o desvio em cents em relação à escala temperada com lá4 = {a4} Hz."
   placeholders:
     a4: {type: string}
 
-legend.error.key: {value: "Erro = medição - alvo."}
-legend.error.noCurve: {value: "Sem curva-alvo, o alvo é zero e o erro é o desvio em relação à escala."}
+legend.error.key: {value: "Erro = valor medido − valor-alvo."}
+legend.error.noCurve: {value: "Sem curva de referência, o desvio pretendido é zero. O erro coincide assim com o desvio medido em relação à escala temperada."}
 
 legend.error.reference:
-  value: "Lime a palheta para aproximar o erro de zero. O desvio em relação à escala temperada a {a4} Hz é expresso em unidades de 0,06 % da frequência da nota."
+  value: "Lime cada palheta para aproximar o erro de zero. Os desvios das palhetas medem-se em relação à escala temperada com lá4 = {a4} Hz. Uma unidade equivale a 0,06 % da frequência da nota."
   placeholders:
     a4: {type: string}
 
 legend.out.short: {value: "fora da tolerância"}
 legend.takes.key: {value: "xN"}
-legend.takes.short: {value: "várias tomadas, é apresentada a última"}
+legend.takes.short: {value: "nota medida várias vezes, apresenta-se a última medição"}
 mark.edited: {value: "M"}
 mark.out: {value: "!"}
 

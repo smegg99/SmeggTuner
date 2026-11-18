@@ -39,9 +39,9 @@ new: {value: "Jauna sesija"}
 title: {value: "Sesijas"}
 
 # Session dialog and tabs
-dialog.backToList: {value: "Izvēlēties jau skaņotu instrumentu"}
+dialog.backToList: {value: "Izvēlēties no instrumentu bibliotēkas"}
 dialog.describeNew: {value: "Aprakstīt jaunu instrumentu…"}
-dialog.forgetAccordion: {value: "Aizmirst šo akordeonu"}
+dialog.forgetAccordion: {value: "Izņemt akordeonu no instrumentu bibliotēkas"}
 dialog.loadAccordion: {value: "Ielādēt no faila…"}
 dialog.name: {value: "Sesijas nosaukums"}
 dialog.nameHint: {value: "Sesijas atpazīšanai izmantojiet instrumenta vai klienta vārdu."}
@@ -56,8 +56,8 @@ accordion.a4Locked: {value: "Fiksēts: šīs sesijas mērījumi jau veikti attie
 accordion.columnsRefused:
   value: "Šīs izmaiņas mainītu mēlīšu rindas, uz kurām attiecas esošie rādījumi. Izmaiņas nav saglabātas. Atjaunojiet iepriekšējās rindas vai izveidojiet jaunu sesiju."
 accordion.frozen:
-  value: "Pēc rādījumu ierakstīšanas atsauces frekvenci un mēlīšu rindas nevar mainīt. Joprojām var pievienot reģistrus, kuri izmanto esošās rindas."
-accordion.frozenShort: {value: "Mēlīšu rindas bloķētas"}
+  value: "Pēc mērījumu saglabāšanas vairs nevar mainīt atsauces frekvenci, transponējumu un mēlīšu rindas. No esošajām rindām joprojām var veidot jaunus reģistrus."
+accordion.frozenShort: {value: "Mēlīšu rindas fiksētas"}
 accordion.remember: {value: "Saglabāt instrumentu bibliotēkā"}
 accordion.rememberHint: {value: "Saglabājiet šīs sesijas instrumentu bibliotēkā turpmākām sesijām."}
 
@@ -67,17 +67,17 @@ instrument.a4: {value: "Atsauces frekvence"}
 instrument.a4Hint:
   value: "A4 atsauces frekvence hercos. Jaunās šī instrumenta sesijas izmanto šo vērtību."
 
-instrument.bass.build: {value: "Nākamā slēdža balsis pēdās"}
-instrument.bass.fixed: {value: "Nav basu reģistru: mehānisms ir fiksēts, vienmēr skan visas balsis."}
+instrument.bass.build: {value: "Izvēlieties jaunā basu reģistra mēlīšu rindas"}
+instrument.bass.fixed: {value: "Basu pusē nav reģistru slēdžu. Visas basu mēlīšu rindas skan kopā."}
 
 instrument.bass.full:
   value: "Basu mehānismam šeit var būt ne vairāk kā {n} slēdži"
   placeholders:
     n: {type: string}
 
-instrument.bass.hint: {value: "Norādiet, cik balsu skan basos. Vairumam mehānismu tās ir četras vai piecas."}
+instrument.bass.hint: {value: "Norādiet basu mēlīšu rindu skaitu. Vairumam basu mehānismu ir četras vai piecas rindas."}
 instrument.bass.registerName: {value: "Slēdža nosaukums"}
-instrument.bass.voices: {value: "Basu balsis"}
+instrument.bass.voices: {value: "Basu mēlīšu rindas"}
 instrument.beatTolerance: {value: "Pulsācijas pielaide"}
 instrument.builder.add: {value: "Pievienot"}
 instrument.builder.already: {value: "Šis slēdzis jau ir aprakstīts"}
@@ -99,26 +99,26 @@ instrument.nameRequired: {value: "Ievadiet akordeona nosaukumu."}
 instrument.photo: {value: "Fotogrāfija"}
 instrument.range.backwards: {value: "Augstākā nots nevar būt zemāka par zemāko."}
 instrument.range.clear: {value: "Notīrīt"}
-instrument.range.down: {value: "Zemāk"}
+instrument.range.down: {value: "Par pustoni zemāk"}
 
 instrument.range.hint:
-  value: "Neobligāti. Zemākais un augstākais taustiņš. Diapazonu var noteikt arī pēc dzirdes kalibrēšanas laikā."
+  value: "Ja vēlaties, ievadiet zemāko un augstāko noti. Diapazonu var noteikt arī instrumenta kalibrēšanas laikā, nospēlējot abas galējās notis."
 
 instrument.range.label: {value: "Klaviatūras diapazons"}
 instrument.range.to: {value: "līdz"}
-instrument.range.up: {value: "Augstāk"}
+instrument.range.up: {value: "Par pustoni augstāk"}
 
 instrument.registersHint:
-  value: "Noklikšķiniet uz punktiem katra slēdža simbolā (akordeonā iegravētajā aplī) vai izvēlieties izplatītu simbolu. Punkti tieši norāda skanošās rindas."
+  value: "Pēc simbola uz akordeona reģistra slēdža norādiet, vai skan 4′ un 16′ mēlīšu rindas un cik 8′ rindu ir ieslēgts. Pēc tam pievienojiet reģistru."
 instrument.registersSubtitle: {value: "Melodijas puses slēdži un katra slēdža ieslēgtās mēlīšu rindas."}
 
 instrument.says:
   plural:
     argument: reeds
     forms:
-      zero: "Mēlīšu rindas: {banks}. Plašākajā reģistrā skan {reeds} mēlīšu."
-      one: "Mēlīšu rindas: {banks}. Plašākajā reģistrā skan {reeds} mēlīte."
-      other: "Mēlīšu rindas: {banks}. Plašākajā reģistrā skan {reeds} mēlītes."
+      zero: "Mēlīšu rindas: {banks}. Spēlējot vienu noti, vienlaikus var skanēt ne vairāk kā {reeds} mēlīšu."
+      one: "Mēlīšu rindas: {banks}. Spēlējot vienu noti, vienlaikus var skanēt ne vairāk kā {reeds} mēlīte."
+      other: "Mēlīšu rindas: {banks}. Spēlējot vienu noti, vienlaikus var skanēt ne vairāk kā {reeds} mēlītes."
   placeholders:
     banks: {type: string}
     reeds: {type: integer}
@@ -131,7 +131,7 @@ instrument.sections.voices: {value: "Reģistri"}
 instrument.tolerance: {value: "Mēlītes pielaide"}
 
 instrument.toleranceHint:
-  value: "Pieļaujamā mēlītes novirze vienībās, kas atbilst 0,06 % no nots frekvences. Ārpus šīm robežām rādījumu atzīmē kā neskaņotu."
+  value: "Pieļaujamā starpība no mēlītes vēlamās novirzes. Viena vienība ir 0,06 % no nots frekvences. Lielāka atšķirība tiek atzīmēta kā neatbilstoša skaņojumam."
 # Target curve editor
 curve.clearAll: {value: "Notīrīt līkni"}
 
@@ -142,7 +142,7 @@ curve.clearAllTitle: {value: "Vai notīrīt visu līkni?"}
 curve.entryUnit: {value: "Ievades mērvienība"}
 
 curve.help.hz:
-  value: "Izvēloties Hz, mērķi ievada hercos pie A4 = 440 Hz, kā pulsāciju atsauces sarakstā, tāpēc tas nemainās līdz ar sesijas A4. “Ierakstīts” pārklāj sarakstu ar sesijas rādījumiem. Izvēlnē “Saraksts” var pielāgot atbalsta punktus rādījumiem vai kopēt citas sesijas sarakstu."
+  value: "Hercos ievadītās mērķvērtības aprēķina pie A4 = 440 Hz, tāpat kā pulsāciju atsauces sarakstā. Sesijas A4 maiņa tās neietekmē. Ieslēdziet “Ierakstīts”, lai diagrammā redzētu arī sesijas mērījumus. Izvēlnē “Saraksts” varat pielāgot atbalsta punktus mērījumiem vai kopēt citas sesijas sarakstu."
 curve.help.hzTitle: {value: "Herci un rādījumi"}
 
 curve.help.interp:
@@ -150,16 +150,16 @@ curve.help.interp:
 curve.help.interpTitle: {value: "Starp punktiem"}
 
 curve.help.lead:
-  value: "Skaņošanas mērķis norāda katrai notij, cik tālu katrai mēlītei jānovirzās no skaņkārtas augstuma. Ierakstīto mēlītes rādījumu salīdzina ar šo mērķi. Tabula vērtē atbilstību jūsu mērķim, nevis precīzai nullei."
+  value: "Katrai notij norādiet, par cik katras mēlītes skaņas augstumam jāatšķiras no nots augstuma skaņkārtā. Tabulā izmērīto novirzi salīdzina ar šo mērķvērtību un parāda, vai starpība ir pielaides robežās."
 curve.help.set:
   value: "Izvēlieties noti un vērtību un spiediet “Iestatīt” vai velciet punktu diagrammā uz augšu vai leju. Katrai rindai ir sava līnija, un rediģējamā ir izcelta."
 curve.help.setTitle: {value: "Punkta iestatīšana"}
-curve.helpTitle: {value: "Vēlamās pulsācijas"}
+curve.helpTitle: {value: "Vēlamās mēlīšu novirzes un pulsācija"}
 curve.interpolate: {value: "Interpolēt"}
 curve.interpolateHint: {value: "Sekot līnijai starp atbalsta punktiem. Izslēdzot katra punkta vērtība saglabājas līdz nākamajam."}
 curve.menu.ends: {value: "Ārpus atbalsta punktiem"}
-curve.menu.extendHigh: {value: "Turpināt virs augstākā"}
-curve.menu.extendLow: {value: "Turpināt zem zemākā"}
+curve.menu.extendHigh: {value: "Pagarināt līdz augstākām notīm"}
+curve.menu.extendLow: {value: "Pagarināt līdz zemākām notīm"}
 curve.menu.fit: {value: "Pielāgot šīs sesijas rādījumiem"}
 
 curve.menu.fitBody:
@@ -224,13 +224,13 @@ readings.notes:
 workshop.exit: {value: "Iziet no sesijas"}
 workshop.import: {value: "Importēt"}
 workshop.open: {value: "Atvērt"}
-workshop.print: {value: "Drukāt karti"}
+workshop.print: {value: "Eksportēt skaņošanas karti"}
 
 # Session errors
 error.fitFailed: {value: "Neizdevās pielāgot līkni šī cikla mērījumiem."}
 
 error.hasReadings:
-  value: "Sesijā jau ir rādījumi. Tie iegūti ar pašreizējo atsauces frekvenci un mēlīšu skaitu, tāpēc šīs vērtības vairs nevar mainīt."
+  value: "Sesijā jau ir saglabāti mērījumi. To atsauces frekvenci, transponējumu un mēlīšu rindu izkārtojumu vairs nevar mainīt."
 error.imageUnreadable: {value: "Neizdevās atvērt fotogrāfiju."}
 error.instrumentName: {value: "Piešķiriet akordeonam nosaukumu, lai vēlāk to varētu atrast."}
 error.invalidA4: {value: "Atsauces frekvencei jābūt no 430 līdz 450 Hz."}
@@ -248,7 +248,7 @@ error.loadFailed: {value: "Neizdevās nolasīt sesiju."}
 error.noBassMachine: {value: "Šim akordeonam nav norādīts basu mehānisms."}
 error.noBassRegister: {value: "Akordeonam nav šāda basu reģistra."}
 error.noCurve: {value: "Sesijai nav mērķlīknes."}
-error.noReadings: {value: "Šajā sesijā vēl nekas nav ierakstīts."}
+error.noReadings: {value: "Šajā sesijā vēl nav saglabātu mērījumu."}
 error.noRegister: {value: "Akordeonam nav šāda reģistra."}
 error.noSession: {value: "Nav atvērta neviena sesija."}
 error.notAnImage: {value: "Šis fails nav fotogrāfija."}

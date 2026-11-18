@@ -46,9 +46,9 @@
 "tunerTonePlayFailed": {value: "Võrdlustooni taasesitus ebaõnnestus"}
 "tunerTonePlaying": {value: "Võrdlustooni esitamine"}
 "recordCleared": {value: "Mõõtevoor tühjendatud"}
-"recordEdited": {value: "Mõõtevõtet muudeti käsitsi"}
-"recordRejected": {value: "Salvestustaotlus lükati tagasi"}
-"recordTake": {value: "Mõõtevõte salvestatud"}
+"recordEdited": {value: "Salvestatud mõõtetulemust muudeti käsitsi"}
+"recordRejected": {value: "Selle keele mõõtetulemust ei saa muuta: mõõtevõttes puudub selle näit"}
+"recordTake": {value: "Mõõtetulemus salvestatud"}
 "recordUndone": {value: "Viimane mõõtevõte tagasi võetud"}
 "reportFailed": {value: "Häälestusaruande kirjutamine ebaõnnestus"}
 "reportOpenFailed": {value: "Häälestusaruande avamine ebaõnnestus"}
@@ -63,7 +63,7 @@
 "sessionDeleted": {value: "Seanss kustutatud"}
 "sessionLoadFailed": {value: "Seansi laadimine ebaõnnestus"}
 "sessionOpened": {value: "Seanss avatud"}
-"sessionReedsClamped": {value: "Pillil kõlab rohkem keeli, kui mootor eristab; mootori keelte arvu piiratakse"}
+"sessionReedsClamped": {value: "Korraga kõlab rohkem keeli, kui häälestaja suudab eristada. Mõõdetavate keelte arvu piirati."}
 "sessionRejected": {value: "Vigane seansimuudatus lükati tagasi"}
 "sessionSaveFailed": {value: "Seansi salvestamine ebaõnnestus"}
 "frontendAudioCalibrationCancelFailed": {value: "Kalibreerimist ei saanud tühistada"}

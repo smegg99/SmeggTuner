@@ -38,7 +38,7 @@ table.bassTitle:
     unit: {type: string}
 
 table.curr: {value: "Μέτρ."}
-table.err: {value: "Σφάλ."}
+table.err: {value: "Διαφ."}
 table.register: {value: "Ρετζίστερ"}
 
 table.title:
@@ -58,15 +58,15 @@ graph.edited:
     mark: {type: string}
 
 legend.error.cents:
-  value: "Λιμάρετε ώστε το σφάλμα να πλησιάζει το μηδέν. Τιμές σε σεντ ως προς τη συγκερασμένη κλίμακα με A4 στα {a4} Hz."
+  value: "Λιμάρετε το καλάμι ώστε η διαφορά από την επιθυμητή τιμή να πλησιάζει το μηδέν. Η μετρημένη τιμή δείχνει την απόκλιση σε σεντ από τη νότα της ισοσυγκερασμένης κλίμακας με A4 = {a4} Hz."
   placeholders:
     a4: {type: string}
 
-legend.error.key: {value: "Σφάλμα = μέτρηση − στόχος."}
-legend.error.noCurve: {value: "Χωρίς καμπύλη στόχου: ο στόχος είναι μηδέν και το σφάλμα είναι η απόκλιση από την κλίμακα."}
+legend.error.key: {value: "Διαφορά = μετρημένη τιμή − επιθυμητή τιμή."}
+legend.error.noCurve: {value: "Χωρίς καμπύλη στόχου η επιθυμητή τιμή είναι μηδέν. Η διαφορά δείχνει την απόκλιση από τη νότα της κλίμακας."}
 
 legend.error.reference:
-  value: "Λιμάρετε ώστε το σφάλμα να πλησιάζει το μηδέν. Κάθε μονάδα ισούται με το 0,06 % της συχνότητας της νότας ως προς τη συγκερασμένη κλίμακα με A4 στα {a4} Hz."
+  value: "Λιμάρετε το καλάμι ώστε η διαφορά από την επιθυμητή τιμή να πλησιάζει το μηδέν. Η απόκλιση μετριέται ως προς τη νότα της ισοσυγκερασμένης κλίμακας με A4 = {a4} Hz. Μία μονάδα ισούται με το 0,06% της συχνότητας της νότας."
   placeholders:
     a4: {type: string}
 
@@ -89,8 +89,8 @@ summary.beats:
   plural:
     argument: pluralCount
     forms:
-      one: "{pluralCount} διακρότημα"
-      other: "{pluralCount} διακροτήματα"
+      one: "{pluralCount} μετρημένο ζεύγος καλαμιών"
+      other: "{pluralCount} μετρημένα ζεύγη καλαμιών"
   placeholders:
     pluralCount: {type: integer}
 

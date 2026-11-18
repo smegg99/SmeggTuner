@@ -4,13 +4,13 @@
 
 # Recording controls
 arm.hint: {value: "Mérés rögzítése minden stabil hangnál (az Enter azonnal rögzít)"}
-arm.needsSession: {value: "A rögzítéshez nyisson meg egy munkamenetet"}
-arm.warmup: {value: "A rögzítés ki van kapcsolva. Játsszon szabadon, semmi sem kerül mentésre. Nyomja meg a rögzítés indításához."}
+arm.needsSession: {value: "A mérések mentéséhez nyisson meg egy munkamenetet."}
+arm.warmup: {value: "A mérések mentése ki van kapcsolva. Játsszon szabadon. Nyomja meg a gombot a mérési eredmények mentéséhez."}
 undo.hint: {value: "Az utolsó mérés visszavonása"}
 
 # Readings table and compact columns
 mobile.current: {value: "Mért érték"}
-mobile.error: {value: "Eltérés"}
+mobile.error: {value: "Eltérés a céltól"}
 
 table.beat:
   value: Lebegés {pair}
@@ -29,7 +29,7 @@ table.graphHint: {value: "Hasonlítsa össze a sípokat a célértékükkel. Egy
 
 table.graphLabel: {value: "A sípok eltérései rögzített hangonként"}
 table.helpTitle: {value: "A táblázatról"}
-table.label: {value: "Rögzített hangolás"}
+table.label: {value: "Mentett mérések"}
 table.latest: {value: "Legutóbbi mérés. A Backspace billentyűvel törölhető"}
 table.manual: {value: "Módosítva"}
 table.manualHint: {value: "A sor egyik értékét kézzel adták meg, nem hangméréssel."}
@@ -44,7 +44,7 @@ table.notes:
     count:
       type: integer
 
-table.unitHint: {value: "A sípok eltérései a Beállításokban kiválasztott mértékegységben jelennek meg. A lebegés az eszköztáron választott beállítástól függően hertzben vagy az eltérés egységében látható."}
+table.unitHint: {value: "A sípok eltérésének mértékegysége a Beállításokban választható ki. A táblázat fölött beállíthatja, hogy a lebegés frekvenciája Hz-ben vagy az eltérés mértékegységében jelenjen meg."}
 
 # Report export dialog
 report.csv: {value: "CSV"}

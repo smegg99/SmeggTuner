@@ -13,10 +13,10 @@ crashWatchFailed: {value: "無法啟動崩潰監視器"}
 datastoreInitFailed: {value: "無法初始化資料儲存"}
 datastoreReady: {value: "資料儲存已就緒"}
 loadingConfig: {value: "正在載入配置"}
-loggerInitFailed: {value: "無法配置記錄檔記錄器"}
-reinitLogger: {value: "正在按配置重新設定記錄檔記錄器"}
+loggerInitFailed: {value: "無法設定日誌輸出"}
+reinitLogger: {value: "正在依設定重新配置日誌輸出"}
 runFailed: {value: "應用程式執行失敗"}
-secondInstance: {value: "偵測到第二個例項啟動，正在切換到現有視窗"}
+secondInstance: {value: "偵測到程式重複啟動，正在將原有視窗移到最前方"}
 trayIconFailed: {value: "無法載入托盤圖示"}
 updateCheckFailed: {value: "檢查更新失敗", description: "Update check or stored release-note state failed; logged without a dialog."}
 windowStateLoadFailed: {value: "無法載入視窗狀態"}
@@ -28,7 +28,7 @@ audioDeviceGone: {value: "所選音訊採集裝置已斷開"}
 audioDevicesListed: {value: "已列出音訊採集裝置"}
 audioDialogFailed: {value: "檔案對話框出錯"}
 audioDialogUnavailable: {value: "應用程式未執行時收到了檔案對話框請求"}
-audioFileUnreadable: {value: "無法開啟錄音"}
+audioFileUnreadable: {value: "無法開啟錄音檔"}
 audioNoDevices: {value: "沒有可用的音訊採集裝置"}
 audioSourceSelected: {value: "已選擇輸入源"}
 audioSpeakerUnavailable: {value: "沒有輸出裝置，檔案將靜音播放"}
@@ -72,7 +72,7 @@ sessionCurveImported: {value: "已匯入目標曲線"}
 sessionDeleted: {value: "工作階段已刪除"}
 sessionLoadFailed: {value: "無法載入工作階段"}
 sessionOpened: {value: "工作階段已開啟"}
-sessionReedsClamped: {value: "發聲的簧片數超過引擎的分辨能力，已將測量數限制為引擎支援的上限"}
+sessionReedsClamped: {value: "所選變音器同時發聲的簧片數超出偵測上限，只會量測其中一部分。"}
 sessionRejected: {value: "已拒絕無效的工作階段修改"}
 sessionSaveFailed: {value: "無法儲存工作階段"}
 
@@ -93,8 +93,8 @@ frontendError: {value: "應用程式發生意外錯誤"}
 frontendRejection: {value: "應用程式操作失敗"}
 frontendResizeNotice: {value: "佈局更新已推遲到下一幀（瀏覽器 ResizeObserver 通知）"}
 frontendSettingFailed: {value: "無法更改調音器設定"}
-frontendTunerStartFailed: {value: "無法啟動調音器"}
+frontendTunerStartFailed: {value: "無法開始量測"}
 frontendTunerStateFailed: {value: "無法讀取調音器狀態"}
-frontendTunerStopFailed: {value: "無法停止調音器"}
+frontendTunerStopFailed: {value: "無法停止量測"}
 frontendTunerTonePlayFailed: {value: "無法播放參考音"}
 frontendTunerToneStopFailed: {value: "無法停止參考音"}

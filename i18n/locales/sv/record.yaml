@@ -4,10 +4,10 @@
 # Plurals: one = 1; other = 0, 2, 3, ...
 
 # Recording controls
-arm.hint: {value: "Registrera en mätning varje gång tonen låses (retur registrerar direkt)"}
+arm.hint: {value: "Stabila mätvärden sparas. Tryck här för att sluta spara eller tryck på retur för att spara det aktuella värdet direkt."}
 arm.needsSession: {value: "Öppna en session för att registrera mätningar"}
-arm.warmup: {value: "Registrering avstängd. Spela fritt, inget sparas. Tryck för att börja registrera."}
-undo.hint: {value: "Ångra senaste mätningen"}
+arm.warmup: {value: "Spela fritt utan att spara mätvärden. Tryck här för att börja spara dem i sessionen."}
+undo.hint: {value: "Ångra senast sparade mätvärde"}
 
 # Readings table and compact columns
 mobile.current: {value: "Uppmätt"}
@@ -22,14 +22,14 @@ table.delete: {value: "Ta bort mätningen"}
 table.deleteHint: {value: "Ta bort mätningen permanent. Spela och registrera tonen igen för att ersätta den."}
 table.deleteTitle: {value: "Ta bort mätningen?"}
 table.editHint: {value: "Klicka eller tryck på retur för att ändra värdet"}
-table.empty: {value: "Starta registreringen och spela toner för att spara mätningar."}
+table.empty: {value: "Slå på registreringen av mätvärden och spela tonerna du vill mäta."}
 table.graph: {value: "Diagram"}
 
 table.graphHint:
   value: "Jämför varje stämtunga med dess målvärde. Klicka på en stapel för att välja dess rad och klicka igen för att välja nästa register."
-table.graphLabel: {value: "Stämtungornas avvikelser för varje registrerad ton"}
+table.graphLabel: {value: "Stämtungornas avvikelse från målvärdet för varje uppmätt ton"}
 table.helpTitle: {value: "Om tabellen"}
-table.label: {value: "Registrerad stämning"}
+table.label: {value: "Sparade stämvärden"}
 table.latest: {value: "Senast registrerad. Ta bort med backsteg"}
 table.manual: {value: "Redigerad"}
 table.manualHint: {value: "Ett värde på raden har skrivits in manuellt."}
@@ -44,7 +44,7 @@ table.notes:
     count: {type: integer}
 
 table.unitHint:
-  value: "Stämtungornas avvikelser visas i den enhet som valts i inställningarna. Svävningar visas i hertz eller avvikelseenheten enligt valet i verktygsfältet."
+  value: "Stämtungornas avvikelser visas i enheten du valt i inställningarna. För svävningar väljer du samma enhet eller hertz i verktygsfältet."
 # Report export dialog
 report.csv: {value: "CSV"}
 report.date: {value: "Datum"}

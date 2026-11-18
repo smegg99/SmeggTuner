@@ -5,20 +5,20 @@
 # Microphone and input level
 audioDeviceHint: {value: "Το μικρόφωνο που χρησιμοποιείται για τις μετρήσεις"}
 audioDeviceLabel: {value: "Συσκευή εισόδου"}
-audioDeviceSystemDefault: {value: "Προεπιλογή συστήματος"}
+audioDeviceSystemDefault: {value: "Προεπιλεγμένο μικρόφωνο συστήματος"}
 autoVolume.hint: {value: "Ρυθμίζει τη στάθμη του μικροφώνου κατά τη μέτρηση"}
 autoVolume.label: {value: "Αυτόματη ένταση εισόδου"}
 autoVolume.saveFailed: {value: "Δεν ήταν δυνατή η αποθήκευση της ρύθμισης έντασης εισόδου."}
 autoVolume.unsupported: {value: "Η στάθμη εισόδου αυτής της συσκευής δεν ρυθμίζεται."}
 humFilter50: {value: "50 Hz"}
 humFilter60: {value: "60 Hz"}
-humFilterHint: {value: "Αφαιρεί τον βόμβο του δικτύου: 50 Hz στην Ευρώπη, 60 Hz στην Αμερική"}
+humFilterHint: {value: "Επιλέξτε τη συχνότητα του τοπικού ηλεκτρικού δικτύου για να μειωθεί ο βόμβος"}
 humFilterLabel: {value: "Φίλτρο βόμβου δικτύου"}
 lockedWhileRunning: {value: "Σταματήστε το χορδιστήρι για να αλλάξετε την είσοδο ήχου."}
 
 # Detection and reference pitch
-continuousManual: {value: "Συνεχής ενημέρωση της επιλεγμένης νότας"}
-continuousManualHint: {value: "Ενημέρωση της επιλεγμένης νότας προτού σταθεροποιηθεί η ένδειξη"}
+continuousManual: {value: "Συνεχής ενημέρωση της ένδειξης για τη νότα που επιλέξατε"}
+continuousManualHint: {value: "Η ένδειξη ενημερώνεται και πριν σταθεροποιηθεί η μέτρηση."}
 detection.balanced: {value: "Ισορροπημένη"}
 detection.balancedHint: {value: "Αλλάζει νότα σε περίπου μισό δευτερόλεπτο"}
 detection.fast: {value: "Γρήγορη"}
@@ -30,13 +30,13 @@ lockA4: {value: "Κλείδωμα συχνότητας αναφοράς"}
 lockA4Hint: {value: "Εμποδίζει την αλλαγή του A4 στο χορδιστήρι"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "Χερτζ ή μονάδες ίσες με το 0,06% της συχνότητας της νότας"}
+beatUnitHint: {value: "Χερτζ ή η ίδια μονάδα που επιλέξατε για τις αποκλίσεις των καλαμιών"}
 beatUnitLabel: {value: "Μονάδα διακροτήματος"}
 errorReference: {value: "Αναφορά απόκλισης"}
-errorReferenceGoal: {value: "Στόχος"}
+errorReferenceGoal: {value: "Επιθυμητή τιμή"}
 
 errorReferenceHint:
-  value: "Εμφάνιση απόκλισης από τη νότα της κλίμακας ή από τον στόχο κουρδίσματος. Όταν επιτευχθεί ο στόχος, η απόκλιση από αυτόν είναι μηδέν."
+  value: "Συγκρίνετε το τονικό ύψος του καλαμιού με τη νότα της κλίμακας ή με το επιθυμητό κούρδισμα. Στη δεύτερη περίπτωση η ένδειξη μηδενίζεται όταν το καλάμι φτάσει στο επιθυμητό ύψος."
 errorReferenceScale: {value: "Κλίμακα"}
 scaleNamingHint: {value: "Τρόπος ονομασίας των νοτών"}
 scaleNamingLabel: {value: "Ονόματα νοτών"}
@@ -45,7 +45,7 @@ scaleNamings.cdefgah: {value: "C D E F G A H (γερμανικό, διέσεις
 scaleNamings.doremi: {value: "Ντο Ρε Μι (σολφέζ)"}
 scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (πολωνικό)"}
 toleranceBeat: {value: "Διακρότημα"}
-toleranceHint: {value: "Η μέγιστη απόκλιση καλαμιού ή διακροτήματος που θεωρείται ακόμη αποδεκτή"}
+toleranceHint: {value: "Πόσο μπορεί να απέχει το ύψος του καλαμιού ή η συχνότητα διακροτήματος από την επιθυμητή τιμή ώστε το κούρδισμα να θεωρείται αποδεκτό"}
 toleranceLabel: {value: "Ανοχές"}
 toleranceReed: {value: "Καλάμι"}
 unitHint: {value: "Σεντ ή μονάδες ίσες με το 0,06% της συχνότητας της νότας"}
@@ -60,7 +60,7 @@ accent.pick: {value: "Επιλογή χρώματος"}
 accent.pickTitle: {value: "Χρώμα έμφασης"}
 closeToTray: {value: "Ελαχιστοποίηση στην περιοχή ειδοποιήσεων κατά το κλείσιμο"}
 closeToTrayHint: {value: "Όταν κλείνει το παράθυρο, η εφαρμογή παραμένει στην περιοχή ειδοποιήσεων"}
-checkUpdates: {value: "Έλεγχος για ενημερώσεις", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdates: {value: "Αυτόματος έλεγχος για ενημερώσεις", description: "Desktop settings checkbox enabling GitHub update checks."}
 checkUpdatesHint: {value: "Αναζητά νεότερη έκδοση στο GitHub", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "Γλώσσα διεπαφής"}
 languageLabel: {value: "Γλώσσα"}
@@ -81,7 +81,7 @@ calibration.askBody:
 calibration.askCalibrate: {value: "Βαθμονόμηση τώρα"}
 calibration.askContinue: {value: "Συνέχεια χωρίς διόρθωση"}
 calibration.askTitle: {value: "Η κάρτα ήχου δεν έχει βαθμονομηθεί"}
-calibration.hint: {value: "Διορθώνει το σφάλμα του ρολογιού της κάρτας ήχου. Διαρκεί περίπου ένα λεπτό, χωρίς ήχο."}
+calibration.hint: {value: "Αντισταθμίζει την απόκλιση του ρολογιού δειγματοληψίας της κάρτας ήχου. Διαρκεί περίπου ένα λεπτό και δεν χρειάζεται να παίξετε."}
 calibration.label: {value: "Βαθμονόμηση κάρτας ήχου"}
 calibration.open: {value: "Άνοιγμα"}
 calibration.openHint: {value: "Εμφάνιση οθόνης βαθμονόμησης χωρίς έναρξη μέτρησης"}
@@ -109,16 +109,16 @@ calibration.screen.phase.preparing: {value: "Αναμονή σταθεροποί
 calibration.screen.phase.settling: {value: "Αναμονή μέχρι να σταθεροποιηθεί η ένδειξη του ρολογιού."}
 
 calibration.screen.pitch:
-  value: "Αυτό αντιστοιχεί σε απόκλιση {pitch} σε κάθε νότα."
+  value: "Αντίστοιχη απόκλιση τονικού ύψους για κάθε νότα: {pitch}."
   placeholders:
     pitch: {type: string}
 
-calibration.screen.preparing: {value: "Προθέρμανση εισόδου"}
+calibration.screen.preparing: {value: "Αναμονή για σταθεροποίηση της εισόδου"}
 calibration.screen.retry: {value: "Οι ενδείξεις παραμένουν χωρίς διόρθωση. Κλείστε τις άλλες εφαρμογές ήχου και προσπαθήστε ξανά."}
 calibration.screen.return: {value: "Επιστροφή"}
 calibration.screen.stat.dropouts: {value: "Διακοπές"}
 calibration.screen.stat.elapsed: {value: "Χρόνος που πέρασε"}
-calibration.screen.stat.offset: {value: "Απόκλιση ρολογιού"}
+calibration.screen.stat.offset: {value: "Απόκλιση συχνότητας ρολογιού"}
 calibration.screen.stat.rate: {value: "Ρυθμός δειγματοληψίας"}
 calibration.screen.stat.steadiness: {value: "Σταθερότητα"}
 

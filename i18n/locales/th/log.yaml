@@ -28,7 +28,7 @@ audioDeviceGone: {value: "ไม่พบอุปกรณ์รับเสี
 audioDevicesListed: {value: "เรียกดูรายการอุปกรณ์รับเสียงแล้ว"}
 audioDialogFailed: {value: "กล่องโต้ตอบไฟล์ทำงานผิดพลาด"}
 audioDialogUnavailable: {value: "มีคำขอเปิดกล่องโต้ตอบไฟล์ขณะที่แอปไม่ได้ทำงาน"}
-audioFileUnreadable: {value: "เปิดเสียงที่บันทึกไม่ได้"}
+audioFileUnreadable: {value: "เปิดไฟล์เสียงที่บันทึกไว้ไม่ได้"}
 audioNoDevices: {value: "ไม่มีอุปกรณ์รับเสียงที่พร้อมใช้งาน"}
 audioSourceSelected: {value: "เลือกแหล่งสัญญาณขาเข้าแล้ว"}
 audioSpeakerUnavailable: {value: "ไม่มีอุปกรณ์ขาออก ไฟล์จะเล่นโดยไม่มีเสียง"}
@@ -72,7 +72,7 @@ sessionCurveImported: {value: "นำเข้าเส้นโค้งเป�
 sessionDeleted: {value: "ลบเซสชันแล้ว"}
 sessionLoadFailed: {value: "โหลดเซสชันไม่ได้"}
 sessionOpened: {value: "เปิดเซสชันแล้ว"}
-sessionReedsClamped: {value: "จำนวนลิ้นเสียงที่ดังเกินกว่าที่ระบบวัดจะแยกได้ จึงจำกัดจำนวนที่วัดตามขีดความสามารถ"}
+sessionReedsClamped: {value: "รีจิสเตอร์ที่เลือกมีลิ้นเสียงดังพร้อมกันเกินจำนวนที่แยกได้ จึงวัดเพียงบางลิ้น"}
 sessionRejected: {value: "ปฏิเสธการแก้ไขเซสชันที่ไม่ถูกต้อง"}
 sessionSaveFailed: {value: "บันทึกเซสชันไม่ได้"}
 
@@ -93,8 +93,8 @@ frontendError: {value: "แอปเกิดข้อผิดพลาดโ�
 frontendRejection: {value: "การทำงานของแอปไม่สำเร็จ"}
 frontendResizeNotice: {value: "เลื่อนการเปลี่ยนผังหน้าจอไปยังเฟรมถัดไป (การแจ้งเตือน ResizeObserver ของเบราว์เซอร์)"}
 frontendSettingFailed: {value: "เปลี่ยนการตั้งค่าเครื่องตั้งเสียงไม่ได้"}
-frontendTunerStartFailed: {value: "เริ่มเครื่องตั้งเสียงไม่ได้"}
+frontendTunerStartFailed: {value: "เริ่มวัดไม่ได้"}
 frontendTunerStateFailed: {value: "อ่านสถานะเครื่องตั้งเสียงไม่ได้"}
-frontendTunerStopFailed: {value: "หยุดเครื่องตั้งเสียงไม่ได้"}
+frontendTunerStopFailed: {value: "หยุดวัดไม่ได้"}
 frontendTunerTonePlayFailed: {value: "เล่นเสียงอ้างอิงไม่ได้"}
 frontendTunerToneStopFailed: {value: "หยุดเสียงอ้างอิงไม่ได้"}

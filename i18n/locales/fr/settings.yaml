@@ -5,20 +5,20 @@
 # Microphone and input level
 audioDeviceHint: {value: "Microphone utilisé pour les mesures"}
 audioDeviceLabel: {value: "Périphérique d'entrée"}
-audioDeviceSystemDefault: {value: "Par défaut du système"}
+audioDeviceSystemDefault: {value: "Microphone par défaut du système"}
 autoVolume.hint: {value: "Règle le niveau du micro pendant la mesure"}
 autoVolume.label: {value: "Volume d'entrée automatique"}
 autoVolume.saveFailed: {value: "Impossible d'enregistrer le réglage du volume d'entrée."}
 autoVolume.unsupported: {value: "Le niveau d'entrée de ce périphérique n'est pas réglable."}
 humFilter50: {value: "50 Hz"}
 humFilter60: {value: "60 Hz"}
-humFilterHint: {value: "Élimine le ronflement du secteur : 50 Hz en Europe, 60 Hz en Amérique"}
+humFilterHint: {value: "Choisissez la fréquence du secteur pour filtrer le ronflement électrique."}
 humFilterLabel: {value: "Filtre de ronflement secteur"}
 lockedWhileRunning: {value: "Arrêtez l'accordeur pour changer d'entrée audio."}
 
 # Detection and reference pitch
-continuousManual: {value: "Mettre à jour en continu la note fixée"}
-continuousManualHint: {value: "Actualiser la mesure de la note fixée avant sa stabilisation"}
+continuousManual: {value: "Mesure continue en sélection manuelle"}
+continuousManualHint: {value: "Actualise la mesure de la note choisie même si elle n’est pas encore stable"}
 detection.balanced: {value: "Équilibrée"}
 detection.balancedHint: {value: "Passe à une autre note en une demi-seconde environ"}
 detection.fast: {value: "Rapide"}
@@ -26,17 +26,17 @@ detection.fastHint: {value: "Change de note au plus vite, au risque de se stabil
 detection.steady: {value: "Stable"}
 detection.steadyHint: {value: "Comportement d'origine, plus lent à changer de note"}
 detectionLabel: {value: "Détection des notes"}
-lockA4: {value: "Verrouiller le diapason"}
+lockA4: {value: "Verrouiller la fréquence du la4"}
 lockA4Hint: {value: "Empêche de modifier le la4 dans l'accordeur"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "Hertz ou unités de 0,06 % de la fréquence de la note"}
+beatUnitHint: {value: "En hertz ou dans l’unité choisie pour les écarts des anches"}
 beatUnitLabel: {value: "Unité des battements"}
 errorReference: {value: "Référence de l'écart"}
 errorReferenceGoal: {value: "Cible"}
 
 errorReferenceHint:
-  value: "Afficher l'écart par rapport à la hauteur de la gamme ou à la cible d'accordage. À la cible, l'écart relatif à celle-ci vaut zéro."
+  value: "Mesurez l’écart par rapport à la gamme tempérée ou à la cible. Avec la cible, la mesure vaut zéro dès que l’anche atteint l’écart prévu pour cette note."
 errorReferenceScale: {value: "Gamme"}
 scaleNamingHint: {value: "Système de dénomination des notes"}
 scaleNamingLabel: {value: "Noms des notes"}
@@ -45,7 +45,7 @@ scaleNamings.cdefgah: {value: "C D E F G A H (allemand, dièses comme C#)"}
 scaleNamings.doremi: {value: "Do Ré Mi (solfège)"}
 scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (polonais)"}
 toleranceBeat: {value: "Battement"}
-toleranceHint: {value: "Écart maximal d'une anche ou d'un battement encore considéré comme juste"}
+toleranceHint: {value: "Écart maximal admis entre la mesure et la valeur visée, pour une anche ou un battement."}
 toleranceLabel: {value: "Tolérances"}
 toleranceReed: {value: "Anche"}
 unitHint: {value: "Cents ou unités de 0,06 % de la fréquence de la note"}
@@ -60,7 +60,7 @@ accent.pick: {value: "Choisir une couleur"}
 accent.pickTitle: {value: "Couleur d'accentuation"}
 closeToTray: {value: "Réduire dans la zone de notification à la fermeture"}
 closeToTrayHint: {value: "Fermer la fenêtre laisse l'application dans la zone de notification"}
-checkUpdates: {value: "Rechercher des mises à jour", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdates: {value: "Rechercher automatiquement les mises à jour", description: "Desktop settings checkbox enabling GitHub update checks."}
 checkUpdatesHint: {value: "Recherche une version plus récente sur GitHub", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "Langue de l'interface"}
 languageLabel: {value: "Langue"}
@@ -109,7 +109,7 @@ calibration.screen.phase.preparing: {value: "L'entrée se stabilise avant la mes
 calibration.screen.phase.settling: {value: "En attente de la stabilisation de l'horloge."}
 
 calibration.screen.pitch:
-  value: "Cela représente {pitch} pour chaque note."
+  value: "Erreur de hauteur équivalente sur chaque note : {pitch}."
   placeholders:
     pitch: {type: string}
 
@@ -129,8 +129,8 @@ calibration.screen.steadiness:
     target: {type: string}
 
 calibration.screen.steps.done: {value: "Terminé"}
-calibration.screen.steps.measure: {value: "Mesurer"}
-calibration.screen.steps.prepare: {value: "Préparer"}
+calibration.screen.steps.measure: {value: "Mesure"}
+calibration.screen.steps.prepare: {value: "Préparation"}
 calibration.screen.traceEmpty: {value: "L'écart d'horloge est tracé ici pendant la mesure."}
 calibration.screen.unreliable: {value: "L'horloge ne s'est pas stabilisée"}
 calibration.start: {value: "Étalonner"}

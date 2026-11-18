@@ -4,10 +4,10 @@
 # Plurals: one, other (locale cardinal rules).
 
 # Recording controls
-arm.hint: {value: "Registar uma tomada sempre que a medição estabilizar (Enter para registar já)"}
-arm.needsSession: {value: "Abra uma sessão para gravar"}
+arm.hint: {value: "As leituras estáveis são registadas. Prima para parar o registo ou use Enter para guardar já a medição atual."}
+arm.needsSession: {value: "Abra uma sessão para guardar medições"}
 arm.warmup: {value: "Registo de medições desativado. Pode tocar à vontade sem guardar leituras. Prima para começar a registá-las."}
-undo.hint: {value: "Anular a última tomada"}
+undo.hint: {value: "Anular o registo da última medição"}
 
 # Readings table and compact columns
 mobile.current: {value: "Medição"}
@@ -19,18 +19,18 @@ table.beat:
     pair: {type: string}
 
 table.delete: {value: "Remover esta medição"}
-table.deleteHint: {value: "Remove definitivamente esta medição. Para a substituir, volte a tocar e a gravar a nota."}
+table.deleteHint: {value: "A medição é eliminada em definitivo. Para a substituir, volte a tocar a nota e guarde a nova leitura."}
 table.deleteTitle: {value: "Remover esta medição?"}
 table.editHint: {value: "Clique ou prima Enter para editar o valor"}
-table.empty: {value: "Inicie a gravação e toque as notas para guardar as medições."}
+table.empty: {value: "Ative o registo de medições e toque as notas que pretende acrescentar à tabela."}
 table.graph: {value: "Gráfico"}
 
 table.graphHint:
   value: "Compare cada palheta com o respetivo alvo. Clique numa coluna para selecionar a linha correspondente e clique novamente para selecionar o registo seguinte."
-table.graphLabel: {value: "Erros das palhetas de cada nota gravada"}
+table.graphLabel: {value: "Desvio de cada palheta em relação ao valor pretendido, nota a nota"}
 table.helpTitle: {value: "Sobre esta tabela"}
-table.label: {value: "Afinação registada"}
-table.latest: {value: "Última tomada: prima Backspace para a remover"}
+table.label: {value: "Medições de afinação guardadas"}
+table.latest: {value: "Última medição guardada. Prima Backspace para a eliminar."}
 table.manual: {value: "Editado"}
 table.manualHint: {value: "Um valor desta linha foi introduzido à mão em vez de ser medido."}
 
@@ -65,5 +65,5 @@ report.pdf: {value: "PDF"}
 report.title: {value: "Ficha de afinação"}
 
 # Recording errors
-error.takeNotFound: {value: "Esta tomada já não faz parte da passagem."}
+error.takeNotFound: {value: "Esta medição já não consta desta série."}
 error.unexpected: {value: "A operação falhou. Consulte o registo para obter mais detalhes."}

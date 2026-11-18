@@ -14,31 +14,31 @@ output.mute: {value: "Disattiva audio"}
 output.unmute: {value: "Riattiva audio"}
 output.volume: {value: "Volume di uscita"}
 soundcard.running: {value: "Calibrazione della scheda audio"}
-soundcard.uncalibrated: {value: "Scheda audio non calibrata. Calibra"}
-soundcard.unreliable: {value: "Calibrazione inaffidabile. Calibra di nuovo"}
+soundcard.uncalibrated: {value: "Scheda audio non calibrata. Apri la calibrazione."}
+soundcard.unreliable: {value: "Risultato inaffidabile. Apri la calibrazione della scheda audio."}
 source.analyze: {value: "Analizza registrazione…"}
-source.default: {value: "Predefinito di sistema"}
+source.default: {value: "Microfono predefinito di sistema"}
 source.noDevices: {value: "Nessun microfono trovato"}
 source.refresh: {value: "Aggiorna l'elenco dei dispositivi"}
 transport.fileHint: {value: "Avvia la riproduzione dal pannello della registrazione"}
-transport.start: {value: "Avvia"}
-transport.stop: {value: "Ferma"}
+transport.start: {value: "Avvia la misura dal microfono"}
+transport.stop: {value: "Ferma la misura dal microfono"}
 
 # Modes, registers and note selection
-bassRegister.all: {value: "Intero meccanismo"}
-bassRegister.hint: {value: "Registro dei bassi inserito"}
+bassRegister.all: {value: "Tutte le voci dei bassi"}
+bassRegister.hint: {value: "Seleziona il registro dei bassi in uso"}
 controls: {value: "Comandi di accordatura"}
 mode.auto: {value: "Auto"}
 mode.autoHint: {value: "Lascia che l'accordatore rilevi la nota"}
-mode.pinHint: {value: "Fissa questa nota"}
-mode.pinned: {value: "Nota fissata"}
-notes.clickToPin: {value: "fai clic per fissare"}
-notes.label: {value: "Note da Mi0 a Do9. Fai clic su una nota per fissarla."}
+mode.pinHint: {value: "Seleziona questa nota manualmente"}
+mode.pinned: {value: "Torna al rilevamento automatico"}
+notes.clickToPin: {value: "scegli la nota da misurare"}
+notes.label: {value: "Note da Mi0 a Do9. Seleziona la nota da misurare."}
 notes.range: {value: "Da Mi0 a Do9"}
 notes.title: {value: "Note"}
 notes.tracking: {value: "rilevamento"}
 panel.boxBase: {value: "La nota di base viene sempre misurata"}
-panel.boxChord: {value: "In modalità Accordi si misurano tutti e tre i suoni"}
+panel.boxChord: {value: "Vengono misurate tutte e tre le note dell’accordo"}
 panel.boxLast: {value: "Deve rimanere attiva almeno una casella"}
 
 panel.boxOctave:
@@ -68,13 +68,13 @@ panel.bySession:
 panel.locked: {value: "Stabile"}
 panel.modeHints.chords: {value: "Accordi di tre note"}
 panel.modeHints.octaves: {value: "Una nota con le sue ottave superiori"}
-panel.modeHints.tones: {value: "Una nota, fino a tre ance"}
+panel.modeHints.tones: {value: "Misura una sola nota prodotta da una, due o tre ance"}
 panel.modeLabel: {value: "Cosa viene misurato"}
 panel.modes.chords: {value: "Accordi"}
 panel.modes.octaves: {value: "Ottave"}
-panel.modes.tones: {value: "Suoni"}
+panel.modes.tones: {value: "Nota singola"}
 panel.quiet: {value: "Troppo debole"}
-panel.recorded: {value: "Registrato"}
+panel.recorded: {value: "Misura salvata"}
 panel.reeds: {value: "Ance"}
 
 reeds.count:
@@ -86,7 +86,7 @@ reeds.count:
   placeholders:
     n: {type: integer}
 
-register.hint: {value: "Registro inserito"}
+register.hint: {value: "Seleziona il registro inserito sulla fisarmonica"}
 register.lockedPlaying: {value: "Ferma la riproduzione per cambiare registro."}
 side.bass: {value: "Bassi"}
 side.hint: {value: "Lato del canto o dei bassi"}
@@ -97,20 +97,20 @@ step.noteUp: {value: "Sali di un semitono"}
 signal.add: {value: "Aggiungi un suono"}
 signal.cents: {value: "Scostamento dalla nota in cent"}
 signal.down: {value: "Scendi di un semitono (freccia sinistra, freccia giù per un'ottava)"}
-signal.open: {value: "Generatore di segnale: emette una nota di riferimento pulita per accordare un'ancia"}
-signal.play: {value: "Riproduci"}
-signal.playHint: {value: "Riproduci la nota con tutti i suoni o, se manca la nota, usa la prima che viene rilevata (Spazio)"}
+signal.open: {value: "Mostra o nascondi il generatore di toni di riferimento"}
+signal.play: {value: "Suona"}
+signal.playHint: {value: "Suona tutti i toni sulla nota scelta o sull’ultima nota rilevata. Se non c’è ancora una nota, la riproduzione inizia appena ne viene rilevata una (Spazio)."}
 signal.remove: {value: "Rimuovi questo suono"}
 signal.stop: {value: "Ferma"}
 signal.stopHint: {value: "Ferma il suono (Spazio)"}
 signal.title: {value: "Generatore di segnale"}
 signal.up: {value: "Sali di un semitono (freccia destra, freccia su per un'ottava)"}
-signal.wave.hint: {value: "Il suono di un'ancia contiene armoniche, sulle quali si sentono anche i battimenti."}
-signal.wave.reed: {value: "Ancia"}
+signal.wave.hint: {value: "Il timbro d’ancia contiene armoniche: puoi sentire i battimenti anche su quelle."}
+signal.wave.reed: {value: "Timbro d’ancia"}
 signal.wave.sine: {value: "Sinusoidale"}
 
 # Reference pitch and units
-reference.a4Locked: {value: "Bloccato nelle impostazioni"}
+reference.a4Locked: {value: "Frequenza del La4 bloccata nelle impostazioni"}
 reference.a4Type: {value: "Inserisci la frequenza del La4 in hertz, da 430 a 450"}
 reference.frozen: {value: "Valore fisso: la sessione contiene già misurazioni"}
 reference.transpose: {value: "Trasponi"}
@@ -135,7 +135,7 @@ boxes.beat:
     a: {type: string}
     b: {type: string}
 
-boxes.goal: {value: "obiettivo"}
+boxes.goal: {value: "atteso"}
 boxes.hzOnly: {value: "solo in Hz"}
 boxes.notHeard: {value: "non rilevata"}
 
@@ -145,12 +145,12 @@ boxes.reed:
     n: {type: string}
 
 boxes.reedBank:
-  value: "Ancia {bank}"
+  value: "Voce {bank}"
   placeholders:
     bank: {type: string}
 
 boxes.tone:
-  value: "Suono {n}"
+  value: "Nota {n}"
   placeholders:
     n: {type: string}
 
@@ -159,7 +159,7 @@ spectrum.label: {value: "Spettro di frequenza della nota rilevata"}
 spectrum.title: {value: "Spettro"}
 
 # Hold, noise learning and tuner state
-hold.hint: {value: "Mantieni le misurazioni stabili sullo schermo (H)"}
+hold.hint: {value: "Mantieni la lettura sullo schermo appena si stabilizza (H)"}
 state.deviceLost: {value: "Ingresso perso"}
 state.initializing: {value: "Misurazione del rumore ambientale"}
 state.running: {value: "In ascolto"}
@@ -198,10 +198,10 @@ calibrate.range.again: {value: "Ricomincia"}
 calibrate.range.backwards:
   value: "La nota più acuta non può essere più grave della più bassa. Misura di nuovo l'estensione."
 
-calibrate.range.capture: {value: "Acquisisci"}
+calibrate.range.capture: {value: "Acquisisci la nota"}
 calibrate.range.highest: {value: "Più acuta"}
 calibrate.range.lowest: {value: "Più grave"}
-calibrate.range.next: {value: "Passa alla calibrazione delle ance"}
+calibrate.range.next: {value: "Passa alle misure delle ance"}
 calibrate.range.playHigh: {value: "Ora suona il tasto più acuto."}
 calibrate.range.playLow: {value: "Suona il tasto più grave."}
 calibrate.range.step: {value: "Tastiera"}
@@ -209,7 +209,7 @@ calibrate.status.captured: {value: "Acquisita"}
 calibrate.status.holding: {value: "Mantieni la nota stabile"}
 calibrate.status.loud: {value: "Troppo forte"}
 calibrate.status.play: {value: "Suona una nota"}
-calibrate.sweep.bassAll: {value: "Bassi - intero meccanismo"}
+calibrate.sweep.bassAll: {value: "Bassi – tutte le voci"}
 
 calibrate.sweep.done:
   plural:
@@ -237,7 +237,7 @@ calibrate.sweep.skip: {value: "Salta"}
 calibrate.sweep.soloTeaches:
   value: "La scansione di un registro a una sola voce permette all'app di imparare anche il suono di quella voce."
 
-calibrate.sweep.startPlain: {value: "Avvia la scansione"}
+calibrate.sweep.startPlain: {value: "Inizia a misurare le note"}
 calibrate.sweep.step: {value: "Ance"}
 calibrate.sweep.stop: {value: "Ferma"}
 calibrate.title: {value: "Calibra"}
@@ -258,9 +258,9 @@ web.mic.denied:
 
 web.mic.failed: {value: "Impossibile aprire il microfono."}
 web.mic.none: {value: "Nessun microfono trovato."}
-web.mic.unsupported: {value: "Questo browser non può registrare audio."}
+web.mic.unsupported: {value: "Questo browser non può acquisire l’audio del microfono."}
 web.notice.background: {value: "Il browser può sospendere l'audio di una scheda in secondo piano."}
-web.notice.native: {value: "L'app installata offre la maggiore precisione."}
+web.notice.native: {value: "Per misure più affidabili, usa l’app installata."}
 web.notice.ok: {value: "Ho capito"}
 
 web.notice.processing:
@@ -286,7 +286,7 @@ error.deviceLost: {value: "Il microfono ha smesso di rispondere e l'accordatore 
 error.fileUnreadable: {value: "Impossibile leggere questa registrazione. Deve essere un file WAV."}
 error.invalidA4: {value: "Il diapason deve essere compreso tra 430 e 450 Hz."}
 error.invalidBox: {value: "Questa casella di ancia non esiste."}
-error.invalidMode: {value: "L'accordatore misura suoni, ottave o accordi."}
+error.invalidMode: {value: "Scegli Nota singola, Ottave o Accordi."}
 error.invalidNote: {value: "Questa nota è fuori dall'intervallo rilevato dall'accordatore."}
 error.invalidTranspose: {value: "La trasposizione va da 0 a 11 semitoni."}
 error.lastBox: {value: "Deve rimanere attiva almeno una casella."}
@@ -298,6 +298,6 @@ error.sampleRate:
 error.sessionDecides: {value: "Il registro della sessione aperta determina cosa viene misurato."}
 error.signalVoices:
   value: "Riproduci da uno a quattro suoni, ciascuno entro 100 cent dalla nota."
-error.toneNeedsManual: {value: "Fissa una nota per riprodurne il suono."}
+error.toneNeedsManual: {value: "Seleziona manualmente una nota per sentirne il suono di riferimento."}
 error.transposeMode: {value: "Accordi e ottave si misurano senza trasposizione."}
 error.unexpected: {value: "Si è verificato un errore. Consulta il registro per i dettagli."}

@@ -4,10 +4,10 @@
 # Plurals: one, other (locale cardinal rules).
 
 # Recording controls
-arm.hint: {value: "Registrar una toma cada vez que se estabilice la lectura (Intro para tomar una ahora)"}
-arm.needsSession: {value: "Abre una sesión para grabar"}
+arm.hint: {value: "Se guardan las lecturas estables. Pulsa para dejar de guardarlas o usa Intro para guardar la medición actual."}
+arm.needsSession: {value: "Abre una sesión para guardar mediciones"}
 arm.warmup: {value: "Registro de mediciones desactivado. Puedes tocar libremente sin guardar lecturas. Pulsa para empezar a registrarlas."}
-undo.hint: {value: "Deshacer la última toma"}
+undo.hint: {value: "Deshacer el registro de la última medición"}
 
 # Readings table and compact columns
 mobile.current: {value: "Medición"}
@@ -19,18 +19,18 @@ table.beat:
     pair: {type: string}
 
 table.delete: {value: "Eliminar esta medición"}
-table.deleteHint: {value: "Elimina definitivamente esta medición. Para sustituirla, vuelve a tocar y grabar la nota."}
+table.deleteHint: {value: "La medición se eliminará definitivamente. Para sustituirla, vuelve a tocar la nota y guarda la nueva lectura."}
 table.deleteTitle: {value: "¿Eliminar esta medición?"}
 table.editHint: {value: "Haz clic o pulsa Intro para editar el valor"}
-table.empty: {value: "Inicia la grabación y toca las notas para guardar sus mediciones."}
+table.empty: {value: "Activa el registro de mediciones y toca las notas que quieras añadir a la tabla."}
 table.graph: {value: "Gráfico"}
 
 table.graphHint:
   value: "Compara cada lengüeta con su objetivo. Haz clic en una columna para seleccionar su fila y vuelve a hacer clic para seleccionar el registro siguiente."
-table.graphLabel: {value: "Errores de las lengüetas de cada nota grabada"}
+table.graphLabel: {value: "Desviación de cada lengüeta respecto a su valor objetivo, nota por nota"}
 table.helpTitle: {value: "Acerca de esta tabla"}
-table.label: {value: "Afinación registrada"}
-table.latest: {value: "Última toma: pulsa Retroceso para eliminarla"}
+table.label: {value: "Mediciones de afinación guardadas"}
+table.latest: {value: "Última medición guardada. Pulsa Retroceso para eliminarla."}
 table.manual: {value: "Editado"}
 table.manualHint: {value: "Un valor de esta fila se introdujo a mano en lugar de medirse."}
 
@@ -65,5 +65,5 @@ report.pdf: {value: "PDF"}
 report.title: {value: "Ficha de afinación"}
 
 # Recording errors
-error.takeNotFound: {value: "Esta toma ya no está en la pasada."}
+error.takeNotFound: {value: "Esta medición ya no figura en esta serie."}
 error.unexpected: {value: "La operación ha fallado. Consulta el registro para más detalles."}

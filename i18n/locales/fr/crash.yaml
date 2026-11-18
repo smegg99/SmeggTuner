@@ -3,7 +3,7 @@ close: {value: "Fermer"}
 copied: {value: "Copié"}
 copy: {value: "Copier le rapport"}
 details: {value: "Détails"}
-email: {value: "Envoyer le rapport par e-mail"}
+email: {value: "Préparer un e-mail avec le rapport"}
 failed:
   value: "Échec de l’opération : {error}"
   placeholders:
@@ -12,27 +12,27 @@ file:
   value: "Fichier : {path}"
   placeholders:
     path: {type: string}
-kill: {value: "Fermer et signaler le problème"}
-logs: {value: "Afficher le journal"}
+kill: {value: "Forcer la fermeture et préparer le rapport"}
+logs: {value: "Afficher le fichier journal dans son dossier"}
 messageConfig:
   value: "Impossible de lire le fichier de paramètres. Corrigez-le ou supprimez-le, puis relancez {app}."
   placeholders:
     app: {type: string}
 messageCrash:
-  value: "Une erreur interne est survenue dans {app}. Envoyez le rapport pour aider à la corriger, puis relancez l’application."
+  value: "{app} s’est arrêtée de façon inattendue. Vous pouvez transmettre le rapport à l’assistance, puis relancer l’application."
   placeholders:
     app: {type: string}
-messageHang: {value: "L’opération en cours peut encore aboutir. Patientez, ou fermez l’application et envoyez un rapport."}
+messageHang: {value: "L’opération peut encore aboutir. Patientez ou fermez l’application pour consulter le rapport de diagnostic."}
 messageHangStopped:
-  value: "{app} a été fermée alors qu’elle ne répondait plus. Envoyez le rapport pour aider à corriger le problème, puis relancez l’application."
+  value: "{app} a été fermée après avoir cessé de répondre. Vous pouvez transmettre le rapport à l’assistance ou relancer l’application."
   placeholders:
     app: {type: string}
 messageKilled:
-  value: "{app} a été fermée avant de pouvoir signaler le problème. Envoyez le rapport, puis relancez l’application."
+  value: "{app} s’est fermée avant d’avoir pu indiquer la cause du problème. Vous pouvez transmettre les informations disponibles à l’assistance ou relancer l’application."
   placeholders:
     app: {type: string}
 messageOom:
-  value: "Le système a fermé {app} par manque de mémoire. Envoyez le rapport, puis relancez l’application."
+  value: "Le système a fermé {app} par manque de mémoire. Vous pouvez transmettre le rapport à l’assistance ou relancer l’application."
   placeholders:
     app: {type: string}
 messageStartup:

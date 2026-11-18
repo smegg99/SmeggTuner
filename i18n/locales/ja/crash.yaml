@@ -3,7 +3,7 @@ close: {value: "閉じる"}
 copied: {value: "コピーしました"}
 copy: {value: "レポートをコピー"}
 details: {value: "詳細"}
-email: {value: "レポートをメールで送信"}
+email: {value: "レポートを添えてメールを作成"}
 failed:
   value: "操作に失敗しました：{error}"
   placeholders:
@@ -12,8 +12,8 @@ file:
   value: "ファイル：{path}"
   placeholders:
     path: {type: string}
-kill: {value: "終了して報告"}
-logs: {value: "ログファイルを表示"}
+kill: {value: "強制終了してレポートを作成"}
+logs: {value: "ログファイルの場所を開く"}
 messageConfig:
   value: "設定ファイルを読み込めませんでした。ファイルを修正するか削除してから、{app} を再起動してください。"
   placeholders:
@@ -22,7 +22,7 @@ messageCrash:
   value: "{app} で内部エラーが発生しました。原因の調査のためにレポートを送信してから、アプリを再起動してください。"
   placeholders:
     app: {type: string}
-messageHang: {value: "処理が完了する場合があります。そのまま待つか、アプリを終了してレポートを送信してください。"}
+messageHang: {value: "処理が終わるまで待つことも、アプリを強制終了してからレポートを確認し、送信することもできます。"}
 messageHangStopped:
   value: "{app} は応答しない状態で終了しました。原因の調査のためにレポートを送信してから、アプリを再起動してください。"
   placeholders:
@@ -54,7 +54,7 @@ titleHang: {value: "アプリが応答していません"}
 titleHangStopped: {value: "アプリが応答しなくなりました"}
 titleKilled: {value: "アプリが予期せず終了しました"}
 titleStart: {value: "アプリを起動できませんでした"}
-wait: {value: "待機"}
+wait: {value: "もう少し待つ"}
 windowCrash: {value: "異常終了"}
 windowHang: {value: "応答なし"}
 windowHangStopped: {value: "応答が停止しました"}

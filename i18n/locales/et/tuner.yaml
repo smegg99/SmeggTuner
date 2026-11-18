@@ -3,7 +3,7 @@
 # Editing guide: ../../README.md.
 
 # Input, output and playback
-input.relearnHint: {value: "Õpi taustamüra uuesti (4 s vaikust)"}
+input.relearnHint: {value: "Mõõda taustamüra uuesti (ole 4 s vaikselt)"}
 input.tooStrong: {value: "Signaal on liiga tugev"}
 input.unreliable: {value: "Signaal on ebausaldusväärne"}
 inputPanel.label: {value: "Sisendsignaal"}
@@ -13,32 +13,32 @@ output.mute: {value: "Vaigista"}
 output.unmute: {value: "Taasta heli"}
 output.volume: {value: "Väljundi helitugevus"}
 soundcard.running: {value: "Helikaardi kalibreerimine"}
-soundcard.uncalibrated: {value: "Helikaart on kalibreerimata. Kalibreeri"}
-soundcard.unreliable: {value: "Kalibreerimine on ebausaldusväärne. Kalibreeri uuesti"}
+soundcard.uncalibrated: {value: "Helikaart on kalibreerimata. Ava kalibreerimine."}
+soundcard.unreliable: {value: "Kalibreerimise tulemus pole usaldusväärne. Ava helikaardi kalibreerimine."}
 source.analyze: {value: "Analüüsi salvestist…"}
-source.default: {value: "Süsteemi vaikevalik"}
+source.default: {value: "Vaikemikrofon"}
 source.noDevices: {value: "Mikrofone ei leitud"}
 source.refresh: {value: "Värskenda seadmete loendit"}
-transport.fileHint: {value: "Salvestist saab esitada selle enda kaardilt"}
-transport.start: {value: "Käivita"}
-transport.stop: {value: "Peata"}
+transport.fileHint: {value: "Käivita taasesitus WAV-faili paneelilt"}
+transport.start: {value: "Alusta mõõtmist"}
+transport.stop: {value: "Peata mõõtmine"}
 
 # Modes, registers and note selection
-bassRegister.all: {value: "Kogu bassimehhanism"}
+bassRegister.all: {value: "Kõik bassi keeleread"}
 bassRegister.hint: {value: "Valitud bassiregister"}
 controls: {value: "Häälestuse juhtnupud"}
 mode.auto: {value: "Automaatne"}
 mode.autoHint: {value: "Lase häälestajal noot tuvastada"}
-mode.pinHint: {value: "Kinnita see noot"}
-mode.pinned: {value: "Kinnitatud noot"}
-notes.clickToPin: {value: "klõpsa kinnitamiseks"}
-notes.label: {value: "Noodid E0 kuni C9. Klõpsa noodil selle kinnitamiseks."}
+mode.pinHint: {value: "Vali see noot käsitsi"}
+mode.pinned: {value: "Naase automaattuvastusele"}
+notes.clickToPin: {value: "vali mõõdetav noot"}
+notes.label: {value: "Noodid E0–C9. Klõpsa noodil, mida soovid mõõta."}
 notes.range: {value: "E0 kuni C9"}
 notes.title: {value: "Noodid"}
 notes.tracking: {value: "jälgimine"}
 panel.boxBase: {value: "Põhinooti mõõdetakse alati"}
 panel.boxChord: {value: "Akordirežiimis mõõdetakse kõiki kolme heli"}
-panel.boxLast: {value: "Vähemalt üks kast jääb aktiivseks"}
+panel.boxLast: {value: "Vähemalt üks mõõdetav heli peab jääma valituks"}
 
 panel.boxOctave:
   plural:
@@ -64,16 +64,16 @@ panel.bySession:
   placeholders:
     n: {type: integer}
 
-panel.locked: {value: "Lukustunud"}
+panel.locked: {value: "Stabiilne näit"}
 panel.modeHints.chords: {value: "Kolmehelilised akordid"}
 panel.modeHints.octaves: {value: "Noot koos ülemiste oktavidega"}
-panel.modeHints.tones: {value: "Üks noot, kuni kolm keelt"}
+panel.modeHints.tones: {value: "Üks mängitud noot, korraga 1–3 keelt"}
 panel.modeLabel: {value: "Mida mõõdetakse"}
 panel.modes.chords: {value: "Akordid"}
 panel.modes.octaves: {value: "Oktavid"}
-panel.modes.tones: {value: "Toonid"}
+panel.modes.tones: {value: "Üks noot"}
 panel.quiet: {value: "Liiga vaikne"}
-panel.recorded: {value: "Salvestatud"}
+panel.recorded: {value: "Näit salvestatud"}
 panel.reeds: {value: "Keeled"}
 
 reeds.count:
@@ -85,7 +85,7 @@ reeds.count:
   placeholders:
     n: {type: integer}
 
-register.hint: {value: "Valitud register"}
+register.hint: {value: "Vali pillil sisse lülitatud register"}
 register.lockedPlaying: {value: "Registri vahetamiseks peata taasesitus."}
 side.bass: {value: "Bass"}
 side.hint: {value: "Meloodia- või bassipool"}
@@ -96,16 +96,16 @@ step.noteUp: {value: "Pooltooni võrra kõrgemale"}
 signal.add: {value: "Lisa toon"}
 signal.cents: {value: "Kõrvalekalle noodist sentides"}
 signal.down: {value: "Pooltooni võrra alla (vasaknool, oktavi jaoks allanool)"}
-signal.open: {value: "Signaaligeneraator mängib puhast võrdlustooni, mille järgi keelt häälestada"}
+signal.open: {value: "Näita või peida võrdlustooni generaator"}
 signal.play: {value: "Esita"}
-signal.playHint: {value: "Esita nooti kõigi toonidega. Kui nooti veel pole, kasuta esimest tuvastatud nooti (tühik)."}
+signal.playHint: {value: "Esita kõik toonid käsitsi valitud või viimati tuvastatud noodil. Kui nooti veel pole, algab esitus esimese tuvastatud noodiga (tühik)."}
 signal.remove: {value: "Eemalda see toon"}
 signal.stop: {value: "Peata"}
 signal.stopHint: {value: "Peata toon (tühik)"}
 signal.title: {value: "Signaaligeneraator"}
 signal.up: {value: "Pooltooni võrra üles (paremnool, oktavi jaoks ülesnool)"}
-signal.wave.hint: {value: "Keele helis on ülemhelid, seega kuuleb tuiklemist ka neil"}
-signal.wave.reed: {value: "Keel"}
+signal.wave.hint: {value: "Akordionikeele kõlas on ülemhelid. Tuiklemist kuuled ka nende vahel."}
+signal.wave.reed: {value: "Keelekõla"}
 signal.wave.sine: {value: "Siinus"}
 
 # Reference pitch and units
@@ -123,7 +123,7 @@ reference.transposed:
   placeholders:
     n: {type: string}
 
-unit.cents: {value: "Sent"}
+unit.cents: {value: "Sendid"}
 unit.hz: {value: "Hz"}
 unit.reference: {value: "Ühikud"}
 
@@ -134,9 +134,9 @@ boxes.beat:
     a: {type: string}
     b: {type: string}
 
-boxes.goal: {value: "siht"}
+boxes.goal: {value: "sihtväärtus"}
 boxes.hzOnly: {value: "ainult hertsides"}
-boxes.notHeard: {value: "pole kuulda"}
+boxes.notHeard: {value: "ei tuvastatud"}
 
 boxes.reed:
   value: "Keel {n}"
@@ -144,7 +144,7 @@ boxes.reed:
     n: {type: string}
 
 boxes.reedBank:
-  value: "Keel {bank}"
+  value: "Keelerida {bank}"
   placeholders:
     bank: {type: string}
 
@@ -158,7 +158,7 @@ spectrum.label: {value: "Jälgitava noodi sagedusspekter"}
 spectrum.title: {value: "Spekter"}
 
 # Hold, noise learning and tuner state
-hold.hint: {value: "Jäta stabiilsed näidud ekraanile (H)"}
+hold.hint: {value: "Hoia stabiilne näit automaatselt ekraanil (H)"}
 state.deviceLost: {value: "Sisend kadus"}
 state.initializing: {value: "Ruumi taustamüra mõõtmine"}
 state.running: {value: "Kuulamine"}
@@ -200,7 +200,7 @@ calibrate.range.backwards:
 calibrate.range.capture: {value: "Fikseeri"}
 calibrate.range.highest: {value: "Kõrgeim"}
 calibrate.range.lowest: {value: "Madalaim"}
-calibrate.range.next: {value: "Jätka keelte kalibreerimisega"}
+calibrate.range.next: {value: "Jätka keelte mõõtmisega"}
 calibrate.range.playHigh: {value: "Mängi nüüd kõrgeimat klahvi."}
 calibrate.range.playLow: {value: "Mängi madalaimat klahvi."}
 calibrate.range.step: {value: "Klaviatuur"}
@@ -208,7 +208,7 @@ calibrate.status.captured: {value: "Fikseeritud"}
 calibrate.status.holding: {value: "Hoia nooti ühtlasena"}
 calibrate.status.loud: {value: "Liiga vali"}
 calibrate.status.play: {value: "Mängi nooti"}
-calibrate.sweep.bassAll: {value: "Bass – kogu mehhanism"}
+calibrate.sweep.bassAll: {value: "Bass – kõik keeleread"}
 
 calibrate.sweep.done:
   plural:
@@ -229,14 +229,14 @@ calibrate.sweep.progress:
     done: {type: string}
     total: {type: string}
 
-calibrate.sweep.redoRange: {value: "Mõõda klaviatuur uuesti"}
+calibrate.sweep.redoRange: {value: "Mõõda klaviatuuri ulatus uuesti"}
 calibrate.sweep.review: {value: "Vaata kaarti"}
 calibrate.sweep.skip: {value: "Jäta vahele"}
 
 calibrate.sweep.soloTeaches:
-  value: "Ühehäälse registri läbimäng õpetab rakendusele ka selle hääle kõla."
+  value: "Kui mõõdad noodid läbi ühe keelereaga registris, õpib rakendus tundma ka selle keelerea kõla."
 
-calibrate.sweep.startPlain: {value: "Alusta läbimängu"}
+calibrate.sweep.startPlain: {value: "Alusta nootide mõõtmist"}
 calibrate.sweep.step: {value: "Keeled"}
 calibrate.sweep.stop: {value: "Peata"}
 calibrate.title: {value: "Kalibreeri"}
@@ -257,9 +257,9 @@ web.mic.denied:
 
 web.mic.failed: {value: "Mikrofoni ei saanud avada."}
 web.mic.none: {value: "Mikrofoni ei leitud."}
-web.mic.unsupported: {value: "See brauser ei saa heli salvestada."}
+web.mic.unsupported: {value: "See brauser ei toeta mikrofonisisendit."}
 web.notice.background: {value: "Taustale jäetud vahelehel võib heli peatuda."}
-web.notice.native: {value: "Täpseks mõõtmiseks kasuta paigaldatud rakendust."}
+web.notice.native: {value: "Töökindlamate mõõtmiste jaoks kasuta paigaldatud rakendust."}
 web.notice.ok: {value: "Sain aru"}
 
 web.notice.processing:
@@ -285,7 +285,7 @@ error.deviceLost: {value: "Mikrofon lakkas vastamast ja häälestaja peatati."}
 error.fileUnreadable: {value: "Salvestist ei saanud lugeda. Vaja on WAV-faili."}
 error.invalidA4: {value: "Võrdlussagedus peab olema vahemikus 430 kuni 450 Hz."}
 error.invalidBox: {value: "Sellist keele näidukasti pole."}
-error.invalidMode: {value: "Häälestaja mõõdab toone, oktaveid või akorde."}
+error.invalidMode: {value: "Vali üksiku noodi, oktavite või akordide mõõtmine."}
 error.invalidNote: {value: "Noot jääb häälestaja jälgimisulatusest välja."}
 error.invalidTranspose: {value: "Transpositsioon on 0 kuni 11 pooltooni."}
 error.lastBox: {value: "Vähemalt üks kast jääb aktiivseks."}
@@ -297,6 +297,6 @@ error.sampleRate:
 error.sessionDecides: {value: "Mõõdetava määrab avatud seansi register."}
 error.signalVoices:
   value: "Esita üks kuni neli tooni, igaüks noodist kuni 100 sendi kaugusel."
-error.toneNeedsManual: {value: "Tooni esitamiseks kinnita noot."}
+error.toneNeedsManual: {value: "Võrdlustooni esitamiseks vali noot käsitsi."}
 error.transposeMode: {value: "Akorde ja oktaveid mõõdetakse transponeerimata."}
 error.unexpected: {value: "Midagi läks valesti. Vaata üksikasju logist."}

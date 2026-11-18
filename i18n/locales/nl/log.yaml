@@ -44,7 +44,7 @@ volumeStepFailed: {value: "Automatische volumeregeling kon het ingangsniveau nie
 volumeUnavailable: {value: "Automatische volumeregeling heeft geen toegang tot het ingangsniveau van het apparaat"}
 
 # Tuner engine
-tunerEventsDropped: {value: "Meetgebeurtenissen overgeslagen doordat de interface achterloopt"}
+tunerEventsDropped: {value: "Meetgebeurtenissen overgeslagen omdat de weergave achterloopt"}
 tunerRunFailed: {value: "Meetproces gestopt met een fout"}
 tunerSettingRejected: {value: "Instelling buiten het toegestane bereik geweigerd"}
 tunerStartFailed: {value: "Ingangsbron aanmaken mislukt"}
@@ -56,8 +56,8 @@ tunerTonePlaying: {value: "Referentietoon wordt afgespeeld"}
 # Sessions, readings and reports
 recordCleared: {value: "Meetronde gewist"}
 recordEdited: {value: "Meting handmatig bewerkt"}
-recordRejected: {value: "Opnameverzoek geweigerd"}
-recordTake: {value: "Meting vastgelegd"}
+recordRejected: {value: "Wijziging geweigerd: de gekozen tong ontbreekt in deze meting"}
+recordTake: {value: "Meetwaarde opgeslagen"}
 recordUndone: {value: "Laatste meting ongedaan gemaakt"}
 reportFailed: {value: "Stemrapport schrijven mislukt"}
 reportOpenFailed: {value: "Stemrapport openen mislukt"}
@@ -72,7 +72,7 @@ sessionCurveImported: {value: "Doelcurve geïmporteerd"}
 sessionDeleted: {value: "Sessie verwijderd"}
 sessionLoadFailed: {value: "Sessie laden mislukt"}
 sessionOpened: {value: "Sessie geopend"}
-sessionReedsClamped: {value: "Er klinken meer tongen dan het meetproces kan onderscheiden. Het aantal wordt begrensd"}
+sessionReedsClamped: {value: "Voor de sessie zijn meer tongen opgegeven dan tegelijk gemeten kunnen worden. Het aantal te meten tongen is begrensd"}
 sessionRejected: {value: "Ongeldige sessiewijziging geweigerd"}
 sessionSaveFailed: {value: "Sessie opslaan mislukt"}
 
@@ -93,8 +93,8 @@ frontendError: {value: "Onverwachte toepassingsfout"}
 frontendRejection: {value: "Bewerking in de toepassing mislukt"}
 frontendResizeNotice: {value: "Opmaakwijziging uitgesteld tot het volgende frame (ResizeObserver-melding van de browser)"}
 frontendSettingFailed: {value: "Instelling van het stemapparaat wijzigen mislukt"}
-frontendTunerStartFailed: {value: "Stemapparaat starten mislukt"}
+frontendTunerStartFailed: {value: "Meting starten mislukt"}
 frontendTunerStateFailed: {value: "Status van het stemapparaat uitlezen mislukt"}
-frontendTunerStopFailed: {value: "Stemapparaat stoppen mislukt"}
+frontendTunerStopFailed: {value: "Meting stoppen mislukt"}
 frontendTunerTonePlayFailed: {value: "Referentietoon kon niet worden afgespeeld"}
 frontendTunerToneStopFailed: {value: "Referentietoon kon niet worden gestopt"}

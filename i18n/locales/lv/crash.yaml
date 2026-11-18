@@ -3,7 +3,7 @@ close: {value: "Aizvērt"}
 copied: {value: "Nokopēts"}
 copy: {value: "Kopēt ziņojumu"}
 details: {value: "Detalizēta informācija"}
-email: {value: "Nosūtīt ziņojumu pa e-pastu"}
+email: {value: "Atvērt e-pasta melnrakstu ar ziņojumu"}
 failed:
   value: "Darbību neizdevās veikt: {error}"
   placeholders:
@@ -12,27 +12,27 @@ file:
   value: "Fails: {path}"
   placeholders:
     path: {type: string}
-kill: {value: "Aizvērt un ziņot"}
-logs: {value: "Rādīt žurnālfailu"}
+kill: {value: "Aizvērt un sagatavot ziņojumu"}
+logs: {value: "Parādīt žurnālfailu mapē"}
 messageConfig:
   value: "Neizdevās nolasīt iestatījumu failu. Izlabojiet vai izdzēsiet to un vēlreiz palaidiet {app}."
   placeholders:
     app: {type: string}
 messageCrash:
-  value: "Lietotnē {app} radās iekšēja kļūda. Nosūtiet ziņojumu, lai palīdzētu novērst kļūdu, un palaidiet lietotni vēlreiz."
+  value: "Lietotne {app} negaidīti pārtrauca darbu. Varat nosūtīt ziņojumu atbalsta dienestam un palaist lietotni vēlreiz."
   placeholders:
     app: {type: string}
-messageHang: {value: "Iespējams, lietotne vēl pabeigs iesākto darbību. Uzgaidiet vai aizveriet lietotni un nosūtiet ziņojumu."}
+messageHang: {value: "Lietotne vēl var pabeigt iesākto darbību. Varat uzgaidīt vai aizvērt lietotni, lai sagatavotu kļūdas ziņojumu."}
 messageHangStopped:
-  value: "Lietotne {app} tika aizvērta, kamēr tā neatbildēja. Nosūtiet ziņojumu un palaidiet lietotni vēlreiz."
+  value: "Lietotne {app} tika aizvērta, jo neatbildēja. Varat nosūtīt ziņojumu atbalsta dienestam vai palaist lietotni vēlreiz."
   placeholders:
     app: {type: string}
 messageKilled:
-  value: "Lietotne {app} tika aizvērta, pirms tā paspēja paziņot par kļūdu. Nosūtiet ziņojumu un palaidiet lietotni vēlreiz."
+  value: "Lietotne {app} tika aizvērta, pirms tā paspēja norādīt cēloni. Varat nosūtīt pieejamo informāciju atbalsta dienestam vai palaist lietotni vēlreiz."
   placeholders:
     app: {type: string}
 messageOom:
-  value: "Sistēmai nepietika atmiņas, tāpēc tā aizvēra {app}. Nosūtiet ziņojumu un palaidiet lietotni vēlreiz."
+  value: "Sistēmai pietrūka atmiņas, tāpēc tā aizvēra lietotni {app}. Varat nosūtīt ziņojumu atbalsta dienestam vai palaist lietotni vēlreiz."
   placeholders:
     app: {type: string}
 messageStartup:

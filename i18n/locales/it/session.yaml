@@ -9,7 +9,7 @@ card.a4:
   placeholders:
     hz: {type: string}
 
-card.changed: {value: "La scheda della fisarmonica in biblioteca è cambiata da quando è stata registrata questa sessione."}
+card.changed: {value: "La scheda dello strumento in biblioteca è cambiata da quando sono state salvate le misure di questa sessione."}
 card.hasCurve: {value: "Curva obiettivo impostata"}
 
 card.readings:
@@ -39,9 +39,9 @@ new: {value: "Nuova sessione"}
 title: {value: "Sessioni"}
 
 # Session dialog and tabs
-dialog.backToList: {value: "Scegli una fisarmonica già accordata"}
+dialog.backToList: {value: "Scegli dalla biblioteca degli strumenti"}
 dialog.describeNew: {value: "Descrivi una nuova fisarmonica…"}
-dialog.forgetAccordion: {value: "Dimentica questa fisarmonica"}
+dialog.forgetAccordion: {value: "Rimuovi la fisarmonica dalla biblioteca"}
 dialog.loadAccordion: {value: "Carica da file…"}
 dialog.name: {value: "Nome della sessione"}
 dialog.nameHint: {value: "Usa il nome dello strumento o del cliente per identificare la sessione."}
@@ -54,10 +54,10 @@ page.mobile.recorded: {value: "Misurazioni"}
 accordion.a4Locked: {value: "Valore fisso: questa sessione contiene già misurazioni eseguite con questo riferimento."}
 
 accordion.columnsRefused:
-  value: "La modifica cambierebbe le file di ance usate nelle misurazioni esistenti e non è stata salvata. Ripristina le file precedenti o crea una nuova sessione."
+  value: "Le misure già salvate si riferiscono alle voci precedenti. La modifica non è stata salvata. Ripristina quelle voci o crea una nuova sessione."
 accordion.frozen:
-  value: "Dopo aver registrato le misurazioni, il diapason e le file di ance non possono più cambiare. Puoi ancora aggiungere registri che usano le file esistenti."
-accordion.frozenShort: {value: "File bloccate"}
+  value: "Dopo il salvataggio delle prime misure, diapason, trasposizione e voci restano fissi per la sessione. Puoi ancora aggiungere registri che combinano queste voci."
+accordion.frozenShort: {value: "Voci bloccate"}
 accordion.remember: {value: "Salva nella biblioteca strumenti"}
 accordion.rememberHint: {value: "Salva lo strumento di questa sessione nella biblioteca per usarlo in altre sessioni."}
 
@@ -67,8 +67,8 @@ instrument.a4: {value: "Diapason"}
 instrument.a4Hint:
   value: "Frequenza di riferimento del La4 in hertz. Le nuove sessioni per questo strumento usano questo valore."
 
-instrument.bass.build: {value: "Altezze in piedi del prossimo registro"}
-instrument.bass.fixed: {value: "Senza registri dei bassi il meccanismo è fisso e tutte le voci suonano sempre insieme."}
+instrument.bass.build: {value: "Scegli le voci del nuovo registro dei bassi"}
+instrument.bass.fixed: {value: "Nessun selettore di registro ai bassi. Tutte le voci dei bassi suonano insieme."}
 
 instrument.bass.full:
   value: "Qui il meccanismo dei bassi ammette al massimo {n} registri"
@@ -83,8 +83,8 @@ instrument.builder.add: {value: "Aggiungi"}
 instrument.builder.already: {value: "Questo registro è già definito"}
 instrument.builder.high: {value: "Piccolo 4'"}
 instrument.builder.low: {value: "Basso 16'"}
-instrument.builder.middle: {value: "Ance da 8'"}
-instrument.builder.none: {value: "Nessun registro per ora. Scegli qui sotto le file che suonano per ciascuno."}
+instrument.builder.middle: {value: "Voci da 8′"}
+instrument.builder.none: {value: "Nessun registro definito. Per aggiungerne uno, scegli le voci che deve far suonare."}
 instrument.builder.remove: {value: "Rimuovi questo registro"}
 instrument.builder.title: {value: "Aggiungi un registro"}
 instrument.file.exportTitle: {value: "Esporta fisarmonica"}
@@ -99,25 +99,25 @@ instrument.nameRequired: {value: "Inserisci un nome per la fisarmonica."}
 instrument.photo: {value: "Fotografia"}
 instrument.range.backwards: {value: "La nota più acuta non può essere più grave della nota più bassa."}
 instrument.range.clear: {value: "Cancella"}
-instrument.range.down: {value: "Più grave"}
+instrument.range.down: {value: "Abbassa di un semitono"}
 
 instrument.range.hint:
-  value: "Facoltativo. Indica il tasto più grave e quello più acuto. Puoi anche impostare l'estensione a orecchio durante la calibrazione."
+  value: "Facoltativo. Inserisci la nota più grave e quella più acuta, oppure suonale durante la calibrazione dello strumento."
 
 instrument.range.label: {value: "Estensione della tastiera"}
 instrument.range.to: {value: "a"}
-instrument.range.up: {value: "Più acuto"}
+instrument.range.up: {value: "Alza di un semitono"}
 
 instrument.registersHint:
-  value: "Fai clic sui punti del simbolo di ciascun registro (il cerchio inciso sulla fisarmonica) o scegli un simbolo comune. I punti indicano direttamente quali file suonano."
-instrument.registersSubtitle: {value: "I registri del canto e le file che suonano per ciascuno."}
+  value: "Riproduci il simbolo inciso sul registro. Seleziona le voci da 4′ e da 16′ che suonano, indica quante voci da 8′ sono attive e aggiungi il registro."
+instrument.registersSubtitle: {value: "Registri del canto e voci attivate da ciascuno."}
 
 instrument.says:
   plural:
     argument: reeds
     forms:
-      one: "File di ance: {banks}. Il registro più ricco fa suonare {reeds} ancia."
-      other: "File di ance: {banks}. Il registro più ricco fa suonare {reeds} ance."
+      one: "Voci: {banks}. A seconda del registro, fino a {reeds} ancia per nota."
+      other: "Voci: {banks}. A seconda del registro, fino a {reeds} ance per nota."
   placeholders:
     banks: {type: string}
     reeds: {type: integer}
@@ -130,7 +130,7 @@ instrument.sections.voices: {value: "Registri"}
 instrument.tolerance: {value: "Tolleranza delle ance"}
 
 instrument.toleranceHint:
-  value: "Scostamento ammesso per un'ancia in unità dello 0,06% della frequenza della nota. Le misurazioni fuori da questo intervallo sono segnalate come stonate."
+  value: "Errore massimo ammesso rispetto al valore atteso per l’ancia, in unità dello 0,06% della frequenza della nota. Oltre questo limite l’ancia è segnalata come fuori accordatura."
 # Target curve editor
 curve.clearAll: {value: "Cancella curva"}
 
@@ -141,7 +141,7 @@ curve.clearAllTitle: {value: "Cancellare l'intera curva?"}
 curve.entryUnit: {value: "Unità di inserimento"}
 
 curve.help.hz:
-  value: "In Hz l'obiettivo è riferito a La4 = 440 Hz, come nell'elenco di riferimento dei battimenti, quindi non varia con il La4 della sessione. «Misurazioni registrate» sovrappone le misurazioni della sessione all'elenco. Dal menu «Elenco» puoi adattare i punti di ancoraggio a queste misurazioni o copiare l'elenco di un'altra sessione."
+  value: "In Hz l'obiettivo è riferito a La4 = 440 Hz, come nell'elenco di riferimento dei battimenti, quindi non varia con il La4 della sessione. «Misure salvate» sovrappone le misurazioni della sessione all'elenco. Dal menu «Elenco» puoi adattare i punti di ancoraggio a queste misurazioni o copiare l'elenco di un'altra sessione."
 curve.help.hzTitle: {value: "Hertz e misurazioni"}
 
 curve.help.interp:
@@ -149,11 +149,11 @@ curve.help.interp:
 curve.help.interpTitle: {value: "Tra i punti"}
 
 curve.help.lead:
-  value: "Per ogni nota l'obiettivo indica di quanto ciascuna ancia deve discostarsi dall'altezza della scala. La tabella confronta l'ancia registrata con questo obiettivo, anziché con lo zero, per stabilire se rientra nella tolleranza."
+  value: "Per ogni nota, la curva indica lo scostamento previsto per ciascuna ancia rispetto alla scala temperata. La tabella confronta lo scostamento misurato con quel valore per stabilire se l’ancia rientra nella tolleranza."
 curve.help.set:
-  value: "Scegli una nota e un valore e premi «Imposta», oppure trascina un punto del grafico verso l'alto o il basso. Ogni fila ha una propria linea. Quella che stai modificando è evidenziata."
+  value: "Scegli una nota e un valore, poi premi «Imposta». Puoi anche trascinare un punto su o giù nel grafico. Ogni curva corrisponde a una voce. Quella che stai modificando è evidenziata."
 curve.help.setTitle: {value: "Impostare un punto"}
-curve.helpTitle: {value: "Battimenti desiderati"}
+curve.helpTitle: {value: "Scostamenti previsti per le ance e battimenti"}
 curve.interpolate: {value: "Interpola"}
 curve.interpolateHint: {value: "Segui la linea tra i punti. Se l'opzione è disattivata, ogni punto mantiene il suo valore fino al successivo."}
 curve.menu.ends: {value: "Oltre i punti di ancoraggio"}
@@ -177,8 +177,8 @@ curve.menu.replace: {value: "Sostituisci l'elenco"}
 curve.menu.replaceBody: {value: "I punti di ancoraggio saranno sostituiti da quelli dell'altro elenco, comprese le relative impostazioni."}
 curve.menu.replaceConfirm: {value: "Sostituisci"}
 curve.menu.replaceTitle: {value: "Sostituire l'elenco dei battimenti?"}
-curve.rank: {value: "Fila"}
-curve.recorded: {value: "Misurazioni registrate"}
+curve.rank: {value: "Voce"}
+curve.recorded: {value: "Misure salvate"}
 curve.recordedHint: {value: "Mostra le misurazioni della sessione sul grafico"}
 curve.remove: {value: "Rimuovi"}
 curve.removeHint: {value: "Rimuovi dalla curva il punto di ancoraggio di questa nota."}
@@ -191,7 +191,7 @@ curve.scale:
 curve.scaleAuto: {value: "Scala automatica"}
 curve.scaleHint: {value: "Estensione verticale del grafico"}
 curve.set: {value: "Imposta"}
-curve.setHint: {value: "Inserisci un punto di ancoraggio su questa nota per la fila selezionata."}
+curve.setHint: {value: "Inserisci un punto di ancoraggio su questa nota per la voce scelta."}
 curve.startHint: {value: "Nessun punto di ancoraggio. Per ogni nota l'obiettivo è l'altezza della scala."}
 
 # Readings and workshop actions
@@ -218,22 +218,22 @@ readings.notes:
   placeholders:
     n: {type: integer}
 
-workshop.exit: {value: "Esci dalla sessione"}
+workshop.exit: {value: "Chiudi la sessione"}
 workshop.import: {value: "Importa"}
 workshop.open: {value: "Apri"}
-workshop.print: {value: "Stampa scheda"}
+workshop.print: {value: "Esporta la scheda"}
 
 # Session errors
 error.fitFailed: {value: "Impossibile adattare una curva alle misurazioni di questa passata."}
 
 error.hasReadings:
-  value: "Questa sessione contiene già misurazioni eseguite con il suo diapason e numero di ance. Nessuno dei due parametri può più cambiare."
+  value: "La sessione contiene già delle misure. Non è più possibile cambiarne il diapason, la trasposizione o la disposizione delle voci."
 error.imageUnreadable: {value: "Impossibile aprire questa fotografia."}
 error.instrumentName: {value: "Dai un nome alla fisarmonica per poterla ritrovare."}
 error.invalidA4: {value: "Il diapason deve essere compreso tra 430 e 450 Hz."}
 
 error.invalidInstrument:
-  value: "Impossibile usare questa fisarmonica: una fila di ance è indicata due volte oppure un registro attiva una fila che lo strumento non ha."
+  value: "Impossibile usare questa fisarmonica. Due voci hanno lo stesso nome oppure un registro attiva una voce assente dallo strumento."
 error.invalidName: {value: "Dai un nome alla sessione."}
 error.invalidNote: {value: "Questa nota è fuori dall'intervallo rilevato dall'accordatore."}
 error.invalidReed: {value: "Questa fisarmonica non fa suonare quell'ancia."}
@@ -245,12 +245,12 @@ error.loadFailed: {value: "Impossibile leggere la sessione."}
 error.noBassMachine: {value: "Per questa fisarmonica non è definito un meccanismo dei bassi."}
 error.noBassRegister: {value: "Questa fisarmonica non ha quel registro dei bassi."}
 error.noCurve: {value: "Questa sessione non ha una curva obiettivo."}
-error.noReadings: {value: "In questa sessione non è stato ancora registrato nulla."}
+error.noReadings: {value: "Non ci sono ancora misure in questa sessione."}
 error.noRegister: {value: "Questa fisarmonica non ha quel registro."}
 error.noSession: {value: "Nessuna sessione aperta."}
 error.notAnImage: {value: "Questo file non è una fotografia."}
 error.notFound: {value: "Questa sessione non esiste più."}
 error.notesTooLong: {value: "Riduci l'annotazione a 500 caratteri."}
-error.saveFailed: {value: "Impossibile salvare la sessione. Se chiudi ora, potresti perdere le ultime acquisizioni."}
+error.saveFailed: {value: "Impossibile salvare la sessione. Se la chiudi adesso, rischi di perdere le ultime misure."}
 error.takeNotFound: {value: "Questa misurazione non esiste più."}
 error.unexpected: {value: "Si è verificato un errore."}

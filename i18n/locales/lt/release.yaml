@@ -9,7 +9,7 @@ updateBody:
   placeholders:
     current: {type: string}
     latest: {type: string}
-updateDownload: {value: "Atsisiųsti"}
+updateDownload: {value: "Atverti atsisiuntimo puslapį"}
 updateIgnore: {value: "Praleisti šią versiją"}
 updateLater: {value: "Vėliau"}
 updateTitle: {value: "Yra naujesnė versija"}

@@ -9,7 +9,7 @@ updateBody:
   placeholders:
     current: {type: string}
     latest: {type: string}
-updateDownload: {value: "Lataa"}
+updateDownload: {value: "Avaa lataussivu"}
 updateIgnore: {value: "Ohita tämä versio"}
 updateLater: {value: "Myöhemmin"}
 updateTitle: {value: "Uudempi versio on saatavilla"}

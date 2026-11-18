@@ -12,13 +12,13 @@ autoVolume.saveFailed: {value: "입력 음량 설정을 저장하지 못했습�
 autoVolume.unsupported: {value: "이 장치의 입력 레벨은 조절할 수 없습니다."}
 humFilter50: {value: "50 Hz"}
 humFilter60: {value: "60 Hz"}
-humFilterHint: {value: "전원 잡음을 제거합니다(유럽 50 Hz, 미주 60 Hz)"}
+humFilterHint: {value: "지역의 전원 주파수를 선택해 전원에서 생기는 저주파 잡음을 줄이세요"}
 humFilterLabel: {value: "전원 잡음 필터"}
-lockedWhileRunning: {value: "오디오 입력을 바꾸려면 튜너를 중지하세요."}
+lockedWhileRunning: {value: "입력을 바꾸려면 먼저 측정을 중지하세요."}
 
 # Detection and reference pitch
-continuousManual: {value: "고정한 음의 측정값을 계속 갱신"}
-continuousManualHint: {value: "측정값이 확정되기 전에도 고정한 음의 값을 갱신합니다"}
+continuousManual: {value: "수동 선택한 음의 측정값 계속 갱신"}
+continuousManualHint: {value: "수동으로 음을 선택하면 측정값이 안정되기 전부터 표시를 갱신합니다"}
 detection.balanced: {value: "균형"}
 detection.balancedHint: {value: "약 0.5초 만에 다른 음으로 전환합니다"}
 detection.fast: {value: "빠름"}
@@ -26,17 +26,17 @@ detection.fastHint: {value: "가장 빠르게 전환하지만 잘못된 음으�
 detection.steady: {value: "안정"}
 detection.steadyHint: {value: "기존 방식으로 음 전환이 느립니다"}
 detectionLabel: {value: "음 감지"}
-lockA4: {value: "기준 음높이 잠금"}
+lockA4: {value: "A4 기준 주파수 고정"}
 lockA4Hint: {value: "튜너에서 A4 값을 바꾸지 못하게 합니다"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "헤르츠 또는 해당 음 주파수의 0.06 % 단위"}
+beatUnitHint: {value: "맥놀이는 헤르츠 또는 리드 편차에 선택한 단위로 표시합니다."}
 beatUnitLabel: {value: "맥놀이 단위"}
 errorReference: {value: "편차 기준"}
-errorReferenceGoal: {value: "목표 음높이"}
+errorReferenceGoal: {value: "목표값"}
 
 errorReferenceHint:
-  value: "음계 음높이 또는 조율 목표와의 편차를 표시합니다. 목표를 기준으로 하면 목표에 도달했을 때 측정값이 0입니다."
+  value: "음계의 음높이에서 얼마나 벗어났는지, 또는 조율 목표와 얼마나 차이 나는지 표시합니다. 목표를 기준으로 하면 목표에 맞을 때 0이 표시됩니다."
 errorReferenceScale: {value: "음계"}
 scaleNamingHint: {value: "음 이름을 표시하는 방식"}
 scaleNamingLabel: {value: "음 이름 표기"}
@@ -60,7 +60,7 @@ accent.pick: {value: "색상 선택"}
 accent.pickTitle: {value: "강조색"}
 closeToTray: {value: "닫을 때 트레이로 최소화"}
 closeToTrayHint: {value: "창을 닫으면 앱이 시스템 트레이에 남습니다"}
-checkUpdates: {value: "업데이트 확인", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdates: {value: "업데이트 자동 확인", description: "Desktop settings checkbox enabling GitHub update checks."}
 checkUpdatesHint: {value: "GitHub에서 새 버전을 확인합니다", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "화면 표시 언어"}
 languageLabel: {value: "언어"}
@@ -113,7 +113,7 @@ calibration.screen.pitch:
   placeholders:
     pitch: {type: string}
 
-calibration.screen.preparing: {value: "입력 장치 준비 중"}
+calibration.screen.preparing: {value: "입력 안정화 대기 중"}
 calibration.screen.retry: {value: "측정값이 보정되지 않았습니다. 다른 오디오 앱을 닫고 다시 시도하세요."}
 calibration.screen.return: {value: "돌아가기"}
 calibration.screen.stat.dropouts: {value: "신호 끊김 횟수"}
@@ -163,4 +163,4 @@ groups.report: {value: "조율 작업실 정보"}
 # Report letterhead
 report.address: {value: "주소"}
 report.name: {value: "조율 작업실 이름"}
-report.nameHint: {value: "레터헤드를 켜면 내보낸 보고서에 표시됩니다."}
+report.nameHint: {value: "보고서 머리글을 사용하면 내보낸 보고서에 작업실 이름이 표시됩니다."}

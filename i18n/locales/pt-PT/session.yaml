@@ -9,7 +9,7 @@ card.a4:
   placeholders:
     hz: {type: string}
 
-card.changed: {value: "A ficha do acordeão na biblioteca mudou desde a gravação desta sessão."}
+card.changed: {value: "A ficha do instrumento na biblioteca mudou desde que foram guardadas as medições desta sessão."}
 card.hasCurve: {value: "Curva-alvo definida"}
 
 card.readings:
@@ -39,9 +39,9 @@ new: {value: "Nova sessão"}
 title: {value: "Sessões"}
 
 # Session dialog and tabs
-dialog.backToList: {value: "Escolher um acordeão já afinado"}
+dialog.backToList: {value: "Escolher na biblioteca de instrumentos"}
 dialog.describeNew: {value: "Descrever um novo acordeão…"}
-dialog.forgetAccordion: {value: "Esquecer este acordeão"}
+dialog.forgetAccordion: {value: "Remover o acordeão da biblioteca"}
 dialog.loadAccordion: {value: "Carregar de um ficheiro…"}
 dialog.name: {value: "Nome da sessão"}
 dialog.nameHint: {value: "Use o nome do instrumento ou do cliente para identificar a sessão."}
@@ -54,10 +54,10 @@ page.mobile.recorded: {value: "Medições"}
 accordion.a4Locked: {value: "Valor fixo: esta sessão já contém medições feitas com esta referência."}
 
 accordion.columnsRefused:
-  value: "A alteração modificaria as filas de palhetas usadas nas medições existentes e não foi guardada. Reponha as filas anteriores ou crie uma nova sessão."
+  value: "As medições guardadas referem-se às vozes anteriores. A alteração não foi guardada. Reponha essas vozes ou crie outra sessão."
 accordion.frozen:
-  value: "Depois de guardar medições, não é possível alterar a frequência de referência nem as filas de palhetas. Pode ainda adicionar registos que usem as filas existentes."
-accordion.frozenShort: {value: "Filas bloqueadas"}
+  value: "Depois de guardar medições, a frequência de referência, a transposição e as vozes ficam fixas. Pode continuar a acrescentar registos que combinem essas vozes."
+accordion.frozenShort: {value: "Vozes bloqueadas"}
 accordion.remember: {value: "Guardar na biblioteca de instrumentos"}
 accordion.rememberHint: {value: "Guarde o instrumento desta sessão na biblioteca para o usar noutras sessões."}
 
@@ -67,8 +67,8 @@ instrument.a4: {value: "Frequência de referência"}
 instrument.a4Hint:
   value: "Frequência de referência do lá4 em hertz. As novas sessões deste instrumento usam este valor."
 
-instrument.bass.build: {value: "Alturas em pés do próximo registo"}
-instrument.bass.fixed: {value: "Sem registos de baixos, o mecanismo é fixo e todas as vozes soam sempre em conjunto."}
+instrument.bass.build: {value: "Escolher as vozes do novo registo de baixos"}
+instrument.bass.fixed: {value: "Os baixos não têm seletor de registo. Todas as vozes dos baixos soam em conjunto."}
 
 instrument.bass.full:
   value: "Aqui o mecanismo dos baixos admite até {n} registos"
@@ -83,8 +83,8 @@ instrument.builder.add: {value: "Adicionar"}
 instrument.builder.already: {value: "Este registo já está definido"}
 instrument.builder.high: {value: "Piccolo de 4'"}
 instrument.builder.low: {value: "Baixo de 16'"}
-instrument.builder.middle: {value: "Palhetas de 8'"}
-instrument.builder.none: {value: "Ainda não há registos. Escolha abaixo as filas que cada um faz soar."}
+instrument.builder.middle: {value: "Vozes de 8′"}
+instrument.builder.none: {value: "Ainda não há registos. Para acrescentar um, escolha as vozes que faz soar."}
 instrument.builder.remove: {value: "Remover este registo"}
 instrument.builder.title: {value: "Adicionar um registo"}
 instrument.file.exportTitle: {value: "Exportar acordeão"}
@@ -99,25 +99,25 @@ instrument.nameRequired: {value: "Introduza um nome para o acordeão."}
 instrument.photo: {value: "Fotografia"}
 instrument.range.backwards: {value: "A nota mais aguda não pode ser mais grave do que a nota mais baixa."}
 instrument.range.clear: {value: "Limpar"}
-instrument.range.down: {value: "Mais grave"}
+instrument.range.down: {value: "Baixar um semitom"}
 
 instrument.range.hint:
-  value: "Opcional. Indique as teclas mais grave e mais aguda. Também pode definir a extensão de ouvido durante a calibração."
+  value: "Opcional. Indique a nota mais grave e a mais aguda ou toque-as durante a calibração do instrumento."
 
 instrument.range.label: {value: "Extensão do teclado"}
 instrument.range.to: {value: "a"}
-instrument.range.up: {value: "Mais aguda"}
+instrument.range.up: {value: "Subir um semitom"}
 
 instrument.registersHint:
-  value: "Clique nos pontos do símbolo de cada registo (o círculo gravado no acordeão) ou escolha um símbolo habitual. Os pontos indicam diretamente quais as filas que soam."
-instrument.registersSubtitle: {value: "Os registos do lado dos agudos e as filas que cada um faz soar."}
+  value: "Reproduza o símbolo gravado no registo. Selecione as vozes de 4′ e 16′ que soam, indique quantas vozes de 8′ estão ativas e acrescente o registo."
+instrument.registersSubtitle: {value: "Registos da mão direita e vozes que cada um faz soar."}
 
 instrument.says:
   plural:
     argument: reeds
     forms:
-      one: "Filas de palhetas: {banks}. O registo mais completo faz soar {reeds} palheta."
-      other: "Filas de palhetas: {banks}. O registo mais completo faz soar {reeds} palhetas."
+      one: "Vozes: {banks}. Consoante o registo, até {reeds} palheta por nota."
+      other: "Vozes: {banks}. Consoante o registo, até {reeds} palhetas por nota."
   placeholders:
     banks: {type: string}
     reeds: {type: integer}
@@ -130,7 +130,7 @@ instrument.sections.voices: {value: "Registos"}
 instrument.tolerance: {value: "Tolerância das palhetas"}
 
 instrument.toleranceHint:
-  value: "Desvio admissível de uma palheta em unidades de 0,06 % da frequência da nota. As medições fora deste intervalo são assinaladas como desafinadas."
+  value: "Diferença máxima admissível em relação ao valor-alvo da palheta, em unidades de 0,06 % da frequência da nota. Acima desse limite, a palheta é assinalada como desafinada."
 # Target curve editor
 curve.clearAll: {value: "Limpar curva"}
 
@@ -141,7 +141,7 @@ curve.clearAllTitle: {value: "Limpar toda a curva?"}
 curve.entryUnit: {value: "Unidade de entrada"}
 
 curve.help.hz:
-  value: "Em Hz, o alvo toma como referência lá4 = 440 Hz, tal como a lista de batimentos de referência, pelo que não varia com o lá4 da sessão. «Medições gravadas» sobrepõe as medições da sessão à lista. No menu «Lista», pode ajustar os pontos de ancoragem a essas medições ou copiar a lista de outra sessão."
+  value: "Em Hz, o alvo toma como referência lá4 = 440 Hz, tal como a lista de batimentos de referência, pelo que não varia com o lá4 da sessão. «Medições guardadas» sobrepõe as medições da sessão à lista. No menu «Lista», pode ajustar os pontos de ancoragem a essas medições ou copiar a lista de outra sessão."
 curve.help.hzTitle: {value: "Hertz e medições"}
 
 curve.help.interp:
@@ -149,11 +149,11 @@ curve.help.interp:
 curve.help.interpTitle: {value: "Entre os pontos"}
 
 curve.help.lead:
-  value: "Para cada nota, o alvo indica quanto cada palheta se deve desviar da altura da escala. A tabela compara a palheta gravada com esse alvo, em vez do zero, para determinar se está dentro da tolerância."
+  value: "Para cada nota, a curva indica quanto se pretende desviar cada palheta da escala temperada. A tabela compara o desvio medido com esse valor para determinar se a palheta está dentro da tolerância."
 curve.help.set:
-  value: "Escolha uma nota e um valor e prima «Definir», ou arraste um ponto do gráfico para cima ou para baixo. Cada fila tem a sua linha e a que está a editar fica realçada."
+  value: "Escolha uma nota e um valor e prima «Definir». Pode também arrastar um ponto para cima ou para baixo. Cada curva corresponde a uma voz e a curva que está a editar aparece realçada."
 curve.help.setTitle: {value: "Definir um ponto"}
-curve.helpTitle: {value: "Batimentos pretendidos"}
+curve.helpTitle: {value: "Desvios pretendidos para as palhetas e batimentos"}
 curve.interpolate: {value: "Interpolar"}
 curve.interpolateHint: {value: "Seguir a linha entre os pontos. Com a opção desativada, o valor de cada ponto mantém-se até ao seguinte."}
 curve.menu.ends: {value: "Para além dos pontos de ancoragem"}
@@ -177,8 +177,8 @@ curve.menu.replace: {value: "Substituir a lista"}
 curve.menu.replaceBody: {value: "Os pontos de ancoragem serão substituídos pelos da outra lista, juntamente com as respetivas definições."}
 curve.menu.replaceConfirm: {value: "Substituir"}
 curve.menu.replaceTitle: {value: "Substituir a lista de batimentos?"}
-curve.rank: {value: "Fila"}
-curve.recorded: {value: "Medições gravadas"}
+curve.rank: {value: "Voz"}
+curve.recorded: {value: "Medições guardadas"}
 curve.recordedHint: {value: "Mostrar as medições desta sessão no gráfico"}
 curve.remove: {value: "Remover"}
 curve.removeHint: {value: "Remover da curva o ponto de ancoragem desta nota."}
@@ -191,7 +191,7 @@ curve.scale:
 curve.scaleAuto: {value: "Escala automática"}
 curve.scaleHint: {value: "Amplitude vertical do gráfico"}
 curve.set: {value: "Definir"}
-curve.setHint: {value: "Colocar um ponto de ancoragem nesta nota para a fila selecionada."}
+curve.setHint: {value: "Colocar um ponto de ancoragem nesta nota para a voz selecionada."}
 curve.startHint: {value: "Ainda não há pontos de ancoragem. O alvo de cada nota é a altura da escala."}
 
 # Readings and workshop actions
@@ -218,22 +218,22 @@ readings.notes:
   placeholders:
     n: {type: integer}
 
-workshop.exit: {value: "Sair da sessão"}
+workshop.exit: {value: "Fechar a sessão"}
 workshop.import: {value: "Importar"}
 workshop.open: {value: "Abrir"}
-workshop.print: {value: "Imprimir ficha"}
+workshop.print: {value: "Exportar ficha"}
 
 # Session errors
 error.fitFailed: {value: "Não foi possível ajustar uma curva às medições desta passagem."}
 
 error.hasReadings:
-  value: "Esta sessão já contém medições feitas com a sua frequência de referência e o seu número de palhetas. Já não é possível alterar estes parâmetros."
+  value: "A sessão já contém medições. Não é possível alterar a frequência de referência, a transposição nem a disposição das vozes usadas nessas medições."
 error.imageUnreadable: {value: "Não foi possível abrir a fotografia."}
 error.instrumentName: {value: "Dê um nome ao acordeão para o poder encontrar mais tarde."}
 error.invalidA4: {value: "A frequência de referência deve estar entre 430 e 450 Hz."}
 
 error.invalidInstrument:
-  value: "Não é possível usar este acordeão: uma fila de palhetas aparece duas vezes ou um registo aciona uma fila que o instrumento não tem."
+  value: "Não é possível usar este acordeão. Duas vozes têm o mesmo nome ou um registo aciona uma voz que o instrumento não tem."
 error.invalidName: {value: "Dê um nome à sessão."}
 error.invalidNote: {value: "Esta nota está fora do intervalo detetado pelo afinador."}
 error.invalidReed: {value: "Este acordeão não faz soar essa palheta."}
@@ -245,12 +245,12 @@ error.loadFailed: {value: "Não foi possível ler a sessão."}
 error.noBassMachine: {value: "Este acordeão não tem nenhum mecanismo de baixos definido."}
 error.noBassRegister: {value: "Este acordeão não tem esse registo de baixos."}
 error.noCurve: {value: "Esta sessão não tem curva-alvo."}
-error.noReadings: {value: "Ainda não foi gravado nada nesta sessão."}
+error.noReadings: {value: "Ainda não há medições guardadas nesta sessão."}
 error.noRegister: {value: "Este acordeão não tem esse registo."}
 error.noSession: {value: "Nenhuma sessão aberta."}
 error.notAnImage: {value: "Este ficheiro não é uma fotografia."}
 error.notFound: {value: "Esta sessão já não existe."}
 error.notesTooLong: {value: "Reduza a observação a 500 caracteres."}
-error.saveFailed: {value: "Não foi possível guardar a sessão. Se fechar agora, poderá perder as últimas tomadas."}
+error.saveFailed: {value: "Não foi possível guardar a sessão. Se a fechar agora, poderá perder as últimas medições."}
 error.takeNotFound: {value: "Esta medição já não existe."}
 error.unexpected: {value: "Ocorreu um erro."}

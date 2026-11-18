@@ -3,7 +3,7 @@ close: {value: "Luk"}
 copied: {value: "Kopieret"}
 copy: {value: "Kopiér rapport"}
 details: {value: "Detaljer"}
-email: {value: "Send rapport via e-mail"}
+email: {value: "Opret e-mail med rapporten"}
 failed:
   value: "Handlingen mislykkedes: {error}"
   placeholders:
@@ -12,27 +12,27 @@ file:
   value: "Fil: {path}"
   placeholders:
     path: {type: string}
-kill: {value: "Luk og indberet fejlen"}
-logs: {value: "Vis logfil"}
+kill: {value: "Luk appen og vis rapporten"}
+logs: {value: "Vis logfilen i filhåndteringen"}
 messageConfig:
   value: "Indstillingsfilen kunne ikke læses. Ret eller slet filen, og start {app} igen."
   placeholders:
     app: {type: string}
 messageCrash:
-  value: "Der opstod en intern fejl i {app}. Send rapporten, så fejlen kan blive rettet, og start programmet igen."
+  value: "{app} lukkede uventet. Du kan sende rapporten til support og starte appen igen."
   placeholders:
     app: {type: string}
-messageHang: {value: "Programmet kan muligvis stadig afslutte opgaven. Vent, eller luk programmet og send en rapport."}
+messageHang: {value: "Appen arbejder muligvis stadig. Du kan vente eller lukke appen for at se fejlrapporten."}
 messageHangStopped:
-  value: "{app} blev lukket, mens programmet ikke svarede. Send rapporten, og start programmet igen."
+  value: "{app} svarede ikke og blev lukket. Du kan sende rapporten til support eller starte appen igen."
   placeholders:
     app: {type: string}
 messageKilled:
-  value: "{app} blev lukket, før programmet kunne melde fejlen. Send rapporten, og start programmet igen."
+  value: "{app} blev lukket, før årsagen kunne registreres. Du kan sende de tilgængelige oplysninger til support eller starte appen igen."
   placeholders:
     app: {type: string}
 messageOom:
-  value: "Systemet løb tør for hukommelse og lukkede {app}. Send rapporten, og start programmet igen."
+  value: "Systemet løb tør for hukommelse og lukkede {app}. Du kan sende rapporten til support eller starte appen igen."
   placeholders:
     app: {type: string}
 messageStartup:
@@ -55,7 +55,7 @@ titleHangStopped: {value: "Programmet holdt op med at svare"}
 titleKilled: {value: "Programmet lukkede uventet"}
 titleStart: {value: "Programmet kunne ikke starte"}
 wait: {value: "Vent"}
-windowCrash: {value: "brudt ned"}
+windowCrash: {value: "gået ned"}
 windowHang: {value: "svarer ikke"}
 windowHangStopped: {value: "holdt op med at svare"}
 windowKilled: {value: "lukket uventet"}

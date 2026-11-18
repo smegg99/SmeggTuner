@@ -9,7 +9,7 @@ card.a4:
   placeholders:
     hz: {type: string}
 
-card.changed: {value: "Het instrument in de bibliotheek is gewijzigd sinds deze sessie werd vastgelegd."}
+card.changed: {value: "Het instrument in de bibliotheek is gewijzigd nadat deze sessie werd opgeslagen."}
 card.hasCurve: {value: "Doelcurve ingesteld"}
 
 card.readings:
@@ -39,24 +39,24 @@ new: {value: "Nieuwe sessie"}
 title: {value: "Sessies"}
 
 # Session dialog and tabs
-dialog.backToList: {value: "Kies een eerder gestemd instrument"}
+dialog.backToList: {value: "Instrument uit de bibliotheek kiezen"}
 dialog.describeNew: {value: "Beschrijf een nieuw instrument..."}
 dialog.forgetAccordion: {value: "Deze accordeon uit de bibliotheek verwijderen"}
 dialog.loadAccordion: {value: "Laden uit bestand..."}
 dialog.name: {value: "Sessienaam"}
 dialog.nameHint: {value: "Gebruik de naam van een instrument of klant om de sessie te herkennen."}
 dialog.pickAccordion: {value: "Welke accordeon?"}
-dialog.start: {value: "Starten"}
+dialog.start: {value: "Sessie aanmaken"}
 page.mobile.curve: {value: "Doelwaarden"}
 page.mobile.recorded: {value: "Metingen"}
 
 # Instrument editing restrictions
-accordion.a4Locked: {value: "Vergrendeld: in deze sessie zijn al metingen met deze instelling vastgelegd."}
+accordion.a4Locked: {value: "De referentietoon ligt vast. Deze sessie bevat al metingen met deze A4-frequentie."}
 
 accordion.columnsRefused:
   value: "Deze wijziging zou de koren van bestaande metingen veranderen en is niet opgeslagen. Herstel de vorige koren of maak een nieuwe sessie."
 accordion.frozen:
-  value: "Na het vastleggen van metingen liggen de referentietoon en koren vast. Je kunt nog registers toevoegen die de bestaande koren gebruiken."
+  value: "Zodra er metingen zijn opgeslagen, liggen de referentietoon, de transpositie en de koren vast. Je kunt nog registers met de bestaande koren toevoegen."
 accordion.frozenShort: {value: "Koren vergrendeld"}
 accordion.remember: {value: "Opslaan in instrumentenbibliotheek"}
 accordion.rememberHint: {value: "Sla het instrument van deze sessie op in de bibliotheek voor volgende sessies."}
@@ -67,8 +67,8 @@ instrument.a4: {value: "Referentietoon"}
 instrument.a4Hint:
   value: "Referentiefrequentie van A4 in hertz. Nieuwe sessies voor dit instrument gebruiken deze waarde."
 
-instrument.bass.build: {value: "Voetmaten van de volgende registerschakelaar"}
-instrument.bass.fixed: {value: "Geen basregisters: vaste basmechaniek waarbij alle stemmen altijd klinken."}
+instrument.bass.build: {value: "Voetmaten voor het nieuwe basregister kiezen"}
+instrument.bass.fixed: {value: "Geen basregisterschakelaars. Alle baskoren klinken tegelijk."}
 
 instrument.bass.full:
   value: "Een basmechaniek kan hier maximaal {n} registerschakelaars hebben"
@@ -102,22 +102,22 @@ instrument.range.clear: {value: "Wissen"}
 instrument.range.down: {value: "Een halve toon lager"}
 
 instrument.range.hint:
-  value: "Optioneel. De laagste en hoogste toets. Je kunt het bereik ook tijdens de kalibratie op het gehoor instellen."
+  value: "Optioneel. Geef de laagste en de hoogste noot op. Je kunt ze ook tijdens de instrumentkalibratie spelen en laten vastleggen."
 
 instrument.range.label: {value: "Klavierbereik"}
 instrument.range.to: {value: "tot"}
 instrument.range.up: {value: "Een halve toon hoger"}
 
 instrument.registersHint:
-  value: "Klik op de stippen in het gegraveerde cirkelsymbool van elke registerschakelaar of kies een gangbaar symbool. De stippen bepalen welke koren klinken."
+  value: "Neem het symbool op de registerschakelaar over. Selecteer de 4′- en 16′-koren die klinken, geef het aantal 8′-koren op en voeg het register toe."
 instrument.registersSubtitle: {value: "De schakelaars aan de discantzijde en de koren die ze inschakelen."}
 
 instrument.says:
   plural:
     argument: reeds
     forms:
-      one: "Koren: {banks}. Bij het volste register klinkt {reeds} tong."
-      other: "Koren: {banks}. Bij het volste register klinken {reeds} tongen."
+      one: "Koren: {banks}. Per noot klinkt maximaal {reeds} tong."
+      other: "Koren: {banks}. Per noot klinken maximaal {reeds} tongen."
   placeholders:
     banks: {type: string}
     reeds: {type: integer}
@@ -130,18 +130,18 @@ instrument.sections.voices: {value: "Registers"}
 instrument.tolerance: {value: "Tongtolerantie"}
 
 instrument.toleranceHint:
-  value: "Toegestane tongafwijking in eenheden van 0,06% van de toonfrequentie. Metingen buiten dit bereik worden als onzuiver gemarkeerd."
+  value: "Toegestane afwijking van de doelwaarde per tong, in eenheden van 0,06% van de toonfrequentie. Grotere afwijkingen worden als onzuiver gemarkeerd."
 # Target curve editor
 curve.clearAll: {value: "Curve wissen"}
 
 curve.clearAllConfirm:
-  value: "Alle ankerpunten worden verwijderd. Voor elke noot wordt de toonladdertoon weer het doel en dient het stemapparaat als gewone indicator."
+  value: "Alle ankerpunten worden verwijderd. De toonhoogte volgens de stemming wordt dan weer de doelwaarde voor elke tong."
 curve.clearAllHint: {value: "Verwijder alle ankerpunten en gebruik de toonhoogten van de toonladder als doel."}
 curve.clearAllTitle: {value: "De hele curve wissen?"}
 curve.entryUnit: {value: "Invoereenheid"}
 
 curve.help.hz:
-  value: "Met Hz voer je een doel in hertz in bij A4 = 440 Hz, zoals in de referentiezwevingslijst. Het verandert dus niet met de A4 van de sessie. ‘Vastgelegd’ toont de metingen over de lijst. Via ‘Lijst’ pas je de ankerpunten aan die metingen aan of kopieer je een lijst uit een andere sessie."
+  value: "Doelwaarden in hertz gelden bij A4 = 440 Hz, ongeacht de referentietoon van de sessie. Met ‘Metingen’ toon je de metingen van de sessie in de grafiek. Via ‘Lijst’ pas je de ankerpunten aan die metingen aan of neem je een lijst uit een andere sessie over."
 curve.help.hzTitle: {value: "Hz en metingen"}
 
 curve.help.interp:
@@ -153,12 +153,12 @@ curve.help.lead:
 curve.help.set:
   value: "Kies een noot en een waarde en druk op ‘Instellen’ of sleep een punt in de grafiek omhoog of omlaag. Elk koor heeft een eigen lijn. De lijn die je bewerkt is gemarkeerd."
 curve.help.setTitle: {value: "Een punt instellen"}
-curve.helpTitle: {value: "Gewenste zwevingen"}
+curve.helpTitle: {value: "Doelwaarden voor tongen en zwevingen"}
 curve.interpolate: {value: "Interpoleren"}
 curve.interpolateHint: {value: "Volg de lijn tussen de ankerpunten. Anders blijft elk punt gelden tot het volgende."}
 curve.menu.ends: {value: "Buiten de ankerpunten"}
-curve.menu.extendHigh: {value: "Doortrekken boven het hoogste punt"}
-curve.menu.extendLow: {value: "Doortrekken onder het laagste punt"}
+curve.menu.extendHigh: {value: "Curve doortrekken naar hogere noten dan het laatste ankerpunt"}
+curve.menu.extendLow: {value: "Curve doortrekken naar lagere noten dan het eerste ankerpunt"}
 curve.menu.fit: {value: "Aanpassen aan de metingen van deze sessie"}
 
 curve.menu.fitBody:
@@ -178,7 +178,7 @@ curve.menu.replaceBody: {value: "De ankerpunten worden vervangen door de andere 
 curve.menu.replaceConfirm: {value: "Vervangen"}
 curve.menu.replaceTitle: {value: "Zwevingslijst vervangen?"}
 curve.rank: {value: "Koor"}
-curve.recorded: {value: "Vastgelegd"}
+curve.recorded: {value: "Metingen"}
 curve.recordedHint: {value: "Metingen van deze sessie in de grafiek tonen"}
 curve.remove: {value: "Verwijderen"}
 curve.removeHint: {value: "Verwijder het ankerpunt van deze noot uit de curve."}
@@ -221,13 +221,13 @@ readings.notes:
 workshop.exit: {value: "Sessie verlaten"}
 workshop.import: {value: "Importeren"}
 workshop.open: {value: "Openen"}
-workshop.print: {value: "Stemkaart afdrukken"}
+workshop.print: {value: "Stemkaart exporteren"}
 
 # Session errors
 error.fitFailed: {value: "Er kon geen curve aan deze meetronde worden aangepast."}
 
 error.hasReadings:
-  value: "De metingen in deze sessie zijn gebaseerd op de ingestelde referentietoon en aantal tongen. Beide liggen nu vast."
+  value: "Deze sessie bevat al metingen. De referentietoon, de transpositie en de indeling in koren liggen daarom vast."
 error.imageUnreadable: {value: "Deze foto kon niet worden geopend."}
 error.instrumentName: {value: "Geef de accordeon een naam zodat je de accordeon kunt terugvinden."}
 error.invalidA4: {value: "De referentietoon moet tussen 430 en 450 Hz liggen."}

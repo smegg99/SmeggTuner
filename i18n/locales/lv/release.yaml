@@ -9,7 +9,7 @@ updateBody:
   placeholders:
     current: {type: string}
     latest: {type: string}
-updateDownload: {value: "Lejupielādēt"}
+updateDownload: {value: "Atvērt lejupielādes lapu"}
 updateIgnore: {value: "Izlaist šo versiju"}
 updateLater: {value: "Vēlāk"}
 updateTitle: {value: "Pieejama jaunāka versija"}

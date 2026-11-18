@@ -23,7 +23,7 @@ windowStateLoadFailed: {value: "No se pudo cargar el estado de la ventana"}
 windowStateSaveFailed: {value: "No se pudo guardar el estado de la ventana"}
 
 # Audio devices and calibration
-audioDeviceEnumFailed: {value: "No se pudo enumerar los dispositivos de captura"}
+audioDeviceEnumFailed: {value: "No se pudieron enumerar los dispositivos de captura"}
 audioDeviceGone: {value: "El dispositivo de captura seleccionado ya no está disponible"}
 audioDevicesListed: {value: "Dispositivos de captura enumerados"}
 audioDialogFailed: {value: "Error en el diálogo de selección de archivos"}
@@ -36,7 +36,7 @@ calibrationAbandoned: {value: "Calibración de la tarjeta de sonido abandonada"}
 calibrationFinished: {value: "Calibración de la tarjeta de sonido terminada"}
 calibrationNoDevice: {value: "No se pudo abrir el dispositivo para calibrar la tarjeta de sonido"}
 calibrationStarted: {value: "Calibración de la tarjeta de sonido iniciada"}
-deviceStoreFailed: {value: "No se pudo guardar los ajustes del dispositivo de captura"}
+deviceStoreFailed: {value: "No se pudieron guardar los ajustes del dispositivo de captura"}
 micBlocksDropped: {value: "El componente que recibe el audio del micrófono se ha bloqueado, se descartan bloques"}
 micDeviceLost: {value: "El dispositivo de captura se detuvo inesperadamente"}
 volumeRestore: {value: "El control automático de volumen no pudo restablecer el nivel de entrada"}
@@ -54,11 +54,11 @@ tunerTonePlayFailed: {value: "No se pudo reproducir el sonido de referencia"}
 tunerTonePlaying: {value: "Reproduciendo el sonido de referencia"}
 
 # Sessions, readings and reports
-recordCleared: {value: "Pasada borrada"}
-recordEdited: {value: "Toma editada a mano"}
-recordRejected: {value: "Solicitud de grabación rechazada"}
+recordCleared: {value: "Mediciones de la pasada borradas"}
+recordEdited: {value: "Medición editada a mano"}
+recordRejected: {value: "Solicitud de registro de la medición rechazada"}
 recordTake: {value: "Medición registrada"}
-recordUndone: {value: "Última toma deshecha"}
+recordUndone: {value: "Registro de la última medición deshecho"}
 reportFailed: {value: "No se pudo escribir el informe de afinación"}
 reportOpenFailed: {value: "No se pudo abrir el informe de afinación"}
 reportOpened: {value: "Informe de afinación enviado al navegador"}
@@ -72,7 +72,7 @@ sessionCurveImported: {value: "Curva objetivo importada"}
 sessionDeleted: {value: "Sesión eliminada"}
 sessionLoadFailed: {value: "No se pudo cargar la sesión"}
 sessionOpened: {value: "Sesión abierta"}
-sessionReedsClamped: {value: "El instrumento hace sonar más lengüetas de las que distingue el motor. El motor aplica su límite."}
+sessionReedsClamped: {value: "El registro hace sonar más lengüetas de las que puede distinguir el detector. Se medirán menos lengüetas."}
 sessionRejected: {value: "Se rechazó un cambio de sesión no válido"}
 sessionSaveFailed: {value: "No se pudo guardar la sesión"}
 
@@ -81,14 +81,14 @@ frontendAudioCalibrationCancelFailed: {value: "No se pudo cancelar la calibraci�
 frontendAudioCalibrationFailed: {value: "No se pudo iniciar la calibración"}
 frontendAudioCorrectionFailed: {value: "No se pudo leer la corrección de la tarjeta de sonido"}
 frontendAudioDialogFailed: {value: "No se pudo abrir el diálogo de selección de archivos"}
-frontendAudioListFailed: {value: "No se pudo enumerar los dispositivos de audio"}
+frontendAudioListFailed: {value: "No se pudieron enumerar los dispositivos de audio"}
 frontendAudioSelectFailed: {value: "No se pudo seleccionar la fuente de audio"}
 frontendAudioStateFailed: {value: "No se pudo leer el estado del dispositivo de audio"}
 frontendAudioVolumeFailed: {value: "No se pudo cambiar el control automático de volumen"}
 frontendConfigLoadFailed: {value: "No se pudo cargar la configuración"}
 frontendConfigLoaded: {value: "Configuración cargada"}
 frontendConfigSaveFailed: {value: "No se pudo guardar la configuración"}
-frontendCurveViewFailed: {value: "No se pudo leer los ajustes de visualización de la curva"}
+frontendCurveViewFailed: {value: "No se pudieron leer los ajustes de visualización de la curva"}
 frontendError: {value: "Error inesperado de la aplicación"}
 frontendRejection: {value: "Error en una operación de la aplicación"}
 frontendResizeNotice: {value: "Cambio de diseño aplazado al siguiente fotograma (aviso ResizeObserver del navegador)"}

@@ -87,13 +87,13 @@ title.uncalibrated:
 
 # Application and About dialog
 about.aboutTitle: {value: "О программе"}
-about.commit: {value: "Сборка"}
-about.donate: {value: "Поддержать на Ko-fi"}
+about.commit: {value: "Идентификатор сборки"}
+about.donate: {value: "Пожертвовать через Ko-fi"}
 about.license: {value: "Лицензия"}
 about.privacy: {value: "Политика конфиденциальности"}
 about.guide: {value: "Как пользоваться SmeggTuner"}
 about.onlineVersion: {value: "Открыть онлайн-версию"}
-about.support: {value: "Поддержка"}
+about.support: {value: "Написать в поддержку"}
 about.mascot: {value: "Кот, играющий на аккордеоне"}
 about.publisher: {value: "Автор: smegg99"}
 about.tagline: {value: "Бесплатная программа с открытым исходным кодом для настройки аккордеонов."}

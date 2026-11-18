@@ -10,7 +10,7 @@
     />
     <UiToolGroup
       :model-value="beatUnit"
-      :items="BEAT_UNITS"
+      :items="beatUnitItems"
       :label="t('settings.beatUnitLabel')"
       class="tuner-small"
       @update:model-value="v => config.tuner.beat_unit = String(v)"
@@ -26,8 +26,8 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { ToolItem } from '@smegg99/s99ab/types'
 import { useConfigSync } from '~/composables/useConfigSync'
+import { useBeatUnitItems } from '~/composables/useDeviationUnit'
 
 const emit = defineEmits<{ help: [] }>()
 
@@ -40,7 +40,7 @@ const { config } = useConfigSync()
 // The same setting as Settings > Beat unit: the table and the beat boxes read one unit.
 const beatUnit = computed(() => (config.tuner?.beat_unit === 'reference' ? 'reference' : 'hz'))
 
-const BEAT_UNITS = computed<ToolItem[]>(() => ['hz', 'reference'].map(value => ({ value, label: t(`tuner.unit.${value}`) })))
+const beatUnitItems = useBeatUnitItems()
 </script>
 
 <style scoped>

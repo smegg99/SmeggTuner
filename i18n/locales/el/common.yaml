@@ -9,10 +9,10 @@ cancel: {value: "Ακύρωση"}
 close: {value: "Κλείσιμο"}
 delete: {value: "Διαγραφή"}
 export: {value: "Εξαγωγή"}
-next: {value: "Επόμενο"}
+next: {value: "Επόμενη σελίδα"}
 "no": {value: "Όχι"}
 none: {value: "Κανένα"}
-previous: {value: "Προηγούμενο"}
+previous: {value: "Προηγούμενη σελίδα"}
 website: {value: "Ιστότοπος"}
 "yes": {value: "Ναι"}
 
@@ -76,13 +76,13 @@ title.uncalibrated:
 
 # Application and About dialog
 about.aboutTitle: {value: "Πληροφορίες"}
-about.commit: {value: "Έκδοση μεταγλώττισης"}
-about.donate: {value: "Υποστήριξη στο Ko-fi"}
+about.commit: {value: "Αναγνωριστικό Git"}
+about.donate: {value: "Δωρεά μέσω Ko-fi"}
 about.license: {value: "Άδεια χρήσης"}
 about.privacy: {value: "Πολιτική απορρήτου"}
 about.guide: {value: "Οδηγίες χρήσης του SmeggTuner"}
-about.onlineVersion: {value: "Άνοιγμα διαδικτυακής έκδοσης"}
-about.support: {value: "Υποστήριξη"}
+about.onlineVersion: {value: "Ανάγνωση στο διαδίκτυο"}
+about.support: {value: "Γράψτε στην υποστήριξη"}
 about.mascot: {value: "Μια γάτα που παίζει ακορντεόν"}
 about.publisher: {value: "Δημιουργός: smegg99"}
 about.tagline: {value: "Δωρεάν πρόγραμμα ανοιχτού κώδικα για κούρδισμα ακορντεόν."}

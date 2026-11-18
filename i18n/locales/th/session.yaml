@@ -8,7 +8,7 @@ card.a4:
   placeholders:
     hz: {type: string}
 
-card.changed: {value: "ข้อมูลแอคคอร์เดียนในคลังเปลี่ยนไปหลังจากบันทึกเซสชันนี้"}
+card.changed: {value: "ข้อมูลแอคคอร์เดียนในคลังเปลี่ยนไปหลังจากเก็บเซสชันนี้ไว้"}
 card.hasCurve: {value: "ตั้งเส้นโค้งเป้าหมายแล้ว"}
 
 card.readings:
@@ -37,7 +37,7 @@ new: {value: "เซสชันใหม่"}
 title: {value: "เซสชัน"}
 
 # Session dialog and tabs
-dialog.backToList: {value: "เลือกเครื่องที่เคยตั้งเสียงแล้ว"}
+dialog.backToList: {value: "เลือกจากคลังเครื่องดนตรี"}
 dialog.describeNew: {value: "ระบุข้อมูลเครื่องใหม่…"}
 dialog.forgetAccordion: {value: "ลบเครื่องนี้ออกจากคลัง"}
 dialog.loadAccordion: {value: "โหลดจากไฟล์…"}
@@ -81,7 +81,7 @@ instrument.builder.add: {value: "เพิ่ม"}
 instrument.builder.already: {value: "กำหนดสวิตช์นี้ไว้แล้ว"}
 instrument.builder.high: {value: "พิคโคโล 4 ฟุต"}
 instrument.builder.low: {value: "เบส 16 ฟุต"}
-instrument.builder.middle: {value: "ลิ้นเสียง 8 ฟุต"}
+instrument.builder.middle: {value: "แถวลิ้นเสียงกลาง 8 ฟุต"}
 instrument.builder.none: {value: "ยังไม่มีสวิตช์ เลือกแถวลิ้นเสียงที่แต่ละสวิตช์จะเปิดใช้ด้านล่าง"}
 instrument.builder.remove: {value: "ลบรีจิสเตอร์นี้"}
 instrument.builder.title: {value: "เพิ่มสวิตช์"}
@@ -97,14 +97,14 @@ instrument.nameRequired: {value: "ป้อนชื่อแอคคอร์�
 instrument.photo: {value: "ภาพถ่าย"}
 instrument.range.backwards: {value: "โน้ตสูงสุดต้องไม่ต่ำกว่าโน้ตต่ำสุด"}
 instrument.range.clear: {value: "ล้าง"}
-instrument.range.down: {value: "ลดลง"}
+instrument.range.down: {value: "ลดลงครึ่งเสียง"}
 
 instrument.range.hint:
   value: "ไม่บังคับ ระบุคีย์ต่ำสุดและสูงสุด หรือตั้งจากเสียงที่เล่นจริงระหว่างสอบเทียบ"
 
 instrument.range.label: {value: "ช่วงเสียงของคีย์บอร์ด"}
 instrument.range.to: {value: "ถึง"}
-instrument.range.up: {value: "เพิ่มขึ้น"}
+instrument.range.up: {value: "เพิ่มขึ้นครึ่งเสียง"}
 
 instrument.registersHint:
   value: "คลิกจุดในสัญลักษณ์วงกลมที่สลักบนสวิตช์ของเครื่อง หรือเลือกแบบที่ใช้กันทั่วไป ตำแหน่งจุดระบุแถวลิ้นเสียงที่จะดัง"
@@ -114,7 +114,7 @@ instrument.says:
   plural:
     argument: reeds
     forms:
-      other: "แถวลิ้นเสียง: {banks} สวิตช์ที่เปิดใช้มากที่สุดทำให้ลิ้นเสียงดังพร้อมกัน {reeds} ลิ้น"
+      other: "แถวลิ้นเสียง: {banks} เมื่อใช้รีจิสเตอร์หนึ่งตัว โน้ตหนึ่งตัวจะมีลิ้นเสียงดังพร้อมกันได้สูงสุด {reeds} ลิ้น"
   placeholders:
     banks: {type: string}
     reeds: {type: integer}
@@ -127,18 +127,18 @@ instrument.sections.voices: {value: "รีจิสเตอร์"}
 instrument.tolerance: {value: "ค่าคลาดเคลื่อนที่ยอมรับได้ของลิ้นเสียง"}
 
 instrument.toleranceHint:
-  value: "ค่าคลาดเคลื่อนที่ยอมรับได้ของลิ้นเสียง หนึ่งหน่วยเท่ากับ 0.06% ของความถี่โน้ต ค่าที่เกินช่วงนี้จะถูกระบุว่าเสียงเพี้ยน"
+  value: "ระยะที่ระดับเสียงของลิ้นคลาดจากเป้าหมายได้ หนึ่งหน่วยเท่ากับ 0.06% ของความถี่โน้ต ค่าที่เกินเกณฑ์จะถูกทำเครื่องหมายว่าเพี้ยน"
 # Target curve editor
 curve.clearAll: {value: "ล้างเส้นโค้ง"}
 
 curve.clearAllConfirm:
-  value: "ลบจุดกำหนดทั้งหมด เป้าหมายของทุกโน้ตจะกลับไปเป็นระดับเสียงในบันไดเสียง และเครื่องตั้งเสียงจะแสดงค่าอย่างเดียว"
+  value: "จุดกำหนดทั้งหมดจะถูกลบ ระดับเสียงเป้าหมายของแต่ละลิ้นจะกลับไปตรงกับระดับเสียงตามบันไดเสียง"
 curve.clearAllHint: {value: "ลบจุดกำหนดทั้งหมดและใช้ระดับเสียงในบันไดเสียงเป็นเป้าหมาย"}
 curve.clearAllTitle: {value: "ล้างเส้นโค้งทั้งหมดหรือไม่"}
 curve.entryUnit: {value: "หน่วยที่ป้อน"}
 
 curve.help.hz:
-  value: "เมื่อเลือก Hz ให้ป้อนค่าเป้าหมายเป็นเฮิรตซ์อ้างอิง A4 = 440 Hz เช่นเดียวกับรายการบีตอ้างอิง ค่าจึงไม่เปลี่ยนตาม A4 ของเซสชัน เลือก “บันทึกแล้ว” เพื่อซ้อนค่าที่วัดในเซสชันนี้บนรายการ และใช้ “รายการ” เพื่อปรับจุดกำหนดให้เข้ากับค่าเหล่านั้นหรือคัดลอกรายการจากเซสชันอื่น"
+  value: "เมื่อเลือก Hz ให้ป้อนส่วนต่างที่ต้องการจากระดับเสียงตามบันไดเสียง โดยอิง A4 = 440 Hz ค่านี้ไม่เปลี่ยนตาม A4 ของเซสชัน เลือก “แสดงค่าวัด” เพื่อซ้อนผลวัดบนกราฟ ในเมนู “รายการ” คุณปรับเส้นโค้งให้เข้ากับผลวัดหรือคัดลอกรายการจากเซสชันอื่นได้"
 curve.help.hzTitle: {value: "เฮิรตซ์และค่าที่วัดได้"}
 
 curve.help.interp:
@@ -150,12 +150,12 @@ curve.help.lead:
 curve.help.set:
   value: "เลือกโน้ตและค่าแล้วกด “กำหนด” หรือลากจุดบนกราฟขึ้นลง แต่ละแถวลิ้นเสียงมีเส้นของตัวเอง เส้นที่กำลังแก้ไขจะถูกเน้น"
 curve.help.setTitle: {value: "การกำหนดจุด"}
-curve.helpTitle: {value: "บีตที่ต้องการ"}
+curve.helpTitle: {value: "ส่วนต่างเป้าหมายของลิ้นเสียงและบีต"}
 curve.interpolate: {value: "ประมาณค่าระหว่างจุด"}
 curve.interpolateHint: {value: "ใช้ค่าตามแนวเส้นระหว่างจุดกำหนด เมื่อปิดจะคงค่าเดิมไว้จนถึงจุดถัดไป"}
 curve.menu.ends: {value: "นอกช่วงจุดกำหนด"}
-curve.menu.extendHigh: {value: "ต่อเส้นเลยจุดสูงสุด"}
-curve.menu.extendLow: {value: "ต่อเส้นเลยจุดต่ำสุด"}
+curve.menu.extendHigh: {value: "ต่อเส้นไปทางโน้ตสูง"}
+curve.menu.extendLow: {value: "ต่อเส้นไปทางโน้ตต่ำ"}
 curve.menu.fit: {value: "ปรับเส้นให้เข้ากับค่าที่วัดในเซสชันนี้"}
 
 curve.menu.fitBody:
@@ -174,7 +174,7 @@ curve.menu.replaceBody: {value: "จะแทนที่จุดกำหน�
 curve.menu.replaceConfirm: {value: "แทนที่"}
 curve.menu.replaceTitle: {value: "แทนที่รายการบีตหรือไม่"}
 curve.rank: {value: "แถวลิ้นเสียง"}
-curve.recorded: {value: "บันทึกแล้ว"}
+curve.recorded: {value: "แสดงค่าวัด"}
 curve.recordedHint: {value: "แสดงค่าที่วัดในเซสชันนี้บนกราฟ"}
 curve.remove: {value: "ลบ"}
 curve.removeHint: {value: "ลบจุดกำหนดของโน้ตนี้ออกจากเส้นโค้ง"}
@@ -216,13 +216,13 @@ readings.notes:
 workshop.exit: {value: "ออกจากเซสชัน"}
 workshop.import: {value: "นำเข้า"}
 workshop.open: {value: "เปิด"}
-workshop.print: {value: "พิมพ์บัตรตั้งเสียง"}
+workshop.print: {value: "ส่งออกบัตรตั้งเสียง"}
 
 # Session errors
 error.fitFailed: {value: "ปรับเส้นโค้งให้เข้ากับค่าของรอบนั้นไม่ได้"}
 
 error.hasReadings:
-  value: "มีค่าที่บันทึกไว้ในเซสชันนี้แล้ว จึงเปลี่ยนระดับเสียงอ้างอิงหรือจำนวนลิ้นเสียงที่ใช้วัดไม่ได้"
+  value: "เซสชันนี้มีผลวัดแล้ว จึงเปลี่ยนระดับเสียงอ้างอิงหรือการจัดแถวลิ้นเสียงที่ใช้วัดไม่ได้"
 error.imageUnreadable: {value: "เปิดภาพถ่ายนั้นไม่ได้"}
 error.instrumentName: {value: "ตั้งชื่อแอคคอร์เดียนเพื่อให้ค้นหาได้ภายหลัง"}
 error.invalidA4: {value: "ระดับเสียงอ้างอิงต้องอยู่ระหว่าง 430 ถึง 450 Hz"}

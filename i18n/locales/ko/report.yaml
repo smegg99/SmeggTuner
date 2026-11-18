@@ -58,7 +58,7 @@ graph.edited:
     mark: {type: string}
 
 legend.error.cents:
-  value: "오차가 0에 가까워지도록 리드를 줄로 다듬으세요. A4 = {a4} Hz인 평균율 음높이와의 차이를 센트로 표시합니다."
+  value: "오차가 0에 가까워지도록 리드를 줄로 다듬으세요. 리드의 측정값 열에는 A4 = {a4} Hz일 때 평균율 음높이와의 차이가 센트로 표시됩니다."
   placeholders:
     a4: {type: string}
 
@@ -89,7 +89,7 @@ summary.beats:
   plural:
     argument: pluralCount
     forms:
-      other: "맥놀이 {pluralCount}개"
+      other: "맥놀이 측정값 {pluralCount}개"
   placeholders:
     pluralCount: {type: integer}
 
@@ -114,7 +114,7 @@ summary.out:
   plural:
     argument: pluralCount
     forms:
-      other: "허용 범위 초과 {pluralCount}건({reeds}, {beats})."
+      other: "허용 범위를 벗어난 음 {pluralCount}개({reeds}, {beats})."
   placeholders:
     beats: {type: string}
     pluralCount: {type: integer}

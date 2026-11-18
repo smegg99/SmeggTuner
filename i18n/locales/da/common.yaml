@@ -9,10 +9,10 @@ cancel: {value: "Annuller"}
 close: {value: "Luk"}
 delete: {value: "Slet"}
 export: {value: "Eksporter"}
-next: {value: "Næste"}
+next: {value: "Næste side"}
 "no": {value: "Nej"}
 none: {value: "Ingen"}
-previous: {value: "Forrige"}
+previous: {value: "Forrige side"}
 website: {value: "Websted"}
 "yes": {value: "Ja"}
 
@@ -75,14 +75,14 @@ title.uncalibrated:
     title: {type: string}
 
 # Application and About dialog
-about.aboutTitle: {value: "Om"}
+about.aboutTitle: {value: "Om SmeggTuner"}
 about.commit: {value: "Build"}
-about.donate: {value: "Støt på Ko-fi"}
+about.donate: {value: "Donér via Ko-fi"}
 about.license: {value: "Licens"}
 about.privacy: {value: "Privatlivspolitik"}
 about.guide: {value: "Sådan bruges SmeggTuner"}
-about.onlineVersion: {value: "Åbn onlineversion"}
-about.support: {value: "Hjælp"}
+about.onlineVersion: {value: "Åbn dokumentet i browseren"}
+about.support: {value: "Skriv til support"}
 about.mascot: {value: "En kat, der spiller harmonika"}
 about.publisher: {value: "Af smegg99"}
 about.tagline: {value: "Gratis program med åben kildekode til harmonikastemning."}

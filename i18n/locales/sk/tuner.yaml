@@ -19,26 +19,26 @@ source.analyze: {value: "Analyzovať nahrávku…"}
 source.default: {value: "Predvolené zariadenie systému"}
 source.noDevices: {value: "Nenašiel sa žiadny mikrofón"}
 source.refresh: {value: "Obnoviť zoznam zariadení"}
-transport.fileHint: {value: "Nahrávku spustíte na jej vlastnom paneli"}
+transport.fileHint: {value: "Nahrávku WAV prehrajte tlačidlom na paneli nahrávky."}
 transport.start: {value: "Spustiť"}
 transport.stop: {value: "Zastaviť"}
 
 # Modes, registers and note selection
 bassRegister.all: {value: "Celý basový mechanizmus"}
-bassRegister.hint: {value: "Zapnutý basový register"}
+bassRegister.hint: {value: "Vybrať zapnutý basový register"}
 controls: {value: "Ovládanie ladenia"}
 mode.auto: {value: "Automaticky"}
 mode.autoHint: {value: "Nechať ladičku rozpoznať tón"}
-mode.pinHint: {value: "Pripnúť tento tón"}
-mode.pinned: {value: "Pripnutý tón"}
-notes.clickToPin: {value: "kliknutím pripnete"}
-notes.label: {value: "Tóny E0 až C9. Kliknutím tón pripnete."}
+mode.pinHint: {value: "Ručne vybrať tento tón na meranie"}
+mode.pinned: {value: "Tón je vybraný ručne. Kliknutím obnovíte automatické rozpoznávanie."}
+notes.clickToPin: {value: "kliknutím vyberiete tón na meranie"}
+notes.label: {value: "Tóny E0 až C9. Kliknutím vyberiete tón na meranie."}
 notes.range: {value: "E0 až C9"}
 notes.title: {value: "Tóny"}
 notes.tracking: {value: "sledovanie"}
 panel.boxBase: {value: "Základný tón sa meria vždy"}
 panel.boxChord: {value: "V režime akordov sa merajú všetky tri tóny"}
-panel.boxLast: {value: "Aspoň jedno pole zostáva zapnuté"}
+panel.boxLast: {value: "Aspoň jedno meracie pole musí zostať zapnuté"}
 
 panel.boxOctave:
   plural:
@@ -75,11 +75,11 @@ panel.bySession:
 panel.locked: {value: "Ustálené"}
 panel.modeHints.chords: {value: "Trojzvuky"}
 panel.modeHints.octaves: {value: "Tón a jeho vyššie oktávy"}
-panel.modeHints.tones: {value: "Jeden tón, až tri jazýčky"}
+panel.modeHints.tones: {value: "Jeden hraný tón, meranie až troch jazýčkov naraz"}
 panel.modeLabel: {value: "Čo sa meria"}
 panel.modes.chords: {value: "Akordy"}
 panel.modes.octaves: {value: "Oktávy"}
-panel.modes.tones: {value: "Tóny"}
+panel.modes.tones: {value: "Jeden tón"}
 panel.quiet: {value: "Príliš slabý zvuk"}
 panel.recorded: {value: "Zaznamenané"}
 panel.reeds: {value: "Jazýčky"}
@@ -96,34 +96,34 @@ reeds.count:
     n:
       type: integer
 
-register.hint: {value: "Zapnutý register"}
+register.hint: {value: "Vybrať zapnutý register"}
 register.lockedPlaying: {value: "Pred zmenou registra zastavte prehrávanie."}
 side.bass: {value: "Basy"}
-side.hint: {value: "Diskantová alebo basová strana"}
+side.hint: {value: "Prepnúť medzi diskantom a basmi"}
 side.treble: {value: "Diskant"}
 step.noteDown: {value: "O poltón nižšie"}
 step.noteUp: {value: "O poltón vyššie"}
 # Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
-signal.add: {value: "Pridať tón"}
+signal.add: {value: "Pridať hlas"}
 signal.cents: {value: "Odchýlka od tónu v centoch"}
 signal.down: {value: "O poltón nižšie (šípka doľava, o oktávu šípka nadol)"}
-signal.open: {value: "Generátor signálu prehrá čistý tón, podľa ktorého môžete naladiť jazýček"}
+signal.open: {value: "Zobraziť alebo skryť generátor referenčných tónov"}
 signal.play: {value: "Prehrať"}
-signal.playHint: {value: "Prehrať vybranú notu so všetkými tónmi. Ak nie je vybraná, použije sa prvá zachytená (medzerník)"}
-signal.remove: {value: "Odobrať tento tón"}
+signal.playHint: {value: "Prehrať všetky nastavené hlasy pre vybraný tón. Ak tón nie je vybraný, použije sa prvý rozpoznaný (medzerník)."}
+signal.remove: {value: "Odobrať tento hlas"}
 signal.stop: {value: "Zastaviť"}
-signal.stopHint: {value: "Zastaviť tón (medzerník)"}
+signal.stopHint: {value: "Vypnúť referenčný tón (medzerník)"}
 signal.title: {value: "Generátor signálu"}
 signal.up: {value: "O poltón vyššie (šípka doprava, o oktávu šípka nahor)"}
 signal.wave.hint: {value: "Zvuk jazýčka obsahuje vyššie harmonické, rázy preto počuť aj na nich"}
-signal.wave.reed: {value: "Jazýček"}
+signal.wave.reed: {value: "Zvuk jazýčka"}
 signal.wave.sine: {value: "Sínusovka"}
 
 # Reference pitch and units
 reference.a4Locked: {value: "Uzamknuté v Nastaveniach"}
 reference.a4Type: {value: "Zadajte frekvenciu A4 od 430 do 450 Hz"}
 reference.frozen: {value: "Uzamknuté: relácia už obsahuje merania"}
-reference.transpose: {value: "Transponovať"}
+reference.transpose: {value: "Transpozícia"}
 reference.transposeDown: {value: "O poltón menej"}
 reference.transposeHint: {value: "O koľko poltónov znejú klávesy vyššie, než zodpovedá ich názvom"}
 reference.transposeMode: {value: "Akordy a oktávy sa merajú bez transpozície"}
@@ -148,7 +148,7 @@ boxes.beat:
     b:
       type: string
 
-boxes.goal: {value: "cieľ"}
+boxes.goal: {value: "cieľová hodnota"}
 boxes.hzOnly: {value: "iba v Hz"}
 boxes.notHeard: {value: "nepočuť"}
 
@@ -175,10 +175,10 @@ spectrum.label: {value: "Frekvenčné spektrum sledovaného tónu"}
 spectrum.title: {value: "Spektrum"}
 
 # Hold, noise learning and tuner state
-hold.hint: {value: "Podržať ustálené hodnoty (H)"}
+hold.hint: {value: "Automaticky podržať údaj, keď sa ustáli (H)"}
 state.deviceLost: {value: "Vstup odpojený"}
 state.initializing: {value: "Meranie hluku v miestnosti"}
-state.running: {value: "Počúvanie"}
+state.running: {value: "Počúvam"}
 state.stopped: {value: "Zastavené"}
 state.tooQuiet: {value: "Príliš slabý zvuk, hrajte hlasnejšie alebo pristúpte bližšie"}
 warmup.quiet: {value: "Zachovajte ticho"}
@@ -195,7 +195,7 @@ file.play: {value: "Prehrať"}
 file.stop: {value: "Zastaviť a vrátiť sa na začiatok výberu"}
 file.toEnd: {value: "Na koniec výberu"}
 file.toStart: {value: "Na začiatok výberu"}
-file.unmute: {value: "Prehrať nahrávku so zvukom"}
+file.unmute: {value: "Zapnúť zvuk nahrávky"}
 file.volume: {value: "Hlasitosť prehrávania"}
 
 file.waveform:
@@ -215,7 +215,7 @@ calibrate.range.again: {value: "Začať znova"}
 
 calibrate.range.backwards: {value: "Najvyšší tón nesmie byť nižšie ako najnižší. Zmerajte rozsah znova."}
 
-calibrate.range.capture: {value: "Zachytiť"}
+calibrate.range.capture: {value: "Zaznamenať tón"}
 calibrate.range.highest: {value: "Najvyšší"}
 calibrate.range.lowest: {value: "Najnižší"}
 calibrate.range.next: {value: "Pokračovať ku kalibrácii jazýčkov"}
@@ -252,7 +252,7 @@ calibrate.sweep.progress:
     total:
       type: string
 
-calibrate.sweep.redoRange: {value: "Znova zmerať klaviatúru"}
+calibrate.sweep.redoRange: {value: "Znova určiť rozsah klaviatúry"}
 calibrate.sweep.review: {value: "Zobraziť ladiaci list"}
 calibrate.sweep.skip: {value: "Preskočiť"}
 
@@ -278,7 +278,7 @@ web.mic.denied: {value: "Prístup k mikrofónu bol zamietnutý. Povoľte ho v na
 
 web.mic.failed: {value: "Mikrofón sa nepodarilo otvoriť."}
 web.mic.none: {value: "Nenašiel sa žiadny mikrofón."}
-web.mic.unsupported: {value: "Tento prehliadač nedokáže nahrávať zvuk."}
+web.mic.unsupported: {value: "Tento prehliadač nepodporuje snímanie zvuku z mikrofónu."}
 web.notice.background: {value: "Na karte v pozadí sa môže spracovanie zvuku pozastaviť."}
 web.notice.native: {value: "Na presné meranie použite nainštalovanú aplikáciu."}
 web.notice.ok: {value: "Rozumiem"}
@@ -309,14 +309,14 @@ error.invalidBox: {value: "Také pole jazýčka neexistuje."}
 error.invalidMode: {value: "Ladička meria tóny, oktávy alebo akordy."}
 error.invalidNote: {value: "Tento tón je mimo rozsahu ladičky."}
 error.invalidTranspose: {value: "Transpozícia je v rozsahu 0 až 11 poltónov."}
-error.lastBox: {value: "Aspoň jedno pole musí zostať zapnuté."}
+error.lastBox: {value: "Posledné meracie pole nemožno vypnúť."}
 error.noDevices: {value: "Nenašiel sa žiadny mikrofón. Pripojte ho a obnovte zoznam zariadení."}
 error.playbackFailed: {value: "Referenčný tón sa nepodarilo prehrať."}
 
 error.sampleRate: {value: "Vzorkovacia frekvencia vstupu je pre najvyššie tóny pri tejto referenčnej frekvencii a transpozícii príliš nízka. Použite nahrávku so vzorkovacou frekvenciou aspoň 44,1 kHz."}
 
-error.sessionDecides: {value: "Meranie určuje register zvolený v otvorenej relácii."}
+error.sessionDecides: {value: "Merané jazýčky určuje register vybraný v otvorenej relácii."}
 error.signalVoices: {value: "Možno prehrať jeden až štyri tóny, každý najviac 100 centov od vybranej noty."}
-error.toneNeedsManual: {value: "Na prehratie tónu najprv pripnite notu."}
+error.toneNeedsManual: {value: "Na prehratie referenčného tónu najprv ručne vyberte tón."}
 error.transposeMode: {value: "Akordy a oktávy sa merajú bez transpozície."}
 error.unexpected: {value: "Vyskytla sa chyba. Podrobnosti nájdete v denníku."}

@@ -4,10 +4,10 @@
 # Plurals: one = 1; other = 0, 2, 3, ...
 
 # Recording controls
-arm.hint: {value: "Registrer en måling hver gang tonen låses (Enter registrerer straks)"}
+arm.hint: {value: "Stabile målinger lagres. Trykk her for å stoppe lagringen, eller trykk på Enter for å lagre den aktuelle målingen med én gang."}
 arm.needsSession: {value: "Åpne en økt for å registrere målinger"}
-arm.warmup: {value: "Registrering av. Spill fritt, ingenting lagres. Trykk for å starte registreringen."}
-undo.hint: {value: "Angre siste måling"}
+arm.warmup: {value: "Spill fritt uten å lagre målinger. Trykk her for å begynne å lagre dem i økten."}
+undo.hint: {value: "Angre sist lagrede måling"}
 
 # Readings table and compact columns
 mobile.current: {value: "Målt"}
@@ -22,14 +22,14 @@ table.delete: {value: "Fjern denne målingen"}
 table.deleteHint: {value: "Fjern målingen permanent. Spill og registrer tonen på nytt for å erstatte den."}
 table.deleteTitle: {value: "Fjerne denne målingen?"}
 table.editHint: {value: "Klikk eller trykk på Enter for å redigere verdien"}
-table.empty: {value: "Start registreringen og spill toner for å lagre målinger."}
+table.empty: {value: "Slå på registrering av målinger og spill tonene du vil måle."}
 table.graph: {value: "Graf"}
 
 table.graphHint:
   value: "Sammenlign hver stemtunge med målverdien. Klikk på en søyle for å velge raden, og klikk igjen for å velge neste register."
-table.graphLabel: {value: "Stemtungenes avvik for hver registrerte tone"}
+table.graphLabel: {value: "Stemtungenes avvik fra målverdien for hver målt tone"}
 table.helpTitle: {value: "Om denne tabellen"}
-table.label: {value: "Registrert stemming"}
+table.label: {value: "Lagrede stemmemålinger"}
 table.latest: {value: "Sist registrert. Fjern med rettetasten"}
 table.manual: {value: "Redigert"}
 table.manualHint: {value: "En verdi i denne raden er skrevet inn manuelt."}
@@ -44,7 +44,7 @@ table.notes:
     count: {type: integer}
 
 table.unitHint:
-  value: "Stemtungenes avvik vises i enheten som er valgt i innstillingene. Slag vises i hertz eller avviksenheten som valgt på verktøylinjen."
+  value: "Stemtungenes avvik vises i enheten du har valgt i innstillingene. For slag kan du velge samme enhet eller hertz på verktøylinjen."
 # Report export dialog
 report.csv: {value: "CSV"}
 report.date: {value: "Dato"}

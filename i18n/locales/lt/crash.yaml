@@ -3,7 +3,7 @@ close: {value: "Užverti"}
 copied: {value: "Nukopijuota"}
 copy: {value: "Kopijuoti ataskaitą"}
 details: {value: "Išsami informacija"}
-email: {value: "Siųsti ataskaitą el. paštu"}
+email: {value: "Atverti laiško juodraštį su ataskaita"}
 failed:
   value: "Veiksmo atlikti nepavyko: {error}"
   placeholders:
@@ -12,27 +12,27 @@ file:
   value: "Failas: {path}"
   placeholders:
     path: {type: string}
-kill: {value: "Užverti ir pranešti"}
-logs: {value: "Rodyti žurnalo failą"}
+kill: {value: "Užverti ir parengti ataskaitą"}
+logs: {value: "Rodyti žurnalo failą aplanke"}
 messageConfig:
   value: "Nepavyko perskaityti nuostatų failo. Pataisykite arba pašalinkite jį ir iš naujo paleiskite „{app}“."
   placeholders:
     app: {type: string}
 messageCrash:
-  value: "Programoje „{app}“ įvyko vidinė klaida. Išsiųskite ataskaitą, kad klaidą būtų galima ištaisyti, ir paleiskite programą iš naujo."
+  value: "Programa „{app}“ netikėtai nustojo veikti. Galite nusiųsti ataskaitą pagalbos tarnybai ir iš naujo paleisti programą."
   placeholders:
     app: {type: string}
-messageHang: {value: "Programa dar gali baigti pradėtą veiksmą. Palaukite arba užverkite programą ir išsiųskite ataskaitą."}
+messageHang: {value: "Programa dar gali baigti pradėtą veiksmą. Galite palaukti arba užverti programą. Ją užvėrus bus parengta klaidos ataskaita."}
 messageHangStopped:
-  value: "Programa „{app}“ buvo užverta, kai neatsakė. Išsiųskite ataskaitą ir paleiskite programą iš naujo."
+  value: "Programa „{app}“ buvo užverta, nes nebeatsakė. Galite nusiųsti ataskaitą pagalbos tarnybai arba iš naujo paleisti programą."
   placeholders:
     app: {type: string}
 messageKilled:
-  value: "Programa „{app}“ buvo užverta nespėjusi pranešti apie klaidą. Išsiųskite ataskaitą ir paleiskite programą iš naujo."
+  value: "Programa „{app}“ užsivėrė nespėjusi nurodyti priežasties. Galite nusiųsti turimą informaciją pagalbos tarnybai arba iš naujo paleisti programą."
   placeholders:
     app: {type: string}
 messageOom:
-  value: "Sistemai pritrūko atminties, todėl ji užvėrė „{app}“. Išsiųskite ataskaitą ir paleiskite programą iš naujo."
+  value: "Sistemai pritrūko atminties, todėl ji užvėrė programą „{app}“. Galite nusiųsti ataskaitą pagalbos tarnybai arba iš naujo paleisti programą."
   placeholders:
     app: {type: string}
 messageStartup:

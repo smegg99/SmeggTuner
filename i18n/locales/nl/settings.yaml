@@ -4,25 +4,25 @@
 
 # Microphone and input level
 audioDeviceHint: {value: "Microfoon voor de meting"}
-audioDeviceLabel: {value: "Invoerapparaat"}
+audioDeviceLabel: {value: "Audio-ingang"}
 audioDeviceSystemDefault: {value: "Systeemstandaard"}
 autoVolume.hint: {value: "Regelt het microfoonniveau tijdens de meting"}
 autoVolume.label: {value: "Automatisch ingangsniveau"}
-autoVolume.saveFailed: {value: "De instelling voor het ingangsniveau kon niet worden opgeslagen."}
+autoVolume.saveFailed: {value: "De instelling voor automatische niveauregeling kon niet worden opgeslagen."}
 autoVolume.unsupported: {value: "Het ingangsniveau van dit apparaat kan niet worden geregeld."}
 humFilter50: {value: "50 Hz"}
 humFilter60: {value: "60 Hz"}
-humFilterHint: {value: "Onderdrukt netbrom: 50 Hz in Europa, 60 Hz in Amerika"}
+humFilterHint: {value: "Kies de plaatselijke netfrequentie om netbrom uit te filteren"}
 humFilterLabel: {value: "Netbromfilter"}
-lockedWhileRunning: {value: "Stop het stemapparaat om de audio-ingang te wijzigen."}
+lockedWhileRunning: {value: "Stop de meting voordat je de audio-ingang wijzigt."}
 
 # Detection and reference pitch
-continuousManual: {value: "Een vastgezette noot voortdurend bijwerken"}
-continuousManualHint: {value: "Een vastgezette noot bijwerken tot de meting stabiel is"}
+continuousManual: {value: "Meetwaarden bij handmatige nootkeuze blijven bijwerken"}
+continuousManualHint: {value: "Toont ook meetwaarden die nog niet stabiel zijn"}
 detection.balanced: {value: "Gebalanceerd"}
 detection.balancedHint: {value: "Wisselt na ongeveer een halve seconde van noot"}
 detection.fast: {value: "Snel"}
-detection.fastHint: {value: "Wisselt het snelst van noot, maar kan een verkeerde noot vasthouden"}
+detection.fastHint: {value: "Reageert het snelst op een nieuwe noot, maar kan de verkeerde noot herkennen"}
 detection.steady: {value: "Stabiel"}
 detection.steadyHint: {value: "Oorspronkelijk gedrag, wisselt langzaam van noot"}
 detectionLabel: {value: "Nootdetectie"}
@@ -30,14 +30,14 @@ lockA4: {value: "Referentietoon vergrendelen"}
 lockA4Hint: {value: "Voorkomt dat A4 in het stemapparaat wordt gewijzigd"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "Hertz of eenheden van 0,06% van de toonfrequentie"}
+beatUnitHint: {value: "Toon zwevingen in hertz of in de eenheid die je voor de tongafwijking hebt gekozen"}
 beatUnitLabel: {value: "Eenheid voor zweving"}
 errorReference: {value: "Referentie voor afwijkingen"}
 errorReferenceGoal: {value: "Doelwaarde"}
 
 errorReferenceHint:
-  value: "Toon de afwijking van de toonladder of van het stemdoel. Bij het stemdoel is de doelgerelateerde afwijking nul."
-errorReferenceScale: {value: "Toonladder"}
+  value: "Kies de afwijking ten opzichte van de gelijkzwevende stemming of van de doelwaarde. Bij de tweede keuze betekent nul dat de doelwaarde is bereikt."
+errorReferenceScale: {value: "Gelijkzwevende stemming"}
 scaleNamingHint: {value: "Hoe noten worden aangeduid"}
 scaleNamingLabel: {value: "Nootnamen"}
 scaleNamings.cdefgab: {value: "C D E F G A B (internationaal, kruisen als C#)"}
@@ -45,7 +45,7 @@ scaleNamings.cdefgah: {value: "C D E F G A H (Duits, kruisen als C#)"}
 scaleNamings.doremi: {value: "Do Re Mi (solfège)"}
 scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (Pools)"}
 toleranceBeat: {value: "Zweving"}
-toleranceHint: {value: "Hoeveel een tong of zweving mag afwijken om nog als zuiver te gelden"}
+toleranceHint: {value: "Hoe ver een tong of zweving van de eigen doelwaarde mag afwijken"}
 toleranceLabel: {value: "Toleranties"}
 toleranceReed: {value: "Tong"}
 unitHint: {value: "Cent of eenheden van 0,06% van de toonfrequentie"}
@@ -60,7 +60,7 @@ accent.pick: {value: "Kies een kleur"}
 accent.pickTitle: {value: "Accentkleur"}
 closeToTray: {value: "Bij sluiten minimaliseren naar het systeemvak"}
 closeToTrayHint: {value: "Na het sluiten van het venster blijft de app in het systeemvak"}
-checkUpdates: {value: "Controleren op updates", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdates: {value: "Automatisch op updates controleren", description: "Desktop settings checkbox enabling GitHub update checks."}
 checkUpdatesHint: {value: "Zoekt op GitHub naar een nieuwere versie", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "Taal van de interface"}
 languageLabel: {value: "Taal"}
@@ -84,7 +84,7 @@ calibration.askTitle: {value: "Deze geluidskaart is niet gekalibreerd"}
 calibration.hint: {value: "Corrigeert de klokafwijking van de geluidskaart. Duurt ongeveer een minuut en vereist geen geluid."}
 calibration.label: {value: "Kalibratie van de geluidskaart"}
 calibration.open: {value: "Openen"}
-calibration.openHint: {value: "Toon het kalibratiescherm zonder te meten"}
+calibration.openHint: {value: "Het kalibratiescherm openen zonder de kalibratie te starten"}
 calibration.saveFailed: {value: "De kalibratie kon niet worden opgeslagen. Het stemapparaat gebruikt de eerder opgeslagen toestand."}
 calibration.screen.again: {value: "Opnieuw kalibreren"}
 calibration.screen.bar.confirming: {value: "Bevestigen"}
@@ -109,11 +109,11 @@ calibration.screen.phase.preparing: {value: "De ingang krijgt tijd om te stabili
 calibration.screen.phase.settling: {value: "Wachten tot de klokmeting stabiel is."}
 
 calibration.screen.pitch:
-  value: "Dat is {pitch} bij elke noot."
+  value: "Dit komt bij elke noot overeen met een toonhoogtefout van {pitch}."
   placeholders:
     pitch: {type: string}
 
-calibration.screen.preparing: {value: "Ingang wordt opgewarmd"}
+calibration.screen.preparing: {value: "Audio-ingang wordt voorbereid"}
 calibration.screen.retry: {value: "De metingen blijven ongecorrigeerd. Sluit andere audio-apps en probeer het opnieuw."}
 calibration.screen.return: {value: "Terug"}
 calibration.screen.stat.dropouts: {value: "Onderbrekingen"}
@@ -129,10 +129,10 @@ calibration.screen.steadiness:
     target: {type: string}
 
 calibration.screen.steps.done: {value: "Klaar"}
-calibration.screen.steps.measure: {value: "Meten"}
-calibration.screen.steps.prepare: {value: "Opwarmen"}
+calibration.screen.steps.measure: {value: "Meting"}
+calibration.screen.steps.prepare: {value: "Voorbereiding"}
 calibration.screen.traceEmpty: {value: "Hier verschijnt de klokafwijking tijdens de meting."}
-calibration.screen.unreliable: {value: "De klok werd niet stabiel"}
+calibration.screen.unreliable: {value: "De klokmeting werd niet stabiel"}
 calibration.start: {value: "Kalibreren"}
 calibration.startHint: {value: "Meet de sampleklok van de ingang"}
 
@@ -142,7 +142,7 @@ calibration.status.calibrated:
     percent: {type: string}
 
 calibration.status.calibrating:
-  value: "Kalibreren, {seconds} s ({percent} %), {progress} % voltooid"
+  value: "Kalibratie: {seconds} s, klokafwijking {percent} %, voortgang {progress} %"
   placeholders:
     percent: {type: string}
     progress: {type: string}

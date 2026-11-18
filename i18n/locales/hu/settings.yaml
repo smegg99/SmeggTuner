@@ -5,7 +5,7 @@
 # Microphone and input level
 audioDeviceHint: {value: "A méréshez használt mikrofon"}
 audioDeviceLabel: {value: "Bemeneti eszköz"}
-audioDeviceSystemDefault: {value: "Rendszer alapértelmezése"}
+audioDeviceSystemDefault: {value: "A rendszer alapértelmezett eszköze"}
 autoVolume.hint: {value: "Mérés közben beállítja a mikrofon jelszintjét"}
 autoVolume.label: {value: "Automatikus bemeneti hangerő"}
 autoVolume.saveFailed: {value: "Nem sikerült menteni a bemeneti hangerő beállítását."}
@@ -17,8 +17,8 @@ humFilterLabel: {value: "Hálózati búgásszűrő"}
 lockedWhileRunning: {value: "A hangbemenet módosításához állítsa le a hangolót."}
 
 # Detection and reference pitch
-continuousManual: {value: "A rögzített hang mérésének folyamatos frissítése"}
-continuousManualHint: {value: "A rögzített hang értékének frissítése már a mérés stabilizálódása előtt"}
+continuousManual: {value: "Kézzel kiválasztott hang folyamatos kijelzése"}
+continuousManualHint: {value: "A mért érték már a stabilizálódás előtt is frissül."}
 detection.balanced: {value: "Kiegyensúlyozott"}
 detection.balancedHint: {value: "Körülbelül fél másodperc alatt vált hangot"}
 detection.fast: {value: "Gyors"}
@@ -26,16 +26,16 @@ detection.fastHint: {value: "A leggyorsabban vált hangot, de téves hangon is m
 detection.steady: {value: "Stabil"}
 detection.steadyHint: {value: "Eredeti működés, lassú hangváltás"}
 detectionLabel: {value: "Hangfelismerés"}
-lockA4: {value: "A referenciahang rögzítése"}
+lockA4: {value: "Az A4 frekvenciájának zárolása"}
 lockA4Hint: {value: "Megakadályozza az A4 frekvenciájának módosítását a hangolóban"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "Hertz vagy a hangfrekvencia 0,06%-ának megfelelő egység"}
-beatUnitLabel: {value: "A lebegés mértékegysége"}
+beatUnitHint: {value: "A lebegés Hz-ben vagy a sípok hangmagasság-eltéréséhez választott mértékegységben jelenik meg."}
+beatUnitLabel: {value: "Lebegési frekvencia egysége"}
 errorReference: {value: "Az eltérés viszonyítási alapja"}
 errorReferenceGoal: {value: "Célérték"}
 
-errorReferenceHint: {value: "Az eltérés a skálahanghoz vagy a hangolási célértékhez viszonyítható. A célérték elérésekor az ahhoz viszonyított eltérés nulla."}
+errorReferenceHint: {value: "A síp hangmagasságát a temperált skála hangjához vagy a síp kívánt hangmagasságához viszonyíthatja. Az utóbbi esetben a nulla azt jelzi, hogy a síp elérte a kívánt hangmagasságot."}
 
 errorReferenceScale: {value: "Skála"}
 scaleNamingHint: {value: "A hangnevek jelölésmódja"}
@@ -45,7 +45,7 @@ scaleNamings.cdefgah: {value: "C D E F G A H (német, felemelt hang pl. C#)"}
 scaleNamings.doremi: {value: "Do Re Mi (szolmizáció)"}
 scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (lengyel)"}
 toleranceBeat: {value: "Lebegés"}
-toleranceHint: {value: "Ennyivel térhet el a síp vagy a lebegés a célértéktől úgy, hogy még hangoltnak számítson"}
+toleranceHint: {value: "A síp hangmagassága vagy a lebegési frekvencia ennyivel térhet el a célértéktől."}
 toleranceLabel: {value: "Tűréshatárok"}
 toleranceReed: {value: "Síp"}
 unitHint: {value: "Cent vagy a hangfrekvencia 0,06%-ának megfelelő egység"}
@@ -76,7 +76,7 @@ themes.dark: {value: "Sötét"}
 themes.light: {value: "Világos"}
 
 # Sound-card calibration
-calibration.askBody: {value: "A mintavételi órajel kalibrálás nélkül kis állandó mérési hibát okozhat. A kalibrálás körülbelül egy percig tart, és nem igényel hangot."}
+calibration.askBody: {value: "A hangkártya mintavételi órajelének eltérése kis, állandó mérési hibát okozhat. A kalibrálás körülbelül egy percig tart, és nem kell hozzá hangot megszólaltatni."}
 
 calibration.askCalibrate: {value: "Kalibrálás most"}
 calibration.askContinue: {value: "Folytatás korrekció nélkül"}
@@ -96,7 +96,7 @@ calibration.screen.calibrated:
     percent:
       type: string
 
-calibration.screen.calibrating: {value: "A hangkártya órajelének mérése"}
+calibration.screen.calibrating: {value: "A hangkártya mintavételi frekvenciájának mérése"}
 
 calibration.screen.how: {value: "A mért hangmagasság kis állandó hibát tartalmazhat. A kalibrálás körülbelül egy percig tart, és nem igényel hangot."}
 
@@ -134,7 +134,7 @@ calibration.screen.steps.done: {value: "Kész"}
 calibration.screen.steps.measure: {value: "Mérés"}
 calibration.screen.steps.prepare: {value: "Előkészítés"}
 calibration.screen.traceEmpty: {value: "Mérés közben itt jelenik meg az órajel eltérésének grafikonja."}
-calibration.screen.unreliable: {value: "Az órajel nem stabilizálódott"}
+calibration.screen.unreliable: {value: "A mért órajelfrekvencia nem stabilizálódott"}
 calibration.start: {value: "Kalibrálás"}
 calibration.startHint: {value: "A bemenet mintavételi órajelének mérése"}
 
@@ -169,4 +169,4 @@ groups.report: {value: "A műhely adatai"}
 # Report letterhead
 report.address: {value: "Cím"}
 report.name: {value: "Műhely neve"}
-report.nameHint: {value: "A fejléces exportált jegyzőkönyvekben jelenik meg."}
+report.nameHint: {value: "Bekapcsolt levélfejléc esetén ez a név jelenik meg az exportált jegyzőkönyvön."}

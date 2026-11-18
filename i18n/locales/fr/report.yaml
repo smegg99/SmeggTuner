@@ -59,21 +59,21 @@ graph.edited:
     mark: {type: string}
 
 legend.error.cents:
-  value: "Limez pour ramener l'écart à zéro. Écart en cents par rapport à la gamme tempérée à {a4} Hz."
+  value: "Limez chaque anche pour rapprocher de zéro l’écart à corriger. La colonne « Mes. » donne l’écart mesuré en cents par rapport à la gamme tempérée, avec la4 = {a4} Hz."
   placeholders:
     a4: {type: string}
 
-legend.error.key: {value: "Écart = mesure - cible."}
-legend.error.noCurve: {value: "Sans courbe cible, la cible vaut zéro et l'écart se mesure par rapport à la gamme."}
+legend.error.key: {value: "Écart à corriger = valeur mesurée − valeur cible."}
+legend.error.noCurve: {value: "Sans courbe cible, l’écart visé est nul. L’écart à corriger est donc celui mesuré par rapport à la gamme tempérée."}
 
 legend.error.reference:
-  value: "Limez pour ramener l'écart à zéro. L'écart par rapport à la gamme tempérée à {a4} Hz est exprimé en unités de 0,06 % de la fréquence de la note."
+  value: "Limez chaque anche pour rapprocher de zéro l’écart à corriger. Les écarts des anches sont mesurés par rapport à la gamme tempérée, avec la4 = {a4} Hz. Une unité vaut 0,06 % de la fréquence de la note."
   placeholders:
     a4: {type: string}
 
 legend.out.short: {value: "hors tolérance"}
 legend.takes.key: {value: "xN"}
-legend.takes.short: {value: "plusieurs prises, seule la dernière est affichée"}
+legend.takes.short: {value: "plusieurs mesures de la même note, seule la dernière est affichée"}
 mark.edited: {value: "M"}
 mark.out: {value: "!"}
 

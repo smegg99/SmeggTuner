@@ -3,7 +3,7 @@ close: {value: "Close"}
 copied: {value: "Copied"}
 copy: {value: "Copy report"}
 details: {value: "Details"}
-email: {value: "Email report"}
+email: {value: "Compose report email"}
 failed:
   value: "That did not work: {error}"
   placeholders:
@@ -12,27 +12,27 @@ file:
   value: "File: {path}"
   placeholders:
     path: {type: string}
-kill: {value: "Close and report"}
-logs: {value: "Show log file"}
+kill: {value: "Close app and view report"}
+logs: {value: "Show log in file manager"}
 messageConfig:
   value: "The settings file could not be read. Fix it or delete it, then start {app} again."
   placeholders:
     app: {type: string}
 messageCrash:
-  value: "Something inside {app} failed. Send the report so it can be fixed, then restart."
+  value: "{app} stopped unexpectedly. You can share the report with support, then restart the app."
   placeholders:
     app: {type: string}
-messageHang: {value: "It may still finish what it is doing. Wait, or close it and send a report."}
+messageHang: {value: "The app may still finish. Wait, or close it to view the diagnostic report."}
 messageHangStopped:
-  value: "{app} was closed while it was not responding. Send the report so it can be fixed, then restart."
+  value: "{app} was closed after it stopped responding. You can share the report with support or restart the app."
   placeholders:
     app: {type: string}
 messageKilled:
-  value: "{app} was closed before it could report anything. Send the report so it can be fixed, then restart."
+  value: "{app} closed before it could report the cause. You can share the available details with support or restart the app."
   placeholders:
     app: {type: string}
 messageOom:
-  value: "The system ran out of memory and closed {app}. Send the report, then restart."
+  value: "The system ran out of memory and closed {app}. You can share the report with support or restart the app."
   placeholders:
     app: {type: string}
 messageStartup:

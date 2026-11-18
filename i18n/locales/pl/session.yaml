@@ -9,7 +9,7 @@ card.a4:
   placeholders:
     hz: {type: string}
 
-card.changed: {value: "Akordeon na półce zmienił się od nagrania tej sesji."}
+card.changed: {value: "Od czasu zapisania tej sesji zmieniono opis akordeonu w bibliotece instrumentów."}
 card.hasCurve: {value: "Krzywa docelowa ustawiona"}
 
 card.readings:
@@ -19,7 +19,7 @@ card.readings:
       one: "{count} odczyt"
       few: "{count} odczyty"
       many: "{count} odczytów"
-      other: "{count} odczytów"
+      other: "{count} odczytu"
   placeholders:
     count: {type: integer}
 
@@ -41,12 +41,12 @@ new: {value: "Nowa sesja"}
 title: {value: "Sesje"}
 
 # Session dialog and tabs
-dialog.backToList: {value: "Wybierz już strojony"}
-dialog.describeNew: {value: "Opisz nowy..."}
-dialog.forgetAccordion: {value: "Zapomnij ten akordeon"}
+dialog.backToList: {value: "Wybierz z biblioteki instrumentów"}
+dialog.describeNew: {value: "Opisz nowy akordeon..."}
+dialog.forgetAccordion: {value: "Usuń akordeon z biblioteki"}
 dialog.loadAccordion: {value: "Wczytaj z pliku..."}
 dialog.name: {value: "Nazwa sesji"}
-dialog.nameHint: {value: "Wpisz nazwę instrumentu lub klienta, aby rozpoznać sesję."}
+dialog.nameHint: {value: "Wpisz np. nazwę instrumentu lub nazwisko klienta, aby łatwiej odnaleźć sesję."}
 dialog.pickAccordion: {value: "Który akordeon?"}
 dialog.start: {value: "Zacznij"}
 page.mobile.curve: {value: "Cele"}
@@ -57,44 +57,42 @@ accordion.a4Locked: {value: "Zablokowane: sesja ma już odczyty zmierzone wzglę
 
 accordion.columnsRefused:
   value: >-
-    Ta zmiana naruszyłaby układ głosów używany przez istniejące odczyty. Nie zapisano zmiany.
-    Przywróć poprzedni układ lub utwórz nową sesję.
-
+    Ta zmiana wpłynęłaby na przypisanie zapisanych odczytów do chórów. Nie zapisano jej.
+    Przywróć poprzedni układ chórów lub utwórz nową sesję.
 accordion.frozen:
   value: >-
-    Po zapisaniu odczytów nie można zmienić stroju odniesienia ani układu głosów. Nadal możesz
-    dodawać rejestry korzystające z istniejących głosów.
-
-accordion.frozenShort: {value: "Głosy zablokowane"}
+    Po zapisaniu odczytów nie można zmienić częstotliwości wzorcowej, transpozycji ani układu
+    chórów. Możesz nadal dodawać rejestry złożone z istniejących chórów.
+accordion.frozenShort: {value: "Układ chórów zablokowany"}
 accordion.remember: {value: "Zapisz w bibliotece instrumentów"}
 
 accordion.rememberHint:
   value: "Zapisz instrument z tej sesji w bibliotece, aby użyć go w kolejnych sesjach."
 
 # Instrument definition and registers
-instrument.a4: {value: "Wysokość odniesienia"}
+instrument.a4: {value: "Częstotliwość wzorcowa A4"}
 
 instrument.a4Hint:
   value: "Częstotliwość wzorcowa A4 w hercach. Nowe sesje tego instrumentu używają tej wartości."
 
-instrument.bass.build: {value: "Stopy, którymi gra następny rejestr"}
-instrument.bass.fixed: {value: "Bez rejestrów basowych: maszyna na sztywno, wszystkie głosy grają zawsze."}
+instrument.bass.build: {value: "Wybierz chóry dla nowego rejestru basowego"}
+instrument.bass.fixed: {value: "Brak przełączników rejestrów basowych. Wszystkie chóry basowe brzmią razem."}
 
 instrument.bass.full:
   value: "Basy mieszczą tu najwyżej {n} rejestrów"
   placeholders:
     n: {type: string}
 
-instrument.bass.hint: {value: "Podaj, iloma głosami grają basy; najczęściej cztery albo pięć."}
-instrument.bass.registerName: {value: "Nazwa przełącznika"}
-instrument.bass.voices: {value: "Głosy basowe"}
+instrument.bass.hint: {value: "Podaj liczbę chórów głosowych po stronie basowej. Zwykle są cztery lub pięć."}
+instrument.bass.registerName: {value: "Nazwa rejestru"}
+instrument.bass.voices: {value: "Chóry basowe"}
 instrument.beatTolerance: {value: "Tolerancja dudnienia"}
 instrument.builder.add: {value: "Dodaj"}
 instrument.builder.already: {value: "Ten rejestr jest już opisany"}
 instrument.builder.high: {value: "4 stopy (pikolo)"}
 instrument.builder.low: {value: "16 stóp (bas)"}
 instrument.builder.middle: {value: "8 stóp (głosy)"}
-instrument.builder.none: {value: "Brak rejestrów. Wybierz poniżej chóry, którymi gra każdy z nich."}
+instrument.builder.none: {value: "Brak rejestrów. Wybierz poniżej chóry, które mają brzmieć razem w nowym rejestrze."}
 instrument.builder.remove: {value: "Usuń ten rejestr"}
 instrument.builder.title: {value: "Dodaj rejestr"}
 instrument.file.exportTitle: {value: "Eksportuj akordeon"}
@@ -109,30 +107,29 @@ instrument.nameRequired: {value: "Wpisz nazwę akordeonu."}
 instrument.photo: {value: "Zdjęcie"}
 instrument.range.backwards: {value: "Najwyższy dźwięk nie może być niższy od najniższego."}
 instrument.range.clear: {value: "Wyczyść"}
-instrument.range.down: {value: "Niżej"}
+instrument.range.down: {value: "O półton niżej"}
 
 instrument.range.hint:
-  value: "Opcjonalne. Najniższy i najwyższy klawisz. Możesz też ustawić go słuchowo podczas kalibracji."
+  value: "Opcjonalnie podaj najniższy i najwyższy dźwięk. Możesz też zagrać skrajne dźwięki podczas kalibracji instrumentu."
 
 instrument.range.label: {value: "Zakres klawiatury"}
 instrument.range.to: {value: "do"}
-instrument.range.up: {value: "Wyżej"}
+instrument.range.up: {value: "O półton wyżej"}
 
 instrument.registersHint:
   value: >-
-    Klikaj kropki symbolu każdego rejestru - kółka wygrawerowanego na akordeonie - albo wybierz
-    typowy. To, co gra, odczytuje się prosto z kropek.
-
-instrument.registersSubtitle: {value: "Przełączniki strony dyskantowej i chóry, którymi grają."}
+    Odwzoruj symbol z przełącznika akordeonu. Wybierz, czy brzmią chóry 4′ i 16′, podaj liczbę
+    chórów 8′ i dodaj rejestr.
+instrument.registersSubtitle: {value: "Rejestry po stronie dyskantowej i chóry włączane przez każdy z nich."}
 
 instrument.says:
   plural:
     argument: reeds
     forms:
-      one: "Chóry głosowe {banks}. Najszerszy rejestr uruchamia {reeds} głos."
-      few: "Chóry głosowe {banks}. Najszerszy rejestr uruchamia {reeds} głosy."
-      many: "Chóry głosowe {banks}. Najszerszy rejestr uruchamia {reeds} głosów."
-      other: "Chóry głosowe {banks}. Najszerszy rejestr uruchamia {reeds} głosów."
+      one: "Chóry: {banks}. W jednym rejestrze klawisz uruchamia najwyżej {reeds} stroik."
+      few: "Chóry: {banks}. W jednym rejestrze klawisz uruchamia najwyżej {reeds} stroiki."
+      many: "Chóry: {banks}. W jednym rejestrze klawisz uruchamia najwyżej {reeds} stroików."
+      other: "Chóry: {banks}. W jednym rejestrze klawisz uruchamia najwyżej {reeds} stroika."
   placeholders:
     banks: {type: string}
     reeds: {type: integer}
@@ -140,62 +137,59 @@ instrument.says:
 instrument.sections.bass: {value: "Basy"}
 instrument.sections.identity: {value: "Oznaczenie"}
 instrument.sections.keyboard: {value: "Klawiatura"}
-instrument.sections.reference: {value: "Odniesienie i tolerancja"}
+instrument.sections.reference: {value: "Wzorzec stroju i tolerancja"}
 instrument.sections.voices: {value: "Rejestry"}
-instrument.tolerance: {value: "Tolerancja głosu"}
+instrument.tolerance: {value: "Tolerancja stroika"}
 
 instrument.toleranceHint:
   value: >-
-    Dopuszczalna odchyłka stroika w jednostkach równych 0,06% częstotliwości nuty. Odczyty poza
-    tym zakresem są oznaczane jako rozstrojone.
-
+    Dopuszczalny błąd względem docelowej wysokości stroika. Jednostka to 0,06% częstotliwości
+    dźwięku. Większe błędy są oznaczane jako przekroczenie tolerancji.
 # Target curve editor
 curve.clearAll: {value: "Wyczyść krzywą"}
 
 curve.clearAllConfirm:
   value: >-
-    Wszystkie punkty zostaną usunięte. Cel wróci do wysokości skali dla każdego dźwięku, a tuner
-    stanie się zwykłym wskaźnikiem.
-
-curve.clearAllHint: {value: "Usuń wszystkie punkty i zostaw cel na wysokości skali."}
+    Wszystkie punkty krzywej zostaną usunięte. Docelowa odchyłka każdego stroika od skali
+    wróci do zera.
+curve.clearAllHint: {value: "Usuń wszystkie punkty i przywróć zerową odchyłkę docelową dla każdego dźwięku."}
 curve.clearAllTitle: {value: "Wyczyścić całą krzywą?"}
-curve.entryUnit: {value: "Jednostka wpisu"}
+curve.entryUnit: {value: "Jednostka wprowadzanej wartości"}
 
 curve.help.hz:
   value: >-
-    Hz wpisuje cel w hercach, liczony przy A4 = 440 Hz jak w liście dudnień oryginału, więc nie
-    zmienia się z A4 sesji. Nagrane kładzie odczyty tej sesji na listę, a Lista może dopasować do
-    nich punkty albo skopiować listę z innej sesji.
-
+    W trybie Hz wpisz odchyłkę częstotliwości obliczoną przy A4 = 440 Hz. Wartość w tym polu
+    nie zależy od A4 sesji. Włącz „Pokaż odczyty”, aby nanieść pomiary na wykres. W menu
+    „Lista” możesz dopasować do nich krzywą lub skopiować listę z innej sesji.
 curve.help.hzTitle: {value: "Hz i odczyty"}
 
 curve.help.interp:
   value: >-
-    Przy włączonej Interpolacji dźwięki między punktami idą po linii; wyłączona - każdy punkt
-    obowiązuje aż do następnego. Bez punktów celem jest wszędzie wysokość skali.
-
+    Przy włączonej interpolacji wartości między punktami zmieniają się liniowo. Przy
+    wyłączonej wartość z danego punktu obowiązuje aż do następnego. Gdy nie ma punktów,
+    docelowa odchyłka każdego dźwięku wynosi zero.
 curve.help.interpTitle: {value: "Między punktami"}
 
 curve.help.lead:
   value: >-
-    Cel, do którego stroisz: jak daleko każdy głos ma leżeć od swojej wysokości skali, dźwięk po
-    dźwięku. Nagrany głos jest oceniany względem tego celu, a nie względem czystego środka.
-
+    Dla każdego dźwięku określ, o ile wyżej lub niżej od wysokości wynikającej ze skali ma
+    brzmieć dany stroik. Tabela porównuje zmierzoną odchyłkę z docelową i oznacza wyniki poza
+    tolerancją.
 curve.help.set:
   value: >-
-    Wybierz dźwięk i wartość i naciśnij Ustaw, albo przeciągnij punkt na wykresie w górę lub w
-    dół. Każdy chór to osobna linia, a edytowany jest wyróżniony.
-
+    Wybierz dźwięk, wpisz wartość i naciśnij „Ustaw” lub przeciągnij punkt na wykresie w
+    pionie. Każda linia odpowiada jednemu chórowi. Wyróżniona linia pokazuje aktualnie
+    edytowany chór.
 curve.help.setTitle: {value: "Ustawianie punktu"}
-curve.helpTitle: {value: "Żądane dudnienia"}
+curve.helpTitle: {value: "Docelowe odchyłki stroików i dudnienia"}
 curve.interpolate: {value: "Interpoluj"}
 
 curve.interpolateHint:
-  value: "Prowadź linię między punktami. Wyłączone - każdy punkt obowiązuje aż do następnego."
+  value: "Po włączeniu wartości zmieniają się liniowo między punktami. Po wyłączeniu wartość pozostaje stała aż do następnego punktu."
 
 curve.menu.ends: {value: "Poza punktami"}
-curve.menu.extendHigh: {value: "Przedłuż powyżej najwyższego"}
-curve.menu.extendLow: {value: "Przedłuż poniżej najniższego"}
+curve.menu.extendHigh: {value: "Przedłuż na wyższe dźwięki"}
+curve.menu.extendLow: {value: "Przedłuż na niższe dźwięki"}
 curve.menu.fit: {value: "Dopasuj do odczytów tej sesji"}
 
 curve.menu.fitBody:
@@ -217,7 +211,7 @@ curve.menu.replaceBody: {value: "Punkty zostaną zastąpione drugą listą, raze
 curve.menu.replaceConfirm: {value: "Zastąp"}
 curve.menu.replaceTitle: {value: "Zastąpić listę dudnień?"}
 curve.rank: {value: "Chór"}
-curve.recorded: {value: "Nagrane"}
+curve.recorded: {value: "Pokaż odczyty"}
 curve.recordedHint: {value: "Pokaż odczyty tej sesji na wykresie"}
 curve.remove: {value: "Usuń"}
 curve.removeHint: {value: "Usuń punkt tego dźwięku z krzywej."}
@@ -231,7 +225,7 @@ curve.scaleAuto: {value: "Skala auto"}
 curve.scaleHint: {value: "Jak daleko w górę i w dół sięga wykres"}
 curve.set: {value: "Ustaw"}
 curve.setHint: {value: "Umieść punkt na tym dźwięku dla wybranego chóru."}
-curve.startHint: {value: "Brak punktów. Celem jest wysokość skali dla każdego dźwięku."}
+curve.startHint: {value: "Brak punktów. Docelowa odchyłka od skali wynosi zero dla każdego dźwięku."}
 
 # Readings and workshop actions
 footer.coverage:
@@ -255,32 +249,30 @@ readings.notes:
       one: "jeden dźwięk"
       few: "{n} dźwięki"
       many: "{n} dźwięków"
-      other: "{n} dźwięków"
+      other: "{n} dźwięku"
   placeholders:
     n: {type: integer}
 
 workshop.exit: {value: "Wyjdź z sesji"}
 workshop.import: {value: "Importuj"}
 workshop.open: {value: "Otwórz"}
-workshop.print: {value: "Drukuj kartę"}
+workshop.print: {value: "Eksportuj kartę strojenia"}
 
 # Session errors
 error.fitFailed: {value: "Nie udało się dopasować krzywej do tego przebiegu."}
 
 error.hasReadings:
   value: >-
-    Ta sesja ma już odczyty: wszystkie zmierzono względem jej odniesienia i liczby głosów, więc
-    żadnego z nich nie da się teraz zmienić.
-
+    Sesja zawiera już odczyty. Nie można zmienić ich częstotliwości wzorcowej, transpozycji
+    ani układu chórów.
 error.imageUnreadable: {value: "Nie udało się otworzyć tego zdjęcia."}
 error.instrumentName: {value: "Nadaj akordeonowi nazwę, żeby go potem znaleźć."}
-error.invalidA4: {value: "Wysokość odniesienia musi mieścić się w zakresie 430-450 Hz."}
+error.invalidA4: {value: "Częstotliwość wzorcowa A4 musi wynosić od 430 do 450 Hz."}
 
 error.invalidInstrument:
   value: >-
-    Tego akordeonu nie można użyć: chór głosowy nazwany dwa razy albo rejestr używa chóru, którego
-    akordeon nie ma.
-
+    Nie można użyć tego akordeonu. Ten sam chór wskazano dwukrotnie lub rejestr odwołuje się
+    do chóru, którego nie ma w instrumencie.
 error.invalidName: {value: "Nadaj sesji nazwę."}
 error.invalidNote: {value: "Ten dźwięk jest poza zakresem tunera."}
 error.invalidReed: {value: "Ten akordeon nie ma takiego głosu."}
@@ -289,10 +281,10 @@ error.invalidTranspose: {value: "Transpozycja wynosi od 0 do 11 półtonów."}
 error.invalidUnit: {value: "Wartości podaje się w jednostkach 0,06 %, w centach albo w hercach."}
 error.invalidValue: {value: "To nie jest liczba."}
 error.loadFailed: {value: "Nie udało się odczytać sesji."}
-error.noBassMachine: {value: "Ten akordeon nie deklaruje basów."}
+error.noBassMachine: {value: "W opisie tego akordeonu nie podano układu basów."}
 error.noBassRegister: {value: "Akordeon nie ma takiego rejestru basowego."}
 error.noCurve: {value: "Ta sesja nie ma krzywej docelowej."}
-error.noReadings: {value: "W tej sesji nic jeszcze nie nagrano."}
+error.noReadings: {value: "W tej sesji nie zapisano jeszcze żadnych odczytów."}
 error.noRegister: {value: "Ten akordeon nie ma takiego rejestru."}
 error.noSession: {value: "Żadna sesja nie jest otwarta."}
 error.notAnImage: {value: "Ten plik nie jest zdjęciem."}
@@ -300,7 +292,7 @@ error.notFound: {value: "Nie ma takiej sesji."}
 error.notesTooLong: {value: "Skróć notatkę do 500 znaków."}
 
 error.saveFailed:
-  value: "Nie udało się zapisać sesji. Jeśli teraz zamkniesz, ostatnie nagrania mogą przepaść."
+  value: "Nie udało się zapisać sesji. Zamknięcie jej teraz grozi utratą ostatnich pomiarów."
 
 error.takeNotFound: {value: "Nie ma już tego odczytu."}
 error.unexpected: {value: "Coś poszło nie tak."}

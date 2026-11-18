@@ -4,7 +4,7 @@
 # Plurals: one = 1; other = 0, 2, 3, ...
 
 # Input, output and playback
-input.relearnHint: {value: "Relearn background noise (4 s of quiet)"}
+input.relearnHint: {value: "Measure background noise again (keep quiet for 4 s)"}
 input.tooStrong: {value: "Signal too strong"}
 input.unreliable: {value: "Signal unreliable"}
 inputPanel.label: {value: "The input signal"}
@@ -14,32 +14,32 @@ output.mute: {value: "Mute"}
 output.unmute: {value: "Unmute"}
 output.volume: {value: "Output volume"}
 soundcard.running: {value: "Calibrating the sound card"}
-soundcard.uncalibrated: {value: "Sound card not calibrated. Calibrate"}
-soundcard.unreliable: {value: "Calibration unreliable. Calibrate again"}
+soundcard.uncalibrated: {value: "Sound card not calibrated. Open calibration."}
+soundcard.unreliable: {value: "Unreliable result. Open sound card calibration."}
 source.analyze: {value: "Analyze recording…"}
 source.default: {value: "System default"}
 source.noDevices: {value: "No microphones found"}
 source.refresh: {value: "Refresh the device list"}
-transport.fileHint: {value: "A recording plays from its own card"}
-transport.start: {value: "Start"}
-transport.stop: {value: "Stop"}
+transport.fileHint: {value: "Start playback in the WAV panel"}
+transport.start: {value: "Start microphone measurement"}
+transport.stop: {value: "Stop microphone measurement"}
 
 # Modes, registers and note selection
-bassRegister.all: {value: "Whole machine"}
-bassRegister.hint: {value: "The pulled bass switch"}
+bassRegister.all: {value: "All bass ranks"}
+bassRegister.hint: {value: "Select the active bass register"}
 controls: {value: "Tuning controls"}
 mode.auto: {value: "Auto"}
-mode.autoHint: {value: "Let the tuner find the note"}
-mode.pinHint: {value: "Pin this note"}
-mode.pinned: {value: "Pinned note"}
-notes.clickToPin: {value: "click to pin"}
-notes.label: {value: "The notes E0 to C9. Click one to pin it."}
+mode.autoHint: {value: "Detect the note automatically"}
+mode.pinHint: {value: "Measure this note"}
+mode.pinned: {value: "Return to automatic note detection"}
+notes.clickToPin: {value: "click to select for measurement"}
+notes.label: {value: "Notes E0 to C9. Select the note to measure."}
 notes.range: {value: "E0 to C9"}
 notes.title: {value: "Notes"}
 notes.tracking: {value: "tracking"}
-panel.boxBase: {value: "The base is always measured"}
-panel.boxChord: {value: "Chords measure all three tones"}
-panel.boxLast: {value: "At least one box stays on"}
+panel.boxBase: {value: "The base note is always measured"}
+panel.boxChord: {value: "All three chord notes are measured"}
+panel.boxLast: {value: "At least one reed must stay selected"}
 
 panel.boxOctave:
   plural:
@@ -52,7 +52,7 @@ panel.boxOctave:
     box: {type: string}
 
 panel.boxReed:
-  value: "Reed {n}: measure it or not"
+  value: "Toggle measurement of reed {n}"
   placeholders:
     n: {type: string}
 
@@ -65,16 +65,16 @@ panel.bySession:
   placeholders:
     n: {type: integer}
 
-panel.locked: {value: "Lock"}
+panel.locked: {value: "Stable"}
 panel.modeHints.chords: {value: "Three-note chords"}
 panel.modeHints.octaves: {value: "A note with its upper octaves"}
-panel.modeHints.tones: {value: "One note, up to three reeds"}
+panel.modeHints.tones: {value: "One played note, one to three reeds"}
 panel.modeLabel: {value: "What is measured"}
 panel.modes.chords: {value: "Chords"}
 panel.modes.octaves: {value: "Octaves"}
-panel.modes.tones: {value: "Tones"}
+panel.modes.tones: {value: "Single note"}
 panel.quiet: {value: "Too quiet"}
-panel.recorded: {value: "Recorded"}
+panel.recorded: {value: "Reading saved"}
 panel.reeds: {value: "Reeds"}
 
 reeds.count:
@@ -86,7 +86,7 @@ reeds.count:
   placeholders:
     n: {type: integer}
 
-register.hint: {value: "The pulled register"}
+register.hint: {value: "Select the active register"}
 register.lockedPlaying: {value: "Stop playback to change the register."}
 side.bass: {value: "Bass"}
 side.hint: {value: "Treble or bass side"}
@@ -95,18 +95,18 @@ step.noteDown: {value: "One semitone down"}
 step.noteUp: {value: "One semitone up"}
 # Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
 signal.add: {value: "Add a tone"}
-signal.cents: {value: "Offset in cents from the note"}
-signal.down: {value: "One semitone down (Left arrow, Down arrow for an octave)"}
-signal.open: {value: "Signal generator: plays a note clean to tune a reed against"}
+signal.cents: {value: "Pitch offset from the selected note, in cents"}
+signal.down: {value: "One semitone lower (Left), one octave lower (Down)"}
+signal.open: {value: "Show or hide the reference tone generator"}
 signal.play: {value: "Play"}
-signal.playHint: {value: "Play the note with every tone, or with no note yet the first one heard (Space)"}
+signal.playHint: {value: "Play all tones on the selected or last detected note. If there is no note yet, wait for the first one (Space)."}
 signal.remove: {value: "Remove this tone"}
 signal.stop: {value: "Stop"}
 signal.stopHint: {value: "Stop the tone (Space)"}
 signal.title: {value: "Signal generator"}
-signal.up: {value: "One semitone up (Right arrow, Up arrow for an octave)"}
-signal.wave.hint: {value: "A reed tone has overtones, so beats are heard on them too"}
-signal.wave.reed: {value: "Reed"}
+signal.up: {value: "One semitone higher (Right), one octave higher (Up)"}
+signal.wave.hint: {value: "Reed timbre adds overtones. You can hear beats between their frequencies too."}
+signal.wave.reed: {value: "Reed timbre"}
 signal.wave.sine: {value: "Sine"}
 
 # Reference pitch and units
@@ -124,7 +124,7 @@ reference.transposed:
   placeholders:
     n: {type: string}
 
-unit.cents: {value: "Cent"}
+unit.cents: {value: "Cents"}
 unit.hz: {value: "Hz"}
 unit.reference: {value: "Units"}
 
@@ -135,9 +135,9 @@ boxes.beat:
     a: {type: string}
     b: {type: string}
 
-boxes.goal: {value: "goal"}
+boxes.goal: {value: "target"}
 boxes.hzOnly: {value: "only in Hz"}
-boxes.notHeard: {value: "not heard"}
+boxes.notHeard: {value: "not detected"}
 
 boxes.reed:
   value: "Reed {n}"
@@ -145,7 +145,7 @@ boxes.reed:
     n: {type: string}
 
 boxes.reedBank:
-  value: "Reed {bank}"
+  value: "Rank {bank}"
   placeholders:
     bank: {type: string}
 
@@ -159,9 +159,9 @@ spectrum.label: {value: "The frequency spectrum of the tracked note"}
 spectrum.title: {value: "Spectrum"}
 
 # Hold, noise learning and tuner state
-hold.hint: {value: "Hold stable readings (H)"}
+hold.hint: {value: "Automatically hold stable readings (H)"}
 state.deviceLost: {value: "Input lost"}
-state.initializing: {value: "Measuring the room"}
+state.initializing: {value: "Measuring background noise"}
 state.running: {value: "Listening"}
 state.stopped: {value: "Stopped"}
 state.tooQuiet: {value: "Too quiet, play louder or move closer"}
@@ -204,7 +204,7 @@ calibrate.range.backwards:
 calibrate.range.capture: {value: "Capture"}
 calibrate.range.highest: {value: "Highest"}
 calibrate.range.lowest: {value: "Lowest"}
-calibrate.range.next: {value: "Continue to reed calibration"}
+calibrate.range.next: {value: "Continue to reed measurements"}
 calibrate.range.playHigh: {value: "Now play the highest key."}
 calibrate.range.playLow: {value: "Play the lowest key."}
 calibrate.range.step: {value: "The keyboard"}
@@ -212,14 +212,14 @@ calibrate.status.captured: {value: "Captured"}
 calibrate.status.holding: {value: "Keep the note steady"}
 calibrate.status.loud: {value: "Too loud"}
 calibrate.status.play: {value: "Play a note"}
-calibrate.sweep.bassAll: {value: "Bass - whole machine"}
+calibrate.sweep.bassAll: {value: "Bass - all ranks"}
 
 calibrate.sweep.done:
   plural:
     argument: n
     forms:
-      one: "Swept. {n} reading on the card."
-      other: "Swept. {n} readings on the card."
+      one: "Measurements complete. {n} reading on the card."
+      other: "Measurements complete. {n} readings on the card."
   placeholders:
     n: {type: integer}
 
@@ -236,14 +236,14 @@ calibrate.sweep.progress:
     done: {type: string}
     total: {type: string}
 
-calibrate.sweep.redoRange: {value: "Redo the keyboard"}
+calibrate.sweep.redoRange: {value: "Measure keyboard range again"}
 calibrate.sweep.review: {value: "See the card"}
 calibrate.sweep.skip: {value: "Skip"}
 
 calibrate.sweep.soloTeaches:
-  value: "Sweeping a single-voice register also teaches the app that voice's sound."
+  value: "Measuring each note with a single-rank register also teaches the app that rank's timbre."
 
-calibrate.sweep.startPlain: {value: "Start the sweep"}
+calibrate.sweep.startPlain: {value: "Start measuring notes"}
 calibrate.sweep.step: {value: "The reeds"}
 calibrate.sweep.stop: {value: "Stop"}
 calibrate.title: {value: "Calibrate"}
@@ -264,9 +264,9 @@ web.mic.denied:
 
 web.mic.failed: {value: "The microphone could not be opened."}
 web.mic.none: {value: "No microphone was found."}
-web.mic.unsupported: {value: "This browser cannot record audio."}
+web.mic.unsupported: {value: "This browser cannot capture microphone audio."}
 web.notice.background: {value: "A tab in the background may pause the audio."}
-web.notice.native: {value: "The installed app is the accurate one."}
+web.notice.native: {value: "For more reliable measurements, use the installed app."}
 web.notice.ok: {value: "Understood"}
 
 web.notice.processing:
@@ -310,6 +310,6 @@ error.sampleRate:
 error.sessionDecides: {value: "The open session's register decides what is measured."}
 error.signalVoices:
   value: Play one to four tones, each within 100 cents of the note.
-error.toneNeedsManual: {value: "Pin a note to play its tone."}
+error.toneNeedsManual: {value: "Select a note manually to play its reference tone."}
 error.transposeMode: {value: "Chords and octaves are measured untransposed."}
 error.unexpected: {value: "Something went wrong. See the log for details."}

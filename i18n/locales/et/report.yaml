@@ -24,8 +24,8 @@
   value: "Bassi häälestustabel ({unit})"
   placeholders:
     unit: {"type": "string"}
-"table.curr": {value: "Praeg"}
-"table.err": {value: "Viga"}
+"table.curr": {value: "Mõõt."}
+"table.err": {value: "Vahe"}
 "table.register": {value: "Register"}
 "table.title":
   value: "Häälestustabel ({unit})"
@@ -39,13 +39,13 @@
   placeholders:
     mark: {"type": "string"}
 "legend.error.cents":
-  value: "Viili, kuni viga läheneb nullile. Sendid tempereeritud helirea suhtes, kui A4 on {a4} Hz."
+  value: "Viilimisel vii keele mõõtetulemuse ja sihtväärtuse vahe nulli poole. Mõõdetud kõrvalekalle on antud sentides võrdtempereeritud helirea suhtes, kui A4 = {a4} Hz."
   placeholders:
     a4: {"type": "string"}
-"legend.error.key": {value: "Viga = Praeg - Siht."}
-"legend.error.noCurve": {value: "Sihtkõver puudub: Siht on null, Viga on kõrvalekalle helireast."}
+"legend.error.key": {value: "Vahe = mõõdetud väärtus − sihtväärtus."}
+"legend.error.noCurve": {value: "Sihtkõverata on sihtväärtus null. Vahe näitab keele kõrvalekallet helirea noodi kõrgusest."}
 "legend.error.reference":
-  value: "Viili, kuni viga läheneb nullile. Ühikud on 0,06 % noodi sagedusest tempereeritud helirea suhtes, kui A4 on {a4} Hz."
+  value: "Viilimisel vii keele mõõtetulemuse ja sihtväärtuse vahe nulli poole. Kõrvalekalde lähtekohaks on võrdtempereeritud helirida, kui A4 = {a4} Hz. Üks ühik on 0,06% noodi sagedusest."
   placeholders:
     a4: {"type": "string"}
 "legend.out.short": {value: "väljaspool tolerantsi"}
@@ -63,8 +63,8 @@
   plural:
     argument: pluralCount
     forms:
-      one: "{pluralCount} tuiklemine"
-      other: "{pluralCount} tuiklemist"
+      one: "{pluralCount} mõõdetud keelepaar"
+      other: "{pluralCount} mõõdetud keelepaari"
   placeholders:
     pluralCount: {"type": "integer"}
 "summary.line":

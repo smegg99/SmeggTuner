@@ -56,7 +56,7 @@ tunerTonePlaying: {value: "Αναπαραγωγή τόνου αναφοράς"}
 # Sessions, readings and reports
 recordCleared: {value: "Το πέρασμα μετρήσεων εκκαθαρίστηκε"}
 recordEdited: {value: "Η μέτρηση τροποποιήθηκε χειροκίνητα"}
-recordRejected: {value: "Απορρίφθηκε αίτημα καταγραφής"}
+recordRejected: {value: "Η διόρθωση απορρίφθηκε: δεν υπάρχει ένδειξη για το συγκεκριμένο καλάμι σε αυτή τη μέτρηση"}
 recordTake: {value: "Η μέτρηση καταγράφηκε"}
 recordUndone: {value: "Αναιρέθηκε η τελευταία μέτρηση"}
 reportFailed: {value: "Αποτυχία εγγραφής της αναφοράς κουρδίσματος"}
@@ -72,7 +72,7 @@ sessionCurveImported: {value: "Η καμπύλη στόχου εισήχθη"}
 sessionDeleted: {value: "Η συνεδρία διαγράφηκε"}
 sessionLoadFailed: {value: "Αποτυχία φόρτωσης συνεδρίας"}
 sessionOpened: {value: "Η συνεδρία άνοιξε"}
-sessionReedsClamped: {value: "Ηχούν περισσότερα καλάμια από όσα διακρίνει η μηχανή, περιορίζεται ο αριθμός που αναλύει"}
+sessionReedsClamped: {value: "Ηχούν ταυτόχρονα περισσότερα καλάμια από όσα μπορεί να ξεχωρίσει το χορδιστήρι. Περιορίστηκε ο αριθμός των καλαμιών που μετρώνται."}
 sessionRejected: {value: "Απορρίφθηκε μη έγκυρη αλλαγή συνεδρίας"}
 sessionSaveFailed: {value: "Αποτυχία αποθήκευσης συνεδρίας"}
 

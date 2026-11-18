@@ -5,20 +5,20 @@
 # Microphone and input level
 audioDeviceHint: {value: "Mittauksessa käytettävä mikrofoni"}
 audioDeviceLabel: {value: "Tulolaite"}
-audioDeviceSystemDefault: {value: "Järjestelmän oletus"}
+audioDeviceSystemDefault: {value: "Järjestelmän oletusmikrofoni"}
 autoVolume.hint: {value: "Säätää mikrofonin tasoa mittauksen aikana"}
 autoVolume.label: {value: "Automaattinen tulotason säätö"}
 autoVolume.saveFailed: {value: "Tulotason asetusta ei voitu tallentaa."}
 autoVolume.unsupported: {value: "Tämän laitteen tulotasoa ei voi säätää."}
 humFilter50: {value: "50 Hz"}
 humFilter60: {value: "60 Hz"}
-humFilterHint: {value: "Poistaa verkkohurinaa: Euroopassa 50 Hz, Amerikassa 60 Hz"}
+humFilterHint: {value: "Valitse paikallinen verkkotaajuus verkkohurinan vaimentamiseksi"}
 humFilterLabel: {value: "Verkkohurinan suodatin"}
 lockedWhileRunning: {value: "Vaihda äänitulo pysäyttämällä ensin viritin."}
 
 # Detection and reference pitch
-continuousManual: {value: "Päivitä kiinnitetyn nuotin lukemaa jatkuvasti"}
-continuousManualHint: {value: "Päivitä kiinnitetyn nuotin lukemaa jo ennen lukittumista"}
+continuousManual: {value: "Päivitä käsin valitun nuotin lukemaa jatkuvasti"}
+continuousManualHint: {value: "Näytä muuttuva lukema jo ennen sen vakiintumista"}
 detection.balanced: {value: "Tasapainoinen"}
 detection.balancedHint: {value: "Vaihtaa nuottia noin puolessa sekunnissa"}
 detection.fast: {value: "Nopea"}
@@ -30,13 +30,13 @@ lockA4: {value: "Lukitse vertailusävelen taajuus"}
 lockA4Hint: {value: "Estää A4-taajuuden muuttamisen virittimessä"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "Hertsejä tai yksiköitä, joista kukin on 0,06 % sävelen taajuudesta"}
+beatUnitHint: {value: "Hertsit tai sama yksikkö kuin kielten poikkeamissa"}
 beatUnitLabel: {value: "Huojunnan yksikkö"}
 errorReference: {value: "Poikkeaman vertailukohta"}
-errorReferenceGoal: {value: "Tavoite"}
+errorReferenceGoal: {value: "Tavoitearvo"}
 
 errorReferenceHint:
-  value: "Näytä poikkeama asteikon sävelkorkeudesta tai viritystavoitteesta. Tavoitteen kohdalla poikkeama tavoitteesta on nolla."
+  value: "Vertaa kielen sävelkorkeutta joko asteikon säveleen tai haluttuun viritykseen. Jälkimmäisessä tapauksessa lukema on nolla, kun kieli soi tavoitekorkeudella."
 errorReferenceScale: {value: "Asteikko"}
 scaleNamingHint: {value: "Nuottien nimeämistapa"}
 scaleNamingLabel: {value: "Nuottien nimet"}
@@ -45,7 +45,7 @@ scaleNamings.cdefgah: {value: "C D E F G A H (saksalainen, ylennys muodossa C#)"
 scaleNamings.doremi: {value: "Do Re Mi (solmisaatio)"}
 scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (puolalainen)"}
 toleranceBeat: {value: "Huojunta"}
-toleranceHint: {value: "Suurin kielen tai huojunnan poikkeama, joka vielä hyväksytään vireessä olevaksi"}
+toleranceHint: {value: "Kuinka paljon kielen sävelkorkeus tai huojuntataajuus saa poiketa tavoitearvosta"}
 toleranceLabel: {value: "Toleranssit"}
 toleranceReed: {value: "Kieli"}
 unitHint: {value: "Senttejä tai yksiköitä, joista kukin on 0,06 % sävelen taajuudesta"}
@@ -60,7 +60,7 @@ accent.pick: {value: "Valitse väri"}
 accent.pickTitle: {value: "Korostusväri"}
 closeToTray: {value: "Pienennä suljettaessa ilmoitusalueelle"}
 closeToTrayHint: {value: "Ikkunan sulkeminen jättää sovelluksen ilmoitusalueelle"}
-checkUpdates: {value: "Tarkista päivitykset", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdates: {value: "Tarkista päivitykset automaattisesti", description: "Desktop settings checkbox enabling GitHub update checks."}
 checkUpdatesHint: {value: "Etsii uudempaa versiota GitHubista", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "Käyttöliittymän kieli"}
 languageLabel: {value: "Kieli"}
@@ -81,7 +81,7 @@ calibration.askBody:
 calibration.askCalibrate: {value: "Kalibroi nyt"}
 calibration.askContinue: {value: "Jatka ilman korjausta"}
 calibration.askTitle: {value: "Äänikorttia ei ole kalibroitu"}
-calibration.hint: {value: "Korjaa äänikortin kellovirheen. Kestää noin minuutin eikä vaadi ääntä."}
+calibration.hint: {value: "Korjaa äänikortin näytteenottokellon poikkeaman. Mittaus kestää noin minuutin eikä vaadi soittamista."}
 calibration.label: {value: "Äänikortin kalibrointi"}
 calibration.open: {value: "Avaa"}
 calibration.openHint: {value: "Näytä kalibrointinäkymä käynnistämättä mittausta"}
@@ -109,16 +109,16 @@ calibration.screen.phase.preparing: {value: "Tulon annetaan tasaantua ennen kell
 calibration.screen.phase.settling: {value: "Odotetaan kellolukeman tasaantumista."}
 
 calibration.screen.pitch:
-  value: "Tämä vastaa jokaisella nuotilla poikkeamaa {pitch}."
+  value: "Vastaava sävelkorkeuden poikkeama kaikilla nuoteilla: {pitch}."
   placeholders:
     pitch: {type: string}
 
-calibration.screen.preparing: {value: "Lämmitetään tuloa"}
+calibration.screen.preparing: {value: "Odotetaan tulosignaalin tasaantumista"}
 calibration.screen.retry: {value: "Lukemia ei korjata. Sulje muut äänisovellukset ja yritä uudelleen."}
 calibration.screen.return: {value: "Palaa"}
 calibration.screen.stat.dropouts: {value: "Katkokset"}
 calibration.screen.stat.elapsed: {value: "Kulunut aika"}
-calibration.screen.stat.offset: {value: "Kellon poikkeama"}
+calibration.screen.stat.offset: {value: "Kellotaajuuden poikkeama"}
 calibration.screen.stat.rate: {value: "Näytteenottotaajuus"}
 calibration.screen.stat.steadiness: {value: "Vakaus"}
 

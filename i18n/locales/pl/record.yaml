@@ -4,17 +4,17 @@
 # Plurals: one = 1; few = 2, 3, 4, 22; many = 0, 5, 12, 21; other = fractions.
 
 # Recording controls
-arm.hint: {value: "Zapisuj odczyt przy każdej blokadzie (Enter zapisuje od razu)"}
-arm.needsSession: {value: "Otwórz sesję, aby nagrywać"}
+arm.hint: {value: "Stabilne odczyty są zapisywane. Kliknij, aby wyłączyć zapis, lub naciśnij Enter, aby zapisać bieżący odczyt."}
+arm.needsSession: {value: "Otwórz sesję, aby zapisywać odczyty"}
 
 arm.warmup:
-  value: "Nagrywanie wyłączone: graj swobodnie, nic nie jest zapisywane. Naciśnij, aby rozpocząć nagrywanie."
+  value: "Możesz grać bez zapisywania odczytów. Kliknij, aby włączyć zapis."
 
-undo.hint: {value: "Cofnij ostatnie nagranie"}
+undo.hint: {value: "Cofnij zapis ostatniego odczytu"}
 
 # Readings table and compact columns
 mobile.current: {value: "Pomiar"}
-mobile.error: {value: "Odchyłka"}
+mobile.error: {value: "Błąd"}
 
 table.beat:
   value: "Dudnienie {pair}"
@@ -22,23 +22,22 @@ table.beat:
     pair: {type: string}
 
 table.delete: {value: "Usuń ten odczyt"}
-table.deleteHint: {value: "Trwale usuń ten odczyt. Zagraj i nagraj nutę ponownie, aby go zastąpić."}
+table.deleteHint: {value: "Odczyt zostanie trwale usunięty. Aby go zastąpić, zagraj ten dźwięk ponownie i zapisz nowy pomiar."}
 table.deleteTitle: {value: "Usunąć ten odczyt?"}
 table.editHint: {value: "Kliknij lub naciśnij Enter, aby zmienić wartość"}
-table.empty: {value: "Włącz nagrywanie, a następnie graj dźwięki, aby zapisać odczyty."}
+table.empty: {value: "Włącz zapis odczytów i zagraj kolejne dźwięki."}
 table.graph: {value: "Wykres"}
 
 table.graphHint:
   value: >-
-    Porównaj każdy stroik z jego celem. Kliknij kolumnę, aby wybrać jej wiersz; kliknij ponownie,
-    aby wybrać następny rejestr.
-
-table.graphLabel: {value: "Błędy głosów każdego nagranego dźwięku"}
+    Porównaj odchyłkę każdego stroika z wartością docelową. Kliknij kolumnę wykresu, aby
+    wybrać odpowiedni wiersz tabeli. Kliknij ponownie, aby przejść do następnego rejestru.
+table.graphLabel: {value: "Błędy strojenia poszczególnych stroików dla każdego zmierzonego dźwięku"}
 table.helpTitle: {value: "O tej tabeli"}
-table.label: {value: "Nagrane strojenie"}
-table.latest: {value: "Nagrany ostatnio: Backspace go usuwa"}
+table.label: {value: "Zapisane pomiary stroju"}
+table.latest: {value: "Ostatnio zapisany odczyt (Backspace usuwa)"}
 table.manual: {value: "Edytowane"}
-table.manualHint: {value: "Wartość w tym wierszu została wpisana ręcznie, a nie usłyszana."}
+table.manualHint: {value: "Jedną z wartości w tym wierszu wpisano ręcznie."}
 
 table.notes:
   plural:
@@ -47,7 +46,7 @@ table.notes:
       one: "jeden dźwięk"
       few: "{count} dźwięki"
       many: "{count} dźwięków"
-      other: "{count} dźwięków"
+      other: "{count} dźwięku"
   placeholders:
     count: {type: integer}
 
@@ -63,15 +62,14 @@ report.format: {value: "Format"}
 
 report.formatHint:
   value: >-
-    PDF to karta na jednej stronie A4, złożona tak jak się drukuje. HTML to ten sam arkusz jako
-    strona. CSV to tabela do arkusza kalkulacyjnego.
-
+    PDF zawiera kartę gotową do wydruku na jednej stronie A4. HTML pokazuje tę samą kartę w
+    przeglądarce. CSV zawiera dane tabeli do arkusza kalkulacyjnego.
 report.html: {value: "HTML"}
 report.notes: {value: "Notatka na karcie"}
 report.notesHint: {value: "Drukowana pod tabelą. Co zrobiono albo co jeszcze zostało."}
 
 report.pass:
-  value: "Przebieg: {label}"
+  value: "Seria pomiarów: {label}"
   placeholders:
     label: {type: string}
 
@@ -79,5 +77,5 @@ report.pdf: {value: "PDF"}
 report.title: {value: "Karta strojenia"}
 
 # Recording errors
-error.takeNotFound: {value: "Tego nagrania nie ma już w przebiegu."}
+error.takeNotFound: {value: "Tego odczytu nie ma już w tej serii pomiarów."}
 error.unexpected: {value: "Operacja nie powiodła się. Szczegóły znajdziesz w dzienniku."}

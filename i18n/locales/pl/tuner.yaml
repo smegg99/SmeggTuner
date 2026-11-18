@@ -4,7 +4,7 @@
 # Plurals: one = 1; few = 2, 3, 4, 22; many = 0, 5, 12, 21; other = fractions.
 
 # Input, output and playback
-input.relearnHint: {value: "Naucz szumu tła od nowa (4 s ciszy)"}
+input.relearnHint: {value: "Zmierz ponownie szum tła (zachowaj ciszę przez 4 s)"}
 input.tooStrong: {value: "Sygnał za silny"}
 input.unreliable: {value: "Sygnał niepewny"}
 inputPanel.label: {value: "Sygnał wejściowy"}
@@ -14,47 +14,47 @@ output.mute: {value: "Wycisz"}
 output.unmute: {value: "Wyłącz wyciszenie"}
 output.volume: {value: "Głośność wyjścia"}
 soundcard.running: {value: "Kalibrowanie karty dźwiękowej"}
-soundcard.uncalibrated: {value: "Karta dźwiękowa nieskalibrowana. Skalibruj"}
-soundcard.unreliable: {value: "Kalibracja niepewna. Skalibruj ponownie"}
+soundcard.uncalibrated: {value: "Karta dźwiękowa nieskalibrowana. Otwórz ekran kalibracji."}
+soundcard.unreliable: {value: "Niepewny wynik. Otwórz ekran kalibracji karty dźwiękowej."}
 source.analyze: {value: "Analizuj nagranie…"}
 source.default: {value: "Urządzenie domyślne"}
 source.noDevices: {value: "Nie znaleziono mikrofonów"}
 source.refresh: {value: "Odśwież listę urządzeń"}
-transport.fileHint: {value: "Nagranie odtwarza się z jego karty"}
-transport.start: {value: "Start"}
-transport.stop: {value: "Stop"}
+transport.fileHint: {value: "Uruchom odtwarzanie w panelu nagrania WAV"}
+transport.start: {value: "Rozpocznij pomiar z mikrofonu"}
+transport.stop: {value: "Zatrzymaj pomiar z mikrofonu"}
 
 # Modes, registers and note selection
-bassRegister.all: {value: "Cała maszyna"}
-bassRegister.hint: {value: "Wyciągnięty rejestr basowy"}
+bassRegister.all: {value: "Wszystkie chóry basowe"}
+bassRegister.hint: {value: "Wybierz używany rejestr basowy"}
 controls: {value: "Sterowanie strojeniem"}
 mode.auto: {value: "Auto"}
-mode.autoHint: {value: "Niech tuner sam znajdzie nutę"}
-mode.pinHint: {value: "Przypnij tę nutę"}
-mode.pinned: {value: "Przypięta nuta"}
-notes.clickToPin: {value: "kliknij, aby przypiąć"}
-notes.label: {value: "Nuty od E0 do C9. Kliknij, aby przypiąć."}
+mode.autoHint: {value: "Rozpoznawaj dźwięk automatycznie"}
+mode.pinHint: {value: "Mierz ten dźwięk"}
+mode.pinned: {value: "Wróć do automatycznego rozpoznawania dźwięków"}
+notes.clickToPin: {value: "kliknij, aby wybrać dźwięk do pomiaru"}
+notes.label: {value: "Skala od E0 do C9. Wybierz dźwięk do pomiaru."}
 notes.range: {value: "E0 do C9"}
 notes.title: {value: "Nuty"}
-notes.tracking: {value: "śledzi"}
-panel.boxBase: {value: "Podstawa jest mierzona zawsze"}
-panel.boxChord: {value: "Akordy mierzą wszystkie trzy dźwięki"}
-panel.boxLast: {value: "Co najmniej jedno pole zostaje włączone"}
+notes.tracking: {value: "wykryty dźwięk:"}
+panel.boxBase: {value: "Dźwięk podstawowy jest zawsze mierzony"}
+panel.boxChord: {value: "W trybie akordów mierzone są wszystkie trzy dźwięki"}
+panel.boxLast: {value: "Co najmniej jeden stroik musi pozostać wybrany"}
 
 panel.boxOctave:
   plural:
     argument: octaves
     forms:
-      one: "Pole {box}: {octaves} oktawa nad podstawą"
-      few: "Pole {box}: {octaves} oktawy nad podstawą"
-      many: "Pole {box}: {octaves} oktaw nad podstawą"
-      other: "Pole {box}: {octaves} oktaw nad podstawą"
+      one: "Pole {box}: {octaves} oktawa powyżej dźwięku podstawowego"
+      few: "Pole {box}: {octaves} oktawy powyżej dźwięku podstawowego"
+      many: "Pole {box}: {octaves} oktaw powyżej dźwięku podstawowego"
+      other: "Pole {box}: {octaves} oktawy powyżej dźwięku podstawowego"
   placeholders:
     octaves: {type: integer}
     box: {type: string}
 
 panel.boxReed:
-  value: "Głos {n}: mierz go albo nie"
+  value: "Włącz lub wyłącz pomiar stroika {n}"
   placeholders:
     n: {type: string}
 
@@ -62,37 +62,37 @@ panel.bySession:
   plural:
     argument: n
     forms:
-      one: "{n} głos, ustala rejestr sesji"
-      few: "{n} głosy, ustala rejestr sesji"
-      many: "{n} głosów, ustala rejestr sesji"
-      other: "{n} głosów, ustala rejestr sesji"
+      one: "{n} stroik (według rejestru w sesji)"
+      few: "{n} stroiki (według rejestru w sesji)"
+      many: "{n} stroików (według rejestru w sesji)"
+      other: "Liczba stroików według rejestru w sesji: {n}"
   placeholders:
     n: {type: integer}
 
-panel.locked: {value: "Blokada"}
+panel.locked: {value: "Odczyt stabilny"}
 panel.modeHints.chords: {value: "Akordy trzydźwiękowe"}
-panel.modeHints.octaves: {value: "Nuta z wyższymi oktawami"}
-panel.modeHints.tones: {value: "Jedna nuta, do trzech stroików"}
+panel.modeHints.octaves: {value: "Dźwięk podstawowy i jego wyższe oktawy"}
+panel.modeHints.tones: {value: "Jeden grany dźwięk, od jednego do trzech stroików"}
 panel.modeLabel: {value: "Co jest mierzone"}
 panel.modes.chords: {value: "Akordy"}
 panel.modes.octaves: {value: "Oktawy"}
-panel.modes.tones: {value: "Dźwięki"}
+panel.modes.tones: {value: "Jeden dźwięk"}
 panel.quiet: {value: "Za cicho"}
-panel.recorded: {value: "Nagrano"}
-panel.reeds: {value: "Głosy"}
+panel.recorded: {value: "Zapisano odczyt"}
+panel.reeds: {value: "Stroiki"}
 
 reeds.count:
   plural:
     argument: n
     forms:
-      one: "{n} głos"
-      few: "{n} głosy"
-      many: "{n} głosów"
-      other: "{n} głosów"
+      one: "{n} stroik"
+      few: "{n} stroiki"
+      many: "{n} stroików"
+      other: "{n} stroika"
   placeholders:
     n: {type: integer}
 
-register.hint: {value: "Wyciągnięty rejestr"}
+register.hint: {value: "Wybierz używany rejestr"}
 register.lockedPlaying: {value: "Zatrzymaj odtwarzanie, aby zmienić rejestr."}
 side.bass: {value: "Basy"}
 side.hint: {value: "Strona melodyczna lub basowa"}
@@ -101,28 +101,28 @@ step.noteDown: {value: "Pół tonu w dół"}
 step.noteUp: {value: "Pół tonu w górę"}
 # Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
 signal.add: {value: "Dodaj dźwięk"}
-signal.cents: {value: "Odstrojenie od nuty w centach"}
-signal.down: {value: "Pół tonu w dół (strzałka w lewo, w dół o oktawę)"}
-signal.open: {value: "Generator sygnału: gra czystą nutę do strojenia stroika"}
+signal.cents: {value: "Odchyłka od wybranego dźwięku w centach"}
+signal.down: {value: "Półton niżej (strzałka w lewo), oktawę niżej (strzałka w dół)"}
+signal.open: {value: "Pokaż lub ukryj generator dźwięków wzorcowych"}
 signal.play: {value: "Graj"}
-signal.playHint: {value: "Zagraj nutę ze wszystkimi dźwiękami, a bez nuty pierwszą usłyszaną (Spacja)"}
+signal.playHint: {value: "Odtwórz tony dla wybranego lub ostatnio wykrytego dźwięku. Jeśli nie wykryto jeszcze żadnego, generator poczeka na pierwszy (spacja)."}
 signal.remove: {value: "Usuń ten dźwięk"}
 signal.stop: {value: "Stop"}
 signal.stopHint: {value: "Zatrzymaj dźwięk (Spacja)"}
 signal.title: {value: "Generator sygnału"}
-signal.up: {value: "Pół tonu w górę (strzałka w prawo, w górę o oktawę)"}
-signal.wave.hint: {value: "Dźwięk stroika ma alikwoty, więc dudnienia słychać też na nich"}
-signal.wave.reed: {value: "Stroik"}
-signal.wave.sine: {value: "Sinus"}
+signal.up: {value: "Półton wyżej (strzałka w prawo), oktawę wyżej (strzałka w górę)"}
+signal.wave.hint: {value: "Brzmienie stroika zawiera alikwoty. Dudnienia słychać również między alikwotami."}
+signal.wave.reed: {value: "Barwa stroika"}
+signal.wave.sine: {value: "Sinusoida"}
 
 # Reference pitch and units
 reference.a4Locked: {value: "Zablokowane w Ustawieniach"}
-reference.a4Type: {value: "Wpisz A4 w hercach, od 430 do 450"}
+reference.a4Type: {value: "Wpisz częstotliwość A4 w zakresie od 430 do 450 Hz"}
 reference.frozen: {value: "Ustalone: sesja ma już odczyty"}
 reference.transpose: {value: "Transpozycja"}
 reference.transposeDown: {value: "O półton mniej"}
-reference.transposeHint: {value: "O ile półtonów klawisze brzmią wyżej"}
-reference.transposeMode: {value: "Akordy i oktawy mierzy się bez transpozycji"}
+reference.transposeHint: {value: "O ile półtonów dźwięk klawisza jest wyższy, niż wynika z jego nazwy"}
+reference.transposeMode: {value: "Akordy i oktawy są mierzone bez transpozycji"}
 reference.transposeUp: {value: "O półton więcej"}
 
 reference.transposed:
@@ -130,28 +130,28 @@ reference.transposed:
   placeholders:
     n: {type: string}
 
-unit.cents: {value: "Cent"}
+unit.cents: {value: "Centy"}
 unit.hz: {value: "Hz"}
 unit.reference: {value: "Jednostki"}
 
 # Live readings and graphs
 boxes.beat:
-  value: "Dudnienie {a} do {b}"
+  value: "Dudnienie {a}–{b}"
   placeholders:
     a: {type: string}
     b: {type: string}
 
 boxes.goal: {value: "cel"}
 boxes.hzOnly: {value: "tylko w Hz"}
-boxes.notHeard: {value: "nie słychać"}
+boxes.notHeard: {value: "nie wykryto"}
 
 boxes.reed:
-  value: "Głos {n}"
+  value: "Stroik {n}"
   placeholders:
     n: {type: string}
 
 boxes.reedBank:
-  value: "Głos {bank}"
+  value: "Chór {bank}"
   placeholders:
     bank: {type: string}
 
@@ -160,18 +160,18 @@ boxes.tone:
   placeholders:
     n: {type: string}
 
-ruler.label: {value: "Odchyłka każdego głosu"}
+ruler.label: {value: "Odchyłka każdego stroika"}
 spectrum.label: {value: "Widmo częstotliwości śledzonego dźwięku"}
 spectrum.title: {value: "Widmo"}
 
 # Hold, noise learning and tuner state
-hold.hint: {value: "Zatrzymuj stabilne odczyty (H)"}
+hold.hint: {value: "Automatycznie zatrzymuj stabilne odczyty (H)"}
 state.deviceLost: {value: "Utracono wejście"}
-state.initializing: {value: "Pomiar tła"}
+state.initializing: {value: "Pomiar szumu tła"}
 state.running: {value: "Nasłuchiwanie"}
 state.stopped: {value: "Zatrzymany"}
-state.tooQuiet: {value: "Za cicho, graj głośniej lub podejdź bliżej"}
-warmup.quiet: {value: "Cisza"}
+state.tooQuiet: {value: "Za cicho. Zagraj głośniej lub przybliż mikrofon."}
+warmup.quiet: {value: "Zachowaj ciszę"}
 
 # WAV files and waveform controls
 file.clearSelection: {value: "Zaznacz całe nagranie"}
@@ -210,29 +210,29 @@ calibrate.range.backwards:
 calibrate.range.capture: {value: "Zapisz"}
 calibrate.range.highest: {value: "Najwyższy"}
 calibrate.range.lowest: {value: "Najniższy"}
-calibrate.range.next: {value: "Przejdź do kalibracji stroików"}
-calibrate.range.playHigh: {value: "Teraz zagraj najwyższy klawisz."}
-calibrate.range.playLow: {value: "Zagraj najniższy klawisz."}
+calibrate.range.next: {value: "Przejdź do pomiaru stroików"}
+calibrate.range.playHigh: {value: "Teraz zagraj najwyższy dźwięk na klawiaturze."}
+calibrate.range.playLow: {value: "Zagraj najniższy dźwięk na klawiaturze."}
 calibrate.range.step: {value: "Klawiatura"}
 calibrate.status.captured: {value: "Zapisano"}
 calibrate.status.holding: {value: "Utrzymuj dźwięk"}
 calibrate.status.loud: {value: "Za głośno"}
 calibrate.status.play: {value: "Zagraj dźwięk"}
-calibrate.sweep.bassAll: {value: "Basy - cała maszyna"}
+calibrate.sweep.bassAll: {value: "Basy - wszystkie chóry"}
 
 calibrate.sweep.done:
   plural:
     argument: n
     forms:
-      one: "Zeskanowano. {n} odczyt na karcie."
-      few: "Zeskanowano. {n} odczyty na karcie."
-      many: "Zeskanowano. {n} odczytów na karcie."
-      other: "Zeskanowano. {n} odczytów na karcie."
+      one: "Pomiar zakończony. Na karcie: {n} odczyt."
+      few: "Pomiar zakończony. Na karcie: {n} odczyty."
+      many: "Pomiar zakończony. Na karcie: {n} odczytów."
+      other: "Pomiar zakończony. Na karcie: {n} odczytu."
   placeholders:
     n: {type: integer}
 
 calibrate.sweep.noRegisters:
-  value: "Ten akordeon nie ma opisanych rejestrów. Skan i tak działa; odczyty trafiają do numerowanych kolumn."
+  value: "Nie opisano rejestrów tego akordeonu. Możesz kontynuować pomiar. Odczyty pojawią się w ponumerowanych kolumnach."
 
 calibrate.sweep.pickRegister: {value: "Który rejestr kalibrujesz?"}
 
@@ -242,12 +242,12 @@ calibrate.sweep.progress:
     done: {type: string}
     total: {type: string}
 
-calibrate.sweep.redoRange: {value: "Popraw klawiaturę"}
+calibrate.sweep.redoRange: {value: "Zmierz ponownie zakres klawiatury"}
 calibrate.sweep.review: {value: "Zobacz kartę"}
 calibrate.sweep.skip: {value: "Pomiń"}
-calibrate.sweep.soloTeaches: {value: "Skan rejestru z jednym głosem uczy też aplikację brzmienia tego głosu."}
-calibrate.sweep.startPlain: {value: "Zacznij skan"}
-calibrate.sweep.step: {value: "Głosy"}
+calibrate.sweep.soloTeaches: {value: "Gdy mierzysz kolejne dźwięki w rejestrze jednogłosowym, program poznaje też barwę tego chóru."}
+calibrate.sweep.startPlain: {value: "Rozpocznij pomiar kolejnych dźwięków"}
+calibrate.sweep.step: {value: "Stroiki"}
 calibrate.sweep.stop: {value: "Zatrzymaj"}
 calibrate.title: {value: "Kalibracja"}
 
@@ -256,7 +256,7 @@ web.accent.default: {value: "Domyślny"}
 web.accent.hint: {value: "Kolor aplikacji lub własny"}
 web.diagnostics.copied: {value: "Skopiowano"}
 web.diagnostics.copy: {value: "Kopiuj diagnostykę"}
-web.diagnostics.empty: {value: "Uruchom stroik, aby zobaczyć dane mikrofonu."}
+web.diagnostics.empty: {value: "Uruchom tuner, aby zobaczyć dane mikrofonu."}
 web.diagnostics.title: {value: "Diagnostyka"}
 web.downloads.title: {value: "Pobierz aplikację"}
 web.experimental: {value: "Eksperymentalna"}
@@ -264,23 +264,22 @@ web.loadFailed: {value: "Silnik nie uruchomił się w tej przeglądarce."}
 
 web.mic.denied:
   value: >-
-    Odmówiono dostępu do mikrofonu. Zezwól na niego w ustawieniach przeglądarki i uruchom stroik
-    ponownie.
-
+    Brak dostępu do mikrofonu. Zezwól na jego użycie w ustawieniach przeglądarki i ponownie
+    uruchom tuner.
 web.mic.failed: {value: "Nie udało się otworzyć mikrofonu."}
 web.mic.none: {value: "Nie znaleziono mikrofonu."}
-web.mic.unsupported: {value: "Ta przeglądarka nie może nagrywać dźwięku."}
+web.mic.unsupported: {value: "Ta przeglądarka nie obsługuje wejścia mikrofonowego."}
 web.notice.background: {value: "Karta w tle może wstrzymać dźwięk."}
-web.notice.native: {value: "Dokładna jest zainstalowana aplikacja."}
+web.notice.native: {value: "Do dokładniejszych pomiarów użyj zainstalowanej aplikacji."}
 web.notice.ok: {value: "Rozumiem"}
 
 web.notice.processing:
   value: >-
-    Przeglądarka może stosować do mikrofonu usuwanie echa, redukcję szumów, automatyczne
-    wzmocnienie lub zmianę częstotliwości próbkowania. Każde z nich może zmienić odczyty.
-
+    Przeglądarka może usuwać echo, tłumić szum, automatycznie regulować wzmocnienie lub
+    zmieniać częstotliwość próbkowania sygnału z mikrofonu. Każda z tych funkcji może wpływać
+    na odczyty.
 web.notice.title: {value: "Eksperymentalna wersja przeglądarkowa"}
-web.processing.autoGainControl: {value: "automatyczne wzmocnienie"}
+web.processing.autoGainControl: {value: "automatyczna regulacja wzmocnienia"}
 web.processing.echoCancellation: {value: "usuwanie echa"}
 web.processing.noiseSuppression: {value: "redukcja szumów"}
 
@@ -291,21 +290,20 @@ web.processingOn:
 
 web.slow:
   value: >-
-    To urządzenie nie nadąża za silnikiem. Spóźniony dźwięk jest pomijany, aby odczyty pozostały
-    aktualne.
-
+    Urządzenie nie nadąża z analizą dźwięku. Program pomija opóźnione fragmenty, żeby
+    wyświetlać bieżące odczyty.
 # Tuner errors
-error.a4Locked: {value: "Wysokość odniesienia jest zablokowana w Ustawieniach."}
+error.a4Locked: {value: "Częstotliwość wzorcowa A4 jest zablokowana w ustawieniach."}
 error.chordsAuto: {value: "W trybie akordów tuner sam wybiera dźwięki."}
 error.deviceGone: {value: "Ten mikrofon nie jest już podłączony."}
 error.deviceLost: {value: "Mikrofon przestał odpowiadać i tuner został zatrzymany."}
 error.fileUnreadable: {value: "Nie udało się odczytać nagrania. Musi to być plik WAV."}
-error.invalidA4: {value: "Wysokość odniesienia musi mieścić się w zakresie 430-450 Hz."}
-error.invalidBox: {value: "Nie ma takiego pola głosu."}
-error.invalidMode: {value: "Tuner mierzy dźwięki, oktawy albo akordy."}
+error.invalidA4: {value: "Częstotliwość wzorcowa A4 musi wynosić od 430 do 450 Hz."}
+error.invalidBox: {value: "Nie ma takiego pola pomiaru stroika."}
+error.invalidMode: {value: "Wybierz tryb pomiaru: jeden dźwięk, oktawy lub akordy."}
 error.invalidNote: {value: "Ten dźwięk jest poza zakresem śledzonym przez tuner."}
 error.invalidTranspose: {value: "Transpozycja wynosi od 0 do 11 półtonów."}
-error.lastBox: {value: "Co najmniej jedno pole zostaje włączone."}
+error.lastBox: {value: "Co najmniej jedno pole pomiarowe musi pozostać włączone."}
 error.noDevices: {value: "Nie znaleziono mikrofonu. Podłącz go i odśwież listę urządzeń."}
 error.playbackFailed: {value: "Nie udało się odtworzyć dźwięku odniesienia."}
 
@@ -315,7 +313,7 @@ error.sampleRate:
     transpozycji. Użyj nagrania z próbkowaniem 44,1 kHz lub wyższym.
 
 error.sessionDecides: {value: "O tym, co jest mierzone, decyduje rejestr otwartej sesji."}
-error.signalVoices: {value: "Graj od jednego do czterech dźwięków, każdy najwyżej 100 centów od nuty."}
-error.toneNeedsManual: {value: "Przypnij dźwięk, aby zagrać jego ton."}
+error.signalVoices: {value: "Ustaw od jednego do czterech tonów. Każdy może odbiegać od wybranego dźwięku o najwyżej 100 centów w górę lub w dół."}
+error.toneNeedsManual: {value: "Wybierz dźwięk ręcznie, aby odtworzyć jego wzorzec."}
 error.transposeMode: {value: "Akordy i oktawy mierzy się bez transpozycji."}
-error.unexpected: {value: "Coś poszło nie tak. Szczegóły znajdziesz w logu."}
+error.unexpected: {value: "Wystąpił błąd. Szczegóły znajdziesz w dzienniku."}

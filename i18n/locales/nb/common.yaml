@@ -9,10 +9,10 @@ cancel: {value: "Avbryt"}
 close: {value: "Lukk"}
 delete: {value: "Slett"}
 export: {value: "Eksporter"}
-next: {value: "Neste"}
+next: {value: "Neste side"}
 "no": {value: "Nei"}
 none: {value: "Ingen"}
-previous: {value: "Forrige"}
+previous: {value: "Forrige side"}
 website: {value: "Nettsted"}
 "yes": {value: "Ja"}
 
@@ -75,14 +75,14 @@ title.uncalibrated:
     title: {type: string}
 
 # Application and About dialog
-about.aboutTitle: {value: "Om"}
+about.aboutTitle: {value: "Om SmeggTuner"}
 about.commit: {value: "Bygg"}
-about.donate: {value: "Støtt på Ko-fi"}
+about.donate: {value: "Gi et bidrag via Ko-fi"}
 about.license: {value: "Lisens"}
 about.privacy: {value: "Personvernerklæring"}
 about.guide: {value: "Slik bruker du SmeggTuner"}
-about.onlineVersion: {value: "Åpne nettversjonen"}
-about.support: {value: "Brukerstøtte"}
+about.onlineVersion: {value: "Åpne dokumentet i nettleseren"}
+about.support: {value: "Send e-post til brukerstøtten"}
 about.mascot: {value: "En katt som spiller trekkspill"}
 about.publisher: {value: "Av smegg99"}
 about.tagline: {value: "Gratis program med åpen kildekode for stemming av trekkspill."}

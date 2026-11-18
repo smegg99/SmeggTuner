@@ -12,34 +12,33 @@ autoVolume.saveFailed: {value: "Nie udało się zapisać ustawienia głośności
 autoVolume.unsupported: {value: "Regulacja poziomu wejścia jest niedostępna dla tego urządzenia."}
 humFilter50: {value: "50 Hz"}
 humFilter60: {value: "60 Hz"}
-humFilterHint: {value: "Usuwa przydźwięk sieci: 50 Hz w Europie, 60 Hz w Ameryce"}
+humFilterHint: {value: "Aby usunąć przydźwięk, wybierz częstotliwość miejscowej sieci elektrycznej"}
 humFilterLabel: {value: "Filtr przydźwięku sieciowego"}
 lockedWhileRunning: {value: "Zatrzymaj tuner, aby zmienić wejście audio."}
 
 # Detection and reference pitch
-continuousManual: {value: "Stale aktualizuj przypiętą nutę"}
-continuousManualHint: {value: "Aktualizuj przypiętą nutę przed blokadą"}
+continuousManual: {value: "Pokazuj bieżące odczyty ręcznie wybranego dźwięku"}
+continuousManualHint: {value: "Aktualizuj wynik jeszcze przed ustabilizowaniem się wysokości dźwięku"}
 detection.balanced: {value: "Zrównoważone"}
 detection.balancedHint: {value: "Zmienia nutę w około pół sekundy"}
 detection.fast: {value: "Szybkie"}
-detection.fastHint: {value: "Najszybciej zmienia nutę; może zablokować złą"}
+detection.fastHint: {value: "Najszybciej reaguje na zmianę dźwięku, ale czasem rozpoznaje go błędnie"}
 detection.steady: {value: "Stabilne"}
-detection.steadyHint: {value: "Pierwotne zachowanie; wolno zmienia nutę"}
-detectionLabel: {value: "Wykrywanie nut"}
+detection.steadyHint: {value: "Wolniej reaguje na zmianę dźwięku"}
+detectionLabel: {value: "Rozpoznawanie dźwięków"}
 lockA4: {value: "Zablokuj wysokość dźwięku wzorcowego"}
 lockA4Hint: {value: "Blokuje zmianę A4 w tunerze"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "Herce lub jednostki 0,06 % nuty"}
+beatUnitHint: {value: "Herce lub ta sama jednostka, którą wybrano dla odchyłek stroików"}
 beatUnitLabel: {value: "Jednostka dudnień"}
 errorReference: {value: "Punkt odniesienia odchyłki"}
 errorReferenceGoal: {value: "Cel"}
 
 errorReferenceHint:
   value: >-
-    Pokazuj odchyłkę od częstotliwości skali lub od celu strojenia. Po osiągnięciu celu odczyt
-    względem celu wynosi zero.
-
+    Mierz odchyłkę względem dźwięku skali lub docelowej wysokości stroika. Przy ustawieniu
+    „Cel” zero oznacza, że stroik osiągnął docelową wysokość.
 errorReferenceScale: {value: "Skala"}
 scaleNamingHint: {value: "Jak nazywane są nuty"}
 scaleNamingLabel: {value: "Nazewnictwo dźwięków"}
@@ -48,10 +47,10 @@ scaleNamings.cdefgah: {value: "C D E F G A H (niemieckie, krzyżyki jako C#)"}
 scaleNamings.doremi: {value: "Do Re Mi (solmizacja)"}
 scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (polskie)"}
 toleranceBeat: {value: "Dudnienie"}
-toleranceHint: {value: "Jak daleko stroik lub dudnienie może odbiegać, by liczyć się jako czyste"}
+toleranceHint: {value: "Dopuszczalna różnica między pomiarem a wartością docelową dla stroika lub dudnienia"}
 toleranceLabel: {value: "Tolerancje"}
-toleranceReed: {value: "Głos"}
-unitHint: {value: "Centy lub jednostki 0,06 % nuty"}
+toleranceReed: {value: "Stroik"}
+unitHint: {value: "Centy lub jednostki równe 0,06% częstotliwości dźwięku"}
 unitLabel: {value: "Jednostka odchyłki"}
 
 # Appearance, language and window behavior
@@ -63,7 +62,7 @@ accent.pick: {value: "Wybierz kolor"}
 accent.pickTitle: {value: "Kolor akcentu"}
 closeToTray: {value: "Minimalizuj do zasobnika po zamknięciu okna"}
 closeToTrayHint: {value: "Zamknięcie okna zostawia aplikację w zasobniku"}
-checkUpdates: {value: "Sprawdzaj aktualizacje", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdates: {value: "Automatycznie sprawdzaj aktualizacje", description: "Desktop settings checkbox enabling GitHub update checks."}
 checkUpdatesHint: {value: "Szuka nowszej wersji na GitHubie", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "Język interfejsu"}
 languageLabel: {value: "Język"}
@@ -87,10 +86,10 @@ calibration.askBody:
 calibration.askCalibrate: {value: "Kalibruj teraz"}
 calibration.askContinue: {value: "Kontynuuj bez korekcji"}
 calibration.askTitle: {value: "Ta karta dźwiękowa nie jest skalibrowana"}
-calibration.hint: {value: "Usuwa błąd zegara karty dźwiękowej. Około minuty, bez dźwięku."}
+calibration.hint: {value: "Koryguje błąd pomiaru wynikający z niedokładności zegara próbkowania wejścia. Trwa około minuty i nie wymaga grania."}
 calibration.label: {value: "Kalibracja karty dźwiękowej"}
 calibration.open: {value: "Otwórz"}
-calibration.openHint: {value: "Pokaż ekran kalibracji bez mierzenia"}
+calibration.openHint: {value: "Pokaż ekran kalibracji bez rozpoczynania pomiaru"}
 calibration.saveFailed: {value: "Nie udało się zapisać kalibracji. Tuner używa wcześniej zapisanego stanu."}
 calibration.screen.again: {value: "Kalibruj ponownie"}
 calibration.screen.bar.confirming: {value: "Potwierdzenie"}
@@ -102,7 +101,7 @@ calibration.screen.calibrated:
     percent: {type: string}
 
 calibration.screen.calibrating: {value: "Pomiar zegara karty dźwiękowej"}
-calibration.screen.how: {value: "Odczyty mogą mieć mały stały błąd. Dźwięk niepotrzebny, około minuty."}
+calibration.screen.how: {value: "Błąd zegara może zniekształcać pomiar wysokości dźwięku. Kalibracja trwa około minuty i nie wymaga grania."}
 calibration.screen.lead: {value: "Jeszcze nie skalibrowano"}
 
 calibration.screen.phase.confirming:
@@ -112,17 +111,17 @@ calibration.screen.phase.preparing: {value: "Wejście się stabilizuje, zanim zo
 calibration.screen.phase.settling: {value: "Czekanie, aż odczyt zegara przestanie się zmieniać."}
 
 calibration.screen.pitch:
-  value: "To {pitch} przy każdej nucie."
+  value: "Odpowiada to błędowi wysokości {pitch} dla każdego dźwięku."
   placeholders:
     pitch: {type: string}
 
-calibration.screen.preparing: {value: "Rozgrzewanie wejścia"}
+calibration.screen.preparing: {value: "Przygotowywanie wejścia"}
 calibration.screen.retry: {value: "Odczyty są bez korekty. Zamknij inne programy audio i spróbuj ponownie."}
 calibration.screen.return: {value: "Wróć"}
 calibration.screen.stat.dropouts: {value: "Utracone bloki"}
 calibration.screen.stat.elapsed: {value: "Czas"}
 calibration.screen.stat.offset: {value: "Odchyłka zegara"}
-calibration.screen.stat.rate: {value: "Próbkowanie"}
+calibration.screen.stat.rate: {value: "Częstotliwość próbkowania"}
 calibration.screen.stat.steadiness: {value: "Stabilność"}
 
 calibration.screen.steadiness:
@@ -133,8 +132,8 @@ calibration.screen.steadiness:
 
 calibration.screen.steps.done: {value: "Gotowe"}
 calibration.screen.steps.measure: {value: "Pomiar"}
-calibration.screen.steps.prepare: {value: "Rozgrzewka"}
-calibration.screen.traceEmpty: {value: "Tu pojawi się przesunięcie zegara w trakcie pomiaru."}
+calibration.screen.steps.prepare: {value: "Przygotowanie"}
+calibration.screen.traceEmpty: {value: "Podczas pomiaru pojawi się tu wykres odchyłki zegara."}
 calibration.screen.unreliable: {value: "Zegar się nie ustabilizował"}
 calibration.start: {value: "Kalibruj"}
 calibration.startHint: {value: "Zmierz zegar próbkowania wejścia"}

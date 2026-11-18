@@ -3,7 +3,7 @@ close: {value: "關閉"}
 copied: {value: "已複製"}
 copy: {value: "複製報告"}
 details: {value: "詳細資料"}
-email: {value: "以電子郵件傳送報告"}
+email: {value: "用郵件程式撰寫回報信"}
 failed:
   value: "操作失敗：{error}"
   placeholders:
@@ -12,8 +12,8 @@ file:
   value: "檔案：{path}"
   placeholders:
     path: {type: string}
-kill: {value: "關閉並回報"}
-logs: {value: "顯示記錄檔"}
+kill: {value: "強制結束並產生報告"}
+logs: {value: "開啟記錄檔所在位置"}
 messageConfig:
   value: "無法讀取設定檔。請修復或刪除該檔案，然後重新啟動 {app}。"
   placeholders:
@@ -22,7 +22,7 @@ messageCrash:
   value: "{app} 發生內部錯誤。請傳送報告以協助排除問題，然後重新啟動程式。"
   placeholders:
     app: {type: string}
-messageHang: {value: "程式仍有可能完成目前的操作。你可以繼續等候，也可以關閉程式並傳送報告。"}
+messageHang: {value: "程式可能仍在處理工作。可以繼續等候，或強制結束後查看報告，再決定是否寄出。"}
 messageHangStopped:
   value: "{app} 在沒有回應時遭到關閉。請傳送報告以協助排除問題，然後重新啟動程式。"
   placeholders:
@@ -54,7 +54,7 @@ titleHang: {value: "程式沒有回應"}
 titleHangStopped: {value: "程式已停止回應"}
 titleKilled: {value: "程式意外關閉"}
 titleStart: {value: "無法啟動程式"}
-wait: {value: "等候"}
+wait: {value: "繼續等候"}
 windowCrash: {value: "已當機"}
 windowHang: {value: "沒有回應"}
 windowHangStopped: {value: "已停止回應"}

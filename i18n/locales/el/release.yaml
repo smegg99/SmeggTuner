@@ -9,7 +9,7 @@ updateBody:
   placeholders:
     current: {type: string}
     latest: {type: string}
-updateDownload: {value: "Λήψη"}
+updateDownload: {value: "Άνοιγμα σελίδας λήψης"}
 updateIgnore: {value: "Παράλειψη αυτής της έκδοσης"}
 updateLater: {value: "Αργότερα"}
 updateTitle: {value: "Διατίθεται νεότερη έκδοση"}

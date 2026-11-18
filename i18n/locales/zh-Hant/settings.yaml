@@ -12,13 +12,13 @@ autoVolume.saveFailed: {value: "未能儲存輸入音量設定。"}
 autoVolume.unsupported: {value: "此裝置不支援調節輸入電平。"}
 humFilter50: {value: "50 Hz"}
 humFilter60: {value: "60 Hz"}
-humFilterHint: {value: "濾除電源交流聲：歐洲為 50 Hz，美洲為 60 Hz"}
+humFilterHint: {value: "選擇當地市電頻率，濾除電源嗡聲"}
 humFilterLabel: {value: "電源交流聲濾波器"}
-lockedWhileRunning: {value: "請先停止調音器，再更改音訊輸入。"}
+lockedWhileRunning: {value: "請先停止測量，再切換音訊輸入。"}
 
 # Detection and reference pitch
-continuousManual: {value: "持續更新固定音的讀數"}
-continuousManualHint: {value: "在讀數鎖定前也更新固定音的讀數"}
+continuousManual: {value: "連續顯示手動選音的測量值"}
+continuousManualHint: {value: "手動選音時，即使讀數尚未穩定也會更新顯示"}
 detection.balanced: {value: "均衡"}
 detection.balancedHint: {value: "約半秒切換到另一個音"}
 detection.fast: {value: "快速"}
@@ -26,17 +26,17 @@ detection.fastHint: {value: "切換最快，但可能鎖定錯誤的音"}
 detection.steady: {value: "穩定"}
 detection.steadyHint: {value: "沿用原來的辨識方式，切換較慢"}
 detectionLabel: {value: "音符辨識"}
-lockA4: {value: "鎖定基準音高"}
+lockA4: {value: "鎖定 A4 基準頻率"}
 lockA4Hint: {value: "禁止在調音器中更改 A4"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "赫茲，或以該音符頻率的 0.06% 為單位"}
+beatUnitHint: {value: "拍頻可用赫茲顯示，也可使用為簧片偏差選定的單位。"}
 beatUnitLabel: {value: "拍頻單位"}
 errorReference: {value: "偏差基準"}
-errorReferenceGoal: {value: "目標音高"}
+errorReferenceGoal: {value: "目標值"}
 
 errorReferenceHint:
-  value: "顯示相對於音階音高或調音目標的偏差。以目標為基準時，達到目標的讀數為零。"
+  value: "可顯示相對於音階標準音高的偏差，也可顯示實測值與調音目標的差值。選擇後者時，達到目標就顯示零。"
 errorReferenceScale: {value: "音階"}
 scaleNamingHint: {value: "音名的顯示方式"}
 scaleNamingLabel: {value: "音名標記"}
@@ -60,7 +60,7 @@ accent.pick: {value: "選擇顏色"}
 accent.pickTitle: {value: "強調色"}
 closeToTray: {value: "關閉時最小化到托盤"}
 closeToTrayHint: {value: "關閉視窗後，應用程式會留在系統托盤中"}
-checkUpdates: {value: "檢查更新", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdates: {value: "自動檢查更新", description: "Desktop settings checkbox enabling GitHub update checks."}
 checkUpdatesHint: {value: "在 GitHub 上查詢新版本", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "介面語言"}
 languageLabel: {value: "語言"}
@@ -109,11 +109,11 @@ calibration.screen.phase.preparing: {value: "正在等待輸入穩定，然後�
 calibration.screen.phase.settling: {value: "正在等待時鐘讀數穩定。"}
 
 calibration.screen.pitch:
-  value: "各音的音高偏差均為 {pitch}。"
+  value: "換算為音高誤差，各音均相當於 {pitch}。"
   placeholders:
     pitch: {type: string}
 
-calibration.screen.preparing: {value: "正在預熱輸入裝置"}
+calibration.screen.preparing: {value: "正在等候輸入穩定"}
 calibration.screen.retry: {value: "讀數仍未校正。請關閉其他音訊應用程式後重試。"}
 calibration.screen.return: {value: "返回"}
 calibration.screen.stat.dropouts: {value: "訊號中斷次數"}
@@ -163,4 +163,4 @@ groups.report: {value: "調音工坊資料"}
 # Report letterhead
 report.address: {value: "地址"}
 report.name: {value: "調音工坊名稱"}
-report.nameHint: {value: "啟用信頭後，將顯示在匯出的報告上。"}
+report.nameHint: {value: "啟用報告抬頭後，匯出的報告會顯示工坊名稱。"}

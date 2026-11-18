@@ -4,25 +4,25 @@
 
 # Microphone and input level
 audioDeviceHint: {value: "Mikrofon til måling"}
-audioDeviceLabel: {value: "Inndataenhet"}
+audioDeviceLabel: {value: "Lydinngang"}
 audioDeviceSystemDefault: {value: "Systemstandard"}
 autoVolume.hint: {value: "Justerer mikrofonnivået under målingen"}
 autoVolume.label: {value: "Automatisk inngangsnivå"}
-autoVolume.saveFailed: {value: "Innstillingen for inngangsnivå kunne ikke lagres."}
+autoVolume.saveFailed: {value: "Innstillingen for automatisk nivåregulering kunne ikke lagres."}
 autoVolume.unsupported: {value: "Inngangsnivået kan ikke justeres på denne enheten."}
 humFilter50: {value: "50 Hz"}
 humFilter60: {value: "60 Hz"}
-humFilterHint: {value: "Fjerner nettbrum: 50 Hz i Europa, 60 Hz i Amerika"}
+humFilterHint: {value: "Velg den lokale nettfrekvensen for å filtrere bort nettbrum"}
 humFilterLabel: {value: "Nettbrumfilter"}
-lockedWhileRunning: {value: "Stopp stemmeapparatet for å bytte lydinngang."}
+lockedWhileRunning: {value: "Stopp målingen før du bytter lydinngang."}
 
 # Detection and reference pitch
-continuousManual: {value: "Oppdater en festet tone fortløpende"}
-continuousManualHint: {value: "Oppdater en festet tone til målingen låses"}
+continuousManual: {value: "Vis løpende måleverdier ved manuelt tonevalg"}
+continuousManualHint: {value: "Viser også måleverdier som ennå ikke er stabile"}
 detection.balanced: {value: "Balansert"}
 detection.balancedHint: {value: "Skifter tone på omtrent et halvt sekund"}
 detection.fast: {value: "Rask"}
-detection.fastHint: {value: "Skifter tone raskest, men kan låse på feil tone"}
+detection.fastHint: {value: "Reagerer raskest på toneskift, men kan registrere feil tone"}
 detection.steady: {value: "Stabil"}
 detection.steadyHint: {value: "Opprinnelig virkemåte, langsomt toneskifte"}
 detectionLabel: {value: "Tonegjenkjenning"}
@@ -30,14 +30,14 @@ lockA4: {value: "Lås kammertonen"}
 lockA4Hint: {value: "Hindrer endring av A4 i stemmeapparatet"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "Hertz eller enheter på 0,06 % av tonens frekvens"}
+beatUnitHint: {value: "Vis slag i hertz eller i enheten du har valgt for stemtungenes avvik"}
 beatUnitLabel: {value: "Enhet for slag"}
 errorReference: {value: "Referanse for avvik"}
 errorReferenceGoal: {value: "Målverdi"}
 
 errorReferenceHint:
-  value: "Vis avviket fra skalaens tonehøyde eller fra stemmemålet. Ved målet er avviket fra målet null."
-errorReferenceScale: {value: "Skala"}
+  value: "Velg om avviket skal vises i forhold til tonen i likesvevende stemming eller til målverdien. Med målverdien som referanse vises null når målet er nådd."
+errorReferenceScale: {value: "Likesvevende stemming"}
 scaleNamingHint: {value: "Hvordan tonene navngis"}
 scaleNamingLabel: {value: "Tonenavn"}
 scaleNamings.cdefgab: {value: "C D E F G A B (internasjonalt, kryss som C#)"}
@@ -45,7 +45,7 @@ scaleNamings.cdefgah: {value: "C D E F G A H (tysk, kryss som C#)"}
 scaleNamings.doremi: {value: "Do Re Mi (solmisasjon)"}
 scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (polsk)"}
 toleranceBeat: {value: "Slag"}
-toleranceHint: {value: "Hvor mye en stemtunge eller et slag kan avvike og fortsatt regnes som stemt"}
+toleranceHint: {value: "Hvor mye en stemtunge eller et slag kan avvike fra målverdien sin"}
 toleranceLabel: {value: "Toleranser"}
 toleranceReed: {value: "Stemtunge"}
 unitHint: {value: "Cent eller enheter på 0,06 % av tonens frekvens"}
@@ -60,7 +60,7 @@ accent.pick: {value: "Velg en farge"}
 accent.pickTitle: {value: "Uthevingsfarge"}
 closeToTray: {value: "Minimer til systemstatusfeltet ved lukking"}
 closeToTrayHint: {value: "Når vinduet lukkes, blir appen værende i systemstatusfeltet"}
-checkUpdates: {value: "Se etter oppdateringer", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdates: {value: "Se automatisk etter oppdateringer", description: "Desktop settings checkbox enabling GitHub update checks."}
 checkUpdatesHint: {value: "Ser etter en nyere versjon på GitHub", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "Språk i brukergrensesnittet"}
 languageLabel: {value: "Språk"}
@@ -84,7 +84,7 @@ calibration.askTitle: {value: "Lydkortet er ikke kalibrert"}
 calibration.hint: {value: "Korrigerer lydkortets klokkefeil. Tar omtrent ett minutt og krever ingen lyd."}
 calibration.label: {value: "Kalibrering av lydkort"}
 calibration.open: {value: "Åpne"}
-calibration.openHint: {value: "Vis kalibreringsskjermen uten å måle"}
+calibration.openHint: {value: "Åpne kalibreringsvinduet uten å starte kalibreringen"}
 calibration.saveFailed: {value: "Kalibreringen kunne ikke lagres. Stemmeapparatet bruker den tidligere lagrede tilstanden."}
 calibration.screen.again: {value: "Kalibrer på nytt"}
 calibration.screen.bar.confirming: {value: "Bekrefter"}
@@ -109,11 +109,11 @@ calibration.screen.phase.preparing: {value: "Venter på at inngangen stabilisere
 calibration.screen.phase.settling: {value: "Venter på en stabil klokkemåling."}
 
 calibration.screen.pitch:
-  value: "Det tilsvarer {pitch} ved hver tone."
+  value: "Det tilsvarer en tonehøydefeil på {pitch} for hver tone."
   placeholders:
     pitch: {type: string}
 
-calibration.screen.preparing: {value: "Varmer opp inngangen"}
+calibration.screen.preparing: {value: "Klargjør lydinngangen"}
 calibration.screen.retry: {value: "Målingene blir ikke korrigert. Lukk andre lydapper og prøv igjen."}
 calibration.screen.return: {value: "Tilbake"}
 calibration.screen.stat.dropouts: {value: "Avbrudd"}
@@ -129,10 +129,10 @@ calibration.screen.steadiness:
     target: {type: string}
 
 calibration.screen.steps.done: {value: "Ferdig"}
-calibration.screen.steps.measure: {value: "Mål"}
-calibration.screen.steps.prepare: {value: "Oppvarming"}
+calibration.screen.steps.measure: {value: "Måling"}
+calibration.screen.steps.prepare: {value: "Klargjøring"}
 calibration.screen.traceEmpty: {value: "Her vises klokkeavviket under målingen."}
-calibration.screen.unreliable: {value: "Klokken ble ikke stabil"}
+calibration.screen.unreliable: {value: "Målingen av lydkortets klokke ble ikke stabil"}
 calibration.start: {value: "Kalibrer"}
 calibration.startHint: {value: "Mål inngangens samplingsklokke"}
 
@@ -142,7 +142,7 @@ calibration.status.calibrated:
     percent: {type: string}
 
 calibration.status.calibrating:
-  value: "Kalibrerer, {seconds} s ({percent} %), {progress} % ferdig"
+  value: "Kalibrering: {seconds} s, klokkeavvik {percent} %, {progress} % fullført"
   placeholders:
     percent: {type: string}
     progress: {type: string}

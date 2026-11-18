@@ -37,8 +37,8 @@ table.bassTitle:
   placeholders:
     unit: {type: string}
 
-table.curr: {value: "ค่าที่วัดได้"}
-table.err: {value: "ค่าผิดพลาด"}
+table.curr: {value: "ค่าวัด"}
+table.err: {value: "ผลต่าง"}
 table.register: {value: "รีจิสเตอร์"}
 
 table.title:
@@ -58,15 +58,15 @@ graph.edited:
     mark: {type: string}
 
 legend.error.cents:
-  value: "ตะไบลิ้นเสียงให้ค่าผิดพลาดใกล้ศูนย์ ค่าเป็นเซนต์เทียบกับระดับเสียงในระบบแบ่งเท่าเมื่อ A4 = {a4} Hz"
+  value: "ตะไบลิ้นเสียงให้ผลต่างเข้าใกล้ศูนย์ ช่องค่าวัดของลิ้นแสดงส่วนต่างเป็นเซนต์จากระดับเสียงตามระบบแบ่งเท่าที่ A4 = {a4} Hz"
   placeholders:
     a4: {type: string}
 
-legend.error.key: {value: "ค่าผิดพลาด = ค่าที่วัดได้ − ค่าเป้าหมาย"}
-legend.error.noCurve: {value: "หากไม่มีเส้นโค้งเป้าหมาย ค่าเป้าหมายจะเป็นศูนย์ และค่าผิดพลาดคือความต่างจากระดับเสียงในบันไดเสียง"}
+legend.error.key: {value: "ผลต่าง = ค่าวัด − ค่าเป้าหมาย"}
+legend.error.noCurve: {value: "เมื่อไม่มีเส้นโค้งเป้าหมาย ค่าเป้าหมายเป็นศูนย์ ผลต่างจึงเท่ากับส่วนต่างจากระดับเสียงตามบันไดเสียง"}
 
 legend.error.reference:
-  value: "ตะไบลิ้นเสียงให้ค่าผิดพลาดใกล้ศูนย์ เทียบกับระดับเสียงในระบบแบ่งเท่าเมื่อ A4 = {a4} Hz โดยหนึ่งหน่วยเท่ากับ 0.06% ของความถี่โน้ตนั้น"
+  value: "ตะไบลิ้นเสียงให้ผลต่างเข้าใกล้ศูนย์ ใช้ระดับเสียงในระบบแบ่งเท่าที่ A4 = {a4} Hz เป็นเกณฑ์ หนึ่งหน่วยเท่ากับ 0.06% ของความถี่โน้ตนั้น"
   placeholders:
     a4: {type: string}
 
@@ -89,7 +89,7 @@ summary.beats:
   plural:
     argument: pluralCount
     forms:
-      other: "บีต {pluralCount} คู่"
+      other: "ค่าบีตที่วัดได้ {pluralCount} ค่า"
   placeholders:
     pluralCount: {type: integer}
 
@@ -114,7 +114,7 @@ summary.out:
   plural:
     argument: pluralCount
     forms:
-      other: "นอกช่วงที่ยอมรับได้ {pluralCount} รายการ ({reeds}, {beats})"
+      other: "มี {pluralCount} โน้ตที่ค่าวัดเกินเกณฑ์ ({reeds}, {beats})"
   placeholders:
     beats: {type: string}
     pluralCount: {type: integer}

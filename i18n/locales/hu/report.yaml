@@ -67,18 +67,16 @@ graph.edited:
       type: string
 
 legend.error.cents:
-  value: Reszelje a sípot úgy, hogy az eltérés nullához közelítsen. Az értékek a temperált skálától való eltérést
-    mutatják centben, {a4} Hz-es referenciahang mellett.
+  value: "Reszeléskor a célértéktől való eltérést közelítse nullához. A mért érték az egyenletesen temperált hangoláshoz viszonyított eltérés centben, A4 = {a4} Hz mellett."
   placeholders:
     a4:
       type: string
 
-legend.error.key: {value: "Eltérés = mért érték − célérték."}
+legend.error.key: {value: "Eltérés a céltól = mért érték − célérték."}
 legend.error.noCurve: {value: "Célgörbe hiányában a célérték nulla, az eltérés a skálához viszonyított különbség."}
 
 legend.error.reference:
-  value: Reszelje a sípot úgy, hogy az eltérés nullához közelítsen. Az eltérés a {a4} Hz-es referenciahangú temperált
-    skálához képest értendő. Egy egység a hang frekvenciájának 0,06%-a.
+  value: "Reszeléskor a célértéktől való eltérést közelítse nullához. A mért érték az egyenletesen temperált hangoláshoz viszonyított eltérés A4 = {a4} Hz mellett. Egy egység az adott hang frekvenciájának 0,06%-a."
   placeholders:
     a4:
       type: string
@@ -104,8 +102,8 @@ summary.beats:
   plural:
     argument: pluralCount
     forms:
-      one: '{pluralCount} lebegés'
-      other: '{pluralCount} lebegés'
+      one: '{pluralCount} lebegésmérés'
+      other: '{pluralCount} lebegésmérés'
   placeholders:
     pluralCount:
       type: integer

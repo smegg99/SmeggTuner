@@ -3,7 +3,7 @@ close: {value: "Lukk"}
 copied: {value: "Kopiert"}
 copy: {value: "Kopier rapport"}
 details: {value: "Detaljer"}
-email: {value: "Send rapport på e-post"}
+email: {value: "Opprett e-post med rapporten"}
 failed:
   value: "Handlingen mislyktes: {error}"
   placeholders:
@@ -12,27 +12,27 @@ file:
   value: "Fil: {path}"
   placeholders:
     path: {type: string}
-kill: {value: "Lukk og rapporter feilen"}
-logs: {value: "Vis loggfil"}
+kill: {value: "Lukk appen og vis rapporten"}
+logs: {value: "Vis loggfilen i filbehandleren"}
 messageConfig:
   value: "Kunne ikke lese innstillingsfilen. Rett feilen eller slett filen, og start {app} på nytt."
   placeholders:
     app: {type: string}
 messageCrash:
-  value: "Det oppstod en intern feil i {app}. Send rapporten slik at feilen kan rettes, og start deretter programmet på nytt."
+  value: "{app} ble avsluttet uventet. Du kan sende rapporten til brukerstøtten og starte appen på nytt."
   placeholders:
     app: {type: string}
-messageHang: {value: "Programmet kan fortsatt klare å fullføre oppgaven. Vent, eller lukk programmet og send en rapport."}
+messageHang: {value: "Appen arbeider kanskje fortsatt. Du kan vente eller lukke appen for å se feilrapporten."}
 messageHangStopped:
-  value: "{app} ble lukket mens programmet ikke svarte. Send rapporten og start programmet på nytt."
+  value: "{app} svarte ikke og ble lukket. Du kan sende rapporten til brukerstøtten eller starte appen på nytt."
   placeholders:
     app: {type: string}
 messageKilled:
-  value: "{app} ble lukket før programmet rakk å rapportere feilen. Send rapporten og start programmet på nytt."
+  value: "{app} ble lukket før årsaken kunne registreres. Du kan sende de tilgjengelige opplysningene til brukerstøtten eller starte appen på nytt."
   placeholders:
     app: {type: string}
 messageOom:
-  value: "Systemet gikk tomt for minne og lukket {app}. Send rapporten og start programmet på nytt."
+  value: "Systemet gikk tomt for minne og lukket {app}. Du kan sende rapporten til brukerstøtten eller starte appen på nytt."
   placeholders:
     app: {type: string}
 messageStartup:

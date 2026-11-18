@@ -39,7 +39,7 @@ table.bassTitle:
     unit: {type: string}
 
 table.curr: {value: "Ist"}
-table.err: {value: "Fehl."}
+table.err: {value: "Abw."}
 table.register: {value: "Register"}
 
 table.title:
@@ -59,15 +59,15 @@ graph.edited:
     mark: {type: string}
 
 legend.error.cents:
-  value: "So feilen, dass der Fehler gegenüber dem Sollwert gegen null geht. Angabe in Cent bezogen auf die gleichstufige Stimmung bei {a4} Hz."
+  value: "Beim Feilen die Abweichung vom Sollwert gegen null bringen. Der Istwert ist in Cent gegenüber der gleichstufigen Stimmung bei A4 = {a4} Hz angegeben."
   placeholders:
     a4: {type: string}
 
-legend.error.key: {value: "Fehler = Ist - Soll."}
-legend.error.noCurve: {value: "Ohne Sollkurve ist der Sollwert null. Der Fehler ist die Abweichung von der Tonskala."}
+legend.error.key: {value: "Abw. = Istwert − Sollwert."}
+legend.error.noCurve: {value: "Ohne Sollkurve ist der Sollwert null. Die Abweichung bezieht sich dann auf die gleichstufige Stimmung."}
 
 legend.error.reference:
-  value: "So feilen, dass der Fehler gegenüber dem Sollwert gegen null geht. Angabe in Einheiten von 0,06 % der Tonfrequenz bezogen auf die gleichstufige Stimmung bei {a4} Hz."
+  value: "Beim Feilen die Abweichung vom Sollwert gegen null bringen. Der Istwert bezieht sich auf die gleichstufige Stimmung bei A4 = {a4} Hz. Eine Einheit entspricht 0,06 % der Tonfrequenz."
   placeholders:
     a4: {type: string}
 

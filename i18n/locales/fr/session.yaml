@@ -9,7 +9,7 @@ card.a4:
   placeholders:
     hz: {type: string}
 
-card.changed: {value: "La fiche de cet accordéon dans la bibliothèque a changé depuis l'enregistrement de cette session."}
+card.changed: {value: "La fiche de l’instrument en bibliothèque a été modifiée depuis les mesures de cette session."}
 card.hasCurve: {value: "Courbe cible définie"}
 
 card.readings:
@@ -39,9 +39,9 @@ new: {value: "Nouvelle session"}
 title: {value: "Sessions"}
 
 # Session dialog and tabs
-dialog.backToList: {value: "Choisir un accordéon déjà accordé"}
+dialog.backToList: {value: "Choisir dans la bibliothèque d’instruments"}
 dialog.describeNew: {value: "Décrire un nouvel accordéon…"}
-dialog.forgetAccordion: {value: "Oublier cet accordéon"}
+dialog.forgetAccordion: {value: "Retirer l’accordéon de la bibliothèque"}
 dialog.loadAccordion: {value: "Charger depuis un fichier…"}
 dialog.name: {value: "Nom de la session"}
 dialog.nameHint: {value: "Utilisez le nom de l'instrument ou du client pour identifier la session."}
@@ -54,10 +54,10 @@ page.mobile.recorded: {value: "Mesures"}
 accordion.a4Locked: {value: "Valeur fixe : des mesures de cette session utilisent déjà cette référence."}
 
 accordion.columnsRefused:
-  value: "Cette modification changerait les rangées d'anches utilisées dans des mesures existantes. Elle n'a pas été enregistrée. Rétablissez les rangées précédentes ou créez une session."
+  value: "Les mesures existantes utilisent déjà ces voix. La modification n’a pas été enregistrée. Rétablissez les voix précédentes ou créez une session."
 accordion.frozen:
-  value: "Une fois des mesures enregistrées, le diapason et les rangées d'anches sont fixes. Vous pouvez encore ajouter des registres utilisant les rangées existantes."
-accordion.frozenShort: {value: "Rangées verrouillées"}
+  value: "Les mesures enregistrées fixent le diapason, la transposition et les voix pour cette session. Vous pouvez encore ajouter des registres qui combinent ces voix."
+accordion.frozenShort: {value: "Voix verrouillées"}
 accordion.remember: {value: "Enregistrer dans la bibliothèque d'instruments"}
 accordion.rememberHint: {value: "Conservez l'instrument de cette session dans la bibliothèque pour le réutiliser."}
 
@@ -67,8 +67,8 @@ instrument.a4: {value: "Diapason"}
 instrument.a4Hint:
   value: "Fréquence de référence du la4 en hertz. Les nouvelles sessions de cet instrument utilisent cette valeur."
 
-instrument.bass.build: {value: "Hauteurs en pieds du prochain registre"}
-instrument.bass.fixed: {value: "Sans registres de basses : le mécanisme est fixe et toutes les voix sonnent toujours ensemble."}
+instrument.bass.build: {value: "Choisir les voix du nouveau registre de basses"}
+instrument.bass.fixed: {value: "Aucun sélecteur de registre aux basses. Toutes les voix de basses sonnent ensemble."}
 
 instrument.bass.full:
   value: "Le mécanisme des basses accepte ici au plus {n} registres"
@@ -83,8 +83,8 @@ instrument.builder.add: {value: "Ajouter"}
 instrument.builder.already: {value: "Ce registre est déjà défini"}
 instrument.builder.high: {value: "Piccolo 4'"}
 instrument.builder.low: {value: "Basson 16'"}
-instrument.builder.middle: {value: "Anches de 8'"}
-instrument.builder.none: {value: "Aucun registre pour le moment. Sélectionnez ci-dessous les rangées que chacun fait sonner."}
+instrument.builder.middle: {value: "Voix de 8′"}
+instrument.builder.none: {value: "Aucun registre défini. Pour en ajouter un, choisissez les voix qu’il fait sonner."}
 instrument.builder.remove: {value: "Supprimer ce registre"}
 instrument.builder.title: {value: "Ajouter un registre"}
 instrument.file.exportTitle: {value: "Exporter l'accordéon"}
@@ -99,25 +99,25 @@ instrument.nameRequired: {value: "Donnez un nom à l'accordéon."}
 instrument.photo: {value: "Photo"}
 instrument.range.backwards: {value: "La note la plus aiguë ne peut pas être plus grave que la note la plus basse."}
 instrument.range.clear: {value: "Effacer"}
-instrument.range.down: {value: "Plus grave"}
+instrument.range.down: {value: "Baisser d’un demi-ton"}
 
 instrument.range.hint:
-  value: "Facultatif. Indiquez les touches la plus grave et la plus aiguë. Vous pouvez aussi définir l'étendue à l'oreille pendant l'étalonnage."
+  value: "Facultatif. Indiquez les notes extrêmes du clavier ou jouez-les lors de l’étalonnage de l’instrument."
 
 instrument.range.label: {value: "Étendue du clavier"}
 instrument.range.to: {value: "à"}
-instrument.range.up: {value: "Plus aiguë"}
+instrument.range.up: {value: "Monter d’un demi-ton"}
 
 instrument.registersHint:
-  value: "Cliquez sur les points du symbole de chaque registre (le cercle gravé sur l'accordéon) ou choisissez un symbole courant. Les points indiquent directement quelles rangées sonnent."
-instrument.registersSubtitle: {value: "Les registres du côté chant et les rangées qu'ils font sonner."}
+  value: "Reproduisez le symbole gravé sur le registre. Sélectionnez les voix de 4′ et de 16′ qui sonnent, indiquez le nombre de voix de 8′, puis ajoutez le registre."
+instrument.registersSubtitle: {value: "Registres de la main droite et voix associées à chacun."}
 
 instrument.says:
   plural:
     argument: reeds
     forms:
-      one: "Rangées d'anches : {banks}. Le registre le plus fourni fait sonner {reeds} anche."
-      other: "Rangées d'anches : {banks}. Le registre le plus fourni fait sonner {reeds} anches."
+      one: "Voix : {banks}. Selon le registre, jusqu’à {reeds} anche par note."
+      other: "Voix : {banks}. Selon le registre, jusqu’à {reeds} anches par note."
   placeholders:
     banks: {type: string}
     reeds: {type: integer}
@@ -130,7 +130,7 @@ instrument.sections.voices: {value: "Registres"}
 instrument.tolerance: {value: "Tolérance des anches"}
 
 instrument.toleranceHint:
-  value: "Écart admissible d'une anche en unités de 0,06 % de la fréquence de la note. Au-delà, l'anche est signalée comme désaccordée."
+  value: "Écart maximal admis par rapport à la cible de l’anche, en unités de 0,06 % de la fréquence de la note. Au-delà, l’anche est signalée comme désaccordée."
 # Target curve editor
 curve.clearAll: {value: "Effacer la courbe"}
 
@@ -149,11 +149,11 @@ curve.help.interp:
 curve.help.interpTitle: {value: "Entre les points"}
 
 curve.help.lead:
-  value: "Pour chaque note, la cible indique de combien chaque anche doit s'écarter de la hauteur de la gamme. Le tableau détermine si l'anche est dans la tolérance en comparant la mesure à cette cible plutôt qu'au zéro de la gamme."
+  value: "Pour chaque note, la courbe fixe l’écart voulu entre chaque anche et la gamme tempérée. Le tableau compare l’écart mesuré à cette valeur pour savoir si l’anche est dans la tolérance."
 curve.help.set:
-  value: "Choisissez une note et une valeur puis appuyez sur « Définir », ou déplacez un point du graphique vers le haut ou le bas. Chaque rangée a sa propre ligne. La ligne en cours de modification est mise en évidence."
+  value: "Choisissez une note et une valeur, puis appuyez sur « Définir ». Vous pouvez aussi faire glisser un point vers le haut ou le bas. Chaque courbe correspond à une voix. Celle que vous modifiez est mise en évidence."
 curve.help.setTitle: {value: "Définir un point"}
-curve.helpTitle: {value: "Battements souhaités"}
+curve.helpTitle: {value: "Écarts visés pour les anches et battements"}
 curve.interpolate: {value: "Interpoler"}
 curve.interpolateHint: {value: "Suivre la ligne entre les points. Si l'option est désactivée, la valeur de chaque point est maintenue jusqu'au suivant."}
 curve.menu.ends: {value: "Au-delà des points d'ancrage"}
@@ -177,7 +177,7 @@ curve.menu.replace: {value: "Remplacer la liste"}
 curve.menu.replaceBody: {value: "Les points d'ancrage et les réglages de l'autre liste remplaceront ceux de la liste actuelle."}
 curve.menu.replaceConfirm: {value: "Remplacer"}
 curve.menu.replaceTitle: {value: "Remplacer la liste des battements ?"}
-curve.rank: {value: "Rangée"}
+curve.rank: {value: "Voix"}
 curve.recorded: {value: "Mesures enregistrées"}
 curve.recordedHint: {value: "Afficher les mesures de cette session sur le graphique"}
 curve.remove: {value: "Retirer"}
@@ -191,7 +191,7 @@ curve.scale:
 curve.scaleAuto: {value: "Échelle automatique"}
 curve.scaleHint: {value: "Étendue verticale du graphique"}
 curve.set: {value: "Définir"}
-curve.setHint: {value: "Placer sur cette note un point d'ancrage pour la rangée sélectionnée."}
+curve.setHint: {value: "Placer un point d’ancrage sur cette note pour la voix choisie."}
 curve.startHint: {value: "Aucun point d'ancrage. La cible de chaque note est la hauteur de la gamme."}
 
 # Readings and workshop actions
@@ -218,22 +218,22 @@ readings.notes:
   placeholders:
     n: {type: integer}
 
-workshop.exit: {value: "Quitter la session"}
+workshop.exit: {value: "Fermer la session"}
 workshop.import: {value: "Importer"}
 workshop.open: {value: "Ouvrir"}
-workshop.print: {value: "Imprimer la fiche"}
+workshop.print: {value: "Exporter la fiche"}
 
 # Session errors
 error.fitFailed: {value: "Impossible d'ajuster une courbe aux mesures de ce passage."}
 
 error.hasReadings:
-  value: "Cette session contient déjà des mesures obtenues avec son diapason et son nombre d'anches. Ces deux paramètres sont désormais fixes."
+  value: "La session contient déjà des mesures. Leur diapason, leur transposition et la disposition des voix sont désormais fixes."
 error.imageUnreadable: {value: "Impossible d'ouvrir cette photo."}
 error.instrumentName: {value: "Donnez un nom à l'accordéon pour pouvoir le retrouver."}
 error.invalidA4: {value: "Le diapason doit être compris entre 430 et 450 Hz."}
 
 error.invalidInstrument:
-  value: "Cet accordéon ne peut pas être utilisé : une rangée d'anches est nommée deux fois ou un registre utilise une rangée absente de l'instrument."
+  value: "Impossible d’utiliser cet accordéon. Deux voix portent le même nom ou un registre fait appel à une voix absente de l’instrument."
 error.invalidName: {value: "Donnez un nom à la session."}
 error.invalidNote: {value: "Cette note est hors de la plage de détection de l'accordeur."}
 error.invalidReed: {value: "Cet accordéon ne fait pas sonner cette anche."}
@@ -245,12 +245,12 @@ error.loadFailed: {value: "Impossible de lire la session."}
 error.noBassMachine: {value: "Aucun mécanisme de basses n'est défini pour cet accordéon."}
 error.noBassRegister: {value: "Cet accordéon ne possède pas ce registre de basses."}
 error.noCurve: {value: "Cette session n'a pas de courbe cible."}
-error.noReadings: {value: "Aucune mesure n'a encore été enregistrée dans cette session."}
+error.noReadings: {value: "Cette session ne contient encore aucune mesure."}
 error.noRegister: {value: "Cet accordéon ne possède pas ce registre."}
 error.noSession: {value: "Aucune session ouverte."}
 error.notAnImage: {value: "Ce fichier n'est pas une photo."}
 error.notFound: {value: "Cette session n'existe plus."}
 error.notesTooLong: {value: "Limitez la remarque à 500 caractères."}
-error.saveFailed: {value: "Impossible d'enregistrer la session. Si vous fermez maintenant, vous risquez de perdre vos dernières prises."}
+error.saveFailed: {value: "Impossible d’enregistrer la session. Si vous la fermez maintenant, vous risquez de perdre vos dernières mesures."}
 error.takeNotFound: {value: "Cette mesure n'existe plus."}
 error.unexpected: {value: "Une erreur s'est produite."}

@@ -9,10 +9,10 @@ cancel: {value: "Atšaukti"}
 close: {value: "Užverti"}
 delete: {value: "Pašalinti"}
 export: {value: "Eksportuoti"}
-next: {value: "Toliau"}
+next: {value: "Kitas puslapis"}
 "no": {value: "Ne"}
 none: {value: "Nėra"}
-previous: {value: "Ankstesnis"}
+previous: {value: "Ankstesnis puslapis"}
 website: {value: "Svetainė"}
 "yes": {value: "Taip"}
 
@@ -76,13 +76,13 @@ title.uncalibrated:
 
 # Application and About dialog
 about.aboutTitle: {value: "Apie programą"}
-about.commit: {value: "Darinys"}
-about.donate: {value: "Paremti per „Ko-fi“"}
+about.commit: {value: "„Git“ revizija"}
+about.donate: {value: "Paaukoti per „Ko-fi“"}
 about.license: {value: "Licencija"}
 about.privacy: {value: "Privatumo politika"}
 about.guide: {value: "Kaip naudotis „SmeggTuner“"}
-about.onlineVersion: {value: "Atverti internetinę versiją"}
-about.support: {value: "Pagalba"}
+about.onlineVersion: {value: "Skaityti internete"}
+about.support: {value: "Rašyti pagalbos tarnybai"}
 about.mascot: {value: "Akordeonu grojantis katinas"}
 about.publisher: {value: "Autorius: smegg99"}
 about.tagline: {value: "Nemokama atvirojo kodo akordeonų derinimo programa."}

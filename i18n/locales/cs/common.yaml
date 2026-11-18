@@ -88,12 +88,12 @@ title.uncalibrated:
 # Application and About dialog
 about.aboutTitle: {value: "O aplikaci"}
 about.commit: {value: "Sestavení"}
-about.donate: {value: "Podpořit na Ko-fi"}
+about.donate: {value: "Přispět na vývoj přes Ko-fi"}
 about.license: {value: "Licence"}
 about.privacy: {value: "Zásady ochrany soukromí"}
 about.guide: {value: "Jak používat SmeggTuner"}
 about.onlineVersion: {value: "Otevřít online verzi"}
-about.support: {value: "Podpora"}
+about.support: {value: "Napsat podpoře"}
 about.mascot: {value: "Kočka hrající na akordeon"}
 about.publisher: {value: "Autor: smegg99"}
 about.tagline: {value: "Bezplatný program s otevřeným zdrojovým kódem pro ladění akordeonů."}

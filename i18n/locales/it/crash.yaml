@@ -3,7 +3,7 @@ close: {value: "Chiudi"}
 copied: {value: "Copiato"}
 copy: {value: "Copia segnalazione"}
 details: {value: "Dettagli"}
-email: {value: "Invia segnalazione per e-mail"}
+email: {value: "Prepara un’e-mail con la segnalazione"}
 failed:
   value: "Operazione non riuscita: {error}"
   placeholders:
@@ -12,27 +12,27 @@ file:
   value: "File: {path}"
   placeholders:
     path: {type: string}
-kill: {value: "Chiudi e segnala"}
-logs: {value: "Mostra il file di registro"}
+kill: {value: "Forza la chiusura e prepara la segnalazione"}
+logs: {value: "Mostra il file di log nella cartella"}
 messageConfig:
   value: "Impossibile leggere il file delle impostazioni. Correggilo o eliminalo, poi riavvia {app}."
   placeholders:
     app: {type: string}
 messageCrash:
-  value: "Si è verificato un errore interno in {app}. Invia la segnalazione per aiutare a risolverlo, poi riavvia l’applicazione."
+  value: "{app} si è chiusa in modo imprevisto. Puoi condividere la segnalazione con l’assistenza e riavviare l’applicazione."
   placeholders:
     app: {type: string}
-messageHang: {value: "L’operazione in corso potrebbe ancora concludersi. Attendi oppure chiudi l’applicazione e invia una segnalazione."}
+messageHang: {value: "L’operazione potrebbe ancora concludersi. Puoi attendere oppure chiudere l’applicazione per consultare la segnalazione diagnostica."}
 messageHangStopped:
-  value: "{app} è stata chiusa mentre non rispondeva. Invia la segnalazione per aiutare a risolvere il problema, poi riavvia l’applicazione."
+  value: "{app} è stata chiusa perché non rispondeva. Puoi condividere la segnalazione con l’assistenza o riavviare l’applicazione."
   placeholders:
     app: {type: string}
 messageKilled:
-  value: "{app} è stata chiusa prima che potesse segnalare il problema. Invia la segnalazione, poi riavvia l’applicazione."
+  value: "{app} si è chiusa prima di poter indicare la causa del problema. Puoi condividere i dettagli disponibili con l’assistenza o riavviare l’applicazione."
   placeholders:
     app: {type: string}
 messageOom:
-  value: "Il sistema ha esaurito la memoria e ha chiuso {app}. Invia la segnalazione, poi riavvia l’applicazione."
+  value: "Il sistema ha esaurito la memoria e ha chiuso {app}. Puoi condividere la segnalazione con l’assistenza o riavviare l’applicazione."
   placeholders:
     app: {type: string}
 messageStartup:

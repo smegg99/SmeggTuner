@@ -12,13 +12,13 @@ autoVolume.saveFailed: {value: "入力音量の設定を保存できませんで
 autoVolume.unsupported: {value: "このデバイスでは入力レベルを調整できません。"}
 humFilter50: {value: "50 Hz"}
 humFilter60: {value: "60 Hz"}
-humFilterHint: {value: "電源ハムを除去します（欧州は 50 Hz、米州は 60 Hz）"}
+humFilterHint: {value: "地域の電源周波数を選ぶと、電源由来のハム音を抑えられます"}
 humFilterLabel: {value: "電源ハムフィルター"}
-lockedWhileRunning: {value: "音声入力を変更するにはチューナーを停止してください。"}
+lockedWhileRunning: {value: "入力を切り替えるには、先に測定を停止してください。"}
 
 # Detection and reference pitch
-continuousManual: {value: "固定した音の測定値を連続更新"}
-continuousManualHint: {value: "値が確定する前から固定した音の表示を更新します"}
+continuousManual: {value: "手動で指定した音の測定値を随時更新"}
+continuousManualHint: {value: "手動指定中は、測定値が安定する前から表示を更新します"}
 detection.balanced: {value: "バランス"}
 detection.balancedHint: {value: "約 0.5 秒で別の音に切り替わります"}
 detection.fast: {value: "高速"}
@@ -26,17 +26,17 @@ detection.fastHint: {value: "最も速く切り替わりますが、別の音を
 detection.steady: {value: "安定"}
 detection.steadyHint: {value: "従来の動作です。音の切り替えは遅めです"}
 detectionLabel: {value: "音の検出"}
-lockA4: {value: "基準ピッチを固定"}
+lockA4: {value: "A4 の基準周波数を固定"}
 lockA4Hint: {value: "チューナーで A4 の値を変更できないようにします"}
 
 # Reading units, tolerance and note names
-beatUnitHint: {value: "ヘルツ、または音の周波数の 0.06 % を 1 単位とする値"}
+beatUnitHint: {value: "うなりはヘルツ、またはリードの偏差と同じ単位で表示します。"}
 beatUnitLabel: {value: "うなりの単位"}
 errorReference: {value: "偏差の基準"}
-errorReferenceGoal: {value: "目標音高"}
+errorReferenceGoal: {value: "目標値"}
 
 errorReferenceHint:
-  value: "音階の音高または調律の目標音高からの偏差を表示します。目標を基準にすると、目標音高での表示はゼロです。"
+  value: "音階上の音高からのずれを表示するか、調律目標との差を表示するかを選びます。目標を基準にすると、目標に合ったときの表示はゼロです。"
 errorReferenceScale: {value: "音階"}
 scaleNamingHint: {value: "音名の表し方"}
 scaleNamingLabel: {value: "音名表記"}
@@ -60,7 +60,7 @@ accent.pick: {value: "色を選択"}
 accent.pickTitle: {value: "アクセントカラー"}
 closeToTray: {value: "閉じるときはトレイに最小化"}
 closeToTrayHint: {value: "ウィンドウを閉じてもアプリはトレイに残ります"}
-checkUpdates: {value: "更新を確認", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdates: {value: "更新を自動で確認", description: "Desktop settings checkbox enabling GitHub update checks."}
 checkUpdatesHint: {value: "GitHub で新しいバージョンを探します", description: "Hint below the desktop update-check checkbox."}
 languageHint: {value: "画面の表示言語"}
 languageLabel: {value: "言語"}
@@ -113,7 +113,7 @@ calibration.screen.pitch:
   placeholders:
     pitch: {type: string}
 
-calibration.screen.preparing: {value: "入力を準備中"}
+calibration.screen.preparing: {value: "入力の安定待ち"}
 calibration.screen.retry: {value: "測定値は未補正です。他の音声アプリを閉じてやり直してください。"}
 calibration.screen.return: {value: "戻る"}
 calibration.screen.stat.dropouts: {value: "ドロップアウト回数"}

@@ -9,7 +9,7 @@ card.a4:
   placeholders:
     hz: {type: string}
 
-card.changed: {value: "Instrumentet i biblioteket er ændret, siden denne session blev registreret."}
+card.changed: {value: "Instrumentet i biblioteket er ændret, siden sessionen blev gemt."}
 card.hasCurve: {value: "Målkurve angivet"}
 
 card.readings:
@@ -39,24 +39,24 @@ new: {value: "Ny session"}
 title: {value: "Sessioner"}
 
 # Session dialog and tabs
-dialog.backToList: {value: "Vælg et tidligere stemt instrument"}
+dialog.backToList: {value: "Vælg instrument fra biblioteket"}
 dialog.describeNew: {value: "Beskriv et nyt instrument..."}
-dialog.forgetAccordion: {value: "Glem denne harmonika"}
+dialog.forgetAccordion: {value: "Fjern harmonikaen fra biblioteket"}
 dialog.loadAccordion: {value: "Indlæs fra fil..."}
 dialog.name: {value: "Sessionsnavn"}
 dialog.nameHint: {value: "Brug instrumentets eller kundens navn til at identificere sessionen."}
 dialog.pickAccordion: {value: "Hvilken harmonika?"}
-dialog.start: {value: "Start"}
+dialog.start: {value: "Opret session"}
 page.mobile.curve: {value: "Målværdier"}
 page.mobile.recorded: {value: "Målinger"}
 
 # Instrument editing restrictions
-accordion.a4Locked: {value: "Låst: Sessionen indeholder allerede målinger med denne indstilling."}
+accordion.a4Locked: {value: "Kammertonen er låst. Sessionen indeholder allerede målinger med denne A4-frekvens."}
 
 accordion.columnsRefused:
   value: "Ændringen ville ændre de stemmer, der bruges i eksisterende målinger, og blev ikke gemt. Gendan de tidligere stemmer, eller opret en ny session."
 accordion.frozen:
-  value: "Når der er registreret målinger, kan kammertonen og stemmerne ikke ændres. Du kan stadig tilføje registre med de eksisterende stemmer."
+  value: "Når der er gemt målinger, ligger kammertone, transponering og stemmer fast. Du kan stadig tilføje registre med de eksisterende stemmer."
 accordion.frozenShort: {value: "Stemmer låst"}
 accordion.remember: {value: "Gem i instrumentbiblioteket"}
 accordion.rememberHint: {value: "Gem sessionens instrument i biblioteket til fremtidige sessioner."}
@@ -67,8 +67,8 @@ instrument.a4: {value: "Kammertone"}
 instrument.a4Hint:
   value: "Referencefrekvensen for A4 i hertz. Nye sessioner for instrumentet bruger denne værdi."
 
-instrument.bass.build: {value: "Fodtal for næste registerknap"}
-instrument.bass.fixed: {value: "Ingen basregistre: fast basmekanik, hvor alle stemmer altid klinger."}
+instrument.bass.build: {value: "Vælg fodtal til det nye basregister"}
+instrument.bass.fixed: {value: "Ingen basregisterskiftere. Alle basstemmer klinger samtidig."}
 
 instrument.bass.full:
   value: "En basmekanik kan her have højst {n} registerknapper"
@@ -102,22 +102,22 @@ instrument.range.clear: {value: "Ryd"}
 instrument.range.down: {value: "En halvtone ned"}
 
 instrument.range.hint:
-  value: "Valgfrit. Den laveste og højeste tangent. Omfanget kan også bestemmes efter gehør under kalibreringen."
+  value: "Valgfrit. Angiv den dybeste og den højeste tone, eller spil dem under kalibreringen af instrumentet, og gem de toner, appen genkender."
 
 instrument.range.label: {value: "Klaviaturomfang"}
 instrument.range.to: {value: "til"}
 instrument.range.up: {value: "En halvtone op"}
 
 instrument.registersHint:
-  value: "Klik på prikkerne i hver registerknaps symbol, cirklen på harmonikaen, eller vælg et almindeligt symbol. Prikkerne bestemmer, hvilke stemmer der klinger."
+  value: "Følg symbolet på harmonikaens registerknap. Vælg de 4′- og 16′-stemmer, der klinger, angiv antallet af 8′-stemmer, og tilføj registret."
 instrument.registersSubtitle: {value: "Registerknapperne på diskantsiden, og de stemmer hver knap aktiverer."}
 
 instrument.says:
   plural:
     argument: reeds
     forms:
-      one: "Stemmer: {banks}. Det fyldigste register aktiverer {reeds} tunge."
-      other: "Stemmer: {banks}. Det fyldigste register aktiverer {reeds} tunger."
+      one: "Stemmer: {banks}. Der klinger højst {reeds} tunge pr. tone."
+      other: "Stemmer: {banks}. Der klinger højst {reeds} tunger pr. tone."
   placeholders:
     banks: {type: string}
     reeds: {type: integer}
@@ -130,18 +130,18 @@ instrument.sections.voices: {value: "Registre"}
 instrument.tolerance: {value: "Tolerance for tunger"}
 
 instrument.toleranceHint:
-  value: "Tilladt tungeafvigelse i enheder på 0,06 % af tonens frekvens. Målinger uden for området markeres som ustemte."
+  value: "Tilladt afvigelse fra tungens målværdi, i enheder på 0,06 % af tonens frekvens. Større afvigelser markeres som urene."
 # Target curve editor
 curve.clearAll: {value: "Ryd kurve"}
 
 curve.clearAllConfirm:
-  value: "Alle støttepunkter fjernes. Målet bliver igen skalaens tonehøjde for hver tone, og stemmeapparatet fungerer som en enkel indikator."
+  value: "Alle støttepunkter fjernes. Hver tunges målværdi bliver igen skalaens tonehøjde."
 curve.clearAllHint: {value: "Fjern alle støttepunkter, og brug skalaens tonehøjder som mål."}
 curve.clearAllTitle: {value: "Ryd hele kurven?"}
 curve.entryUnit: {value: "Indtastningsenhed"}
 
 curve.help.hz:
-  value: "Med Hz angives målet i hertz ved A4 = 440 Hz som i referencesvævningslisten. Det ændres derfor ikke med sessionens A4. Registreret viser sessionens målinger oven på listen. Under Liste kan du tilpasse støttepunkterne til målingerne eller kopiere en anden sessions liste."
+  value: "Målværdier i hertz gælder ved A4 = 440 Hz uanset sessionens kammertone. Med Målinger viser du sessionens målinger på grafen. Under Liste kan du tilpasse støttepunkterne til målingerne eller hente en liste fra en anden session."
 curve.help.hzTitle: {value: "Hz og målinger"}
 
 curve.help.interp:
@@ -149,16 +149,16 @@ curve.help.interp:
 curve.help.interpTitle: {value: "Mellem punkterne"}
 
 curve.help.lead:
-  value: "Stemmemålet angiver for hver tone, hvor langt hver tunge skal ligge fra skalaens tonehøjde. Tabellen bedømmer den registrerede tunge ud fra dit mål, også når det afviger fra skalaen."
+  value: "Stemmemålet angiver for hver tone, hvor meget hver tunge skal ligge over eller under skalaens tonehøjde. Tabellen viser, om den målte afvigelse ligger inden for tolerancen omkring målværdien."
 curve.help.set:
   value: "Vælg en tone og en værdi, og tryk på Sæt, eller træk et punkt op eller ned på grafen. Hver stemme har sin egen linje, og den du redigerer, er fremhævet."
 curve.help.setTitle: {value: "Sæt et punkt"}
-curve.helpTitle: {value: "Ønskede svævninger"}
+curve.helpTitle: {value: "Målværdier for tunger og svævninger"}
 curve.interpolate: {value: "Interpoler"}
 curve.interpolateHint: {value: "Følg linjen mellem støttepunkterne. Ellers gælder hvert punkt frem til det næste."}
 curve.menu.ends: {value: "Uden for støttepunkterne"}
-curve.menu.extendHigh: {value: "Fortsæt over det højeste punkt"}
-curve.menu.extendLow: {value: "Fortsæt under det laveste punkt"}
+curve.menu.extendHigh: {value: "Fortsæt kurven til toner over den højeste angivne tone"}
+curve.menu.extendLow: {value: "Fortsæt kurven til toner under den dybeste angivne tone"}
 curve.menu.fit: {value: "Tilpas til sessionens målinger"}
 
 curve.menu.fitBody:
@@ -178,7 +178,7 @@ curve.menu.replaceBody: {value: "Støttepunkterne erstattes af den anden liste m
 curve.menu.replaceConfirm: {value: "Erstat"}
 curve.menu.replaceTitle: {value: "Erstat svævningslisten?"}
 curve.rank: {value: "Stemme"}
-curve.recorded: {value: "Registreret"}
+curve.recorded: {value: "Målinger"}
 curve.recordedHint: {value: "Vis sessionens målinger på grafen"}
 curve.remove: {value: "Fjern"}
 curve.removeHint: {value: "Fjern denne tones støttepunkt fra kurven."}
@@ -221,13 +221,13 @@ readings.notes:
 workshop.exit: {value: "Afslut session"}
 workshop.import: {value: "Importer"}
 workshop.open: {value: "Åbn"}
-workshop.print: {value: "Udskriv stemmekort"}
+workshop.print: {value: "Eksportér stemmekort"}
 
 # Session errors
 error.fitFailed: {value: "Kunne ikke tilpasse en kurve til målerunden."}
 
 error.hasReadings:
-  value: "Sessionens målinger bygger på dens kammertone og antal tunger. Ingen af delene kan længere ændres."
+  value: "Sessionen indeholder allerede målinger. Kammertone, transponering og stemmeopbygning kan derfor ikke længere ændres."
 error.imageUnreadable: {value: "Fotoet kunne ikke åbnes."}
 error.instrumentName: {value: "Giv harmonikaen et navn, så du kan finde den igen."}
 error.invalidA4: {value: "Kammertonen skal ligge mellem 430 og 450 Hz."}

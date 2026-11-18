@@ -9,7 +9,7 @@ card.a4:
   placeholders:
     hz: {type: string}
 
-card.changed: {value: "Das Instrument in der Bibliothek wurde seit der Aufzeichnung dieser Sitzung geändert."}
+card.changed: {value: "Der Bibliothekseintrag für dieses Instrument wurde nach dem Speichern der Sitzung geändert."}
 card.hasCurve: {value: "Sollkurve festgelegt"}
 
 card.readings:
@@ -39,24 +39,24 @@ new: {value: "Neue Sitzung"}
 title: {value: "Sitzungen"}
 
 # Session dialog and tabs
-dialog.backToList: {value: "Bereits gestimmtes Instrument auswählen"}
+dialog.backToList: {value: "Instrument aus der Bibliothek wählen"}
 dialog.describeNew: {value: "Neues Instrument beschreiben..."}
-dialog.forgetAccordion: {value: "Dieses Akkordeon vergessen"}
+dialog.forgetAccordion: {value: "Akkordeon aus der Bibliothek entfernen"}
 dialog.loadAccordion: {value: "Aus Datei laden..."}
 dialog.name: {value: "Sitzungsname"}
 dialog.nameHint: {value: "Verwende einen Instrumenten- oder Kundennamen, um die Sitzung zu kennzeichnen."}
 dialog.pickAccordion: {value: "Welches Akkordeon?"}
-dialog.start: {value: "Starten"}
+dialog.start: {value: "Sitzung anlegen"}
 page.mobile.curve: {value: "Sollwerte"}
 page.mobile.recorded: {value: "Messwerte"}
 
 # Instrument editing restrictions
-accordion.a4Locked: {value: "Gesperrt: Diese Sitzung enthält bereits Messungen mit dieser Einstellung."}
+accordion.a4Locked: {value: "Der Kammerton ist festgelegt. Die Messwerte dieser Sitzung beziehen sich bereits auf diesen A4-Wert."}
 
 accordion.columnsRefused:
   value: "Diese Änderung würde die für vorhandene Messwerte verwendeten Chöre ändern und wurde daher nicht gespeichert. Stelle die bisherigen Chöre wieder her oder erstelle eine neue Sitzung."
 accordion.frozen:
-  value: "Nach der ersten Messung sind Kammerton und Chöre gesperrt. Register mit den vorhandenen Chören lassen sich weiterhin hinzufügen."
+  value: "Nach dem Speichern der ersten Messung stehen Kammerton, Transposition und Chöre fest. Register mit vorhandenen Chören kannst du weiterhin hinzufügen."
 accordion.frozenShort: {value: "Chöre gesperrt"}
 accordion.remember: {value: "In Instrumentenbibliothek speichern"}
 accordion.rememberHint: {value: "Instrument dieser Sitzung für spätere Sitzungen in der Bibliothek speichern."}
@@ -67,8 +67,8 @@ instrument.a4: {value: "Kammerton"}
 instrument.a4Hint:
   value: "Referenzfrequenz von A4 in Hertz. Neue Sitzungen für dieses Instrument verwenden diesen Wert."
 
-instrument.bass.build: {value: "Fußlagen des nächsten Registers"}
-instrument.bass.fixed: {value: "Keine Bassregister: feste Bassmechanik, alle Stimmen klingen immer mit."}
+instrument.bass.build: {value: "Fußlagen für das neue Bassregister wählen"}
+instrument.bass.fixed: {value: "Keine Bassregisterschalter. Alle Basschöre klingen zusammen."}
 
 instrument.bass.full:
   value: "Eine Bassmechanik kann hier höchstens {n} Registerschalter haben"
@@ -102,22 +102,22 @@ instrument.range.clear: {value: "Leeren"}
 instrument.range.down: {value: "Einen Halbton tiefer"}
 
 instrument.range.hint:
-  value: "Optional. Tiefste und höchste Taste. Der Umfang kann auch bei der Kalibrierung nach Gehör festgelegt werden."
+  value: "Optional. Gib den tiefsten und den höchsten Ton an. Du kannst beide bei der Instrumentenkalibrierung auch vorspielen und übernehmen."
 
 instrument.range.label: {value: "Tonumfang"}
 instrument.range.to: {value: "bis"}
 instrument.range.up: {value: "Einen Halbton höher"}
 
 instrument.registersHint:
-  value: "Klicke die Punkte im eingravierten Kreissymbol des Registerschalters an oder wähle ein gängiges Symbol. Die Punkte geben an, welche Chöre klingen."
+  value: "Übernimm das Symbol vom Registerschalter des Akkordeons. Wähle die klingenden 4′- und 16′-Chöre, gib die Anzahl der 8′-Chöre an und füge das Register hinzu."
 instrument.registersSubtitle: {value: "Registerschalter auf der Diskantseite und ihre klingenden Chöre."}
 
 instrument.says:
   plural:
     argument: reeds
     forms:
-      one: "Chöre: {banks}. Beim vollsten Register klingt {reeds} Stimmzunge."
-      other: "Chöre: {banks}. Beim vollsten Register klingen {reeds} Stimmzungen."
+      one: "Chöre: {banks}. Pro Ton klingt höchstens {reeds} Stimmzunge."
+      other: "Chöre: {banks}. Pro Ton klingen höchstens {reeds} Stimmzungen."
   placeholders:
     banks: {type: string}
     reeds: {type: integer}
@@ -130,18 +130,18 @@ instrument.sections.voices: {value: "Register"}
 instrument.tolerance: {value: "Stimmzungentoleranz"}
 
 instrument.toleranceHint:
-  value: "Zulässige Stimmzungenabweichung in Einheiten von 0,06 % der Tonfrequenz. Messwerte außerhalb dieses Bereichs gelten als verstimmt."
+  value: "Zulässige Abweichung vom Sollwert der Stimmzunge, in Einheiten von 0,06 % der Tonfrequenz. Größere Abweichungen werden als verstimmt markiert."
 # Target curve editor
 curve.clearAll: {value: "Kurve leeren"}
 
 curve.clearAllConfirm:
-  value: "Alle Stützpunkte werden entfernt. Für jeden Ton gilt wieder die Tonhöhe der Skala als Sollwert, und das Stimmgerät dient als einfache Anzeige."
+  value: "Alle Stützpunkte werden entfernt. Für jede Stimmzunge gilt dann wieder die Tonhöhe der Skala als Sollwert."
 curve.clearAllHint: {value: "Alle Stützpunkte entfernen und die Skalentöne als Sollwerte verwenden."}
 curve.clearAllTitle: {value: "Gesamte Kurve leeren?"}
 curve.entryUnit: {value: "Eingabeeinheit"}
 
 curve.help.hz:
-  value: "Bei Hz wird der Sollwert wie in der Referenz-Schwebungsliste auf A4 = 440 Hz bezogen. Er bleibt unabhängig vom Kammerton der Sitzung. „Aufgezeichnet“ blendet die Messwerte über der Liste ein. Unter „Liste“ lassen sich Stützpunkte daran anpassen oder aus einer anderen Sitzung kopieren."
+  value: "Sollwerte in Hertz beziehen sich immer auf A4 = 440 Hz, unabhängig vom Kammerton der Sitzung. „Messwerte“ zeigt die Messungen der Sitzung im Diagramm. Unter „Liste“ kannst du die Stützpunkte an die Messwerte anpassen oder eine Liste aus einer anderen Sitzung übernehmen."
 curve.help.hzTitle: {value: "Hertz und Messwerte"}
 
 curve.help.interp:
@@ -149,16 +149,16 @@ curve.help.interp:
 curve.help.interpTitle: {value: "Zwischen den Punkten"}
 
 curve.help.lead:
-  value: "Das Stimmziel gibt für jeden Ton an, wie weit jede Stimmzunge vom Skalenwert abweichen soll. Die Tabelle bewertet die aufgezeichnete Stimmzunge anhand dieses Ziels und seiner Toleranz."
+  value: "Das Stimmziel legt für jeden Ton fest, wie weit jede Stimmzunge über oder unter der Skalenfrequenz liegen soll. Die Tabelle zeigt, ob der Messwert innerhalb der Toleranz um diesen Sollwert liegt."
 curve.help.set:
   value: "Wähle Ton und Wert und drücke „Setzen“ oder ziehe einen Punkt im Diagramm nach oben oder unten. Jeder Chor hat seine eigene Linie. Die gerade bearbeitete ist hervorgehoben."
 curve.help.setTitle: {value: "Punkt setzen"}
-curve.helpTitle: {value: "Gewünschte Schwebungen"}
+curve.helpTitle: {value: "Sollwerte für Stimmzungen und Schwebungen"}
 curve.interpolate: {value: "Interpolieren"}
 curve.interpolateHint: {value: "Zwischen den Stützpunkten der Linie folgen. Sonst gilt jeder Wert bis zum nächsten Punkt."}
 curve.menu.ends: {value: "Außerhalb der Stützpunkte"}
-curve.menu.extendHigh: {value: "Kurve für höhere Töne als den letzten Stützton fortführen"}
-curve.menu.extendLow: {value: "Kurve für tiefere Töne als den ersten Stützton fortführen"}
+curve.menu.extendHigh: {value: "Kurve über den höchsten festgelegten Ton hinaus fortführen"}
+curve.menu.extendLow: {value: "Kurve unterhalb des tiefsten festgelegten Tons fortführen"}
 curve.menu.fit: {value: "An Messwerte dieser Sitzung anpassen"}
 
 curve.menu.fitBody:
@@ -178,7 +178,7 @@ curve.menu.replaceBody: {value: "Die Stützpunkte werden durch die andere Liste 
 curve.menu.replaceConfirm: {value: "Ersetzen"}
 curve.menu.replaceTitle: {value: "Schwebungsliste ersetzen?"}
 curve.rank: {value: "Chor"}
-curve.recorded: {value: "Aufgezeichnet"}
+curve.recorded: {value: "Messwerte"}
 curve.recordedHint: {value: "Messwerte dieser Sitzung im Diagramm anzeigen"}
 curve.remove: {value: "Entfernen"}
 curve.removeHint: {value: "Stützpunkt dieses Tons aus der Kurve entfernen."}
@@ -221,13 +221,13 @@ readings.notes:
 workshop.exit: {value: "Sitzung verlassen"}
 workshop.import: {value: "Importieren"}
 workshop.open: {value: "Öffnen"}
-workshop.print: {value: "Stimmkarte drucken"}
+workshop.print: {value: "Stimmkarte exportieren"}
 
 # Session errors
 error.fitFailed: {value: "An diesen Messdurchgang konnte keine Kurve angepasst werden."}
 
 error.hasReadings:
-  value: "Die vorhandenen Messwerte beruhen auf Kammerton und Stimmzungenanzahl dieser Sitzung. Beides lässt sich daher nicht mehr ändern."
+  value: "Für diese Sitzung sind bereits Messwerte gespeichert. Kammerton, Transposition und Chöre lassen sich daher nicht mehr ändern."
 error.imageUnreadable: {value: "Dieses Foto konnte nicht geöffnet werden."}
 error.instrumentName: {value: "Gib dem Akkordeon einen Namen, damit du es wiederfindest."}
 error.invalidA4: {value: "Der Kammerton muss zwischen 430 und 450 Hz liegen."}

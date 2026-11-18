@@ -3,7 +3,7 @@ close: {value: "Zamknij"}
 copied: {value: "Skopiowano"}
 copy: {value: "Kopiuj raport"}
 details: {value: "Szczegóły"}
-email: {value: "Wyślij raport e-mailem"}
+email: {value: "Przygotuj e-mail z raportem"}
 failed:
   value: "Nie udało się: {error}"
   placeholders:
@@ -12,27 +12,27 @@ file:
   value: "Plik: {path}"
   placeholders:
     path: {type: string}
-kill: {value: "Zamknij i zgłoś"}
-logs: {value: "Pokaż plik dziennika"}
+kill: {value: "Zamknij aplikację i pokaż raport"}
+logs: {value: "Pokaż dziennik w menedżerze plików"}
 messageConfig:
   value: "Nie można odczytać pliku ustawień. Popraw go albo usuń, a potem uruchom aplikację {app} ponownie."
   placeholders:
     app: {type: string}
 messageCrash:
-  value: "Coś w aplikacji {app} przestało działać. Wyślij raport, żeby można to było naprawić, a potem uruchom ją ponownie."
+  value: "W aplikacji {app} wystąpił błąd. Możesz przekazać raport pomocy technicznej i uruchomić aplikację ponownie."
   placeholders:
     app: {type: string}
-messageHang: {value: "Może jeszcze skończyć to, co robi. Zaczekaj albo zamknij ją i wyślij raport."}
+messageHang: {value: "Aplikacja może jeszcze dokończyć pracę. Zaczekaj lub zamknij ją, aby zobaczyć raport diagnostyczny."}
 messageHangStopped:
-  value: "Aplikacja {app} została zamknięta, gdy nie odpowiadała. Wyślij raport, żeby można to było naprawić, a potem uruchom ją ponownie."
+  value: "Aplikacja {app} nie odpowiadała i została zamknięta. Możesz przekazać raport pomocy technicznej lub ponownie uruchomić aplikację."
   placeholders:
     app: {type: string}
 messageKilled:
-  value: "Aplikacja {app} została zamknięta, zanim zdążyła cokolwiek zgłosić. Wyślij raport, żeby można to było naprawić, a potem uruchom ją ponownie."
+  value: "Aplikacja {app} została zamknięta, zanim ustaliła przyczynę problemu. Możesz przekazać dostępne informacje pomocy technicznej lub uruchomić aplikację ponownie."
   placeholders:
     app: {type: string}
 messageOom:
-  value: "Zabrakło pamięci w systemie i aplikacja {app} została zamknięta. Wyślij raport, a potem uruchom ją ponownie."
+  value: "System zamknął aplikację {app} z powodu braku pamięci. Możesz przekazać raport pomocy technicznej lub uruchomić aplikację ponownie."
   placeholders:
     app: {type: string}
 messageStartup:

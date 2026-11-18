@@ -9,7 +9,7 @@ updateBody:
   placeholders:
     current: {type: string}
     latest: {type: string}
-updateDownload: {value: "Descarcă"}
+updateDownload: {value: "Deschide pagina de descărcare"}
 updateIgnore: {value: "Ignoră această versiune"}
 updateLater: {value: "Mai târziu"}
 updateTitle: {value: "Este disponibilă o versiune mai nouă"}
