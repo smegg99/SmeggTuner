@@ -1,22 +1,11 @@
 <!-- lang:en -->
 
-## SmeggTuner 1.4.6
+## SmeggTuner 1.4.7
 
-Phones now have their own layout instead of the scaled-down desktop panel. On Android and in the
-browser on a phone, the tuner shows one plot at a time, switched by the Input, Notes and Spectrum tabs,
-with keys and fields sized for a finger and every value box visible at once. Help and About are views
-of their own beside Tune and Settings, the output volume is in Settings, and Settings arranges its
-sections in columns. Documents and dialogs fill the screen. A landscape phone wide enough for it
-carries the tuning keys in the top bar and gives the plot the full width.
-
-The Language and Tolerances fields are only as wide as their values, and a select's list is as wide
-as its field. The Desktop accent is now called System; the colour swatch stays visible and is
-disabled while it is selected.
-
-The Android app is smaller: release builds are optimized and shrunk with R8 and no longer bundle unused
-Material components.
-
-The Workshop remains hidden. Android and the web version are still experimental.
+Added 25 translations. You can now choose from 27 languages in Settings,
+including separate options for Brazilian and European Portuguese and for
+Simplified and Traditional Chinese. The privacy policy is available offline
+in all 27 languages.
 
 ### Supported platforms
 
@@ -34,24 +23,12 @@ iOS and macOS are not currently supported.
 
 <!-- lang:pl -->
 
-## SmeggTuner 1.4.6
+## SmeggTuner 1.4.7
 
-Telefony mają teraz własny układ zamiast pomniejszonego panelu z komputera. Na Androidzie i w przeglądarce
-na telefonie stroik pokazuje jeden wykres naraz, przełączany zakładkami Wejście, Nuty i Widmo, przyciski
-i pola mają rozmiar dopasowany do palca, a wszystkie pola wartości są widoczne jednocześnie. Pomoc
-i O programie to osobne widoki obok Strojenia i Ustawień, głośność wyjścia jest w Ustawieniach, a Ustawienia
-układają sekcje w kolumnach. Dokumenty i okna dialogowe zajmują cały ekran. Na telefonie trzymanym
-poziomo, jeśli jest wystarczająco szeroki, przyciski strojenia są na górnym pasku, a wykres zajmuje całą
-szerokość.
-
-Pola Język i Tolerancje są tylko tak szerokie, jak ich wartości, a lista wyboru ma szerokość swojego pola.
-Akcent "Pulpit" nazywa się teraz "Systemowy"; próbka koloru pozostaje widoczna i jest nieaktywna, gdy jest
-wybrany.
-
-Aplikacja na Androida jest mniejsza: wydania są optymalizowane i zmniejszane przez R8 i nie zawierają już
-nieużywanych komponentów Material.
-
-Warsztat pozostaje ukryty. Wersje na Androida i do przeglądarki nadal są eksperymentalne.
+Dodano 25 tłumaczeń. W ustawieniach można teraz wybrać jeden z 27 języków,
+w tym portugalski w odmianie brazylijskiej lub europejskiej oraz chiński
+z pismem uproszczonym lub tradycyjnym. Polityka prywatności jest dostępna
+bez połączenia z internetem we wszystkich 27 językach.
 
 ### Obsługiwane platformy
 
