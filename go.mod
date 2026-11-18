@@ -160,7 +160,7 @@ require (
 	github.com/sergi/go-diff v1.4.0 // indirect
 	github.com/shopspring/decimal v1.4.0 // indirect
 	github.com/skeema/knownhosts v1.3.2 // indirect
-	github.com/smegg99/s99locale v1.1.1 // indirect
+	github.com/smegg99/s99locale v1.1.2 // indirect
 	github.com/smegg99/s99term v1.1.0 // indirect
 	github.com/smegg99/s99wails/traygen/v2 v2.1.1 // indirect
 	github.com/spf13/cast v1.10.0 // indirect
