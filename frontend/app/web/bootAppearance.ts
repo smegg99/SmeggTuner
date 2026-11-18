@@ -1,6 +1,7 @@
 // app/web/bootAppearance.ts
 // The boot screen shows before the engine, so before initializeThemeSync; it applies the same theme and language from
 // the stored settings so nothing flips when the window takes over.
+import { isLocale } from '../../i18n/locales'
 import { useTheme } from 'vuetify'
 import { useAppearance } from '@smegg99/s99ab/appearance'
 import { applyInstrumentTheme } from '~/theme/tokens'
@@ -16,6 +17,6 @@ export function useBootAppearance() {
   const dark = theme === 'dark' || (theme !== 'light' && typeof matchMedia === 'function' && matchMedia('(prefers-color-scheme: dark)').matches)
   useAppearance(() => ({ theme: 'smeggtuner.theme' })).setMode(dark ? 'dark' : 'light', undefined, 'none')
   const { locale, setLocale } = useI18n()
-  const code = language === 'pl' ? 'pl' : language === 'en' ? 'en' : ''
+  const code = isLocale(language) ? language : ''
   if (code && locale.value !== code) void setLocale(code)
 }

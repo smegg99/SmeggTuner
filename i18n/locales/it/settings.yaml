@@ -1,0 +1,166 @@
+# Settings and sound-card calibration (it).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Microphone and input level
+audioDeviceHint: {value: "Microfono usato per misurare"}
+audioDeviceLabel: {value: "Dispositivo di ingresso"}
+audioDeviceSystemDefault: {value: "Predefinito di sistema"}
+autoVolume.hint: {value: "Regola il livello del microfono durante la misurazione"}
+autoVolume.label: {value: "Volume di ingresso automatico"}
+autoVolume.saveFailed: {value: "Impossibile salvare l'impostazione del volume di ingresso."}
+autoVolume.unsupported: {value: "Il livello di ingresso di questo dispositivo non è regolabile."}
+humFilter50: {value: "50 Hz"}
+humFilter60: {value: "60 Hz"}
+humFilterHint: {value: "Elimina il ronzio di rete: 50 Hz in Europa, 60 Hz in America"}
+humFilterLabel: {value: "Filtro del ronzio di rete"}
+lockedWhileRunning: {value: "Ferma l'accordatore per cambiare ingresso audio."}
+
+# Detection and reference pitch
+continuousManual: {value: "Aggiorna continuamente la nota fissata"}
+continuousManualHint: {value: "Aggiorna la misura della nota fissata prima che si stabilizzi"}
+detection.balanced: {value: "Bilanciata"}
+detection.balancedHint: {value: "Cambia nota in circa mezzo secondo"}
+detection.fast: {value: "Rapida"}
+detection.fastHint: {value: "Cambia nota il più rapidamente possibile, ma può stabilizzarsi su una nota errata"}
+detection.steady: {value: "Stabile"}
+detection.steadyHint: {value: "Comportamento originale, lento nel cambiare nota"}
+detectionLabel: {value: "Rilevamento delle note"}
+lockA4: {value: "Blocca il diapason"}
+lockA4Hint: {value: "Impedisce di modificare il La4 nell'accordatore"}
+
+# Reading units, tolerance and note names
+beatUnitHint: {value: "Hertz o unità dello 0,06% della frequenza della nota"}
+beatUnitLabel: {value: "Unità dei battimenti"}
+errorReference: {value: "Riferimento dello scostamento"}
+errorReferenceGoal: {value: "Obiettivo"}
+
+errorReferenceHint:
+  value: "Mostra lo scostamento dall'altezza della scala o dall'obiettivo di accordatura. Quando l'obiettivo è raggiunto, lo scostamento rispetto ad esso è zero."
+errorReferenceScale: {value: "Scala"}
+scaleNamingHint: {value: "Sistema usato per i nomi delle note"}
+scaleNamingLabel: {value: "Nomi delle note"}
+scaleNamings.cdefgab: {value: "C D E F G A B (internazionale, diesis come C#)"}
+scaleNamings.cdefgah: {value: "C D E F G A H (tedesco, diesis come C#)"}
+scaleNamings.doremi: {value: "Do Re Mi (solfeggio)"}
+scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (polacco)"}
+toleranceBeat: {value: "Battimento"}
+toleranceHint: {value: "Scostamento massimo ammesso per considerare intonati un'ancia o un battimento"}
+toleranceLabel: {value: "Tolleranze"}
+toleranceReed: {value: "Ancia"}
+unitHint: {value: "Cent o unità dello 0,06% della frequenza della nota"}
+unitLabel: {value: "Unità di scostamento"}
+
+# Appearance, language and window behavior
+accent.auto: {value: "Sistema"}
+accent.custom: {value: "Personalizzato"}
+accent.hint: {value: "Colore principale del sistema o a scelta"}
+accent.label: {value: "Colore principale"}
+accent.pick: {value: "Scegli un colore"}
+accent.pickTitle: {value: "Colore principale"}
+closeToTray: {value: "Riduci nell'area di notifica alla chiusura"}
+closeToTrayHint: {value: "Chiudendo la finestra l'app rimane nell'area di notifica"}
+checkUpdates: {value: "Controlla aggiornamenti", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdatesHint: {value: "Cerca una versione più recente su GitHub", description: "Hint below the desktop update-check checkbox."}
+languageHint: {value: "Lingua dell'interfaccia"}
+languageLabel: {value: "Lingua"}
+phoneLayout.hint: {value: "Ridimensiona la finestra come lo schermo di un telefono per provare l'interfaccia Android", description: "Debug builds only."}
+phoneLayout.label: {value: "Layout telefono", description: "Debug builds only."}
+phoneLayout.landscape: {value: "Orizzontale", description: "Debug builds only. The phone held on its side."}
+phoneLayout.off: {value: "Disattivato", description: "Debug builds only. The normal desktop window."}
+phoneLayout.portrait: {value: "Verticale", description: "Debug builds only. The phone held upright."}
+themeHint: {value: "Di sistema, chiaro o scuro"}
+themeLabel: {value: "Tema"}
+themes.auto: {value: "Sistema"}
+themes.dark: {value: "Scuro"}
+themes.light: {value: "Chiaro"}
+
+# Sound-card calibration
+calibration.askBody:
+  value: "Un clock di campionamento non calibrato può introdurre un piccolo errore costante nelle misurazioni. La calibrazione richiede circa un minuto e non occorre alcun suono."
+calibration.askCalibrate: {value: "Calibra ora"}
+calibration.askContinue: {value: "Continua senza correzione"}
+calibration.askTitle: {value: "Questa scheda audio non è calibrata"}
+calibration.hint: {value: "Corregge l'errore del clock della scheda audio. Circa un minuto, senza bisogno di suoni."}
+calibration.label: {value: "Calibrazione della scheda audio"}
+calibration.open: {value: "Apri"}
+calibration.openHint: {value: "Mostra la schermata di calibrazione senza avviare la misurazione"}
+calibration.saveFailed: {value: "Impossibile salvare la calibrazione. L'accordatore usa lo stato salvato in precedenza."}
+calibration.screen.again: {value: "Calibra di nuovo"}
+calibration.screen.bar.confirming: {value: "Conferma"}
+calibration.screen.bar.settling: {value: "Stabilizzazione"}
+
+calibration.screen.calibrated:
+  value: "Calibrazione completata. Correzione applicata alle misurazioni: {percent}%."
+  placeholders:
+    percent: {type: string}
+
+calibration.screen.calibrating: {value: "Misurazione del clock della scheda audio"}
+
+calibration.screen.how:
+  value: "Le misurazioni possono presentare un piccolo errore costante di intonazione. Non serve alcun suono, occorre circa un minuto."
+
+calibration.screen.lead: {value: "Non ancora calibrata"}
+
+calibration.screen.phase.confirming:
+  value: "La misurazione è stabile. Verifica della stabilità per 20 s."
+
+calibration.screen.phase.preparing: {value: "Si attende che l'ingresso si stabilizzi prima di misurarne il clock."}
+calibration.screen.phase.settling: {value: "In attesa che si stabilizzi la lettura del clock."}
+
+calibration.screen.pitch:
+  value: "Equivale a {pitch} per ogni nota."
+  placeholders:
+    pitch: {type: string}
+
+calibration.screen.preparing: {value: "Preparazione dell'ingresso"}
+calibration.screen.retry: {value: "Le misurazioni rimangono senza correzione. Chiudi le altre app audio e riprova."}
+calibration.screen.return: {value: "Indietro"}
+calibration.screen.stat.dropouts: {value: "Interruzioni"}
+calibration.screen.stat.elapsed: {value: "Tempo trascorso"}
+calibration.screen.stat.offset: {value: "Scostamento del clock"}
+calibration.screen.stat.rate: {value: "Frequenza di campionamento"}
+calibration.screen.stat.steadiness: {value: "Stabilità"}
+
+calibration.screen.steadiness:
+  value: "{ppm} ppm, obiettivo {target} ppm"
+  placeholders:
+    ppm: {type: string}
+    target: {type: string}
+
+calibration.screen.steps.done: {value: "Fine"}
+calibration.screen.steps.measure: {value: "Misura"}
+calibration.screen.steps.prepare: {value: "Prepara"}
+calibration.screen.traceEmpty: {value: "Durante la misurazione, qui viene tracciato lo scostamento del clock."}
+calibration.screen.unreliable: {value: "Il clock non si è stabilizzato"}
+calibration.start: {value: "Calibra"}
+calibration.startHint: {value: "Misura il clock di campionamento dell'ingresso"}
+
+calibration.status.calibrated:
+  value: "Calibrata, {percent}%"
+  placeholders:
+    percent: {type: string}
+
+calibration.status.calibrating:
+  value: "Calibrazione, {seconds} s ({percent}%), completata al {progress}%"
+  placeholders:
+    percent: {type: string}
+    progress: {type: string}
+    seconds: {type: string}
+
+calibration.status.preparing: {value: "Preparazione"}
+calibration.status.uncalibrated: {value: "Non calibrata"}
+calibration.status.unreliable: {value: "Calibrazione inaffidabile, misurazioni senza correzione"}
+
+# Settings section headings
+groups.appearance: {value: "Aspetto"}
+groups.detection: {value: "Rilevamento"}
+groups.microphone: {value: "Microfono"}
+groups.output: {value: "Uscita", description: "Settings section shown on a phone, holding the output volume."}
+groups.readings: {value: "Misurazioni"}
+groups.report: {value: "Dati del laboratorio"}
+
+# Report letterhead
+report.address: {value: "Indirizzo"}
+report.name: {value: "Nome del laboratorio"}
+report.nameHint: {value: "Compare nei rapporti esportati quando l'intestazione è attiva."}

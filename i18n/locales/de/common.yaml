@@ -1,0 +1,104 @@
+# Shared labels and application text (de).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Buttons and shared labels
+accept: {value: "Annehmen"}
+back: {value: "Zurück"}
+cancel: {value: "Abbrechen"}
+close: {value: "Schließen"}
+delete: {value: "Löschen"}
+export: {value: "Exportieren"}
+next: {value: "Weiter"}
+"no": {value: "Nein"}
+none: {value: "Keine"}
+previous: {value: "Vorherige"}
+website: {value: "Website"}
+"yes": {value: "Ja"}
+
+# Musical labels and unit symbols
+accordion: {value: "Akkordeon"}
+note: {value: "Ton"}
+
+reed:
+  value: "Stimmzunge {index}"
+  placeholders:
+    index: {type: integer}
+
+unitSymbol.cents: {value: "Cent"}
+unitSymbol.hz: {value: "Hz"}
+unitSymbol.reference: {value: "u"}
+
+# Color controls
+color.hue: {value: "Farbton"}
+color.saturation: {value: "Sättigung"}
+color.value: {value: "Helligkeit"}
+
+# Navigation and window titles
+routes.navigation: {value: "Hauptnavigation"}
+routes.settings: {value: "Einstellungen"}
+routes.tune: {value: "Stimmen"}
+routes.workshop: {value: "Werkstatt"}
+
+title.count:
+  value: "{room} {name} ({done})"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+
+title.progress:
+  value: "{room} {name} {done}/{total}"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+    total: {type: string}
+
+title.room.about: {value: "Info"}
+title.room.calibrate: {value: "Kalibrierung"}
+title.room.help: {value: "Hilfe"}
+title.room.settings: {value: "Einstellungen"}
+title.room.soundcard: {value: "Soundkarte"}
+title.room.tune: {value: "Stimmen"}
+title.room.workshop: {value: "Werkstatt"}
+
+title.session:
+  value: "{room} {name}"
+  placeholders:
+    name: {type: string}
+    room: {type: string}
+
+title.uncalibrated:
+  value: "{title} (Soundkarte nicht kalibriert)"
+  placeholders:
+    title: {type: string}
+
+# Application and About dialog
+about.aboutTitle: {value: "Über"}
+about.commit: {value: "Build"}
+about.donate: {value: "Auf Ko-fi unterstützen"}
+about.license: {value: "Lizenz"}
+about.privacy: {value: "Datenschutzerklärung"}
+about.guide: {value: "SmeggTuner verwenden"}
+about.onlineVersion: {value: "Onlineversion öffnen"}
+about.support: {value: "Hilfe und Support"}
+about.mascot: {value: "Eine Katze spielt Akkordeon"}
+about.publisher: {value: "Von smegg99"}
+about.tagline: {value: "Kostenloses, quelloffenes Programm zum Stimmen von Akkordeons."}
+about.untagged: {value: "Entwicklungsversion"}
+about.version: {value: "Version"}
+app.description: {value: "Kostenloses, quelloffenes Akkordeon-Stimmgerät."}
+app.name: {value: "SmeggTuner"}
+
+# Help dialog and keyboard instructions
+about.helpTitle: {value: "Hilfe"}
+
+# System tray
+tray.quit: {value: "Beenden"}
+tray.show: {value: "Anzeigen"}
+
+linkNewTab:
+  value: "{text} (öffnet sich in einem neuen Tab)"
+  placeholders:
+    text: {type: string}

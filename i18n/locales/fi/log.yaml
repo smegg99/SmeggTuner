@@ -1,0 +1,100 @@
+# Diagnostic log messages (fi).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Application lifecycle and configuration
+appStarting: {value: "Käynnistetään SmeggTuner"}
+cleaningUp: {value: "Vapautetaan resurssit"}
+configLoadFailed: {value: "Asetusten lataaminen epäonnistui"}
+configLoaded: {value: "Asetukset ladattu"}
+configSaveFailed: {value: "Asetusten tallennus epäonnistui"}
+crashScreenFailed: {value: "Virhenäytön avaaminen epäonnistui"}
+crashWatchFailed: {value: "Kaatumisten valvonnan käynnistys epäonnistui"}
+datastoreInitFailed: {value: "Tietovaraston alustus epäonnistui"}
+datastoreReady: {value: "Tietovarasto valmis"}
+loadingConfig: {value: "Ladataan asetuksia"}
+loggerInitFailed: {value: "Lokin määritys epäonnistui"}
+reinitLogger: {value: "Määritetään loki uudelleen asetusten perusteella"}
+runFailed: {value: "Sovelluksen suoritus epäonnistui"}
+secondInstance: {value: "Toinen esiintymä käynnistyi, aktivoidaan nykyinen ikkuna"}
+trayIconFailed: {value: "Ilmoitusalueen kuvakkeen lataus epäonnistui"}
+updateCheckFailed: {value: "Päivitysten tarkistus epäonnistui", description: "Update check or stored release-note state failed; logged without a dialog."}
+windowStateLoadFailed: {value: "Ikkunan tilan lataus epäonnistui"}
+windowStateSaveFailed: {value: "Ikkunan tilan tallennus epäonnistui"}
+
+# Audio devices and calibration
+audioDeviceEnumFailed: {value: "Tallennuslaitteiden luettelointi epäonnistui"}
+audioDeviceGone: {value: "Valittu tallennuslaite ei ole enää käytettävissä"}
+audioDevicesListed: {value: "Tallennuslaitteet luetteloitu"}
+audioDialogFailed: {value: "Tiedostoikkunan avaaminen epäonnistui"}
+audioDialogUnavailable: {value: "Tiedostoikkunaa pyydettiin, vaikka sovellus ei ole käynnissä"}
+audioFileUnreadable: {value: "Äänitteen avaaminen epäonnistui"}
+audioNoDevices: {value: "Tallennuslaitteita ei ole saatavilla"}
+audioSourceSelected: {value: "Tulolähde valittu"}
+audioSpeakerUnavailable: {value: "Lähtölaitetta ei ole, tiedosto toistetaan äänettömänä"}
+calibrationAbandoned: {value: "Äänikortin kalibrointi keskeytetty"}
+calibrationFinished: {value: "Äänikortin kalibrointi valmis"}
+calibrationNoDevice: {value: "Laitetta ei voitu avata äänikortin kalibrointia varten"}
+calibrationStarted: {value: "Äänikortin kalibrointi aloitettu"}
+deviceStoreFailed: {value: "Tallennuslaitteen asetusten tallennus epäonnistui"}
+micBlocksDropped: {value: "Mikrofonidatan käsittely pysähtyi, lohkoja ohitetaan"}
+micDeviceLost: {value: "Tallennuslaite pysähtyi odottamatta"}
+volumeRestore: {value: "Automaattinen voimakkuudensäätö ei pystynyt palauttamaan tulotasoa"}
+volumeStepFailed: {value: "Automaattinen voimakkuudensäätö ei pystynyt asettamaan tulotasoa"}
+volumeUnavailable: {value: "Automaattinen voimakkuudensäätö ei pääse laitteen tulotason säätöön"}
+
+# Tuner engine
+tunerEventsDropped: {value: "Mittaustapahtumia ohitettiin, käyttöliittymä jäi jälkeen"}
+tunerRunFailed: {value: "Mittausmoottori pysähtyi virheeseen"}
+tunerSettingRejected: {value: "Sallitun alueen ulkopuolinen asetus hylättiin"}
+tunerStartFailed: {value: "Tulolähteen luominen epäonnistui"}
+tunerStarted: {value: "Mittausmoottori käynnistyi"}
+tunerStopped: {value: "Mittausmoottori pysähtyi"}
+tunerTonePlayFailed: {value: "Vertailuäänen toisto epäonnistui"}
+tunerTonePlaying: {value: "Toistetaan vertailuääntä"}
+
+# Sessions, readings and reports
+recordCleared: {value: "Mittauskierros tyhjennetty"}
+recordEdited: {value: "Mittausta muokattu käsin"}
+recordRejected: {value: "Tallennuspyyntö hylätty"}
+recordTake: {value: "Mittaus tallennettu"}
+recordUndone: {value: "Viimeinen mittaus kumottu"}
+reportFailed: {value: "Viritysraportin kirjoitus epäonnistui"}
+reportOpenFailed: {value: "Viritysraportin avaus epäonnistui"}
+reportOpened: {value: "Viritysraportti välitetty selaimelle"}
+reportRejected: {value: "Raporttipyyntö hylätty"}
+reportWritten: {value: "Viritysraportti kirjoitettu"}
+sessionClosed: {value: "Istunto suljettu"}
+sessionCreated: {value: "Istunto luotu"}
+sessionCurveDropped: {value: "Tavoitekäyrä poistettu"}
+sessionCurveFitted: {value: "Tavoitekäyrä sovitettu mittauskierroksen perusteella"}
+sessionCurveImported: {value: "Tavoitekäyrä tuotu"}
+sessionDeleted: {value: "Istunto poistettu"}
+sessionLoadFailed: {value: "Istunnon lataus epäonnistui"}
+sessionOpened: {value: "Istunto avattu"}
+sessionReedsClamped: {value: "Soittimessa soi enemmän kieliä kuin mittausmoottori erottaa, rajoitetaan käsiteltävien kielten määrää"}
+sessionRejected: {value: "Virheellinen istuntomuutos hylätty"}
+sessionSaveFailed: {value: "Istunnon tallennus epäonnistui"}
+
+# Frontend diagnostics
+frontendAudioCalibrationCancelFailed: {value: "Kalibrointia ei voitu peruuttaa"}
+frontendAudioCalibrationFailed: {value: "Kalibrointia ei voitu aloittaa"}
+frontendAudioCorrectionFailed: {value: "Äänikortin korjausta ei voitu lukea"}
+frontendAudioDialogFailed: {value: "Tiedostoikkunaa ei voitu avata"}
+frontendAudioListFailed: {value: "Äänilaitteita ei voitu luetella"}
+frontendAudioSelectFailed: {value: "Äänilähdettä ei voitu valita"}
+frontendAudioStateFailed: {value: "Äänilaitteen tilaa ei voitu lukea"}
+frontendAudioVolumeFailed: {value: "Automaattista voimakkuudensäätöä ei voitu muuttaa"}
+frontendConfigLoadFailed: {value: "Asetuksia ei voitu ladata"}
+frontendConfigLoaded: {value: "Asetukset ladattu"}
+frontendConfigSaveFailed: {value: "Asetuksia ei voitu tallentaa"}
+frontendCurveViewFailed: {value: "Käyränäkymän asetuksia ei voitu lukea"}
+frontendError: {value: "Odottamaton sovellusvirhe"}
+frontendRejection: {value: "Sovelluksen toiminto epäonnistui"}
+frontendResizeNotice: {value: "Asettelun muutos siirretty seuraavaan ruutuun (selaimen ResizeObserver-ilmoitus)"}
+frontendSettingFailed: {value: "Virittimen asetusta ei voitu muuttaa"}
+frontendTunerStartFailed: {value: "Viritintä ei voitu käynnistää"}
+frontendTunerStateFailed: {value: "Virittimen tilaa ei voitu lukea"}
+frontendTunerStopFailed: {value: "Viritintä ei voitu pysäyttää"}
+frontendTunerTonePlayFailed: {value: "Vertailuääntä ei voitu toistaa"}
+frontendTunerToneStopFailed: {value: "Vertailuääntä ei voitu pysäyttää"}

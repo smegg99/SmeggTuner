@@ -1,0 +1,100 @@
+# Diagnostic log messages (zh-Hans).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Application lifecycle and configuration
+appStarting: {value: "正在启动 SmeggTuner"}
+cleaningUp: {value: "正在清理资源"}
+configLoadFailed: {value: "无法加载配置"}
+configLoaded: {value: "已加载配置"}
+configSaveFailed: {value: "无法保存配置"}
+crashScreenFailed: {value: "无法显示错误页面"}
+crashWatchFailed: {value: "无法启动崩溃监视器"}
+datastoreInitFailed: {value: "无法初始化数据存储"}
+datastoreReady: {value: "数据存储已就绪"}
+loadingConfig: {value: "正在加载配置"}
+loggerInitFailed: {value: "无法配置日志记录器"}
+reinitLogger: {value: "正在按配置重新设置日志记录器"}
+runFailed: {value: "应用运行失败"}
+secondInstance: {value: "检测到第二个实例启动，正在切换到现有窗口"}
+trayIconFailed: {value: "无法加载托盘图标"}
+updateCheckFailed: {value: "检查更新失败", description: "Update check or stored release-note state failed; logged without a dialog."}
+windowStateLoadFailed: {value: "无法加载窗口状态"}
+windowStateSaveFailed: {value: "无法保存窗口状态"}
+
+# Audio devices and calibration
+audioDeviceEnumFailed: {value: "无法列出音频采集设备"}
+audioDeviceGone: {value: "所选音频采集设备已断开"}
+audioDevicesListed: {value: "已列出音频采集设备"}
+audioDialogFailed: {value: "文件对话框出错"}
+audioDialogUnavailable: {value: "应用未运行时收到了文件对话框请求"}
+audioFileUnreadable: {value: "无法打开录音"}
+audioNoDevices: {value: "没有可用的音频采集设备"}
+audioSourceSelected: {value: "已选择输入源"}
+audioSpeakerUnavailable: {value: "没有输出设备，文件将静音播放"}
+calibrationAbandoned: {value: "已放弃声卡校准"}
+calibrationFinished: {value: "声卡校准已完成"}
+calibrationNoDevice: {value: "校准声卡时无法打开设备"}
+calibrationStarted: {value: "已开始校准声卡"}
+deviceStoreFailed: {value: "无法保存音频采集设备的设置"}
+micBlocksDropped: {value: "麦克风数据处理停滞，正在丢弃数据块"}
+micDeviceLost: {value: "音频采集设备意外停止"}
+volumeRestore: {value: "自动音量控制未能恢复输入电平"}
+volumeStepFailed: {value: "自动音量控制未能设置输入电平"}
+volumeUnavailable: {value: "自动音量控制无法访问设备的输入电平"}
+
+# Tuner engine
+tunerEventsDropped: {value: "前端处理滞后，已丢弃测量事件"}
+tunerRunFailed: {value: "测量引擎因错误停止"}
+tunerSettingRejected: {value: "已拒绝超出范围的设置值"}
+tunerStartFailed: {value: "无法创建输入源"}
+tunerStarted: {value: "测量引擎已启动"}
+tunerStopped: {value: "测量引擎已停止"}
+tunerTonePlayFailed: {value: "参考音播放失败"}
+tunerTonePlaying: {value: "正在播放参考音"}
+
+# Sessions, readings and reports
+recordCleared: {value: "已清除本轮测量"}
+recordEdited: {value: "已手动编辑记录"}
+recordRejected: {value: "已拒绝记录请求"}
+recordTake: {value: "已保存本次测量记录"}
+recordUndone: {value: "已撤销上一次记录"}
+reportFailed: {value: "未能写入调音报告"}
+reportOpenFailed: {value: "未能打开调音报告"}
+reportOpened: {value: "已将调音报告交给浏览器打开"}
+reportRejected: {value: "已拒绝报告请求"}
+reportWritten: {value: "调音报告已写入"}
+sessionClosed: {value: "会话已关闭"}
+sessionCreated: {value: "会话已创建"}
+sessionCurveDropped: {value: "已移除目标曲线"}
+sessionCurveFitted: {value: "已根据一轮测量拟合目标曲线"}
+sessionCurveImported: {value: "已导入目标曲线"}
+sessionDeleted: {value: "会话已删除"}
+sessionLoadFailed: {value: "无法加载会话"}
+sessionOpened: {value: "会话已打开"}
+sessionReedsClamped: {value: "发声的簧片数超过引擎的分辨能力，已将测量数限制为引擎支持的上限"}
+sessionRejected: {value: "已拒绝无效的会话修改"}
+sessionSaveFailed: {value: "无法保存会话"}
+
+# Frontend diagnostics
+frontendAudioCalibrationCancelFailed: {value: "无法取消校准"}
+frontendAudioCalibrationFailed: {value: "无法开始校准"}
+frontendAudioCorrectionFailed: {value: "无法读取声卡校正值"}
+frontendAudioDialogFailed: {value: "无法打开文件对话框"}
+frontendAudioListFailed: {value: "无法列出音频设备"}
+frontendAudioSelectFailed: {value: "无法选择音频源"}
+frontendAudioStateFailed: {value: "无法读取音频设备状态"}
+frontendAudioVolumeFailed: {value: "无法更改自动音量控制设置"}
+frontendConfigLoadFailed: {value: "无法加载配置"}
+frontendConfigLoaded: {value: "已加载配置"}
+frontendConfigSaveFailed: {value: "无法保存配置"}
+frontendCurveViewFailed: {value: "无法读取曲线显示设置"}
+frontendError: {value: "应用发生意外错误"}
+frontendRejection: {value: "应用操作失败"}
+frontendResizeNotice: {value: "布局更新已推迟到下一帧（浏览器 ResizeObserver 通知）"}
+frontendSettingFailed: {value: "无法更改调音器设置"}
+frontendTunerStartFailed: {value: "无法启动调音器"}
+frontendTunerStateFailed: {value: "无法读取调音器状态"}
+frontendTunerStopFailed: {value: "无法停止调音器"}
+frontendTunerTonePlayFailed: {value: "无法播放参考音"}
+frontendTunerToneStopFailed: {value: "无法停止参考音"}

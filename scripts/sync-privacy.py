@@ -2,6 +2,7 @@
 # scripts/sync-privacy.py
 """Copy the bundled policy to the website, or verify that its copy is current."""
 import argparse
+import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -15,8 +16,16 @@ def main():
     destination = args.site.resolve() / "web/app/content/privacy"
     if not destination.is_dir():
         parser.error(f"Privacy content directory does not exist: {destination}")
-    for locale, name in [("en", "PRIVACY.md"), ("pl", "PRIVACY.pl.md")]:
-        source = (ROOT / name).read_text()
+    manifest = ROOT / "backend/common/i18n/loc-manifest.json"
+    languages = json.loads(manifest.read_text())["locales"]
+    policies = {code: ROOT / ("PRIVACY.md" if code == "en" else f"PRIVACY.{code}.md")
+                for code in languages}
+    for path in policies.values():
+        if not path.is_file():
+            parser.error(f"Missing translated privacy policy: {path.name}")
+    for locale, path in policies.items():
+        name = path.name
+        source = path.read_text()
         content = f"<!-- Generated from SmeggTuner/{name} by scripts/sync-privacy.py. -->\n\n" + source
         target = destination / f"{locale}.md"
         if args.check:

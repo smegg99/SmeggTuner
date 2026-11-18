@@ -1,0 +1,155 @@
+# Printed reports and export (nb).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one = 1; other = 0, 2, 3, ...
+
+# Report title and instrument details
+facts.curve: {value: "Målkurve"}
+facts.curveNone: {value: "ingen"}
+facts.curveUnnamed: {value: "uten navn"}
+facts.reference: {value: "Kammertone A4 (denne målerunden)"}
+facts.tolerance: {value: "Toleranse"}
+
+facts.toleranceValue:
+  value: "Stemtunge {reed} {unit} / slag {beat} {unit}"
+  placeholders:
+    beat: {type: string}
+    reed: {type: string}
+    unit: {type: string}
+
+facts.transpose: {value: "Transponering"}
+
+facts.transposeValue:
+  value: "{key} klinger som {sounds}"
+  placeholders:
+    key: {type: string}
+    sounds: {type: string}
+
+title: {value: "Stemmerapport"}
+
+# Table and column headings
+head.beat:
+  value: "Slag {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.bassTitle:
+  value: "Stemmetabell for bass ({unit})"
+  placeholders:
+    unit: {type: string}
+
+table.curr: {value: "Målt"}
+table.err: {value: "Feil"}
+table.register: {value: "Register"}
+
+table.title:
+  value: "Stemmetabell ({unit})"
+  placeholders:
+    unit: {type: string}
+
+# Deviation units
+unit.cents.name: {value: "cent"}
+unit.cents.symbol: {value: "c"}
+unit.reference.name: {value: "enheter på 0,06 %"}
+
+# Graph legend and reading markers
+graph.edited:
+  value: "{mark} - redigert manuelt."
+  placeholders:
+    mark: {type: string}
+
+legend.error.cents:
+  value: "Fil slik at feilen i forhold til målet nærmer seg null. Verdier i cent fra likesvevende temperatur ved {a4} Hz."
+  placeholders:
+    a4: {type: string}
+
+legend.error.key: {value: "Feil = målt - mål."}
+legend.error.noCurve: {value: "Uten målkurve er målet null, og feilen er avviket fra skalaen."}
+
+legend.error.reference:
+  value: "Fil slik at feilen i forhold til målet nærmer seg null. Verdier i enheter på 0,06 % av tonens frekvens fra likesvevende temperatur ved {a4} Hz."
+  placeholders:
+    a4: {type: string}
+
+legend.out.short: {value: "utenfor toleransen"}
+legend.takes.key: {value: "xN"}
+legend.takes.short: {value: "målt flere ganger, siste måling vises"}
+mark.edited: {value: "H"}
+mark.out: {value: "!"}
+
+# Summary and footer
+footer.generated:
+  value: "Opprettet {at} med {app}"
+  placeholders:
+    app: {type: string}
+    at: {type: string}
+
+summary.allIn: {value: "Alle verdier innenfor toleransen."}
+
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} slag"
+      other: "{pluralCount} slag"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.line:
+  value: "{notes} ({min} til {max}), {reeds}, {beats}."
+  placeholders:
+    beats: {type: string}
+    max: {type: string}
+    min: {type: string}
+    notes: {type: string}
+    reeds: {type: string}
+
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} tone"
+      other: "{pluralCount} toner"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} utenfor toleransen ({reeds}, {beats})."
+      other: "{pluralCount} utenfor toleransen ({reeds}, {beats})."
+  placeholders:
+    beats: {type: string}
+    pluralCount: {type: integer}
+    reeds: {type: string}
+
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} stemtungemåling"
+      other: "{pluralCount} stemtungemålinger"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} stemtunge"
+      other: "{pluralCount} stemtunger"
+  placeholders:
+    pluralCount: {type: integer}
+
+# Export errors
+error.invalidDate: {value: "Skriv inn en gyldig dato som ÅÅÅÅ-MM-DD."}
+error.invalidFormat: {value: "Rapporten kan ikke lagres i det valgte formatet."}
+
+error.noBrowser:
+  value: "PDF-oppsettet lages i en nettleser. Verken Chrome eller Chromium finnes på maskinen. Installer en av dem, eller eksporter kortet som HTML og skriv det ut."
+error.openFailed: {value: "Rapporten ble lagret, men ingen nettleser kunne åpne den. Åpne filen selv."}
+error.renderFailed: {value: "Rapporten kunne ikke opprettes. Ingenting ble skrevet."}
+
+error.writeFailed:
+  value: "Rapporten kunne ikke lagres der. En eventuell eksisterende fil er urørt."

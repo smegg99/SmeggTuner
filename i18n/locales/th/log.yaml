@@ -1,0 +1,100 @@
+# Diagnostic log messages (th).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Application lifecycle and configuration
+appStarting: {value: "กำลังเริ่ม SmeggTuner"}
+cleaningUp: {value: "กำลังคืนทรัพยากร"}
+configLoadFailed: {value: "โหลดการกำหนดค่าไม่ได้"}
+configLoaded: {value: "โหลดการกำหนดค่าแล้ว"}
+configSaveFailed: {value: "บันทึกการกำหนดค่าไม่ได้"}
+crashScreenFailed: {value: "แสดงหน้าจอข้อผิดพลาดไม่ได้"}
+crashWatchFailed: {value: "เริ่มตัวตรวจจับการขัดข้องไม่ได้"}
+datastoreInitFailed: {value: "เริ่มต้นที่เก็บข้อมูลไม่ได้"}
+datastoreReady: {value: "ที่เก็บข้อมูลพร้อมแล้ว"}
+loadingConfig: {value: "กำลังโหลดการกำหนดค่า"}
+loggerInitFailed: {value: "กำหนดค่าตัวบันทึกเหตุการณ์ไม่ได้"}
+reinitLogger: {value: "กำลังตั้งค่าตัวบันทึกเหตุการณ์ใหม่ตามการกำหนดค่า"}
+runFailed: {value: "เรียกใช้แอปไม่สำเร็จ"}
+secondInstance: {value: "พบการเปิดแอปซ้ำ กำลังนำหน้าต่างเดิมขึ้นด้านหน้า"}
+trayIconFailed: {value: "โหลดไอคอนถาดระบบไม่ได้"}
+updateCheckFailed: {value: "ตรวจสอบการอัปเดตไม่สำเร็จ", description: "Update check or stored release-note state failed; logged without a dialog."}
+windowStateLoadFailed: {value: "โหลดสถานะหน้าต่างไม่ได้"}
+windowStateSaveFailed: {value: "บันทึกสถานะหน้าต่างไม่ได้"}
+
+# Audio devices and calibration
+audioDeviceEnumFailed: {value: "เรียกดูรายการอุปกรณ์รับเสียงไม่ได้"}
+audioDeviceGone: {value: "ไม่พบอุปกรณ์รับเสียงที่เลือกแล้ว"}
+audioDevicesListed: {value: "เรียกดูรายการอุปกรณ์รับเสียงแล้ว"}
+audioDialogFailed: {value: "กล่องโต้ตอบไฟล์ทำงานผิดพลาด"}
+audioDialogUnavailable: {value: "มีคำขอเปิดกล่องโต้ตอบไฟล์ขณะที่แอปไม่ได้ทำงาน"}
+audioFileUnreadable: {value: "เปิดเสียงที่บันทึกไม่ได้"}
+audioNoDevices: {value: "ไม่มีอุปกรณ์รับเสียงที่พร้อมใช้งาน"}
+audioSourceSelected: {value: "เลือกแหล่งสัญญาณขาเข้าแล้ว"}
+audioSpeakerUnavailable: {value: "ไม่มีอุปกรณ์ขาออก ไฟล์จะเล่นโดยไม่มีเสียง"}
+calibrationAbandoned: {value: "ยกเลิกการสอบเทียบการ์ดเสียงแล้ว"}
+calibrationFinished: {value: "สอบเทียบการ์ดเสียงเสร็จแล้ว"}
+calibrationNoDevice: {value: "เปิดอุปกรณ์เพื่อสอบเทียบการ์ดเสียงไม่ได้"}
+calibrationStarted: {value: "เริ่มสอบเทียบการ์ดเสียงแล้ว"}
+deviceStoreFailed: {value: "บันทึกการตั้งค่าอุปกรณ์รับเสียงไม่ได้"}
+micBlocksDropped: {value: "ตัวรับข้อมูลไมโครโฟนหยุดประมวลผล จึงทิ้งบล็อกข้อมูล"}
+micDeviceLost: {value: "อุปกรณ์รับเสียงหยุดทำงานโดยไม่คาดคิด"}
+volumeRestore: {value: "ระบบปรับระดับเสียงอัตโนมัติคืนค่าระดับขาเข้าไม่ได้"}
+volumeStepFailed: {value: "ระบบปรับระดับเสียงอัตโนมัติตั้งค่าระดับขาเข้าไม่ได้"}
+volumeUnavailable: {value: "ระบบปรับระดับเสียงอัตโนมัติเข้าถึงระดับขาเข้าของอุปกรณ์ไม่ได้"}
+
+# Tuner engine
+tunerEventsDropped: {value: "ส่วนติดต่อประมวลผลไม่ทัน จึงทิ้งเหตุการณ์การวัด"}
+tunerRunFailed: {value: "ระบบวัดหยุดทำงานเนื่องจากข้อผิดพลาด"}
+tunerSettingRejected: {value: "ปฏิเสธค่าที่ตั้งเกินช่วง"}
+tunerStartFailed: {value: "สร้างแหล่งสัญญาณขาเข้าไม่ได้"}
+tunerStarted: {value: "เริ่มระบบวัดแล้ว"}
+tunerStopped: {value: "หยุดระบบวัดแล้ว"}
+tunerTonePlayFailed: {value: "เล่นเสียงอ้างอิงไม่สำเร็จ"}
+tunerTonePlaying: {value: "กำลังเล่นเสียงอ้างอิง"}
+
+# Sessions, readings and reports
+recordCleared: {value: "ล้างรอบการวัดแล้ว"}
+recordEdited: {value: "แก้ไขค่าบันทึกด้วยตนเองแล้ว"}
+recordRejected: {value: "ปฏิเสธคำขอบันทึกค่า"}
+recordTake: {value: "บันทึกค่าที่วัดได้แล้ว"}
+recordUndone: {value: "เลิกทำการบันทึกครั้งล่าสุดแล้ว"}
+reportFailed: {value: "เขียนรายงานการตั้งเสียงไม่ได้"}
+reportOpenFailed: {value: "เปิดรายงานการตั้งเสียงไม่ได้"}
+reportOpened: {value: "ส่งรายงานการตั้งเสียงให้เบราว์เซอร์เปิดแล้ว"}
+reportRejected: {value: "ปฏิเสธคำขอรายงาน"}
+reportWritten: {value: "เขียนรายงานการตั้งเสียงแล้ว"}
+sessionClosed: {value: "ปิดเซสชันแล้ว"}
+sessionCreated: {value: "สร้างเซสชันแล้ว"}
+sessionCurveDropped: {value: "ลบเส้นโค้งเป้าหมายแล้ว"}
+sessionCurveFitted: {value: "ปรับเส้นโค้งเป้าหมายให้เข้ากับค่าของรอบการวัดแล้ว"}
+sessionCurveImported: {value: "นำเข้าเส้นโค้งเป้าหมายแล้ว"}
+sessionDeleted: {value: "ลบเซสชันแล้ว"}
+sessionLoadFailed: {value: "โหลดเซสชันไม่ได้"}
+sessionOpened: {value: "เปิดเซสชันแล้ว"}
+sessionReedsClamped: {value: "จำนวนลิ้นเสียงที่ดังเกินกว่าที่ระบบวัดจะแยกได้ จึงจำกัดจำนวนที่วัดตามขีดความสามารถ"}
+sessionRejected: {value: "ปฏิเสธการแก้ไขเซสชันที่ไม่ถูกต้อง"}
+sessionSaveFailed: {value: "บันทึกเซสชันไม่ได้"}
+
+# Frontend diagnostics
+frontendAudioCalibrationCancelFailed: {value: "ยกเลิกการสอบเทียบไม่ได้"}
+frontendAudioCalibrationFailed: {value: "เริ่มการสอบเทียบไม่ได้"}
+frontendAudioCorrectionFailed: {value: "อ่านค่าชดเชยของการ์ดเสียงไม่ได้"}
+frontendAudioDialogFailed: {value: "เปิดกล่องโต้ตอบไฟล์ไม่ได้"}
+frontendAudioListFailed: {value: "เรียกดูรายการอุปกรณ์เสียงไม่ได้"}
+frontendAudioSelectFailed: {value: "เลือกแหล่งเสียงไม่ได้"}
+frontendAudioStateFailed: {value: "อ่านสถานะอุปกรณ์เสียงไม่ได้"}
+frontendAudioVolumeFailed: {value: "เปลี่ยนระบบปรับระดับเสียงอัตโนมัติไม่ได้"}
+frontendConfigLoadFailed: {value: "โหลดการกำหนดค่าไม่ได้"}
+frontendConfigLoaded: {value: "โหลดการกำหนดค่าแล้ว"}
+frontendConfigSaveFailed: {value: "บันทึกการกำหนดค่าไม่ได้"}
+frontendCurveViewFailed: {value: "อ่านการตั้งค่าการแสดงเส้นโค้งไม่ได้"}
+frontendError: {value: "แอปเกิดข้อผิดพลาดโดยไม่คาดคิด"}
+frontendRejection: {value: "การทำงานของแอปไม่สำเร็จ"}
+frontendResizeNotice: {value: "เลื่อนการเปลี่ยนผังหน้าจอไปยังเฟรมถัดไป (การแจ้งเตือน ResizeObserver ของเบราว์เซอร์)"}
+frontendSettingFailed: {value: "เปลี่ยนการตั้งค่าเครื่องตั้งเสียงไม่ได้"}
+frontendTunerStartFailed: {value: "เริ่มเครื่องตั้งเสียงไม่ได้"}
+frontendTunerStateFailed: {value: "อ่านสถานะเครื่องตั้งเสียงไม่ได้"}
+frontendTunerStopFailed: {value: "หยุดเครื่องตั้งเสียงไม่ได้"}
+frontendTunerTonePlayFailed: {value: "เล่นเสียงอ้างอิงไม่ได้"}
+frontendTunerToneStopFailed: {value: "หยุดเสียงอ้างอิงไม่ได้"}

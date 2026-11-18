@@ -119,7 +119,7 @@ Gotowy plik to `bin/smeggtuner`. `just run` buduje aplikację i od razu ją uruc
 uruchamia testy Go, frontendu i skryptów budujących. `just check` sprawdza do tego pliki generowane,
 formatowanie, vet, tłumaczenia, typy i lint, niczego nie zmieniając.
 
-Tłumaczenia leżą w `i18n/locales/{en,pl}`, a schemat ustawień w `backend/common/config/config.cue`.
+Tłumaczenia leżą w `i18n/locales/`, a schemat ustawień w `backend/common/config/config.cue`.
 `just generate` odtwarza wszystko, co z nich powstaje, a do tego bindingi, ikony i pliki pomocnicze
 S99Wails.
 

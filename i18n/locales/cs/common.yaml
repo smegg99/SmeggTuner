@@ -1,0 +1,115 @@
+# Shared labels and application text (cs).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Buttons and shared labels
+accept: {value: "Přijmout"}
+back: {value: "Zpět"}
+cancel: {value: "Zrušit"}
+close: {value: "Zavřít"}
+delete: {value: "Smazat"}
+export: {value: "Exportovat"}
+next: {value: "Další"}
+"no": {value: "Ne"}
+none: {value: "Žádné"}
+previous: {value: "Předchozí"}
+website: {value: "Webové stránky"}
+"yes": {value: "Ano"}
+
+# Musical labels and unit symbols
+accordion: {value: "Akordeon"}
+note: {value: "Tón"}
+
+reed:
+  value: Jazýček {index}
+  placeholders:
+    index:
+      type: integer
+
+unitSymbol.cents: {value: "cent"}
+unitSymbol.hz: {value: "Hz"}
+unitSymbol.reference: {value: "u"}
+
+# Color controls
+color.hue: {value: "Odstín"}
+color.saturation: {value: "Sytost"}
+color.value: {value: "Jas"}
+
+# Navigation and window titles
+routes.navigation: {value: "Hlavní navigace"}
+routes.settings: {value: "Nastavení"}
+routes.tune: {value: "Ladění"}
+routes.workshop: {value: "Dílna"}
+
+title.count:
+  value: '{room} {name} ({done})'
+  placeholders:
+    done:
+      type: string
+    name:
+      type: string
+    room:
+      type: string
+
+title.progress:
+  value: '{room} {name} {done}/{total}'
+  placeholders:
+    done:
+      type: string
+    name:
+      type: string
+    room:
+      type: string
+    total:
+      type: string
+
+title.room.about: {value: "o aplikaci"}
+title.room.calibrate: {value: "kalibrace"}
+title.room.help: {value: "nápověda"}
+title.room.settings: {value: "nastavení"}
+title.room.soundcard: {value: "zvuková karta"}
+title.room.tune: {value: "ladění"}
+title.room.workshop: {value: "dílna"}
+
+title.session:
+  value: '{room} {name}'
+  placeholders:
+    name:
+      type: string
+    room:
+      type: string
+
+title.uncalibrated:
+  value: '{title} (zvuková karta není zkalibrována)'
+  placeholders:
+    title:
+      type: string
+
+# Application and About dialog
+about.aboutTitle: {value: "O aplikaci"}
+about.commit: {value: "Sestavení"}
+about.donate: {value: "Podpořit na Ko-fi"}
+about.license: {value: "Licence"}
+about.privacy: {value: "Zásady ochrany soukromí"}
+about.guide: {value: "Jak používat SmeggTuner"}
+about.onlineVersion: {value: "Otevřít online verzi"}
+about.support: {value: "Podpora"}
+about.mascot: {value: "Kočka hrající na akordeon"}
+about.publisher: {value: "Autor: smegg99"}
+about.tagline: {value: "Bezplatný program s otevřeným zdrojovým kódem pro ladění akordeonů."}
+about.untagged: {value: "vývojové sestavení"}
+about.version: {value: "Verze"}
+app.description: {value: "Bezplatná ladička akordeonů s otevřeným zdrojovým kódem."}
+app.name: {value: "SmeggTuner"}
+
+# Help dialog and keyboard instructions
+about.helpTitle: {value: "Nápověda"}
+
+# System tray
+tray.quit: {value: "Ukončit"}
+tray.show: {value: "Zobrazit"}
+
+linkNewTab:
+  value: "{text} (otevře se na nové kartě)"
+  placeholders:
+    text: {type: string}

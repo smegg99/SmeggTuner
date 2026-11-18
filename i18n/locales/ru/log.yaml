@@ -1,0 +1,100 @@
+# Diagnostic log messages (ru).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Application lifecycle and configuration
+appStarting: {value: "Запуск smeggtuner"}
+cleaningUp: {value: "Освобождение ресурсов"}
+configLoadFailed: {value: "Не удалось загрузить конфигурацию"}
+configLoaded: {value: "Конфигурация загружена"}
+configSaveFailed: {value: "Не удалось сохранить конфигурацию"}
+crashScreenFailed: {value: "Не удалось показать экран ошибки"}
+crashWatchFailed: {value: "Не удалось запустить наблюдение за аварийным завершением"}
+datastoreInitFailed: {value: "Не удалось инициализировать хранилище данных"}
+datastoreReady: {value: "Хранилище данных готово"}
+loadingConfig: {value: "Загрузка конфигурации"}
+loggerInitFailed: {value: "Не удалось настроить журналирование"}
+reinitLogger: {value: "Повторная настройка журналирования по конфигурации"}
+runFailed: {value: "Приложение завершилось с ошибкой"}
+secondInstance: {value: "Запущен второй экземпляр, фокус передаётся открытому окну"}
+trayIconFailed: {value: "Не удалось загрузить значок для области уведомлений"}
+updateCheckFailed: {value: "Не удалось проверить обновления", description: "Update check or stored release-note state failed; logged without a dialog."}
+windowStateLoadFailed: {value: "Не удалось загрузить состояние окна"}
+windowStateSaveFailed: {value: "Не удалось сохранить состояние окна"}
+
+# Audio devices and calibration
+audioDeviceEnumFailed: {value: "Не удалось получить список устройств записи"}
+audioDeviceGone: {value: "Выбранное устройство записи больше недоступно"}
+audioDevicesListed: {value: "Получен список устройств записи"}
+audioDialogFailed: {value: "Ошибка диалога выбора файла"}
+audioDialogUnavailable: {value: "Диалог выбора файла запрошен при незапущенном приложении"}
+audioFileUnreadable: {value: "Не удалось открыть запись"}
+audioNoDevices: {value: "Нет доступных устройств записи"}
+audioSourceSelected: {value: "Выбран источник входного сигнала"}
+audioSpeakerUnavailable: {value: "Нет устройства вывода. Файл будет воспроизведён без звука"}
+calibrationAbandoned: {value: "Калибровка звуковой карты прервана"}
+calibrationFinished: {value: "Калибровка звуковой карты завершена"}
+calibrationNoDevice: {value: "При калибровке звуковой карты не удалось открыть устройство"}
+calibrationStarted: {value: "Начата калибровка звуковой карты"}
+deviceStoreFailed: {value: "Не удалось сохранить параметры устройства записи"}
+micBlocksDropped: {value: "Обработка данных микрофона задерживается, блоки отбрасываются"}
+micDeviceLost: {value: "Устройство записи неожиданно остановилось"}
+volumeRestore: {value: "Авторегулятор громкости не смог восстановить входной уровень"}
+volumeStepFailed: {value: "Авторегулятор громкости не смог задать входной уровень"}
+volumeUnavailable: {value: "Авторегулятор громкости не имеет доступа к входному уровню устройства"}
+
+# Tuner engine
+tunerEventsDropped: {value: "Интерфейс отстаёт, часть событий измерения пропущена"}
+tunerRunFailed: {value: "Измерительный модуль остановлен с ошибкой"}
+tunerSettingRejected: {value: "Параметр вне допустимого диапазона отклонён"}
+tunerStartFailed: {value: "Не удалось создать источник входного сигнала"}
+tunerStarted: {value: "Измерительный модуль запущен"}
+tunerStopped: {value: "Измерительный модуль остановлен"}
+tunerTonePlayFailed: {value: "Не удалось воспроизвести опорный тон"}
+tunerTonePlaying: {value: "Воспроизведение опорного тона"}
+
+# Sessions, readings and reports
+recordCleared: {value: "Серия измерений очищена"}
+recordEdited: {value: "Запись изменена вручную"}
+recordRejected: {value: "Запрос на запись отклонён"}
+recordTake: {value: "Измерение записано"}
+recordUndone: {value: "Последняя запись отменена"}
+reportFailed: {value: "Не удалось сохранить отчёт о настройке"}
+reportOpenFailed: {value: "Не удалось открыть отчёт о настройке"}
+reportOpened: {value: "Отчёт о настройке передан браузеру"}
+reportRejected: {value: "Запрос на отчёт отклонён"}
+reportWritten: {value: "Отчёт о настройке сохранён"}
+sessionClosed: {value: "Сеанс закрыт"}
+sessionCreated: {value: "Сеанс создан"}
+sessionCurveDropped: {value: "Целевая кривая удалена"}
+sessionCurveFitted: {value: "Целевая кривая построена по серии измерений"}
+sessionCurveImported: {value: "Целевая кривая импортирована"}
+sessionDeleted: {value: "Сеанс удалён"}
+sessionLoadFailed: {value: "Не удалось загрузить сеанс"}
+sessionOpened: {value: "Сеанс открыт"}
+sessionReedsClamped: {value: "В инструменте одновременно звучит больше язычков, чем может различить модуль. Число обрабатываемых язычков ограничено"}
+sessionRejected: {value: "Недопустимое изменение сеанса отклонено"}
+sessionSaveFailed: {value: "Не удалось сохранить сеанс"}
+
+# Frontend diagnostics
+frontendAudioCalibrationCancelFailed: {value: "Не удалось отменить калибровку"}
+frontendAudioCalibrationFailed: {value: "Не удалось запустить калибровку"}
+frontendAudioCorrectionFailed: {value: "Не удалось прочитать поправку звуковой карты"}
+frontendAudioDialogFailed: {value: "Не удалось открыть диалог выбора файла"}
+frontendAudioListFailed: {value: "Не удалось получить список звуковых устройств"}
+frontendAudioSelectFailed: {value: "Не удалось выбрать источник звука"}
+frontendAudioStateFailed: {value: "Не удалось прочитать состояние звукового устройства"}
+frontendAudioVolumeFailed: {value: "Не удалось изменить авторегулировку громкости"}
+frontendConfigLoadFailed: {value: "Не удалось загрузить конфигурацию"}
+frontendConfigLoaded: {value: "Конфигурация загружена"}
+frontendConfigSaveFailed: {value: "Не удалось сохранить конфигурацию"}
+frontendCurveViewFailed: {value: "Не удалось прочитать параметры отображения кривой"}
+frontendError: {value: "Непредвиденная ошибка приложения"}
+frontendRejection: {value: "Сбой операции приложения"}
+frontendResizeNotice: {value: "Изменение компоновки отложено до следующего кадра (уведомление ResizeObserver в браузере)"}
+frontendSettingFailed: {value: "Не удалось изменить параметр тюнера"}
+frontendTunerStartFailed: {value: "Не удалось запустить тюнер"}
+frontendTunerStateFailed: {value: "Не удалось прочитать состояние тюнера"}
+frontendTunerStopFailed: {value: "Не удалось остановить тюнер"}
+frontendTunerTonePlayFailed: {value: "Не удалось воспроизвести опорный тон"}
+frontendTunerToneStopFailed: {value: "Не удалось остановить опорный тон"}

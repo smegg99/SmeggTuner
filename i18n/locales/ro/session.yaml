@@ -1,0 +1,273 @@
+# Sessions, instruments and target curves (ro).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Session list and actions
+card.a4:
+  value: A = {hz} Hz
+  placeholders:
+    hz:
+      type: string
+
+card.changed: {value: "Acordeonul din bibliotecă a fost modificat după înregistrarea acestei sesiuni."}
+card.hasCurve: {value: "Curbă țintă definită"}
+
+card.readings:
+  plural:
+    argument: count
+    forms:
+      one: '{count} măsurătoare'
+      few: '{count} măsurători'
+      other: '{count} de măsurători'
+  placeholders:
+    count:
+      type: integer
+
+card.unnamedInstrument: {value: "Acordeon fără nume"}
+
+card.updated:
+  value: 'Actualizat: {when}'
+  placeholders:
+    when:
+      type: string
+
+deleteHint: {value: "Șterge definitiv această sesiune, inclusiv toate seriile, măsurătorile și curba de acordaj."}
+deleteTitle: {value: "Ștergi această sesiune?"}
+empty: {value: "Nu există încă sesiuni"}
+emptyHint: {value: "Creează o sesiune pentru a salva măsurătorile sau folosește acordorul fără sesiune."}
+export: {value: "Exportă sesiunea"}
+file.openFilter: {value: "Sesiune smeggtuner"}
+file.openTitle: {value: "Selectează un fișier de sesiune"}
+new: {value: "Sesiune nouă"}
+title: {value: "Sesiuni"}
+
+# Session dialog and tabs
+dialog.backToList: {value: "Alege un acordeon acordat anterior"}
+dialog.describeNew: {value: "Descrie un acordeon nou…"}
+dialog.forgetAccordion: {value: "Uită acest acordeon"}
+dialog.loadAccordion: {value: "Încarcă din fișier…"}
+dialog.name: {value: "Numele sesiunii"}
+dialog.nameHint: {value: "Folosește numele instrumentului sau al clientului pentru a identifica sesiunea."}
+dialog.pickAccordion: {value: "Care acordeon?"}
+dialog.start: {value: "Pornește"}
+page.mobile.curve: {value: "Ținte"}
+page.mobile.recorded: {value: "Măsurători"}
+
+# Instrument editing restrictions
+accordion.a4Locked: {value: "Valoare fixă: în sesiune există deja măsurători raportate la această referință."}
+
+accordion.columnsRefused: {value: "Modificarea ar afecta rândurile de ancii folosite în măsurătorile existente și nu a fost salvată. Restabilește rândurile anterioare sau creează o sesiune nouă."}
+
+accordion.frozen: {value: "După înregistrarea măsurătorilor nu mai poți modifica frecvența de referință sau rândurile de ancii. Poți adăuga în continuare registre care folosesc rândurile existente."}
+
+accordion.frozenShort: {value: "Rânduri de ancii blocate"}
+accordion.remember: {value: "Salvează în biblioteca de instrumente"}
+accordion.rememberHint: {value: "Salvează instrumentul acestei sesiuni în bibliotecă pentru a-l folosi în alte sesiuni."}
+
+# Instrument definition and registers
+instrument.a4: {value: "Frecvență de referință"}
+
+instrument.a4Hint: {value: "Frecvența de referință A4 în hertzi. Noile sesiuni pentru acest instrument vor folosi această valoare."}
+
+instrument.bass.build: {value: "Înălțimile în picioare ale vocilor din următorul registru"}
+instrument.bass.fixed: {value: "Fără registre de bași: mecanismul este fix și toate vocile sună mereu."}
+
+instrument.bass.full:
+  value: 'Numărul maxim de comutatoare pentru mecanismul de bași: {n}'
+  placeholders:
+    n:
+      type: string
+
+instrument.bass.hint: {value: "Indică numărul de voci ale bașilor. Cele mai multe mecanisme au patru sau cinci."}
+instrument.bass.registerName: {value: "Numele comutatorului"}
+instrument.bass.voices: {value: "Voci de bași"}
+instrument.beatTolerance: {value: "Toleranța pentru bătăi"}
+instrument.builder.add: {value: "Adaugă"}
+instrument.builder.already: {value: "Acest comutator este deja definit"}
+instrument.builder.high: {value: "4' piccolo"}
+instrument.builder.low: {value: "16' bas"}
+instrument.builder.middle: {value: "Ancii de 8'"}
+instrument.builder.none: {value: "Încă nu există comutatoare. Alege mai jos rândurile de ancii activate de fiecare."}
+instrument.builder.remove: {value: "Elimină acest registru"}
+instrument.builder.title: {value: "Adaugă un comutator"}
+instrument.file.exportTitle: {value: "Exportă acordeonul"}
+instrument.file.filterName: {value: "Acordeon smeggtuner"}
+instrument.file.imageFilter: {value: "Imagini"}
+instrument.file.imageTitle: {value: "Selectează o fotografie"}
+instrument.file.openTitle: {value: "Selectează un fișier de acordeon"}
+instrument.name: {value: "Nume"}
+instrument.nameHint: {value: "Numele afișat în biblioteca de instrumente și în sesiuni."}
+instrument.namePlaceholder: {value: "Hohner Morino V N"}
+instrument.nameRequired: {value: "Introdu un nume pentru acordeon."}
+instrument.photo: {value: "Fotografie"}
+instrument.range.backwards: {value: "Nota cea mai înaltă nu poate fi mai joasă decât cea mai gravă."}
+instrument.range.clear: {value: "Șterge"}
+instrument.range.down: {value: "Mai jos"}
+
+instrument.range.hint: {value: "Opțional. Clapele cea mai gravă și cea mai înaltă. Poți stabili ambitusul și după sunet, în timpul calibrării."}
+
+instrument.range.label: {value: "Ambitusul claviaturii"}
+instrument.range.to: {value: "până la"}
+instrument.range.up: {value: "Mai sus"}
+
+instrument.registersHint: {value: "Fă clic pe punctele simbolului fiecărui comutator, după cercul gravat pe acordeon, sau alege un registru uzual. Punctele indică direct vocile care sună."}
+
+instrument.registersSubtitle: {value: "Comutatoarele de pe partea melodică și rândurile de ancii activate de fiecare."}
+
+instrument.says:
+  plural:
+    argument: reeds
+    forms:
+      one: 'Rânduri de ancii: {banks}. Registrul cu cele mai multe voci pune în vibrație {reeds} ancie.'
+      few: 'Rânduri de ancii: {banks}. Registrul cu cele mai multe voci pune în vibrație {reeds} ancii.'
+      other: 'Rânduri de ancii: {banks}. Registrul cu cele mai multe voci pune în vibrație {reeds} de ancii.'
+  placeholders:
+    banks:
+      type: string
+    reeds:
+      type: integer
+
+instrument.sections.bass: {value: "Mecanism de bași"}
+instrument.sections.identity: {value: "Identificarea instrumentului"}
+instrument.sections.keyboard: {value: "Claviatură"}
+instrument.sections.reference: {value: "Referință și toleranță"}
+instrument.sections.voices: {value: "Registre"}
+instrument.tolerance: {value: "Toleranța pentru ancii"}
+
+instrument.toleranceHint: {value: "Abaterea admisă a anciilor în unități de 0,06 % din frecvența notei. Valorile din afara acestui interval sunt marcate ca dezacordate."}
+
+# Target curve editor
+curve.clearAll: {value: "Șterge curba"}
+
+curve.clearAllConfirm: {value: "Se elimină toate punctele de ancorare. Ținta fiecărei note revine la înălțimea din gamă, iar acordorul devine un simplu indicator."}
+
+curve.clearAllHint: {value: "Elimină toate punctele de ancorare și păstrează ca țintă înălțimea din gamă."}
+curve.clearAllTitle: {value: "Ștergi întreaga curbă?"}
+curve.entryUnit: {value: "Unitate de introducere"}
+
+curve.help.hz: {value: "Cu Hz introduci ținta în hertzi, raportată la A4 = 440 Hz, ca în lista de referință a bătăilor. Astfel, ținta nu se deplasează odată cu A4 al sesiunii. Opțiunea Înregistrate suprapune măsurătorile sesiunii peste listă. În meniul Listă poți ajusta punctele de ancorare după ele sau copia lista altei sesiuni."}
+
+curve.help.hzTitle: {value: "Hz și măsurători"}
+
+curve.help.interp: {value: "Cu interpolarea activă, notele dintre punctele de ancorare urmează linia. Cu ea dezactivată, valoarea fiecărui punct se păstrează până la următorul. Fără puncte, ținta fiecărei note este înălțimea din gamă."}
+
+curve.help.interpTitle: {value: "Între puncte"}
+
+curve.help.lead: {value: "Ținta de acordaj stabilește, notă cu notă, cât trebuie să se abată fiecare ancie de la înălțimea din gamă. Tabelul compară fiecare ancie măsurată cu această țintă pentru a stabili dacă se încadrează în toleranță. Reperul nu este neapărat abaterea zero."}
+
+curve.help.set: {value: "Alege o notă și o valoare și apasă Setează sau trage un punct în sus ori în jos pe grafic. Fiecare rând de ancii are propria linie, iar cel pe care îl editezi este evidențiat."}
+
+curve.help.setTitle: {value: "Setarea unui punct"}
+curve.helpTitle: {value: "Bătăile dorite"}
+curve.interpolate: {value: "Interpolare"}
+curve.interpolateHint: {value: "Urmează linia dintre punctele de ancorare. Dacă dezactivezi opțiunea, valoarea fiecărui punct se păstrează până la următorul."}
+curve.menu.ends: {value: "Dincolo de punctele de ancorare"}
+curve.menu.extendHigh: {value: "Continuă peste punctul cel mai înalt"}
+curve.menu.extendLow: {value: "Continuă sub punctul cel mai jos"}
+curve.menu.fit: {value: "Ajustează după măsurătorile sesiunii"}
+
+curve.menu.fitBody:
+  plural:
+    argument: n
+    forms:
+      one: 'Punctele de ancorare vor fi înlocuite cu o curbă ajustată pe baza datelor măsurate. Număr de măsurători:
+        {n}.'
+      few: 'Punctele de ancorare vor fi înlocuite cu o curbă ajustată pe baza datelor măsurate. Număr de măsurători:
+        {n}.'
+      other: 'Punctele de ancorare vor fi înlocuite cu o curbă ajustată pe baza datelor măsurate. Număr de măsurători:
+        {n}.'
+  placeholders:
+    n:
+      type: integer
+
+curve.menu.fromFile: {value: "Copiază dintr-un fișier de sesiune"}
+curve.menu.fromSession: {value: "Copiază dintr-o sesiune"}
+curve.menu.label: {value: "Listă"}
+curve.menu.replace: {value: "Înlocuiește lista"}
+curve.menu.replaceBody: {value: "Punctele de ancorare vor fi înlocuite cu cele din cealaltă listă, împreună cu setările ei."}
+curve.menu.replaceConfirm: {value: "Înlocuiește"}
+curve.menu.replaceTitle: {value: "Înlocuiești lista bătăilor?"}
+curve.rank: {value: "Rând de ancii"}
+curve.recorded: {value: "Înregistrate"}
+curve.recordedHint: {value: "Afișează pe grafic măsurătorile acestei sesiuni"}
+curve.remove: {value: "Elimină"}
+curve.removeHint: {value: "Elimină din curbă punctul de ancorare al acestei note."}
+
+curve.scale:
+  value: Scară {v}
+  placeholders:
+    v:
+      type: string
+
+curve.scaleAuto: {value: "Scară automată"}
+curve.scaleHint: {value: "Întinderea verticală a graficului"}
+curve.set: {value: "Setează"}
+curve.setHint: {value: "Adaugă un punct de ancorare la această notă pentru rândul selectat."}
+curve.startHint: {value: "Încă nu există puncte de ancorare. Ținta fiecărei note este înălțimea din gamă."}
+
+# Readings and workshop actions
+footer.coverage:
+  value: 'Note: {done} / {total}'
+  placeholders:
+    done:
+      type: string
+    total:
+      type: string
+
+footer.inTune:
+  value: 'Acordate: {done} / {total}'
+  placeholders:
+    done:
+      type: string
+    total:
+      type: string
+
+footer.none: {value: "Nicio sesiune"}
+
+readings.notes:
+  plural:
+    argument: n
+    forms:
+      one: '{n} notă'
+      few: '{n} note'
+      other: '{n} de note'
+  placeholders:
+    n:
+      type: integer
+
+workshop.exit: {value: "Ieși din sesiune"}
+workshop.import: {value: "Importă"}
+workshop.open: {value: "Deschide"}
+workshop.print: {value: "Tipărește fișa"}
+
+# Session errors
+error.fitFailed: {value: "Nu s-a putut ajusta o curbă după această serie de măsurători."}
+
+error.hasReadings: {value: "Sesiunea conține deja măsurători efectuate cu frecvența de referință și numărul de ancii stabilite. Niciuna dintre aceste valori nu mai poate fi schimbată."}
+
+error.imageUnreadable: {value: "Fotografia nu a putut fi deschisă."}
+error.instrumentName: {value: "Dă acordeonului un nume pentru a-l putea găsi din nou."}
+error.invalidA4: {value: "Frecvența de referință trebuie să fie între 430 și 450 Hz."}
+
+error.invalidInstrument: {value: "Acest acordeon nu poate fi folosit: un rând de ancii are un nume duplicat sau un registru activează un rând inexistent."}
+
+error.invalidName: {value: "Dă sesiunii un nume."}
+error.invalidNote: {value: "Nota este în afara domeniului urmărit de acordor."}
+error.invalidReed: {value: "Această ancie nu sună la acest acordeon."}
+error.invalidReedCount: {value: "La o notă pot vibra între 1 și 8 ancii pe acordeon."}
+error.invalidTranspose: {value: "Transpoziția poate fi de la 0 la 11 semitonuri."}
+error.invalidUnit: {value: "Valorile se introduc în unități de 0,06 %, în cenți sau în hertzi."}
+error.invalidValue: {value: "Valoarea introdusă nu este un număr."}
+error.loadFailed: {value: "Sesiunea nu a putut fi citită."}
+error.noBassMachine: {value: "Acest acordeon nu are definit un mecanism de bași."}
+error.noBassRegister: {value: "Acordeonul nu are acest registru de bași."}
+error.noCurve: {value: "Sesiunea nu are o curbă țintă."}
+error.noReadings: {value: "Încă nu s-a înregistrat nimic în această sesiune."}
+error.noRegister: {value: "Acest acordeon nu are un asemenea registru."}
+error.noSession: {value: "Nu este deschisă nicio sesiune."}
+error.notAnImage: {value: "Acest fișier nu este o fotografie."}
+error.notFound: {value: "Această sesiune nu mai există."}
+error.notesTooLong: {value: "Scurtează nota la cel mult 500 de caractere."}
+error.saveFailed: {value: "Sesiunea nu a putut fi salvată. Dacă o închizi acum, ultimele înregistrări se pot pierde."}
+error.takeNotFound: {value: "Această măsurătoare nu mai există."}
+error.unexpected: {value: "A apărut o eroare."}

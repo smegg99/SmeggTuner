@@ -1,0 +1,255 @@
+# Sessions, instruments and target curves (el).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Session list and actions
+card.a4:
+  value: "A = {hz} Hz"
+  placeholders:
+    hz: {type: string}
+
+card.changed: {value: "Τα στοιχεία του ακορντεόν στη βιβλιοθήκη έχουν αλλάξει από την καταγραφή αυτής της συνεδρίας."}
+card.hasCurve: {value: "Ορίστηκε καμπύλη στόχου"}
+
+card.readings:
+  plural:
+    argument: count
+    forms:
+      one: "{count} ένδειξη"
+      other: "{count} ενδείξεις"
+  placeholders:
+    count: {type: integer}
+
+card.unnamedInstrument: {value: "Ακορντεόν χωρίς όνομα"}
+
+card.updated:
+  value: "Ενημερώθηκε {when}"
+  placeholders:
+    when: {type: string}
+
+deleteHint: {value: "Οριστική διαγραφή της συνεδρίας μαζί με όλα τα περάσματα, τις ενδείξεις και την καμπύλη κουρδίσματος."}
+deleteTitle: {value: "Να διαγραφεί αυτή η συνεδρία;"}
+empty: {value: "Δεν υπάρχουν ακόμη συνεδρίες"}
+emptyHint: {value: "Δημιουργήστε μια συνεδρία για αποθήκευση μετρήσεων ή χρησιμοποιήστε το χορδιστήρι χωρίς συνεδρία."}
+export: {value: "Εξαγωγή συνεδρίας"}
+file.openFilter: {value: "Συνεδρία SmeggTuner"}
+file.openTitle: {value: "Επιλογή αρχείου συνεδρίας"}
+new: {value: "Νέα συνεδρία"}
+title: {value: "Συνεδρίες"}
+
+# Session dialog and tabs
+dialog.backToList: {value: "Επιλογή οργάνου που έχει ήδη κουρδιστεί"}
+dialog.describeNew: {value: "Περιγραφή νέου οργάνου…"}
+dialog.forgetAccordion: {value: "Διαγραφή αυτού του ακορντεόν από τη βιβλιοθήκη"}
+dialog.loadAccordion: {value: "Φόρτωση από αρχείο…"}
+dialog.name: {value: "Όνομα συνεδρίας"}
+dialog.nameHint: {value: "Χρησιμοποιήστε το όνομα του οργάνου ή του πελάτη για να αναγνωρίζετε τη συνεδρία."}
+dialog.pickAccordion: {value: "Ποιο ακορντεόν;"}
+dialog.start: {value: "Έναρξη"}
+page.mobile.curve: {value: "Στόχοι"}
+page.mobile.recorded: {value: "Ενδείξεις"}
+
+# Instrument editing restrictions
+accordion.a4Locked: {value: "Σταθερή τιμή: έχουν ήδη καταγραφεί μετρήσεις της συνεδρίας με αυτή την αναφορά."}
+
+accordion.columnsRefused:
+  value: "Η αλλαγή θα τροποποιούσε τις σειρές καλαμιών των υπαρχουσών ενδείξεων και δεν αποθηκεύτηκε. Επαναφέρετε τις προηγούμενες σειρές ή δημιουργήστε νέα συνεδρία."
+accordion.frozen:
+  value: "Μετά την καταγραφή ενδείξεων δεν αλλάζουν η συχνότητα αναφοράς και οι σειρές καλαμιών. Μπορείτε ακόμη να προσθέσετε ρετζίστρα που χρησιμοποιούν τις υπάρχουσες σειρές."
+accordion.frozenShort: {value: "Κλειδωμένες σειρές"}
+accordion.remember: {value: "Αποθήκευση στη βιβλιοθήκη οργάνων"}
+accordion.rememberHint: {value: "Αποθηκεύστε το όργανο στη βιβλιοθήκη για χρήση σε μελλοντικές συνεδρίες."}
+
+# Instrument definition and registers
+instrument.a4: {value: "Συχνότητα αναφοράς"}
+
+instrument.a4Hint:
+  value: "Η συχνότητα αναφοράς του A4 σε χερτζ. Χρησιμοποιείται στις νέες συνεδρίες για αυτό το όργανο."
+
+instrument.bass.build: {value: "Σειρές του επόμενου διακόπτη σε πόδια"}
+instrument.bass.fixed: {value: "Χωρίς ρετζίστρα μπάσων: ο μηχανισμός είναι σταθερός και ακούγονται πάντα όλες οι φωνές."}
+
+instrument.bass.full:
+  value: "Ο μηχανισμός μπάσων εδώ δέχεται έως {n} διακόπτες"
+  placeholders:
+    n: {type: string}
+
+instrument.bass.hint: {value: "Ορίστε πόσες φωνές ακούγονται στα μπάσα. Οι περισσότεροι μηχανισμοί έχουν τέσσερις ή πέντε."}
+instrument.bass.registerName: {value: "Όνομα διακόπτη"}
+instrument.bass.voices: {value: "Φωνές μπάσων"}
+instrument.beatTolerance: {value: "Ανοχή διακροτήματος"}
+instrument.builder.add: {value: "Προσθήκη"}
+instrument.builder.already: {value: "Αυτός ο διακόπτης έχει ήδη οριστεί"}
+instrument.builder.high: {value: "4' πίκολο"}
+instrument.builder.low: {value: "16' μπάσο"}
+instrument.builder.middle: {value: "8' καλάμια"}
+instrument.builder.none: {value: "Δεν υπάρχουν ακόμη διακόπτες. Επιλέξτε παρακάτω ποιες σειρές ενεργοποιεί ο καθένας."}
+instrument.builder.remove: {value: "Αφαίρεση αυτού του ρετζίστρου"}
+instrument.builder.title: {value: "Προσθήκη διακόπτη"}
+instrument.file.exportTitle: {value: "Εξαγωγή ακορντεόν"}
+instrument.file.filterName: {value: "Ακορντεόν SmeggTuner"}
+instrument.file.imageFilter: {value: "Εικόνες"}
+instrument.file.imageTitle: {value: "Επιλογή φωτογραφίας"}
+instrument.file.openTitle: {value: "Επιλογή αρχείου ακορντεόν"}
+instrument.name: {value: "Όνομα"}
+instrument.nameHint: {value: "Το όνομα που εμφανίζεται στη βιβλιοθήκη οργάνων και στις συνεδρίες."}
+instrument.namePlaceholder: {value: "Hohner Morino V N"}
+instrument.nameRequired: {value: "Εισαγάγετε όνομα για το ακορντεόν."}
+instrument.photo: {value: "Φωτογραφία"}
+instrument.range.backwards: {value: "Η ψηλότερη νότα δεν μπορεί να είναι χαμηλότερη από τη χαμηλότερη."}
+instrument.range.clear: {value: "Εκκαθάριση"}
+instrument.range.down: {value: "Χαμηλότερα"}
+
+instrument.range.hint:
+  value: "Προαιρετικό. Το χαμηλότερο και το ψηλότερο πλήκτρο. Η έκταση μπορεί επίσης να οριστεί με το αυτί κατά τη βαθμονόμηση."
+
+instrument.range.label: {value: "Έκταση πληκτρολογίου"}
+instrument.range.to: {value: "έως"}
+instrument.range.up: {value: "Ψηλότερα"}
+
+instrument.registersHint:
+  value: "Κάντε κλικ στις τελείες του συμβόλου κάθε διακόπτη (ο κύκλος που είναι χαραγμένος στο ακορντεόν) ή επιλέξτε ένα συνηθισμένο σύμβολο. Οι τελείες δείχνουν ποιες σειρές ηχούν."
+instrument.registersSubtitle: {value: "Οι διακόπτες των πρίμων και οι σειρές που ενεργοποιεί ο καθένας."}
+
+instrument.says:
+  plural:
+    argument: reeds
+    forms:
+      one: "Σειρές καλαμιών: {banks}. Στο πληρέστερο ρετζίστερ ηχεί {reeds} καλάμι."
+      other: "Σειρές καλαμιών: {banks}. Στο πληρέστερο ρετζίστερ ηχούν {reeds} καλάμια."
+  placeholders:
+    banks: {type: string}
+    reeds: {type: integer}
+
+instrument.sections.bass: {value: "Μηχανισμός μπάσων"}
+instrument.sections.identity: {value: "Στοιχεία οργάνου"}
+instrument.sections.keyboard: {value: "Πληκτρολόγιο"}
+instrument.sections.reference: {value: "Αναφορά και ανοχή"}
+instrument.sections.voices: {value: "Ρετζίστρα"}
+instrument.tolerance: {value: "Ανοχή καλαμιού"}
+
+instrument.toleranceHint:
+  value: "Επιτρεπόμενη απόκλιση καλαμιού σε μονάδες του 0,06% της συχνότητας της νότας. Οι ενδείξεις εκτός ορίων επισημαίνονται ως ξεκούρδιστες."
+# Target curve editor
+curve.clearAll: {value: "Εκκαθάριση καμπύλης"}
+
+curve.clearAllConfirm:
+  value: "Αφαιρούνται όλα τα σημεία αναφοράς. Ο στόχος κάθε νότας επιστρέφει στο ύψος της κλίμακας και το χορδιστήρι λειτουργεί ως απλή ένδειξη."
+curve.clearAllHint: {value: "Αφαίρεση όλων των σημείων αναφοράς και επαναφορά του στόχου στο ύψος της κλίμακας."}
+curve.clearAllTitle: {value: "Να εκκαθαριστεί όλη η καμπύλη;"}
+curve.entryUnit: {value: "Μονάδα εισαγωγής"}
+
+curve.help.hz:
+  value: "Με Hz εισάγετε τον στόχο σε χερτζ με αναφορά A4 = 440 Hz, όπως στη λίστα διακροτημάτων αναφοράς. Έτσι δεν μετακινείται με το A4 της συνεδρίας. Η επιλογή «Καταγεγραμμένα» προβάλλει τις ενδείξεις πάνω στη λίστα. Από τη «Λίστα» μπορείτε να προσαρμόσετε τα σημεία αναφοράς στις ενδείξεις ή να αντιγράψετε τη λίστα άλλης συνεδρίας."
+curve.help.hzTitle: {value: "Χερτζ και ενδείξεις"}
+
+curve.help.interp:
+  value: "Με ενεργή παρεμβολή, οι νότες ανάμεσα στα σημεία αναφοράς ακολουθούν τη γραμμή. Διαφορετικά η τιμή κάθε σημείου διατηρείται μέχρι το επόμενο. Χωρίς σημεία, ο στόχος είναι παντού το ύψος της κλίμακας."
+curve.help.interpTitle: {value: "Ανάμεσα στα σημεία"}
+
+curve.help.lead:
+  value: "Ο στόχος κουρδίσματος ορίζει για κάθε νότα πόσο πρέπει να απέχει κάθε καλάμι από το ύψος της κλίμακας. Η καταγεγραμμένη ένδειξη συγκρίνεται με αυτόν τον στόχο. Ο πίνακας κρίνει την ανοχή ως προς τον στόχο σας και όχι ως προς το απόλυτο μηδέν."
+curve.help.set:
+  value: "Επιλέξτε νότα και τιμή και πατήστε «Ορισμός» ή σύρετε ένα σημείο του γραφήματος πάνω ή κάτω. Κάθε σειρά έχει δική της γραμμή και αυτή που επεξεργάζεστε επισημαίνεται."
+curve.help.setTitle: {value: "Ορισμός σημείου"}
+curve.helpTitle: {value: "Επιθυμητά διακροτήματα"}
+curve.interpolate: {value: "Παρεμβολή"}
+curve.interpolateHint: {value: "Ακολουθεί τη γραμμή μεταξύ των σημείων αναφοράς. Όταν είναι ανενεργή, η τιμή κάθε σημείου διατηρείται μέχρι το επόμενο."}
+curve.menu.ends: {value: "Πέρα από τα σημεία αναφοράς"}
+curve.menu.extendHigh: {value: "Συνέχεια πάνω από το ψηλότερο"}
+curve.menu.extendLow: {value: "Συνέχεια κάτω από το χαμηλότερο"}
+curve.menu.fit: {value: "Προσαρμογή στις ενδείξεις της συνεδρίας"}
+
+curve.menu.fitBody:
+  plural:
+    argument: n
+    forms:
+      one: "Τα σημεία αναφοράς θα αντικατασταθούν από καμπύλη προσαρμοσμένη στη {n} μέτρηση."
+      other: "Τα σημεία αναφοράς θα αντικατασταθούν από καμπύλη προσαρμοσμένη στις {n} μετρήσεις."
+  placeholders:
+    n: {type: integer}
+
+curve.menu.fromFile: {value: "Αντιγραφή από αρχείο συνεδρίας"}
+curve.menu.fromSession: {value: "Αντιγραφή από συνεδρία"}
+curve.menu.label: {value: "Λίστα"}
+curve.menu.replace: {value: "Αντικατάσταση λίστας"}
+curve.menu.replaceBody: {value: "Τα σημεία αναφοράς θα αντικατασταθούν από τα σημεία της άλλης λίστας μαζί με τις ρυθμίσεις της."}
+curve.menu.replaceConfirm: {value: "Αντικατάσταση"}
+curve.menu.replaceTitle: {value: "Να αντικατασταθεί η λίστα διακροτημάτων;"}
+curve.rank: {value: "Σειρά"}
+curve.recorded: {value: "Καταγεγραμμένα"}
+curve.recordedHint: {value: "Εμφάνιση των ενδείξεων της συνεδρίας στο γράφημα"}
+curve.remove: {value: "Αφαίρεση"}
+curve.removeHint: {value: "Αφαίρεση του σημείου αναφοράς αυτής της νότας από την καμπύλη."}
+
+curve.scale:
+  value: "Κλίμακα {v}"
+  placeholders:
+    v: {type: string}
+
+curve.scaleAuto: {value: "Αυτόματη κλίμακα"}
+curve.scaleHint: {value: "Το κατακόρυφο εύρος του γραφήματος"}
+curve.set: {value: "Ορισμός"}
+curve.setHint: {value: "Τοποθέτηση σημείου αναφοράς στη νότα για την επιλεγμένη σειρά."}
+curve.startHint: {value: "Δεν υπάρχουν ακόμη σημεία αναφοράς. Για κάθε νότα ο στόχος είναι το ύψος της κλίμακας."}
+
+# Readings and workshop actions
+footer.coverage:
+  value: "Νότες: {done}/{total}"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.inTune:
+  value: "Κουρδισμένες: {done}/{total}"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.none: {value: "Χωρίς συνεδρία"}
+
+readings.notes:
+  plural:
+    argument: n
+    forms:
+      one: "{n} νότα"
+      other: "{n} νότες"
+  placeholders:
+    n: {type: integer}
+
+workshop.exit: {value: "Έξοδος από τη συνεδρία"}
+workshop.import: {value: "Εισαγωγή"}
+workshop.open: {value: "Άνοιγμα"}
+workshop.print: {value: "Εκτύπωση καρτέλας"}
+
+# Session errors
+error.fitFailed: {value: "Δεν ήταν δυνατή η προσαρμογή καμπύλης σε αυτό το πέρασμα."}
+
+error.hasReadings:
+  value: "Η συνεδρία έχει ήδη ενδείξεις. Όλες μετρήθηκαν με τη συγκεκριμένη αναφορά και τον συγκεκριμένο αριθμό καλαμιών, οπότε κανένα από τα δύο δεν μπορεί πια να αλλάξει."
+error.imageUnreadable: {value: "Δεν ήταν δυνατό το άνοιγμα της φωτογραφίας."}
+error.instrumentName: {value: "Δώστε όνομα στο ακορντεόν για να μπορείτε να το ξαναβρείτε."}
+error.invalidA4: {value: "Η συχνότητα αναφοράς πρέπει να είναι από 430 έως 450 Hz."}
+
+error.invalidInstrument:
+  value: "Δεν μπορεί να χρησιμοποιηθεί αυτό το ακορντεόν: δύο σειρές έχουν το ίδιο όνομα ή κάποιο ρετζίστερ ενεργοποιεί ανύπαρκτη σειρά."
+error.invalidName: {value: "Δώστε όνομα στη συνεδρία."}
+error.invalidNote: {value: "Η νότα βρίσκεται έξω από το εύρος ανίχνευσης του χορδιστηριού."}
+error.invalidReed: {value: "Αυτό το καλάμι δεν ηχεί στο συγκεκριμένο ακορντεόν."}
+error.invalidReedCount: {value: "Στο ακορντεόν ηχούν από 1 έως 8 καλάμια ανά νότα."}
+error.invalidTranspose: {value: "Η μεταφορά είναι από 0 έως 11 ημιτόνια."}
+error.invalidUnit: {value: "Οι τιμές εισάγονται σε μονάδες του 0,06 %, σε σεντ ή σε χερτζ."}
+error.invalidValue: {value: "Η τιμή δεν είναι αριθμός."}
+error.loadFailed: {value: "Δεν ήταν δυνατή η ανάγνωση της συνεδρίας."}
+error.noBassMachine: {value: "Δεν έχει οριστεί μηχανισμός μπάσων για αυτό το ακορντεόν."}
+error.noBassRegister: {value: "Το ακορντεόν δεν έχει τέτοιο ρετζίστερ μπάσων."}
+error.noCurve: {value: "Η συνεδρία δεν έχει καμπύλη στόχου."}
+error.noReadings: {value: "Δεν έχει καταγραφεί ακόμη τίποτα σε αυτή τη συνεδρία."}
+error.noRegister: {value: "Το ακορντεόν δεν έχει τέτοιο ρετζίστερ."}
+error.noSession: {value: "Δεν υπάρχει ανοιχτή συνεδρία."}
+error.notAnImage: {value: "Το αρχείο δεν είναι φωτογραφία."}
+error.notFound: {value: "Η συνεδρία δεν υπάρχει πλέον."}
+error.notesTooLong: {value: "Περιορίστε τη σημείωση στους 500 χαρακτήρες."}
+error.saveFailed: {value: "Δεν ήταν δυνατή η αποθήκευση της συνεδρίας. Αν κλείσετε τώρα, μπορεί να χαθούν οι τελευταίες μετρήσεις."}
+error.takeNotFound: {value: "Η ένδειξη δεν υπάρχει πλέον."}
+error.unexpected: {value: "Παρουσιάστηκε σφάλμα."}

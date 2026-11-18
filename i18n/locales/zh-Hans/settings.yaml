@@ -1,0 +1,166 @@
+# Settings and sound-card calibration (zh-Hans).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Microphone and input level
+audioDeviceHint: {value: "用于测量的麦克风"}
+audioDeviceLabel: {value: "输入设备"}
+audioDeviceSystemDefault: {value: "系统默认"}
+autoVolume.hint: {value: "测量时自动调节麦克风输入电平"}
+autoVolume.label: {value: "自动调节输入音量"}
+autoVolume.saveFailed: {value: "未能保存输入音量设置。"}
+autoVolume.unsupported: {value: "此设备不支持调节输入电平。"}
+humFilter50: {value: "50 Hz"}
+humFilter60: {value: "60 Hz"}
+humFilterHint: {value: "滤除电源交流声：欧洲为 50 Hz，美洲为 60 Hz"}
+humFilterLabel: {value: "电源交流声滤波器"}
+lockedWhileRunning: {value: "请先停止调音器，再更改音频输入。"}
+
+# Detection and reference pitch
+continuousManual: {value: "持续更新固定音的读数"}
+continuousManualHint: {value: "在读数锁定前也更新固定音的读数"}
+detection.balanced: {value: "均衡"}
+detection.balancedHint: {value: "约半秒切换到另一个音"}
+detection.fast: {value: "快速"}
+detection.fastHint: {value: "切换最快，但可能锁定错误的音"}
+detection.steady: {value: "稳定"}
+detection.steadyHint: {value: "沿用原来的识别方式，切换较慢"}
+detectionLabel: {value: "音符识别"}
+lockA4: {value: "锁定基准音高"}
+lockA4Hint: {value: "禁止在调音器中更改 A4"}
+
+# Reading units, tolerance and note names
+beatUnitHint: {value: "赫兹，或以该音频率的 0.06% 为单位"}
+beatUnitLabel: {value: "拍频单位"}
+errorReference: {value: "偏差基准"}
+errorReferenceGoal: {value: "目标音高"}
+
+errorReferenceHint:
+  value: "显示相对于音阶音高或调音目标的偏差。以目标为基准时，达到目标的读数为零。"
+errorReferenceScale: {value: "音阶"}
+scaleNamingHint: {value: "音名的显示方式"}
+scaleNamingLabel: {value: "音名标记"}
+scaleNamings.cdefgab: {value: "C D E F G A B（国际记法，升音如 C#）"}
+scaleNamings.cdefgah: {value: "C D E F G A H（德国记法，升音如 C#）"}
+scaleNamings.doremi: {value: "Do Re Mi（唱名）"}
+scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H（波兰记法）"}
+toleranceBeat: {value: "拍频"}
+toleranceHint: {value: "簧片音高或拍频仍可视为调准的最大偏差"}
+toleranceLabel: {value: "容差"}
+toleranceReed: {value: "簧片"}
+unitHint: {value: "音分，或以该音频率的 0.06% 为单位"}
+unitLabel: {value: "偏差单位"}
+
+# Appearance, language and window behavior
+accent.auto: {value: "跟随系统"}
+accent.custom: {value: "自定义"}
+accent.hint: {value: "使用系统强调色或自行选择颜色"}
+accent.label: {value: "强调色"}
+accent.pick: {value: "选择颜色"}
+accent.pickTitle: {value: "强调色"}
+closeToTray: {value: "关闭时最小化到托盘"}
+closeToTrayHint: {value: "关闭窗口后，应用会留在系统托盘中"}
+checkUpdates: {value: "检查更新", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdatesHint: {value: "在 GitHub 上查找新版本", description: "Hint below the desktop update-check checkbox."}
+languageHint: {value: "界面语言"}
+languageLabel: {value: "语言"}
+phoneLayout.hint: {value: "将窗口调整为手机尺寸，以测试 Android 布局", description: "Debug builds only."}
+phoneLayout.label: {value: "手机布局", description: "Debug builds only."}
+phoneLayout.landscape: {value: "横屏", description: "Debug builds only. The phone held on its side."}
+phoneLayout.off: {value: "关闭", description: "Debug builds only. The normal desktop window."}
+phoneLayout.portrait: {value: "竖屏", description: "Debug builds only. The phone held upright."}
+themeHint: {value: "跟随系统、浅色或深色"}
+themeLabel: {value: "主题"}
+themes.auto: {value: "跟随系统"}
+themes.dark: {value: "深色"}
+themes.light: {value: "浅色"}
+
+# Sound-card calibration
+calibration.askBody:
+  value: "未经校准的采样时钟可能造成小幅固定测量误差。校准约需一分钟，无需发声。"
+calibration.askCalibrate: {value: "立即校准"}
+calibration.askContinue: {value: "不校正，继续使用"}
+calibration.askTitle: {value: "此声卡未经校准"}
+calibration.hint: {value: "校正声卡时钟误差。约需一分钟，无需发声。"}
+calibration.label: {value: "声卡校准"}
+calibration.open: {value: "打开"}
+calibration.openHint: {value: "打开校准页面，暂不测量"}
+calibration.saveFailed: {value: "未能保存校准结果。调音器将使用之前保存的状态。"}
+calibration.screen.again: {value: "重新校准"}
+calibration.screen.bar.confirming: {value: "正在确认"}
+calibration.screen.bar.settling: {value: "等待稳定"}
+
+calibration.screen.calibrated:
+  value: "已校准。读数修正量为 {percent}%。"
+  placeholders:
+    percent: {type: string}
+
+calibration.screen.calibrating: {value: "正在测量声卡时钟"}
+
+calibration.screen.how:
+  value: "音高读数可能存在小幅固定误差。校准约需一分钟，无需发声。"
+
+calibration.screen.lead: {value: "尚未校准"}
+
+calibration.screen.phase.confirming:
+  value: "读数已稳定。正在确认能否保持稳定 20 秒。"
+
+calibration.screen.phase.preparing: {value: "正在等待输入稳定，然后测量其时钟。"}
+calibration.screen.phase.settling: {value: "正在等待时钟读数稳定。"}
+
+calibration.screen.pitch:
+  value: "各音的音高偏差均为 {pitch}。"
+  placeholders:
+    pitch: {type: string}
+
+calibration.screen.preparing: {value: "正在预热输入设备"}
+calibration.screen.retry: {value: "读数仍未校正。请关闭其他音频应用后重试。"}
+calibration.screen.return: {value: "返回"}
+calibration.screen.stat.dropouts: {value: "信号中断次数"}
+calibration.screen.stat.elapsed: {value: "已用时间"}
+calibration.screen.stat.offset: {value: "时钟偏差"}
+calibration.screen.stat.rate: {value: "采样率"}
+calibration.screen.stat.steadiness: {value: "稳定度"}
+
+calibration.screen.steadiness:
+  value: "{ppm} ppm，目标 {target} ppm"
+  placeholders:
+    ppm: {type: string}
+    target: {type: string}
+
+calibration.screen.steps.done: {value: "完成"}
+calibration.screen.steps.measure: {value: "测量"}
+calibration.screen.steps.prepare: {value: "预热"}
+calibration.screen.traceEmpty: {value: "测量时，时钟偏差曲线将显示在这里。"}
+calibration.screen.unreliable: {value: "时钟未能稳定"}
+calibration.start: {value: "校准"}
+calibration.startHint: {value: "测量输入设备的采样时钟"}
+
+calibration.status.calibrated:
+  value: "已校准，{percent}%"
+  placeholders:
+    percent: {type: string}
+
+calibration.status.calibrating:
+  value: "校准中，{seconds} 秒（{percent}%），已完成 {progress}%"
+  placeholders:
+    percent: {type: string}
+    progress: {type: string}
+    seconds: {type: string}
+
+calibration.status.preparing: {value: "准备中"}
+calibration.status.uncalibrated: {value: "未校准"}
+calibration.status.unreliable: {value: "校准不可靠，读数未经校正"}
+
+# Settings section headings
+groups.appearance: {value: "外观"}
+groups.detection: {value: "识别"}
+groups.microphone: {value: "麦克风"}
+groups.output: {value: "输出", description: "Settings section shown on a phone, holding the output volume."}
+groups.readings: {value: "读数"}
+groups.report: {value: "调音工坊资料"}
+
+# Report letterhead
+report.address: {value: "地址"}
+report.name: {value: "调音工坊名称"}
+report.nameHint: {value: "启用信头后，将显示在导出的报告上。"}

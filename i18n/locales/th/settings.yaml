@@ -1,0 +1,166 @@
+# Settings and sound-card calibration (th).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Microphone and input level
+audioDeviceHint: {value: "ไมโครโฟนสำหรับวัดเสียง"}
+audioDeviceLabel: {value: "อุปกรณ์ขาเข้า"}
+audioDeviceSystemDefault: {value: "ค่าเริ่มต้นของระบบ"}
+autoVolume.hint: {value: "ปรับระดับไมโครโฟนขณะวัด"}
+autoVolume.label: {value: "ปรับระดับเสียงขาเข้าอัตโนมัติ"}
+autoVolume.saveFailed: {value: "บันทึกการตั้งค่าระดับเสียงขาเข้าไม่ได้"}
+autoVolume.unsupported: {value: "อุปกรณ์นี้ไม่รองรับการปรับระดับสัญญาณขาเข้า"}
+humFilter50: {value: "50 Hz"}
+humFilter60: {value: "60 Hz"}
+humFilterHint: {value: "กรองเสียงฮัมจากไฟบ้าน: 50 Hz ในยุโรป และ 60 Hz ในอเมริกา"}
+humFilterLabel: {value: "ตัวกรองเสียงฮัมจากไฟบ้าน"}
+lockedWhileRunning: {value: "หยุดเครื่องตั้งเสียงก่อนเปลี่ยนแหล่งเสียงขาเข้า"}
+
+# Detection and reference pitch
+continuousManual: {value: "อัปเดตค่าของโน้ตที่ตรึงไว้ต่อเนื่อง"}
+continuousManualHint: {value: "อัปเดตค่าของโน้ตที่ตรึงไว้ก่อนที่ค่าจะนิ่ง"}
+detection.balanced: {value: "สมดุล"}
+detection.balancedHint: {value: "เปลี่ยนโน้ตในเวลาประมาณครึ่งวินาที"}
+detection.fast: {value: "เร็ว"}
+detection.fastHint: {value: "เปลี่ยนโน้ตเร็วที่สุด แต่อาจจับผิดโน้ต"}
+detection.steady: {value: "นิ่ง"}
+detection.steadyHint: {value: "ใช้วิธีเดิม เปลี่ยนโน้ตช้า"}
+detectionLabel: {value: "การตรวจจับโน้ต"}
+lockA4: {value: "ล็อกระดับเสียงอ้างอิง"}
+lockA4Hint: {value: "ป้องกันการเปลี่ยนค่า A4 ในเครื่องตั้งเสียง"}
+
+# Reading units, tolerance and note names
+beatUnitHint: {value: "เฮิรตซ์ หรือหน่วยละ 0.06% ของความถี่โน้ต"}
+beatUnitLabel: {value: "หน่วยของบีต"}
+errorReference: {value: "ค่าอ้างอิงสำหรับค่าคลาดเคลื่อน"}
+errorReferenceGoal: {value: "ระดับเสียงเป้าหมาย"}
+
+errorReferenceHint:
+  value: "แสดงค่าคลาดเคลื่อนเทียบกับระดับเสียงในบันไดเสียงหรือเป้าหมายการตั้งเสียง เมื่อใช้เป้าหมายเป็นเกณฑ์ ค่าที่อ่านได้จะเป็นศูนย์เมื่อถึงเป้าหมาย"
+errorReferenceScale: {value: "บันไดเสียง"}
+scaleNamingHint: {value: "วิธีแสดงชื่อโน้ต"}
+scaleNamingLabel: {value: "การเรียกชื่อโน้ต"}
+scaleNamings.cdefgab: {value: "C D E F G A B (สากล ใช้ C# สำหรับโดชาร์ป)"}
+scaleNamings.cdefgah: {value: "C D E F G A H (เยอรมัน ใช้ C# สำหรับโดชาร์ป)"}
+scaleNamings.doremi: {value: "โด เร มี (โซลเฟจ)"}
+scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (โปแลนด์)"}
+toleranceBeat: {value: "บีต"}
+toleranceHint: {value: "ค่าคลาดเคลื่อนสูงสุดของลิ้นเสียงหรือบีตที่ยังถือว่าตรงเสียง"}
+toleranceLabel: {value: "ค่าคลาดเคลื่อนที่ยอมรับได้"}
+toleranceReed: {value: "ลิ้นเสียง"}
+unitHint: {value: "เซนต์ หรือหน่วยละ 0.06% ของความถี่โน้ต"}
+unitLabel: {value: "หน่วยค่าคลาดเคลื่อน"}
+
+# Appearance, language and window behavior
+accent.auto: {value: "ตามระบบ"}
+accent.custom: {value: "กำหนดเอง"}
+accent.hint: {value: "ใช้สีเน้นของระบบหรือเลือกสีเอง"}
+accent.label: {value: "สีเน้น"}
+accent.pick: {value: "เลือกสี"}
+accent.pickTitle: {value: "สีเน้น"}
+closeToTray: {value: "ย่อไปที่ถาดระบบเมื่อปิด"}
+closeToTrayHint: {value: "เมื่อปิดหน้าต่าง แอปจะยังอยู่ในถาดระบบ"}
+checkUpdates: {value: "ตรวจสอบการอัปเดต", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdatesHint: {value: "ค้นหาเวอร์ชันใหม่บน GitHub", description: "Hint below the desktop update-check checkbox."}
+languageHint: {value: "ภาษาที่แสดงบนหน้าจอ"}
+languageLabel: {value: "ภาษา"}
+phoneLayout.hint: {value: "ปรับหน้าต่างให้มีขนาดเท่าโทรศัพท์เพื่อทดสอบผังหน้าจอ Android", description: "Debug builds only."}
+phoneLayout.label: {value: "ผังหน้าจอโทรศัพท์", description: "Debug builds only."}
+phoneLayout.landscape: {value: "แนวนอน", description: "Debug builds only. The phone held on its side."}
+phoneLayout.off: {value: "ปิด", description: "Debug builds only. The normal desktop window."}
+phoneLayout.portrait: {value: "แนวตั้ง", description: "Debug builds only. The phone held upright."}
+themeHint: {value: "ตามระบบ สว่าง หรือมืด"}
+themeLabel: {value: "ธีม"}
+themes.auto: {value: "ตามระบบ"}
+themes.dark: {value: "มืด"}
+themes.light: {value: "สว่าง"}
+
+# Sound-card calibration
+calibration.askBody:
+  value: "ถ้ายังไม่ได้สอบเทียบสัญญาณนาฬิกาสุ่มตัวอย่าง อาจเกิดความคลาดเคลื่อนคงที่เล็กน้อยในการวัด การสอบเทียบใช้เวลาประมาณหนึ่งนาทีและไม่ต้องใช้เสียง"
+calibration.askCalibrate: {value: "สอบเทียบตอนนี้"}
+calibration.askContinue: {value: "ดำเนินการต่อโดยไม่ชดเชยค่า"}
+calibration.askTitle: {value: "ยังไม่ได้สอบเทียบการ์ดเสียงนี้"}
+calibration.hint: {value: "ชดเชยความคลาดเคลื่อนของนาฬิกาการ์ดเสียง ใช้เวลาประมาณหนึ่งนาที ไม่ต้องใช้เสียง"}
+calibration.label: {value: "การสอบเทียบการ์ดเสียง"}
+calibration.open: {value: "เปิด"}
+calibration.openHint: {value: "เปิดหน้าสอบเทียบโดยยังไม่เริ่มวัด"}
+calibration.saveFailed: {value: "บันทึกผลสอบเทียบไม่ได้ เครื่องตั้งเสียงจะใช้สถานะที่บันทึกไว้ก่อนหน้า"}
+calibration.screen.again: {value: "สอบเทียบอีกครั้ง"}
+calibration.screen.bar.confirming: {value: "กำลังยืนยัน"}
+calibration.screen.bar.settling: {value: "กำลังรอให้ค่านิ่ง"}
+
+calibration.screen.calibrated:
+  value: "สอบเทียบแล้ว ชดเชยค่าที่วัดได้ {percent}%"
+  placeholders:
+    percent: {type: string}
+
+calibration.screen.calibrating: {value: "กำลังวัดนาฬิกาการ์ดเสียง"}
+
+calibration.screen.how:
+  value: "ค่าระดับเสียงอาจคลาดเคลื่อนเล็กน้อยแบบคงที่ การสอบเทียบใช้เวลาประมาณหนึ่งนาที ไม่ต้องใช้เสียง"
+
+calibration.screen.lead: {value: "ยังไม่ได้สอบเทียบ"}
+
+calibration.screen.phase.confirming:
+  value: "ค่าที่อ่านได้นิ่งแล้ว กำลังตรวจสอบว่านิ่งต่อเนื่องครบ 20 วินาทีหรือไม่"
+
+calibration.screen.phase.preparing: {value: "รอให้สัญญาณขาเข้านิ่งก่อนวัดนาฬิกา"}
+calibration.screen.phase.settling: {value: "กำลังรอให้ค่าที่วัดจากนาฬิกานิ่ง"}
+
+calibration.screen.pitch:
+  value: "คิดเป็น {pitch} เท่ากันทุกโน้ต"
+  placeholders:
+    pitch: {type: string}
+
+calibration.screen.preparing: {value: "กำลังเตรียมสัญญาณขาเข้า"}
+calibration.screen.retry: {value: "ยังไม่ได้ชดเชยค่าที่วัดได้ ให้ปิดแอปเสียงอื่นแล้วลองใหม่"}
+calibration.screen.return: {value: "กลับ"}
+calibration.screen.stat.dropouts: {value: "จำนวนครั้งที่สัญญาณขาด"}
+calibration.screen.stat.elapsed: {value: "เวลาที่ผ่านไป"}
+calibration.screen.stat.offset: {value: "ค่าคลาดเคลื่อนของนาฬิกา"}
+calibration.screen.stat.rate: {value: "อัตราสุ่มตัวอย่าง"}
+calibration.screen.stat.steadiness: {value: "ความนิ่ง"}
+
+calibration.screen.steadiness:
+  value: "{ppm} ppm เป้าหมาย {target} ppm"
+  placeholders:
+    ppm: {type: string}
+    target: {type: string}
+
+calibration.screen.steps.done: {value: "เสร็จแล้ว"}
+calibration.screen.steps.measure: {value: "วัด"}
+calibration.screen.steps.prepare: {value: "เตรียม"}
+calibration.screen.traceEmpty: {value: "กราฟจะแสดงค่าคลาดเคลื่อนของนาฬิกาที่นี่ขณะวัด"}
+calibration.screen.unreliable: {value: "นาฬิกาไม่เข้าสู่ภาวะนิ่ง"}
+calibration.start: {value: "สอบเทียบ"}
+calibration.startHint: {value: "วัดนาฬิกาสุ่มตัวอย่างของอุปกรณ์ขาเข้า"}
+
+calibration.status.calibrated:
+  value: "สอบเทียบแล้ว {percent}%"
+  placeholders:
+    percent: {type: string}
+
+calibration.status.calibrating:
+  value: "กำลังสอบเทียบ {seconds} วินาที ({percent}%) เสร็จแล้ว {progress}%"
+  placeholders:
+    percent: {type: string}
+    progress: {type: string}
+    seconds: {type: string}
+
+calibration.status.preparing: {value: "กำลังเตรียม"}
+calibration.status.uncalibrated: {value: "ยังไม่ได้สอบเทียบ"}
+calibration.status.unreliable: {value: "ผลสอบเทียบไม่น่าเชื่อถือ จึงไม่ชดเชยค่าที่วัดได้"}
+
+# Settings section headings
+groups.appearance: {value: "ลักษณะที่แสดง"}
+groups.detection: {value: "การตรวจจับ"}
+groups.microphone: {value: "ไมโครโฟน"}
+groups.output: {value: "ขาออก", description: "Settings section shown on a phone, holding the output volume."}
+groups.readings: {value: "ค่าที่วัดได้"}
+groups.report: {value: "ข้อมูลห้องงานช่าง"}
+
+# Report letterhead
+report.address: {value: "ที่อยู่"}
+report.name: {value: "ชื่อห้องงานช่าง"}
+report.nameHint: {value: "แสดงในรายงานที่ส่งออกเมื่อเปิดใช้หัวจดหมาย"}

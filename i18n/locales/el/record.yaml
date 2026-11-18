@@ -1,0 +1,68 @@
+# Recording controls and readings (el).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Recording controls
+arm.hint: {value: "Καταγραφή μέτρησης σε κάθε σταθεροποίηση της νότας (Enter για άμεση καταγραφή)"}
+arm.needsSession: {value: "Ανοίξτε μια συνεδρία για καταγραφή"}
+arm.warmup: {value: "Η καταγραφή είναι ανενεργή. Παίξτε ελεύθερα, δεν αποθηκεύεται τίποτα. Πατήστε για έναρξη καταγραφής."}
+undo.hint: {value: "Αναίρεση τελευταίας μέτρησης"}
+
+# Readings table and compact columns
+mobile.current: {value: "Μέτρηση"}
+mobile.error: {value: "Απόκλιση"}
+
+table.beat:
+  value: "Διακρότημα {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.delete: {value: "Αφαίρεση αυτής της ένδειξης"}
+table.deleteHint: {value: "Η ένδειξη θα αφαιρεθεί οριστικά. Για να την αντικαταστήσετε, παίξτε και καταγράψτε ξανά τη νότα."}
+table.deleteTitle: {value: "Να αφαιρεθεί αυτή η ένδειξη;"}
+table.editHint: {value: "Κάντε κλικ ή πατήστε Enter για επεξεργασία της τιμής"}
+table.empty: {value: "Ξεκινήστε την καταγραφή και παίξτε νότες για να αποθηκευτούν οι ενδείξεις."}
+table.graph: {value: "Γράφημα"}
+
+table.graphHint:
+  value: "Συγκρίνετε κάθε καλάμι με τον στόχο του. Κάντε κλικ σε μια στήλη για να επιλέξετε τη γραμμή της και ξανά για το επόμενο ρετζίστερ."
+table.graphLabel: {value: "Σφάλματα των καλαμιών ανά καταγεγραμμένη νότα"}
+table.helpTitle: {value: "Πληροφορίες πίνακα"}
+table.label: {value: "Καταγεγραμμένο κούρδισμα"}
+table.latest: {value: "Τελευταία καταγραφή: αφαιρείται με Backspace"}
+table.manual: {value: "Τροποποιήθηκε"}
+table.manualHint: {value: "Μια τιμή αυτής της γραμμής πληκτρολογήθηκε αντί να μετρηθεί από τον ήχο."}
+
+table.notes:
+  plural:
+    argument: count
+    forms:
+      one: "{count} νότα"
+      other: "{count} νότες"
+  placeholders:
+    count: {type: integer}
+
+table.unitHint:
+  value: "Οι αποκλίσεις των καλαμιών εμφανίζονται στη μονάδα των ρυθμίσεων. Τα διακροτήματα εμφανίζονται σε χερτζ ή στη μονάδα απόκλισης, ανάλογα με την επιλογή στη γραμμή εργαλείων."
+# Report export dialog
+report.csv: {value: "CSV"}
+report.date: {value: "Ημερομηνία"}
+report.format: {value: "Μορφή"}
+
+report.formatHint:
+  value: "Το PDF δείχνει την καρτέλα σε μία σελίδα A4 όπως θα εκτυπωθεί. Το HTML εμφανίζει το ίδιο φύλλο ως ιστοσελίδα. Το CSV περιέχει τον πίνακα για χρήση σε υπολογιστικό φύλλο."
+report.html: {value: "HTML"}
+report.notes: {value: "Σημείωση στην καρτέλα"}
+report.notesHint: {value: "Τυπώνεται κάτω από τον πίνακα. Σημειώστε τι έγινε ή τι απομένει."}
+
+report.pass:
+  value: "Πέρασμα: {label}"
+  placeholders:
+    label: {type: string}
+
+report.pdf: {value: "PDF"}
+report.title: {value: "Καρτέλα κουρδίσματος"}
+
+# Recording errors
+error.takeNotFound: {value: "Αυτή η μέτρηση δεν υπάρχει πλέον στο πέρασμα."}
+error.unexpected: {value: "Η ενέργεια απέτυχε. Δείτε το αρχείο καταγραφής για λεπτομέρειες."}

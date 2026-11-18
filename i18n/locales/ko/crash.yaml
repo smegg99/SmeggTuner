@@ -1,0 +1,62 @@
+# S99AB startup and crash dialogs (ko).
+close: {value: "닫기"}
+copied: {value: "복사됨"}
+copy: {value: "보고서 복사"}
+details: {value: "자세히"}
+email: {value: "보고서를 이메일로 보내기"}
+failed:
+  value: "작업 실패: {error}"
+  placeholders:
+    error: {type: string}
+file:
+  value: "파일: {path}"
+  placeholders:
+    path: {type: string}
+kill: {value: "종료 후 보고"}
+logs: {value: "로그 파일 보기"}
+messageConfig:
+  value: "설정 파일을 읽을 수 없습니다. 파일을 수정하거나 삭제한 뒤 {app} 앱을 다시 시작하세요."
+  placeholders:
+    app: {type: string}
+messageCrash:
+  value: "{app} 앱에서 내부 오류가 발생했습니다. 문제를 해결할 수 있도록 보고서를 보낸 뒤 앱을 다시 시작하세요."
+  placeholders:
+    app: {type: string}
+messageHang: {value: "작업이 아직 끝날 수 있습니다. 조금 더 기다리거나 앱을 종료하고 보고서를 보내세요."}
+messageHangStopped:
+  value: "응답이 없는 상태에서 {app} 앱이 종료되었습니다. 문제를 해결할 수 있도록 보고서를 보낸 뒤 앱을 다시 시작하세요."
+  placeholders:
+    app: {type: string}
+messageKilled:
+  value: "{app} 앱이 오류를 보고하기 전에 종료되었습니다. 문제를 해결할 수 있도록 보고서를 보낸 뒤 앱을 다시 시작하세요."
+  placeholders:
+    app: {type: string}
+messageOom:
+  value: "메모리가 부족해 시스템에서 {app} 앱을 종료했습니다. 보고서를 보낸 뒤 앱을 다시 시작하세요."
+  placeholders:
+    app: {type: string}
+messageStartup:
+  value: "아래 문제를 해결한 뒤 {app} 앱을 다시 시작하세요."
+  placeholders:
+    app: {type: string}
+restart: {value: "다시 시작"}
+save: {value: "보고서 저장"}
+saved:
+  value: "{path}에 저장됨"
+  placeholders:
+    path: {type: string}
+starting:
+  value: "{app} 시작 중"
+  placeholders:
+    app: {type: string}
+titleCrash: {value: "앱이 예기치 않게 중지되었습니다"}
+titleHang: {value: "앱이 응답하지 않습니다"}
+titleHangStopped: {value: "앱이 응답을 멈췄습니다"}
+titleKilled: {value: "앱이 예기치 않게 종료되었습니다"}
+titleStart: {value: "앱을 시작할 수 없습니다"}
+wait: {value: "기다리기"}
+windowCrash: {value: "비정상 종료"}
+windowHang: {value: "응답 없음"}
+windowHangStopped: {value: "응답 중지"}
+windowKilled: {value: "예기치 않게 종료됨"}
+windowStart: {value: "시작 실패"}

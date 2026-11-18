@@ -1,0 +1,104 @@
+# Shared labels and application text (it).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Buttons and shared labels
+accept: {value: "Accetta"}
+back: {value: "Indietro"}
+cancel: {value: "Annulla"}
+close: {value: "Chiudi"}
+delete: {value: "Elimina"}
+export: {value: "Esporta"}
+next: {value: "Avanti"}
+"no": {value: "No"}
+none: {value: "Nessuno"}
+previous: {value: "Precedente"}
+website: {value: "Sito web"}
+"yes": {value: "Sì"}
+
+# Musical labels and unit symbols
+accordion: {value: "Fisarmonica"}
+note: {value: "Nota"}
+
+reed:
+  value: "Ancia {index}"
+  placeholders:
+    index: {type: integer}
+
+unitSymbol.cents: {value: "cent"}
+unitSymbol.hz: {value: "Hz"}
+unitSymbol.reference: {value: "u"}
+
+# Color controls
+color.hue: {value: "Tonalità"}
+color.saturation: {value: "Saturazione"}
+color.value: {value: "Valore"}
+
+# Navigation and window titles
+routes.navigation: {value: "Navigazione principale"}
+routes.settings: {value: "Impostazioni"}
+routes.tune: {value: "Accorda"}
+routes.workshop: {value: "Laboratorio"}
+
+title.count:
+  value: "{room} {name} ({done})"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+
+title.progress:
+  value: "{room} {name} {done}/{total}"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+    total: {type: string}
+
+title.room.about: {value: "informazioni"}
+title.room.calibrate: {value: "calibrazione"}
+title.room.help: {value: "aiuto"}
+title.room.settings: {value: "impostazioni"}
+title.room.soundcard: {value: "scheda audio"}
+title.room.tune: {value: "accordatura"}
+title.room.workshop: {value: "laboratorio"}
+
+title.session:
+  value: "{room} {name}"
+  placeholders:
+    name: {type: string}
+    room: {type: string}
+
+title.uncalibrated:
+  value: "{title} (scheda audio non calibrata)"
+  placeholders:
+    title: {type: string}
+
+# Application and About dialog
+about.aboutTitle: {value: "Informazioni"}
+about.commit: {value: "Compilazione"}
+about.donate: {value: "Sostieni su Ko-fi"}
+about.license: {value: "Licenza"}
+about.privacy: {value: "Informativa sulla privacy"}
+about.guide: {value: "Come usare SmeggTuner"}
+about.onlineVersion: {value: "Apri la versione online"}
+about.support: {value: "Assistenza"}
+about.mascot: {value: "Un gatto che suona la fisarmonica"}
+about.publisher: {value: "Di smegg99"}
+about.tagline: {value: "Programma libero e gratuito per accordare fisarmoniche."}
+about.untagged: {value: "versione di sviluppo"}
+about.version: {value: "Versione"}
+app.description: {value: "Accordatore libero e gratuito per fisarmoniche."}
+app.name: {value: "SmeggTuner"}
+
+# Help dialog and keyboard instructions
+about.helpTitle: {value: "Aiuto"}
+
+# System tray
+tray.quit: {value: "Esci"}
+tray.show: {value: "Mostra"}
+
+linkNewTab:
+  value: "{text} (si apre in una nuova scheda)"
+  placeholders:
+    text: {type: string}

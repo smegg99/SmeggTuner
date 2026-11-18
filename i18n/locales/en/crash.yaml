@@ -1,0 +1,62 @@
+# S99AB startup and crash dialogs (en).
+close: {value: "Close"}
+copied: {value: "Copied"}
+copy: {value: "Copy report"}
+details: {value: "Details"}
+email: {value: "Email report"}
+failed:
+  value: "That did not work: {error}"
+  placeholders:
+    error: {type: string}
+file:
+  value: "File: {path}"
+  placeholders:
+    path: {type: string}
+kill: {value: "Close and report"}
+logs: {value: "Show log file"}
+messageConfig:
+  value: "The settings file could not be read. Fix it or delete it, then start {app} again."
+  placeholders:
+    app: {type: string}
+messageCrash:
+  value: "Something inside {app} failed. Send the report so it can be fixed, then restart."
+  placeholders:
+    app: {type: string}
+messageHang: {value: "It may still finish what it is doing. Wait, or close it and send a report."}
+messageHangStopped:
+  value: "{app} was closed while it was not responding. Send the report so it can be fixed, then restart."
+  placeholders:
+    app: {type: string}
+messageKilled:
+  value: "{app} was closed before it could report anything. Send the report so it can be fixed, then restart."
+  placeholders:
+    app: {type: string}
+messageOom:
+  value: "The system ran out of memory and closed {app}. Send the report, then restart."
+  placeholders:
+    app: {type: string}
+messageStartup:
+  value: "Fix the cause below, then start {app} again."
+  placeholders:
+    app: {type: string}
+restart: {value: "Restart"}
+save: {value: "Save report"}
+saved:
+  value: "Saved to {path}"
+  placeholders:
+    path: {type: string}
+starting:
+  value: "Starting {app}"
+  placeholders:
+    app: {type: string}
+titleCrash: {value: "The app stopped unexpectedly"}
+titleHang: {value: "The app is not responding"}
+titleHangStopped: {value: "The app stopped responding"}
+titleKilled: {value: "The app closed unexpectedly"}
+titleStart: {value: "The app could not start"}
+wait: {value: "Wait"}
+windowCrash: {value: "crashed"}
+windowHang: {value: "not responding"}
+windowHangStopped: {value: "stopped responding"}
+windowKilled: {value: "closed unexpectedly"}
+windowStart: {value: "could not start"}

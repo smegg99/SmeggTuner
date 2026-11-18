@@ -1,0 +1,69 @@
+# Recording controls and readings (da).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one = 1; other = 0, 2, 3, ...
+
+# Recording controls
+arm.hint: {value: "Registrer en måling, hver gang tonen låses (Enter registrerer straks)"}
+arm.needsSession: {value: "Åbn en session for at registrere målinger"}
+arm.warmup: {value: "Registrering slået fra. Spil frit, der gemmes intet. Tryk for at starte registreringen."}
+undo.hint: {value: "Fortryd sidste måling"}
+
+# Readings table and compact columns
+mobile.current: {value: "Målt"}
+mobile.error: {value: "Afvigelse"}
+
+table.beat:
+  value: "Svævning {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.delete: {value: "Fjern denne måling"}
+table.deleteHint: {value: "Fjern målingen permanent. Spil og registrer tonen igen for at erstatte den."}
+table.deleteTitle: {value: "Fjern denne måling?"}
+table.editHint: {value: "Klik eller tryk på Enter for at redigere værdien"}
+table.empty: {value: "Start registreringen, og spil toner for at gemme målinger."}
+table.graph: {value: "Graf"}
+
+table.graphHint:
+  value: "Sammenlign hver tunge med dens målværdi. Klik på en søjle for at vælge dens række, og klik igen for at vælge næste register."
+table.graphLabel: {value: "Tungernes afvigelser for hver registreret tone"}
+table.helpTitle: {value: "Om denne tabel"}
+table.label: {value: "Registreret stemning"}
+table.latest: {value: "Senest registreret. Fjern med tilbagetasten"}
+table.manual: {value: "Redigeret"}
+table.manualHint: {value: "En værdi i denne række er indtastet manuelt."}
+
+table.notes:
+  plural:
+    argument: count
+    forms:
+      one: "én tone"
+      other: "{count} toner"
+  placeholders:
+    count: {type: integer}
+
+table.unitHint:
+  value: "Tungernes afvigelser vises i den enhed, der er valgt i indstillingerne. Svævninger vises i hertz eller i afvigelsesenheden som valgt på værktøjslinjen."
+# Report export dialog
+report.csv: {value: "CSV"}
+report.date: {value: "Dato"}
+report.format: {value: "Format"}
+
+report.formatHint:
+  value: "PDF viser kortet som én A4-side i udskriftslayout. HTML viser samme ark som en webside. CSV indeholder tabellen til et regneark."
+report.html: {value: "HTML"}
+report.notes: {value: "Bemærkning på stemmekortet"}
+report.notesHint: {value: "Udskrives under tabellen. Notér, hvad der er gjort, eller hvad der mangler."}
+
+report.pass:
+  value: "Målerunde: {label}"
+  placeholders:
+    label: {type: string}
+
+report.pdf: {value: "PDF"}
+report.title: {value: "Stemmekort"}
+
+# Recording errors
+error.takeNotFound: {value: "Målingen findes ikke længere i målerunden."}
+error.unexpected: {value: "Handlingen mislykkedes. Se loggen for detaljer."}

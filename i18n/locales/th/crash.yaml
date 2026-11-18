@@ -1,0 +1,62 @@
+# S99AB startup and crash dialogs (th).
+close: {value: "ปิด"}
+copied: {value: "คัดลอกแล้ว"}
+copy: {value: "คัดลอกรายงาน"}
+details: {value: "รายละเอียด"}
+email: {value: "ส่งรายงานทางอีเมล"}
+failed:
+  value: "ดำเนินการไม่สำเร็จ: {error}"
+  placeholders:
+    error: {type: string}
+file:
+  value: "ไฟล์: {path}"
+  placeholders:
+    path: {type: string}
+kill: {value: "ปิดและรายงานปัญหา"}
+logs: {value: "แสดงไฟล์บันทึก"}
+messageConfig:
+  value: "ไม่สามารถอ่านไฟล์การตั้งค่าได้ โปรดแก้ไขหรือลบไฟล์ แล้วเปิด {app} อีกครั้ง"
+  placeholders:
+    app: {type: string}
+messageCrash:
+  value: "เกิดข้อผิดพลาดภายใน {app} โปรดส่งรายงานเพื่อช่วยแก้ไขปัญหา แล้วเปิดแอปอีกครั้ง"
+  placeholders:
+    app: {type: string}
+messageHang: {value: "แอปอาจยังทำงานที่ค้างอยู่จนเสร็จได้ คุณสามารถรอต่อ หรือปิดแอปแล้วส่งรายงาน"}
+messageHangStopped:
+  value: "{app} ถูกปิดขณะไม่ตอบสนอง โปรดส่งรายงานเพื่อช่วยแก้ไขปัญหา แล้วเปิดแอปอีกครั้ง"
+  placeholders:
+    app: {type: string}
+messageKilled:
+  value: "{app} ถูกปิดก่อนที่จะรายงานข้อผิดพลาดได้ โปรดส่งรายงานเพื่อช่วยแก้ไขปัญหา แล้วเปิดแอปอีกครั้ง"
+  placeholders:
+    app: {type: string}
+messageOom:
+  value: "หน่วยความจำไม่เพียงพอ ระบบจึงปิด {app} โปรดส่งรายงานแล้วเปิดแอปอีกครั้ง"
+  placeholders:
+    app: {type: string}
+messageStartup:
+  value: "โปรดแก้ไขปัญหาที่ระบุด้านล่าง แล้วเปิด {app} อีกครั้ง"
+  placeholders:
+    app: {type: string}
+restart: {value: "เริ่มใหม่"}
+save: {value: "บันทึกรายงาน"}
+saved:
+  value: "บันทึกไว้ที่ {path} แล้ว"
+  placeholders:
+    path: {type: string}
+starting:
+  value: "กำลังเปิด {app}"
+  placeholders:
+    app: {type: string}
+titleCrash: {value: "แอปหยุดทำงานโดยไม่คาดคิด"}
+titleHang: {value: "แอปไม่ตอบสนอง"}
+titleHangStopped: {value: "แอปหยุดตอบสนอง"}
+titleKilled: {value: "แอปปิดโดยไม่คาดคิด"}
+titleStart: {value: "ไม่สามารถเปิดแอปได้"}
+wait: {value: "รอ"}
+windowCrash: {value: "หยุดทำงาน"}
+windowHang: {value: "ไม่ตอบสนอง"}
+windowHangStopped: {value: "หยุดตอบสนอง"}
+windowKilled: {value: "ปิดโดยไม่คาดคิด"}
+windowStart: {value: "เปิดไม่ได้"}

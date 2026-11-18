@@ -1,0 +1,80 @@
+"accept": {value: "Nõustu"}
+"back": {value: "Tagasi"}
+"cancel": {value: "Tühista"}
+"close": {value: "Sulge"}
+"delete": {value: "Kustuta"}
+"export": {value: "Ekspordi"}
+"next": {value: "Edasi"}
+"no": {value: "Ei"}
+"none": {value: "Puudub"}
+"previous": {value: "Eelmine"}
+"website": {value: "Veebisait"}
+"yes": {value: "Jah"}
+"accordion": {value: "Akordion"}
+"note": {value: "Noot"}
+"reed":
+  value: "Keel {index}"
+  placeholders:
+    index: {"type": "integer"}
+"unitSymbol.cents": {value: "sent"}
+"unitSymbol.hz": {value: "Hz"}
+"unitSymbol.reference": {value: "u"}
+"color.hue": {value: "Värvitoon"}
+"color.saturation": {value: "Küllastus"}
+"color.value": {value: "Heledus"}
+"routes.navigation": {value: "Põhinavigeerimine"}
+"routes.settings": {value: "Seaded"}
+"routes.tune": {value: "Häälestamine"}
+"routes.workshop": {value: "Töökoda"}
+"title.count":
+  value: "{room} {name} ({done})"
+  placeholders:
+    done: {"type": "string"}
+    name: {"type": "string"}
+    room: {"type": "string"}
+"title.progress":
+  value: "{room} {name} {done}/{total}"
+  placeholders:
+    done: {"type": "string"}
+    name: {"type": "string"}
+    room: {"type": "string"}
+    total: {"type": "string"}
+"title.room.about": {value: "teave"}
+"title.room.calibrate": {value: "kalibreerimine"}
+"title.room.help": {value: "abi"}
+"title.room.settings": {value: "seaded"}
+"title.room.soundcard": {value: "helikaart"}
+"title.room.tune": {value: "häälestamine"}
+"title.room.workshop": {value: "töökoda"}
+"title.session":
+  value: "{room} {name}"
+  placeholders:
+    name: {"type": "string"}
+    room: {"type": "string"}
+"title.uncalibrated":
+  value: "{title} (helikaart on kalibreerimata)"
+  placeholders:
+    title: {"type": "string"}
+"about.aboutTitle": {value: "Teave"}
+"about.commit": {value: "Järk"}
+"about.donate": {value: "Toeta Ko-fi kaudu"}
+"about.license": {value: "Litsents"}
+"about.privacy": {value: "Privaatsuspõhimõtted"}
+"about.guide": {value: "SmeggTuneri kasutamine"}
+"about.onlineVersion": {value: "Ava veebiversioon"}
+"about.support": {value: "Kasutajatugi"}
+"about.mascot": {value: "Akordioni mängiv kass"}
+"about.publisher": {value: "Autor: smegg99"}
+"about.tagline": {value: "Tasuta avatud lähtekoodiga akordioni häälestamise programm."}
+"about.untagged": {value: "arendusjärk"}
+"about.version": {value: "Versioon"}
+"app.description": {value: "Tasuta avatud lähtekoodiga akordionihäälestaja."}
+"app.name": {value: "SmeggTuner"}
+"about.helpTitle": {value: "Abi"}
+"tray.quit": {value: "Välju"}
+"tray.show": {value: "Näita"}
+
+linkNewTab:
+  value: "{text} (avaneb uuel vahelehel)"
+  placeholders:
+    text: {type: string}

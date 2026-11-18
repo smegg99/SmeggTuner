@@ -1,0 +1,155 @@
+# Printed reports and export (sv).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one = 1; other = 0, 2, 3, ...
+
+# Report title and instrument details
+facts.curve: {value: "Målkurva"}
+facts.curveNone: {value: "ingen"}
+facts.curveUnnamed: {value: "namnlös"}
+facts.reference: {value: "Referenston A4 (denna mätomgång)"}
+facts.tolerance: {value: "Tolerans"}
+
+facts.toleranceValue:
+  value: "Stämtunga {reed} {unit} / svävning {beat} {unit}"
+  placeholders:
+    beat: {type: string}
+    reed: {type: string}
+    unit: {type: string}
+
+facts.transpose: {value: "Transponering"}
+
+facts.transposeValue:
+  value: "{key} klingar som {sounds}"
+  placeholders:
+    key: {type: string}
+    sounds: {type: string}
+
+title: {value: "Stämrapport"}
+
+# Table and column headings
+head.beat:
+  value: "Svävning {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.bassTitle:
+  value: "Stämningstabell för bas ({unit})"
+  placeholders:
+    unit: {type: string}
+
+table.curr: {value: "Uppm."}
+table.err: {value: "Fel"}
+table.register: {value: "Register"}
+
+table.title:
+  value: "Stämningstabell ({unit})"
+  placeholders:
+    unit: {type: string}
+
+# Deviation units
+unit.cents.name: {value: "cent"}
+unit.cents.symbol: {value: "c"}
+unit.reference.name: {value: "enheter om 0,06 %"}
+
+# Graph legend and reading markers
+graph.edited:
+  value: "{mark} - redigerad manuellt."
+  placeholders:
+    mark: {type: string}
+
+legend.error.cents:
+  value: "Fila så att felet i förhållande till målvärdet närmar sig noll. Värden i cent från liksvävande temperatur vid {a4} Hz."
+  placeholders:
+    a4: {type: string}
+
+legend.error.key: {value: "Fel = uppmätt - mål."}
+legend.error.noCurve: {value: "Utan målkurva är målet noll och felet är avvikelsen från skalan."}
+
+legend.error.reference:
+  value: "Fila så att felet i förhållande till målvärdet närmar sig noll. Värden i enheter om 0,06 % av tonens frekvens från liksvävande temperatur vid {a4} Hz."
+  placeholders:
+    a4: {type: string}
+
+legend.out.short: {value: "utanför toleransen"}
+legend.takes.key: {value: "xN"}
+legend.takes.short: {value: "mätt flera gånger, senaste mätningen visas"}
+mark.edited: {value: "H"}
+mark.out: {value: "!"}
+
+# Summary and footer
+footer.generated:
+  value: "Skapad {at} med {app}"
+  placeholders:
+    app: {type: string}
+    at: {type: string}
+
+summary.allIn: {value: "Alla värden inom toleransen."}
+
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} svävning"
+      other: "{pluralCount} svävningar"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.line:
+  value: "{notes} ({min} till {max}), {reeds}, {beats}."
+  placeholders:
+    beats: {type: string}
+    max: {type: string}
+    min: {type: string}
+    notes: {type: string}
+    reeds: {type: string}
+
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} ton"
+      other: "{pluralCount} toner"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} utanför toleransen ({reeds}, {beats})."
+      other: "{pluralCount} utanför toleransen ({reeds}, {beats})."
+  placeholders:
+    beats: {type: string}
+    pluralCount: {type: integer}
+    reeds: {type: string}
+
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} mätvärde för stämtunga"
+      other: "{pluralCount} mätvärden för stämtungor"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} stämtunga"
+      other: "{pluralCount} stämtungor"
+  placeholders:
+    pluralCount: {type: integer}
+
+# Export errors
+error.invalidDate: {value: "Ange ett giltigt datum som ÅÅÅÅ-MM-DD."}
+error.invalidFormat: {value: "Rapporten kan inte sparas i det valda formatet."}
+
+error.noBrowser:
+  value: "PDF-layouten skapas i en webbläsare. Varken Chrome eller Chromium finns på datorn. Installera en av dem eller exportera kortet som HTML och skriv ut det."
+error.openFailed: {value: "Rapporten sparades men ingen webbläsare kunde öppna den. Öppna filen själv."}
+error.renderFailed: {value: "Rapporten kunde inte skapas. Inget skrevs."}
+
+error.writeFailed:
+  value: "Rapporten kunde inte sparas där. En eventuell befintlig fil är orörd."

@@ -1,0 +1,303 @@
+# Live tuner, WAV playback and browser edition (nl).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one = 1; other = 0, 2, 3, ...
+
+# Input, output and playback
+input.relearnHint: {value: "Achtergrondgeluid opnieuw meten (4 s stilte)"}
+input.tooStrong: {value: "Signaal te sterk"}
+input.unreliable: {value: "Signaal onbetrouwbaar"}
+inputPanel.label: {value: "Het ingangssignaal"}
+inputPanel.title: {value: "Ingang"}
+level.silent: {value: "stil"}
+output.mute: {value: "Dempen"}
+output.unmute: {value: "Dempen opheffen"}
+output.volume: {value: "Uitvoervolume"}
+soundcard.running: {value: "Geluidskaart wordt gekalibreerd"}
+soundcard.uncalibrated: {value: "Geluidskaart niet gekalibreerd. Kalibreren"}
+soundcard.unreliable: {value: "Kalibratie onbetrouwbaar. Opnieuw kalibreren"}
+source.analyze: {value: "Opname analyseren…"}
+source.default: {value: "Systeemstandaard"}
+source.noDevices: {value: "Geen microfoons gevonden"}
+source.refresh: {value: "Apparatenlijst vernieuwen"}
+transport.fileHint: {value: "Een opname speel je af via het eigen bedieningspaneel"}
+transport.start: {value: "Starten"}
+transport.stop: {value: "Stoppen"}
+
+# Modes, registers and note selection
+bassRegister.all: {value: "Hele basmechaniek"}
+bassRegister.hint: {value: "Het ingeschakelde basregister"}
+controls: {value: "Stembediening"}
+mode.auto: {value: "Auto"}
+mode.autoHint: {value: "Laat het stemapparaat de noot bepalen"}
+mode.pinHint: {value: "Deze noot vastzetten"}
+mode.pinned: {value: "Vastgezette noot"}
+notes.clickToPin: {value: "klik om vast te zetten"}
+notes.label: {value: "Noten van E0 tot C9. Klik op een noot om deze vast te zetten."}
+notes.range: {value: "E0 tot C9"}
+notes.title: {value: "Noten"}
+notes.tracking: {value: "wordt gevolgd"}
+panel.boxBase: {value: "De grondtoon wordt altijd gemeten"}
+panel.boxChord: {value: "Bij akkoorden worden alle drie de tonen gemeten"}
+panel.boxLast: {value: "Minstens één vak blijft ingeschakeld"}
+
+panel.boxOctave:
+  plural:
+    argument: octaves
+    forms:
+      one: "Vak {box}: {octaves} octaaf boven de grondtoon"
+      other: "Vak {box}: {octaves} octaven boven de grondtoon"
+  placeholders:
+    octaves: {type: integer}
+    box: {type: string}
+
+panel.boxReed:
+  value: "Tong {n}: meting in- of uitschakelen"
+  placeholders:
+    n: {type: string}
+
+panel.bySession:
+  plural:
+    argument: n
+    forms:
+      one: "{n} tong, bepaald door het register van de sessie"
+      other: "{n} tongen, bepaald door het register van de sessie"
+  placeholders:
+    n: {type: integer}
+
+panel.locked: {value: "Vergrendeld"}
+panel.modeHints.chords: {value: "Akkoorden van drie tonen"}
+panel.modeHints.octaves: {value: "Een noot met de bovenliggende octaven"}
+panel.modeHints.tones: {value: "Eén noot, tot drie tongen"}
+panel.modeLabel: {value: "Wat er wordt gemeten"}
+panel.modes.chords: {value: "Akkoorden"}
+panel.modes.octaves: {value: "Octaven"}
+panel.modes.tones: {value: "Tonen"}
+panel.quiet: {value: "Te zacht"}
+panel.recorded: {value: "Vastgelegd"}
+panel.reeds: {value: "Tongen"}
+
+reeds.count:
+  plural:
+    argument: n
+    forms:
+      one: "{n} tong"
+      other: "{n} tongen"
+  placeholders:
+    n: {type: integer}
+
+register.hint: {value: "Het ingeschakelde register"}
+register.lockedPlaying: {value: "Stop het afspelen om het register te wijzigen."}
+side.bass: {value: "Bas"}
+side.hint: {value: "Discant- of baszijde"}
+side.treble: {value: "Discant"}
+step.noteDown: {value: "Een halve toon lager"}
+step.noteUp: {value: "Een halve toon hoger"}
+# Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
+signal.add: {value: "Een toon toevoegen"}
+signal.cents: {value: "Afwijking van de referentienoot in cent (− lager, + hoger)"}
+signal.down: {value: "Een halve toon lager (pijl links, pijl omlaag voor een octaaf)"}
+signal.open: {value: "Signaalgenerator: speelt een zuivere referentietoon om een tong op te stemmen"}
+signal.play: {value: "Afspelen"}
+signal.playHint: {value: "Speel de noot met alle ingestelde tonen. Zonder gekozen noot wordt de eerst gehoorde gespeeld (spatiebalk)"}
+signal.remove: {value: "Deze toon verwijderen"}
+signal.stop: {value: "Stoppen"}
+signal.stopHint: {value: "Toon stoppen (spatiebalk)"}
+signal.title: {value: "Signaalgenerator"}
+signal.up: {value: "Een halve toon hoger (pijl rechts, pijl omhoog voor een octaaf)"}
+signal.wave.hint: {value: "Een tong heeft boventonen waarop ook zwevingen te horen zijn"}
+signal.wave.reed: {value: "Tong"}
+signal.wave.sine: {value: "Sinus"}
+
+# Reference pitch and units
+reference.a4Locked: {value: "Vergrendeld in de instellingen"}
+reference.a4Type: {value: "Voer A4 in hertz in, van 430 tot 450"}
+reference.frozen: {value: "Vergrendeld: de sessie bevat al metingen"}
+reference.transpose: {value: "Transponeren"}
+reference.transposeDown: {value: "Een halve toon minder"}
+reference.transposeHint: {value: "Aantal halve tonen dat de toetsen hoger klinken dan aangegeven"}
+reference.transposeMode: {value: "Akkoorden en octaven worden zonder transpositie gemeten"}
+reference.transposeUp: {value: "Een halve toon meer"}
+
+reference.transposed:
+  value: "Getransponeerd +{n}"
+  placeholders:
+    n: {type: string}
+
+unit.cents: {value: "Cent"}
+unit.hz: {value: "Hz"}
+unit.reference: {value: "Eenheden"}
+
+# Live readings and graphs
+boxes.beat:
+  value: "Zweving {a} tot {b}"
+  placeholders:
+    a: {type: string}
+    b: {type: string}
+
+boxes.goal: {value: "doel"}
+boxes.hzOnly: {value: "alleen in Hz"}
+boxes.notHeard: {value: "niet gehoord"}
+
+boxes.reed:
+  value: "Tong {n}"
+  placeholders:
+    n: {type: string}
+
+boxes.reedBank:
+  value: "Tong {bank}"
+  placeholders:
+    bank: {type: string}
+
+boxes.tone:
+  value: "Toon {n}"
+  placeholders:
+    n: {type: string}
+
+ruler.label: {value: "De afwijking van elke tong"}
+spectrum.label: {value: "Het frequentiespectrum van de gevolgde noot"}
+spectrum.title: {value: "Spectrum"}
+
+# Hold, noise learning and tuner state
+hold.hint: {value: "Stabiele metingen vasthouden (H)"}
+state.deviceLost: {value: "Ingangssignaal weggevallen"}
+state.initializing: {value: "Omgevingsgeluid wordt gemeten"}
+state.running: {value: "Luistert"}
+state.stopped: {value: "Gestopt"}
+state.tooQuiet: {value: "Te zacht. Speel harder of ga dichter bij de microfoon staan"}
+warmup.quiet: {value: "Blijf stil"}
+
+# WAV files and waveform controls
+file.clearSelection: {value: "Hele opname selecteren"}
+file.fit: {value: "Hele opname tonen"}
+file.loop: {value: "Selectie herhalen"}
+file.mute: {value: "Opname dempen"}
+file.openFilter: {value: "WAV-audio"}
+file.openTitle: {value: "Kies een WAV-opname"}
+file.pause: {value: "Pauze"}
+file.play: {value: "Afspelen"}
+file.stop: {value: "Stoppen en teruggaan naar het begin van de selectie"}
+file.toEnd: {value: "Naar het einde van de selectie"}
+file.toStart: {value: "Naar het begin van de selectie"}
+file.unmute: {value: "Opname met geluid afspelen"}
+file.volume: {value: "Afspeelvolume"}
+
+file.waveform:
+  value: "Golfvorm van {name}. Sleep op de tijdlijn om de afspeelpositie te verplaatsen of op de golfvorm om een fragment te selecteren. Na het stoppen markeert een lichte stippellijn het fragment waarop de getoonde meting is gebaseerd."
+  placeholders:
+    name: {type: string}
+
+file.zoomIn: {value: "Inzoomen"}
+file.zoomOut: {value: "Uitzoomen"}
+
+# Instrument calibration workflow
+calibrate.leave: {value: "Kalibratie verlaten"}
+calibrate.needsSession: {value: "Open een sessie om het instrument te kalibreren."}
+calibrate.range.again: {value: "Opnieuw beginnen"}
+
+calibrate.range.backwards:
+  value: "De hoogste noot mag niet lager zijn dan de laagste. Meet het bereik opnieuw."
+
+calibrate.range.capture: {value: "Vastleggen"}
+calibrate.range.highest: {value: "Hoogste"}
+calibrate.range.lowest: {value: "Laagste"}
+calibrate.range.next: {value: "Verder naar tongkalibratie"}
+calibrate.range.playHigh: {value: "Speel nu de hoogste toets."}
+calibrate.range.playLow: {value: "Speel de laagste toets."}
+calibrate.range.step: {value: "Het klavier"}
+calibrate.status.captured: {value: "Vastgelegd"}
+calibrate.status.holding: {value: "Houd de toon stabiel"}
+calibrate.status.loud: {value: "Te luid"}
+calibrate.status.play: {value: "Speel een noot"}
+calibrate.sweep.bassAll: {value: "Bas - hele mechaniek"}
+
+calibrate.sweep.done:
+  plural:
+    argument: n
+    forms:
+      one: "Meetreeks voltooid. {n} meting op de stemkaart."
+      other: "Meetreeks voltooid. {n} metingen op de stemkaart."
+  placeholders:
+    n: {type: integer}
+
+calibrate.sweep.noRegisters:
+  value: "Voor deze accordeon zijn geen registers beschreven. De meetreeks gaat door en de metingen komen in genummerde kolommen."
+calibrate.sweep.pickRegister: {value: "Welk register kalibreer je?"}
+
+calibrate.sweep.progress:
+  value: "{done} van {total}"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+calibrate.sweep.redoRange: {value: "Klavier opnieuw meten"}
+calibrate.sweep.review: {value: "Stemkaart bekijken"}
+calibrate.sweep.skip: {value: "Overslaan"}
+
+calibrate.sweep.soloTeaches:
+  value: "Bij het doormeten van een eenkorig register leert de app ook de klank van dat koor."
+
+calibrate.sweep.startPlain: {value: "Meetreeks starten"}
+calibrate.sweep.step: {value: "De tongen"}
+calibrate.sweep.stop: {value: "Stoppen"}
+calibrate.title: {value: "Kalibreren"}
+
+# Browser edition
+web.accent.default: {value: "Standaard"}
+web.accent.hint: {value: "De kleur van de app of een eigen kleur"}
+web.diagnostics.copied: {value: "Gekopieerd"}
+web.diagnostics.copy: {value: "Diagnosegegevens kopiëren"}
+web.diagnostics.empty: {value: "Start het stemapparaat om de microfoongegevens te zien."}
+web.diagnostics.title: {value: "Diagnostiek"}
+web.downloads.title: {value: "De app downloaden"}
+web.experimental: {value: "Experimenteel"}
+web.loadFailed: {value: "Het meetproces kon in deze browser niet worden gestart."}
+
+web.mic.denied:
+  value: "Microfoontoegang geweigerd. Sta deze toe in de browserinstellingen en start het stemapparaat opnieuw."
+
+web.mic.failed: {value: "De microfoon kon niet worden geopend."}
+web.mic.none: {value: "Er is geen microfoon gevonden."}
+web.mic.unsupported: {value: "Deze browser kan geen geluid opnemen."}
+web.notice.background: {value: "In een tabblad op de achtergrond kan het geluid pauzeren."}
+web.notice.native: {value: "Gebruik de geïnstalleerde app voor nauwkeurige metingen."}
+web.notice.ok: {value: "Begrepen"}
+
+web.notice.processing:
+  value: "Je browser kan echo- of ruisonderdrukking, automatische versterking of resampling op het microfoonsignaal toepassen. Elk daarvan kan de metingen beïnvloeden."
+web.notice.title: {value: "Experimentele webversie"}
+web.processing.autoGainControl: {value: "automatische versterking"}
+web.processing.echoCancellation: {value: "echo-onderdrukking"}
+web.processing.noiseSuppression: {value: "ruisonderdrukking"}
+
+web.processingOn:
+  value: "De browser heeft het volgende ingeschakeld gelaten: {list}. De metingen kunnen afwijken."
+  placeholders:
+    list: {type: string}
+
+web.slow:
+  value: "Dit apparaat kan de verwerking niet bijhouden. Vertraagde audio wordt overgeslagen zodat de metingen actueel blijven."
+
+# Tuner errors
+error.a4Locked: {value: "De referentietoon is vergrendeld in de instellingen."}
+error.chordsAuto: {value: "De akkoordmodus kiest de noten zelf."}
+error.deviceGone: {value: "Deze microfoon is niet meer aangesloten."}
+error.deviceLost: {value: "De microfoon reageerde niet meer. Het stemapparaat is gestopt."}
+error.fileUnreadable: {value: "De opname kon niet worden gelezen. Het moet een WAV-bestand zijn."}
+error.invalidA4: {value: "De referentietoon moet tussen 430 en 450 Hz liggen."}
+error.invalidBox: {value: "Dit tongvak bestaat niet."}
+error.invalidMode: {value: "Het stemapparaat meet tonen, octaven of akkoorden."}
+error.invalidNote: {value: "Deze noot valt buiten het meetbereik."}
+error.invalidTranspose: {value: "Transpositie kan van 0 tot 11 halve tonen."}
+error.lastBox: {value: "Minstens één vak blijft ingeschakeld."}
+error.noDevices: {value: "Geen microfoon gevonden. Sluit er een aan en vernieuw de apparatenlijst."}
+error.playbackFailed: {value: "De referentietoon kon niet worden afgespeeld."}
+
+error.sampleRate:
+  value: "Bij deze toonhoogte en transpositie is de samplefrequentie van de ingang te laag voor de hoogste noten. Gebruik een opname van minstens 44,1 kHz."
+error.sessionDecides: {value: "Het register van de geopende sessie bepaalt wat er wordt gemeten."}
+error.signalVoices:
+  value: "Speel één tot vier tonen, elk binnen 100 cent van de gekozen noot."
+error.toneNeedsManual: {value: "Zet een noot vast om de bijbehorende toon af te spelen."}
+error.transposeMode: {value: "Akkoorden en octaven worden zonder transpositie gemeten."}
+error.unexpected: {value: "Er is iets misgegaan. Zie het logboek voor details."}

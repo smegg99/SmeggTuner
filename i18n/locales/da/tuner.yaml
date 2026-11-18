@@ -1,0 +1,303 @@
+# Live tuner, WAV playback and browser edition (da).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one = 1; other = 0, 2, 3, ...
+
+# Input, output and playback
+input.relearnHint: {value: "Mål baggrundsstøjen igen (4 s stilhed)"}
+input.tooStrong: {value: "Signalet er for kraftigt"}
+input.unreliable: {value: "Signalet er upålideligt"}
+inputPanel.label: {value: "Indgangssignalet"}
+inputPanel.title: {value: "Indgang"}
+level.silent: {value: "stille"}
+output.mute: {value: "Slå lyden fra"}
+output.unmute: {value: "Slå lyden til"}
+output.volume: {value: "Udgangslydstyrke"}
+soundcard.running: {value: "Kalibrerer lydkortet"}
+soundcard.uncalibrated: {value: "Lydkortet er ikke kalibreret. Kalibrer"}
+soundcard.unreliable: {value: "Kalibreringen er upålidelig. Kalibrer igen"}
+source.analyze: {value: "Analysér optagelse…"}
+source.default: {value: "Systemstandard"}
+source.noDevices: {value: "Ingen mikrofoner fundet"}
+source.refresh: {value: "Opdater enhedslisten"}
+transport.fileHint: {value: "En optagelse afspilles fra sit eget panel"}
+transport.start: {value: "Start"}
+transport.stop: {value: "Stop"}
+
+# Modes, registers and note selection
+bassRegister.all: {value: "Hele basmekanikken"}
+bassRegister.hint: {value: "Det valgte basregister"}
+controls: {value: "Stemmekontroller"}
+mode.auto: {value: "Auto"}
+mode.autoHint: {value: "Lad stemmeapparatet finde tonen"}
+mode.pinHint: {value: "Fasthold denne tone"}
+mode.pinned: {value: "Fastholdt tone"}
+notes.clickToPin: {value: "klik for at fastholde"}
+notes.label: {value: "Tonerne E0 til C9. Klik på en tone for at fastholde den."}
+notes.range: {value: "E0 til C9"}
+notes.title: {value: "Toner"}
+notes.tracking: {value: "spores"}
+panel.boxBase: {value: "Grundtonen måles altid"}
+panel.boxChord: {value: "Ved akkorder måles alle tre toner"}
+panel.boxLast: {value: "Mindst ét felt forbliver aktivt"}
+
+panel.boxOctave:
+  plural:
+    argument: octaves
+    forms:
+      one: "Felt {box}: {octaves} oktav over grundtonen"
+      other: "Felt {box}: {octaves} oktaver over grundtonen"
+  placeholders:
+    octaves: {type: integer}
+    box: {type: string}
+
+panel.boxReed:
+  value: "Tunge {n}: slå måling til eller fra"
+  placeholders:
+    n: {type: string}
+
+panel.bySession:
+  plural:
+    argument: n
+    forms:
+      one: "{n} tunge, bestemt af sessionens register"
+      other: "{n} tunger, bestemt af sessionens register"
+  placeholders:
+    n: {type: integer}
+
+panel.locked: {value: "Låst"}
+panel.modeHints.chords: {value: "Tretonige akkorder"}
+panel.modeHints.octaves: {value: "En tone med dens højere oktaver"}
+panel.modeHints.tones: {value: "Én tone, op til tre tunger"}
+panel.modeLabel: {value: "Hvad der måles"}
+panel.modes.chords: {value: "Akkorder"}
+panel.modes.octaves: {value: "Oktaver"}
+panel.modes.tones: {value: "Toner"}
+panel.quiet: {value: "For svagt"}
+panel.recorded: {value: "Registreret"}
+panel.reeds: {value: "Tunger"}
+
+reeds.count:
+  plural:
+    argument: n
+    forms:
+      one: "{n} tunge"
+      other: "{n} tunger"
+  placeholders:
+    n: {type: integer}
+
+register.hint: {value: "Det valgte register"}
+register.lockedPlaying: {value: "Stop afspilningen for at skifte register."}
+side.bass: {value: "Bas"}
+side.hint: {value: "Diskant- eller basside"}
+side.treble: {value: "Diskant"}
+step.noteDown: {value: "En halvtone ned"}
+step.noteUp: {value: "En halvtone op"}
+# Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
+signal.add: {value: "Tilføj en tone"}
+signal.cents: {value: "Afvigelse fra tonen i cent"}
+signal.down: {value: "En halvtone ned (venstrepil, pil ned for en oktav)"}
+signal.open: {value: "Signalgenerator: spiller en ren tone at stemme en tunge efter"}
+signal.play: {value: "Afspil"}
+signal.playHint: {value: "Spil tonen med alle indstillede toner. Er ingen tone valgt, bruges den første, der høres (mellemrum)"}
+signal.remove: {value: "Fjern denne tone"}
+signal.stop: {value: "Stop"}
+signal.stopHint: {value: "Stop tonen (mellemrum)"}
+signal.title: {value: "Signalgenerator"}
+signal.up: {value: "En halvtone op (højrepil, pil op for en oktav)"}
+signal.wave.hint: {value: "En tunge har overtoner, så svævninger også kan høres på dem"}
+signal.wave.reed: {value: "Tunge"}
+signal.wave.sine: {value: "Sinus"}
+
+# Reference pitch and units
+reference.a4Locked: {value: "Låst i indstillingerne"}
+reference.a4Type: {value: "Angiv A4 i hertz, fra 430 til 450"}
+reference.frozen: {value: "Låst: Sessionen indeholder allerede målinger"}
+reference.transpose: {value: "Transponer"}
+reference.transposeDown: {value: "En halvtone mindre"}
+reference.transposeHint: {value: "Antal halvtoner, tangenterne klinger over deres angivne toner"}
+reference.transposeMode: {value: "Akkorder og oktaver måles uden transponering"}
+reference.transposeUp: {value: "En halvtone mere"}
+
+reference.transposed:
+  value: "Transponeret +{n}"
+  placeholders:
+    n: {type: string}
+
+unit.cents: {value: "Cent"}
+unit.hz: {value: "Hz"}
+unit.reference: {value: "Enheder"}
+
+# Live readings and graphs
+boxes.beat:
+  value: "Svævning {a} til {b}"
+  placeholders:
+    a: {type: string}
+    b: {type: string}
+
+boxes.goal: {value: "mål"}
+boxes.hzOnly: {value: "kun i Hz"}
+boxes.notHeard: {value: "ikke hørt"}
+
+boxes.reed:
+  value: "Tunge {n}"
+  placeholders:
+    n: {type: string}
+
+boxes.reedBank:
+  value: "Tunge {bank}"
+  placeholders:
+    bank: {type: string}
+
+boxes.tone:
+  value: "Tone {n}"
+  placeholders:
+    n: {type: string}
+
+ruler.label: {value: "Hver tunges afvigelse"}
+spectrum.label: {value: "Frekvensspektret for den sporede tone"}
+spectrum.title: {value: "Spektrum"}
+
+# Hold, noise learning and tuner state
+hold.hint: {value: "Fasthold stabile målinger (H)"}
+state.deviceLost: {value: "Indgangssignalet er forsvundet"}
+state.initializing: {value: "Måler rummets baggrundsstøj"}
+state.running: {value: "Lytter"}
+state.stopped: {value: "Stoppet"}
+state.tooQuiet: {value: "For svagt. Spil kraftigere, eller gå tættere på mikrofonen"}
+warmup.quiet: {value: "Vær stille"}
+
+# WAV files and waveform controls
+file.clearSelection: {value: "Vælg hele optagelsen"}
+file.fit: {value: "Vis hele optagelsen"}
+file.loop: {value: "Gentag markeringen"}
+file.mute: {value: "Slå optagelsens lyd fra"}
+file.openFilter: {value: "WAV-lyd"}
+file.openTitle: {value: "Vælg en WAV-optagelse"}
+file.pause: {value: "Pause"}
+file.play: {value: "Afspil"}
+file.stop: {value: "Stop, og gå tilbage til markeringens start"}
+file.toEnd: {value: "Til markeringens slutning"}
+file.toStart: {value: "Til markeringens start"}
+file.unmute: {value: "Afspil optagelsen med lyd"}
+file.volume: {value: "Afspilningslydstyrke"}
+
+file.waveform:
+  value: "Bølgeform for {name}. Træk på tidslinjen for at flytte afspilningspositionen eller på kurven for at vælge et udsnit. Når afspilningen stopper, markerer en lys stiplet linje det lydudsnit, som målingen på skærmen stammer fra."
+  placeholders:
+    name: {type: string}
+
+file.zoomIn: {value: "Zoom ind"}
+file.zoomOut: {value: "Zoom ud"}
+
+# Instrument calibration workflow
+calibrate.leave: {value: "Forlad kalibrering"}
+calibrate.needsSession: {value: "Åbn en session for at kalibrere instrumentet."}
+calibrate.range.again: {value: "Begynd forfra"}
+
+calibrate.range.backwards:
+  value: "Den højeste tone må ikke ligge under den laveste. Mål omfanget igen."
+
+calibrate.range.capture: {value: "Registrer"}
+calibrate.range.highest: {value: "Højeste"}
+calibrate.range.lowest: {value: "Laveste"}
+calibrate.range.next: {value: "Fortsæt til kalibrering af tunger"}
+calibrate.range.playHigh: {value: "Spil nu den højeste tangent."}
+calibrate.range.playLow: {value: "Spil den laveste tangent."}
+calibrate.range.step: {value: "Klaviaturet"}
+calibrate.status.captured: {value: "Registreret"}
+calibrate.status.holding: {value: "Hold tonen stabil"}
+calibrate.status.loud: {value: "For kraftigt"}
+calibrate.status.play: {value: "Spil en tone"}
+calibrate.sweep.bassAll: {value: "Bas - hele mekanikken"}
+
+calibrate.sweep.done:
+  plural:
+    argument: n
+    forms:
+      one: "Måleserie fuldført. {n} måling på stemmekortet."
+      other: "Måleserie fuldført. {n} målinger på stemmekortet."
+  placeholders:
+    n: {type: integer}
+
+calibrate.sweep.noRegisters:
+  value: "Der er ikke beskrevet registre for harmonikaen. Måleserien kører alligevel, og målingerne vises i nummererede kolonner."
+calibrate.sweep.pickRegister: {value: "Hvilket register kalibrerer du?"}
+
+calibrate.sweep.progress:
+  value: "{done} af {total}"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+calibrate.sweep.redoRange: {value: "Mål klaviaturet igen"}
+calibrate.sweep.review: {value: "Vis stemmekort"}
+calibrate.sweep.skip: {value: "Spring over"}
+
+calibrate.sweep.soloTeaches:
+  value: "Ved måling af et enstemmigt register lærer appen også den pågældende stemmes klang."
+
+calibrate.sweep.startPlain: {value: "Start måleserien"}
+calibrate.sweep.step: {value: "Tungerne"}
+calibrate.sweep.stop: {value: "Stop"}
+calibrate.title: {value: "Kalibrer"}
+
+# Browser edition
+web.accent.default: {value: "Standard"}
+web.accent.hint: {value: "Appens egen farve eller din egen"}
+web.diagnostics.copied: {value: "Kopieret"}
+web.diagnostics.copy: {value: "Kopier diagnoseoplysninger"}
+web.diagnostics.empty: {value: "Start stemmeapparatet for at se mikrofonoplysningerne."}
+web.diagnostics.title: {value: "Diagnostik"}
+web.downloads.title: {value: "Hent appen"}
+web.experimental: {value: "Eksperimentel"}
+web.loadFailed: {value: "Målingen kunne ikke startes i denne browser."}
+
+web.mic.denied:
+  value: "Adgang til mikrofonen blev afvist. Tillad den i browserindstillingerne, og start stemmeapparatet igen."
+
+web.mic.failed: {value: "Mikrofonen kunne ikke åbnes."}
+web.mic.none: {value: "Ingen mikrofon fundet."}
+web.mic.unsupported: {value: "Denne browser kan ikke optage lyd."}
+web.notice.background: {value: "En fane i baggrunden kan sætte lyden på pause."}
+web.notice.native: {value: "Brug den installerede app til præcise målinger."}
+web.notice.ok: {value: "Forstået"}
+
+web.notice.processing:
+  value: "Browseren kan anvende ekkofjernelse, støjreduktion, automatisk forstærkning eller resampling på mikrofonsignalet. Hver funktion kan ændre målingerne."
+web.notice.title: {value: "Eksperimentel webversion"}
+web.processing.autoGainControl: {value: "automatisk forstærkning"}
+web.processing.echoCancellation: {value: "ekkofjernelse"}
+web.processing.noiseSuppression: {value: "støjreduktion"}
+
+web.processingOn:
+  value: "Browseren lod følgende være slået til: {list}. Målingerne kan afvige."
+  placeholders:
+    list: {type: string}
+
+web.slow:
+  value: "Enheden kan ikke følge med målingen. Forsinket lyd springes over, så målingerne er aktuelle."
+
+# Tuner errors
+error.a4Locked: {value: "Kammertonen er låst i indstillingerne."}
+error.chordsAuto: {value: "Akkordtilstanden vælger selv tonerne."}
+error.deviceGone: {value: "Mikrofonen er ikke længere tilsluttet."}
+error.deviceLost: {value: "Mikrofonen svarede ikke længere, og stemmeapparatet blev stoppet."}
+error.fileUnreadable: {value: "Optagelsen kunne ikke læses. Den skal være en WAV-fil."}
+error.invalidA4: {value: "Kammertonen skal ligge mellem 430 og 450 Hz."}
+error.invalidBox: {value: "Dette tungefelt findes ikke."}
+error.invalidMode: {value: "Stemmeapparatet måler toner, oktaver eller akkorder."}
+error.invalidNote: {value: "Tonen ligger uden for måleområdet."}
+error.invalidTranspose: {value: "Transponering kan være 0 til 11 halvtoner."}
+error.lastBox: {value: "Mindst ét felt forbliver aktivt."}
+error.noDevices: {value: "Ingen mikrofon fundet. Tilslut en, og opdater enhedslisten."}
+error.playbackFailed: {value: "Referencetonen kunne ikke afspilles."}
+
+error.sampleRate:
+  value: "Indgangens samplingsfrekvens er for lav til de højeste toner ved denne tonehøjde og transponering. Brug en optagelse på mindst 44,1 kHz."
+error.sessionDecides: {value: "Den åbne sessions register bestemmer, hvad der måles."}
+error.signalVoices:
+  value: "Spil en til fire toner, hver højst 100 cent fra den valgte tone."
+error.toneNeedsManual: {value: "Fasthold en tone for at afspille den."}
+error.transposeMode: {value: "Akkorder og oktaver måles uden transponering."}
+error.unexpected: {value: "Noget gik galt. Se loggen for detaljer."}

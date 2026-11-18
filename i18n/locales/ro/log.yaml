@@ -1,0 +1,100 @@
+# Diagnostic log messages (ro).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Application lifecycle and configuration
+appStarting: {value: "Se pornește smeggtuner"}
+cleaningUp: {value: "Se eliberează resursele"}
+configLoadFailed: {value: "Nu s-a putut încărca configurația"}
+configLoaded: {value: "Configurația a fost încărcată"}
+configSaveFailed: {value: "Nu s-a putut salva configurația"}
+crashScreenFailed: {value: "Nu s-a putut afișa ecranul de eroare"}
+crashWatchFailed: {value: "Nu s-a putut porni monitorizarea căderilor aplicației"}
+datastoreInitFailed: {value: "Nu s-a putut inițializa depozitul de date"}
+datastoreReady: {value: "Depozitul de date este pregătit"}
+loadingConfig: {value: "Se încarcă configurația"}
+loggerInitFailed: {value: "Nu s-a putut configura jurnalizarea"}
+reinitLogger: {value: "Se reconfigurează jurnalizarea conform configurației"}
+runFailed: {value: "Rularea aplicației a eșuat"}
+secondInstance: {value: "A pornit a doua instanță, se activează fereastra existentă"}
+trayIconFailed: {value: "Nu s-a putut încărca pictograma din zona de notificare"}
+updateCheckFailed: {value: "Verificarea actualizărilor a eșuat", description: "Update check or stored release-note state failed; logged without a dialog."}
+windowStateLoadFailed: {value: "Nu s-a putut încărca starea ferestrei"}
+windowStateSaveFailed: {value: "Nu s-a putut salva starea ferestrei"}
+
+# Audio devices and calibration
+audioDeviceEnumFailed: {value: "Nu s-au putut enumera dispozitivele de captură audio"}
+audioDeviceGone: {value: "Dispozitivul de captură selectat nu mai este disponibil"}
+audioDevicesListed: {value: "Dispozitivele de captură au fost enumerate"}
+audioDialogFailed: {value: "Eroare la deschiderea dialogului de fișiere"}
+audioDialogUnavailable: {value: "S-a cerut dialogul de fișiere fără ca aplicația să ruleze"}
+audioFileUnreadable: {value: "Înregistrarea nu a putut fi deschisă"}
+audioNoDevices: {value: "Nu sunt disponibile dispozitive de captură"}
+audioSourceSelected: {value: "S-a selectat sursa de intrare"}
+audioSpeakerUnavailable: {value: "Nu există dispozitiv de ieșire, fișierul va fi redat fără sunet"}
+calibrationAbandoned: {value: "Calibrarea plăcii de sunet a fost abandonată"}
+calibrationFinished: {value: "Calibrarea plăcii de sunet s-a încheiat"}
+calibrationNoDevice: {value: "Dispozitivul nu a putut fi deschis pentru calibrarea plăcii de sunet"}
+calibrationStarted: {value: "A început calibrarea plăcii de sunet"}
+deviceStoreFailed: {value: "Nu s-au putut salva setările dispozitivului de captură"}
+micBlocksDropped: {value: "Procesarea datelor de la microfon s-a blocat, se omit blocuri"}
+micDeviceLost: {value: "Dispozitivul de captură s-a oprit neașteptat"}
+volumeRestore: {value: "Reglarea automată a volumului nu a putut restabili nivelul de intrare"}
+volumeStepFailed: {value: "Reglarea automată a volumului nu a putut seta nivelul de intrare"}
+volumeUnavailable: {value: "Reglarea automată a volumului nu are acces la nivelul de intrare al dispozitivului"}
+
+# Tuner engine
+tunerEventsDropped: {value: "Interfața nu ține pasul, unele evenimente de măsurare au fost omise"}
+tunerRunFailed: {value: "Modulul de măsurare s-a oprit cu o eroare"}
+tunerSettingRejected: {value: "A fost respinsă o setare în afara intervalului permis"}
+tunerStartFailed: {value: "Nu s-a putut crea sursa de intrare"}
+tunerStarted: {value: "Modulul de măsurare a pornit"}
+tunerStopped: {value: "Modulul de măsurare s-a oprit"}
+tunerTonePlayFailed: {value: "Redarea sunetului de referință a eșuat"}
+tunerTonePlaying: {value: "Se redă sunetul de referință"}
+
+# Sessions, readings and reports
+recordCleared: {value: "Seria de măsurători a fost golită"}
+recordEdited: {value: "Înregistrarea a fost modificată manual"}
+recordRejected: {value: "Cererea de înregistrare a fost respinsă"}
+recordTake: {value: "Măsurătoarea a fost înregistrată"}
+recordUndone: {value: "Ultima înregistrare a fost anulată"}
+reportFailed: {value: "Nu s-a putut salva raportul de acordaj"}
+reportOpenFailed: {value: "Nu s-a putut deschide raportul de acordaj"}
+reportOpened: {value: "Raportul de acordaj a fost transmis browserului"}
+reportRejected: {value: "Cererea de raport a fost respinsă"}
+reportWritten: {value: "Raportul de acordaj a fost salvat"}
+sessionClosed: {value: "Sesiunea a fost închisă"}
+sessionCreated: {value: "Sesiunea a fost creată"}
+sessionCurveDropped: {value: "Curba țintă a fost eliminată"}
+sessionCurveFitted: {value: "Curba țintă a fost ajustată pe baza unei serii de măsurători"}
+sessionCurveImported: {value: "Curba țintă a fost importată"}
+sessionDeleted: {value: "Sesiunea a fost ștearsă"}
+sessionLoadFailed: {value: "Nu s-a putut încărca sesiunea"}
+sessionOpened: {value: "Sesiunea a fost deschisă"}
+sessionReedsClamped: {value: "În instrument vibrează simultan mai multe ancii decât poate distinge modulul de măsurare. Numărul procesat a fost limitat"}
+sessionRejected: {value: "A fost respinsă o modificare nevalidă a sesiunii"}
+sessionSaveFailed: {value: "Nu s-a putut salva sesiunea"}
+
+# Frontend diagnostics
+frontendAudioCalibrationCancelFailed: {value: "Nu s-a putut anula calibrarea"}
+frontendAudioCalibrationFailed: {value: "Nu s-a putut porni calibrarea"}
+frontendAudioCorrectionFailed: {value: "Nu s-a putut citi corecția plăcii de sunet"}
+frontendAudioDialogFailed: {value: "Nu s-a putut deschide dialogul de fișiere"}
+frontendAudioListFailed: {value: "Nu s-au putut enumera dispozitivele audio"}
+frontendAudioSelectFailed: {value: "Nu s-a putut selecta sursa audio"}
+frontendAudioStateFailed: {value: "Nu s-a putut citi starea dispozitivului audio"}
+frontendAudioVolumeFailed: {value: "Nu s-a putut modifica reglarea automată a volumului"}
+frontendConfigLoadFailed: {value: "Nu s-a putut încărca configurația"}
+frontendConfigLoaded: {value: "Configurația a fost încărcată"}
+frontendConfigSaveFailed: {value: "Nu s-a putut salva configurația"}
+frontendCurveViewFailed: {value: "Nu s-au putut citi setările de afișare a curbei"}
+frontendError: {value: "Eroare neașteptată a aplicației"}
+frontendRejection: {value: "Operațiunea aplicației a eșuat"}
+frontendResizeNotice: {value: "Modificarea aspectului a fost amânată până la cadrul următor (notificare ResizeObserver din browser)"}
+frontendSettingFailed: {value: "Nu s-a putut modifica setarea acordorului"}
+frontendTunerStartFailed: {value: "Nu s-a putut porni acordorul"}
+frontendTunerStateFailed: {value: "Nu s-a putut citi starea acordorului"}
+frontendTunerStopFailed: {value: "Nu s-a putut opri acordorul"}
+frontendTunerTonePlayFailed: {value: "Nu s-a putut reda sunetul de referință"}
+frontendTunerToneStopFailed: {value: "Nu s-a putut opri sunetul de referință"}

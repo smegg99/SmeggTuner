@@ -1,0 +1,172 @@
+# Settings and sound-card calibration (ro).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Microphone and input level
+audioDeviceHint: {value: "Microfonul folosit pentru măsurare"}
+audioDeviceLabel: {value: "Dispozitiv de intrare"}
+audioDeviceSystemDefault: {value: "Implicit în sistem"}
+autoVolume.hint: {value: "Reglează nivelul microfonului în timpul măsurării"}
+autoVolume.label: {value: "Volum de intrare automat"}
+autoVolume.saveFailed: {value: "Nu s-a putut salva setarea volumului de intrare."}
+autoVolume.unsupported: {value: "Nivelul de intrare nu poate fi reglat pentru acest dispozitiv."}
+humFilter50: {value: "50 Hz"}
+humFilter60: {value: "60 Hz"}
+humFilterHint: {value: "Elimină brumul de rețea: 50 Hz în Europa, 60 Hz în America"}
+humFilterLabel: {value: "Filtru de brum de rețea"}
+lockedWhileRunning: {value: "Oprește acordorul pentru a schimba intrarea audio."}
+
+# Detection and reference pitch
+continuousManual: {value: "Actualizează continuu nota fixată"}
+continuousManualHint: {value: "Actualizează măsurarea notei fixate înainte de stabilizare"}
+detection.balanced: {value: "Echilibrată"}
+detection.balancedHint: {value: "Trece la altă notă în aproximativ o jumătate de secundă"}
+detection.fast: {value: "Rapidă"}
+detection.fastHint: {value: "Schimbă nota cel mai rapid, dar poate fixa o notă greșită"}
+detection.steady: {value: "Stabilă"}
+detection.steadyHint: {value: "Comportamentul inițial, cu trecere lentă de la o notă la alta"}
+detectionLabel: {value: "Detectarea notelor"}
+lockA4: {value: "Blochează frecvența de referință"}
+lockA4Hint: {value: "Împiedică modificarea frecvenței A4 în acordor"}
+
+# Reading units, tolerance and note names
+beatUnitHint: {value: "Hertzi sau unități de 0,06 % din frecvența notei"}
+beatUnitLabel: {value: "Unitatea bătăilor"}
+errorReference: {value: "Referința abaterii"}
+errorReferenceGoal: {value: "Țintă"}
+
+errorReferenceHint: {value: "Afișează abaterea față de frecvența notei din gamă sau față de ținta de acordaj. La atingerea țintei, abaterea față de aceasta este zero."}
+
+errorReferenceScale: {value: "Gamă"}
+scaleNamingHint: {value: "Cum sunt denumite notele"}
+scaleNamingLabel: {value: "Denumirea notelor"}
+scaleNamings.cdefgab: {value: "C D E F G A B (internațional, cu diez: C#)"}
+scaleNamings.cdefgah: {value: "C D E F G A H (german, cu diez: C#)"}
+scaleNamings.doremi: {value: "Do Re Mi (solfegiu)"}
+scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (polonez)"}
+toleranceBeat: {value: "Bătăi"}
+toleranceHint: {value: "Abaterea maximă la care ancia sau bătăile se consideră încă acordate"}
+toleranceLabel: {value: "Toleranțe"}
+toleranceReed: {value: "Ancie"}
+unitHint: {value: "Cenți sau unități de 0,06 % din frecvența notei"}
+unitLabel: {value: "Unitatea abaterii"}
+
+# Appearance, language and window behavior
+accent.auto: {value: "Din sistem"}
+accent.custom: {value: "Personalizată"}
+accent.hint: {value: "Culoarea de accent a sistemului sau una aleasă de tine"}
+accent.label: {value: "Accent"}
+accent.pick: {value: "Alege o culoare"}
+accent.pickTitle: {value: "Culoare de accent"}
+closeToTray: {value: "Minimizează în zona de notificare la închidere"}
+closeToTrayHint: {value: "La închiderea ferestrei, aplicația rămâne în zona de notificare"}
+checkUpdates: {value: "Verifică actualizările", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdatesHint: {value: "Caută o versiune mai nouă pe GitHub", description: "Hint below the desktop update-check checkbox."}
+languageHint: {value: "Limba interfeței"}
+languageLabel: {value: "Limbă"}
+phoneLayout.hint: {value: "Redimensionează fereastra la dimensiunile unui telefon pentru a testa interfața Android", description: "Debug builds only."}
+phoneLayout.label: {value: "Aspect pentru telefon", description: "Debug builds only."}
+phoneLayout.landscape: {value: "Peisaj", description: "Debug builds only. The phone held on its side."}
+phoneLayout.off: {value: "Dezactivat", description: "Debug builds only. The normal desktop window."}
+phoneLayout.portrait: {value: "Portret", description: "Debug builds only. The phone held upright."}
+themeHint: {value: "Din sistem, deschisă sau închisă"}
+themeLabel: {value: "Temă"}
+themes.auto: {value: "Din sistem"}
+themes.dark: {value: "Închisă"}
+themes.light: {value: "Deschisă"}
+
+# Sound-card calibration
+calibration.askBody: {value: "Un ceas de eșantionare necalibrat poate produce o mică eroare constantă de măsurare. Calibrarea durează aproximativ un minut și nu necesită sunet."}
+
+calibration.askCalibrate: {value: "Calibrează acum"}
+calibration.askContinue: {value: "Continuă fără corecție"}
+calibration.askTitle: {value: "Această placă de sunet nu este calibrată"}
+calibration.hint: {value: "Corectează eroarea ceasului plăcii de sunet. Durează circa un minut și nu necesită sunet."}
+calibration.label: {value: "Calibrarea plăcii de sunet"}
+calibration.open: {value: "Deschide"}
+calibration.openHint: {value: "Afișează ecranul de calibrare fără a începe măsurarea"}
+calibration.saveFailed: {value: "Calibrarea nu a putut fi salvată. Acordorul folosește starea salvată anterior."}
+calibration.screen.again: {value: "Recalibrează"}
+calibration.screen.bar.confirming: {value: "Confirmare"}
+calibration.screen.bar.settling: {value: "Stabilizare"}
+
+calibration.screen.calibrated:
+  value: Calibrare finalizată. Corecția măsurătorilor este de {percent} %.
+  placeholders:
+    percent:
+      type: string
+
+calibration.screen.calibrating: {value: "Se măsoară ceasul plăcii de sunet"}
+
+calibration.screen.how: {value: "Măsurarea înălțimii sunetului poate avea o mică eroare constantă. Calibrarea durează circa un minut, fără sunet."}
+
+calibration.screen.lead: {value: "Încă nu s-a calibrat"}
+
+calibration.screen.phase.confirming: {value: "Valoarea s-a stabilizat. Se verifică dacă rămâne stabilă timp de 20 s."}
+
+calibration.screen.phase.preparing: {value: "Se așteaptă stabilizarea intrării înainte de a-i măsura ceasul."}
+calibration.screen.phase.settling: {value: "Se așteaptă stabilizarea măsurătorii ceasului."}
+
+calibration.screen.pitch:
+  value: Aceasta înseamnă o abatere de {pitch} la fiecare notă.
+  placeholders:
+    pitch:
+      type: string
+
+calibration.screen.preparing: {value: "Se pregătește intrarea"}
+calibration.screen.retry: {value: "Măsurătorile rămân necorectate. Închide celelalte aplicații audio și încearcă din nou."}
+calibration.screen.return: {value: "Înapoi"}
+calibration.screen.stat.dropouts: {value: "Întreruperi"}
+calibration.screen.stat.elapsed: {value: "Timp scurs"}
+calibration.screen.stat.offset: {value: "Abaterea ceasului"}
+calibration.screen.stat.rate: {value: "Frecvență de eșantionare"}
+calibration.screen.stat.steadiness: {value: "Stabilitate"}
+
+calibration.screen.steadiness:
+  value: '{ppm} ppm, țintă {target} ppm'
+  placeholders:
+    ppm:
+      type: string
+    target:
+      type: string
+
+calibration.screen.steps.done: {value: "Gata"}
+calibration.screen.steps.measure: {value: "Măsurare"}
+calibration.screen.steps.prepare: {value: "Pregătire"}
+calibration.screen.traceEmpty: {value: "Aici se trasează abaterea ceasului în timpul măsurării."}
+calibration.screen.unreliable: {value: "Ceasul nu s-a stabilizat"}
+calibration.start: {value: "Calibrează"}
+calibration.startHint: {value: "Măsoară ceasul de eșantionare al intrării"}
+
+calibration.status.calibrated:
+  value: Calibrat, {percent} %
+  placeholders:
+    percent:
+      type: string
+
+calibration.status.calibrating:
+  value: Calibrare, {seconds} s ({percent} %), progres {progress} %
+  placeholders:
+    percent:
+      type: string
+    progress:
+      type: string
+    seconds:
+      type: string
+
+calibration.status.preparing: {value: "Pregătire"}
+calibration.status.uncalibrated: {value: "Necalibrat"}
+calibration.status.unreliable: {value: "Calibrare nesigură, măsurători necorectate"}
+
+# Settings section headings
+groups.appearance: {value: "Aspect"}
+groups.detection: {value: "Detectare"}
+groups.microphone: {value: "Microfon"}
+groups.output: {value: "Ieșire", description: "Settings section shown on a phone, holding the output volume."}
+groups.readings: {value: "Măsurători"}
+groups.report: {value: "Datele atelierului"}
+
+# Report letterhead
+report.address: {value: "Adresă"}
+report.name: {value: "Numele atelierului"}
+report.nameHint: {value: "Apare în rapoartele exportate când antetul este activat."}

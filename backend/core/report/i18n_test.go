@@ -43,11 +43,21 @@ func TestSheetFollowsTheLanguage(t *testing.T) {
 	}
 }
 
-// German is not shipped, so it exercises the English-per-key fallback.
+func TestGermanSheetUsesTranslatedHeadingsAndMeasurements(t *testing.T) {
+	defer i18n.SetLocale("en")
+	i18n.SetLocale("de")
+	out := text(t, sheet(t, musette(t)))
+	for _, want := range []string{"Stimmtabelle", "435,0 Hz"} {
+		if !strings.Contains(out, want) {
+			t.Errorf("German sheet is missing %q", want)
+		}
+	}
+}
+
 func TestUntranslatedLanguageFallsBackToEnglish(t *testing.T) {
 	defer i18n.SetLocale("en")
 
-	i18n.SetLocale("de")
+	i18n.SetLocale("und")
 	out := text(t, sheet(t, musette(t)))
 
 	if got := rawKey.FindString(out); got != "" {
@@ -146,7 +156,7 @@ func TestCurrentReportsTheLanguage(t *testing.T) {
 		t.Errorf("Current() = %q after SetLocale(pl-PL)", got)
 	}
 	// A region suffix still triggers the decimal comma.
-	if got := decimal("130.8"); got != "130,8" {
+	if got := decimal(130.8, 1, false); got != "130,8" {
 		t.Errorf("decimal(130.8) under pl-PL = %q", got)
 	}
 

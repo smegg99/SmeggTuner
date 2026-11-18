@@ -1,0 +1,62 @@
+# S99AB startup and crash dialogs (sv).
+close: {value: "Stäng"}
+copied: {value: "Kopierat"}
+copy: {value: "Kopiera rapport"}
+details: {value: "Detaljer"}
+email: {value: "Skicka rapport via e-post"}
+failed:
+  value: "Åtgärden misslyckades: {error}"
+  placeholders:
+    error: {type: string}
+file:
+  value: "Fil: {path}"
+  placeholders:
+    path: {type: string}
+kill: {value: "Stäng och rapportera"}
+logs: {value: "Visa loggfil"}
+messageConfig:
+  value: "Det gick inte att läsa inställningsfilen. Rätta till eller ta bort filen och starta sedan {app} igen."
+  placeholders:
+    app: {type: string}
+messageCrash:
+  value: "Ett internt fel uppstod i {app}. Skicka rapporten så att felet kan åtgärdas och starta sedan om programmet."
+  placeholders:
+    app: {type: string}
+messageHang: {value: "Programmet kan fortfarande hinna slutföra uppgiften. Vänta eller stäng programmet och skicka en rapport."}
+messageHangStopped:
+  value: "{app} stängdes när programmet inte svarade. Skicka rapporten och starta sedan om programmet."
+  placeholders:
+    app: {type: string}
+messageKilled:
+  value: "{app} stängdes innan programmet hann rapportera felet. Skicka rapporten och starta sedan om programmet."
+  placeholders:
+    app: {type: string}
+messageOom:
+  value: "Minnet tog slut och systemet stängde {app}. Skicka rapporten och starta sedan om programmet."
+  placeholders:
+    app: {type: string}
+messageStartup:
+  value: "Åtgärda problemet som anges nedan och starta sedan {app} igen."
+  placeholders:
+    app: {type: string}
+restart: {value: "Starta om"}
+save: {value: "Spara rapport"}
+saved:
+  value: "Sparad i {path}"
+  placeholders:
+    path: {type: string}
+starting:
+  value: "Startar {app}"
+  placeholders:
+    app: {type: string}
+titleCrash: {value: "Programmet stannade oväntat"}
+titleHang: {value: "Programmet svarar inte"}
+titleHangStopped: {value: "Programmet slutade svara"}
+titleKilled: {value: "Programmet stängdes oväntat"}
+titleStart: {value: "Programmet kunde inte startas"}
+wait: {value: "Vänta"}
+windowCrash: {value: "kraschade"}
+windowHang: {value: "svarar inte"}
+windowHangStopped: {value: "slutade svara"}
+windowKilled: {value: "stängdes oväntat"}
+windowStart: {value: "kunde inte starta"}

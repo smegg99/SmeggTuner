@@ -1,0 +1,62 @@
+# S99AB startup and crash dialogs (hu).
+close: {value: "Bezárás"}
+copied: {value: "Másolva"}
+copy: {value: "Jelentés másolása"}
+details: {value: "Részletek"}
+email: {value: "Jelentés küldése e-mailben"}
+failed:
+  value: "A művelet sikertelen: {error}"
+  placeholders:
+    error: {type: string}
+file:
+  value: "Fájl: {path}"
+  placeholders:
+    path: {type: string}
+kill: {value: "Bezárás és jelentés küldése"}
+logs: {value: "Naplófájl megjelenítése"}
+messageConfig:
+  value: "A beállításfájl nem olvasható. Javítsa ki vagy törölje, majd indítsa újra a következő alkalmazást: {app}."
+  placeholders:
+    app: {type: string}
+messageCrash:
+  value: "Belső hiba történt ({app}). Küldje el a jelentést, hogy a hibát ki lehessen javítani, majd indítsa újra az alkalmazást."
+  placeholders:
+    app: {type: string}
+messageHang: {value: "A művelet még befejeződhet. Várjon, vagy zárja be az alkalmazást, és küldjön hibajelentést."}
+messageHangStopped:
+  value: "Az alkalmazás nem válaszolt, amikor bezárták ({app}). Küldje el a jelentést, majd indítsa újra az alkalmazást."
+  placeholders:
+    app: {type: string}
+messageKilled:
+  value: "Az alkalmazás bezárult, mielőtt jelezhette volna a hibát ({app}). Küldje el a jelentést, majd indítsa újra az alkalmazást."
+  placeholders:
+    app: {type: string}
+messageOom:
+  value: "A rendszer memóriája elfogyott, ezért bezárta az alkalmazást ({app}). Küldje el a jelentést, majd indítsa újra az alkalmazást."
+  placeholders:
+    app: {type: string}
+messageStartup:
+  value: "Hárítsa el az alább jelzett hibát, majd indítsa újra az alkalmazást ({app})."
+  placeholders:
+    app: {type: string}
+restart: {value: "Újraindítás"}
+save: {value: "Jelentés mentése"}
+saved:
+  value: "A mentés helye: {path}"
+  placeholders:
+    path: {type: string}
+starting:
+  value: "{app} indítása"
+  placeholders:
+    app: {type: string}
+titleCrash: {value: "Az alkalmazás váratlanul leállt"}
+titleHang: {value: "Az alkalmazás nem válaszol"}
+titleHangStopped: {value: "Az alkalmazás nem válaszolt"}
+titleKilled: {value: "Az alkalmazás váratlanul bezárult"}
+titleStart: {value: "Az alkalmazás nem indult el"}
+wait: {value: "Várakozás"}
+windowCrash: {value: "összeomlott"}
+windowHang: {value: "nem válaszol"}
+windowHangStopped: {value: "nem válaszolt"}
+windowKilled: {value: "váratlanul bezárult"}
+windowStart: {value: "nem indult el"}

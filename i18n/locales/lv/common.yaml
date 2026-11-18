@@ -1,0 +1,104 @@
+# Shared labels and application text (lv).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Buttons and shared labels
+accept: {value: "Pieņemt"}
+back: {value: "Atpakaļ"}
+cancel: {value: "Atcelt"}
+close: {value: "Aizvērt"}
+delete: {value: "Dzēst"}
+export: {value: "Eksportēt"}
+next: {value: "Tālāk"}
+"no": {value: "Nē"}
+none: {value: "Nav"}
+previous: {value: "Iepriekšējais"}
+website: {value: "Tīmekļvietne"}
+"yes": {value: "Jā"}
+
+# Musical labels and unit symbols
+accordion: {value: "Akordeons"}
+note: {value: "Nots"}
+
+reed:
+  value: "Mēlīte {index}"
+  placeholders:
+    index: {type: integer}
+
+unitSymbol.cents: {value: "cents"}
+unitSymbol.hz: {value: "Hz"}
+unitSymbol.reference: {value: "u"}
+
+# Color controls
+color.hue: {value: "Krāsas tonis"}
+color.saturation: {value: "Piesātinājums"}
+color.value: {value: "Spilgtums"}
+
+# Navigation and window titles
+routes.navigation: {value: "Galvenā navigācija"}
+routes.settings: {value: "Iestatījumi"}
+routes.tune: {value: "Skaņošana"}
+routes.workshop: {value: "Darbnīca"}
+
+title.count:
+  value: "{room} {name} ({done})"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+
+title.progress:
+  value: "{room} {name} {done}/{total}"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+    total: {type: string}
+
+title.room.about: {value: "par programmu"}
+title.room.calibrate: {value: "kalibrēšana"}
+title.room.help: {value: "palīdzība"}
+title.room.settings: {value: "iestatījumi"}
+title.room.soundcard: {value: "skaņas karte"}
+title.room.tune: {value: "skaņošana"}
+title.room.workshop: {value: "darbnīca"}
+
+title.session:
+  value: "{room} {name}"
+  placeholders:
+    name: {type: string}
+    room: {type: string}
+
+title.uncalibrated:
+  value: "{title} (skaņas karte nav kalibrēta)"
+  placeholders:
+    title: {type: string}
+
+# Application and About dialog
+about.aboutTitle: {value: "Par programmu"}
+about.commit: {value: "Būvējums"}
+about.donate: {value: "Atbalstīt Ko-fi vietnē"}
+about.license: {value: "Licence"}
+about.privacy: {value: "Privātuma politika"}
+about.guide: {value: "Kā lietot SmeggTuner"}
+about.onlineVersion: {value: "Atvērt tīmekļa versiju"}
+about.support: {value: "Atbalsts"}
+about.mascot: {value: "Kaķis spēlē akordeonu"}
+about.publisher: {value: "Autors: smegg99"}
+about.tagline: {value: "Bezmaksas atvērtā pirmkoda programma akordeonu skaņošanai."}
+about.untagged: {value: "izstrādes versija"}
+about.version: {value: "Versija"}
+app.description: {value: "Bezmaksas atvērtā pirmkoda akordeona skaņotājs."}
+app.name: {value: "SmeggTuner"}
+
+# Help dialog and keyboard instructions
+about.helpTitle: {value: "Palīdzība"}
+
+# System tray
+tray.quit: {value: "Iziet"}
+tray.show: {value: "Rādīt"}
+
+linkNewTab:
+  value: "{text} (tiek atvērta jaunā cilnē)"
+  placeholders:
+    text: {type: string}

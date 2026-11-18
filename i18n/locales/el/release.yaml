@@ -1,0 +1,15 @@
+# S99AB release notes and update prompts (el).
+notesTitle:
+  value: "Τι νέο υπάρχει στην έκδοση {version}"
+  placeholders:
+    version: {type: string}
+notTranslated: {value: "Οι σημειώσεις έκδοσης δεν έχουν μεταφραστεί ακόμη."}
+updateBody:
+  value: "Χρησιμοποιείτε την έκδοση {current}. Η πιο πρόσφατη είναι η {latest}."
+  placeholders:
+    current: {type: string}
+    latest: {type: string}
+updateDownload: {value: "Λήψη"}
+updateIgnore: {value: "Παράλειψη αυτής της έκδοσης"}
+updateLater: {value: "Αργότερα"}
+updateTitle: {value: "Διατίθεται νεότερη έκδοση"}

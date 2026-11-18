@@ -1,0 +1,166 @@
+# Settings and sound-card calibration (zh-Hant).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Microphone and input level
+audioDeviceHint: {value: "用於測量的麥克風"}
+audioDeviceLabel: {value: "輸入裝置"}
+audioDeviceSystemDefault: {value: "系統預設"}
+autoVolume.hint: {value: "測量時自動調節麥克風輸入電平"}
+autoVolume.label: {value: "自動調節輸入音量"}
+autoVolume.saveFailed: {value: "未能儲存輸入音量設定。"}
+autoVolume.unsupported: {value: "此裝置不支援調節輸入電平。"}
+humFilter50: {value: "50 Hz"}
+humFilter60: {value: "60 Hz"}
+humFilterHint: {value: "濾除電源交流聲：歐洲為 50 Hz，美洲為 60 Hz"}
+humFilterLabel: {value: "電源交流聲濾波器"}
+lockedWhileRunning: {value: "請先停止調音器，再更改音訊輸入。"}
+
+# Detection and reference pitch
+continuousManual: {value: "持續更新固定音的讀數"}
+continuousManualHint: {value: "在讀數鎖定前也更新固定音的讀數"}
+detection.balanced: {value: "均衡"}
+detection.balancedHint: {value: "約半秒切換到另一個音"}
+detection.fast: {value: "快速"}
+detection.fastHint: {value: "切換最快，但可能鎖定錯誤的音"}
+detection.steady: {value: "穩定"}
+detection.steadyHint: {value: "沿用原來的辨識方式，切換較慢"}
+detectionLabel: {value: "音符辨識"}
+lockA4: {value: "鎖定基準音高"}
+lockA4Hint: {value: "禁止在調音器中更改 A4"}
+
+# Reading units, tolerance and note names
+beatUnitHint: {value: "赫茲，或以該音符頻率的 0.06% 為單位"}
+beatUnitLabel: {value: "拍頻單位"}
+errorReference: {value: "偏差基準"}
+errorReferenceGoal: {value: "目標音高"}
+
+errorReferenceHint:
+  value: "顯示相對於音階音高或調音目標的偏差。以目標為基準時，達到目標的讀數為零。"
+errorReferenceScale: {value: "音階"}
+scaleNamingHint: {value: "音名的顯示方式"}
+scaleNamingLabel: {value: "音名標記"}
+scaleNamings.cdefgab: {value: "C D E F G A B（國際記法，升音如 C#）"}
+scaleNamings.cdefgah: {value: "C D E F G A H（德國記法，升音如 C#）"}
+scaleNamings.doremi: {value: "Do Re Mi（唱名）"}
+scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H（波蘭記法）"}
+toleranceBeat: {value: "拍頻"}
+toleranceHint: {value: "簧片音高或拍頻仍可視為調準的最大偏差"}
+toleranceLabel: {value: "容差"}
+toleranceReed: {value: "簧片"}
+unitHint: {value: "音分，或以該音符頻率的 0.06% 為單位"}
+unitLabel: {value: "偏差單位"}
+
+# Appearance, language and window behavior
+accent.auto: {value: "跟隨系統"}
+accent.custom: {value: "自定義"}
+accent.hint: {value: "使用系統強調色或自行選擇顏色"}
+accent.label: {value: "強調色"}
+accent.pick: {value: "選擇顏色"}
+accent.pickTitle: {value: "強調色"}
+closeToTray: {value: "關閉時最小化到托盤"}
+closeToTrayHint: {value: "關閉視窗後，應用程式會留在系統托盤中"}
+checkUpdates: {value: "檢查更新", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdatesHint: {value: "在 GitHub 上查詢新版本", description: "Hint below the desktop update-check checkbox."}
+languageHint: {value: "介面語言"}
+languageLabel: {value: "語言"}
+phoneLayout.hint: {value: "將視窗調整為手機尺寸，以測試 Android 佈局", description: "Debug builds only."}
+phoneLayout.label: {value: "手機佈局", description: "Debug builds only."}
+phoneLayout.landscape: {value: "橫屏", description: "Debug builds only. The phone held on its side."}
+phoneLayout.off: {value: "關閉", description: "Debug builds only. The normal desktop window."}
+phoneLayout.portrait: {value: "豎屏", description: "Debug builds only. The phone held upright."}
+themeHint: {value: "跟隨系統、淺色或深色"}
+themeLabel: {value: "主題"}
+themes.auto: {value: "跟隨系統"}
+themes.dark: {value: "深色"}
+themes.light: {value: "淺色"}
+
+# Sound-card calibration
+calibration.askBody:
+  value: "未經校正的取樣時鐘可能造成小幅固定測量誤差。校正約需一分鐘，無需發聲。"
+calibration.askCalibrate: {value: "立即校正"}
+calibration.askContinue: {value: "不校正，繼續使用"}
+calibration.askTitle: {value: "此音效卡未經校正"}
+calibration.hint: {value: "校正音效卡時鐘誤差。約需一分鐘，無需發聲。"}
+calibration.label: {value: "音效卡校正"}
+calibration.open: {value: "開啟"}
+calibration.openHint: {value: "開啟校正頁面，暫不測量"}
+calibration.saveFailed: {value: "未能儲存校正結果。調音器將使用之前儲存的狀態。"}
+calibration.screen.again: {value: "重新校正"}
+calibration.screen.bar.confirming: {value: "正在確認"}
+calibration.screen.bar.settling: {value: "等待穩定"}
+
+calibration.screen.calibrated:
+  value: "已校正。讀數修正量為 {percent}%。"
+  placeholders:
+    percent: {type: string}
+
+calibration.screen.calibrating: {value: "正在測量音效卡時鐘"}
+
+calibration.screen.how:
+  value: "音高讀數可能存在小幅固定誤差。校正約需一分鐘，無需發聲。"
+
+calibration.screen.lead: {value: "尚未校正"}
+
+calibration.screen.phase.confirming:
+  value: "讀數已穩定。正在確認能否保持穩定 20 秒。"
+
+calibration.screen.phase.preparing: {value: "正在等待輸入穩定，然後測量其時鐘。"}
+calibration.screen.phase.settling: {value: "正在等待時鐘讀數穩定。"}
+
+calibration.screen.pitch:
+  value: "各音的音高偏差均為 {pitch}。"
+  placeholders:
+    pitch: {type: string}
+
+calibration.screen.preparing: {value: "正在預熱輸入裝置"}
+calibration.screen.retry: {value: "讀數仍未校正。請關閉其他音訊應用程式後重試。"}
+calibration.screen.return: {value: "返回"}
+calibration.screen.stat.dropouts: {value: "訊號中斷次數"}
+calibration.screen.stat.elapsed: {value: "已用時間"}
+calibration.screen.stat.offset: {value: "時鐘偏差"}
+calibration.screen.stat.rate: {value: "取樣率"}
+calibration.screen.stat.steadiness: {value: "穩定度"}
+
+calibration.screen.steadiness:
+  value: "{ppm} ppm，目標 {target} ppm"
+  placeholders:
+    ppm: {type: string}
+    target: {type: string}
+
+calibration.screen.steps.done: {value: "完成"}
+calibration.screen.steps.measure: {value: "測量"}
+calibration.screen.steps.prepare: {value: "預熱"}
+calibration.screen.traceEmpty: {value: "測量時，時鐘偏差曲線將顯示在這裡。"}
+calibration.screen.unreliable: {value: "時鐘未能穩定"}
+calibration.start: {value: "校正"}
+calibration.startHint: {value: "測量輸入裝置的取樣時鐘"}
+
+calibration.status.calibrated:
+  value: "已校正，{percent}%"
+  placeholders:
+    percent: {type: string}
+
+calibration.status.calibrating:
+  value: "校正中，{seconds} 秒（{percent}%），已完成 {progress}%"
+  placeholders:
+    percent: {type: string}
+    progress: {type: string}
+    seconds: {type: string}
+
+calibration.status.preparing: {value: "準備中"}
+calibration.status.uncalibrated: {value: "未校正"}
+calibration.status.unreliable: {value: "校正不可靠，讀數未經校正"}
+
+# Settings section headings
+groups.appearance: {value: "外觀"}
+groups.detection: {value: "辨識"}
+groups.microphone: {value: "麥克風"}
+groups.output: {value: "輸出", description: "Settings section shown on a phone, holding the output volume."}
+groups.readings: {value: "讀數"}
+groups.report: {value: "調音工坊資料"}
+
+# Report letterhead
+report.address: {value: "地址"}
+report.name: {value: "調音工坊名稱"}
+report.nameHint: {value: "啟用信頭後，將顯示在匯出的報告上。"}

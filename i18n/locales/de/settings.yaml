@@ -1,0 +1,166 @@
+# Settings and sound-card calibration (de).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Microphone and input level
+audioDeviceHint: {value: "Mikrofon für die Messung"}
+audioDeviceLabel: {value: "Eingabegerät"}
+audioDeviceSystemDefault: {value: "Systemstandard"}
+autoVolume.hint: {value: "Regelt den Mikrofonpegel während der Messung"}
+autoVolume.label: {value: "Automatischer Eingangspegel"}
+autoVolume.saveFailed: {value: "Der Eingangspegel konnte nicht gespeichert werden."}
+autoVolume.unsupported: {value: "Bei diesem Gerät lässt sich der Eingangspegel nicht einstellen."}
+humFilter50: {value: "50 Hz"}
+humFilter60: {value: "60 Hz"}
+humFilterHint: {value: "Filtert Netzbrummen: 50 Hz in Europa, 60 Hz in Amerika"}
+humFilterLabel: {value: "Netzbrummfilter"}
+lockedWhileRunning: {value: "Zum Wechseln des Audioeingangs das Stimmgerät anhalten."}
+
+# Detection and reference pitch
+continuousManual: {value: "Einen fixierten Ton fortlaufend aktualisieren"}
+continuousManualHint: {value: "Fixierten Ton aktualisieren, bis die Messung stabil ist"}
+detection.balanced: {value: "Ausgewogen"}
+detection.balancedHint: {value: "Erkennt Tonwechsel nach etwa einer halben Sekunde"}
+detection.fast: {value: "Schnell"}
+detection.fastHint: {value: "Schnellster Tonwechsel, kann einen falschen Ton einrasten lassen"}
+detection.steady: {value: "Stabil"}
+detection.steadyHint: {value: "Ursprüngliches Verhalten, langsamer Tonwechsel"}
+detectionLabel: {value: "Tonerkennung"}
+lockA4: {value: "Kammerton sperren"}
+lockA4Hint: {value: "Verhindert Änderungen an A4 im Stimmgerät"}
+
+# Reading units, tolerance and note names
+beatUnitHint: {value: "Hertz oder Einheiten von 0,06 % der Tonfrequenz"}
+beatUnitLabel: {value: "Schwebungseinheit"}
+errorReference: {value: "Bezug für Abweichungen"}
+errorReferenceGoal: {value: "Sollwert"}
+
+errorReferenceHint:
+  value: "Abweichung von der Skala oder vom Stimmziel anzeigen. Am Stimmziel beträgt die zielbezogene Abweichung null."
+errorReferenceScale: {value: "Tonskala"}
+scaleNamingHint: {value: "Wie Töne benannt werden"}
+scaleNamingLabel: {value: "Tonnamen"}
+scaleNamings.cdefgab: {value: "C D E F G A B (international, Kreuze als C#)"}
+scaleNamings.cdefgah: {value: "C D E F G A H (deutsch, Kreuze als C#)"}
+scaleNamings.doremi: {value: "Do Re Mi (Solfège)"}
+scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (polnisch)"}
+toleranceBeat: {value: "Schwebung"}
+toleranceHint: {value: "Zulässige Abweichung einer Stimmzunge oder Schwebung für die Einstufung als gestimmt"}
+toleranceLabel: {value: "Toleranzen"}
+toleranceReed: {value: "Stimmzunge"}
+unitHint: {value: "Cent oder Einheiten von 0,06 % der Tonfrequenz"}
+unitLabel: {value: "Abweichungseinheit"}
+
+# Appearance, language and window behavior
+accent.auto: {value: "System"}
+accent.custom: {value: "Benutzerdefiniert"}
+accent.hint: {value: "Systemakzentfarbe oder eigene Farbe"}
+accent.label: {value: "Akzent"}
+accent.pick: {value: "Farbe auswählen"}
+accent.pickTitle: {value: "Akzentfarbe"}
+closeToTray: {value: "Beim Schließen in den Infobereich minimieren"}
+closeToTrayHint: {value: "Beim Schließen des Fensters bleibt die App im Infobereich"}
+checkUpdates: {value: "Nach Updates suchen", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdatesHint: {value: "Sucht auf GitHub nach einer neueren Version", description: "Hint below the desktop update-check checkbox."}
+languageHint: {value: "Sprache der Benutzeroberfläche"}
+languageLabel: {value: "Sprache"}
+phoneLayout.hint: {value: "Passt das Fenster zum Testen des Android-Layouts an eine Handygröße an", description: "Debug builds only."}
+phoneLayout.label: {value: "Handylayout", description: "Debug builds only."}
+phoneLayout.landscape: {value: "Querformat", description: "Debug builds only. The phone held on its side."}
+phoneLayout.off: {value: "Aus", description: "Debug builds only. The normal desktop window."}
+phoneLayout.portrait: {value: "Hochformat", description: "Debug builds only. The phone held upright."}
+themeHint: {value: "System, hell oder dunkel"}
+themeLabel: {value: "Design"}
+themes.auto: {value: "System"}
+themes.dark: {value: "Dunkel"}
+themes.light: {value: "Hell"}
+
+# Sound-card calibration
+calibration.askBody:
+  value: "Ein unkalibrierter Abtasttakt kann einen kleinen, konstanten Messfehler verursachen. Die Kalibrierung dauert etwa eine Minute und benötigt keinen Ton."
+calibration.askCalibrate: {value: "Jetzt kalibrieren"}
+calibration.askContinue: {value: "Ohne Korrektur fortfahren"}
+calibration.askTitle: {value: "Diese Soundkarte ist nicht kalibriert"}
+calibration.hint: {value: "Korrigiert den Taktfehler der Soundkarte. Dauert etwa eine Minute, kein Ton erforderlich."}
+calibration.label: {value: "Soundkartenkalibrierung"}
+calibration.open: {value: "Öffnen"}
+calibration.openHint: {value: "Kalibrierungsansicht ohne Messung anzeigen"}
+calibration.saveFailed: {value: "Die Kalibrierung konnte nicht gespeichert werden. Das Stimmgerät verwendet den zuvor gespeicherten Stand."}
+calibration.screen.again: {value: "Erneut kalibrieren"}
+calibration.screen.bar.confirming: {value: "Überprüfung"}
+calibration.screen.bar.settling: {value: "Stabilisierung"}
+
+calibration.screen.calibrated:
+  value: "Kalibriert. Die Messwerte werden um {percent} % korrigiert."
+  placeholders:
+    percent: {type: string}
+
+calibration.screen.calibrating: {value: "Soundkartentakt wird gemessen"}
+
+calibration.screen.how:
+  value: "Die Tonhöhenmessung kann geringfügig und konstant abweichen. Kein Ton erforderlich, Dauer etwa eine Minute."
+
+calibration.screen.lead: {value: "Noch nicht kalibriert"}
+
+calibration.screen.phase.confirming:
+  value: "Der Messwert ist stabil. Es wird geprüft, ob er 20 s lang stabil bleibt."
+
+calibration.screen.phase.preparing: {value: "Der Eingang stabilisiert sich, bevor sein Takt gemessen wird."}
+calibration.screen.phase.settling: {value: "Warten auf einen stabilen Taktmesswert."}
+
+calibration.screen.pitch:
+  value: "Das entspricht bei jedem Ton {pitch}."
+  placeholders:
+    pitch: {type: string}
+
+calibration.screen.preparing: {value: "Eingang läuft an"}
+calibration.screen.retry: {value: "Die Messwerte bleiben unkorrigiert. Schließe andere Audioanwendungen und versuche es erneut."}
+calibration.screen.return: {value: "Zurück"}
+calibration.screen.stat.dropouts: {value: "Aussetzer"}
+calibration.screen.stat.elapsed: {value: "Verstrichen"}
+calibration.screen.stat.offset: {value: "Taktabweichung"}
+calibration.screen.stat.rate: {value: "Abtastrate"}
+calibration.screen.stat.steadiness: {value: "Stabilität"}
+
+calibration.screen.steadiness:
+  value: "{ppm} ppm, Ziel {target} ppm"
+  placeholders:
+    ppm: {type: string}
+    target: {type: string}
+
+calibration.screen.steps.done: {value: "Fertig"}
+calibration.screen.steps.measure: {value: "Messen"}
+calibration.screen.steps.prepare: {value: "Warmlauf"}
+calibration.screen.traceEmpty: {value: "Hier erscheint die Taktabweichung während der Messung."}
+calibration.screen.unreliable: {value: "Der Takt wurde nicht stabil"}
+calibration.start: {value: "Kalibrieren"}
+calibration.startHint: {value: "Abtasttakt des Eingangs messen"}
+
+calibration.status.calibrated:
+  value: "Kalibriert, {percent} %"
+  placeholders:
+    percent: {type: string}
+
+calibration.status.calibrating:
+  value: "Kalibrierung, {seconds} s ({percent} %), {progress} % abgeschlossen"
+  placeholders:
+    percent: {type: string}
+    progress: {type: string}
+    seconds: {type: string}
+
+calibration.status.preparing: {value: "Vorbereitung"}
+calibration.status.uncalibrated: {value: "Nicht kalibriert"}
+calibration.status.unreliable: {value: "Unzuverlässig, Messwerte werden nicht korrigiert"}
+
+# Settings section headings
+groups.appearance: {value: "Aussehen"}
+groups.detection: {value: "Erkennung"}
+groups.microphone: {value: "Mikrofon"}
+groups.output: {value: "Ausgabe", description: "Settings section shown on a phone, holding the output volume."}
+groups.readings: {value: "Messwerte"}
+groups.report: {value: "Werkstattangaben"}
+
+# Report letterhead
+report.address: {value: "Adresse"}
+report.name: {value: "Name der Werkstatt"}
+report.nameHint: {value: "Wird bei aktiviertem Briefkopf in exportierten Berichten angezeigt."}

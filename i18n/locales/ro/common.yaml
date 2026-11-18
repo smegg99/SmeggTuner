@@ -1,0 +1,115 @@
+# Shared labels and application text (ro).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Buttons and shared labels
+accept: {value: "Acceptă"}
+back: {value: "Înapoi"}
+cancel: {value: "Anulează"}
+close: {value: "Închide"}
+delete: {value: "Șterge"}
+export: {value: "Exportă"}
+next: {value: "Următorul"}
+"no": {value: "Nu"}
+none: {value: "Niciuna"}
+previous: {value: "Anteriorul"}
+website: {value: "Site web"}
+"yes": {value: "Da"}
+
+# Musical labels and unit symbols
+accordion: {value: "Acordeon"}
+note: {value: "Notă"}
+
+reed:
+  value: Ancia {index}
+  placeholders:
+    index:
+      type: integer
+
+unitSymbol.cents: {value: "cent"}
+unitSymbol.hz: {value: "Hz"}
+unitSymbol.reference: {value: "u"}
+
+# Color controls
+color.hue: {value: "Nuanță"}
+color.saturation: {value: "Saturație"}
+color.value: {value: "Luminozitate"}
+
+# Navigation and window titles
+routes.navigation: {value: "Navigare principală"}
+routes.settings: {value: "Setări"}
+routes.tune: {value: "Acordaj"}
+routes.workshop: {value: "Atelier"}
+
+title.count:
+  value: '{room} {name} ({done})'
+  placeholders:
+    done:
+      type: string
+    name:
+      type: string
+    room:
+      type: string
+
+title.progress:
+  value: '{room} {name} {done}/{total}'
+  placeholders:
+    done:
+      type: string
+    name:
+      type: string
+    room:
+      type: string
+    total:
+      type: string
+
+title.room.about: {value: "despre"}
+title.room.calibrate: {value: "calibrare"}
+title.room.help: {value: "ajutor"}
+title.room.settings: {value: "setări"}
+title.room.soundcard: {value: "placă de sunet"}
+title.room.tune: {value: "acordaj"}
+title.room.workshop: {value: "atelier"}
+
+title.session:
+  value: '{room} {name}'
+  placeholders:
+    name:
+      type: string
+    room:
+      type: string
+
+title.uncalibrated:
+  value: '{title} (placă de sunet necalibrată)'
+  placeholders:
+    title:
+      type: string
+
+# Application and About dialog
+about.aboutTitle: {value: "Despre"}
+about.commit: {value: "Compilare"}
+about.donate: {value: "Susține pe Ko-fi"}
+about.license: {value: "Licență"}
+about.privacy: {value: "Politica de confidențialitate"}
+about.guide: {value: "Cum se utilizează SmeggTuner"}
+about.onlineVersion: {value: "Deschide versiunea online"}
+about.support: {value: "Asistență"}
+about.mascot: {value: "O pisică cântând la acordeon"}
+about.publisher: {value: "Autor: smegg99"}
+about.tagline: {value: "Program gratuit, cu sursă deschisă, pentru acordarea acordeoanelor."}
+about.untagged: {value: "compilare de dezvoltare"}
+about.version: {value: "Versiune"}
+app.description: {value: "Acordor gratuit pentru acordeon, cu sursă deschisă."}
+app.name: {value: "SmeggTuner"}
+
+# Help dialog and keyboard instructions
+about.helpTitle: {value: "Ajutor"}
+
+# System tray
+tray.quit: {value: "Ieșire"}
+tray.show: {value: "Afișează"}
+
+linkNewTab:
+  value: "{text} (se deschide într-o filă nouă)"
+  placeholders:
+    text: {type: string}

@@ -1,0 +1,166 @@
+# Settings and sound-card calibration (et).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Microphone and input level
+audioDeviceHint: {value: "Mõõtmiseks kasutatav mikrofon"}
+audioDeviceLabel: {value: "Sisendseade"}
+audioDeviceSystemDefault: {value: "Süsteemi vaikevalik"}
+autoVolume.hint: {value: "Reguleerib mõõtmise ajal mikrofoni sisendtaset"}
+autoVolume.label: {value: "Automaatne sisendtaseme reguleerimine"}
+autoVolume.saveFailed: {value: "Sisendtaseme seadet ei saanud salvestada."}
+autoVolume.unsupported: {value: "Selle seadme sisendtaset ei saa reguleerida."}
+humFilter50: {value: "50 Hz"}
+humFilter60: {value: "60 Hz"}
+humFilterHint: {value: "Eemaldab võrgumüra: Euroopas 50 Hz, Ameerikas 60 Hz"}
+humFilterLabel: {value: "Võrgumüra filter"}
+lockedWhileRunning: {value: "Helisisendi vahetamiseks peata häälestaja."}
+
+# Detection and reference pitch
+continuousManual: {value: "Uuenda kinnitatud noodi näitu pidevalt"}
+continuousManualHint: {value: "Uuenda kinnitatud noodi näitu juba enne lukustumist"}
+detection.balanced: {value: "Tasakaalustatud"}
+detection.balancedHint: {value: "Vahetab nooti umbes poole sekundiga"}
+detection.fast: {value: "Kiire"}
+detection.fastHint: {value: "Vahetab nooti kõige kiiremini, kuid võib lukustuda valele noodile"}
+detection.steady: {value: "Stabiilne"}
+detection.steadyHint: {value: "Algne käitumine: noot vahetub aeglaselt"}
+detectionLabel: {value: "Noodituvastus"}
+lockA4: {value: "Lukusta võrdluskõrgus"}
+lockA4Hint: {value: "Takistab A4 muutmist häälestajas"}
+
+# Reading units, tolerance and note names
+beatUnitHint: {value: "Hertsid või ühikud, millest igaüks on 0,06% noodi sagedusest"}
+beatUnitLabel: {value: "Tuiklemise ühik"}
+errorReference: {value: "Kõrvalekalde võrdlusalus"}
+errorReferenceGoal: {value: "Sihtväärtus"}
+
+errorReferenceHint:
+  value: "Näita kõrvalekallet helirea noodi kõrgusest või häälestuse sihtväärtusest. Sihtväärtuse saavutamisel on kõrvalekalle sellest null."
+errorReferenceScale: {value: "Helirida"}
+scaleNamingHint: {value: "Kuidas noote nimetatakse"}
+scaleNamingLabel: {value: "Noodinimed"}
+scaleNamings.cdefgab: {value: "C D E F G A B (rahvusvaheline, dieesid kujul C#)"}
+scaleNamings.cdefgah: {value: "C D E F G A H (saksa, dieesid kujul C#)"}
+scaleNamings.doremi: {value: "Do Re Mi (solfedžo)"}
+scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (poola)"}
+toleranceBeat: {value: "Tuiklemine"}
+toleranceHint: {value: "Keele või tuiklemise suurim lubatud kõrvalekalle, mille puhul häälestus loetakse õigeks"}
+toleranceLabel: {value: "Lubatud kõrvalekalded"}
+toleranceReed: {value: "Keel"}
+unitHint: {value: "Sendid või ühikud, millest igaüks on 0,06% noodi sagedusest"}
+unitLabel: {value: "Kõrvalekalde ühik"}
+
+# Appearance, language and window behavior
+accent.auto: {value: "Süsteemi värv"}
+accent.custom: {value: "Kohandatud"}
+accent.hint: {value: "Süsteemi rõhuvärv või sinu valitud värv"}
+accent.label: {value: "Rõhuvärv"}
+accent.pick: {value: "Vali värv"}
+accent.pickTitle: {value: "Rõhuvärv"}
+closeToTray: {value: "Minimeeri sulgemisel süsteemisalve"}
+closeToTrayHint: {value: "Akna sulgemisel jääb rakendus süsteemisalve"}
+checkUpdates: {value: "Kontrolli uuendusi", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdatesHint: {value: "Otsib GitHubist uuemat versiooni", description: "Hint below the desktop update-check checkbox."}
+languageHint: {value: "Kasutajaliidese keel"}
+languageLabel: {value: "Keel"}
+phoneLayout.hint: {value: "Muudab akna telefonisuuruseks, et saaks katsetada Androidi paigutust", description: "Debug builds only."}
+phoneLayout.label: {value: "Telefoni paigutus", description: "Debug builds only."}
+phoneLayout.landscape: {value: "Rõhtpaigutus", description: "Debug builds only. The phone held on its side."}
+phoneLayout.off: {value: "Väljas", description: "Debug builds only. The normal desktop window."}
+phoneLayout.portrait: {value: "Püstpaigutus", description: "Debug builds only. The phone held upright."}
+themeHint: {value: "Süsteemi, hele või tume"}
+themeLabel: {value: "Kujundus"}
+themes.auto: {value: "Süsteemi järgi"}
+themes.dark: {value: "Tume"}
+themes.light: {value: "Hele"}
+
+# Sound-card calibration
+calibration.askBody:
+  value: "Kalibreerimata diskreetimiskell võib põhjustada väikese püsiva mõõtevea. Kalibreerimine võtab umbes minuti ega vaja heli."
+calibration.askCalibrate: {value: "Kalibreeri kohe"}
+calibration.askContinue: {value: "Jätka paranduseta"}
+calibration.askTitle: {value: "See helikaart on kalibreerimata"}
+calibration.hint: {value: "Parandab helikaardi kella vea. Võtab umbes minuti, heli pole vaja."}
+calibration.label: {value: "Helikaardi kalibreerimine"}
+calibration.open: {value: "Ava"}
+calibration.openHint: {value: "Ava kalibreerimiskuva mõõtmist alustamata"}
+calibration.saveFailed: {value: "Kalibreerimistulemust ei saanud salvestada. Häälestaja kasutab varem salvestatud olekut."}
+calibration.screen.again: {value: "Kalibreeri uuesti"}
+calibration.screen.bar.confirming: {value: "Kinnitamine"}
+calibration.screen.bar.settling: {value: "Stabiliseerumine"}
+
+calibration.screen.calibrated:
+  value: "Kalibreeritud. Näitudele rakendatav parandus on {percent} %."
+  placeholders:
+    percent: {type: string}
+
+calibration.screen.calibrating: {value: "Helikaardi kella mõõtmine"}
+
+calibration.screen.how:
+  value: "Näitudel võib olla väike püsiv helikõrguse viga. Heli pole vaja, aega kulub umbes minut."
+
+calibration.screen.lead: {value: "Veel kalibreerimata"}
+
+calibration.screen.phase.confirming:
+  value: "Näit on stabiilne. Kontrollitakse, kas see püsib stabiilsena 20 s."
+
+calibration.screen.phase.preparing: {value: "Enne kella mõõtmist lastakse sisendil stabiliseeruda."}
+calibration.screen.phase.settling: {value: "Oodatakse kella näidu stabiliseerumist."}
+
+calibration.screen.pitch:
+  value: "See vastab igal noodil kõrvalekaldele {pitch}."
+  placeholders:
+    pitch: {type: string}
+
+calibration.screen.preparing: {value: "Sisendi ettevalmistamine"}
+calibration.screen.retry: {value: "Näidud jäävad parandamata. Sulge teised helirakendused ja proovi uuesti."}
+calibration.screen.return: {value: "Tagasi"}
+calibration.screen.stat.dropouts: {value: "Katkestused"}
+calibration.screen.stat.elapsed: {value: "Kulunud aeg"}
+calibration.screen.stat.offset: {value: "Kella nihe"}
+calibration.screen.stat.rate: {value: "Diskreetimissagedus"}
+calibration.screen.stat.steadiness: {value: "Stabiilsus"}
+
+calibration.screen.steadiness:
+  value: "{ppm} ppm, siht {target} ppm"
+  placeholders:
+    ppm: {type: string}
+    target: {type: string}
+
+calibration.screen.steps.done: {value: "Valmis"}
+calibration.screen.steps.measure: {value: "Mõõtmine"}
+calibration.screen.steps.prepare: {value: "Soojendus"}
+calibration.screen.traceEmpty: {value: "Mõõtmise ajal joonistatakse siia kella nihe."}
+calibration.screen.unreliable: {value: "Kella näit ei stabiliseerunud"}
+calibration.start: {value: "Kalibreeri"}
+calibration.startHint: {value: "Mõõda sisendi diskreetimiskella"}
+
+calibration.status.calibrated:
+  value: "Kalibreeritud, {percent} %"
+  placeholders:
+    percent: {type: string}
+
+calibration.status.calibrating:
+  value: "Kalibreerimine, {seconds} s ({percent} %), valmis {progress} %"
+  placeholders:
+    percent: {type: string}
+    progress: {type: string}
+    seconds: {type: string}
+
+calibration.status.preparing: {value: "Ettevalmistamine"}
+calibration.status.uncalibrated: {value: "Kalibreerimata"}
+calibration.status.unreliable: {value: "Ebausaldusväärne, näite ei korrigeerita"}
+
+# Settings section headings
+groups.appearance: {value: "Välimus"}
+groups.detection: {value: "Tuvastus"}
+groups.microphone: {value: "Mikrofon"}
+groups.output: {value: "Väljund", description: "Settings section shown on a phone, holding the output volume."}
+groups.readings: {value: "Näidud"}
+groups.report: {value: "Töökoja andmed"}
+
+# Report letterhead
+report.address: {value: "Aadress"}
+report.name: {value: "Töökoja nimi"}
+report.nameHint: {value: "Näidatakse eksporditud aruannetes, kui kirjaplank on sisse lülitatud."}

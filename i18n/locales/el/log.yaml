@@ -1,0 +1,100 @@
+# Diagnostic log messages (el).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Application lifecycle and configuration
+appStarting: {value: "Εκκίνηση του SmeggTuner"}
+cleaningUp: {value: "Αποδέσμευση πόρων"}
+configLoadFailed: {value: "Αποτυχία φόρτωσης ρυθμίσεων"}
+configLoaded: {value: "Οι ρυθμίσεις φορτώθηκαν"}
+configSaveFailed: {value: "Αποτυχία αποθήκευσης ρυθμίσεων"}
+crashScreenFailed: {value: "Αποτυχία εμφάνισης της οθόνης σφάλματος"}
+crashWatchFailed: {value: "Αποτυχία εκκίνησης της παρακολούθησης καταρρεύσεων"}
+datastoreInitFailed: {value: "Αποτυχία αρχικοποίησης του χώρου αποθήκευσης δεδομένων"}
+datastoreReady: {value: "Ο χώρος αποθήκευσης δεδομένων είναι έτοιμος"}
+loadingConfig: {value: "Φόρτωση ρυθμίσεων"}
+loggerInitFailed: {value: "Αποτυχία ρύθμισης του μηχανισμού καταγραφής"}
+reinitLogger: {value: "Εκ νέου ρύθμιση της καταγραφής με βάση τις ρυθμίσεις"}
+runFailed: {value: "Αποτυχία εκτέλεσης της εφαρμογής"}
+secondInstance: {value: "Εκκινήθηκε δεύτερο αντίγραφο, ενεργοποιείται το υπάρχον παράθυρο"}
+trayIconFailed: {value: "Αποτυχία φόρτωσης του εικονιδίου στην περιοχή ειδοποιήσεων"}
+updateCheckFailed: {value: "Αποτυχία ελέγχου για ενημερώσεις", description: "Update check or stored release-note state failed; logged without a dialog."}
+windowStateLoadFailed: {value: "Αποτυχία φόρτωσης της κατάστασης του παραθύρου"}
+windowStateSaveFailed: {value: "Αποτυχία αποθήκευσης της κατάστασης του παραθύρου"}
+
+# Audio devices and calibration
+audioDeviceEnumFailed: {value: "Αποτυχία απαρίθμησης των συσκευών εγγραφής"}
+audioDeviceGone: {value: "Η επιλεγμένη συσκευή εγγραφής δεν είναι πλέον διαθέσιμη"}
+audioDevicesListed: {value: "Ολοκληρώθηκε η απαρίθμηση των συσκευών εγγραφής"}
+audioDialogFailed: {value: "Σφάλμα στο παράθυρο επιλογής αρχείου"}
+audioDialogUnavailable: {value: "Ζητήθηκε παράθυρο επιλογής αρχείου χωρίς ενεργή εφαρμογή"}
+audioFileUnreadable: {value: "Αδύνατο το άνοιγμα της ηχογράφησης"}
+audioNoDevices: {value: "Δεν υπάρχουν διαθέσιμες συσκευές εγγραφής"}
+audioSourceSelected: {value: "Επιλέχθηκε πηγή εισόδου"}
+audioSpeakerUnavailable: {value: "Δεν υπάρχει συσκευή εξόδου, το αρχείο θα αναπαραχθεί χωρίς ήχο"}
+calibrationAbandoned: {value: "Η βαθμονόμηση της κάρτας ήχου διακόπηκε"}
+calibrationFinished: {value: "Η βαθμονόμηση της κάρτας ήχου ολοκληρώθηκε"}
+calibrationNoDevice: {value: "Αδύνατο το άνοιγμα της συσκευής για βαθμονόμηση της κάρτας ήχου"}
+calibrationStarted: {value: "Η βαθμονόμηση της κάρτας ήχου ξεκίνησε"}
+deviceStoreFailed: {value: "Αποτυχία αποθήκευσης των ρυθμίσεων μιας συσκευής εγγραφής"}
+micBlocksDropped: {value: "Η επεξεργασία δεδομένων μικροφώνου κόλλησε, απορρίπτονται μπλοκ"}
+micDeviceLost: {value: "Η συσκευή εγγραφής σταμάτησε απρόσμενα"}
+volumeRestore: {value: "Ο αυτόματος έλεγχος έντασης δεν μπόρεσε να επαναφέρει τη στάθμη εισόδου"}
+volumeStepFailed: {value: "Ο αυτόματος έλεγχος έντασης δεν μπόρεσε να ρυθμίσει τη στάθμη εισόδου"}
+volumeUnavailable: {value: "Ο αυτόματος έλεγχος έντασης δεν έχει πρόσβαση στη ρύθμιση στάθμης εισόδου της συσκευής"}
+
+# Tuner engine
+tunerEventsDropped: {value: "Χάθηκαν συμβάντα μέτρησης, η διεπαφή χρήστη καθυστερεί"}
+tunerRunFailed: {value: "Η μηχανή μετρήσεων σταμάτησε λόγω σφάλματος"}
+tunerSettingRejected: {value: "Απορρίφθηκε τιμή ρύθμισης εκτός ορίων"}
+tunerStartFailed: {value: "Αποτυχία δημιουργίας της πηγής εισόδου"}
+tunerStarted: {value: "Η μηχανή μετρήσεων ξεκίνησε"}
+tunerStopped: {value: "Η μηχανή μετρήσεων σταμάτησε"}
+tunerTonePlayFailed: {value: "Αποτυχία αναπαραγωγής του τόνου αναφοράς"}
+tunerTonePlaying: {value: "Αναπαραγωγή τόνου αναφοράς"}
+
+# Sessions, readings and reports
+recordCleared: {value: "Το πέρασμα μετρήσεων εκκαθαρίστηκε"}
+recordEdited: {value: "Η μέτρηση τροποποιήθηκε χειροκίνητα"}
+recordRejected: {value: "Απορρίφθηκε αίτημα καταγραφής"}
+recordTake: {value: "Η μέτρηση καταγράφηκε"}
+recordUndone: {value: "Αναιρέθηκε η τελευταία μέτρηση"}
+reportFailed: {value: "Αποτυχία εγγραφής της αναφοράς κουρδίσματος"}
+reportOpenFailed: {value: "Αποτυχία ανοίγματος της αναφοράς κουρδίσματος"}
+reportOpened: {value: "Η αναφορά κουρδίσματος διαβιβάστηκε στον περιηγητή"}
+reportRejected: {value: "Απορρίφθηκε αίτημα αναφοράς"}
+reportWritten: {value: "Η αναφορά κουρδίσματος γράφτηκε"}
+sessionClosed: {value: "Η συνεδρία έκλεισε"}
+sessionCreated: {value: "Δημιουργήθηκε συνεδρία"}
+sessionCurveDropped: {value: "Η καμπύλη στόχου αφαιρέθηκε"}
+sessionCurveFitted: {value: "Η καμπύλη στόχου προσαρμόστηκε στις μετρήσεις ενός περάσματος"}
+sessionCurveImported: {value: "Η καμπύλη στόχου εισήχθη"}
+sessionDeleted: {value: "Η συνεδρία διαγράφηκε"}
+sessionLoadFailed: {value: "Αποτυχία φόρτωσης συνεδρίας"}
+sessionOpened: {value: "Η συνεδρία άνοιξε"}
+sessionReedsClamped: {value: "Ηχούν περισσότερα καλάμια από όσα διακρίνει η μηχανή, περιορίζεται ο αριθμός που αναλύει"}
+sessionRejected: {value: "Απορρίφθηκε μη έγκυρη αλλαγή συνεδρίας"}
+sessionSaveFailed: {value: "Αποτυχία αποθήκευσης συνεδρίας"}
+
+# Frontend diagnostics
+frontendAudioCalibrationCancelFailed: {value: "Αδυναμία ακύρωσης βαθμονόμησης"}
+frontendAudioCalibrationFailed: {value: "Αδυναμία έναρξης βαθμονόμησης"}
+frontendAudioCorrectionFailed: {value: "Αδυναμία ανάγνωσης της διόρθωσης της κάρτας ήχου"}
+frontendAudioDialogFailed: {value: "Αδυναμία ανοίγματος του παραθύρου επιλογής αρχείου"}
+frontendAudioListFailed: {value: "Αδυναμία απαρίθμησης συσκευών ήχου"}
+frontendAudioSelectFailed: {value: "Αδυναμία επιλογής πηγής ήχου"}
+frontendAudioStateFailed: {value: "Αδυναμία ανάγνωσης της κατάστασης της συσκευής ήχου"}
+frontendAudioVolumeFailed: {value: "Αδυναμία αλλαγής του αυτόματου ελέγχου έντασης"}
+frontendConfigLoadFailed: {value: "Αδυναμία φόρτωσης ρυθμίσεων"}
+frontendConfigLoaded: {value: "Οι ρυθμίσεις φορτώθηκαν"}
+frontendConfigSaveFailed: {value: "Αδυναμία αποθήκευσης ρυθμίσεων"}
+frontendCurveViewFailed: {value: "Αδυναμία ανάγνωσης των ρυθμίσεων προβολής καμπύλης"}
+frontendError: {value: "Απρόσμενο σφάλμα εφαρμογής"}
+frontendRejection: {value: "Απέτυχε μια λειτουργία της εφαρμογής"}
+frontendResizeNotice: {value: "Η αλλαγή διάταξης μετατέθηκε στο επόμενο καρέ (ειδοποίηση ResizeObserver του περιηγητή)"}
+frontendSettingFailed: {value: "Αδυναμία αλλαγής ρύθμισης του χορδιστηριού"}
+frontendTunerStartFailed: {value: "Αδυναμία εκκίνησης του χορδιστηριού"}
+frontendTunerStateFailed: {value: "Αδυναμία ανάγνωσης της κατάστασης του χορδιστηριού"}
+frontendTunerStopFailed: {value: "Αδυναμία διακοπής του χορδιστηριού"}
+frontendTunerTonePlayFailed: {value: "Αδυναμία αναπαραγωγής του τόνου αναφοράς"}
+frontendTunerToneStopFailed: {value: "Αδυναμία διακοπής του τόνου αναφοράς"}

@@ -1,0 +1,62 @@
+# S99AB startup and crash dialogs (cs).
+close: {value: "Zavřít"}
+copied: {value: "Zkopírováno"}
+copy: {value: "Kopírovat hlášení"}
+details: {value: "Podrobnosti"}
+email: {value: "Odeslat hlášení e-mailem"}
+failed:
+  value: "Akce se nezdařila: {error}"
+  placeholders:
+    error: {type: string}
+file:
+  value: "Soubor: {path}"
+  placeholders:
+    path: {type: string}
+kill: {value: "Ukončit a odeslat hlášení"}
+logs: {value: "Zobrazit soubor protokolu"}
+messageConfig:
+  value: "Soubor nastavení se nepodařilo přečíst. Opravte jej nebo odstraňte a znovu spusťte {app}."
+  placeholders:
+    app: {type: string}
+messageCrash:
+  value: "V aplikaci {app} došlo k chybě. Odešlete hlášení, aby bylo možné chybu opravit, a poté aplikaci znovu spusťte."
+  placeholders:
+    app: {type: string}
+messageHang: {value: "Aplikace může probíhající operaci ještě dokončit. Vyčkejte, nebo ji ukončete a odešlete hlášení."}
+messageHangStopped:
+  value: "Aplikace {app} byla ukončena, když nereagovala. Odešlete hlášení, aby bylo možné chybu opravit, a poté aplikaci znovu spusťte."
+  placeholders:
+    app: {type: string}
+messageKilled:
+  value: "Aplikace {app} byla ukončena dříve, než mohla ohlásit chybu. Odešlete hlášení a poté aplikaci znovu spusťte."
+  placeholders:
+    app: {type: string}
+messageOom:
+  value: "Systému došla paměť a ukončil aplikaci {app}. Odešlete hlášení a poté ji znovu spusťte."
+  placeholders:
+    app: {type: string}
+messageStartup:
+  value: "Odstraňte níže uvedenou příčinu a znovu spusťte {app}."
+  placeholders:
+    app: {type: string}
+restart: {value: "Spustit znovu"}
+save: {value: "Uložit hlášení"}
+saved:
+  value: "Uloženo do {path}"
+  placeholders:
+    path: {type: string}
+starting:
+  value: "Spouští se {app}"
+  placeholders:
+    app: {type: string}
+titleCrash: {value: "Aplikace neočekávaně přestala pracovat"}
+titleHang: {value: "Aplikace nereaguje"}
+titleHangStopped: {value: "Aplikace přestala reagovat"}
+titleKilled: {value: "Aplikace se neočekávaně ukončila"}
+titleStart: {value: "Aplikaci se nepodařilo spustit"}
+wait: {value: "Počkat"}
+windowCrash: {value: "selhání aplikace"}
+windowHang: {value: "nereaguje"}
+windowHangStopped: {value: "přestala reagovat"}
+windowKilled: {value: "neočekávané ukončení"}
+windowStart: {value: "spuštění se nezdařilo"}

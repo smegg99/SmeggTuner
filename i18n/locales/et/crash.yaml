@@ -1,0 +1,62 @@
+# S99AB startup and crash dialogs (et).
+close: {value: "Sulge"}
+copied: {value: "Kopeeritud"}
+copy: {value: "Kopeeri aruanne"}
+details: {value: "Üksikasjad"}
+email: {value: "Saada aruanne e-postiga"}
+failed:
+  value: "Toiming ebaõnnestus: {error}"
+  placeholders:
+    error: {type: string}
+file:
+  value: "Fail: {path}"
+  placeholders:
+    path: {type: string}
+kill: {value: "Sulge ja saada aruanne"}
+logs: {value: "Näita logifaili"}
+messageConfig:
+  value: "Seadete faili ei saanud lugeda. Paranda või kustuta see ning käivita {app} uuesti."
+  placeholders:
+    app: {type: string}
+messageCrash:
+  value: "Rakenduses {app} tekkis sisemine viga. Saada aruanne, et viga saaks parandada, ja käivita rakendus uuesti."
+  placeholders:
+    app: {type: string}
+messageHang: {value: "Rakendus võib poolelioleva toimingu veel lõpule viia. Oota või sulge rakendus ja saada aruanne."}
+messageHangStopped:
+  value: "{app} suleti ajal, mil see ei vastanud. Saada aruanne, et viga saaks parandada, ja käivita rakendus uuesti."
+  placeholders:
+    app: {type: string}
+messageKilled:
+  value: "{app} suleti enne, kui see jõudis veast teatada. Saada aruanne ja käivita rakendus uuesti."
+  placeholders:
+    app: {type: string}
+messageOom:
+  value: "Süsteemil sai mälu otsa ja {app} suleti. Saada aruanne ja käivita rakendus uuesti."
+  placeholders:
+    app: {type: string}
+messageStartup:
+  value: "Kõrvalda allpool näidatud vea põhjus ja käivita {app} uuesti."
+  placeholders:
+    app: {type: string}
+restart: {value: "Käivita uuesti"}
+save: {value: "Salvesta aruanne"}
+saved:
+  value: "Salvestatud asukohta {path}"
+  placeholders:
+    path: {type: string}
+starting:
+  value: "Käivitub {app}"
+  placeholders:
+    app: {type: string}
+titleCrash: {value: "Rakenduse töö katkes ootamatult"}
+titleHang: {value: "Rakendus ei vasta"}
+titleHangStopped: {value: "Rakendus lakkas vastamast"}
+titleKilled: {value: "Rakendus sulgus ootamatult"}
+titleStart: {value: "Rakendust ei saanud käivitada"}
+wait: {value: "Oota"}
+windowCrash: {value: "jooksis kokku"}
+windowHang: {value: "ei vasta"}
+windowHangStopped: {value: "lakkas vastamast"}
+windowKilled: {value: "sulgus ootamatult"}
+windowStart: {value: "ei käivitunud"}

@@ -1,0 +1,15 @@
+# S99AB release notes and update prompts (ja).
+notesTitle:
+  value: "{version} の変更点"
+  placeholders:
+    version: {type: string}
+notTranslated: {value: "このリリースノートはまだ翻訳されていません。"}
+updateBody:
+  value: "現在のバージョンは {current}、最新バージョンは {latest} です。"
+  placeholders:
+    current: {type: string}
+    latest: {type: string}
+updateDownload: {value: "ダウンロード"}
+updateIgnore: {value: "このバージョンをスキップ"}
+updateLater: {value: "後で"}
+updateTitle: {value: "新しいバージョンがあります"}

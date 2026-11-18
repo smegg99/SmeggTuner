@@ -1,0 +1,298 @@
+# Live tuner, WAV playback and browser edition (ko).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Input, output and playback
+input.relearnHint: {value: "배경 소음 다시 학습(4초간 조용히 유지)"}
+input.tooStrong: {value: "신호가 너무 강합니다"}
+input.unreliable: {value: "신호를 신뢰할 수 없습니다"}
+inputPanel.label: {value: "입력 신호"}
+inputPanel.title: {value: "입력"}
+level.silent: {value: "무음"}
+output.mute: {value: "음소거"}
+output.unmute: {value: "음소거 해제"}
+output.volume: {value: "출력 음량"}
+soundcard.running: {value: "사운드 카드 보정 중"}
+soundcard.uncalibrated: {value: "사운드 카드가 보정되지 않았습니다. 보정하기"}
+soundcard.unreliable: {value: "보정 결과가 불안정합니다. 다시 보정하기"}
+source.analyze: {value: "녹음 분석…"}
+source.default: {value: "시스템 기본값"}
+source.noDevices: {value: "마이크를 찾을 수 없습니다"}
+source.refresh: {value: "장치 목록 새로 고침"}
+transport.fileHint: {value: "녹음은 해당 녹음 카드에서 재생합니다"}
+transport.start: {value: "시작"}
+transport.stop: {value: "중지"}
+
+# Modes, registers and note selection
+bassRegister.all: {value: "전체 베이스 장치"}
+bassRegister.hint: {value: "현재 선택한 베이스 스위치"}
+controls: {value: "조율 제어"}
+mode.auto: {value: "자동"}
+mode.autoHint: {value: "튜너가 음을 자동으로 찾습니다"}
+mode.pinHint: {value: "이 음 고정"}
+mode.pinned: {value: "고정한 음"}
+notes.clickToPin: {value: "클릭하여 고정"}
+notes.label: {value: "E0부터 C9까지의 음입니다. 클릭하여 고정하세요."}
+notes.range: {value: "E0~C9"}
+notes.title: {value: "음"}
+notes.tracking: {value: "추적 중"}
+panel.boxBase: {value: "기본음은 항상 측정합니다"}
+panel.boxChord: {value: "화음 모드는 세 음을 모두 측정합니다"}
+panel.boxLast: {value: "측정 칸을 하나 이상 켜 두세요"}
+
+panel.boxOctave:
+  plural:
+    argument: octaves
+    forms:
+      other: "측정 칸 {box}: 기본음보다 {octaves}옥타브 위"
+  placeholders:
+    octaves: {type: integer}
+    box: {type: string}
+
+panel.boxReed:
+  value: "리드 {n}: 측정 여부 선택"
+  placeholders:
+    n: {type: string}
+
+panel.bySession:
+  plural:
+    argument: n
+    forms:
+      other: "리드 {n}개, 세션의 레지스터로 결정"
+  placeholders:
+    n: {type: integer}
+
+panel.locked: {value: "잠금"}
+panel.modeHints.chords: {value: "세 음으로 이루어진 화음"}
+panel.modeHints.octaves: {value: "한 음과 그 위 옥타브 음"}
+panel.modeHints.tones: {value: "한 음에 리드 최대 3개"}
+panel.modeLabel: {value: "측정 대상"}
+panel.modes.chords: {value: "화음"}
+panel.modes.octaves: {value: "옥타브"}
+panel.modes.tones: {value: "단음"}
+panel.quiet: {value: "소리가 너무 작습니다"}
+panel.recorded: {value: "기록됨"}
+panel.reeds: {value: "리드"}
+
+reeds.count:
+  plural:
+    argument: n
+    forms:
+      other: "리드 {n}개"
+  placeholders:
+    n: {type: integer}
+
+register.hint: {value: "현재 선택한 레지스터"}
+register.lockedPlaying: {value: "레지스터를 바꾸려면 재생을 중지하세요."}
+side.bass: {value: "베이스"}
+side.hint: {value: "트레블 쪽 또는 베이스 쪽"}
+side.treble: {value: "트레블"}
+step.noteDown: {value: "반음 내리기"}
+step.noteUp: {value: "반음 올리기"}
+# Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
+signal.add: {value: "소리 추가"}
+signal.cents: {value: "해당 음과의 차이(센트)"}
+signal.down: {value: "반음 내리기(왼쪽 화살표, 아래쪽 화살표는 한 옥타브)"}
+signal.open: {value: "신호 발생기: 리드 조율의 기준이 되는 깨끗한 음을 냅니다"}
+signal.play: {value: "재생"}
+signal.playHint: {value: "설정한 모든 소리를 겹쳐 해당 음을 재생합니다. 선택한 음이 없으면 처음 감지한 음을 재생합니다(스페이스바)"}
+signal.remove: {value: "이 소리 제거"}
+signal.stop: {value: "중지"}
+signal.stopHint: {value: "소리 중지(스페이스바)"}
+signal.title: {value: "신호 발생기"}
+signal.up: {value: "반음 올리기(오른쪽 화살표, 위쪽 화살표는 한 옥타브)"}
+signal.wave.hint: {value: "리드 소리에는 배음이 있어 배음에서도 맥놀이가 들립니다"}
+signal.wave.reed: {value: "리드음"}
+signal.wave.sine: {value: "사인파"}
+
+# Reference pitch and units
+reference.a4Locked: {value: "설정에서 잠김"}
+reference.a4Type: {value: "A4 주파수를 430~450 Hz 범위로 입력"}
+reference.frozen: {value: "고정됨: 세션에 이미 측정값이 있습니다"}
+reference.transpose: {value: "이조"}
+reference.transposeDown: {value: "이조량 반음 줄이기"}
+reference.transposeHint: {value: "건반 이름보다 실제 음이 높은 반음 수"}
+reference.transposeMode: {value: "화음과 옥타브는 이조 없이 측정합니다"}
+reference.transposeUp: {value: "이조량 반음 늘리기"}
+
+reference.transposed:
+  value: "이조 +{n}"
+  placeholders:
+    n: {type: string}
+
+unit.cents: {value: "센트"}
+unit.hz: {value: "Hz"}
+unit.reference: {value: "상대 단위"}
+
+# Live readings and graphs
+boxes.beat:
+  value: "리드 {a}와 {b} 사이의 맥놀이"
+  placeholders:
+    a: {type: string}
+    b: {type: string}
+
+boxes.goal: {value: "목표"}
+boxes.hzOnly: {value: "Hz로만 표시"}
+boxes.notHeard: {value: "소리 미감지"}
+
+boxes.reed:
+  value: "리드 {n}"
+  placeholders:
+    n: {type: string}
+
+boxes.reedBank:
+  value: "리드 {bank}"
+  placeholders:
+    bank: {type: string}
+
+boxes.tone:
+  value: "음 {n}"
+  placeholders:
+    n: {type: string}
+
+ruler.label: {value: "각 리드의 편차"}
+spectrum.label: {value: "추적 중인 음의 주파수 스펙트럼"}
+spectrum.title: {value: "스펙트럼"}
+
+# Hold, noise learning and tuner state
+hold.hint: {value: "안정된 측정값 유지(H)"}
+state.deviceLost: {value: "입력 끊김"}
+state.initializing: {value: "실내 소음 측정 중"}
+state.running: {value: "소리 듣는 중"}
+state.stopped: {value: "중지됨"}
+state.tooQuiet: {value: "소리가 너무 작습니다. 더 크게 연주하거나 마이크에 가까이 가세요"}
+warmup.quiet: {value: "조용히 해 주세요"}
+
+# WAV files and waveform controls
+file.clearSelection: {value: "녹음 전체 선택"}
+file.fit: {value: "녹음 전체 표시"}
+file.loop: {value: "선택 구간 반복 재생"}
+file.mute: {value: "녹음 음소거"}
+file.openFilter: {value: "WAV 오디오"}
+file.openTitle: {value: "WAV 녹음 선택"}
+file.pause: {value: "일시 정지"}
+file.play: {value: "재생"}
+file.stop: {value: "중지하고 선택 구간 시작으로 이동"}
+file.toEnd: {value: "선택 구간 끝으로"}
+file.toStart: {value: "선택 구간 시작으로"}
+file.unmute: {value: "녹음 소리 켜기"}
+file.volume: {value: "재생 음량"}
+
+file.waveform:
+  value: "{name}의 파형입니다. 시간축을 끌어 재생 위치를 옮기고 파형을 끌어 구간을 선택하세요. 재생이 멈추면 옅은 점선이 화면의 측정값에 사용한 오디오 구간을 나타냅니다."
+  placeholders:
+    name: {type: string}
+
+file.zoomIn: {value: "확대"}
+file.zoomOut: {value: "축소"}
+
+# Instrument calibration workflow
+calibrate.leave: {value: "보정 나가기"}
+calibrate.needsSession: {value: "악기를 보정하려면 해당 세션을 여세요."}
+calibrate.range.again: {value: "처음부터 다시 시작"}
+
+calibrate.range.backwards:
+  value: "최고음은 최저음보다 낮을 수 없습니다. 음역을 다시 측정하세요."
+
+calibrate.range.capture: {value: "측정값 채취"}
+calibrate.range.highest: {value: "최고음"}
+calibrate.range.lowest: {value: "최저음"}
+calibrate.range.next: {value: "리드 보정으로 계속"}
+calibrate.range.playHigh: {value: "이제 가장 높은 건반을 연주하세요."}
+calibrate.range.playLow: {value: "가장 낮은 건반을 연주하세요."}
+calibrate.range.step: {value: "건반"}
+calibrate.status.captured: {value: "측정값 채취됨"}
+calibrate.status.holding: {value: "음을 일정하게 유지하세요"}
+calibrate.status.loud: {value: "소리가 너무 큽니다"}
+calibrate.status.play: {value: "음 하나를 연주하세요"}
+calibrate.sweep.bassAll: {value: "베이스: 전체 장치"}
+
+calibrate.sweep.done:
+  plural:
+    argument: n
+    forms:
+      other: "순차 측정을 마쳤습니다. 카드에 측정값이 {n}개 있습니다."
+  placeholders:
+    n: {type: integer}
+
+calibrate.sweep.noRegisters:
+  value: "이 아코디언에는 등록된 레지스터가 없습니다. 순차 측정은 가능하며 값은 번호가 붙은 열에 기록됩니다."
+calibrate.sweep.pickRegister: {value: "어느 레지스터를 보정할까요?"}
+
+calibrate.sweep.progress:
+  value: "{total}개 중 {done}개"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+calibrate.sweep.redoRange: {value: "건반 음역 다시 측정"}
+calibrate.sweep.review: {value: "조율 카드 보기"}
+calibrate.sweep.skip: {value: "건너뛰기"}
+
+calibrate.sweep.soloTeaches:
+  value: "리드 열 하나만 울리는 레지스터로 각 음을 차례로 측정하면 앱이 그 리드 열의 음색도 학습합니다."
+
+calibrate.sweep.startPlain: {value: "순차 측정 시작"}
+calibrate.sweep.step: {value: "리드"}
+calibrate.sweep.stop: {value: "중지"}
+calibrate.title: {value: "보정"}
+
+# Browser edition
+web.accent.default: {value: "기본값"}
+web.accent.hint: {value: "앱 기본색을 사용하거나 색을 직접 선택합니다"}
+web.diagnostics.copied: {value: "복사됨"}
+web.diagnostics.copy: {value: "진단 정보 복사"}
+web.diagnostics.empty: {value: "마이크 세부 정보를 보려면 튜너를 시작하세요."}
+web.diagnostics.title: {value: "진단 정보"}
+web.downloads.title: {value: "앱 다운로드"}
+web.experimental: {value: "실험판"}
+web.loadFailed: {value: "이 브라우저에서 측정 엔진을 시작하지 못했습니다."}
+
+web.mic.denied:
+  value: "마이크 접근이 거부되었습니다. 브라우저 설정에서 허용한 후 튜너를 다시 시작하세요."
+
+web.mic.failed: {value: "마이크를 열 수 없습니다."}
+web.mic.none: {value: "마이크를 찾을 수 없습니다."}
+web.mic.unsupported: {value: "이 브라우저는 오디오를 녹음할 수 없습니다."}
+web.notice.background: {value: "백그라운드 탭에서는 오디오가 일시 정지될 수 있습니다."}
+web.notice.native: {value: "정확한 측정에는 설치형 앱을 사용하세요."}
+web.notice.ok: {value: "확인"}
+
+web.notice.processing:
+  value: "브라우저가 마이크 신호에 반향 제거, 소음 억제, 자동 이득 조절 또는 리샘플링을 적용할 수 있습니다. 모두 측정값에 영향을 줄 수 있습니다."
+web.notice.title: {value: "실험용 웹 버전"}
+web.processing.autoGainControl: {value: "자동 이득 조절"}
+web.processing.echoCancellation: {value: "반향 제거"}
+web.processing.noiseSuppression: {value: "소음 억제"}
+
+web.processingOn:
+  value: "브라우저에서 다음 처리가 계속 켜져 있습니다: {list}. 측정값에 오차가 있을 수 있습니다."
+  placeholders:
+    list: {type: string}
+
+web.slow:
+  value: "이 기기가 엔진의 처리 속도를 따라가지 못합니다. 최신 측정값을 표시하기 위해 지연된 오디오는 건너뜁니다."
+
+# Tuner errors
+error.a4Locked: {value: "설정에서 기준 음높이가 잠겨 있습니다."}
+error.chordsAuto: {value: "화음 모드는 음을 자동으로 선택합니다."}
+error.deviceGone: {value: "해당 마이크의 연결이 끊겼습니다."}
+error.deviceLost: {value: "마이크가 응답하지 않아 튜너가 중지되었습니다."}
+error.fileUnreadable: {value: "녹음을 읽을 수 없습니다. WAV 파일을 선택하세요."}
+error.invalidA4: {value: "기준 음높이는 430~450 Hz여야 합니다."}
+error.invalidBox: {value: "해당 리드 측정 칸이 없습니다."}
+error.invalidMode: {value: "튜너는 단음, 옥타브 또는 화음을 측정합니다."}
+error.invalidNote: {value: "이 음은 튜너의 추적 범위를 벗어납니다."}
+error.invalidTranspose: {value: "이조 범위는 0~11반음입니다."}
+error.lastBox: {value: "측정 칸을 하나 이상 켜 두세요"}
+error.noDevices: {value: "마이크를 찾을 수 없습니다. 연결한 후 장치 목록을 새로 고치세요."}
+error.playbackFailed: {value: "기준음을 재생할 수 없습니다."}
+
+error.sampleRate:
+  value: "현재 기준 음높이와 이조량에서 높은 음을 측정하기에는 입력 샘플링 주파수가 너무 낮습니다. 44.1 kHz 이상으로 녹음한 파일을 사용하세요."
+error.sessionDecides: {value: "열린 세션의 레지스터가 측정 대상을 결정합니다."}
+error.signalVoices:
+  value: "소리를 1~4개 재생할 수 있으며 각각 해당 음에서 100센트 이내여야 합니다."
+error.toneNeedsManual: {value: "기준음을 재생하려면 먼저 음을 고정하세요."}
+error.transposeMode: {value: "화음과 옥타브는 이조 없이 측정합니다"}
+error.unexpected: {value: "오류가 발생했습니다. 자세한 내용은 로그를 확인하세요."}

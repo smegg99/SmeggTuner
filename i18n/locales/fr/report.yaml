@@ -1,0 +1,155 @@
+# Printed reports and export (fr).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one, other (locale cardinal rules).
+
+# Report title and instrument details
+facts.curve: {value: "Courbe cible"}
+facts.curveNone: {value: "aucune"}
+facts.curveUnnamed: {value: "sans nom"}
+facts.reference: {value: "La4 de référence (ce passage)"}
+facts.tolerance: {value: "Tolérance"}
+
+facts.toleranceValue:
+  value: "anche : {reed} {unit} / battement : {beat} {unit}"
+  placeholders:
+    beat: {type: string}
+    reed: {type: string}
+    unit: {type: string}
+
+facts.transpose: {value: "Transposition"}
+
+facts.transposeValue:
+  value: "{key} sonne comme {sounds}"
+  placeholders:
+    key: {type: string}
+    sounds: {type: string}
+
+title: {value: "Rapport d'accordage"}
+
+# Table and column headings
+head.beat:
+  value: "Battement {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.bassTitle:
+  value: "Tableau d'accordage des basses ({unit})"
+  placeholders:
+    unit: {type: string}
+
+table.curr: {value: "Mes."}
+table.err: {value: "Écart"}
+table.register: {value: "Registre"}
+
+table.title:
+  value: "Tableau d'accordage ({unit})"
+  placeholders:
+    unit: {type: string}
+
+# Deviation units
+unit.cents.name: {value: "cents"}
+unit.cents.symbol: {value: "c"}
+unit.reference.name: {value: "unités de 0,06 %"}
+
+# Graph legend and reading markers
+graph.edited:
+  value: "{mark} - modification manuelle."
+  placeholders:
+    mark: {type: string}
+
+legend.error.cents:
+  value: "Limez pour ramener l'écart à zéro. Écart en cents par rapport à la gamme tempérée à {a4} Hz."
+  placeholders:
+    a4: {type: string}
+
+legend.error.key: {value: "Écart = mesure - cible."}
+legend.error.noCurve: {value: "Sans courbe cible, la cible vaut zéro et l'écart se mesure par rapport à la gamme."}
+
+legend.error.reference:
+  value: "Limez pour ramener l'écart à zéro. L'écart par rapport à la gamme tempérée à {a4} Hz est exprimé en unités de 0,06 % de la fréquence de la note."
+  placeholders:
+    a4: {type: string}
+
+legend.out.short: {value: "hors tolérance"}
+legend.takes.key: {value: "xN"}
+legend.takes.short: {value: "plusieurs prises, seule la dernière est affichée"}
+mark.edited: {value: "M"}
+mark.out: {value: "!"}
+
+# Summary and footer
+footer.generated:
+  value: "Généré le {at} par {app}"
+  placeholders:
+    app: {type: string}
+    at: {type: string}
+
+summary.allIn: {value: "Toutes les mesures sont dans la tolérance."}
+
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} battement"
+      other: "{pluralCount} battements"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.line:
+  value: "{notes} (de {min} à {max}), {reeds}, {beats}."
+  placeholders:
+    beats: {type: string}
+    max: {type: string}
+    min: {type: string}
+    notes: {type: string}
+    reeds: {type: string}
+
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} note"
+      other: "{pluralCount} notes"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} hors tolérance ({reeds}, {beats})."
+      other: "{pluralCount} hors tolérance ({reeds}, {beats})."
+  placeholders:
+    beats: {type: string}
+    pluralCount: {type: integer}
+    reeds: {type: string}
+
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} mesure d'anche"
+      other: "{pluralCount} mesures d'anches"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} anche"
+      other: "{pluralCount} anches"
+  placeholders:
+    pluralCount: {type: integer}
+
+# Export errors
+error.invalidDate: {value: "Saisissez une date valide au format AAAA-MM-JJ."}
+error.invalidFormat: {value: "Ce format n'est pas pris en charge pour ce rapport."}
+
+error.noBrowser:
+  value: "La mise en page du PDF nécessite Chrome ou Chromium. Aucun des deux n'est installé. Installez-en un ou exportez la fiche en HTML pour l'imprimer."
+error.openFailed: {value: "Le rapport a été enregistré, mais aucun navigateur n'a pu l'ouvrir. Ouvrez le fichier vous-même."}
+error.renderFailed: {value: "Impossible de générer le rapport. Aucun fichier n'a été écrit."}
+
+error.writeFailed:
+  value: "Impossible d'enregistrer le rapport à cet emplacement. Si un fichier y existait, il a été conservé."

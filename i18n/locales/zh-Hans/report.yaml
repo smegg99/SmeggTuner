@@ -1,0 +1,149 @@
+# Printed reports and export (zh-Hans).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Report title and instrument details
+facts.curve: {value: "目标曲线"}
+facts.curveNone: {value: "无"}
+facts.curveUnnamed: {value: "未命名"}
+facts.reference: {value: "基准音 A4（本轮测量）"}
+facts.tolerance: {value: "容差"}
+
+facts.toleranceValue:
+  value: "簧片 {reed} {unit}／拍频 {beat} {unit}"
+  placeholders:
+    beat: {type: string}
+    reed: {type: string}
+    unit: {type: string}
+
+facts.transpose: {value: "移调"}
+
+facts.transposeValue:
+  value: "{key} 的实际音高为 {sounds}"
+  placeholders:
+    key: {type: string}
+    sounds: {type: string}
+
+title: {value: "调音报告"}
+
+# Table and column headings
+head.beat:
+  value: "拍频 {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.bassTitle:
+  value: "低音部调音表（{unit}）"
+  placeholders:
+    unit: {type: string}
+
+table.curr: {value: "实测"}
+table.err: {value: "误差"}
+table.register: {value: "变音器"}
+
+table.title:
+  value: "调音表（{unit}）"
+  placeholders:
+    unit: {type: string}
+
+# Deviation units
+unit.cents.name: {value: "音分"}
+unit.cents.symbol: {value: "c"}
+unit.reference.name: {value: "以 0.06% 为单位"}
+
+# Graph legend and reading markers
+graph.edited:
+  value: "{mark} 表示手动编辑。"
+  placeholders:
+    mark: {type: string}
+
+legend.error.cents:
+  value: "锉修簧片，使误差趋近于零。数值为相对于 A4 = {a4} Hz 平均律音高的音分偏差。"
+  placeholders:
+    a4: {type: string}
+
+legend.error.key: {value: "误差 = 实测值 − 目标值。"}
+legend.error.noCurve: {value: "未设目标曲线：目标值为零，误差即相对于音阶音高的偏差。"}
+
+legend.error.reference:
+  value: "锉修簧片，使误差趋近于零。以 A4 = {a4} Hz 的平均律音高为基准，每单位为该音频率的 0.06%。"
+  placeholders:
+    a4: {type: string}
+
+legend.out.short: {value: "超出容差"}
+legend.takes.key: {value: "xN"}
+legend.takes.short: {value: "记录过多次，显示最近一次的值"}
+mark.edited: {value: "H"}
+mark.out: {value: "!"}
+
+# Summary and footer
+footer.generated:
+  value: "由 {app} 于 {at} 生成"
+  placeholders:
+    app: {type: string}
+    at: {type: string}
+
+summary.allIn: {value: "全部在容差范围内。"}
+
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      other: "{pluralCount} 个拍频"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.line:
+  value: "{notes}（{min} 至 {max}），{reeds}，{beats}。"
+  placeholders:
+    beats: {type: string}
+    max: {type: string}
+    min: {type: string}
+    notes: {type: string}
+    reeds: {type: string}
+
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      other: "{pluralCount} 个音"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      other: "{pluralCount} 项超出容差（{reeds}，{beats}）。"
+  placeholders:
+    beats: {type: string}
+    pluralCount: {type: integer}
+    reeds: {type: string}
+
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      other: "{pluralCount} 个簧片读数"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      other: "{pluralCount} 个簧片"
+  placeholders:
+    pluralCount: {type: integer}
+
+# Export errors
+error.invalidDate: {value: "请输入 YYYY-MM-DD 格式的有效日期。"}
+error.invalidFormat: {value: "无法以此格式导出报告。"}
+
+error.noBrowser:
+  value: "生成 PDF 需要浏览器排版。本机未找到 Chrome 或 Chromium。请安装其中一个，或将调音卡导出为 HTML 后打印。"
+error.openFailed: {value: "报告已写入，但浏览器未能打开。请手动打开文件。"}
+error.renderFailed: {value: "无法生成报告。未写入任何内容。"}
+
+error.writeFailed:
+  value: "无法将报告写入此处。原有文件（如有）未受影响。"

@@ -1,0 +1,62 @@
+# S99AB startup and crash dialogs (de).
+close: {value: "Schließen"}
+copied: {value: "Kopiert"}
+copy: {value: "Bericht kopieren"}
+details: {value: "Details"}
+email: {value: "Bericht per E-Mail senden"}
+failed:
+  value: "Vorgang fehlgeschlagen: {error}"
+  placeholders:
+    error: {type: string}
+file:
+  value: "Datei: {path}"
+  placeholders:
+    path: {type: string}
+kill: {value: "Beenden und Fehler melden"}
+logs: {value: "Protokolldatei anzeigen"}
+messageConfig:
+  value: "Die Einstellungsdatei konnte nicht gelesen werden. Korrigieren oder löschen Sie die Datei und starten Sie {app} erneut."
+  placeholders:
+    app: {type: string}
+messageCrash:
+  value: "In {app} ist ein interner Fehler aufgetreten. Senden Sie den Bericht, damit der Fehler behoben werden kann, und starten Sie die Anwendung neu."
+  placeholders:
+    app: {type: string}
+messageHang: {value: "Der laufende Vorgang kann noch abgeschlossen werden. Warten Sie oder schließen Sie die Anwendung und senden Sie einen Bericht."}
+messageHangStopped:
+  value: "{app} wurde beendet, als die Anwendung nicht mehr reagierte. Senden Sie den Bericht und starten Sie die Anwendung neu."
+  placeholders:
+    app: {type: string}
+messageKilled:
+  value: "{app} wurde beendet, bevor die Anwendung den Fehler melden konnte. Senden Sie den Bericht und starten Sie die Anwendung neu."
+  placeholders:
+    app: {type: string}
+messageOom:
+  value: "Das System hat {app} wegen Speichermangels beendet. Senden Sie den Bericht und starten Sie die Anwendung neu."
+  placeholders:
+    app: {type: string}
+messageStartup:
+  value: "Beheben Sie die unten angegebene Ursache und starten Sie {app} erneut."
+  placeholders:
+    app: {type: string}
+restart: {value: "Neu starten"}
+save: {value: "Bericht speichern"}
+saved:
+  value: "Gespeichert unter {path}"
+  placeholders:
+    path: {type: string}
+starting:
+  value: "{app} wird gestartet"
+  placeholders:
+    app: {type: string}
+titleCrash: {value: "Die Anwendung wurde unerwartet beendet"}
+titleHang: {value: "Die Anwendung reagiert nicht"}
+titleHangStopped: {value: "Die Anwendung hat nicht mehr reagiert"}
+titleKilled: {value: "Die Anwendung wurde unerwartet geschlossen"}
+titleStart: {value: "Die Anwendung konnte nicht gestartet werden"}
+wait: {value: "Warten"}
+windowCrash: {value: "abgestürzt"}
+windowHang: {value: "reagiert nicht"}
+windowHangStopped: {value: "hat nicht mehr reagiert"}
+windowKilled: {value: "unerwartet geschlossen"}
+windowStart: {value: "Start fehlgeschlagen"}

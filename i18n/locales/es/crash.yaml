@@ -1,0 +1,62 @@
+# S99AB startup and crash dialogs (es).
+close: {value: "Cerrar"}
+copied: {value: "Copiado"}
+copy: {value: "Copiar informe"}
+details: {value: "Detalles"}
+email: {value: "Enviar informe por correo"}
+failed:
+  value: "No se pudo completar la operación: {error}"
+  placeholders:
+    error: {type: string}
+file:
+  value: "Archivo: {path}"
+  placeholders:
+    path: {type: string}
+kill: {value: "Cerrar e informar del problema"}
+logs: {value: "Mostrar archivo de registro"}
+messageConfig:
+  value: "No se pudo leer el archivo de configuración. Corrígelo o elimínalo y vuelve a iniciar {app}."
+  placeholders:
+    app: {type: string}
+messageCrash:
+  value: "Se ha producido un error interno en {app}. Envía el informe para ayudar a corregirlo y reinicia la aplicación."
+  placeholders:
+    app: {type: string}
+messageHang: {value: "Es posible que la operación aún pueda completarse. Espera o cierra la aplicación y envía un informe."}
+messageHangStopped:
+  value: "Se cerró {app} mientras no respondía. Envía el informe para ayudar a corregir el problema y reinicia la aplicación."
+  placeholders:
+    app: {type: string}
+messageKilled:
+  value: "Se cerró {app} antes de que pudiera informar del problema. Envía el informe y reinicia la aplicación."
+  placeholders:
+    app: {type: string}
+messageOom:
+  value: "El sistema se quedó sin memoria y cerró {app}. Envía el informe y reinicia la aplicación."
+  placeholders:
+    app: {type: string}
+messageStartup:
+  value: "Corrige el problema indicado a continuación y vuelve a iniciar {app}."
+  placeholders:
+    app: {type: string}
+restart: {value: "Reiniciar"}
+save: {value: "Guardar informe"}
+saved:
+  value: "Guardado en {path}"
+  placeholders:
+    path: {type: string}
+starting:
+  value: "Iniciando {app}"
+  placeholders:
+    app: {type: string}
+titleCrash: {value: "La aplicación se detuvo de forma inesperada"}
+titleHang: {value: "La aplicación no responde"}
+titleHangStopped: {value: "La aplicación dejó de responder"}
+titleKilled: {value: "La aplicación se cerró de forma inesperada"}
+titleStart: {value: "No se pudo iniciar la aplicación"}
+wait: {value: "Esperar"}
+windowCrash: {value: "fallo de la aplicación"}
+windowHang: {value: "no responde"}
+windowHangStopped: {value: "dejó de responder"}
+windowKilled: {value: "cierre inesperado"}
+windowStart: {value: "error de inicio"}

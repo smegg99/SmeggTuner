@@ -18,7 +18,7 @@ package config
 
 #ThemeMode:  "auto" | "light" | "dark"
 #AccentMode: "auto" | "custom"
-#Language:   "en" | "pl"
+#Language:   "en" | "pl" | "de" | "nl" | "da" | "sv" | "nb" | "fr" | "it" | "es" | "pt-PT" | "pt-BR" | "cs" | "sk" | "hu" | "ro" | "ru" | "et" | "fi" | "lv" | "lt" | "el" | "zh-Hans" | "zh-Hant" | "ja" | "ko" | "th"
 
 #Preferences: {
 	theme: #ThemeMode | *"auto" @go(Theme)

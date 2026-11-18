@@ -1,0 +1,100 @@
+# Diagnostic log messages (nl).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Application lifecycle and configuration
+appStarting: {value: "smeggtuner wordt gestart"}
+cleaningUp: {value: "Bezig met opruimen"}
+configLoadFailed: {value: "Configuratie laden mislukt"}
+configLoaded: {value: "Configuratie geladen"}
+configSaveFailed: {value: "Configuratie opslaan mislukt"}
+crashScreenFailed: {value: "Foutscherm kon niet worden weergegeven"}
+crashWatchFailed: {value: "Crashbewaking kon niet worden gestart"}
+datastoreInitFailed: {value: "Gegevensopslag kon niet worden geïnitialiseerd"}
+datastoreReady: {value: "Gegevensopslag gereed"}
+loadingConfig: {value: "Configuratie wordt geladen"}
+loggerInitFailed: {value: "Logregistratie instellen mislukt"}
+reinitLogger: {value: "Logregistratie wordt opnieuw ingesteld volgens de configuratie"}
+runFailed: {value: "Uitvoeren van de toepassing mislukt"}
+secondInstance: {value: "Tweede instantie gestart, bestaand venster wordt geactiveerd"}
+trayIconFailed: {value: "Systeemvakpictogram kon niet worden geladen"}
+updateCheckFailed: {value: "Controleren op updates mislukt", description: "Update check or stored release-note state failed; logged without a dialog."}
+windowStateLoadFailed: {value: "Vensterstatus laden mislukt"}
+windowStateSaveFailed: {value: "Vensterstatus opslaan mislukt"}
+
+# Audio devices and calibration
+audioDeviceEnumFailed: {value: "Opnameapparaten opvragen mislukt"}
+audioDeviceGone: {value: "Het gekozen opnameapparaat is niet meer beschikbaar"}
+audioDevicesListed: {value: "Opnameapparaten in kaart gebracht"}
+audioDialogFailed: {value: "Bestandsvenster openen mislukt"}
+audioDialogUnavailable: {value: "Bestandsvenster opgevraagd terwijl de toepassing niet draaide"}
+audioFileUnreadable: {value: "Opname kon niet worden geopend"}
+audioNoDevices: {value: "Geen opnameapparaten beschikbaar"}
+audioSourceSelected: {value: "Ingangsbron geselecteerd"}
+audioSpeakerUnavailable: {value: "Geen uitvoerapparaat, het bestand wordt zonder geluid afgespeeld"}
+calibrationAbandoned: {value: "Kalibratie van de geluidskaart afgebroken"}
+calibrationFinished: {value: "Kalibratie van de geluidskaart voltooid"}
+calibrationNoDevice: {value: "Apparaat kon niet worden geopend voor kalibratie van de geluidskaart"}
+calibrationStarted: {value: "Kalibratie van de geluidskaart gestart"}
+deviceStoreFailed: {value: "Instellingen van het opnameapparaat opslaan mislukt"}
+micBlocksDropped: {value: "Verwerking van microfoongegevens loopt vast, audioblokken worden overgeslagen"}
+micDeviceLost: {value: "Opnameapparaat onverwacht gestopt"}
+volumeRestore: {value: "Automatische volumeregeling kon het ingangsniveau niet herstellen"}
+volumeStepFailed: {value: "Automatische volumeregeling kon het ingangsniveau niet instellen"}
+volumeUnavailable: {value: "Automatische volumeregeling heeft geen toegang tot het ingangsniveau van het apparaat"}
+
+# Tuner engine
+tunerEventsDropped: {value: "Meetgebeurtenissen overgeslagen doordat de interface achterloopt"}
+tunerRunFailed: {value: "Meetproces gestopt met een fout"}
+tunerSettingRejected: {value: "Instelling buiten het toegestane bereik geweigerd"}
+tunerStartFailed: {value: "Ingangsbron aanmaken mislukt"}
+tunerStarted: {value: "Meetproces gestart"}
+tunerStopped: {value: "Meetproces gestopt"}
+tunerTonePlayFailed: {value: "Afspelen van de referentietoon mislukt"}
+tunerTonePlaying: {value: "Referentietoon wordt afgespeeld"}
+
+# Sessions, readings and reports
+recordCleared: {value: "Meetronde gewist"}
+recordEdited: {value: "Meting handmatig bewerkt"}
+recordRejected: {value: "Opnameverzoek geweigerd"}
+recordTake: {value: "Meting vastgelegd"}
+recordUndone: {value: "Laatste meting ongedaan gemaakt"}
+reportFailed: {value: "Stemrapport schrijven mislukt"}
+reportOpenFailed: {value: "Stemrapport openen mislukt"}
+reportOpened: {value: "Stemrapport naar de browser gestuurd"}
+reportRejected: {value: "Rapportverzoek geweigerd"}
+reportWritten: {value: "Stemrapport geschreven"}
+sessionClosed: {value: "Sessie gesloten"}
+sessionCreated: {value: "Sessie aangemaakt"}
+sessionCurveDropped: {value: "Doelcurve verwijderd"}
+sessionCurveFitted: {value: "Doelcurve aangepast aan een meetronde"}
+sessionCurveImported: {value: "Doelcurve geïmporteerd"}
+sessionDeleted: {value: "Sessie verwijderd"}
+sessionLoadFailed: {value: "Sessie laden mislukt"}
+sessionOpened: {value: "Sessie geopend"}
+sessionReedsClamped: {value: "Er klinken meer tongen dan het meetproces kan onderscheiden. Het aantal wordt begrensd"}
+sessionRejected: {value: "Ongeldige sessiewijziging geweigerd"}
+sessionSaveFailed: {value: "Sessie opslaan mislukt"}
+
+# Frontend diagnostics
+frontendAudioCalibrationCancelFailed: {value: "Kalibratie afbreken mislukt"}
+frontendAudioCalibrationFailed: {value: "Kalibratie starten mislukt"}
+frontendAudioCorrectionFailed: {value: "Correctie van de geluidskaart uitlezen mislukt"}
+frontendAudioDialogFailed: {value: "Bestandsvenster kon niet worden geopend"}
+frontendAudioListFailed: {value: "Audioapparaten opvragen mislukt"}
+frontendAudioSelectFailed: {value: "Audiobron selecteren mislukt"}
+frontendAudioStateFailed: {value: "Status van het audioapparaat uitlezen mislukt"}
+frontendAudioVolumeFailed: {value: "Automatische volumeregeling wijzigen mislukt"}
+frontendConfigLoadFailed: {value: "Configuratie kon niet worden geladen"}
+frontendConfigLoaded: {value: "Configuratie geladen"}
+frontendConfigSaveFailed: {value: "Configuratie kon niet worden opgeslagen"}
+frontendCurveViewFailed: {value: "Instellingen voor de curveweergave konden niet worden gelezen"}
+frontendError: {value: "Onverwachte toepassingsfout"}
+frontendRejection: {value: "Bewerking in de toepassing mislukt"}
+frontendResizeNotice: {value: "Opmaakwijziging uitgesteld tot het volgende frame (ResizeObserver-melding van de browser)"}
+frontendSettingFailed: {value: "Instelling van het stemapparaat wijzigen mislukt"}
+frontendTunerStartFailed: {value: "Stemapparaat starten mislukt"}
+frontendTunerStateFailed: {value: "Status van het stemapparaat uitlezen mislukt"}
+frontendTunerStopFailed: {value: "Stemapparaat stoppen mislukt"}
+frontendTunerTonePlayFailed: {value: "Referentietoon kon niet worden afgespeeld"}
+frontendTunerToneStopFailed: {value: "Referentietoon kon niet worden gestopt"}

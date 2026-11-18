@@ -40,7 +40,157 @@ function plural_pl(choice: number, choicesLength: number): number {
   return band('pl', cats_pl, choice, choicesLength)
 }
 
+const cats_de = ['one', 'other'] as const
+function plural_de(choice: number, choicesLength: number): number {
+  return band('de', cats_de, choice, choicesLength)
+}
+
+const cats_nl = ['one', 'other'] as const
+function plural_nl(choice: number, choicesLength: number): number {
+  return band('nl', cats_nl, choice, choicesLength)
+}
+
+const cats_da = ['one', 'other'] as const
+function plural_da(choice: number, choicesLength: number): number {
+  return band('da', cats_da, choice, choicesLength)
+}
+
+const cats_sv = ['one', 'other'] as const
+function plural_sv(choice: number, choicesLength: number): number {
+  return band('sv', cats_sv, choice, choicesLength)
+}
+
+const cats_nb = ['one', 'other'] as const
+function plural_nb(choice: number, choicesLength: number): number {
+  return band('nb', cats_nb, choice, choicesLength)
+}
+
+const cats_fr = ['one', 'other'] as const
+function plural_fr(choice: number, choicesLength: number): number {
+  return band('fr', cats_fr, choice, choicesLength)
+}
+
+const cats_it = ['one', 'other'] as const
+function plural_it(choice: number, choicesLength: number): number {
+  return band('it', cats_it, choice, choicesLength)
+}
+
+const cats_es = ['one', 'other'] as const
+function plural_es(choice: number, choicesLength: number): number {
+  return band('es', cats_es, choice, choicesLength)
+}
+
+const cats_pt_PT = ['one', 'other'] as const
+function plural_pt_PT(choice: number, choicesLength: number): number {
+  return band('pt-PT', cats_pt_PT, choice, choicesLength)
+}
+
+const cats_pt_BR = ['one', 'other'] as const
+function plural_pt_BR(choice: number, choicesLength: number): number {
+  return band('pt-BR', cats_pt_BR, choice, choicesLength)
+}
+
+const cats_cs = ['one', 'few', 'many', 'other'] as const
+function plural_cs(choice: number, choicesLength: number): number {
+  return band('cs', cats_cs, choice, choicesLength)
+}
+
+const cats_sk = ['one', 'few', 'many', 'other'] as const
+function plural_sk(choice: number, choicesLength: number): number {
+  return band('sk', cats_sk, choice, choicesLength)
+}
+
+const cats_hu = ['one', 'other'] as const
+function plural_hu(choice: number, choicesLength: number): number {
+  return band('hu', cats_hu, choice, choicesLength)
+}
+
+const cats_ro = ['one', 'few', 'other'] as const
+function plural_ro(choice: number, choicesLength: number): number {
+  return band('ro', cats_ro, choice, choicesLength)
+}
+
+const cats_ru = ['one', 'few', 'many', 'other'] as const
+function plural_ru(choice: number, choicesLength: number): number {
+  return band('ru', cats_ru, choice, choicesLength)
+}
+
+const cats_et = ['one', 'other'] as const
+function plural_et(choice: number, choicesLength: number): number {
+  return band('et', cats_et, choice, choicesLength)
+}
+
+const cats_fi = ['one', 'other'] as const
+function plural_fi(choice: number, choicesLength: number): number {
+  return band('fi', cats_fi, choice, choicesLength)
+}
+
+const cats_lv = ['zero', 'one', 'other'] as const
+function plural_lv(choice: number, choicesLength: number): number {
+  return band('lv', cats_lv, choice, choicesLength)
+}
+
+const cats_lt = ['one', 'few', 'many', 'other'] as const
+function plural_lt(choice: number, choicesLength: number): number {
+  return band('lt', cats_lt, choice, choicesLength)
+}
+
+const cats_el = ['one', 'other'] as const
+function plural_el(choice: number, choicesLength: number): number {
+  return band('el', cats_el, choice, choicesLength)
+}
+
+const cats_zh_Hans = ['other'] as const
+function plural_zh_Hans(choice: number, choicesLength: number): number {
+  return band('zh-Hans', cats_zh_Hans, choice, choicesLength)
+}
+
+const cats_zh_Hant = ['other'] as const
+function plural_zh_Hant(choice: number, choicesLength: number): number {
+  return band('zh-Hant', cats_zh_Hant, choice, choicesLength)
+}
+
+const cats_ja = ['other'] as const
+function plural_ja(choice: number, choicesLength: number): number {
+  return band('ja', cats_ja, choice, choicesLength)
+}
+
+const cats_ko = ['other'] as const
+function plural_ko(choice: number, choicesLength: number): number {
+  return band('ko', cats_ko, choice, choicesLength)
+}
+
+const cats_th = ['other'] as const
+function plural_th(choice: number, choicesLength: number): number {
+  return band('th', cats_th, choice, choicesLength)
+}
+
 export const pluralRules: Record<string, PluralIndex> = {
   'en': plural_en,
   'pl': plural_pl,
+  'de': plural_de,
+  'nl': plural_nl,
+  'da': plural_da,
+  'sv': plural_sv,
+  'nb': plural_nb,
+  'fr': plural_fr,
+  'it': plural_it,
+  'es': plural_es,
+  'pt-PT': plural_pt_PT,
+  'pt-BR': plural_pt_BR,
+  'cs': plural_cs,
+  'sk': plural_sk,
+  'hu': plural_hu,
+  'ro': plural_ro,
+  'ru': plural_ru,
+  'et': plural_et,
+  'fi': plural_fi,
+  'lv': plural_lv,
+  'lt': plural_lt,
+  'el': plural_el,
+  'zh-Hans': plural_zh_Hans,
+  'zh-Hant': plural_zh_Hant,
+  'ja': plural_ja,
+  'ko': plural_ko,
+  'th': plural_th,
 }

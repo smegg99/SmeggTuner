@@ -1,0 +1,15 @@
+# S99AB release notes and update prompts (da).
+notesTitle:
+  value: "Nyt i version {version}"
+  placeholders:
+    version: {type: string}
+notTranslated: {value: "Disse udgivelsesnoter er endnu ikke oversat."}
+updateBody:
+  value: "Du bruger version {current}. Den nyeste version er {latest}."
+  placeholders:
+    current: {type: string}
+    latest: {type: string}
+updateDownload: {value: "Hent"}
+updateIgnore: {value: "Spring denne version over"}
+updateLater: {value: "Senere"}
+updateTitle: {value: "Der er en nyere version"}

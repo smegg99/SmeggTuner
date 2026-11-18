@@ -1,0 +1,73 @@
+# Recording controls and readings (sk).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Recording controls
+arm.hint: {value: "Zaznamenať meranie pri každom ustálení tónu (Enter ho zaznamená ihneď)"}
+arm.needsSession: {value: "Ak chcete zaznamenávať merania, otvorte reláciu"}
+arm.warmup: {value: "Záznam je vypnutý. Môžete voľne hrať, nič sa neukladá. Stlačením spustíte záznam."}
+undo.hint: {value: "Vrátiť posledný záznam"}
+
+# Readings table and compact columns
+mobile.current: {value: "Namerané"}
+mobile.error: {value: "Odchýlka"}
+
+table.beat:
+  value: Ráz {pair}
+  placeholders:
+    pair:
+      type: string
+
+table.delete: {value: "Odstrániť toto meranie"}
+table.deleteHint: {value: "Natrvalo odstráni toto meranie. Ak ho chcete nahradiť, zahrajte tón a znova ho zaznamenajte."}
+table.deleteTitle: {value: "Odstrániť toto meranie?"}
+table.editHint: {value: "Hodnotu upravíte kliknutím alebo klávesom Enter"}
+table.empty: {value: "Spustite záznam a potom hrajte tóny. Merania sa budú ukladať."}
+table.graph: {value: "Graf"}
+
+table.graphHint: {value: "Porovnajte každý jazýček s jeho cieľovou hodnotou. Kliknutím na stĺpec vyberiete príslušný riadok, ďalším kliknutím prejdete na nasledujúci register."}
+
+table.graphLabel: {value: "Odchýlky jazýčkov pri zaznamenaných tónoch"}
+table.helpTitle: {value: "O tejto tabuľke"}
+table.label: {value: "Zaznamenané ladenie"}
+table.latest: {value: "Posledný záznam odstránite klávesom Backspace"}
+table.manual: {value: "Upravené"}
+table.manualHint: {value: "Jedna z hodnôt v tomto riadku bola zadaná ručne."}
+
+table.notes:
+  plural:
+    argument: count
+    forms:
+      one: '{count} tón'
+      few: '{count} tóny'
+      many: '{count} tónu'
+      other: '{count} tónov'
+  placeholders:
+    count:
+      type: integer
+
+table.unitHint: {value: "Odchýlky jazýčkov sa uvádzajú v jednotkách vybraných v Nastaveniach. Rázy sa podľa voľby na paneli nástrojov uvádzajú v hertzoch alebo v jednotkách odchýlky."}
+
+# Report export dialog
+report.csv: {value: "CSV"}
+report.date: {value: "Dátum"}
+report.format: {value: "Formát"}
+
+report.formatHint: {value: "PDF obsahuje ladiaci list na jednej strane A4 presne tak, ako sa vytlačí. HTML zobrazí ten istý list ako webovú stránku. CSV obsahuje tabuľku pre tabuľkový procesor."}
+
+report.html: {value: "HTML"}
+report.notes: {value: "Poznámka na liste"}
+report.notesHint: {value: "Vytlačí sa pod tabuľkou. Uveďte, čo sa urobilo alebo čo ešte treba urobiť."}
+
+report.pass:
+  value: 'Séria meraní: {label}'
+  placeholders:
+    label:
+      type: string
+
+report.pdf: {value: "PDF"}
+report.title: {value: "Ladiaci list"}
+
+# Recording errors
+error.takeNotFound: {value: "Tento záznam už v sérii nie je."}
+error.unexpected: {value: "Operácia zlyhala. Podrobnosti nájdete v denníku."}

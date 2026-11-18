@@ -1,0 +1,155 @@
+# Printed reports and export (es).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one, other (locale cardinal rules).
+
+# Report title and instrument details
+facts.curve: {value: "Curva objetivo"}
+facts.curveNone: {value: "ninguna"}
+facts.curveUnnamed: {value: "sin nombre"}
+facts.reference: {value: "La4 de referencia (esta pasada)"}
+facts.tolerance: {value: "Tolerancia"}
+
+facts.toleranceValue:
+  value: "lengüeta: {reed} {unit} / batido: {beat} {unit}"
+  placeholders:
+    beat: {type: string}
+    reed: {type: string}
+    unit: {type: string}
+
+facts.transpose: {value: "Transposición"}
+
+facts.transposeValue:
+  value: "{key} suena como {sounds}"
+  placeholders:
+    key: {type: string}
+    sounds: {type: string}
+
+title: {value: "Informe de afinación"}
+
+# Table and column headings
+head.beat:
+  value: "Batido {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.bassTitle:
+  value: "Tabla de afinación de los bajos ({unit})"
+  placeholders:
+    unit: {type: string}
+
+table.curr: {value: "Med."}
+table.err: {value: "Err."}
+table.register: {value: "Registro"}
+
+table.title:
+  value: "Tabla de afinación ({unit})"
+  placeholders:
+    unit: {type: string}
+
+# Deviation units
+unit.cents.name: {value: "cents"}
+unit.cents.symbol: {value: "c"}
+unit.reference.name: {value: "unidades del 0,06 %"}
+
+# Graph legend and reading markers
+graph.edited:
+  value: "{mark} - edición manual."
+  placeholders:
+    mark: {type: string}
+
+legend.error.cents:
+  value: "Lima la lengüeta para acercar el error a cero. Desviación en cents respecto a la escala temperada a {a4} Hz."
+  placeholders:
+    a4: {type: string}
+
+legend.error.key: {value: "Error = medición - objetivo."}
+legend.error.noCurve: {value: "Sin curva objetivo, el objetivo es cero y el error es la desviación respecto a la escala."}
+
+legend.error.reference:
+  value: "Lima la lengüeta para acercar el error a cero. La desviación respecto a la escala temperada a {a4} Hz se expresa en unidades del 0,06 % de la frecuencia de la nota."
+  placeholders:
+    a4: {type: string}
+
+legend.out.short: {value: "fuera de tolerancia"}
+legend.takes.key: {value: "xN"}
+legend.takes.short: {value: "varias tomas, se muestra la última"}
+mark.edited: {value: "M"}
+mark.out: {value: "!"}
+
+# Summary and footer
+footer.generated:
+  value: "Generado el {at} por {app}"
+  placeholders:
+    app: {type: string}
+    at: {type: string}
+
+summary.allIn: {value: "Todas las mediciones están dentro de la tolerancia."}
+
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} batido"
+      other: "{pluralCount} batidos"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.line:
+  value: "{notes} (de {min} a {max}), {reeds}, {beats}."
+  placeholders:
+    beats: {type: string}
+    max: {type: string}
+    min: {type: string}
+    notes: {type: string}
+    reeds: {type: string}
+
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} nota"
+      other: "{pluralCount} notas"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} fuera de tolerancia ({reeds}, {beats})."
+      other: "{pluralCount} fuera de tolerancia ({reeds}, {beats})."
+  placeholders:
+    beats: {type: string}
+    pluralCount: {type: integer}
+    reeds: {type: string}
+
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} medición de lengüeta"
+      other: "{pluralCount} mediciones de lengüetas"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} lengüeta"
+      other: "{pluralCount} lengüetas"
+  placeholders:
+    pluralCount: {type: integer}
+
+# Export errors
+error.invalidDate: {value: "Introduce una fecha válida en formato AAAA-MM-DD."}
+error.invalidFormat: {value: "No se puede exportar el informe en ese formato."}
+
+error.noBrowser:
+  value: "Para maquetar el PDF se necesita Chrome o Chromium. No se ha encontrado ninguno. Instala uno o exporta la ficha en HTML e imprímela."
+error.openFailed: {value: "Se ha guardado el informe, pero ningún navegador ha podido abrirlo. Abre el archivo manualmente."}
+error.renderFailed: {value: "No se pudo generar el informe. No se escribió ningún archivo."}
+
+error.writeFailed:
+  value: "No se pudo guardar el informe en esa ubicación. Si ya existía un archivo, se conserva intacto."

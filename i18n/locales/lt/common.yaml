@@ -1,0 +1,104 @@
+# Shared labels and application text (lt).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Buttons and shared labels
+accept: {value: "Priimti"}
+back: {value: "Atgal"}
+cancel: {value: "Atšaukti"}
+close: {value: "Užverti"}
+delete: {value: "Pašalinti"}
+export: {value: "Eksportuoti"}
+next: {value: "Toliau"}
+"no": {value: "Ne"}
+none: {value: "Nėra"}
+previous: {value: "Ankstesnis"}
+website: {value: "Svetainė"}
+"yes": {value: "Taip"}
+
+# Musical labels and unit symbols
+accordion: {value: "Akordeonas"}
+note: {value: "Nata"}
+
+reed:
+  value: "Liežuvėlis {index}"
+  placeholders:
+    index: {type: integer}
+
+unitSymbol.cents: {value: "centas"}
+unitSymbol.hz: {value: "Hz"}
+unitSymbol.reference: {value: "u"}
+
+# Color controls
+color.hue: {value: "Atspalvis"}
+color.saturation: {value: "Sodrumas"}
+color.value: {value: "Šviesis"}
+
+# Navigation and window titles
+routes.navigation: {value: "Pagrindinė navigacija"}
+routes.settings: {value: "Nustatymai"}
+routes.tune: {value: "Derinimas"}
+routes.workshop: {value: "Dirbtuvės"}
+
+title.count:
+  value: "{room} {name} ({done})"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+
+title.progress:
+  value: "{room} {name} {done}/{total}"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+    total: {type: string}
+
+title.room.about: {value: "apie programą"}
+title.room.calibrate: {value: "kalibravimas"}
+title.room.help: {value: "žinynas"}
+title.room.settings: {value: "nustatymai"}
+title.room.soundcard: {value: "garso plokštė"}
+title.room.tune: {value: "derinimas"}
+title.room.workshop: {value: "dirbtuvės"}
+
+title.session:
+  value: "{room} {name}"
+  placeholders:
+    name: {type: string}
+    room: {type: string}
+
+title.uncalibrated:
+  value: "{title} (garso plokštė nesukalibruota)"
+  placeholders:
+    title: {type: string}
+
+# Application and About dialog
+about.aboutTitle: {value: "Apie programą"}
+about.commit: {value: "Darinys"}
+about.donate: {value: "Paremti per „Ko-fi“"}
+about.license: {value: "Licencija"}
+about.privacy: {value: "Privatumo politika"}
+about.guide: {value: "Kaip naudotis „SmeggTuner“"}
+about.onlineVersion: {value: "Atverti internetinę versiją"}
+about.support: {value: "Pagalba"}
+about.mascot: {value: "Akordeonu grojantis katinas"}
+about.publisher: {value: "Autorius: smegg99"}
+about.tagline: {value: "Nemokama atvirojo kodo akordeonų derinimo programa."}
+about.untagged: {value: "kuriama versija"}
+about.version: {value: "Versija"}
+app.description: {value: "Nemokamas atvirojo kodo akordeono derintuvas."}
+app.name: {value: "SmeggTuner"}
+
+# Help dialog and keyboard instructions
+about.helpTitle: {value: "Žinynas"}
+
+# System tray
+tray.quit: {value: "Baigti darbą"}
+tray.show: {value: "Rodyti"}
+
+linkNewTab:
+  value: "{text} (atveriama naujoje kortelėje)"
+  placeholders:
+    text: {type: string}

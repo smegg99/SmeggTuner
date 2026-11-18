@@ -1,0 +1,73 @@
+# Recording controls and readings (ru).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Recording controls
+arm.hint: {value: "Записывать измерение при каждой фиксации ноты (Enter запишет его сразу)"}
+arm.needsSession: {value: "Для записи откройте сеанс"}
+arm.warmup: {value: "Запись выключена. Можно играть свободно, ничего не сохраняется. Нажмите, чтобы начать запись."}
+undo.hint: {value: "Отменить последнюю запись"}
+
+# Readings table and compact columns
+mobile.current: {value: "Измерено"}
+mobile.error: {value: "Отклонение"}
+
+table.beat:
+  value: Биения {pair}
+  placeholders:
+    pair:
+      type: string
+
+table.delete: {value: "Удалить это измерение"}
+table.deleteHint: {value: "Измерение будет удалено безвозвратно. Чтобы заменить его, снова сыграйте ноту и запишите результат."}
+table.deleteTitle: {value: "Удалить это измерение?"}
+table.editHint: {value: "Щёлкните или нажмите Enter, чтобы изменить значение"}
+table.empty: {value: "Начните запись и сыграйте ноты, чтобы сохранить измерения."}
+table.graph: {value: "График"}
+
+table.graphHint: {value: "Сравните каждый язычок с его целевым значением. Щёлкните по столбцу, чтобы выбрать строку, и ещё раз, чтобы выбрать следующий регистр."}
+
+table.graphLabel: {value: "Отклонения язычков для каждой записанной ноты"}
+table.helpTitle: {value: "Об этой таблице"}
+table.label: {value: "Запись настройки"}
+table.latest: {value: "Последняя запись. Для удаления нажмите Backspace"}
+table.manual: {value: "Изменено"}
+table.manualHint: {value: "Одно из значений в этой строке введено вручную, а не измерено тюнером."}
+
+table.notes:
+  plural:
+    argument: count
+    forms:
+      one: '{count} нота'
+      few: '{count} ноты'
+      many: '{count} нот'
+      other: '{count} ноты'
+  placeholders:
+    count:
+      type: integer
+
+table.unitHint: {value: "Отклонения язычков указаны в единицах, выбранных в параметрах. Биения отображаются в герцах или в единицах отклонения в зависимости от выбора на панели инструментов."}
+
+# Report export dialog
+report.csv: {value: "CSV"}
+report.date: {value: "Дата"}
+report.format: {value: "Формат"}
+
+report.formatHint: {value: "PDF содержит карту на одной странице A4 в том виде, в каком она будет напечатана. HTML представляет ту же карту в виде веб-страницы. CSV содержит данные для электронной таблицы."}
+
+report.html: {value: "HTML"}
+report.notes: {value: "Примечание на карте"}
+report.notesHint: {value: "Печатается под таблицей. Укажите, что сделано и что ещё предстоит сделать."}
+
+report.pass:
+  value: 'Серия измерений: {label}'
+  placeholders:
+    label:
+      type: string
+
+report.pdf: {value: "PDF"}
+report.title: {value: "Карта настройки"}
+
+# Recording errors
+error.takeNotFound: {value: "Этой записи больше нет в серии измерений."}
+error.unexpected: {value: "Операция не удалась. Подробности см. в журнале."}

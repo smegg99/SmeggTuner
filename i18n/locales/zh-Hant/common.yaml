@@ -1,0 +1,104 @@
+# Shared labels and application text (zh-Hant).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Buttons and shared labels
+accept: {value: "接受"}
+back: {value: "返回"}
+cancel: {value: "取消"}
+close: {value: "關閉"}
+delete: {value: "刪除"}
+export: {value: "匯出"}
+next: {value: "下一步"}
+"no": {value: "否"}
+none: {value: "無"}
+previous: {value: "上一步"}
+website: {value: "網站"}
+"yes": {value: "是"}
+
+# Musical labels and unit symbols
+accordion: {value: "手風琴"}
+note: {value: "音符"}
+
+reed:
+  value: "簧片 {index}"
+  placeholders:
+    index: {type: integer}
+
+unitSymbol.cents: {value: "音分"}
+unitSymbol.hz: {value: "Hz"}
+unitSymbol.reference: {value: "u"}
+
+# Color controls
+color.hue: {value: "色相"}
+color.saturation: {value: "飽和度"}
+color.value: {value: "明度"}
+
+# Navigation and window titles
+routes.navigation: {value: "主導航"}
+routes.settings: {value: "設定"}
+routes.tune: {value: "調音"}
+routes.workshop: {value: "調音工坊"}
+
+title.count:
+  value: "{room} {name} ({done})"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+
+title.progress:
+  value: "{room} {name} {done}/{total}"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+    total: {type: string}
+
+title.room.about: {value: "關於"}
+title.room.calibrate: {value: "校正"}
+title.room.help: {value: "幫助"}
+title.room.settings: {value: "設定"}
+title.room.soundcard: {value: "音效卡"}
+title.room.tune: {value: "調音"}
+title.room.workshop: {value: "調音工坊"}
+
+title.session:
+  value: "{room} {name}"
+  placeholders:
+    name: {type: string}
+    room: {type: string}
+
+title.uncalibrated:
+  value: "{title}（音效卡未經校正）"
+  placeholders:
+    title: {type: string}
+
+# Application and About dialog
+about.aboutTitle: {value: "關於"}
+about.commit: {value: "構建版本"}
+about.donate: {value: "在 Ko-fi 上支援開發"}
+about.license: {value: "授權條款"}
+about.privacy: {value: "隱私權政策"}
+about.guide: {value: "SmeggTuner 使用指南"}
+about.onlineVersion: {value: "開啟線上版本"}
+about.support: {value: "技術支援"}
+about.mascot: {value: "一隻拉手風琴的貓"}
+about.publisher: {value: "作者：smegg99"}
+about.tagline: {value: "免費開放原始碼的手風琴調音軟體。"}
+about.untagged: {value: "開發版本"}
+about.version: {value: "版本"}
+app.description: {value: "免費開放原始碼的手風琴調音器。"}
+app.name: {value: "SmeggTuner"}
+
+# Help dialog and keyboard instructions
+about.helpTitle: {value: "幫助"}
+
+# System tray
+tray.quit: {value: "退出"}
+tray.show: {value: "顯示"}
+
+linkNewTab:
+  value: "{text}（在新分頁中開啟）"
+  placeholders:
+    text: {type: string}

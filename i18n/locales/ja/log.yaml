@@ -1,0 +1,100 @@
+# Diagnostic log messages (ja).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Application lifecycle and configuration
+appStarting: {value: "SmeggTuner を起動中"}
+cleaningUp: {value: "リソースを解放中"}
+configLoadFailed: {value: "設定を読み込めませんでした"}
+configLoaded: {value: "設定を読み込みました"}
+configSaveFailed: {value: "設定を保存できませんでした"}
+crashScreenFailed: {value: "エラー画面を表示できませんでした"}
+crashWatchFailed: {value: "クラッシュ監視を開始できませんでした"}
+datastoreInitFailed: {value: "データストアを初期化できませんでした"}
+datastoreReady: {value: "データストアの準備ができました"}
+loadingConfig: {value: "設定を読み込み中"}
+loggerInitFailed: {value: "ログ出力を設定できませんでした"}
+reinitLogger: {value: "設定に従ってログ出力を再構成中"}
+runFailed: {value: "アプリの実行に失敗しました"}
+secondInstance: {value: "2 つ目のインスタンスが起動したため、既存のウィンドウを前面に表示します"}
+trayIconFailed: {value: "トレイアイコンを読み込めませんでした"}
+updateCheckFailed: {value: "更新の確認に失敗しました", description: "Update check or stored release-note state failed; logged without a dialog."}
+windowStateLoadFailed: {value: "ウィンドウの状態を読み込めませんでした"}
+windowStateSaveFailed: {value: "ウィンドウの状態を保存できませんでした"}
+
+# Audio devices and calibration
+audioDeviceEnumFailed: {value: "録音デバイスを列挙できませんでした"}
+audioDeviceGone: {value: "選択した録音デバイスが見つからなくなりました"}
+audioDevicesListed: {value: "録音デバイスを列挙しました"}
+audioDialogFailed: {value: "ファイルダイアログでエラーが発生しました"}
+audioDialogUnavailable: {value: "アプリが起動していない状態でファイルダイアログが要求されました"}
+audioFileUnreadable: {value: "録音を開けませんでした"}
+audioNoDevices: {value: "使用可能な録音デバイスがありません"}
+audioSourceSelected: {value: "入力ソースを選択しました"}
+audioSpeakerUnavailable: {value: "出力デバイスがないため、ファイルは無音で再生されます"}
+calibrationAbandoned: {value: "サウンドカードの校正を中止しました"}
+calibrationFinished: {value: "サウンドカードの校正が完了しました"}
+calibrationNoDevice: {value: "サウンドカードの校正でデバイスを開けませんでした"}
+calibrationStarted: {value: "サウンドカードの校正を開始しました"}
+deviceStoreFailed: {value: "録音デバイスの設定を保存できませんでした"}
+micBlocksDropped: {value: "マイク入力の処理が滞ったため、データブロックを破棄しています"}
+micDeviceLost: {value: "録音デバイスが予期せず停止しました"}
+volumeRestore: {value: "自動音量調整で入力レベルを元に戻せませんでした"}
+volumeStepFailed: {value: "自動音量調整で入力レベルを設定できませんでした"}
+volumeUnavailable: {value: "自動音量調整でデバイスの入力レベルにアクセスできません"}
+
+# Tuner engine
+tunerEventsDropped: {value: "画面側の処理が遅れ、測定イベントを破棄しました"}
+tunerRunFailed: {value: "測定エンジンがエラーで停止しました"}
+tunerSettingRejected: {value: "範囲外の設定値を拒否しました"}
+tunerStartFailed: {value: "入力ソースを構築できませんでした"}
+tunerStarted: {value: "測定エンジンを開始しました"}
+tunerStopped: {value: "測定エンジンを停止しました"}
+tunerTonePlayFailed: {value: "基準音の再生に失敗しました"}
+tunerTonePlaying: {value: "基準音を再生中"}
+
+# Sessions, readings and reports
+recordCleared: {value: "この測定回をクリアしました"}
+recordEdited: {value: "記録を手動で編集しました"}
+recordRejected: {value: "記録要求を拒否しました"}
+recordTake: {value: "測定値を記録しました"}
+recordUndone: {value: "直近の記録を取り消しました"}
+reportFailed: {value: "調律レポートを書き込めませんでした"}
+reportOpenFailed: {value: "調律レポートを開けませんでした"}
+reportOpened: {value: "調律レポートをブラウザーに渡しました"}
+reportRejected: {value: "レポートの要求を拒否しました"}
+reportWritten: {value: "調律レポートを書き込みました"}
+sessionClosed: {value: "セッションを閉じました"}
+sessionCreated: {value: "セッションを作成しました"}
+sessionCurveDropped: {value: "目標曲線を削除しました"}
+sessionCurveFitted: {value: "測定回の値に目標曲線を合わせました"}
+sessionCurveImported: {value: "目標曲線を読み込みました"}
+sessionDeleted: {value: "セッションを削除しました"}
+sessionLoadFailed: {value: "セッションを読み込めませんでした"}
+sessionOpened: {value: "セッションを開きました"}
+sessionReedsClamped: {value: "発音中のリード数がエンジンの識別能力を超えたため、測定数を上限に制限しました"}
+sessionRejected: {value: "無効なセッション変更を拒否しました"}
+sessionSaveFailed: {value: "セッションを保存できませんでした"}
+
+# Frontend diagnostics
+frontendAudioCalibrationCancelFailed: {value: "校正を取り消せませんでした"}
+frontendAudioCalibrationFailed: {value: "校正を開始できませんでした"}
+frontendAudioCorrectionFailed: {value: "サウンドカードの補正値を読み取れませんでした"}
+frontendAudioDialogFailed: {value: "ファイルダイアログを開けませんでした"}
+frontendAudioListFailed: {value: "オーディオデバイスの一覧を取得できませんでした"}
+frontendAudioSelectFailed: {value: "音声ソースを選択できませんでした"}
+frontendAudioStateFailed: {value: "オーディオデバイスの状態を読み取れませんでした"}
+frontendAudioVolumeFailed: {value: "自動音量調整を変更できませんでした"}
+frontendConfigLoadFailed: {value: "設定を読み込めませんでした"}
+frontendConfigLoaded: {value: "設定を読み込みました"}
+frontendConfigSaveFailed: {value: "設定を保存できませんでした"}
+frontendCurveViewFailed: {value: "曲線の表示設定を読み取れませんでした"}
+frontendError: {value: "アプリで予期しないエラーが発生しました"}
+frontendRejection: {value: "アプリの操作に失敗しました"}
+frontendResizeNotice: {value: "レイアウト変更を次のフレームに延期しました（ブラウザーの ResizeObserver 通知）"}
+frontendSettingFailed: {value: "チューナー設定を変更できませんでした"}
+frontendTunerStartFailed: {value: "チューナーを開始できませんでした"}
+frontendTunerStateFailed: {value: "チューナーの状態を読み取れませんでした"}
+frontendTunerStopFailed: {value: "チューナーを停止できませんでした"}
+frontendTunerTonePlayFailed: {value: "基準音を再生できませんでした"}
+frontendTunerToneStopFailed: {value: "基準音を停止できませんでした"}

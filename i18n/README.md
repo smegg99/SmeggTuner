@@ -1,8 +1,7 @@
 # Translating SmeggTuner
 
-Edit the YAML files in [locales/pl](locales/pl) for Polish or
-[locales/en](locales/en) for English. Both languages have the same keys and
-section order. You only need a text editor to change translations.
+Each language has a directory under [locales](locales). Use the [English catalog](locales/en)
+to look up the keys, then edit the YAML for the language you are translating.
 
 1. Find the message in the English file, then find the same key in your language.
 2. Translate the text after `value:` or inside `plural.forms`.
@@ -24,6 +23,8 @@ or `backend/common/i18n`: those files are generated.
 | `record.yaml` | Recording controls, reading tables and the report dialog |
 | `report.yaml` | Printed reports and export errors |
 | `log.yaml` | Diagnostic messages |
+| `crash.yaml` | Startup and crash dialogs |
+| `release.yaml` | Release notes and update prompts |
 | `shortcut.yaml` | Keyboard key labels |
 
 The Workshop is disabled in 1.4, but its session, recording and report code
@@ -124,15 +125,16 @@ frontend rebuild or a running development server to appear.
 
 ## Adding a language
 
-Copy the eight English YAML files into `locales/<language-code>` and translate
-them. Adapt plural forms to that language rather than retaining English's
-forms. Ask a maintainer to wire the language into the app before testing it:
-adding a folder alone does not enable it.
+Copy the catalog files from `locales/en` into `locales/<language-code>` and
+translate each message. Use the plural categories required by S99Locale for
+that language. Keep Simplified and Traditional Chinese distinct, and use
+regional terminology for European and Brazilian Portuguese.
 
-The maintainer must update the locale list in [config.cue](config.cue), the
-language setting in [the configuration schema](../backend/common/config/config.cue),
-the locale registration in [Nuxt](../frontend/nuxt.config.ts), and the language
-selection in [theme sync](../frontend/app/composables/useThemeSync.ts) and
-[browser startup](../frontend/app/web/bootAppearance.ts). Also extend
-[date formatting and shared messages](../frontend/i18n/i18n.config.ts) and
-[report checks](../scripts/check-locales.mjs), then regenerate and test.
+Add the code to [config.cue](config.cue) and the [settings schema](../backend/common/config/config.cue).
+Register the matching widget messages in the [Vuetify plugin](../frontend/app/plugins/vuetify.ts).
+The language picker, saved preferences and date formats use the generated locale list.
+
+Translate `PRIVACY.md` into `PRIVACY.<language-code>.md` and add its import to
+[the bundled policies](../frontend/app/utils/privacy.ts). Run `just locales`,
+`just check-locales` and `just privacy-site` to generate the catalogs, check
+the references and copy the policy to the sibling SmeggTunerSite checkout.

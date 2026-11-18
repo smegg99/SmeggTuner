@@ -1,0 +1,62 @@
+# S99AB startup and crash dialogs (ru).
+close: {value: "Закрыть"}
+copied: {value: "Скопировано"}
+copy: {value: "Скопировать отчёт"}
+details: {value: "Подробности"}
+email: {value: "Отправить отчёт по почте"}
+failed:
+  value: "Не удалось выполнить действие: {error}"
+  placeholders:
+    error: {type: string}
+file:
+  value: "Файл: {path}"
+  placeholders:
+    path: {type: string}
+kill: {value: "Завершить работу и сообщить о проблеме"}
+logs: {value: "Показать файл журнала"}
+messageConfig:
+  value: "Не удалось прочитать файл настроек. Исправьте или удалите его, затем снова запустите {app}."
+  placeholders:
+    app: {type: string}
+messageCrash:
+  value: "В приложении {app} произошла внутренняя ошибка. Отправьте отчёт, чтобы помочь исправить ошибку, затем перезапустите приложение."
+  placeholders:
+    app: {type: string}
+messageHang: {value: "Возможно, приложение ещё завершит текущую операцию. Подождите или закройте его и отправьте отчёт."}
+messageHangStopped:
+  value: "Приложение {app} было закрыто, когда оно не отвечало. Отправьте отчёт, чтобы помочь исправить ошибку, затем перезапустите приложение."
+  placeholders:
+    app: {type: string}
+messageKilled:
+  value: "Приложение {app} было закрыто до того, как успело сообщить об ошибке. Отправьте отчёт, затем перезапустите приложение."
+  placeholders:
+    app: {type: string}
+messageOom:
+  value: "Системе не хватило памяти, и она закрыла {app}. Отправьте отчёт, затем перезапустите приложение."
+  placeholders:
+    app: {type: string}
+messageStartup:
+  value: "Устраните указанную ниже причину ошибки и снова запустите {app}."
+  placeholders:
+    app: {type: string}
+restart: {value: "Перезапустить"}
+save: {value: "Сохранить отчёт"}
+saved:
+  value: "Сохранено в {path}"
+  placeholders:
+    path: {type: string}
+starting:
+  value: "Запуск {app}"
+  placeholders:
+    app: {type: string}
+titleCrash: {value: "Приложение неожиданно прекратило работу"}
+titleHang: {value: "Приложение не отвечает"}
+titleHangStopped: {value: "Приложение перестало отвечать"}
+titleKilled: {value: "Приложение неожиданно закрылось"}
+titleStart: {value: "Не удалось запустить приложение"}
+wait: {value: "Подождать"}
+windowCrash: {value: "сбой приложения"}
+windowHang: {value: "не отвечает"}
+windowHangStopped: {value: "перестало отвечать"}
+windowKilled: {value: "неожиданное завершение"}
+windowStart: {value: "ошибка запуска"}

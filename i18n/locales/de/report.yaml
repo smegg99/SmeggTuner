@@ -1,0 +1,155 @@
+# Printed reports and export (de).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one = 1; other = 0, 2, 3, ...
+
+# Report title and instrument details
+facts.curve: {value: "Sollkurve"}
+facts.curveNone: {value: "keine"}
+facts.curveUnnamed: {value: "unbenannt"}
+facts.reference: {value: "Kammerton A4 (dieser Messdurchgang)"}
+facts.tolerance: {value: "Toleranz"}
+
+facts.toleranceValue:
+  value: "Stimmzunge {reed} {unit} / Schwebung {beat} {unit}"
+  placeholders:
+    beat: {type: string}
+    reed: {type: string}
+    unit: {type: string}
+
+facts.transpose: {value: "Transposition"}
+
+facts.transposeValue:
+  value: "{key} klingt als {sounds}"
+  placeholders:
+    key: {type: string}
+    sounds: {type: string}
+
+title: {value: "Stimmbericht"}
+
+# Table and column headings
+head.beat:
+  value: "Schwebung {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.bassTitle:
+  value: "Stimmtabelle Bass ({unit})"
+  placeholders:
+    unit: {type: string}
+
+table.curr: {value: "Ist"}
+table.err: {value: "Fehl."}
+table.register: {value: "Register"}
+
+table.title:
+  value: "Stimmtabelle ({unit})"
+  placeholders:
+    unit: {type: string}
+
+# Deviation units
+unit.cents.name: {value: "Cent"}
+unit.cents.symbol: {value: "c"}
+unit.reference.name: {value: "Einheiten von 0,06 %"}
+
+# Graph legend and reading markers
+graph.edited:
+  value: "{mark} - manuell bearbeitet."
+  placeholders:
+    mark: {type: string}
+
+legend.error.cents:
+  value: "So feilen, dass der Fehler gegenüber dem Sollwert gegen null geht. Angabe in Cent bezogen auf die gleichstufige Stimmung bei {a4} Hz."
+  placeholders:
+    a4: {type: string}
+
+legend.error.key: {value: "Fehler = Ist - Soll."}
+legend.error.noCurve: {value: "Ohne Sollkurve ist der Sollwert null. Der Fehler ist die Abweichung von der Tonskala."}
+
+legend.error.reference:
+  value: "So feilen, dass der Fehler gegenüber dem Sollwert gegen null geht. Angabe in Einheiten von 0,06 % der Tonfrequenz bezogen auf die gleichstufige Stimmung bei {a4} Hz."
+  placeholders:
+    a4: {type: string}
+
+legend.out.short: {value: "außerhalb der Toleranz"}
+legend.takes.key: {value: "xN"}
+legend.takes.short: {value: "mehrfach gemessen, letzte Messung angezeigt"}
+mark.edited: {value: "H"}
+mark.out: {value: "!"}
+
+# Summary and footer
+footer.generated:
+  value: "Erstellt am {at} mit {app}"
+  placeholders:
+    app: {type: string}
+    at: {type: string}
+
+summary.allIn: {value: "Alle Werte innerhalb der Toleranz."}
+
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} Schwebung"
+      other: "{pluralCount} Schwebungen"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.line:
+  value: "{notes} ({min} bis {max}), {reeds}, {beats}."
+  placeholders:
+    beats: {type: string}
+    max: {type: string}
+    min: {type: string}
+    notes: {type: string}
+    reeds: {type: string}
+
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} Ton"
+      other: "{pluralCount} Töne"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} außerhalb der Toleranz ({reeds}, {beats})."
+      other: "{pluralCount} außerhalb der Toleranz ({reeds}, {beats})."
+  placeholders:
+    beats: {type: string}
+    pluralCount: {type: integer}
+    reeds: {type: string}
+
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} Stimmzungenmessung"
+      other: "{pluralCount} Stimmzungenmessungen"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} Stimmzunge"
+      other: "{pluralCount} Stimmzungen"
+  placeholders:
+    pluralCount: {type: integer}
+
+# Export errors
+error.invalidDate: {value: "Gib ein gültiges Datum im Format JJJJ-MM-TT ein."}
+error.invalidFormat: {value: "Dieser Bericht kann nicht im gewählten Format gespeichert werden."}
+
+error.noBrowser:
+  value: "Das PDF-Layout wird im Browser erstellt. Auf diesem Gerät fehlt Chrome oder Chromium. Installiere einen dieser Browser oder exportiere die Karte als HTML und drucke sie aus."
+error.openFailed: {value: "Der Bericht wurde gespeichert, konnte aber in keinem Browser geöffnet werden. Öffne die Datei selbst."}
+error.renderFailed: {value: "Der Bericht konnte nicht erstellt werden. Es wurde nichts geschrieben."}
+
+error.writeFailed:
+  value: "Der Bericht konnte dort nicht gespeichert werden. Eine eventuell vorhandene Datei wurde nicht verändert."

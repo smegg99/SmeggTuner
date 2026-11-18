@@ -1,0 +1,62 @@
+# S99AB startup and crash dialogs (ro).
+close: {value: "Închide"}
+copied: {value: "Copiat"}
+copy: {value: "Copiază raportul"}
+details: {value: "Detalii"}
+email: {value: "Trimite raportul prin e-mail"}
+failed:
+  value: "Operațiunea a eșuat: {error}"
+  placeholders:
+    error: {type: string}
+file:
+  value: "Fișier: {path}"
+  placeholders:
+    path: {type: string}
+kill: {value: "Închide și raportează"}
+logs: {value: "Afișează fișierul jurnal"}
+messageConfig:
+  value: "Fișierul de setări nu a putut fi citit. Corectează-l sau șterge-l, apoi repornește {app}."
+  placeholders:
+    app: {type: string}
+messageCrash:
+  value: "A apărut o eroare internă în {app}. Trimite raportul pentru ca problema să poată fi remediată, apoi repornește aplicația."
+  placeholders:
+    app: {type: string}
+messageHang: {value: "Este posibil ca operațiunea să se încheie. Așteaptă sau închide aplicația și trimite un raport."}
+messageHangStopped:
+  value: "Aplicația {app} a fost închisă în timp ce nu răspundea. Trimite raportul pentru ca problema să poată fi remediată, apoi repornește aplicația."
+  placeholders:
+    app: {type: string}
+messageKilled:
+  value: "Aplicația {app} a fost închisă înainte să poată semnala eroarea. Trimite raportul, apoi repornește aplicația."
+  placeholders:
+    app: {type: string}
+messageOom:
+  value: "Sistemul a rămas fără memorie și a închis {app}. Trimite raportul, apoi repornește aplicația."
+  placeholders:
+    app: {type: string}
+messageStartup:
+  value: "Remediază problema indicată mai jos, apoi repornește {app}."
+  placeholders:
+    app: {type: string}
+restart: {value: "Repornește"}
+save: {value: "Salvează raportul"}
+saved:
+  value: "Salvat în {path}"
+  placeholders:
+    path: {type: string}
+starting:
+  value: "Se pornește {app}"
+  placeholders:
+    app: {type: string}
+titleCrash: {value: "Aplicația s-a oprit în mod neașteptat"}
+titleHang: {value: "Aplicația nu răspunde"}
+titleHangStopped: {value: "Aplicația a încetat să răspundă"}
+titleKilled: {value: "Aplicația s-a închis în mod neașteptat"}
+titleStart: {value: "Aplicația nu a putut porni"}
+wait: {value: "Așteaptă"}
+windowCrash: {value: "eroare fatală"}
+windowHang: {value: "nu răspunde"}
+windowHangStopped: {value: "a încetat să răspundă"}
+windowKilled: {value: "închidere neașteptată"}
+windowStart: {value: "pornire eșuată"}

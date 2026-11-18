@@ -1,0 +1,70 @@
+# Recording controls and readings (lt).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Recording controls
+arm.hint: {value: "Įrašyti matavimą kaskart užfiksavus natą („Enter“ įrašo iškart)"}
+arm.needsSession: {value: "Norėdami įrašyti, atverkite seansą"}
+arm.warmup: {value: "Neįrašoma. Galite laisvai groti, niekas nesaugoma. Paspauskite, kad pradėtumėte įrašymą."}
+undo.hint: {value: "Atšaukti paskutinį matavimą"}
+
+# Readings table and compact columns
+mobile.current: {value: "Išmatuota"}
+mobile.error: {value: "Nuokrypis"}
+
+table.beat:
+  value: "Plakimas {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.delete: {value: "Pašalinti šį rodmenį"}
+table.deleteHint: {value: "Rodmuo bus pašalintas visam laikui. Norėdami jį pakeisti, dar kartą pagrokite ir įrašykite natą."}
+table.deleteTitle: {value: "Pašalinti šį rodmenį?"}
+table.editHint: {value: "Vertę keiskite spustelėdami arba paspausdami „Enter“"}
+table.empty: {value: "Pradėkite įrašymą, tada grokite natas, kad išsaugotumėte rodmenis."}
+table.graph: {value: "Grafikas"}
+
+table.graphHint:
+  value: "Palyginkite kiekvieną liežuvėlį su jo tiksline verte. Spustelėkite stulpelį, kad pasirinktumėte eilutę, ir dar kartą, kad pasirinktumėte kitą registrą."
+table.graphLabel: {value: "Kiekvienos įrašytos natos liežuvėlių paklaidos"}
+table.helpTitle: {value: "Apie šią lentelę"}
+table.label: {value: "Įrašytas derinimas"}
+table.latest: {value: "Įrašyta paskiausiai: „Backspace“ pašalina"}
+table.manual: {value: "Pakeista"}
+table.manualHint: {value: "Šios eilutės vertė įvesta ranka, o ne išmatuota iš garso."}
+
+table.notes:
+  plural:
+    argument: count
+    forms:
+      one: "{count} nata"
+      few: "{count} natos"
+      many: "{count} natos"
+      other: "{count} natų"
+  placeholders:
+    count: {type: integer}
+
+table.unitHint:
+  value: "Liežuvėlių nuokrypiai rodomi nustatymuose pasirinktais vienetais. Plakimai rodomi hercais arba nuokrypio vienetais, kaip pasirinkta įrankių juostoje."
+# Report export dialog
+report.csv: {value: "CSV"}
+report.date: {value: "Data"}
+report.format: {value: "Formatas"}
+
+report.formatHint:
+  value: "PDF kortelė telpa viename A4 puslapyje ir atrodo taip, kaip bus atspausdinta. HTML pateikia tą patį lapą kaip tinklalapį. CSV pateikia lentelę skaičiuoklei."
+report.html: {value: "HTML"}
+report.notes: {value: "Pastaba kortelėje"}
+report.notesHint: {value: "Spausdinama po lentele. Nurodykite, kas atlikta arba ką dar reikia padaryti."}
+
+report.pass:
+  value: "Matavimo etapas: {label}"
+  placeholders:
+    label: {type: string}
+
+report.pdf: {value: "PDF"}
+report.title: {value: "Derinimo kortelė"}
+
+# Recording errors
+error.takeNotFound: {value: "Šiame etape to matavimo nebėra."}
+error.unexpected: {value: "Veiksmas nepavyko. Daugiau informacijos rasite žurnale."}

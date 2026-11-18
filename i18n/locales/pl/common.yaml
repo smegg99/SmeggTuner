@@ -97,3 +97,8 @@ about.helpTitle: {value: "Pomoc"}
 # System tray
 tray.quit: {value: "Zakończ"}
 tray.show: {value: "Pokaż"}
+
+linkNewTab:
+  value: "{text} (otwiera się w nowej karcie)"
+  placeholders:
+    text: {type: string}

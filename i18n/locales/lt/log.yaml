@@ -1,0 +1,100 @@
+# Diagnostic log messages (lt).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Application lifecycle and configuration
+appStarting: {value: "Paleidžiama „SmeggTuner“"}
+cleaningUp: {value: "Atlaisvinami ištekliai"}
+configLoadFailed: {value: "Nepavyko įkelti konfigūracijos"}
+configLoaded: {value: "Konfigūracija įkelta"}
+configSaveFailed: {value: "Nepavyko įrašyti konfigūracijos"}
+crashScreenFailed: {value: "Nepavyko parodyti klaidos lango"}
+crashWatchFailed: {value: "Nepavyko paleisti strigčių stebėjimo priemonės"}
+datastoreInitFailed: {value: "Nepavyko inicijuoti duomenų saugyklos"}
+datastoreReady: {value: "Duomenų saugykla parengta"}
+loadingConfig: {value: "Įkeliama konfigūracija"}
+loggerInitFailed: {value: "Nepavyko sukonfigūruoti žurnalo"}
+reinitLogger: {value: "Žurnalas iš naujo nustatomas pagal konfigūraciją"}
+runFailed: {value: "Nepavyko vykdyti programos"}
+secondInstance: {value: "Paleistas antras egzempliorius, aktyvinamas esamas langas"}
+trayIconFailed: {value: "Nepavyko įkelti pranešimų srities piktogramos"}
+updateCheckFailed: {value: "Nepavyko patikrinti, ar yra naujinių", description: "Update check or stored release-note state failed; logged without a dialog."}
+windowStateLoadFailed: {value: "Nepavyko įkelti lango būsenos"}
+windowStateSaveFailed: {value: "Nepavyko įrašyti lango būsenos"}
+
+# Audio devices and calibration
+audioDeviceEnumFailed: {value: "Nepavyko gauti įrašymo įrenginių sąrašo"}
+audioDeviceGone: {value: "Pasirinktas įrašymo įrenginys nebepasiekiamas"}
+audioDevicesListed: {value: "Gautas įrašymo įrenginių sąrašas"}
+audioDialogFailed: {value: "Failo pasirinkimo dialogo klaida"}
+audioDialogUnavailable: {value: "Prašyta failo dialogo lango, kai programa neveikė"}
+audioFileUnreadable: {value: "Nepavyko atverti garso įrašo"}
+audioNoDevices: {value: "Nėra pasiekiamų įrašymo įrenginių"}
+audioSourceSelected: {value: "Pasirinktas įvesties šaltinis"}
+audioSpeakerUnavailable: {value: "Nėra išvesties įrenginio, failas bus leidžiamas be garso"}
+calibrationAbandoned: {value: "Garso plokštės kalibravimas nutrauktas"}
+calibrationFinished: {value: "Garso plokštės kalibravimas baigtas"}
+calibrationNoDevice: {value: "Kalibruojant garso plokštę nepavyko atverti įrenginio"}
+calibrationStarted: {value: "Pradėtas garso plokštės kalibravimas"}
+deviceStoreFailed: {value: "Nepavyko įrašyti įrašymo įrenginio nustatymų"}
+micBlocksDropped: {value: "Sustojo mikrofono duomenų apdorojimas, blokai praleidžiami"}
+micDeviceLost: {value: "Įrašymo įrenginys netikėtai sustojo"}
+volumeRestore: {value: "Automatiniam garsumo valdikliui nepavyko atkurti įvesties lygio"}
+volumeStepFailed: {value: "Automatiniam garsumo valdikliui nepavyko nustatyti įvesties lygio"}
+volumeUnavailable: {value: "Automatinis garsumo valdiklis negali pasiekti įrenginio įvesties lygio valdymo"}
+
+# Tuner engine
+tunerEventsDropped: {value: "Praleisti matavimo įvykiai, naudotojo sąsaja nespėja jų apdoroti"}
+tunerRunFailed: {value: "Matavimo modulis sustojo dėl klaidos"}
+tunerSettingRejected: {value: "Atmesta nustatymo vertė už leistinų ribų"}
+tunerStartFailed: {value: "Nepavyko sukurti įvesties šaltinio"}
+tunerStarted: {value: "Matavimo modulis paleistas"}
+tunerStopped: {value: "Matavimo modulis sustabdytas"}
+tunerTonePlayFailed: {value: "Nepavyko paleisti atskaitos tono"}
+tunerTonePlaying: {value: "Leidžiamas atskaitos tonas"}
+
+# Sessions, readings and reports
+recordCleared: {value: "Matavimo etapo duomenys išvalyti"}
+recordEdited: {value: "Matmuo pataisytas ranka"}
+recordRejected: {value: "Atmesta įrašymo užklausa"}
+recordTake: {value: "Matavimo rodmuo įrašytas"}
+recordUndone: {value: "Paskutinis matavimas atšauktas"}
+reportFailed: {value: "Nepavyko įrašyti derinimo ataskaitos"}
+reportOpenFailed: {value: "Nepavyko atverti derinimo ataskaitos"}
+reportOpened: {value: "Derinimo ataskaita perduota naršyklei"}
+reportRejected: {value: "Atmesta ataskaitos užklausa"}
+reportWritten: {value: "Derinimo ataskaita įrašyta"}
+sessionClosed: {value: "Seansas užvertas"}
+sessionCreated: {value: "Seansas sukurtas"}
+sessionCurveDropped: {value: "Tikslinė kreivė pašalinta"}
+sessionCurveFitted: {value: "Tikslinė kreivė pritaikyta pagal etapo matavimus"}
+sessionCurveImported: {value: "Tikslinė kreivė importuota"}
+sessionDeleted: {value: "Seansas pašalintas"}
+sessionLoadFailed: {value: "Nepavyko įkelti seanso"}
+sessionOpened: {value: "Seansas atvertas"}
+sessionReedsClamped: {value: "Skamba daugiau liežuvėlių, nei modulis gali atskirti; ribojamas analizuojamų liežuvėlių skaičius"}
+sessionRejected: {value: "Atmestas netinkamas seanso pakeitimas"}
+sessionSaveFailed: {value: "Nepavyko įrašyti seanso"}
+
+# Frontend diagnostics
+frontendAudioCalibrationCancelFailed: {value: "Nepavyko atšaukti kalibravimo"}
+frontendAudioCalibrationFailed: {value: "Nepavyko pradėti kalibravimo"}
+frontendAudioCorrectionFailed: {value: "Nepavyko nuskaityti garso plokštės pataisos"}
+frontendAudioDialogFailed: {value: "Nepavyko atverti failo dialogo lango"}
+frontendAudioListFailed: {value: "Nepavyko gauti garso įrenginių sąrašo"}
+frontendAudioSelectFailed: {value: "Nepavyko pasirinkti garso šaltinio"}
+frontendAudioStateFailed: {value: "Nepavyko nuskaityti garso įrenginio būsenos"}
+frontendAudioVolumeFailed: {value: "Nepavyko pakeisti automatinio garsumo valdymo"}
+frontendConfigLoadFailed: {value: "Nepavyko įkelti konfigūracijos"}
+frontendConfigLoaded: {value: "Konfigūracija įkelta"}
+frontendConfigSaveFailed: {value: "Nepavyko įrašyti konfigūracijos"}
+frontendCurveViewFailed: {value: "Nepavyko nuskaityti kreivės rodinio nustatymų"}
+frontendError: {value: "Netikėta programos klaida"}
+frontendRejection: {value: "Programos veiksmas nepavyko"}
+frontendResizeNotice: {value: "Išdėstymo keitimas atidėtas iki kito kadro (naršyklės „ResizeObserver“ pranešimas)"}
+frontendSettingFailed: {value: "Nepavyko pakeisti derintuvo nustatymo"}
+frontendTunerStartFailed: {value: "Nepavyko paleisti derintuvo"}
+frontendTunerStateFailed: {value: "Nepavyko nuskaityti derintuvo būsenos"}
+frontendTunerStopFailed: {value: "Nepavyko sustabdyti derintuvo"}
+frontendTunerTonePlayFailed: {value: "Nepavyko paleisti atskaitos tono"}
+frontendTunerToneStopFailed: {value: "Nepavyko sustabdyti atskaitos tono"}

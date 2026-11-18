@@ -1,0 +1,100 @@
+# Diagnostic log messages (ko).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Application lifecycle and configuration
+appStarting: {value: "SmeggTuner 시작 중"}
+cleaningUp: {value: "리소스 정리 중"}
+configLoadFailed: {value: "설정을 불러오지 못했습니다"}
+configLoaded: {value: "설정을 불러왔습니다"}
+configSaveFailed: {value: "설정을 저장하지 못했습니다"}
+crashScreenFailed: {value: "오류 화면을 표시하지 못했습니다"}
+crashWatchFailed: {value: "비정상 종료 감시를 시작하지 못했습니다"}
+datastoreInitFailed: {value: "데이터 저장소를 초기화하지 못했습니다"}
+datastoreReady: {value: "데이터 저장소 준비 완료"}
+loadingConfig: {value: "설정 불러오는 중"}
+loggerInitFailed: {value: "로거를 설정하지 못했습니다"}
+reinitLogger: {value: "설정에 따라 로거 재구성 중"}
+runFailed: {value: "앱 실행 실패"}
+secondInstance: {value: "두 번째 인스턴스가 실행되어 기존 창으로 포커스를 옮깁니다"}
+trayIconFailed: {value: "트레이 아이콘을 불러오지 못했습니다"}
+updateCheckFailed: {value: "업데이트 확인 실패", description: "Update check or stored release-note state failed; logged without a dialog."}
+windowStateLoadFailed: {value: "창 상태를 불러오지 못했습니다"}
+windowStateSaveFailed: {value: "창 상태를 저장하지 못했습니다"}
+
+# Audio devices and calibration
+audioDeviceEnumFailed: {value: "오디오 입력 장치 목록을 가져오지 못했습니다"}
+audioDeviceGone: {value: "선택한 오디오 입력 장치가 더 이상 없습니다"}
+audioDevicesListed: {value: "오디오 입력 장치 목록을 가져왔습니다"}
+audioDialogFailed: {value: "파일 대화 상자 오류"}
+audioDialogUnavailable: {value: "앱이 실행되지 않은 상태에서 파일 대화 상자가 요청되었습니다"}
+audioFileUnreadable: {value: "녹음을 열지 못했습니다"}
+audioNoDevices: {value: "사용 가능한 오디오 입력 장치가 없습니다"}
+audioSourceSelected: {value: "입력 소스를 선택했습니다"}
+audioSpeakerUnavailable: {value: "출력 장치가 없어 파일이 무음으로 재생됩니다"}
+calibrationAbandoned: {value: "사운드 카드 보정을 취소했습니다"}
+calibrationFinished: {value: "사운드 카드 보정 완료"}
+calibrationNoDevice: {value: "사운드 카드 보정 중 장치를 열지 못했습니다"}
+calibrationStarted: {value: "사운드 카드 보정을 시작했습니다"}
+deviceStoreFailed: {value: "오디오 입력 장치 설정을 저장하지 못했습니다"}
+micBlocksDropped: {value: "마이크 입력 처리가 지연되어 데이터 블록을 버립니다"}
+micDeviceLost: {value: "오디오 입력 장치가 예기치 않게 중지되었습니다"}
+volumeRestore: {value: "자동 음량 조절로 입력 레벨을 복원하지 못했습니다"}
+volumeStepFailed: {value: "자동 음량 조절로 입력 레벨을 설정하지 못했습니다"}
+volumeUnavailable: {value: "자동 음량 조절 기능이 장치 입력 레벨에 접근할 수 없습니다"}
+
+# Tuner engine
+tunerEventsDropped: {value: "화면 처리가 늦어 측정 이벤트를 버렸습니다"}
+tunerRunFailed: {value: "측정 엔진이 오류로 중지되었습니다"}
+tunerSettingRejected: {value: "범위를 벗어난 설정값을 거부했습니다"}
+tunerStartFailed: {value: "입력 소스를 생성하지 못했습니다"}
+tunerStarted: {value: "측정 엔진 시작됨"}
+tunerStopped: {value: "측정 엔진 중지됨"}
+tunerTonePlayFailed: {value: "기준음 재생 실패"}
+tunerTonePlaying: {value: "기준음 재생 중"}
+
+# Sessions, readings and reports
+recordCleared: {value: "측정 회차를 비웠습니다"}
+recordEdited: {value: "측정 기록을 직접 편집했습니다"}
+recordRejected: {value: "기록 요청을 거부했습니다"}
+recordTake: {value: "측정값을 기록했습니다"}
+recordUndone: {value: "마지막 기록을 취소했습니다"}
+reportFailed: {value: "조율 보고서를 쓰지 못했습니다"}
+reportOpenFailed: {value: "조율 보고서를 열지 못했습니다"}
+reportOpened: {value: "조율 보고서를 브라우저에 전달했습니다"}
+reportRejected: {value: "보고서 요청을 거부했습니다"}
+reportWritten: {value: "조율 보고서를 저장했습니다"}
+sessionClosed: {value: "세션 닫힘"}
+sessionCreated: {value: "세션 생성됨"}
+sessionCurveDropped: {value: "목표 곡선 제거됨"}
+sessionCurveFitted: {value: "측정 회차의 값에 목표 곡선을 맞췄습니다"}
+sessionCurveImported: {value: "목표 곡선을 가져왔습니다"}
+sessionDeleted: {value: "세션 삭제됨"}
+sessionLoadFailed: {value: "세션을 불러오지 못했습니다"}
+sessionOpened: {value: "세션 열림"}
+sessionReedsClamped: {value: "울리는 리드 수가 엔진의 분리 측정 한계를 넘어 측정 수를 상한으로 제한했습니다"}
+sessionRejected: {value: "잘못된 세션 변경을 거부했습니다"}
+sessionSaveFailed: {value: "세션을 저장하지 못했습니다"}
+
+# Frontend diagnostics
+frontendAudioCalibrationCancelFailed: {value: "보정을 취소하지 못했습니다"}
+frontendAudioCalibrationFailed: {value: "보정을 시작하지 못했습니다"}
+frontendAudioCorrectionFailed: {value: "사운드 카드 보정값을 읽지 못했습니다"}
+frontendAudioDialogFailed: {value: "파일 대화 상자를 열지 못했습니다"}
+frontendAudioListFailed: {value: "오디오 장치 목록을 가져오지 못했습니다"}
+frontendAudioSelectFailed: {value: "오디오 소스를 선택하지 못했습니다"}
+frontendAudioStateFailed: {value: "오디오 장치 상태를 읽지 못했습니다"}
+frontendAudioVolumeFailed: {value: "자동 음량 조절 설정을 바꾸지 못했습니다"}
+frontendConfigLoadFailed: {value: "설정을 불러오지 못했습니다"}
+frontendConfigLoaded: {value: "설정을 불러왔습니다"}
+frontendConfigSaveFailed: {value: "설정을 저장하지 못했습니다"}
+frontendCurveViewFailed: {value: "곡선 표시 설정을 읽지 못했습니다"}
+frontendError: {value: "예기치 않은 앱 오류"}
+frontendRejection: {value: "앱 작업 실패"}
+frontendResizeNotice: {value: "레이아웃 변경을 다음 프레임으로 연기했습니다(브라우저 ResizeObserver 알림)"}
+frontendSettingFailed: {value: "튜너 설정을 변경하지 못했습니다"}
+frontendTunerStartFailed: {value: "튜너를 시작하지 못했습니다"}
+frontendTunerStateFailed: {value: "튜너 상태를 읽지 못했습니다"}
+frontendTunerStopFailed: {value: "튜너를 중지하지 못했습니다"}
+frontendTunerTonePlayFailed: {value: "기준음을 재생하지 못했습니다"}
+frontendTunerToneStopFailed: {value: "기준음을 중지하지 못했습니다"}

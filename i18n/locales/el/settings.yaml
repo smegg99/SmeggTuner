@@ -1,0 +1,166 @@
+# Settings and sound-card calibration (el).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Microphone and input level
+audioDeviceHint: {value: "Το μικρόφωνο που χρησιμοποιείται για τις μετρήσεις"}
+audioDeviceLabel: {value: "Συσκευή εισόδου"}
+audioDeviceSystemDefault: {value: "Προεπιλογή συστήματος"}
+autoVolume.hint: {value: "Ρυθμίζει τη στάθμη του μικροφώνου κατά τη μέτρηση"}
+autoVolume.label: {value: "Αυτόματη ένταση εισόδου"}
+autoVolume.saveFailed: {value: "Δεν ήταν δυνατή η αποθήκευση της ρύθμισης έντασης εισόδου."}
+autoVolume.unsupported: {value: "Η στάθμη εισόδου αυτής της συσκευής δεν ρυθμίζεται."}
+humFilter50: {value: "50 Hz"}
+humFilter60: {value: "60 Hz"}
+humFilterHint: {value: "Αφαιρεί τον βόμβο του δικτύου: 50 Hz στην Ευρώπη, 60 Hz στην Αμερική"}
+humFilterLabel: {value: "Φίλτρο βόμβου δικτύου"}
+lockedWhileRunning: {value: "Σταματήστε το χορδιστήρι για να αλλάξετε την είσοδο ήχου."}
+
+# Detection and reference pitch
+continuousManual: {value: "Συνεχής ενημέρωση της επιλεγμένης νότας"}
+continuousManualHint: {value: "Ενημέρωση της επιλεγμένης νότας προτού σταθεροποιηθεί η ένδειξη"}
+detection.balanced: {value: "Ισορροπημένη"}
+detection.balancedHint: {value: "Αλλάζει νότα σε περίπου μισό δευτερόλεπτο"}
+detection.fast: {value: "Γρήγορη"}
+detection.fastHint: {value: "Αλλάζει νότα ταχύτερα, αλλά μπορεί να κλειδώσει σε λάθος νότα"}
+detection.steady: {value: "Σταθερή"}
+detection.steadyHint: {value: "Αρχική συμπεριφορά, με αργή εναλλαγή νότας"}
+detectionLabel: {value: "Ανίχνευση νότας"}
+lockA4: {value: "Κλείδωμα συχνότητας αναφοράς"}
+lockA4Hint: {value: "Εμποδίζει την αλλαγή του A4 στο χορδιστήρι"}
+
+# Reading units, tolerance and note names
+beatUnitHint: {value: "Χερτζ ή μονάδες ίσες με το 0,06% της συχνότητας της νότας"}
+beatUnitLabel: {value: "Μονάδα διακροτήματος"}
+errorReference: {value: "Αναφορά απόκλισης"}
+errorReferenceGoal: {value: "Στόχος"}
+
+errorReferenceHint:
+  value: "Εμφάνιση απόκλισης από τη νότα της κλίμακας ή από τον στόχο κουρδίσματος. Όταν επιτευχθεί ο στόχος, η απόκλιση από αυτόν είναι μηδέν."
+errorReferenceScale: {value: "Κλίμακα"}
+scaleNamingHint: {value: "Τρόπος ονομασίας των νοτών"}
+scaleNamingLabel: {value: "Ονόματα νοτών"}
+scaleNamings.cdefgab: {value: "C D E F G A B (διεθνές, διέσεις όπως C#)"}
+scaleNamings.cdefgah: {value: "C D E F G A H (γερμανικό, διέσεις όπως C#)"}
+scaleNamings.doremi: {value: "Ντο Ρε Μι (σολφέζ)"}
+scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (πολωνικό)"}
+toleranceBeat: {value: "Διακρότημα"}
+toleranceHint: {value: "Η μέγιστη απόκλιση καλαμιού ή διακροτήματος που θεωρείται ακόμη αποδεκτή"}
+toleranceLabel: {value: "Ανοχές"}
+toleranceReed: {value: "Καλάμι"}
+unitHint: {value: "Σεντ ή μονάδες ίσες με το 0,06% της συχνότητας της νότας"}
+unitLabel: {value: "Μονάδα απόκλισης"}
+
+# Appearance, language and window behavior
+accent.auto: {value: "Συστήματος"}
+accent.custom: {value: "Προσαρμοσμένο"}
+accent.hint: {value: "Χρώμα έμφασης συστήματος ή δικής σας επιλογής"}
+accent.label: {value: "Έμφαση"}
+accent.pick: {value: "Επιλογή χρώματος"}
+accent.pickTitle: {value: "Χρώμα έμφασης"}
+closeToTray: {value: "Ελαχιστοποίηση στην περιοχή ειδοποιήσεων κατά το κλείσιμο"}
+closeToTrayHint: {value: "Όταν κλείνει το παράθυρο, η εφαρμογή παραμένει στην περιοχή ειδοποιήσεων"}
+checkUpdates: {value: "Έλεγχος για ενημερώσεις", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdatesHint: {value: "Αναζητά νεότερη έκδοση στο GitHub", description: "Hint below the desktop update-check checkbox."}
+languageHint: {value: "Γλώσσα διεπαφής"}
+languageLabel: {value: "Γλώσσα"}
+phoneLayout.hint: {value: "Προσαρμόζει το παράθυρο στις διαστάσεις τηλεφώνου για δοκιμή της διάταξης Android", description: "Debug builds only."}
+phoneLayout.label: {value: "Διάταξη τηλεφώνου", description: "Debug builds only."}
+phoneLayout.landscape: {value: "Οριζόντιος", description: "Debug builds only. The phone held on its side."}
+phoneLayout.off: {value: "Ανενεργή", description: "Debug builds only. The normal desktop window."}
+phoneLayout.portrait: {value: "Κατακόρυφος", description: "Debug builds only. The phone held upright."}
+themeHint: {value: "Συστήματος, φωτεινό ή σκοτεινό"}
+themeLabel: {value: "Θέμα"}
+themes.auto: {value: "Συστήματος"}
+themes.dark: {value: "Σκοτεινό"}
+themes.light: {value: "Φωτεινό"}
+
+# Sound-card calibration
+calibration.askBody:
+  value: "Ένα μη βαθμονομημένο ρολόι δειγματοληψίας μπορεί να προκαλέσει μικρό σταθερό σφάλμα μέτρησης. Η βαθμονόμηση διαρκεί περίπου ένα λεπτό και δεν χρειάζεται ήχο."
+calibration.askCalibrate: {value: "Βαθμονόμηση τώρα"}
+calibration.askContinue: {value: "Συνέχεια χωρίς διόρθωση"}
+calibration.askTitle: {value: "Η κάρτα ήχου δεν έχει βαθμονομηθεί"}
+calibration.hint: {value: "Διορθώνει το σφάλμα του ρολογιού της κάρτας ήχου. Διαρκεί περίπου ένα λεπτό, χωρίς ήχο."}
+calibration.label: {value: "Βαθμονόμηση κάρτας ήχου"}
+calibration.open: {value: "Άνοιγμα"}
+calibration.openHint: {value: "Εμφάνιση οθόνης βαθμονόμησης χωρίς έναρξη μέτρησης"}
+calibration.saveFailed: {value: "Η βαθμονόμηση δεν αποθηκεύτηκε. Το χορδιστήρι χρησιμοποιεί την προηγούμενη αποθηκευμένη κατάσταση."}
+calibration.screen.again: {value: "Νέα βαθμονόμηση"}
+calibration.screen.bar.confirming: {value: "Επιβεβαίωση"}
+calibration.screen.bar.settling: {value: "Σταθεροποίηση"}
+
+calibration.screen.calibrated:
+  value: "Η βαθμονόμηση ολοκληρώθηκε. Στις ενδείξεις εφαρμόζεται διόρθωση {percent} %."
+  placeholders:
+    percent: {type: string}
+
+calibration.screen.calibrating: {value: "Μέτρηση του ρολογιού της κάρτας ήχου"}
+
+calibration.screen.how:
+  value: "Οι ενδείξεις ενδέχεται να έχουν μικρό σταθερό σφάλμα τονικού ύψους. Δεν χρειάζεται ήχος και η διαδικασία διαρκεί περίπου ένα λεπτό."
+
+calibration.screen.lead: {value: "Δεν έχει γίνει ακόμη βαθμονόμηση"}
+
+calibration.screen.phase.confirming:
+  value: "Η ένδειξη σταθεροποιήθηκε. Ελέγχεται αν παραμένει σταθερή για 20 s."
+
+calibration.screen.phase.preparing: {value: "Αναμονή σταθεροποίησης της εισόδου πριν από τη μέτρηση του ρολογιού."}
+calibration.screen.phase.settling: {value: "Αναμονή μέχρι να σταθεροποιηθεί η ένδειξη του ρολογιού."}
+
+calibration.screen.pitch:
+  value: "Αυτό αντιστοιχεί σε απόκλιση {pitch} σε κάθε νότα."
+  placeholders:
+    pitch: {type: string}
+
+calibration.screen.preparing: {value: "Προθέρμανση εισόδου"}
+calibration.screen.retry: {value: "Οι ενδείξεις παραμένουν χωρίς διόρθωση. Κλείστε τις άλλες εφαρμογές ήχου και προσπαθήστε ξανά."}
+calibration.screen.return: {value: "Επιστροφή"}
+calibration.screen.stat.dropouts: {value: "Διακοπές"}
+calibration.screen.stat.elapsed: {value: "Χρόνος που πέρασε"}
+calibration.screen.stat.offset: {value: "Απόκλιση ρολογιού"}
+calibration.screen.stat.rate: {value: "Ρυθμός δειγματοληψίας"}
+calibration.screen.stat.steadiness: {value: "Σταθερότητα"}
+
+calibration.screen.steadiness:
+  value: "{ppm} ppm, στόχος {target} ppm"
+  placeholders:
+    ppm: {type: string}
+    target: {type: string}
+
+calibration.screen.steps.done: {value: "Τέλος"}
+calibration.screen.steps.measure: {value: "Μέτρηση"}
+calibration.screen.steps.prepare: {value: "Προθέρμανση"}
+calibration.screen.traceEmpty: {value: "Η απόκλιση του ρολογιού σχεδιάζεται εδώ κατά τη μέτρηση."}
+calibration.screen.unreliable: {value: "Η ένδειξη του ρολογιού δεν σταθεροποιήθηκε"}
+calibration.start: {value: "Βαθμονόμηση"}
+calibration.startHint: {value: "Μέτρηση του ρολογιού δειγματοληψίας εισόδου"}
+
+calibration.status.calibrated:
+  value: "Βαθμονομημένη, {percent} %"
+  placeholders:
+    percent: {type: string}
+
+calibration.status.calibrating:
+  value: "Βαθμονόμηση, {seconds} s ({percent} %), ολοκληρώθηκε το {progress} %"
+  placeholders:
+    percent: {type: string}
+    progress: {type: string}
+    seconds: {type: string}
+
+calibration.status.preparing: {value: "Προετοιμασία"}
+calibration.status.uncalibrated: {value: "Χωρίς βαθμονόμηση"}
+calibration.status.unreliable: {value: "Αναξιόπιστη βαθμονόμηση, οι ενδείξεις δεν διορθώνονται"}
+
+# Settings section headings
+groups.appearance: {value: "Εμφάνιση"}
+groups.detection: {value: "Ανίχνευση"}
+groups.microphone: {value: "Μικρόφωνο"}
+groups.output: {value: "Έξοδος", description: "Settings section shown on a phone, holding the output volume."}
+groups.readings: {value: "Ενδείξεις"}
+groups.report: {value: "Στοιχεία εργαστηρίου"}
+
+# Report letterhead
+report.address: {value: "Διεύθυνση"}
+report.name: {value: "Όνομα εργαστηρίου"}
+report.nameHint: {value: "Εμφανίζεται στις εξαγόμενες αναφορές όταν είναι ενεργή η επιστολόχαρτη κεφαλίδα."}

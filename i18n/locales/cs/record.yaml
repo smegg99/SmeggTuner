@@ -1,0 +1,73 @@
+# Recording controls and readings (cs).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Recording controls
+arm.hint: {value: "Zaznamenat měření při každém ustálení tónu (Enter ho zaznamená ihned)"}
+arm.needsSession: {value: "Pro záznam otevřete relaci"}
+arm.warmup: {value: "Záznam je vypnutý. Můžete volně hrát, nic se neukládá. Stisknutím spustíte záznam."}
+undo.hint: {value: "Vrátit poslední záznam"}
+
+# Readings table and compact columns
+mobile.current: {value: "Naměřeno"}
+mobile.error: {value: "Odchylka"}
+
+table.beat:
+  value: Zázněj {pair}
+  placeholders:
+    pair:
+      type: string
+
+table.delete: {value: "Odstranit toto měření"}
+table.deleteHint: {value: "Trvale odstraní toto měření. Chcete-li je nahradit, zahrajte tón a znovu ho zaznamenejte."}
+table.deleteTitle: {value: "Odstranit toto měření?"}
+table.editHint: {value: "Hodnotu upravíte kliknutím nebo klávesou Enter"}
+table.empty: {value: "Spusťte záznam a pak hrajte tóny. Měření se budou ukládat."}
+table.graph: {value: "Graf"}
+
+table.graphHint: {value: "Porovnejte každý jazýček s jeho cílovou hodnotou. Kliknutím na sloupec vyberete příslušný řádek, dalším kliknutím přejdete na další rejstřík."}
+
+table.graphLabel: {value: "Odchylky jazýčků u zaznamenaných tónů"}
+table.helpTitle: {value: "O této tabulce"}
+table.label: {value: "Zaznamenané ladění"}
+table.latest: {value: "Poslední záznam odstraníte klávesou Backspace"}
+table.manual: {value: "Upraveno"}
+table.manualHint: {value: "Jedna z hodnot v tomto řádku byla zadána ručně."}
+
+table.notes:
+  plural:
+    argument: count
+    forms:
+      one: '{count} tón'
+      few: '{count} tóny'
+      many: '{count} tónu'
+      other: '{count} tónů'
+  placeholders:
+    count:
+      type: integer
+
+table.unitHint: {value: "Odchylky jazýčků se uvádějí v jednotkách vybraných v Nastavení. Zázněje se podle volby na panelu nástrojů uvádějí v hertzech nebo v jednotkách odchylky."}
+
+# Report export dialog
+report.csv: {value: "CSV"}
+report.date: {value: "Datum"}
+report.format: {value: "Formát"}
+
+report.formatHint: {value: "PDF obsahuje ladicí list na jedné straně A4 přesně tak, jak se vytiskne. HTML zobrazí stejný list jako webovou stránku. CSV obsahuje tabulku pro tabulkový procesor."}
+
+report.html: {value: "HTML"}
+report.notes: {value: "Poznámka na listu"}
+report.notesHint: {value: "Vytiskne se pod tabulkou. Uveďte, co bylo provedeno nebo co ještě zbývá udělat."}
+
+report.pass:
+  value: 'Série měření: {label}'
+  placeholders:
+    label:
+      type: string
+
+report.pdf: {value: "PDF"}
+report.title: {value: "Ladicí list"}
+
+# Recording errors
+error.takeNotFound: {value: "Tento záznam už v sérii není."}
+error.unexpected: {value: "Operace se nezdařila. Podrobnosti najdete v protokolu."}

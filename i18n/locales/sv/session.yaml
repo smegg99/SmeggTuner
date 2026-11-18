@@ -1,0 +1,256 @@
+# Sessions, instruments and target curves (sv).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one = 1; other = 0, 2, 3, ...
+
+# Session list and actions
+card.a4:
+  value: "A = {hz} Hz"
+  placeholders:
+    hz: {type: string}
+
+card.changed: {value: "Instrumentet i biblioteket har ändrats sedan sessionen registrerades."}
+card.hasCurve: {value: "Målkurva angiven"}
+
+card.readings:
+  plural:
+    argument: count
+    forms:
+      one: "{count} mätvärde"
+      other: "{count} mätvärden"
+  placeholders:
+    count: {type: integer}
+
+card.unnamedInstrument: {value: "Dragspel utan namn"}
+
+card.updated:
+  value: "Uppdaterad {when}"
+  placeholders:
+    when: {type: string}
+
+deleteHint: {value: "Radera sessionen permanent med alla mätomgångar, mätvärden och stämkurvan."}
+deleteTitle: {value: "Radera sessionen?"}
+empty: {value: "Inga sessioner ännu"}
+emptyHint: {value: "Skapa en session för att spara mätningar eller använd stämapparaten utan en session."}
+export: {value: "Exportera session"}
+file.openFilter: {value: "smeggtuner-session"}
+file.openTitle: {value: "Välj en sessionsfil"}
+new: {value: "Ny session"}
+title: {value: "Sessioner"}
+
+# Session dialog and tabs
+dialog.backToList: {value: "Välj ett tidigare stämt instrument"}
+dialog.describeNew: {value: "Beskriv ett nytt instrument..."}
+dialog.forgetAccordion: {value: "Glöm det här dragspelet"}
+dialog.loadAccordion: {value: "Läs in från fil..."}
+dialog.name: {value: "Sessionsnamn"}
+dialog.nameHint: {value: "Använd instrumentets eller kundens namn för att känna igen sessionen."}
+dialog.pickAccordion: {value: "Vilket dragspel?"}
+dialog.start: {value: "Starta"}
+page.mobile.curve: {value: "Målvärden"}
+page.mobile.recorded: {value: "Mätvärden"}
+
+# Instrument editing restrictions
+accordion.a4Locked: {value: "Låst: Sessionen innehåller redan mätningar med denna inställning."}
+
+accordion.columnsRefused:
+  value: "Ändringen skulle påverka stämmorna i befintliga mätningar och sparades inte. Återställ de tidigare stämmorna eller skapa en ny session."
+accordion.frozen:
+  value: "När mätvärden har registrerats kan referenstonen och stämmorna inte ändras. Du kan fortfarande lägga till register med de befintliga stämmorna."
+accordion.frozenShort: {value: "Stämmor låsta"}
+accordion.remember: {value: "Spara i instrumentbiblioteket"}
+accordion.rememberHint: {value: "Spara sessionens instrument i biblioteket för framtida sessioner."}
+
+# Instrument definition and registers
+instrument.a4: {value: "Referenston"}
+
+instrument.a4Hint:
+  value: "Referensfrekvensen för A4 i hertz. Nya sessioner för instrumentet använder detta värde."
+
+instrument.bass.build: {value: "Fotlägen för nästa registerknapp"}
+instrument.bass.fixed: {value: "Inga basregister: fast basmekanik där alla stämmor alltid ljuder."}
+
+instrument.bass.full:
+  value: "En basmekanik kan här ha högst {n} registerknappar"
+  placeholders:
+    n: {type: string}
+
+instrument.bass.hint: {value: "Ange antalet basstämmor. De flesta basmekaniker har fyra eller fem."}
+instrument.bass.registerName: {value: "Registerknappens namn"}
+instrument.bass.voices: {value: "Basstämmor"}
+instrument.beatTolerance: {value: "Tolerans för svävning"}
+instrument.builder.add: {value: "Lägg till"}
+instrument.builder.already: {value: "Registerknappen är redan beskriven"}
+instrument.builder.high: {value: "4' piccolo"}
+instrument.builder.low: {value: "16' bas"}
+instrument.builder.middle: {value: "8'-stämmor"}
+instrument.builder.none: {value: "Inga registerknappar ännu. Välj nedan vilka stämmor varje knapp aktiverar."}
+instrument.builder.remove: {value: "Ta bort registret"}
+instrument.builder.title: {value: "Lägg till en registerknapp"}
+instrument.file.exportTitle: {value: "Exportera dragspel"}
+instrument.file.filterName: {value: "smeggtuner-dragspel"}
+instrument.file.imageFilter: {value: "Bilder"}
+instrument.file.imageTitle: {value: "Välj ett foto"}
+instrument.file.openTitle: {value: "Välj en dragspelsfil"}
+instrument.name: {value: "Namn"}
+instrument.nameHint: {value: "Namn i instrumentbiblioteket och sessionerna."}
+instrument.namePlaceholder: {value: "Hohner Morino V N"}
+instrument.nameRequired: {value: "Ange ett namn på dragspelet."}
+instrument.photo: {value: "Foto"}
+instrument.range.backwards: {value: "Den högsta tonen får inte vara lägre än den lägsta."}
+instrument.range.clear: {value: "Rensa"}
+instrument.range.down: {value: "En halvton ned"}
+
+instrument.range.hint:
+  value: "Valfritt. Den lägsta och högsta tangenten. Omfånget kan även ställas in på gehör vid kalibreringen."
+
+instrument.range.label: {value: "Klaviaturens omfång"}
+instrument.range.to: {value: "till"}
+instrument.range.up: {value: "En halvton upp"}
+
+instrument.registersHint:
+  value: "Klicka på prickarna i varje registerknapps symbol, cirkeln som graverats på dragspelet, eller välj en vanlig symbol. Prickarna avgör vilka stämmor som ljuder."
+instrument.registersSubtitle: {value: "Registerknapparna på diskantsidan och vilka stämmor varje knapp aktiverar."}
+
+instrument.says:
+  plural:
+    argument: reeds
+    forms:
+      one: "Stämmor: {banks}. Det fylligaste registret aktiverar {reeds} stämtunga."
+      other: "Stämmor: {banks}. Det fylligaste registret aktiverar {reeds} stämtungor."
+  placeholders:
+    banks: {type: string}
+    reeds: {type: integer}
+
+instrument.sections.bass: {value: "Basmekanik"}
+instrument.sections.identity: {value: "Instrumentuppgifter"}
+instrument.sections.keyboard: {value: "Klaviatur"}
+instrument.sections.reference: {value: "Referenston och tolerans"}
+instrument.sections.voices: {value: "Register"}
+instrument.tolerance: {value: "Tolerans för stämtungor"}
+
+instrument.toleranceHint:
+  value: "Tillåten avvikelse för stämtungan i enheter om 0,06 % av tonens frekvens. Mätvärden utanför intervallet markeras som ostämda."
+# Target curve editor
+curve.clearAll: {value: "Rensa kurva"}
+
+curve.clearAllConfirm:
+  value: "Alla stödpunkter tas bort. Målet blir åter skalans tonhöjd för varje ton och stämapparaten fungerar som en enkel indikator."
+curve.clearAllHint: {value: "Ta bort alla stödpunkter och använd skalans tonhöjder som mål."}
+curve.clearAllTitle: {value: "Rensa hela kurvan?"}
+curve.entryUnit: {value: "Inmatningsenhet"}
+
+curve.help.hz:
+  value: "Med Hz anges målet i hertz vid A4 = 440 Hz som i referenslistan för svävningar. Det ändras därför inte med sessionens A4. Registrerat visar sessionens mätvärden ovanpå listan. Under Lista kan du anpassa stödpunkterna till dem eller kopiera en annan sessions lista."
+curve.help.hzTitle: {value: "Hz och mätvärden"}
+
+curve.help.interp:
+  value: "Med interpolering följer tonerna linjen mellan stödpunkterna. Annars gäller varje punkt fram till nästa. Utan punkter är målet överallt skalans tonhöjd."
+curve.help.interpTitle: {value: "Mellan punkterna"}
+
+curve.help.lead:
+  value: "Stämmålet anger för varje ton hur långt varje stämtunga ska ligga från skalans tonhöjd. Tabellen bedömer den registrerade stämtungan mot ditt mål, även när det avviker från skalan."
+curve.help.set:
+  value: "Välj en ton och ett värde och tryck på Ange, eller dra en punkt uppåt eller nedåt i diagrammet. Varje stämma har en egen linje och den du redigerar är markerad."
+curve.help.setTitle: {value: "Ange en punkt"}
+curve.helpTitle: {value: "Önskade svävningar"}
+curve.interpolate: {value: "Interpolera"}
+curve.interpolateHint: {value: "Följ linjen mellan stödpunkterna. Annars gäller varje punkt fram till nästa."}
+curve.menu.ends: {value: "Utanför stödpunkterna"}
+curve.menu.extendHigh: {value: "Fortsätt ovanför högsta punkten"}
+curve.menu.extendLow: {value: "Fortsätt nedanför lägsta punkten"}
+curve.menu.fit: {value: "Anpassa till sessionens mätvärden"}
+
+curve.menu.fitBody:
+  plural:
+    argument: n
+    forms:
+      one: "Stödpunkterna ersätts med en kurva anpassad till det enda mätvärdet."
+      other: "Stödpunkterna ersätts med en kurva anpassad till {n} mätvärden."
+  placeholders:
+    n: {type: integer}
+
+curve.menu.fromFile: {value: "Kopiera från en sessionsfil"}
+curve.menu.fromSession: {value: "Kopiera från en session"}
+curve.menu.label: {value: "Lista"}
+curve.menu.replace: {value: "Ersätt listan"}
+curve.menu.replaceBody: {value: "Stödpunkterna ersätts med den andra listan och dess inställningar."}
+curve.menu.replaceConfirm: {value: "Ersätt"}
+curve.menu.replaceTitle: {value: "Ersätt svävningslistan?"}
+curve.rank: {value: "Stämma"}
+curve.recorded: {value: "Registrerat"}
+curve.recordedHint: {value: "Visa sessionens mätvärden i diagrammet"}
+curve.remove: {value: "Ta bort"}
+curve.removeHint: {value: "Ta bort tonens stödpunkt från kurvan."}
+
+curve.scale:
+  value: "Skala {v}"
+  placeholders:
+    v: {type: string}
+
+curve.scaleAuto: {value: "Automatisk skala"}
+curve.scaleHint: {value: "Diagrammets vertikala omfång"}
+curve.set: {value: "Ange"}
+curve.setHint: {value: "Lägg till en stödpunkt på tonen för den valda stämman."}
+curve.startHint: {value: "Inga stödpunkter ännu. Målet är skalans tonhöjd för varje ton."}
+
+# Readings and workshop actions
+footer.coverage:
+  value: "{done} / {total} toner"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.inTune:
+  value: "{done} / {total} stämda"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.none: {value: "Ingen session"}
+
+readings.notes:
+  plural:
+    argument: n
+    forms:
+      one: "en ton"
+      other: "{n} toner"
+  placeholders:
+    n: {type: integer}
+
+workshop.exit: {value: "Avsluta session"}
+workshop.import: {value: "Importera"}
+workshop.open: {value: "Öppna"}
+workshop.print: {value: "Skriv ut stämkort"}
+
+# Session errors
+error.fitFailed: {value: "Kunde inte anpassa en kurva till mätomgången."}
+
+error.hasReadings:
+  value: "Sessionens mätvärden bygger på dess referenston och antal stämtungor. Ingetdera kan längre ändras."
+error.imageUnreadable: {value: "Fotot kunde inte öppnas."}
+error.instrumentName: {value: "Ge dragspelet ett namn så att du hittar det igen."}
+error.invalidA4: {value: "Referenstonen måste ligga mellan 430 och 450 Hz."}
+
+error.invalidInstrument:
+  value: "Dragspelet kan inte användas: en stämma anges två gånger eller ett register använder en stämma som dragspelet saknar."
+error.invalidName: {value: "Ge sessionen ett namn."}
+error.invalidNote: {value: "Tonen ligger utanför mätområdet."}
+error.invalidReed: {value: "Den här stämtungan ljuder inte på dragspelet."}
+error.invalidReedCount: {value: "På ett dragspel ljuder 1 till 8 stämtungor per ton."}
+error.invalidTranspose: {value: "Transponeringen kan vara 0 till 11 halvtoner."}
+error.invalidUnit: {value: "Ange värden i enheter om 0,06 %, i cent eller i hertz."}
+error.invalidValue: {value: "Värdet är inget tal."}
+error.loadFailed: {value: "Kunde inte läsa sessionen."}
+error.noBassMachine: {value: "Ingen basmekanik har angetts för dragspelet."}
+error.noBassRegister: {value: "Dragspelet har inte det basregistret."}
+error.noCurve: {value: "Sessionen saknar målkurva."}
+error.noReadings: {value: "Inget har registrerats i sessionen ännu."}
+error.noRegister: {value: "Dragspelet har inte det registret."}
+error.noSession: {value: "Ingen session är öppen."}
+error.notAnImage: {value: "Filen är inget foto."}
+error.notFound: {value: "Sessionen finns inte längre."}
+error.notesTooLong: {value: "Korta ned anteckningen till 500 tecken."}
+error.saveFailed: {value: "Sessionen kunde inte sparas. Om du stänger nu kan de senaste mätningarna gå förlorade."}
+error.takeNotFound: {value: "Mätvärdet finns inte längre."}
+error.unexpected: {value: "Något gick fel."}

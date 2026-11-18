@@ -1,0 +1,15 @@
+# S99AB release notes and update prompts (fi).
+notesTitle:
+  value: "Version {version} muutokset"
+  placeholders:
+    version: {type: string}
+notTranslated: {value: "Näitä julkaisutietoja ei ole vielä käännetty."}
+updateBody:
+  value: "Käytössä on versio {current}. Uusin versio on {latest}."
+  placeholders:
+    current: {type: string}
+    latest: {type: string}
+updateDownload: {value: "Lataa"}
+updateIgnore: {value: "Ohita tämä versio"}
+updateLater: {value: "Myöhemmin"}
+updateTitle: {value: "Uudempi versio on saatavilla"}

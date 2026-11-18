@@ -1,0 +1,100 @@
+# Diagnostic log messages (fr).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Application lifecycle and configuration
+appStarting: {value: "Démarrage de smeggtuner"}
+cleaningUp: {value: "Nettoyage en cours"}
+configLoadFailed: {value: "Impossible de charger la configuration"}
+configLoaded: {value: "Configuration chargée"}
+configSaveFailed: {value: "Impossible d'enregistrer la configuration"}
+crashScreenFailed: {value: "Impossible d'afficher l'écran d'erreur"}
+crashWatchFailed: {value: "Impossible de démarrer la surveillance des plantages"}
+datastoreInitFailed: {value: "Impossible d'initialiser le stockage des données"}
+datastoreReady: {value: "Stockage des données prêt"}
+loadingConfig: {value: "Chargement de la configuration"}
+loggerInitFailed: {value: "Impossible de configurer le journal"}
+reinitLogger: {value: "Reconfiguration du journal à partir des paramètres chargés"}
+runFailed: {value: "Échec de l'exécution de l'application"}
+secondInstance: {value: "Seconde instance lancée, activation de la fenêtre existante"}
+trayIconFailed: {value: "Impossible de charger l'icône de la zone de notification"}
+updateCheckFailed: {value: "Impossible de rechercher des mises à jour", description: "Update check or stored release-note state failed; logged without a dialog."}
+windowStateLoadFailed: {value: "Impossible de charger l'état de la fenêtre"}
+windowStateSaveFailed: {value: "Impossible d'enregistrer l'état de la fenêtre"}
+
+# Audio devices and calibration
+audioDeviceEnumFailed: {value: "Impossible d'énumérer les périphériques de capture"}
+audioDeviceGone: {value: "Le périphérique de capture sélectionné n'est plus présent"}
+audioDevicesListed: {value: "Liste des périphériques de capture établie"}
+audioDialogFailed: {value: "Échec de la boîte de dialogue de sélection de fichier"}
+audioDialogUnavailable: {value: "Sélection de fichier demandée alors que l'application n'est pas en cours d'exécution"}
+audioFileUnreadable: {value: "Impossible d'ouvrir l'enregistrement"}
+audioNoDevices: {value: "Aucun périphérique de capture disponible"}
+audioSourceSelected: {value: "Source d'entrée sélectionnée"}
+audioSpeakerUnavailable: {value: "Aucun périphérique de sortie, la lecture du fichier sera silencieuse"}
+calibrationAbandoned: {value: "Étalonnage de la carte son abandonné"}
+calibrationFinished: {value: "Étalonnage de la carte son terminé"}
+calibrationNoDevice: {value: "Impossible d'ouvrir le périphérique pour étalonner la carte son"}
+calibrationStarted: {value: "Étalonnage de la carte son démarré"}
+deviceStoreFailed: {value: "Impossible d'enregistrer les paramètres du périphérique de capture"}
+micBlocksDropped: {value: "Le traitement du signal du micro est bloqué, des blocs audio sont abandonnés"}
+micDeviceLost: {value: "Arrêt inattendu du périphérique de capture"}
+volumeRestore: {value: "Le réglage automatique du volume n'a pas pu rétablir le niveau d'entrée"}
+volumeStepFailed: {value: "Le réglage automatique du volume n'a pas pu régler le niveau d'entrée"}
+volumeUnavailable: {value: "Le réglage automatique du volume n'a pas accès au niveau d'entrée du périphérique"}
+
+# Tuner engine
+tunerEventsDropped: {value: "Événements de mesure abandonnés, l'interface est en retard"}
+tunerRunFailed: {value: "Le moteur de mesure s'est arrêté sur une erreur"}
+tunerSettingRejected: {value: "Réglage hors limites refusé"}
+tunerStartFailed: {value: "Impossible de créer la source d'entrée"}
+tunerStarted: {value: "Moteur de mesure démarré"}
+tunerStopped: {value: "Moteur de mesure arrêté"}
+tunerTonePlayFailed: {value: "Impossible de jouer le son de référence"}
+tunerTonePlaying: {value: "Lecture du son de référence"}
+
+# Sessions, readings and reports
+recordCleared: {value: "Passage effacé"}
+recordEdited: {value: "Prise modifiée à la main"}
+recordRejected: {value: "Demande d'enregistrement refusée"}
+recordTake: {value: "Mesure enregistrée"}
+recordUndone: {value: "Dernière prise annulée"}
+reportFailed: {value: "Impossible d'écrire le rapport d'accordage"}
+reportOpenFailed: {value: "Impossible d'ouvrir le rapport d'accordage"}
+reportOpened: {value: "Rapport d'accordage transmis au navigateur"}
+reportRejected: {value: "Demande de rapport refusée"}
+reportWritten: {value: "Rapport d'accordage enregistré"}
+sessionClosed: {value: "Session fermée"}
+sessionCreated: {value: "Session créée"}
+sessionCurveDropped: {value: "Courbe cible supprimée"}
+sessionCurveFitted: {value: "Courbe cible ajustée aux mesures d'un passage"}
+sessionCurveImported: {value: "Courbe cible importée"}
+sessionDeleted: {value: "Session supprimée"}
+sessionLoadFailed: {value: "Impossible de charger la session"}
+sessionOpened: {value: "Session ouverte"}
+sessionReedsClamped: {value: "L'instrument fait sonner plus d'anches que le moteur ne peut en distinguer. Le moteur applique sa limite."}
+sessionRejected: {value: "Modification de session non valide refusée"}
+sessionSaveFailed: {value: "Impossible d'enregistrer la session"}
+
+# Frontend diagnostics
+frontendAudioCalibrationCancelFailed: {value: "Impossible d'annuler l'étalonnage"}
+frontendAudioCalibrationFailed: {value: "Impossible de lancer l'étalonnage"}
+frontendAudioCorrectionFailed: {value: "Impossible de lire la correction de la carte son"}
+frontendAudioDialogFailed: {value: "Impossible d'ouvrir la boîte de dialogue de sélection de fichier"}
+frontendAudioListFailed: {value: "Impossible de lister les périphériques audio"}
+frontendAudioSelectFailed: {value: "Impossible de sélectionner la source audio"}
+frontendAudioStateFailed: {value: "Impossible de lire l'état du périphérique audio"}
+frontendAudioVolumeFailed: {value: "Impossible de modifier le réglage automatique du volume"}
+frontendConfigLoadFailed: {value: "Impossible de charger la configuration"}
+frontendConfigLoaded: {value: "Configuration chargée"}
+frontendConfigSaveFailed: {value: "Impossible d'enregistrer la configuration"}
+frontendCurveViewFailed: {value: "Impossible de lire les paramètres d'affichage de la courbe"}
+frontendError: {value: "Erreur inattendue de l'application"}
+frontendRejection: {value: "Échec d'une opération de l'application"}
+frontendResizeNotice: {value: "Modification de la disposition reportée à l'image suivante (avis ResizeObserver du navigateur)"}
+frontendSettingFailed: {value: "Impossible de modifier le réglage de l'accordeur"}
+frontendTunerStartFailed: {value: "Impossible de démarrer l'accordeur"}
+frontendTunerStateFailed: {value: "Impossible de lire l'état de l'accordeur"}
+frontendTunerStopFailed: {value: "Impossible d'arrêter l'accordeur"}
+frontendTunerTonePlayFailed: {value: "Impossible de jouer le son de référence"}
+frontendTunerToneStopFailed: {value: "Impossible d'arrêter le son de référence"}

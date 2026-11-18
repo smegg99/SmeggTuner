@@ -1,0 +1,15 @@
+# S99AB release notes and update prompts (zh-Hant).
+notesTitle:
+  value: "{version} 版更新內容"
+  placeholders:
+    version: {type: string}
+notTranslated: {value: "這份更新說明尚未翻譯。"}
+updateBody:
+  value: "目前版本為 {current}，最新版本為 {latest}。"
+  placeholders:
+    current: {type: string}
+    latest: {type: string}
+updateDownload: {value: "下載"}
+updateIgnore: {value: "略過此版本"}
+updateLater: {value: "稍後"}
+updateTitle: {value: "有新版本可用"}

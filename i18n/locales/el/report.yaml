@@ -1,0 +1,154 @@
+# Printed reports and export (el).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Report title and instrument details
+facts.curve: {value: "Καμπύλη στόχου"}
+facts.curveNone: {value: "καμία"}
+facts.curveUnnamed: {value: "χωρίς όνομα"}
+facts.reference: {value: "A4 αναφοράς (αυτό το πέρασμα)"}
+facts.tolerance: {value: "Ανοχή"}
+
+facts.toleranceValue:
+  value: "Καλάμι {reed} {unit} / διακρότημα {beat} {unit}"
+  placeholders:
+    beat: {type: string}
+    reed: {type: string}
+    unit: {type: string}
+
+facts.transpose: {value: "Μεταφορά"}
+
+facts.transposeValue:
+  value: "Το {key} ακούγεται ως {sounds}"
+  placeholders:
+    key: {type: string}
+    sounds: {type: string}
+
+title: {value: "Αναφορά κουρδίσματος"}
+
+# Table and column headings
+head.beat:
+  value: "Διακρότημα {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.bassTitle:
+  value: "Πίνακας κουρδίσματος μπάσων ({unit})"
+  placeholders:
+    unit: {type: string}
+
+table.curr: {value: "Μέτρ."}
+table.err: {value: "Σφάλ."}
+table.register: {value: "Ρετζίστερ"}
+
+table.title:
+  value: "Πίνακας κουρδίσματος ({unit})"
+  placeholders:
+    unit: {type: string}
+
+# Deviation units
+unit.cents.name: {value: "σεντ"}
+unit.cents.symbol: {value: "c"}
+unit.reference.name: {value: "μονάδες του 0,06 %"}
+
+# Graph legend and reading markers
+graph.edited:
+  value: "{mark} – χειροκίνητη διόρθωση."
+  placeholders:
+    mark: {type: string}
+
+legend.error.cents:
+  value: "Λιμάρετε ώστε το σφάλμα να πλησιάζει το μηδέν. Τιμές σε σεντ ως προς τη συγκερασμένη κλίμακα με A4 στα {a4} Hz."
+  placeholders:
+    a4: {type: string}
+
+legend.error.key: {value: "Σφάλμα = μέτρηση − στόχος."}
+legend.error.noCurve: {value: "Χωρίς καμπύλη στόχου: ο στόχος είναι μηδέν και το σφάλμα είναι η απόκλιση από την κλίμακα."}
+
+legend.error.reference:
+  value: "Λιμάρετε ώστε το σφάλμα να πλησιάζει το μηδέν. Κάθε μονάδα ισούται με το 0,06 % της συχνότητας της νότας ως προς τη συγκερασμένη κλίμακα με A4 στα {a4} Hz."
+  placeholders:
+    a4: {type: string}
+
+legend.out.short: {value: "εκτός ανοχής"}
+legend.takes.key: {value: "xN"}
+legend.takes.short: {value: "πολλαπλές καταγραφές, εμφανίζεται η τελευταία μέτρηση"}
+mark.edited: {value: "H"}
+mark.out: {value: "!"}
+
+# Summary and footer
+footer.generated:
+  value: "Δημιουργήθηκε {at} από το {app}"
+  placeholders:
+    app: {type: string}
+    at: {type: string}
+
+summary.allIn: {value: "Όλες οι τιμές εντός ανοχής."}
+
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} διακρότημα"
+      other: "{pluralCount} διακροτήματα"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.line:
+  value: "{notes} ({min} έως {max}), {reeds}, {beats}."
+  placeholders:
+    beats: {type: string}
+    max: {type: string}
+    min: {type: string}
+    notes: {type: string}
+    reeds: {type: string}
+
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} νότα"
+      other: "{pluralCount} νότες"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "Εκτός ανοχής: {pluralCount} ({reeds}, {beats})."
+      other: "Εκτός ανοχής: {pluralCount} ({reeds}, {beats})."
+  placeholders:
+    beats: {type: string}
+    pluralCount: {type: integer}
+    reeds: {type: string}
+
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} ένδειξη καλαμιού"
+      other: "{pluralCount} ενδείξεις καλαμιών"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} καλάμι"
+      other: "{pluralCount} καλάμια"
+  placeholders:
+    pluralCount: {type: integer}
+
+# Export errors
+error.invalidDate: {value: "Εισαγάγετε έγκυρη ημερομηνία σε μορφή ΕΕΕΕ-ΜΜ-ΗΗ."}
+error.invalidFormat: {value: "Η αναφορά δεν μπορεί να γραφτεί σε αυτή τη μορφή."}
+
+error.noBrowser:
+  value: "Για τη σελιδοποίηση PDF χρειάζεται περιηγητής, αλλά δεν βρέθηκε Chrome ή Chromium. Εγκαταστήστε έναν από τους δύο ή εξαγάγετε την καρτέλα σε HTML και εκτυπώστε την."
+error.openFailed: {value: "Η αναφορά γράφτηκε, αλλά δεν την άνοιξε κανένας περιηγητής. Ανοίξτε το αρχείο χειροκίνητα."}
+error.renderFailed: {value: "Δεν ήταν δυνατή η δημιουργία της αναφοράς. Δεν γράφτηκε τίποτα."}
+
+error.writeFailed:
+  value: "Δεν ήταν δυνατή η εγγραφή της αναφοράς σε αυτή την τοποθεσία. Τυχόν προηγούμενο αρχείο παρέμεινε ανέπαφο."

@@ -1,0 +1,62 @@
+# S99AB startup and crash dialogs (ja).
+close: {value: "閉じる"}
+copied: {value: "コピーしました"}
+copy: {value: "レポートをコピー"}
+details: {value: "詳細"}
+email: {value: "レポートをメールで送信"}
+failed:
+  value: "操作に失敗しました：{error}"
+  placeholders:
+    error: {type: string}
+file:
+  value: "ファイル：{path}"
+  placeholders:
+    path: {type: string}
+kill: {value: "終了して報告"}
+logs: {value: "ログファイルを表示"}
+messageConfig:
+  value: "設定ファイルを読み込めませんでした。ファイルを修正するか削除してから、{app} を再起動してください。"
+  placeholders:
+    app: {type: string}
+messageCrash:
+  value: "{app} で内部エラーが発生しました。原因の調査のためにレポートを送信してから、アプリを再起動してください。"
+  placeholders:
+    app: {type: string}
+messageHang: {value: "処理が完了する場合があります。そのまま待つか、アプリを終了してレポートを送信してください。"}
+messageHangStopped:
+  value: "{app} は応答しない状態で終了しました。原因の調査のためにレポートを送信してから、アプリを再起動してください。"
+  placeholders:
+    app: {type: string}
+messageKilled:
+  value: "{app} はエラーを報告する前に終了しました。原因の調査のためにレポートを送信してから、アプリを再起動してください。"
+  placeholders:
+    app: {type: string}
+messageOom:
+  value: "メモリ不足のため、システムが {app} を終了しました。レポートを送信してから、アプリを再起動してください。"
+  placeholders:
+    app: {type: string}
+messageStartup:
+  value: "以下の問題を解決してから、{app} を再起動してください。"
+  placeholders:
+    app: {type: string}
+restart: {value: "再起動"}
+save: {value: "レポートを保存"}
+saved:
+  value: "{path} に保存しました"
+  placeholders:
+    path: {type: string}
+starting:
+  value: "{app} を起動中"
+  placeholders:
+    app: {type: string}
+titleCrash: {value: "アプリが予期せず停止しました"}
+titleHang: {value: "アプリが応答していません"}
+titleHangStopped: {value: "アプリが応答しなくなりました"}
+titleKilled: {value: "アプリが予期せず終了しました"}
+titleStart: {value: "アプリを起動できませんでした"}
+wait: {value: "待機"}
+windowCrash: {value: "異常終了"}
+windowHang: {value: "応答なし"}
+windowHangStopped: {value: "応答が停止しました"}
+windowKilled: {value: "予期せず終了しました"}
+windowStart: {value: "起動できませんでした"}

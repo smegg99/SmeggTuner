@@ -1,0 +1,256 @@
+# Sessions, instruments and target curves (es).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one, other (locale cardinal rules).
+
+# Session list and actions
+card.a4:
+  value: "La = {hz} Hz"
+  placeholders:
+    hz: {type: string}
+
+card.changed: {value: "La ficha del acordeón en la biblioteca ha cambiado desde que se grabó esta sesión."}
+card.hasCurve: {value: "Curva objetivo definida"}
+
+card.readings:
+  plural:
+    argument: count
+    forms:
+      one: "{count} medición"
+      other: "{count} mediciones"
+  placeholders:
+    count: {type: integer}
+
+card.unnamedInstrument: {value: "Acordeón sin nombre"}
+
+card.updated:
+  value: "Actualización: {when}"
+  placeholders:
+    when: {type: string}
+
+deleteHint: {value: "Elimina definitivamente la sesión con todas sus pasadas, mediciones y su curva de afinación."}
+deleteTitle: {value: "¿Eliminar esta sesión?"}
+empty: {value: "Aún no hay sesiones"}
+emptyHint: {value: "Crea una sesión para guardar las mediciones o usa el afinador sin sesión."}
+export: {value: "Exportar sesión"}
+file.openFilter: {value: "sesión de smeggtuner"}
+file.openTitle: {value: "Seleccionar un archivo de sesión"}
+new: {value: "Nueva sesión"}
+title: {value: "Sesiones"}
+
+# Session dialog and tabs
+dialog.backToList: {value: "Elegir un acordeón ya afinado"}
+dialog.describeNew: {value: "Describir un acordeón nuevo…"}
+dialog.forgetAccordion: {value: "Olvidar este acordeón"}
+dialog.loadAccordion: {value: "Cargar desde un archivo…"}
+dialog.name: {value: "Nombre de la sesión"}
+dialog.nameHint: {value: "Usa el nombre del instrumento o del cliente para identificar la sesión."}
+dialog.pickAccordion: {value: "¿Qué acordeón?"}
+dialog.start: {value: "Iniciar"}
+page.mobile.curve: {value: "Objetivos"}
+page.mobile.recorded: {value: "Mediciones"}
+
+# Instrument editing restrictions
+accordion.a4Locked: {value: "Valor fijo: esta sesión ya contiene mediciones realizadas con esta referencia."}
+
+accordion.columnsRefused:
+  value: "El cambio alteraría las hileras de lengüetas utilizadas en mediciones existentes y no se ha guardado. Restablece las hileras anteriores o crea una sesión."
+accordion.frozen:
+  value: "Una vez guardadas las mediciones, no se pueden cambiar el diapasón ni las hileras de lengüetas. Aún puedes añadir registros que usen las hileras existentes."
+accordion.frozenShort: {value: "Hileras bloqueadas"}
+accordion.remember: {value: "Guardar en la biblioteca de instrumentos"}
+accordion.rememberHint: {value: "Guarda el instrumento de esta sesión en la biblioteca para usarlo en futuras sesiones."}
+
+# Instrument definition and registers
+instrument.a4: {value: "Diapasón"}
+
+instrument.a4Hint:
+  value: "Frecuencia de referencia del la4 en hercios. Las sesiones nuevas de este instrumento usan este valor."
+
+instrument.bass.build: {value: "Alturas en pies del siguiente registro"}
+instrument.bass.fixed: {value: "Sin registros de bajos, el mecanismo es fijo y siempre suenan todas las voces."}
+
+instrument.bass.full:
+  value: "Aquí el mecanismo de bajos admite hasta {n} registros"
+  placeholders:
+    n: {type: string}
+
+instrument.bass.hint: {value: "Indica cuántas voces tienen los bajos. La mayoría de los mecanismos tienen cuatro o cinco."}
+instrument.bass.registerName: {value: "Nombre del registro"}
+instrument.bass.voices: {value: "Voces de los bajos"}
+instrument.beatTolerance: {value: "Tolerancia de los batidos"}
+instrument.builder.add: {value: "Añadir"}
+instrument.builder.already: {value: "Este registro ya está definido"}
+instrument.builder.high: {value: "Pícolo de 4'"}
+instrument.builder.low: {value: "Bajo de 16'"}
+instrument.builder.middle: {value: "Lengüetas de 8'"}
+instrument.builder.none: {value: "Aún no hay registros. Elige abajo las hileras que hace sonar cada uno."}
+instrument.builder.remove: {value: "Eliminar este registro"}
+instrument.builder.title: {value: "Añadir un registro"}
+instrument.file.exportTitle: {value: "Exportar acordeón"}
+instrument.file.filterName: {value: "acordeón de smeggtuner"}
+instrument.file.imageFilter: {value: "Imágenes"}
+instrument.file.imageTitle: {value: "Seleccionar una fotografía"}
+instrument.file.openTitle: {value: "Seleccionar un archivo de acordeón"}
+instrument.name: {value: "Nombre"}
+instrument.nameHint: {value: "Nombre que se muestra en la biblioteca de instrumentos y en las sesiones."}
+instrument.namePlaceholder: {value: "Hohner Morino V N"}
+instrument.nameRequired: {value: "Introduce un nombre para el acordeón."}
+instrument.photo: {value: "Fotografía"}
+instrument.range.backwards: {value: "La nota más aguda no puede ser más grave que la nota más baja."}
+instrument.range.clear: {value: "Borrar"}
+instrument.range.down: {value: "Más grave"}
+
+instrument.range.hint:
+  value: "Opcional. Indica las teclas más grave y más aguda. También puedes definir la extensión de oído durante la calibración."
+
+instrument.range.label: {value: "Extensión del teclado"}
+instrument.range.to: {value: "a"}
+instrument.range.up: {value: "Más aguda"}
+
+instrument.registersHint:
+  value: "Haz clic en los puntos del símbolo de cada registro (el círculo grabado en el acordeón) o elige uno de los símbolos habituales. Los puntos indican directamente qué hileras suenan."
+instrument.registersSubtitle: {value: "Los registros del lado de los agudos y las hileras que hace sonar cada uno."}
+
+instrument.says:
+  plural:
+    argument: reeds
+    forms:
+      one: "Hileras de lengüetas: {banks}. El registro más completo hace sonar {reeds} lengüeta."
+      other: "Hileras de lengüetas: {banks}. El registro más completo hace sonar {reeds} lengüetas."
+  placeholders:
+    banks: {type: string}
+    reeds: {type: integer}
+
+instrument.sections.bass: {value: "Mecanismo de bajos"}
+instrument.sections.identity: {value: "Identificación"}
+instrument.sections.keyboard: {value: "Teclado"}
+instrument.sections.reference: {value: "Diapasón y tolerancia"}
+instrument.sections.voices: {value: "Registros"}
+instrument.tolerance: {value: "Tolerancia de las lengüetas"}
+
+instrument.toleranceHint:
+  value: "Desviación admisible de una lengüeta en unidades del 0,06 % de la frecuencia de la nota. Las mediciones fuera de este intervalo se marcan como desafinadas."
+# Target curve editor
+curve.clearAll: {value: "Borrar curva"}
+
+curve.clearAllConfirm:
+  value: "Se eliminarán todos los puntos de anclaje. El objetivo volverá a la altura de la escala en cada nota y el afinador funcionará como un simple indicador."
+curve.clearAllHint: {value: "Quita todos los puntos de anclaje y deja el objetivo en la altura de la escala."}
+curve.clearAllTitle: {value: "¿Borrar toda la curva?"}
+curve.entryUnit: {value: "Unidad de entrada"}
+
+curve.help.hz:
+  value: "En Hz, el objetivo se calcula con la4 = 440 Hz, como en la lista de batidos de referencia, por lo que no varía con el la4 de la sesión. «Mediciones grabadas» superpone las mediciones de la sesión a la lista. El menú «Lista» permite ajustar los puntos de anclaje a estas mediciones o copiar la lista de otra sesión."
+curve.help.hzTitle: {value: "Hercios y mediciones"}
+
+curve.help.interp:
+  value: "Con la interpolación activada, las notas entre los puntos de anclaje siguen la línea. Si se desactiva, el valor de cada punto se mantiene hasta el siguiente. Sin puntos, el objetivo es la altura de la escala en todas las notas."
+curve.help.interpTitle: {value: "Entre los puntos"}
+
+curve.help.lead:
+  value: "Para cada nota, el objetivo indica cuánto debe desviarse cada lengüeta de la altura de la escala. La tabla compara la lengüeta grabada con ese objetivo, en lugar de con el cero, para determinar si está dentro de la tolerancia."
+curve.help.set:
+  value: "Elige una nota y un valor y pulsa «Fijar», o arrastra un punto del gráfico hacia arriba o hacia abajo. Cada hilera tiene su propia línea y se resalta la que estás editando."
+curve.help.setTitle: {value: "Fijar un punto"}
+curve.helpTitle: {value: "Batidos deseados"}
+curve.interpolate: {value: "Interpolar"}
+curve.interpolateHint: {value: "Sigue la línea entre los puntos. Si se desactiva, el valor de cada punto se mantiene hasta el siguiente."}
+curve.menu.ends: {value: "Más allá de los puntos de anclaje"}
+curve.menu.extendHigh: {value: "Prolongar por encima del punto más agudo"}
+curve.menu.extendLow: {value: "Prolongar por debajo del punto más grave"}
+curve.menu.fit: {value: "Ajustar a las mediciones de esta sesión"}
+
+curve.menu.fitBody:
+  plural:
+    argument: n
+    forms:
+      one: "Los puntos de anclaje se sustituirán por una curva ajustada a la única medición."
+      other: "Los puntos de anclaje se sustituirán por una curva ajustada a {n} mediciones."
+  placeholders:
+    n: {type: integer}
+
+curve.menu.fromFile: {value: "Copiar desde un archivo de sesión"}
+curve.menu.fromSession: {value: "Copiar desde una sesión"}
+curve.menu.label: {value: "Lista"}
+curve.menu.replace: {value: "Sustituir la lista"}
+curve.menu.replaceBody: {value: "Los puntos de anclaje se sustituirán por los de la otra lista, con sus ajustes."}
+curve.menu.replaceConfirm: {value: "Sustituir"}
+curve.menu.replaceTitle: {value: "¿Sustituir la lista de batidos?"}
+curve.rank: {value: "Hilera"}
+curve.recorded: {value: "Mediciones grabadas"}
+curve.recordedHint: {value: "Mostrar las mediciones de esta sesión en el gráfico"}
+curve.remove: {value: "Quitar"}
+curve.removeHint: {value: "Quita de la curva el punto de anclaje de esta nota."}
+
+curve.scale:
+  value: "Escala {v}"
+  placeholders:
+    v: {type: string}
+
+curve.scaleAuto: {value: "Escala automática"}
+curve.scaleHint: {value: "Extensión vertical del gráfico"}
+curve.set: {value: "Fijar"}
+curve.setHint: {value: "Coloca un punto de anclaje en esta nota para la hilera seleccionada."}
+curve.startHint: {value: "Aún no hay puntos de anclaje. El objetivo de cada nota es la altura de la escala."}
+
+# Readings and workshop actions
+footer.coverage:
+  value: "{done} / {total} notas"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.inTune:
+  value: "{done} / {total} afinadas"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.none: {value: "Sin sesión"}
+
+readings.notes:
+  plural:
+    argument: n
+    forms:
+      one: "una nota"
+      other: "{n} notas"
+  placeholders:
+    n: {type: integer}
+
+workshop.exit: {value: "Salir de la sesión"}
+workshop.import: {value: "Importar"}
+workshop.open: {value: "Abrir"}
+workshop.print: {value: "Imprimir ficha"}
+
+# Session errors
+error.fitFailed: {value: "No se pudo ajustar una curva a las mediciones de esa pasada."}
+
+error.hasReadings:
+  value: "Esta sesión ya contiene mediciones realizadas con su diapasón y número de lengüetas. Ya no se puede cambiar ninguno de los dos."
+error.imageUnreadable: {value: "No se pudo abrir esa fotografía."}
+error.instrumentName: {value: "Dale un nombre al acordeón para poder encontrarlo después."}
+error.invalidA4: {value: "La frecuencia de referencia debe estar entre 430 y 450 Hz."}
+
+error.invalidInstrument:
+  value: "No se puede usar este acordeón: se repite el nombre de una hilera de lengüetas o un registro activa una hilera que el instrumento no tiene."
+error.invalidName: {value: "Dale un nombre a la sesión."}
+error.invalidNote: {value: "Esa nota está fuera del intervalo que detecta el afinador."}
+error.invalidReed: {value: "Este acordeón no hace sonar esa lengüeta."}
+error.invalidReedCount: {value: "Un acordeón hace sonar entre 1 y 8 lengüetas por nota."}
+error.invalidTranspose: {value: "La transposición va de 0 a 11 semitonos."}
+error.invalidUnit: {value: "Los valores se introducen en unidades del 0,06 %, en cents o en hercios."}
+error.invalidValue: {value: "Ese valor no es un número."}
+error.loadFailed: {value: "No se pudo leer la sesión."}
+error.noBassMachine: {value: "Este acordeón no tiene definido ningún mecanismo de bajos."}
+error.noBassRegister: {value: "Este acordeón no tiene ese registro de bajos."}
+error.noCurve: {value: "Esta sesión no tiene curva objetivo."}
+error.noReadings: {value: "Aún no se ha grabado nada en esta sesión."}
+error.noRegister: {value: "Este acordeón no tiene ese registro."}
+error.noSession: {value: "No hay ninguna sesión abierta."}
+error.notAnImage: {value: "Ese archivo no es una fotografía."}
+error.notFound: {value: "Esa sesión ya no existe."}
+error.notesTooLong: {value: "Acorta la observación a 500 caracteres."}
+error.saveFailed: {value: "No se pudo guardar la sesión. Si cierras ahora, podrías perder las últimas tomas."}
+error.takeNotFound: {value: "Esa medición ya no existe."}
+error.unexpected: {value: "Se produjo un error."}

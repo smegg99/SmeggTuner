@@ -1,0 +1,117 @@
+"facts.curve": {value: "Sihtkõver"}
+"facts.curveNone": {value: "puudub"}
+"facts.curveUnnamed": {value: "nimetu"}
+"facts.reference": {value: "Võrdlus-A4 (see mõõtevoor)"}
+"facts.tolerance": {value: "Tolerants"}
+"facts.toleranceValue":
+  value: "{reed} {unit} keel / {beat} {unit} tuiklemine"
+  placeholders:
+    beat: {"type": "string"}
+    reed: {"type": "string"}
+    unit: {"type": "string"}
+"facts.transpose": {value: "Transponeerimine"}
+"facts.transposeValue":
+  value: "{key} kõlab kui {sounds}"
+  placeholders:
+    key: {"type": "string"}
+    sounds: {"type": "string"}
+"title": {value: "Häälestusaruanne"}
+"head.beat":
+  value: "Tuiklemine {pair}"
+  placeholders:
+    pair: {"type": "string"}
+"table.bassTitle":
+  value: "Bassi häälestustabel ({unit})"
+  placeholders:
+    unit: {"type": "string"}
+"table.curr": {value: "Praeg"}
+"table.err": {value: "Viga"}
+"table.register": {value: "Register"}
+"table.title":
+  value: "Häälestustabel ({unit})"
+  placeholders:
+    unit: {"type": "string"}
+"unit.cents.name": {value: "sendid"}
+"unit.cents.symbol": {value: "c"}
+"unit.reference.name": {value: "0,06 % ühikud"}
+"graph.edited":
+  value: "{mark} - käsitsi muudetud."
+  placeholders:
+    mark: {"type": "string"}
+"legend.error.cents":
+  value: "Viili, kuni viga läheneb nullile. Sendid tempereeritud helirea suhtes, kui A4 on {a4} Hz."
+  placeholders:
+    a4: {"type": "string"}
+"legend.error.key": {value: "Viga = Praeg - Siht."}
+"legend.error.noCurve": {value: "Sihtkõver puudub: Siht on null, Viga on kõrvalekalle helireast."}
+"legend.error.reference":
+  value: "Viili, kuni viga läheneb nullile. Ühikud on 0,06 % noodi sagedusest tempereeritud helirea suhtes, kui A4 on {a4} Hz."
+  placeholders:
+    a4: {"type": "string"}
+"legend.out.short": {value: "väljaspool tolerantsi"}
+"legend.takes.key": {value: "xN"}
+"legend.takes.short": {value: "salvestatud mitu korda, näidatakse viimast mõõtevõtet"}
+"mark.edited": {value: "H"}
+"mark.out": {value: "!"}
+"footer.generated":
+  value: "Loodud {at}, rakendus {app}"
+  placeholders:
+    app: {"type": "string"}
+    at: {"type": "string"}
+"summary.allIn": {value: "Kõik tolerantsi piires."}
+"summary.beats":
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} tuiklemine"
+      other: "{pluralCount} tuiklemist"
+  placeholders:
+    pluralCount: {"type": "integer"}
+"summary.line":
+  value: "{notes} ({min} kuni {max}), {reeds}, {beats}."
+  placeholders:
+    beats: {"type": "string"}
+    max: {"type": "string"}
+    min: {"type": "string"}
+    notes: {"type": "string"}
+    reeds: {"type": "string"}
+"summary.notes":
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} noot"
+      other: "{pluralCount} nooti"
+  placeholders:
+    pluralCount: {"type": "integer"}
+"summary.out":
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} väljaspool tolerantsi ({reeds}, {beats})."
+      other: "{pluralCount} väljaspool tolerantsi ({reeds}, {beats})."
+  placeholders:
+    beats: {"type": "string"}
+    pluralCount: {"type": "integer"}
+    reeds: {"type": "string"}
+"summary.reeds":
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} keele näit"
+      other: "{pluralCount} keele näitu"
+  placeholders:
+    pluralCount: {"type": "integer"}
+"summary.reedsShort":
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} keel"
+      other: "{pluralCount} keelt"
+  placeholders:
+    pluralCount: {"type": "integer"}
+"error.invalidDate": {value: "Sisesta kehtiv kuupäev vormingus AAAA-KK-PP."}
+"error.invalidFormat": {value: "Aruannet ei saa selles vormingus kirjutada."}
+"error.noBrowser": {value: "PDF-i küljendab brauser, kuid selles arvutis pole Chrome'i ega Chromiumi. Paigalda üks neist või ekspordi kaart HTML-ina ja prindi see."}
+"error.openFailed": {value: "Aruanne kirjutati, kuid ükski brauser ei avanud seda. Ava fail ise."}
+"error.renderFailed": {value: "Aruannet ei saanud luua. Midagi ei kirjutatud."}
+"error.writeFailed": {value: "Aruannet ei saanud sinna kirjutada. Vana fail, kui see oli olemas, jäi muutmata."}

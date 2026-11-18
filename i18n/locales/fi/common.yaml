@@ -1,0 +1,104 @@
+# Shared labels and application text (fi).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Buttons and shared labels
+accept: {value: "Hyväksy"}
+back: {value: "Takaisin"}
+cancel: {value: "Peruuta"}
+close: {value: "Sulje"}
+delete: {value: "Poista"}
+export: {value: "Vie"}
+next: {value: "Seuraava"}
+"no": {value: "Ei"}
+none: {value: "Ei mitään"}
+previous: {value: "Edellinen"}
+website: {value: "Verkkosivusto"}
+"yes": {value: "Kyllä"}
+
+# Musical labels and unit symbols
+accordion: {value: "Harmonikka"}
+note: {value: "Nuotti"}
+
+reed:
+  value: "Kieli {index}"
+  placeholders:
+    index: {type: integer}
+
+unitSymbol.cents: {value: "sentti"}
+unitSymbol.hz: {value: "Hz"}
+unitSymbol.reference: {value: "u"}
+
+# Color controls
+color.hue: {value: "Värisävy"}
+color.saturation: {value: "Kylläisyys"}
+color.value: {value: "Kirkkaus"}
+
+# Navigation and window titles
+routes.navigation: {value: "Päänavigaatio"}
+routes.settings: {value: "Asetukset"}
+routes.tune: {value: "Viritä"}
+routes.workshop: {value: "Verstas"}
+
+title.count:
+  value: "{room} {name} ({done})"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+
+title.progress:
+  value: "{room} {name} {done}/{total}"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+    total: {type: string}
+
+title.room.about: {value: "tietoja"}
+title.room.calibrate: {value: "kalibrointi"}
+title.room.help: {value: "ohje"}
+title.room.settings: {value: "asetukset"}
+title.room.soundcard: {value: "äänikortti"}
+title.room.tune: {value: "viritys"}
+title.room.workshop: {value: "verstas"}
+
+title.session:
+  value: "{room} {name}"
+  placeholders:
+    name: {type: string}
+    room: {type: string}
+
+title.uncalibrated:
+  value: "{title} (äänikorttia ei ole kalibroitu)"
+  placeholders:
+    title: {type: string}
+
+# Application and About dialog
+about.aboutTitle: {value: "Tietoja"}
+about.commit: {value: "Koontiversio"}
+about.donate: {value: "Tue Ko-fissa"}
+about.license: {value: "Lisenssi"}
+about.privacy: {value: "Tietosuojakäytäntö"}
+about.guide: {value: "SmeggTunerin käyttöohje"}
+about.onlineVersion: {value: "Avaa verkkoversio"}
+about.support: {value: "Tuki"}
+about.mascot: {value: "Harmonikkaa soittava kissa"}
+about.publisher: {value: "Tekijä: smegg99"}
+about.tagline: {value: "Ilmainen avoimen lähdekoodin ohjelma harmonikan viritykseen."}
+about.untagged: {value: "kehitysversio"}
+about.version: {value: "Versio"}
+app.description: {value: "Ilmainen avoimen lähdekoodin harmonikkaviritin."}
+app.name: {value: "SmeggTuner"}
+
+# Help dialog and keyboard instructions
+about.helpTitle: {value: "Ohje"}
+
+# System tray
+tray.quit: {value: "Lopeta"}
+tray.show: {value: "Näytä"}
+
+linkNewTab:
+  value: "{text} (avautuu uuteen välilehteen)"
+  placeholders:
+    text: {type: string}

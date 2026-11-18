@@ -1,0 +1,251 @@
+# Sessions, instruments and target curves (th).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Session list and actions
+card.a4:
+  value: "A = {hz} Hz"
+  placeholders:
+    hz: {type: string}
+
+card.changed: {value: "ข้อมูลแอคคอร์เดียนในคลังเปลี่ยนไปหลังจากบันทึกเซสชันนี้"}
+card.hasCurve: {value: "ตั้งเส้นโค้งเป้าหมายแล้ว"}
+
+card.readings:
+  plural:
+    argument: count
+    forms:
+      other: "ค่าที่วัดได้ {count} ค่า"
+  placeholders:
+    count: {type: integer}
+
+card.unnamedInstrument: {value: "ยังไม่ได้ตั้งชื่อแอคคอร์เดียน"}
+
+card.updated:
+  value: "อัปเดตเมื่อ {when}"
+  placeholders:
+    when: {type: string}
+
+deleteHint: {value: "ลบเซสชันนี้อย่างถาวร รวมทุกรอบการวัด ค่าที่วัดได้ และเส้นโค้งการตั้งเสียง"}
+deleteTitle: {value: "ลบเซสชันนี้หรือไม่"}
+empty: {value: "ยังไม่มีเซสชัน"}
+emptyHint: {value: "สร้างเซสชันเพื่อเก็บค่าที่วัดได้ หรือใช้เครื่องตั้งเสียงโดยไม่เปิดเซสชัน"}
+export: {value: "ส่งออกเซสชัน"}
+file.openFilter: {value: "เซสชัน SmeggTuner"}
+file.openTitle: {value: "เลือกไฟล์เซสชัน"}
+new: {value: "เซสชันใหม่"}
+title: {value: "เซสชัน"}
+
+# Session dialog and tabs
+dialog.backToList: {value: "เลือกเครื่องที่เคยตั้งเสียงแล้ว"}
+dialog.describeNew: {value: "ระบุข้อมูลเครื่องใหม่…"}
+dialog.forgetAccordion: {value: "ลบเครื่องนี้ออกจากคลัง"}
+dialog.loadAccordion: {value: "โหลดจากไฟล์…"}
+dialog.name: {value: "ชื่อเซสชัน"}
+dialog.nameHint: {value: "ใช้ชื่อเครื่องดนตรีหรือชื่อลูกค้าเพื่อระบุเซสชัน"}
+dialog.pickAccordion: {value: "ใช้แอคคอร์เดียนเครื่องใด"}
+dialog.start: {value: "เริ่ม"}
+page.mobile.curve: {value: "ค่าเป้าหมาย"}
+page.mobile.recorded: {value: "ค่าที่วัดได้"}
+
+# Instrument editing restrictions
+accordion.a4Locked: {value: "ล็อกแล้ว เนื่องจากมีค่าที่วัดโดยใช้ค่านี้เป็นค่าอ้างอิงในเซสชัน"}
+
+accordion.columnsRefused:
+  value: "การเปลี่ยนนี้จะกระทบแถวลิ้นเสียงที่ใช้ในค่าที่บันทึกไว้ จึงไม่ได้บันทึกการเปลี่ยนแปลง ให้คืนค่าแถวเดิมหรือสร้างเซสชันใหม่"
+accordion.frozen:
+  value: "หลังบันทึกค่าแล้วจะเปลี่ยนระดับเสียงอ้างอิงและแถวลิ้นเสียงไม่ได้ แต่ยังเพิ่มรีจิสเตอร์ที่ใช้แถวเดิมได้"
+accordion.frozenShort: {value: "ล็อกแถวลิ้นเสียงแล้ว"}
+accordion.remember: {value: "บันทึกลงคลังเครื่องดนตรี"}
+accordion.rememberHint: {value: "เก็บเครื่องดนตรีของเซสชันนี้ไว้ในคลังเพื่อนำไปใช้ในเซสชันถัดไป"}
+
+# Instrument definition and registers
+instrument.a4: {value: "ระดับเสียงอ้างอิง"}
+
+instrument.a4Hint:
+  value: "ความถี่อ้างอิงของ A4 เป็นเฮิรตซ์ เซสชันใหม่ของเครื่องนี้จะใช้ค่านี้"
+
+instrument.bass.build: {value: "แถวลิ้นเสียงที่จะดังเมื่อใช้สวิตช์ถัดไป (ฟุต)"}
+instrument.bass.fixed: {value: "ไม่มีรีจิสเตอร์เบส กลไกเป็นแบบตายตัวและทุกแถวจะดังพร้อมกันเสมอ"}
+
+instrument.bass.full:
+  value: "กลไกเบสนี้กำหนดสวิตช์ได้สูงสุด {n} ตัว"
+  placeholders:
+    n: {type: string}
+
+instrument.bass.hint: {value: "ระบุจำนวนแถวลิ้นเสียงที่ดังในฝั่งเบส โดยทั่วไปมีสี่หรือห้าแถว"}
+instrument.bass.registerName: {value: "ชื่อสวิตช์"}
+instrument.bass.voices: {value: "แถวลิ้นเสียงฝั่งเบส"}
+instrument.beatTolerance: {value: "ค่าคลาดเคลื่อนที่ยอมรับได้ของบีต"}
+instrument.builder.add: {value: "เพิ่ม"}
+instrument.builder.already: {value: "กำหนดสวิตช์นี้ไว้แล้ว"}
+instrument.builder.high: {value: "พิคโคโล 4 ฟุต"}
+instrument.builder.low: {value: "เบส 16 ฟุต"}
+instrument.builder.middle: {value: "ลิ้นเสียง 8 ฟุต"}
+instrument.builder.none: {value: "ยังไม่มีสวิตช์ เลือกแถวลิ้นเสียงที่แต่ละสวิตช์จะเปิดใช้ด้านล่าง"}
+instrument.builder.remove: {value: "ลบรีจิสเตอร์นี้"}
+instrument.builder.title: {value: "เพิ่มสวิตช์"}
+instrument.file.exportTitle: {value: "ส่งออกข้อมูลแอคคอร์เดียน"}
+instrument.file.filterName: {value: "ไฟล์แอคคอร์เดียน SmeggTuner"}
+instrument.file.imageFilter: {value: "รูปภาพ"}
+instrument.file.imageTitle: {value: "เลือกภาพถ่าย"}
+instrument.file.openTitle: {value: "เลือกไฟล์แอคคอร์เดียน"}
+instrument.name: {value: "ชื่อ"}
+instrument.nameHint: {value: "ชื่อที่แสดงในคลังเครื่องดนตรีและเซสชัน"}
+instrument.namePlaceholder: {value: "Hohner Morino V N"}
+instrument.nameRequired: {value: "ป้อนชื่อแอคคอร์เดียน"}
+instrument.photo: {value: "ภาพถ่าย"}
+instrument.range.backwards: {value: "โน้ตสูงสุดต้องไม่ต่ำกว่าโน้ตต่ำสุด"}
+instrument.range.clear: {value: "ล้าง"}
+instrument.range.down: {value: "ลดลง"}
+
+instrument.range.hint:
+  value: "ไม่บังคับ ระบุคีย์ต่ำสุดและสูงสุด หรือตั้งจากเสียงที่เล่นจริงระหว่างสอบเทียบ"
+
+instrument.range.label: {value: "ช่วงเสียงของคีย์บอร์ด"}
+instrument.range.to: {value: "ถึง"}
+instrument.range.up: {value: "เพิ่มขึ้น"}
+
+instrument.registersHint:
+  value: "คลิกจุดในสัญลักษณ์วงกลมที่สลักบนสวิตช์ของเครื่อง หรือเลือกแบบที่ใช้กันทั่วไป ตำแหน่งจุดระบุแถวลิ้นเสียงที่จะดัง"
+instrument.registersSubtitle: {value: "สวิตช์ฝั่งเสียงแหลมและแถวลิ้นเสียงที่แต่ละสวิตช์เปิดใช้"}
+
+instrument.says:
+  plural:
+    argument: reeds
+    forms:
+      other: "แถวลิ้นเสียง: {banks} สวิตช์ที่เปิดใช้มากที่สุดทำให้ลิ้นเสียงดังพร้อมกัน {reeds} ลิ้น"
+  placeholders:
+    banks: {type: string}
+    reeds: {type: integer}
+
+instrument.sections.bass: {value: "กลไกเบส"}
+instrument.sections.identity: {value: "ข้อมูลประจำเครื่อง"}
+instrument.sections.keyboard: {value: "คีย์บอร์ด"}
+instrument.sections.reference: {value: "ค่าอ้างอิงและค่าคลาดเคลื่อนที่ยอมรับได้"}
+instrument.sections.voices: {value: "รีจิสเตอร์"}
+instrument.tolerance: {value: "ค่าคลาดเคลื่อนที่ยอมรับได้ของลิ้นเสียง"}
+
+instrument.toleranceHint:
+  value: "ค่าคลาดเคลื่อนที่ยอมรับได้ของลิ้นเสียง หนึ่งหน่วยเท่ากับ 0.06% ของความถี่โน้ต ค่าที่เกินช่วงนี้จะถูกระบุว่าเสียงเพี้ยน"
+# Target curve editor
+curve.clearAll: {value: "ล้างเส้นโค้ง"}
+
+curve.clearAllConfirm:
+  value: "ลบจุดกำหนดทั้งหมด เป้าหมายของทุกโน้ตจะกลับไปเป็นระดับเสียงในบันไดเสียง และเครื่องตั้งเสียงจะแสดงค่าอย่างเดียว"
+curve.clearAllHint: {value: "ลบจุดกำหนดทั้งหมดและใช้ระดับเสียงในบันไดเสียงเป็นเป้าหมาย"}
+curve.clearAllTitle: {value: "ล้างเส้นโค้งทั้งหมดหรือไม่"}
+curve.entryUnit: {value: "หน่วยที่ป้อน"}
+
+curve.help.hz:
+  value: "เมื่อเลือก Hz ให้ป้อนค่าเป้าหมายเป็นเฮิรตซ์อ้างอิง A4 = 440 Hz เช่นเดียวกับรายการบีตอ้างอิง ค่าจึงไม่เปลี่ยนตาม A4 ของเซสชัน เลือก “บันทึกแล้ว” เพื่อซ้อนค่าที่วัดในเซสชันนี้บนรายการ และใช้ “รายการ” เพื่อปรับจุดกำหนดให้เข้ากับค่าเหล่านั้นหรือคัดลอกรายการจากเซสชันอื่น"
+curve.help.hzTitle: {value: "เฮิรตซ์และค่าที่วัดได้"}
+
+curve.help.interp:
+  value: "เมื่อเปิดการประมาณค่าระหว่างจุด โน้ตที่อยู่ระหว่างจุดกำหนดจะมีค่าตามแนวเส้น เมื่อปิดจะคงค่าของแต่ละจุดไว้จนถึงจุดถัดไป หากไม่มีจุดกำหนด ทุกโน้ตจะใช้ระดับเสียงในบันไดเสียงเป็นเป้าหมาย"
+curve.help.interpTitle: {value: "ระหว่างจุดกำหนด"}
+
+curve.help.lead:
+  value: "เป้าหมายระบุว่าแต่ละลิ้นเสียงควรต่างจากระดับเสียงในบันไดเสียงเท่าไรในแต่ละโน้ต ตารางจะตัดสินค่าที่บันทึกว่าอยู่ในเกณฑ์หรือไม่โดยเทียบกับเป้าหมายนี้ ไม่จำเป็นต้องตรงศูนย์"
+curve.help.set:
+  value: "เลือกโน้ตและค่าแล้วกด “กำหนด” หรือลากจุดบนกราฟขึ้นลง แต่ละแถวลิ้นเสียงมีเส้นของตัวเอง เส้นที่กำลังแก้ไขจะถูกเน้น"
+curve.help.setTitle: {value: "การกำหนดจุด"}
+curve.helpTitle: {value: "บีตที่ต้องการ"}
+curve.interpolate: {value: "ประมาณค่าระหว่างจุด"}
+curve.interpolateHint: {value: "ใช้ค่าตามแนวเส้นระหว่างจุดกำหนด เมื่อปิดจะคงค่าเดิมไว้จนถึงจุดถัดไป"}
+curve.menu.ends: {value: "นอกช่วงจุดกำหนด"}
+curve.menu.extendHigh: {value: "ต่อเส้นเลยจุดสูงสุด"}
+curve.menu.extendLow: {value: "ต่อเส้นเลยจุดต่ำสุด"}
+curve.menu.fit: {value: "ปรับเส้นให้เข้ากับค่าที่วัดในเซสชันนี้"}
+
+curve.menu.fitBody:
+  plural:
+    argument: n
+    forms:
+      other: "จะแทนที่จุดกำหนดด้วยเส้นโค้งที่ปรับให้เข้ากับค่าที่วัดได้ {n} ค่า"
+  placeholders:
+    n: {type: integer}
+
+curve.menu.fromFile: {value: "คัดลอกจากไฟล์เซสชัน"}
+curve.menu.fromSession: {value: "คัดลอกจากเซสชัน"}
+curve.menu.label: {value: "รายการ"}
+curve.menu.replace: {value: "แทนที่รายการ"}
+curve.menu.replaceBody: {value: "จะแทนที่จุดกำหนดด้วยจุดและการตั้งค่าจากอีกรายการ"}
+curve.menu.replaceConfirm: {value: "แทนที่"}
+curve.menu.replaceTitle: {value: "แทนที่รายการบีตหรือไม่"}
+curve.rank: {value: "แถวลิ้นเสียง"}
+curve.recorded: {value: "บันทึกแล้ว"}
+curve.recordedHint: {value: "แสดงค่าที่วัดในเซสชันนี้บนกราฟ"}
+curve.remove: {value: "ลบ"}
+curve.removeHint: {value: "ลบจุดกำหนดของโน้ตนี้ออกจากเส้นโค้ง"}
+
+curve.scale:
+  value: "มาตราส่วน {v}"
+  placeholders:
+    v: {type: string}
+
+curve.scaleAuto: {value: "มาตราส่วนอัตโนมัติ"}
+curve.scaleHint: {value: "ช่วงที่แสดงบนแกนตั้งของกราฟ"}
+curve.set: {value: "กำหนด"}
+curve.setHint: {value: "เพิ่มจุดกำหนดที่โน้ตนี้สำหรับแถวลิ้นเสียงที่เลือก"}
+curve.startHint: {value: "ยังไม่มีจุดกำหนด เป้าหมายของทุกโน้ตคือระดับเสียงในบันไดเสียง"}
+
+# Readings and workshop actions
+footer.coverage:
+  value: "วัดแล้ว {done} / {total} โน้ต"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.inTune:
+  value: "ตรงเสียง {done} / {total}"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.none: {value: "ไม่มีเซสชัน"}
+
+readings.notes:
+  plural:
+    argument: n
+    forms:
+      other: "{n} โน้ต"
+  placeholders:
+    n: {type: integer}
+
+workshop.exit: {value: "ออกจากเซสชัน"}
+workshop.import: {value: "นำเข้า"}
+workshop.open: {value: "เปิด"}
+workshop.print: {value: "พิมพ์บัตรตั้งเสียง"}
+
+# Session errors
+error.fitFailed: {value: "ปรับเส้นโค้งให้เข้ากับค่าของรอบนั้นไม่ได้"}
+
+error.hasReadings:
+  value: "มีค่าที่บันทึกไว้ในเซสชันนี้แล้ว จึงเปลี่ยนระดับเสียงอ้างอิงหรือจำนวนลิ้นเสียงที่ใช้วัดไม่ได้"
+error.imageUnreadable: {value: "เปิดภาพถ่ายนั้นไม่ได้"}
+error.instrumentName: {value: "ตั้งชื่อแอคคอร์เดียนเพื่อให้ค้นหาได้ภายหลัง"}
+error.invalidA4: {value: "ระดับเสียงอ้างอิงต้องอยู่ระหว่าง 430 ถึง 450 Hz"}
+
+error.invalidInstrument:
+  value: "ใช้ข้อมูลแอคคอร์เดียนนี้ไม่ได้ เนื่องจากชื่อแถวลิ้นเสียงซ้ำ หรือรีจิสเตอร์ใช้แถวที่เครื่องนี้ไม่มี"
+error.invalidName: {value: "ตั้งชื่อเซสชัน"}
+error.invalidNote: {value: "โน้ตนี้อยู่นอกช่วงที่เครื่องตั้งเสียงติดตามได้"}
+error.invalidReed: {value: "แอคคอร์เดียนนี้ไม่ใช้ลิ้นเสียงดังกล่าว"}
+error.invalidReedCount: {value: "โน้ตหนึ่งตัวของแอคคอร์เดียนใช้ลิ้นเสียงได้ 1 ถึง 8 ลิ้น"}
+error.invalidTranspose: {value: "ย้ายคีย์ได้ตั้งแต่ 0 ถึง 11 ครึ่งเสียง"}
+error.invalidUnit: {value: "ป้อนค่าเป็นหน่วยละ 0.06% เซนต์ หรือเฮิรตซ์"}
+error.invalidValue: {value: "ค่านี้ไม่ใช่ตัวเลข"}
+error.loadFailed: {value: "อ่านเซสชันไม่ได้"}
+error.noBassMachine: {value: "ยังไม่ได้ระบุกลไกเบสสำหรับแอคคอร์เดียนนี้"}
+error.noBassRegister: {value: "แอคคอร์เดียนนี้ไม่มีรีจิสเตอร์เบสดังกล่าว"}
+error.noCurve: {value: "เซสชันนี้ไม่มีเส้นโค้งเป้าหมาย"}
+error.noReadings: {value: "เซสชันนี้ยังไม่มีค่าที่บันทึกไว้"}
+error.noRegister: {value: "แอคคอร์เดียนนี้ไม่มีรีจิสเตอร์ดังกล่าว"}
+error.noSession: {value: "ยังไม่มีเซสชันที่เปิดอยู่"}
+error.notAnImage: {value: "ไฟล์นั้นไม่ใช่ภาพถ่าย"}
+error.notFound: {value: "ไม่มีเซสชันนั้นแล้ว"}
+error.notesTooLong: {value: "ย่อหมายเหตุให้ไม่เกิน 500 อักขระ"}
+error.saveFailed: {value: "บันทึกเซสชันไม่ได้ หากปิดตอนนี้ ข้อมูลที่บันทึกล่าสุดอาจสูญหาย"}
+error.takeNotFound: {value: "ไม่มีค่าที่วัดได้นั้นแล้ว"}
+error.unexpected: {value: "เกิดข้อผิดพลาด"}

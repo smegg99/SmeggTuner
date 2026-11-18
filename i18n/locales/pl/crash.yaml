@@ -1,0 +1,62 @@
+# S99AB startup and crash dialogs (pl).
+close: {value: "Zamknij"}
+copied: {value: "Skopiowano"}
+copy: {value: "Kopiuj raport"}
+details: {value: "Szczegóły"}
+email: {value: "Wyślij raport e-mailem"}
+failed:
+  value: "Nie udało się: {error}"
+  placeholders:
+    error: {type: string}
+file:
+  value: "Plik: {path}"
+  placeholders:
+    path: {type: string}
+kill: {value: "Zamknij i zgłoś"}
+logs: {value: "Pokaż plik dziennika"}
+messageConfig:
+  value: "Nie można odczytać pliku ustawień. Popraw go albo usuń, a potem uruchom aplikację {app} ponownie."
+  placeholders:
+    app: {type: string}
+messageCrash:
+  value: "Coś w aplikacji {app} przestało działać. Wyślij raport, żeby można to było naprawić, a potem uruchom ją ponownie."
+  placeholders:
+    app: {type: string}
+messageHang: {value: "Może jeszcze skończyć to, co robi. Zaczekaj albo zamknij ją i wyślij raport."}
+messageHangStopped:
+  value: "Aplikacja {app} została zamknięta, gdy nie odpowiadała. Wyślij raport, żeby można to było naprawić, a potem uruchom ją ponownie."
+  placeholders:
+    app: {type: string}
+messageKilled:
+  value: "Aplikacja {app} została zamknięta, zanim zdążyła cokolwiek zgłosić. Wyślij raport, żeby można to było naprawić, a potem uruchom ją ponownie."
+  placeholders:
+    app: {type: string}
+messageOom:
+  value: "Zabrakło pamięci w systemie i aplikacja {app} została zamknięta. Wyślij raport, a potem uruchom ją ponownie."
+  placeholders:
+    app: {type: string}
+messageStartup:
+  value: "Usuń przyczynę podaną niżej, a potem uruchom aplikację {app} ponownie."
+  placeholders:
+    app: {type: string}
+restart: {value: "Uruchom ponownie"}
+save: {value: "Zapisz raport"}
+saved:
+  value: "Zapisano w {path}"
+  placeholders:
+    path: {type: string}
+starting:
+  value: "Uruchamianie aplikacji {app}"
+  placeholders:
+    app: {type: string}
+titleCrash: {value: "Aplikacja nieoczekiwanie przestała działać"}
+titleHang: {value: "Aplikacja nie odpowiada"}
+titleHangStopped: {value: "Aplikacja przestała odpowiadać"}
+titleKilled: {value: "Aplikacja nieoczekiwanie się zamknęła"}
+titleStart: {value: "Nie udało się uruchomić aplikacji"}
+wait: {value: "Zaczekaj"}
+windowCrash: {value: "awaria"}
+windowHang: {value: "nie odpowiada"}
+windowHangStopped: {value: "przestała odpowiadać"}
+windowKilled: {value: "nieoczekiwanie zamknięta"}
+windowStart: {value: "nie można uruchomić"}

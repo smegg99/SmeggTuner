@@ -1,0 +1,319 @@
+# Live tuner, WAV playback and browser edition (ro).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Input, output and playback
+input.relearnHint: {value: "Măsoară din nou zgomotul de fond (4 s de liniște)"}
+input.tooStrong: {value: "Semnal prea puternic"}
+input.unreliable: {value: "Semnal nesigur"}
+inputPanel.label: {value: "Semnalul de intrare"}
+inputPanel.title: {value: "Intrare"}
+level.silent: {value: "liniște"}
+output.mute: {value: "Dezactivează sunetul"}
+output.unmute: {value: "Activează sunetul"}
+output.volume: {value: "Volum de ieșire"}
+soundcard.running: {value: "Se calibrează placa de sunet"}
+soundcard.uncalibrated: {value: "Placa de sunet nu este calibrată. Calibrează"}
+soundcard.unreliable: {value: "Calibrare nesigură. Recalibrează"}
+source.analyze: {value: "Analizează înregistrarea…"}
+source.default: {value: "Implicit în sistem"}
+source.noDevices: {value: "Nu s-a găsit niciun microfon"}
+source.refresh: {value: "Actualizează lista dispozitivelor"}
+transport.fileHint: {value: "Pornește redarea fișierului WAV din propriul său panou."}
+transport.start: {value: "Pornește"}
+transport.stop: {value: "Oprește"}
+
+# Modes, registers and note selection
+bassRegister.all: {value: "Întregul mecanism de bași"}
+bassRegister.hint: {value: "Registrul de bași activ"}
+controls: {value: "Comenzi de acordaj"}
+mode.auto: {value: "Automat"}
+mode.autoHint: {value: "Lasă acordorul să identifice nota"}
+mode.pinHint: {value: "Fixează această notă"}
+mode.pinned: {value: "Notă fixată"}
+notes.clickToPin: {value: "clic pentru fixare"}
+notes.label: {value: "Notele de la E0 la C9. Fă clic pe o notă pentru a o fixa."}
+notes.range: {value: "De la E0 la C9"}
+notes.title: {value: "Note"}
+notes.tracking: {value: "urmărire"}
+panel.boxBase: {value: "Nota de bază este măsurată întotdeauna"}
+panel.boxChord: {value: "În modul acorduri se măsoară toate cele trei note"}
+panel.boxLast: {value: "Cel puțin o casetă rămâne activă"}
+
+panel.boxOctave:
+  plural:
+    argument: octaves
+    forms:
+      one: 'Caseta {box}: cu {octaves} octavă peste nota de bază'
+      few: 'Caseta {box}: cu {octaves} octave peste nota de bază'
+      other: 'Caseta {box}: cu {octaves} de octave peste nota de bază'
+  placeholders:
+    octaves:
+      type: integer
+    box:
+      type: string
+
+panel.boxReed:
+  value: 'Ancia {n}: activează sau dezactivează măsurarea'
+  placeholders:
+    n:
+      type: string
+
+panel.bySession:
+  plural:
+    argument: n
+    forms:
+      one: '{n} ancie, conform registrului ales în sesiune'
+      few: '{n} ancii, conform registrului ales în sesiune'
+      other: '{n} de ancii, conform registrului ales în sesiune'
+  placeholders:
+    n:
+      type: integer
+
+panel.locked: {value: "Stabil"}
+panel.modeHints.chords: {value: "Acorduri din trei note"}
+panel.modeHints.octaves: {value: "O notă și octavele ei superioare"}
+panel.modeHints.tones: {value: "O notă, până la trei ancii"}
+panel.modeLabel: {value: "Ce se măsoară"}
+panel.modes.chords: {value: "Acorduri"}
+panel.modes.octaves: {value: "Octave"}
+panel.modes.tones: {value: "Tonuri"}
+panel.quiet: {value: "Prea încet"}
+panel.recorded: {value: "Înregistrat"}
+panel.reeds: {value: "Ancii"}
+
+reeds.count:
+  plural:
+    argument: n
+    forms:
+      one: '{n} ancie'
+      few: '{n} ancii'
+      other: '{n} de ancii'
+  placeholders:
+    n:
+      type: integer
+
+register.hint: {value: "Registrul activ"}
+register.lockedPlaying: {value: "Oprește redarea pentru a schimba registrul."}
+side.bass: {value: "Bași"}
+side.hint: {value: "Partea melodică sau cea de bași"}
+side.treble: {value: "Discant"}
+step.noteDown: {value: "Cu un semiton mai jos"}
+step.noteUp: {value: "Cu un semiton mai sus"}
+# Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
+signal.add: {value: "Adaugă un ton"}
+signal.cents: {value: "Abatere față de notă în cenți"}
+signal.down: {value: "Cu un semiton mai jos (săgeata stânga, săgeata jos pentru o octavă)"}
+signal.open: {value: "Generator de semnal: redă o notă curată după care poți acorda o ancie"}
+signal.play: {value: "Redă"}
+signal.playHint: {value: "Redă nota cu toate tonurile sau, dacă nu este aleasă încă o notă, folosește prima notă detectată (spațiu)"}
+signal.remove: {value: "Elimină acest ton"}
+signal.stop: {value: "Oprește"}
+signal.stopHint: {value: "Oprește tonul (spațiu)"}
+signal.title: {value: "Generator de semnal"}
+signal.up: {value: "Cu un semiton mai sus (săgeata dreapta, săgeata sus pentru o octavă)"}
+signal.wave.hint: {value: "Sunetul unei ancii conține armonice, astfel că bătăile se aud și pe acestea"}
+signal.wave.reed: {value: "Ancie"}
+signal.wave.sine: {value: "Sinusoidal"}
+
+# Reference pitch and units
+reference.a4Locked: {value: "Blocat în Setări"}
+reference.a4Type: {value: "Introdu frecvența A4 între 430 și 450 Hz"}
+reference.frozen: {value: "Valoare fixă: sesiunea conține deja măsurători"}
+reference.transpose: {value: "Transpune"}
+reference.transposeDown: {value: "Cu un semiton mai puțin"}
+reference.transposeHint: {value: "Numărul de semitonuri cu care clapele sună mai sus decât notele indicate"}
+reference.transposeMode: {value: "Acordurile și octavele se măsoară fără transpoziție"}
+reference.transposeUp: {value: "Cu un semiton mai mult"}
+
+reference.transposed:
+  value: Transpoziție +{n}
+  placeholders:
+    n:
+      type: string
+
+unit.cents: {value: "Cent"}
+unit.hz: {value: "Hz"}
+unit.reference: {value: "Unități"}
+
+# Live readings and graphs
+boxes.beat:
+  value: Bătăi între {a} și {b}
+  placeholders:
+    a:
+      type: string
+    b:
+      type: string
+
+boxes.goal: {value: "țintă"}
+boxes.hzOnly: {value: "doar în Hz"}
+boxes.notHeard: {value: "nu se aude"}
+
+boxes.reed:
+  value: Ancia {n}
+  placeholders:
+    n:
+      type: string
+
+boxes.reedBank:
+  value: Ancia {bank}
+  placeholders:
+    bank:
+      type: string
+
+boxes.tone:
+  value: Tonul {n}
+  placeholders:
+    n:
+      type: string
+
+ruler.label: {value: "Abaterea fiecărei ancii"}
+spectrum.label: {value: "Spectrul de frecvență al notei urmărite"}
+spectrum.title: {value: "Spectru"}
+
+# Hold, noise learning and tuner state
+hold.hint: {value: "Menține valorile stabile (H)"}
+state.deviceLost: {value: "Intrare pierdută"}
+state.initializing: {value: "Se măsoară zgomotul din încăpere"}
+state.running: {value: "Ascultare"}
+state.stopped: {value: "Oprit"}
+state.tooQuiet: {value: "Prea încet. Cântă mai tare sau apropie-te de microfon"}
+warmup.quiet: {value: "Păstrează liniștea"}
+
+# WAV files and waveform controls
+file.clearSelection: {value: "Selectează întreaga înregistrare"}
+file.fit: {value: "Afișează întreaga înregistrare"}
+file.loop: {value: "Repetă selecția în buclă"}
+file.mute: {value: "Dezactivează sunetul înregistrării"}
+file.openFilter: {value: "Audio WAV"}
+file.openTitle: {value: "Selectează o înregistrare WAV"}
+file.pause: {value: "Pauză"}
+file.play: {value: "Redă"}
+file.stop: {value: "Oprește și revino la începutul selecției"}
+file.toEnd: {value: "La sfârșitul selecției"}
+file.toStart: {value: "La începutul selecției"}
+file.unmute: {value: "Redă înregistrarea cu sunet"}
+file.volume: {value: "Volumul redării"}
+
+file.waveform:
+  value: Forma de undă a înregistrării {name}. Trage pe axa timpului pentru a deplasa cursorul de redare sau pe undă
+    pentru a selecta un fragment. După oprire, o linie punctată deschisă la culoare indică fragmentul din care s-a
+    obținut valoarea afișată.
+  placeholders:
+    name:
+      type: string
+
+file.zoomIn: {value: "Mărește"}
+file.zoomOut: {value: "Micșorează"}
+
+# Instrument calibration workflow
+calibrate.leave: {value: "Ieși din calibrare"}
+calibrate.needsSession: {value: "Deschide o sesiune pentru a-i calibra instrumentul."}
+calibrate.range.again: {value: "Reia de la început"}
+
+calibrate.range.backwards: {value: "Nota cea mai înaltă nu poate fi mai joasă decât cea mai gravă. Măsoară din nou ambitusul."}
+
+calibrate.range.capture: {value: "Captează"}
+calibrate.range.highest: {value: "Cea mai înaltă"}
+calibrate.range.lowest: {value: "Cea mai gravă"}
+calibrate.range.next: {value: "Continuă cu calibrarea anciilor"}
+calibrate.range.playHigh: {value: "Acum cântă nota cea mai înaltă de pe claviatură."}
+calibrate.range.playLow: {value: "Cântă nota cea mai gravă de pe claviatură."}
+calibrate.range.step: {value: "Claviatura"}
+calibrate.status.captured: {value: "Capturat"}
+calibrate.status.holding: {value: "Menține nota constantă"}
+calibrate.status.loud: {value: "Prea tare"}
+calibrate.status.play: {value: "Cântă o notă"}
+calibrate.sweep.bassAll: {value: "Bași – întregul mecanism"}
+
+calibrate.sweep.done:
+  plural:
+    argument: n
+    forms:
+      one: 'Parcurgerea claviaturii s-a încheiat. Pe fișă: {n} măsurătoare.'
+      few: 'Parcurgerea claviaturii s-a încheiat. Pe fișă: {n} măsurători.'
+      other: 'Parcurgerea claviaturii s-a încheiat. Pe fișă: {n} de măsurători.'
+  placeholders:
+    n:
+      type: integer
+
+calibrate.sweep.noRegisters: {value: "Acest acordeon nu are registre definite. Parcurgerea claviaturii se poate face și așa, iar măsurătorile apar în coloane numerotate."}
+
+calibrate.sweep.pickRegister: {value: "Ce registru calibrezi?"}
+
+calibrate.sweep.progress:
+  value: '{done} din {total}'
+  placeholders:
+    done:
+      type: string
+    total:
+      type: string
+
+calibrate.sweep.redoRange: {value: "Măsoară din nou claviatura"}
+calibrate.sweep.review: {value: "Vezi fișa"}
+calibrate.sweep.skip: {value: "Sari peste"}
+
+calibrate.sweep.soloTeaches: {value: "Parcurgând claviatura cu un registru cu o singură voce, aplicația învață și sunetul acelei voci."}
+
+calibrate.sweep.startPlain: {value: "Începe parcurgerea claviaturii"}
+calibrate.sweep.step: {value: "Anciile"}
+calibrate.sweep.stop: {value: "Oprește"}
+calibrate.title: {value: "Calibrează"}
+
+# Browser edition
+web.accent.default: {value: "Implicită"}
+web.accent.hint: {value: "Culoarea aplicației sau una aleasă de tine"}
+web.diagnostics.copied: {value: "Copiat"}
+web.diagnostics.copy: {value: "Copiază datele de diagnostic"}
+web.diagnostics.empty: {value: "Pornește acordorul pentru a vedea detaliile microfonului."}
+web.diagnostics.title: {value: "Diagnosticare"}
+web.downloads.title: {value: "Descarcă aplicația"}
+web.experimental: {value: "Experimental"}
+web.loadFailed: {value: "Modulul de măsurare nu a putut porni în acest browser."}
+
+web.mic.denied: {value: "Accesul la microfon a fost refuzat. Permite-l în setările browserului și pornește din nou acordorul."}
+
+web.mic.failed: {value: "Microfonul nu a putut fi deschis."}
+web.mic.none: {value: "Nu s-a găsit niciun microfon."}
+web.mic.unsupported: {value: "Acest browser nu poate înregistra sunet."}
+web.notice.background: {value: "Într-o filă din fundal, sunetul se poate întrerupe."}
+web.notice.native: {value: "Pentru măsurători precise, folosește aplicația instalată."}
+web.notice.ok: {value: "Am înțeles"}
+
+web.notice.processing: {value: "Browserul poate aplica semnalului microfonului anularea ecoului, reducerea zgomotului, controlul automat al câștigului sau reeșantionarea. Oricare dintre acestea poate modifica valorile măsurate."}
+
+web.notice.title: {value: "Versiune web experimentală"}
+web.processing.autoGainControl: {value: "câștig automat"}
+web.processing.echoCancellation: {value: "anularea ecoului"}
+web.processing.noiseSuppression: {value: "reducerea zgomotului"}
+
+web.processingOn:
+  value: 'Browserul a menținut active următoarele funcții: {list}. Măsurătorile pot fi inexacte.'
+  placeholders:
+    list:
+      type: string
+
+web.slow: {value: "Dispozitivul nu ține pasul cu modulul de măsurare. Fragmentele audio întârziate sunt omise pentru a păstra valorile afișate la zi."}
+
+# Tuner errors
+error.a4Locked: {value: "Frecvența de referință este blocată în Setări."}
+error.chordsAuto: {value: "Modul acorduri își selectează automat notele."}
+error.deviceGone: {value: "Acest microfon nu mai este conectat."}
+error.deviceLost: {value: "Microfonul nu a mai răspuns și acordorul s-a oprit."}
+error.fileUnreadable: {value: "Înregistrarea nu a putut fi citită. Este necesar un fișier WAV."}
+error.invalidA4: {value: "Frecvența de referință trebuie să fie între 430 și 450 Hz."}
+error.invalidBox: {value: "Nu există o astfel de casetă de ancie."}
+error.invalidMode: {value: "Acordorul măsoară tonuri, octave sau acorduri."}
+error.invalidNote: {value: "Nota este în afara domeniului urmărit de acordor."}
+error.invalidTranspose: {value: "Transpoziția poate fi de la 0 la 11 semitonuri."}
+error.lastBox: {value: "Cel puțin o casetă trebuie să rămână activă."}
+error.noDevices: {value: "Nu s-a găsit niciun microfon. Conectează unul și actualizează lista dispozitivelor."}
+error.playbackFailed: {value: "Sunetul de referință nu a putut fi redat."}
+
+error.sampleRate: {value: "Frecvența de eșantionare a intrării este prea mică pentru notele cele mai înalte la această referință și transpoziție. Folosește o înregistrare de cel puțin 44,1 kHz."}
+
+error.sessionDecides: {value: "Registrul sesiunii deschise stabilește ce se măsoară."}
+error.signalVoices: {value: "Poți reda între unu și patru tonuri, fiecare la cel mult 100 de cenți de nota selectată."}
+error.toneNeedsManual: {value: "Fixează o notă pentru a-i reda tonul."}
+error.transposeMode: {value: "Acordurile și octavele se măsoară fără transpoziție."}
+error.unexpected: {value: "A apărut o eroare. Consultă jurnalul pentru detalii."}

@@ -1,0 +1,69 @@
+# Recording controls and readings (it).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one, other (locale cardinal rules).
+
+# Recording controls
+arm.hint: {value: "Registra un'acquisizione ogni volta che la misura si stabilizza (Invio per acquisire subito)"}
+arm.needsSession: {value: "Apri una sessione per registrare"}
+arm.warmup: {value: "Registrazione delle misure disattivata. Suona liberamente, nessuna misura viene salvata. Premi per iniziare a registrare le misure."}
+undo.hint: {value: "Annulla l'ultima acquisizione"}
+
+# Readings table and compact columns
+mobile.current: {value: "Misura"}
+mobile.error: {value: "Scostamento"}
+
+table.beat:
+  value: "Battimento {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.delete: {value: "Rimuovi questa misurazione"}
+table.deleteHint: {value: "Elimina definitivamente questa misurazione. Per sostituirla, suona e registra di nuovo la nota."}
+table.deleteTitle: {value: "Rimuovere questa misurazione?"}
+table.editHint: {value: "Fai clic o premi Invio per modificare il valore"}
+table.empty: {value: "Avvia la registrazione, poi suona le note per salvarne le misurazioni."}
+table.graph: {value: "Grafico"}
+
+table.graphHint:
+  value: "Confronta ogni ancia con il suo obiettivo. Fai clic su una colonna per selezionare la riga corrispondente, poi di nuovo per selezionare il registro successivo."
+table.graphLabel: {value: "Errori delle ance per ogni nota registrata"}
+table.helpTitle: {value: "Informazioni sulla tabella"}
+table.label: {value: "Accordatura registrata"}
+table.latest: {value: "Ultima acquisizione: premi Backspace per rimuoverla"}
+table.manual: {value: "Modificato"}
+table.manualHint: {value: "Un valore di questa riga è stato inserito a mano anziché misurato."}
+
+table.notes:
+  plural:
+    argument: count
+    forms:
+      one: "una nota"
+      other: "{count} note"
+  placeholders:
+    count: {type: integer}
+
+table.unitHint:
+  value: "Gli scostamenti delle ance usano l'unità scelta nelle impostazioni. I battimenti sono espressi in hertz o nell'unità di scostamento, secondo la scelta nella barra degli strumenti."
+# Report export dialog
+report.csv: {value: "CSV"}
+report.date: {value: "Data"}
+report.format: {value: "Formato"}
+
+report.formatHint:
+  value: "Il PDF riproduce la scheda su una pagina A4 così come verrà stampata. L'HTML presenta la stessa scheda come pagina web. Il CSV contiene la tabella per un foglio di calcolo."
+report.html: {value: "HTML"}
+report.notes: {value: "Annotazione sulla scheda"}
+report.notesHint: {value: "Stampata sotto la tabella. Indica il lavoro svolto o ancora da fare."}
+
+report.pass:
+  value: "Passata: {label}"
+  placeholders:
+    label: {type: string}
+
+report.pdf: {value: "PDF"}
+report.title: {value: "Scheda di accordatura"}
+
+# Recording errors
+error.takeNotFound: {value: "Questa acquisizione non è più presente nella passata."}
+error.unexpected: {value: "Operazione non riuscita. Consulta il registro per i dettagli."}

@@ -1,0 +1,62 @@
+# S99AB startup and crash dialogs (it).
+close: {value: "Chiudi"}
+copied: {value: "Copiato"}
+copy: {value: "Copia segnalazione"}
+details: {value: "Dettagli"}
+email: {value: "Invia segnalazione per e-mail"}
+failed:
+  value: "Operazione non riuscita: {error}"
+  placeholders:
+    error: {type: string}
+file:
+  value: "File: {path}"
+  placeholders:
+    path: {type: string}
+kill: {value: "Chiudi e segnala"}
+logs: {value: "Mostra il file di registro"}
+messageConfig:
+  value: "Impossibile leggere il file delle impostazioni. Correggilo o eliminalo, poi riavvia {app}."
+  placeholders:
+    app: {type: string}
+messageCrash:
+  value: "Si è verificato un errore interno in {app}. Invia la segnalazione per aiutare a risolverlo, poi riavvia l’applicazione."
+  placeholders:
+    app: {type: string}
+messageHang: {value: "L’operazione in corso potrebbe ancora concludersi. Attendi oppure chiudi l’applicazione e invia una segnalazione."}
+messageHangStopped:
+  value: "{app} è stata chiusa mentre non rispondeva. Invia la segnalazione per aiutare a risolvere il problema, poi riavvia l’applicazione."
+  placeholders:
+    app: {type: string}
+messageKilled:
+  value: "{app} è stata chiusa prima che potesse segnalare il problema. Invia la segnalazione, poi riavvia l’applicazione."
+  placeholders:
+    app: {type: string}
+messageOom:
+  value: "Il sistema ha esaurito la memoria e ha chiuso {app}. Invia la segnalazione, poi riavvia l’applicazione."
+  placeholders:
+    app: {type: string}
+messageStartup:
+  value: "Risolvi il problema indicato di seguito, poi riavvia {app}."
+  placeholders:
+    app: {type: string}
+restart: {value: "Riavvia"}
+save: {value: "Salva segnalazione"}
+saved:
+  value: "Segnalazione salvata in {path}"
+  placeholders:
+    path: {type: string}
+starting:
+  value: "Avvio di {app}"
+  placeholders:
+    app: {type: string}
+titleCrash: {value: "L’applicazione si è arrestata in modo imprevisto"}
+titleHang: {value: "L’applicazione non risponde"}
+titleHangStopped: {value: "L’applicazione ha smesso di rispondere"}
+titleKilled: {value: "L’applicazione si è chiusa in modo imprevisto"}
+titleStart: {value: "Impossibile avviare l’applicazione"}
+wait: {value: "Attendi"}
+windowCrash: {value: "arresto anomalo"}
+windowHang: {value: "non risponde"}
+windowHangStopped: {value: "ha smesso di rispondere"}
+windowKilled: {value: "chiusura imprevista"}
+windowStart: {value: "avvio non riuscito"}

@@ -1,0 +1,69 @@
+# Recording controls and readings (es).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one, other (locale cardinal rules).
+
+# Recording controls
+arm.hint: {value: "Registrar una toma cada vez que se estabilice la lectura (Intro para tomar una ahora)"}
+arm.needsSession: {value: "Abre una sesión para grabar"}
+arm.warmup: {value: "Registro de mediciones desactivado. Puedes tocar libremente sin guardar lecturas. Pulsa para empezar a registrarlas."}
+undo.hint: {value: "Deshacer la última toma"}
+
+# Readings table and compact columns
+mobile.current: {value: "Medición"}
+mobile.error: {value: "Desviación"}
+
+table.beat:
+  value: "Batido {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.delete: {value: "Eliminar esta medición"}
+table.deleteHint: {value: "Elimina definitivamente esta medición. Para sustituirla, vuelve a tocar y grabar la nota."}
+table.deleteTitle: {value: "¿Eliminar esta medición?"}
+table.editHint: {value: "Haz clic o pulsa Intro para editar el valor"}
+table.empty: {value: "Inicia la grabación y toca las notas para guardar sus mediciones."}
+table.graph: {value: "Gráfico"}
+
+table.graphHint:
+  value: "Compara cada lengüeta con su objetivo. Haz clic en una columna para seleccionar su fila y vuelve a hacer clic para seleccionar el registro siguiente."
+table.graphLabel: {value: "Errores de las lengüetas de cada nota grabada"}
+table.helpTitle: {value: "Acerca de esta tabla"}
+table.label: {value: "Afinación registrada"}
+table.latest: {value: "Última toma: pulsa Retroceso para eliminarla"}
+table.manual: {value: "Editado"}
+table.manualHint: {value: "Un valor de esta fila se introdujo a mano en lugar de medirse."}
+
+table.notes:
+  plural:
+    argument: count
+    forms:
+      one: "una nota"
+      other: "{count} notas"
+  placeholders:
+    count: {type: integer}
+
+table.unitHint:
+  value: "Las desviaciones de las lengüetas usan la unidad elegida en los ajustes. Los batidos se expresan en hercios o en la unidad de desviación, según la selección de la barra de herramientas."
+# Report export dialog
+report.csv: {value: "CSV"}
+report.date: {value: "Fecha"}
+report.format: {value: "Formato"}
+
+report.formatHint:
+  value: "El PDF muestra la ficha en una página A4 tal como se imprimirá. El HTML presenta la misma ficha como página web. El CSV contiene la tabla para una hoja de cálculo."
+report.html: {value: "HTML"}
+report.notes: {value: "Observación en la ficha"}
+report.notesHint: {value: "Se imprime bajo la tabla. Indica qué se ha hecho o qué queda por hacer."}
+
+report.pass:
+  value: "Pasada: {label}"
+  placeholders:
+    label: {type: string}
+
+report.pdf: {value: "PDF"}
+report.title: {value: "Ficha de afinación"}
+
+# Recording errors
+error.takeNotFound: {value: "Esta toma ya no está en la pasada."}
+error.unexpected: {value: "La operación ha fallado. Consulta el registro para más detalles."}

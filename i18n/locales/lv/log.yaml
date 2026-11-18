@@ -1,0 +1,100 @@
+# Diagnostic log messages (lv).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Application lifecycle and configuration
+appStarting: {value: "Tiek palaists SmeggTuner"}
+cleaningUp: {value: "Tiek atbrīvoti resursi"}
+configLoadFailed: {value: "Neizdevās ielādēt konfigurāciju"}
+configLoaded: {value: "Konfigurācija ielādēta"}
+configSaveFailed: {value: "Neizdevās saglabāt konfigurāciju"}
+crashScreenFailed: {value: "Neizdevās parādīt kļūdas ekrānu"}
+crashWatchFailed: {value: "Neizdevās palaist avāriju uzraudzību"}
+datastoreInitFailed: {value: "Neizdevās inicializēt datu krātuvi"}
+datastoreReady: {value: "Datu krātuve gatava"}
+loadingConfig: {value: "Tiek ielādēta konfigurācija"}
+loggerInitFailed: {value: "Neizdevās konfigurēt žurnalēšanu"}
+reinitLogger: {value: "Žurnalēšana tiek pārkonfigurēta atbilstoši iestatījumiem"}
+runFailed: {value: "Neizdevās darbināt lietotni"}
+secondInstance: {value: "Palaists otrs eksemplārs, tiek aktivizēts esošais logs"}
+trayIconFailed: {value: "Neizdevās ielādēt paziņojumu apgabala ikonu"}
+updateCheckFailed: {value: "Neizdevās pārbaudīt atjauninājumus", description: "Update check or stored release-note state failed; logged without a dialog."}
+windowStateLoadFailed: {value: "Neizdevās ielādēt loga stāvokli"}
+windowStateSaveFailed: {value: "Neizdevās saglabāt loga stāvokli"}
+
+# Audio devices and calibration
+audioDeviceEnumFailed: {value: "Neizdevās iegūt ieraksta ierīču sarakstu"}
+audioDeviceGone: {value: "Atlasītā ieraksta ierīce vairs nav pieejama"}
+audioDevicesListed: {value: "Iegūts ieraksta ierīču saraksts"}
+audioDialogFailed: {value: "Faila izvēles dialogs nedarbojās"}
+audioDialogUnavailable: {value: "Faila izvēles dialogs pieprasīts, kamēr lietotne nedarbojas"}
+audioFileUnreadable: {value: "Neizdevās atvērt ierakstu"}
+audioNoDevices: {value: "Nav pieejamu ieraksta ierīču"}
+audioSourceSelected: {value: "Ievades avots atlasīts"}
+audioSpeakerUnavailable: {value: "Nav izvades ierīces, fails tiks atskaņots bez skaņas"}
+calibrationAbandoned: {value: "Skaņas kartes kalibrēšana pārtraukta"}
+calibrationFinished: {value: "Skaņas kartes kalibrēšana pabeigta"}
+calibrationNoDevice: {value: "Kalibrējot skaņas karti, neizdevās atvērt ierīci"}
+calibrationStarted: {value: "Skaņas kartes kalibrēšana sākta"}
+deviceStoreFailed: {value: "Neizdevās saglabāt ieraksta ierīces iestatījumus"}
+micBlocksDropped: {value: "Mikrofona datu apstrāde aizkavējās, bloki tiek izlaisti"}
+micDeviceLost: {value: "Ieraksta ierīce negaidīti apstājās"}
+volumeRestore: {value: "Automātiskajai skaļuma vadībai neizdevās atjaunot ievades līmeni"}
+volumeStepFailed: {value: "Automātiskajai skaļuma vadībai neizdevās iestatīt ievades līmeni"}
+volumeUnavailable: {value: "Automātiskajai skaļuma vadībai nav pieejama ierīces ievades līmeņa regulēšana"}
+
+# Tuner engine
+tunerEventsDropped: {value: "Mērījumu notikumi izlaisti, saskarne netiek līdzi"}
+tunerRunFailed: {value: "Mērījumu dzinis apstājās kļūdas dēļ"}
+tunerSettingRejected: {value: "Noraidīts iestatījums ārpus atļautā diapazona"}
+tunerStartFailed: {value: "Neizdevās izveidot ievades avotu"}
+tunerStarted: {value: "Mērījumu dzinis palaists"}
+tunerStopped: {value: "Mērījumu dzinis apturēts"}
+tunerTonePlayFailed: {value: "Neizdevās atskaņot atsauces toni"}
+tunerTonePlaying: {value: "Tiek atskaņots atsauces tonis"}
+
+# Sessions, readings and reports
+recordCleared: {value: "Mērījumu cikls notīrīts"}
+recordEdited: {value: "Mērījums labots manuāli"}
+recordRejected: {value: "Ieraksta pieprasījums noraidīts"}
+recordTake: {value: "Mērījums ierakstīts"}
+recordUndone: {value: "Pēdējais mērījums atsaukts"}
+reportFailed: {value: "Neizdevās ierakstīt skaņošanas pārskatu"}
+reportOpenFailed: {value: "Neizdevās atvērt skaņošanas pārskatu"}
+reportOpened: {value: "Skaņošanas pārskats nodots pārlūkam"}
+reportRejected: {value: "Pārskata pieprasījums noraidīts"}
+reportWritten: {value: "Skaņošanas pārskats ierakstīts"}
+sessionClosed: {value: "Sesija aizvērta"}
+sessionCreated: {value: "Sesija izveidota"}
+sessionCurveDropped: {value: "Mērķlīkne noņemta"}
+sessionCurveFitted: {value: "Mērķlīkne pielāgota cikla mērījumiem"}
+sessionCurveImported: {value: "Mērķlīkne importēta"}
+sessionDeleted: {value: "Sesija dzēsta"}
+sessionLoadFailed: {value: "Neizdevās ielādēt sesiju"}
+sessionOpened: {value: "Sesija atvērta"}
+sessionReedsClamped: {value: "Instrumentā skan vairāk mēlīšu, nekā dzinis spēj atšķirt; apstrādājamo mēlīšu skaits tiek ierobežots"}
+sessionRejected: {value: "Nederīgas sesijas izmaiņas noraidītas"}
+sessionSaveFailed: {value: "Neizdevās saglabāt sesiju"}
+
+# Frontend diagnostics
+frontendAudioCalibrationCancelFailed: {value: "Neizdevās atcelt kalibrēšanu"}
+frontendAudioCalibrationFailed: {value: "Neizdevās sākt kalibrēšanu"}
+frontendAudioCorrectionFailed: {value: "Neizdevās nolasīt skaņas kartes korekciju"}
+frontendAudioDialogFailed: {value: "Neizdevās atvērt faila izvēles dialogu"}
+frontendAudioListFailed: {value: "Neizdevās iegūt audioierīču sarakstu"}
+frontendAudioSelectFailed: {value: "Neizdevās atlasīt skaņas avotu"}
+frontendAudioStateFailed: {value: "Neizdevās nolasīt audioierīces stāvokli"}
+frontendAudioVolumeFailed: {value: "Neizdevās mainīt automātisko skaļuma vadību"}
+frontendConfigLoadFailed: {value: "Neizdevās ielādēt konfigurāciju"}
+frontendConfigLoaded: {value: "Konfigurācija ielādēta"}
+frontendConfigSaveFailed: {value: "Neizdevās saglabāt konfigurāciju"}
+frontendCurveViewFailed: {value: "Neizdevās nolasīt līknes skata iestatījumus"}
+frontendError: {value: "Negaidīta lietotnes kļūda"}
+frontendRejection: {value: "Lietotnes darbība neizdevās"}
+frontendResizeNotice: {value: "Izkārtojuma izmaiņas atliktas līdz nākamajam kadram (pārlūka ResizeObserver paziņojums)"}
+frontendSettingFailed: {value: "Neizdevās mainīt skaņotāja iestatījumu"}
+frontendTunerStartFailed: {value: "Neizdevās palaist skaņotāju"}
+frontendTunerStateFailed: {value: "Neizdevās nolasīt skaņotāja stāvokli"}
+frontendTunerStopFailed: {value: "Neizdevās apturēt skaņotāju"}
+frontendTunerTonePlayFailed: {value: "Neizdevās atskaņot atsauces toni"}
+frontendTunerToneStopFailed: {value: "Neizdevās apturēt atsauces toni"}

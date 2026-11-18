@@ -1,0 +1,15 @@
+# S99AB release notes and update prompts (en).
+notesTitle:
+  value: "What's new in {version}"
+  placeholders:
+    version: {type: string}
+notTranslated: {value: "These notes have not been translated."}
+updateBody:
+  value: "You have {current}. The newest is {latest}."
+  placeholders:
+    current: {type: string}
+    latest: {type: string}
+updateDownload: {value: "Download"}
+updateIgnore: {value: "Ignore this version"}
+updateLater: {value: "Later"}
+updateTitle: {value: "A newer version is available"}

@@ -1,0 +1,149 @@
+# Printed reports and export (th).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Report title and instrument details
+facts.curve: {value: "เส้นโค้งเป้าหมาย"}
+facts.curveNone: {value: "ไม่มี"}
+facts.curveUnnamed: {value: "ไม่มีชื่อ"}
+facts.reference: {value: "เสียงอ้างอิง A4 (รอบนี้)"}
+facts.tolerance: {value: "ค่าคลาดเคลื่อนที่ยอมรับได้"}
+
+facts.toleranceValue:
+  value: "ลิ้นเสียง {reed} {unit} / บีต {beat} {unit}"
+  placeholders:
+    beat: {type: string}
+    reed: {type: string}
+    unit: {type: string}
+
+facts.transpose: {value: "การย้ายคีย์"}
+
+facts.transposeValue:
+  value: "คีย์ {key} ให้เสียง {sounds}"
+  placeholders:
+    key: {type: string}
+    sounds: {type: string}
+
+title: {value: "รายงานการตั้งเสียง"}
+
+# Table and column headings
+head.beat:
+  value: "บีต {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.bassTitle:
+  value: "ตารางตั้งเสียงฝั่งเบส ({unit})"
+  placeholders:
+    unit: {type: string}
+
+table.curr: {value: "ค่าที่วัดได้"}
+table.err: {value: "ค่าผิดพลาด"}
+table.register: {value: "รีจิสเตอร์"}
+
+table.title:
+  value: "ตารางตั้งเสียง ({unit})"
+  placeholders:
+    unit: {type: string}
+
+# Deviation units
+unit.cents.name: {value: "เซนต์"}
+unit.cents.symbol: {value: "c"}
+unit.reference.name: {value: "หน่วยละ 0.06%"}
+
+# Graph legend and reading markers
+graph.edited:
+  value: "{mark} หมายถึงแก้ไขด้วยตนเอง"
+  placeholders:
+    mark: {type: string}
+
+legend.error.cents:
+  value: "ตะไบลิ้นเสียงให้ค่าผิดพลาดใกล้ศูนย์ ค่าเป็นเซนต์เทียบกับระดับเสียงในระบบแบ่งเท่าเมื่อ A4 = {a4} Hz"
+  placeholders:
+    a4: {type: string}
+
+legend.error.key: {value: "ค่าผิดพลาด = ค่าที่วัดได้ − ค่าเป้าหมาย"}
+legend.error.noCurve: {value: "หากไม่มีเส้นโค้งเป้าหมาย ค่าเป้าหมายจะเป็นศูนย์ และค่าผิดพลาดคือความต่างจากระดับเสียงในบันไดเสียง"}
+
+legend.error.reference:
+  value: "ตะไบลิ้นเสียงให้ค่าผิดพลาดใกล้ศูนย์ เทียบกับระดับเสียงในระบบแบ่งเท่าเมื่อ A4 = {a4} Hz โดยหนึ่งหน่วยเท่ากับ 0.06% ของความถี่โน้ตนั้น"
+  placeholders:
+    a4: {type: string}
+
+legend.out.short: {value: "นอกช่วงที่ยอมรับได้"}
+legend.takes.key: {value: "xN"}
+legend.takes.short: {value: "บันทึกมากกว่าหนึ่งครั้ง แสดงค่าครั้งล่าสุด"}
+mark.edited: {value: "H"}
+mark.out: {value: "!"}
+
+# Summary and footer
+footer.generated:
+  value: "สร้างเมื่อ {at} โดย {app}"
+  placeholders:
+    app: {type: string}
+    at: {type: string}
+
+summary.allIn: {value: "ทุกค่าอยู่ในช่วงที่ยอมรับได้"}
+
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      other: "บีต {pluralCount} คู่"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.line:
+  value: "{notes} ({min} ถึง {max}), {reeds}, {beats}"
+  placeholders:
+    beats: {type: string}
+    max: {type: string}
+    min: {type: string}
+    notes: {type: string}
+    reeds: {type: string}
+
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      other: "{pluralCount} โน้ต"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      other: "นอกช่วงที่ยอมรับได้ {pluralCount} รายการ ({reeds}, {beats})"
+  placeholders:
+    beats: {type: string}
+    pluralCount: {type: integer}
+    reeds: {type: string}
+
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      other: "ค่าลิ้นเสียงที่วัดได้ {pluralCount} ค่า"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      other: "ลิ้นเสียง {pluralCount} ลิ้น"
+  placeholders:
+    pluralCount: {type: integer}
+
+# Export errors
+error.invalidDate: {value: "ป้อนวันที่ที่ถูกต้องในรูปแบบ YYYY-MM-DD"}
+error.invalidFormat: {value: "ไม่สามารถส่งออกรายงานในรูปแบบนี้ได้"}
+
+error.noBrowser:
+  value: "การจัดหน้า PDF ต้องใช้เบราว์เซอร์ แต่ไม่พบ Chrome หรือ Chromium ในเครื่องนี้ ให้ติดตั้งตัวใดตัวหนึ่ง หรือส่งออกบัตรเป็น HTML แล้วพิมพ์"
+error.openFailed: {value: "เขียนรายงานแล้ว แต่ไม่มีเบราว์เซอร์เปิดให้ โปรดเปิดไฟล์เอง"}
+error.renderFailed: {value: "สร้างรายงานไม่สำเร็จ ยังไม่มีการเขียนข้อมูล"}
+
+error.writeFailed:
+  value: "เขียนรายงานที่นี่ไม่ได้ หากมีไฟล์เดิมอยู่ ไฟล์นั้นจะยังคงเดิม"

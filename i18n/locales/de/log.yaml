@@ -1,0 +1,100 @@
+# Diagnostic log messages (de).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Application lifecycle and configuration
+appStarting: {value: "smeggtuner wird gestartet"}
+cleaningUp: {value: "Ressourcen werden freigegeben"}
+configLoadFailed: {value: "Konfiguration konnte nicht geladen werden"}
+configLoaded: {value: "Konfiguration geladen"}
+configSaveFailed: {value: "Konfiguration konnte nicht gespeichert werden"}
+crashScreenFailed: {value: "Fehleransicht konnte nicht angezeigt werden"}
+crashWatchFailed: {value: "Absturzüberwachung konnte nicht gestartet werden"}
+datastoreInitFailed: {value: "Datenspeicher konnte nicht initialisiert werden"}
+datastoreReady: {value: "Datenspeicher bereit"}
+loadingConfig: {value: "Konfiguration wird geladen"}
+loggerInitFailed: {value: "Protokollierung konnte nicht eingerichtet werden"}
+reinitLogger: {value: "Protokollierung wird gemäß Konfiguration neu eingerichtet"}
+runFailed: {value: "Fehler beim Ausführen der Anwendung"}
+secondInstance: {value: "Zweite Instanz gestartet, vorhandenes Fenster wird aktiviert"}
+trayIconFailed: {value: "Symbol für den Infobereich konnte nicht geladen werden"}
+updateCheckFailed: {value: "Suche nach Updates fehlgeschlagen", description: "Update check or stored release-note state failed; logged without a dialog."}
+windowStateLoadFailed: {value: "Fensterzustand konnte nicht geladen werden"}
+windowStateSaveFailed: {value: "Fensterzustand konnte nicht gespeichert werden"}
+
+# Audio devices and calibration
+audioDeviceEnumFailed: {value: "Aufnahmegeräte konnten nicht aufgelistet werden"}
+audioDeviceGone: {value: "Das gewählte Aufnahmegerät ist nicht mehr verfügbar"}
+audioDevicesListed: {value: "Aufnahmegeräte aufgelistet"}
+audioDialogFailed: {value: "Dateidialog fehlgeschlagen"}
+audioDialogUnavailable: {value: "Dateidialog angefordert, während die Anwendung nicht lief"}
+audioFileUnreadable: {value: "Aufnahme konnte nicht geöffnet werden"}
+audioNoDevices: {value: "Keine Aufnahmegeräte verfügbar"}
+audioSourceSelected: {value: "Eingangsquelle gewählt"}
+audioSpeakerUnavailable: {value: "Kein Ausgabegerät, Dateiwiedergabe bleibt stumm"}
+calibrationAbandoned: {value: "Soundkartenkalibrierung abgebrochen"}
+calibrationFinished: {value: "Soundkartenkalibrierung abgeschlossen"}
+calibrationNoDevice: {value: "Gerät für die Soundkartenkalibrierung konnte nicht geöffnet werden"}
+calibrationStarted: {value: "Soundkartenkalibrierung gestartet"}
+deviceStoreFailed: {value: "Einstellungen des Aufnahmegeräts konnten nicht gespeichert werden"}
+micBlocksDropped: {value: "Verarbeitung der Mikrofondaten stockt, Audioblöcke werden verworfen"}
+micDeviceLost: {value: "Aufnahmegerät unerwartet gestoppt"}
+volumeRestore: {value: "Automatische Pegelregelung konnte den Eingangspegel nicht wiederherstellen"}
+volumeStepFailed: {value: "Automatische Pegelregelung konnte den Eingangspegel nicht einstellen"}
+volumeUnavailable: {value: "Automatische Pegelregelung hat keinen Zugriff auf den Eingangspegel des Geräts"}
+
+# Tuner engine
+tunerEventsDropped: {value: "Messereignisse verworfen, die Oberfläche kommt nicht nach"}
+tunerRunFailed: {value: "Messmodul mit Fehler gestoppt"}
+tunerSettingRejected: {value: "Einstellung außerhalb des zulässigen Bereichs abgewiesen"}
+tunerStartFailed: {value: "Eingangsquelle konnte nicht eingerichtet werden"}
+tunerStarted: {value: "Messmodul gestartet"}
+tunerStopped: {value: "Messmodul gestoppt"}
+tunerTonePlayFailed: {value: "Wiedergabe des Referenztons fehlgeschlagen"}
+tunerTonePlaying: {value: "Referenzton wird wiedergegeben"}
+
+# Sessions, readings and reports
+recordCleared: {value: "Messdurchgang geleert"}
+recordEdited: {value: "Messung manuell bearbeitet"}
+recordRejected: {value: "Aufnahmeanforderung abgewiesen"}
+recordTake: {value: "Messung aufgezeichnet"}
+recordUndone: {value: "Letzte Messung rückgängig gemacht"}
+reportFailed: {value: "Stimmbericht konnte nicht geschrieben werden"}
+reportOpenFailed: {value: "Stimmbericht konnte nicht geöffnet werden"}
+reportOpened: {value: "Stimmbericht an Browser übergeben"}
+reportRejected: {value: "Berichtsanfrage abgewiesen"}
+reportWritten: {value: "Stimmbericht geschrieben"}
+sessionClosed: {value: "Sitzung geschlossen"}
+sessionCreated: {value: "Sitzung erstellt"}
+sessionCurveDropped: {value: "Sollkurve entfernt"}
+sessionCurveFitted: {value: "Sollkurve an Messdurchgang angepasst"}
+sessionCurveImported: {value: "Sollkurve importiert"}
+sessionDeleted: {value: "Sitzung gelöscht"}
+sessionLoadFailed: {value: "Sitzung konnte nicht geladen werden"}
+sessionOpened: {value: "Sitzung geöffnet"}
+sessionReedsClamped: {value: "Mehr Stimmzungen klingen als auflösbar. Messung auf die unterstützte Anzahl begrenzt"}
+sessionRejected: {value: "Ungültige Sitzungsänderung abgewiesen"}
+sessionSaveFailed: {value: "Sitzung konnte nicht gespeichert werden"}
+
+# Frontend diagnostics
+frontendAudioCalibrationCancelFailed: {value: "Kalibrierung konnte nicht abgebrochen werden"}
+frontendAudioCalibrationFailed: {value: "Kalibrierung konnte nicht gestartet werden"}
+frontendAudioCorrectionFailed: {value: "Soundkartenkorrektur konnte nicht gelesen werden"}
+frontendAudioDialogFailed: {value: "Dateidialog konnte nicht geöffnet werden"}
+frontendAudioListFailed: {value: "Audiogeräte konnten nicht aufgelistet werden"}
+frontendAudioSelectFailed: {value: "Audioquelle konnte nicht ausgewählt werden"}
+frontendAudioStateFailed: {value: "Status des Audiogeräts konnte nicht gelesen werden"}
+frontendAudioVolumeFailed: {value: "Automatische Pegelregelung konnte nicht geändert werden"}
+frontendConfigLoadFailed: {value: "Konfiguration konnte nicht geladen werden"}
+frontendConfigLoaded: {value: "Konfiguration geladen"}
+frontendConfigSaveFailed: {value: "Konfiguration konnte nicht gespeichert werden"}
+frontendCurveViewFailed: {value: "Einstellungen der Kurvenansicht konnten nicht gelesen werden"}
+frontendError: {value: "Unerwarteter Anwendungsfehler"}
+frontendRejection: {value: "Aktion in der Anwendung fehlgeschlagen"}
+frontendResizeNotice: {value: "Layoutänderung auf das nächste Bild verschoben (ResizeObserver-Meldung des Browsers)"}
+frontendSettingFailed: {value: "Stimmgeräteinstellung konnte nicht geändert werden"}
+frontendTunerStartFailed: {value: "Stimmgerät konnte nicht gestartet werden"}
+frontendTunerStateFailed: {value: "Status des Stimmgeräts konnte nicht gelesen werden"}
+frontendTunerStopFailed: {value: "Stimmgerät konnte nicht gestoppt werden"}
+frontendTunerTonePlayFailed: {value: "Referenzton konnte nicht wiedergegeben werden"}
+frontendTunerToneStopFailed: {value: "Referenzton konnte nicht gestoppt werden"}

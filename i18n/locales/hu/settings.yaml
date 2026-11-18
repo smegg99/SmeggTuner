@@ -1,0 +1,172 @@
+# Settings and sound-card calibration (hu).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Microphone and input level
+audioDeviceHint: {value: "A méréshez használt mikrofon"}
+audioDeviceLabel: {value: "Bemeneti eszköz"}
+audioDeviceSystemDefault: {value: "Rendszer alapértelmezése"}
+autoVolume.hint: {value: "Mérés közben beállítja a mikrofon jelszintjét"}
+autoVolume.label: {value: "Automatikus bemeneti hangerő"}
+autoVolume.saveFailed: {value: "Nem sikerült menteni a bemeneti hangerő beállítását."}
+autoVolume.unsupported: {value: "Ennél az eszköznél a bemeneti szint nem szabályozható."}
+humFilter50: {value: "50 Hz"}
+humFilter60: {value: "60 Hz"}
+humFilterHint: {value: "Kiszűri a hálózati búgást (Európában 50 Hz, Amerikában 60 Hz)"}
+humFilterLabel: {value: "Hálózati búgásszűrő"}
+lockedWhileRunning: {value: "A hangbemenet módosításához állítsa le a hangolót."}
+
+# Detection and reference pitch
+continuousManual: {value: "A rögzített hang mérésének folyamatos frissítése"}
+continuousManualHint: {value: "A rögzített hang értékének frissítése már a mérés stabilizálódása előtt"}
+detection.balanced: {value: "Kiegyensúlyozott"}
+detection.balancedHint: {value: "Körülbelül fél másodperc alatt vált hangot"}
+detection.fast: {value: "Gyors"}
+detection.fastHint: {value: "A leggyorsabban vált hangot, de téves hangon is megállhat"}
+detection.steady: {value: "Stabil"}
+detection.steadyHint: {value: "Eredeti működés, lassú hangváltás"}
+detectionLabel: {value: "Hangfelismerés"}
+lockA4: {value: "A referenciahang rögzítése"}
+lockA4Hint: {value: "Megakadályozza az A4 frekvenciájának módosítását a hangolóban"}
+
+# Reading units, tolerance and note names
+beatUnitHint: {value: "Hertz vagy a hangfrekvencia 0,06%-ának megfelelő egység"}
+beatUnitLabel: {value: "A lebegés mértékegysége"}
+errorReference: {value: "Az eltérés viszonyítási alapja"}
+errorReferenceGoal: {value: "Célérték"}
+
+errorReferenceHint: {value: "Az eltérés a skálahanghoz vagy a hangolási célértékhez viszonyítható. A célérték elérésekor az ahhoz viszonyított eltérés nulla."}
+
+errorReferenceScale: {value: "Skála"}
+scaleNamingHint: {value: "A hangnevek jelölésmódja"}
+scaleNamingLabel: {value: "Hangnevek"}
+scaleNamings.cdefgab: {value: "C D E F G A B (nemzetközi, felemelt hang pl. C#)"}
+scaleNamings.cdefgah: {value: "C D E F G A H (német, felemelt hang pl. C#)"}
+scaleNamings.doremi: {value: "Do Re Mi (szolmizáció)"}
+scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (lengyel)"}
+toleranceBeat: {value: "Lebegés"}
+toleranceHint: {value: "Ennyivel térhet el a síp vagy a lebegés a célértéktől úgy, hogy még hangoltnak számítson"}
+toleranceLabel: {value: "Tűréshatárok"}
+toleranceReed: {value: "Síp"}
+unitHint: {value: "Cent vagy a hangfrekvencia 0,06%-ának megfelelő egység"}
+unitLabel: {value: "Az eltérés mértékegysége"}
+
+# Appearance, language and window behavior
+accent.auto: {value: "Rendszerszín"}
+accent.custom: {value: "Egyéni"}
+accent.hint: {value: "Rendszerszintű vagy egyéni kiemelőszín"}
+accent.label: {value: "Kiemelés"}
+accent.pick: {value: "Szín kiválasztása"}
+accent.pickTitle: {value: "Kiemelőszín"}
+closeToTray: {value: "Bezáráskor a tálca értesítési területére"}
+closeToTrayHint: {value: "Az ablak bezárása után az alkalmazás az értesítési területen marad"}
+checkUpdates: {value: "Frissítések keresése", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdatesHint: {value: "Újabb verzió keresése a GitHubon", description: "Hint below the desktop update-check checkbox."}
+languageHint: {value: "A kezelőfelület nyelve"}
+languageLabel: {value: "Nyelv"}
+phoneLayout.hint: {value: "Telefonméretűre állítja az ablakot az androidos elrendezés teszteléséhez", description: "Debug builds only."}
+phoneLayout.label: {value: "Telefonos elrendezés", description: "Debug builds only."}
+phoneLayout.landscape: {value: "Fekvő", description: "Debug builds only. The phone held on its side."}
+phoneLayout.off: {value: "Ki", description: "Debug builds only. The normal desktop window."}
+phoneLayout.portrait: {value: "Álló", description: "Debug builds only. The phone held upright."}
+themeHint: {value: "Rendszer szerinti, világos vagy sötét"}
+themeLabel: {value: "Téma"}
+themes.auto: {value: "Rendszer szerinti"}
+themes.dark: {value: "Sötét"}
+themes.light: {value: "Világos"}
+
+# Sound-card calibration
+calibration.askBody: {value: "A mintavételi órajel kalibrálás nélkül kis állandó mérési hibát okozhat. A kalibrálás körülbelül egy percig tart, és nem igényel hangot."}
+
+calibration.askCalibrate: {value: "Kalibrálás most"}
+calibration.askContinue: {value: "Folytatás korrekció nélkül"}
+calibration.askTitle: {value: "Ez a hangkártya nincs kalibrálva"}
+calibration.hint: {value: "Korrigálja a hangkártya órajelhibáját. Körülbelül egy percig tart, hang nélkül."}
+calibration.label: {value: "Hangkártya kalibrálása"}
+calibration.open: {value: "Megnyitás"}
+calibration.openHint: {value: "A kalibrálási képernyő megnyitása mérés indítása nélkül"}
+calibration.saveFailed: {value: "Nem sikerült menteni a kalibrálást. A hangoló a korábban mentett állapotot használja."}
+calibration.screen.again: {value: "Újrakalibrálás"}
+calibration.screen.bar.confirming: {value: "Ellenőrzés"}
+calibration.screen.bar.settling: {value: "Stabilizálódás"}
+
+calibration.screen.calibrated:
+  value: 'Kalibrálva. A mérési eredmények korrekciója: {percent}%.'
+  placeholders:
+    percent:
+      type: string
+
+calibration.screen.calibrating: {value: "A hangkártya órajelének mérése"}
+
+calibration.screen.how: {value: "A mért hangmagasság kis állandó hibát tartalmazhat. A kalibrálás körülbelül egy percig tart, és nem igényel hangot."}
+
+calibration.screen.lead: {value: "Még nincs kalibrálva"}
+
+calibration.screen.phase.confirming: {value: "Az érték stabil. A hangoló 20 másodpercig ellenőrzi, hogy az is marad-e."}
+
+calibration.screen.phase.preparing: {value: "Az órajel mérése előtt meg kell várni a bemenet stabilizálódását."}
+calibration.screen.phase.settling: {value: "Várakozás az órajel mérési eredményének stabilizálódására."}
+
+calibration.screen.pitch:
+  value: Ez minden hangnál {pitch} eltérést jelent.
+  placeholders:
+    pitch:
+      type: string
+
+calibration.screen.preparing: {value: "A bemenet előkészítése"}
+calibration.screen.retry: {value: "A mért értékek korrekció nélkül maradnak. Zárja be a többi hangot használó alkalmazást, és próbálja újra."}
+calibration.screen.return: {value: "Vissza"}
+calibration.screen.stat.dropouts: {value: "Kimaradások"}
+calibration.screen.stat.elapsed: {value: "Eltelt idő"}
+calibration.screen.stat.offset: {value: "Órajel-eltérés"}
+calibration.screen.stat.rate: {value: "Mintavételi frekvencia"}
+calibration.screen.stat.steadiness: {value: "Stabilitás"}
+
+calibration.screen.steadiness:
+  value: '{ppm} ppm, cél: {target} ppm'
+  placeholders:
+    ppm:
+      type: string
+    target:
+      type: string
+
+calibration.screen.steps.done: {value: "Kész"}
+calibration.screen.steps.measure: {value: "Mérés"}
+calibration.screen.steps.prepare: {value: "Előkészítés"}
+calibration.screen.traceEmpty: {value: "Mérés közben itt jelenik meg az órajel eltérésének grafikonja."}
+calibration.screen.unreliable: {value: "Az órajel nem stabilizálódott"}
+calibration.start: {value: "Kalibrálás"}
+calibration.startHint: {value: "A bemenet mintavételi órajelének mérése"}
+
+calibration.status.calibrated:
+  value: Kalibrálva, {percent}%
+  placeholders:
+    percent:
+      type: string
+
+calibration.status.calibrating:
+  value: 'Kalibrálás, {seconds} s ({percent}%), kész: {progress}%'
+  placeholders:
+    percent:
+      type: string
+    progress:
+      type: string
+    seconds:
+      type: string
+
+calibration.status.preparing: {value: "Előkészítés"}
+calibration.status.uncalibrated: {value: "Nincs kalibrálva"}
+calibration.status.unreliable: {value: "Megbízhatatlan kalibrálás, nincs korrekció"}
+
+# Settings section headings
+groups.appearance: {value: "Megjelenés"}
+groups.detection: {value: "Hangfelismerés"}
+groups.microphone: {value: "Mikrofon"}
+groups.output: {value: "Kimenet", description: "Settings section shown on a phone, holding the output volume."}
+groups.readings: {value: "Mérési értékek"}
+groups.report: {value: "A műhely adatai"}
+
+# Report letterhead
+report.address: {value: "Cím"}
+report.name: {value: "Műhely neve"}
+report.nameHint: {value: "A fejléces exportált jegyzőkönyvekben jelenik meg."}

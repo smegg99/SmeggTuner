@@ -1,0 +1,62 @@
+# S99AB startup and crash dialogs (fr).
+close: {value: "Fermer"}
+copied: {value: "Copié"}
+copy: {value: "Copier le rapport"}
+details: {value: "Détails"}
+email: {value: "Envoyer le rapport par e-mail"}
+failed:
+  value: "Échec de l’opération : {error}"
+  placeholders:
+    error: {type: string}
+file:
+  value: "Fichier : {path}"
+  placeholders:
+    path: {type: string}
+kill: {value: "Fermer et signaler le problème"}
+logs: {value: "Afficher le journal"}
+messageConfig:
+  value: "Impossible de lire le fichier de paramètres. Corrigez-le ou supprimez-le, puis relancez {app}."
+  placeholders:
+    app: {type: string}
+messageCrash:
+  value: "Une erreur interne est survenue dans {app}. Envoyez le rapport pour aider à la corriger, puis relancez l’application."
+  placeholders:
+    app: {type: string}
+messageHang: {value: "L’opération en cours peut encore aboutir. Patientez, ou fermez l’application et envoyez un rapport."}
+messageHangStopped:
+  value: "{app} a été fermée alors qu’elle ne répondait plus. Envoyez le rapport pour aider à corriger le problème, puis relancez l’application."
+  placeholders:
+    app: {type: string}
+messageKilled:
+  value: "{app} a été fermée avant de pouvoir signaler le problème. Envoyez le rapport, puis relancez l’application."
+  placeholders:
+    app: {type: string}
+messageOom:
+  value: "Le système a fermé {app} par manque de mémoire. Envoyez le rapport, puis relancez l’application."
+  placeholders:
+    app: {type: string}
+messageStartup:
+  value: "Corrigez le problème indiqué ci-dessous, puis relancez {app}."
+  placeholders:
+    app: {type: string}
+restart: {value: "Relancer"}
+save: {value: "Enregistrer le rapport"}
+saved:
+  value: "Rapport enregistré dans {path}"
+  placeholders:
+    path: {type: string}
+starting:
+  value: "Démarrage de {app}"
+  placeholders:
+    app: {type: string}
+titleCrash: {value: "L’application s’est arrêtée de façon inattendue"}
+titleHang: {value: "L’application ne répond pas"}
+titleHangStopped: {value: "L’application a cessé de répondre"}
+titleKilled: {value: "L’application s’est fermée de façon inattendue"}
+titleStart: {value: "L’application n’a pas pu démarrer"}
+wait: {value: "Patienter"}
+windowCrash: {value: "arrêt sur erreur"}
+windowHang: {value: "ne répond pas"}
+windowHangStopped: {value: "a cessé de répondre"}
+windowKilled: {value: "fermeture inattendue"}
+windowStart: {value: "échec du démarrage"}

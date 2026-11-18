@@ -1,0 +1,298 @@
+# Live tuner, WAV playback and browser edition (zh-Hant).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Input, output and playback
+input.relearnHint: {value: "重新學習環境噪聲（保持安靜 4 秒）"}
+input.tooStrong: {value: "訊號過強"}
+input.unreliable: {value: "訊號不可靠"}
+inputPanel.label: {value: "輸入訊號"}
+inputPanel.title: {value: "輸入"}
+level.silent: {value: "無聲"}
+output.mute: {value: "靜音"}
+output.unmute: {value: "取消靜音"}
+output.volume: {value: "輸出音量"}
+soundcard.running: {value: "正在校正音效卡"}
+soundcard.uncalibrated: {value: "音效卡未經校正。開始校正"}
+soundcard.unreliable: {value: "校正結果不可靠。重新校正"}
+source.analyze: {value: "分析錄音…"}
+source.default: {value: "系統預設"}
+source.noDevices: {value: "未找到麥克風"}
+source.refresh: {value: "重新整理裝置清單"}
+transport.fileHint: {value: "請在錄音卡片上播放錄音"}
+transport.start: {value: "開始"}
+transport.stop: {value: "停止"}
+
+# Modes, registers and note selection
+bassRegister.all: {value: "整個低音機構"}
+bassRegister.hint: {value: "目前啟用的低音變音開關"}
+controls: {value: "調音控制"}
+mode.auto: {value: "自動"}
+mode.autoHint: {value: "由調音器自動辨識音符"}
+mode.pinHint: {value: "固定此音"}
+mode.pinned: {value: "已固定的音"}
+notes.clickToPin: {value: "點選固定"}
+notes.label: {value: "E0 至 C9 的音符。點選即可固定。"}
+notes.range: {value: "E0 至 C9"}
+notes.title: {value: "音符"}
+notes.tracking: {value: "追蹤中"}
+panel.boxBase: {value: "始終測量基礎音"}
+panel.boxChord: {value: "和弦模式會測量全部三個音"}
+panel.boxLast: {value: "至少保留一個測量框"}
+
+panel.boxOctave:
+  plural:
+    argument: octaves
+    forms:
+      other: "測量框 {box}：比基礎音高 {octaves} 個八度"
+  placeholders:
+    octaves: {type: integer}
+    box: {type: string}
+
+panel.boxReed:
+  value: "簧片 {n}：選擇是否測量"
+  placeholders:
+    n: {type: string}
+
+panel.bySession:
+  plural:
+    argument: n
+    forms:
+      other: "{n} 個簧片，由本工作階段的變音器決定"
+  placeholders:
+    n: {type: integer}
+
+panel.locked: {value: "鎖定"}
+panel.modeHints.chords: {value: "三音和弦"}
+panel.modeHints.octaves: {value: "一個音及其上方八度音"}
+panel.modeHints.tones: {value: "一個音，最多三個簧片"}
+panel.modeLabel: {value: "測量物件"}
+panel.modes.chords: {value: "和弦"}
+panel.modes.octaves: {value: "八度"}
+panel.modes.tones: {value: "單音"}
+panel.quiet: {value: "聲音太小"}
+panel.recorded: {value: "已記錄"}
+panel.reeds: {value: "簧片"}
+
+reeds.count:
+  plural:
+    argument: n
+    forms:
+      other: "{n} 個簧片"
+  placeholders:
+    n: {type: integer}
+
+register.hint: {value: "目前啟用的變音器"}
+register.lockedPlaying: {value: "請先停止播放，再更改變音器。"}
+side.bass: {value: "低音部"}
+side.hint: {value: "高音部或低音部"}
+side.treble: {value: "高音部"}
+step.noteDown: {value: "降低一個半音"}
+step.noteUp: {value: "升高一個半音"}
+# Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
+signal.add: {value: "新增音調"}
+signal.cents: {value: "相對於該音的偏移量（音分）"}
+signal.down: {value: "降低一個半音（左方向鍵；下方向鍵降低一個八度）"}
+signal.open: {value: "訊號發生器：播放清晰的參考音，供簧片調音時對照"}
+signal.play: {value: "播放"}
+signal.playHint: {value: "用所有已設音調播放此音；尚未選音時，播放首先偵測到的音（空格鍵）"}
+signal.remove: {value: "移除此音調"}
+signal.stop: {value: "停止"}
+signal.stopHint: {value: "停止發聲（空格鍵）"}
+signal.title: {value: "訊號發生器"}
+signal.up: {value: "升高一個半音（右方向鍵；上方向鍵升高一個八度）"}
+signal.wave.hint: {value: "簧片音含有泛音，因此泛音上也能聽到拍音"}
+signal.wave.reed: {value: "簧片音"}
+signal.wave.sine: {value: "正弦波"}
+
+# Reference pitch and units
+reference.a4Locked: {value: "已在設定中鎖定"}
+reference.a4Type: {value: "輸入 A4 的頻率（430 至 450 Hz）"}
+reference.frozen: {value: "已固定：工作階段中已有讀數"}
+reference.transpose: {value: "移調"}
+reference.transposeDown: {value: "移調量減少一個半音"}
+reference.transposeHint: {value: "琴鍵實際音高比標記音名高出的半音數"}
+reference.transposeMode: {value: "和弦與八度按原調測量"}
+reference.transposeUp: {value: "移調量增加一個半音"}
+
+reference.transposed:
+  value: "已移調 +{n}"
+  placeholders:
+    n: {type: string}
+
+unit.cents: {value: "音分"}
+unit.hz: {value: "Hz"}
+unit.reference: {value: "相對單位"}
+
+# Live readings and graphs
+boxes.beat:
+  value: "簧片 {a} 與 {b} 的拍頻"
+  placeholders:
+    a: {type: string}
+    b: {type: string}
+
+boxes.goal: {value: "目標"}
+boxes.hzOnly: {value: "僅以 Hz 顯示"}
+boxes.notHeard: {value: "未偵測到聲音"}
+
+boxes.reed:
+  value: "簧片 {n}"
+  placeholders:
+    n: {type: string}
+
+boxes.reedBank:
+  value: "簧片 {bank}"
+  placeholders:
+    bank: {type: string}
+
+boxes.tone:
+  value: "音 {n}"
+  placeholders:
+    n: {type: string}
+
+ruler.label: {value: "各簧片的音高偏差"}
+spectrum.label: {value: "所追蹤音的頻譜"}
+spectrum.title: {value: "頻譜"}
+
+# Hold, noise learning and tuner state
+hold.hint: {value: "保持穩定讀數（H）"}
+state.deviceLost: {value: "輸入已斷開"}
+state.initializing: {value: "正在測量環境噪聲"}
+state.running: {value: "正在監聽"}
+state.stopped: {value: "已停止"}
+state.tooQuiet: {value: "聲音太小，請加大音量或靠近麥克風"}
+warmup.quiet: {value: "請保持安靜"}
+
+# WAV files and waveform controls
+file.clearSelection: {value: "選取整段錄音"}
+file.fit: {value: "顯示整段錄音"}
+file.loop: {value: "循環播放選區"}
+file.mute: {value: "將錄音靜音"}
+file.openFilter: {value: "WAV 音訊"}
+file.openTitle: {value: "選擇 WAV 錄音"}
+file.pause: {value: "暫停"}
+file.play: {value: "播放"}
+file.stop: {value: "停止並返回選區起點"}
+file.toEnd: {value: "轉到選區終點"}
+file.toStart: {value: "轉到選區起點"}
+file.unmute: {value: "播放錄音聲音"}
+file.volume: {value: "播放音量"}
+
+file.waveform:
+  value: "{name} 的波形。拖動時間軸可移動播放頭，拖動波形可選取片段。播放停止時，淺色虛線標出螢幕讀數所對應的音訊。"
+  placeholders:
+    name: {type: string}
+
+file.zoomIn: {value: "放大"}
+file.zoomOut: {value: "縮小"}
+
+# Instrument calibration workflow
+calibrate.leave: {value: "退出校正"}
+calibrate.needsSession: {value: "開啟工作階段後才能校正其中的樂器。"}
+calibrate.range.again: {value: "重新開始"}
+
+calibrate.range.backwards:
+  value: "最高音不能低於最低音。請重新測量音域。"
+
+calibrate.range.capture: {value: "採集"}
+calibrate.range.highest: {value: "最高音"}
+calibrate.range.lowest: {value: "最低音"}
+calibrate.range.next: {value: "繼續校正簧片"}
+calibrate.range.playHigh: {value: "現在請演奏最高音鍵。"}
+calibrate.range.playLow: {value: "請演奏最低音鍵。"}
+calibrate.range.step: {value: "鍵盤"}
+calibrate.status.captured: {value: "已採集"}
+calibrate.status.holding: {value: "請保持聲音穩定"}
+calibrate.status.loud: {value: "聲音過大"}
+calibrate.status.play: {value: "請演奏一個音"}
+calibrate.sweep.bassAll: {value: "低音部：整個機構"}
+
+calibrate.sweep.done:
+  plural:
+    argument: n
+    forms:
+      other: "逐音測量完成。調音卡上有 {n} 個讀數。"
+  placeholders:
+    n: {type: integer}
+
+calibrate.sweep.noRegisters:
+  value: "此手風琴尚未設定變音器。仍可逐音測量，讀數將寫入帶編號的列。"
+calibrate.sweep.pickRegister: {value: "要校正哪個變音器？"}
+
+calibrate.sweep.progress:
+  value: "已完成 {done} / {total}"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+calibrate.sweep.redoRange: {value: "重新測量鍵盤音域"}
+calibrate.sweep.review: {value: "檢視調音卡"}
+calibrate.sweep.skip: {value: "跳過"}
+
+calibrate.sweep.soloTeaches:
+  value: "選擇只啟用一組簧片的變音器逐音測量時，應用程式也會學習這組簧片的音色。"
+
+calibrate.sweep.startPlain: {value: "開始逐音測量"}
+calibrate.sweep.step: {value: "簧片"}
+calibrate.sweep.stop: {value: "停止"}
+calibrate.title: {value: "校正"}
+
+# Browser edition
+web.accent.default: {value: "預設"}
+web.accent.hint: {value: "使用應用程式預設色或自行選色"}
+web.diagnostics.copied: {value: "已複製"}
+web.diagnostics.copy: {value: "複製診斷資訊"}
+web.diagnostics.empty: {value: "啟動調音器後即可檢視麥克風詳情。"}
+web.diagnostics.title: {value: "診斷資訊"}
+web.downloads.title: {value: "取得應用程式"}
+web.experimental: {value: "實驗版"}
+web.loadFailed: {value: "測量引擎無法在此瀏覽器中啟動。"}
+
+web.mic.denied:
+  value: "麥克風存取被拒絕。請在瀏覽器設定中允許存取，然後重新啟動調音器。"
+
+web.mic.failed: {value: "無法開啟麥克風。"}
+web.mic.none: {value: "未找到麥克風。"}
+web.mic.unsupported: {value: "此瀏覽器不支援錄音。"}
+web.notice.background: {value: "背景標籤頁可能會暫停音訊。"}
+web.notice.native: {value: "如需準確測量，請使用安裝版。"}
+web.notice.ok: {value: "知道了"}
+
+web.notice.processing:
+  value: "瀏覽器可能會對麥克風訊號進行回聲消除、降噪、自動增益調節或重取樣。任何一項都可能影響讀數。"
+web.notice.title: {value: "實驗性網頁版"}
+web.processing.autoGainControl: {value: "自動增益"}
+web.processing.echoCancellation: {value: "回聲消除"}
+web.processing.noiseSuppression: {value: "降噪"}
+
+web.processingOn:
+  value: "瀏覽器仍啟用了以下處理：{list}。讀數可能有偏差。"
+  placeholders:
+    list: {type: string}
+
+web.slow:
+  value: "此裝置跟不上測量引擎。為顯示目前讀數，將跳過延遲的音訊。"
+
+# Tuner errors
+error.a4Locked: {value: "基準音高已在設定中鎖定。"}
+error.chordsAuto: {value: "和弦模式會自動選擇音符。"}
+error.deviceGone: {value: "該麥克風已斷開連線。"}
+error.deviceLost: {value: "麥克風沒有回應，調音器已停止。"}
+error.fileUnreadable: {value: "無法讀取該錄音。請選擇 WAV 檔案。"}
+error.invalidA4: {value: "基準音高必須在 430 至 450 Hz 之間。"}
+error.invalidBox: {value: "不存在該簧片測量框。"}
+error.invalidMode: {value: "調音器可測量單音、八度或和弦。"}
+error.invalidNote: {value: "此音超出調音器的追蹤範圍。"}
+error.invalidTranspose: {value: "移調範圍為 0 至 11 個半音。"}
+error.lastBox: {value: "至少保留一個測量框"}
+error.noDevices: {value: "未找到麥克風。請連線麥克風並重新整理裝置清單。"}
+error.playbackFailed: {value: "無法播放參考音。"}
+
+error.sampleRate:
+  value: "以目前基準音高和移調量測量高音時，輸入取樣率不足。請使用取樣率至少為 44.1 kHz 的錄音。"
+error.sessionDecides: {value: "測量物件由目前工作階段的變音器決定。"}
+error.signalVoices:
+  value: "可同時播放一至四個音調，每個音調與該音的偏差不得超過 100 音分。"
+error.toneNeedsManual: {value: "請先固定一個音，再播放其參考音。"}
+error.transposeMode: {value: "和弦與八度按原調測量"}
+error.unexpected: {value: "發生錯誤。詳見記錄檔。"}

@@ -1,0 +1,274 @@
+# Sessions, instruments and target curves (ru).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Session list and actions
+card.a4:
+  value: A = {hz} Hz
+  placeholders:
+    hz:
+      type: string
+
+card.changed: {value: "Данные аккордеона в библиотеке изменились с момента записи сеанса."}
+card.hasCurve: {value: "Целевая кривая задана"}
+
+card.readings:
+  plural:
+    argument: count
+    forms:
+      one: '{count} измерение'
+      few: '{count} измерения'
+      many: '{count} измерений'
+      other: '{count} измерения'
+  placeholders:
+    count:
+      type: integer
+
+card.unnamedInstrument: {value: "Аккордеон без названия"}
+
+card.updated:
+  value: 'Обновлено: {when}'
+  placeholders:
+    when:
+      type: string
+
+deleteHint: {value: "Безвозвратно удалить этот сеанс со всеми сериями, измерениями и кривой настройки."}
+deleteTitle: {value: "Удалить этот сеанс?"}
+empty: {value: "Сеансов пока нет"}
+emptyHint: {value: "Создайте сеанс для сохранения измерений или пользуйтесь тюнером без сеанса."}
+export: {value: "Экспортировать сеанс"}
+file.openFilter: {value: "Сеанс smeggtuner"}
+file.openTitle: {value: "Выберите файл сеанса"}
+new: {value: "Новый сеанс"}
+title: {value: "Сеансы"}
+
+# Session dialog and tabs
+dialog.backToList: {value: "Выбрать ранее настраивавшийся аккордеон"}
+dialog.describeNew: {value: "Описать новый аккордеон…"}
+dialog.forgetAccordion: {value: "Забыть этот аккордеон"}
+dialog.loadAccordion: {value: "Загрузить из файла…"}
+dialog.name: {value: "Название сеанса"}
+dialog.nameHint: {value: "Для обозначения сеанса используйте название инструмента или имя заказчика."}
+dialog.pickAccordion: {value: "Какой аккордеон?"}
+dialog.start: {value: "Начать"}
+page.mobile.curve: {value: "Цели"}
+page.mobile.recorded: {value: "Показания"}
+
+# Instrument editing restrictions
+accordion.a4Locked: {value: "Изменение заблокировано: в сеансе уже записаны измерения с этой опорной частотой."}
+
+accordion.columnsRefused: {value: "Изменение затронуло бы ряды язычков, использованные в существующих измерениях, поэтому оно не сохранено. Восстановите прежние ряды или создайте новый сеанс."}
+
+accordion.frozen: {value: "После записи измерений опорную частоту и ряды язычков менять нельзя. Можно добавлять регистры, использующие существующие ряды."}
+
+accordion.frozenShort: {value: "Ряды заблокированы"}
+accordion.remember: {value: "Сохранить в библиотеку инструментов"}
+accordion.rememberHint: {value: "Сохраняет инструмент этого сеанса в библиотеку для последующих сеансов."}
+
+# Instrument definition and registers
+instrument.a4: {value: "Опорная частота"}
+
+instrument.a4Hint: {value: "Опорная частота A4 в герцах. Новые сеансы для этого инструмента используют это значение."}
+
+instrument.bass.build: {value: "Высоты голосов следующего регистра в футах"}
+instrument.bass.fixed: {value: "Басовых регистров нет: механизм фиксированный, все голоса звучат всегда."}
+
+instrument.bass.full:
+  value: 'Максимальное число переключателей басового механизма: {n}'
+  placeholders:
+    n:
+      type: string
+
+instrument.bass.hint: {value: "Укажите число голосов басового механизма. Обычно их четыре или пять."}
+instrument.bass.registerName: {value: "Название переключателя"}
+instrument.bass.voices: {value: "Басовые голоса"}
+instrument.beatTolerance: {value: "Допуск биений"}
+instrument.builder.add: {value: "Добавить"}
+instrument.builder.already: {value: "Этот переключатель уже описан"}
+instrument.builder.high: {value: "4' пикколо"}
+instrument.builder.low: {value: "16' бас"}
+instrument.builder.middle: {value: "Язычки 8'"}
+instrument.builder.none: {value: "Переключателей пока нет. Укажите ниже, какие ряды включает каждый из них."}
+instrument.builder.remove: {value: "Удалить этот регистр"}
+instrument.builder.title: {value: "Добавить переключатель"}
+instrument.file.exportTitle: {value: "Экспортировать аккордеон"}
+instrument.file.filterName: {value: "Аккордеон smeggtuner"}
+instrument.file.imageFilter: {value: "Изображения"}
+instrument.file.imageTitle: {value: "Выберите фотографию"}
+instrument.file.openTitle: {value: "Выберите файл аккордеона"}
+instrument.name: {value: "Название"}
+instrument.nameHint: {value: "Название в библиотеке инструментов и в сеансах."}
+instrument.namePlaceholder: {value: "Hohner Morino V N"}
+instrument.nameRequired: {value: "Введите название аккордеона."}
+instrument.photo: {value: "Фотография"}
+instrument.range.backwards: {value: "Верхняя нота не может быть ниже нижней."}
+instrument.range.clear: {value: "Очистить"}
+instrument.range.down: {value: "Ниже"}
+
+instrument.range.hint: {value: "Необязательно. Нижняя и верхняя клавиши. Диапазон можно также задать по звуку во время калибровки."}
+
+instrument.range.label: {value: "Диапазон клавиатуры"}
+instrument.range.to: {value: "до"}
+instrument.range.up: {value: "Выше"}
+
+instrument.registersHint: {value: "Отметьте точки на символе каждого переключателя по образцу круга, выгравированного на аккордеоне, или выберите стандартный регистр. Точки определяют звучащие ряды."}
+
+instrument.registersSubtitle: {value: "Переключатели на дискантовой стороне и включаемые ими ряды язычков."}
+
+instrument.says:
+  plural:
+    argument: reeds
+    forms:
+      one: 'Ряды язычков: {banks}. В регистре с наибольшим числом голосов одновременно звучит {reeds} язычок.'
+      few: 'Ряды язычков: {banks}. В регистре с наибольшим числом голосов одновременно звучит {reeds} язычка.'
+      many: 'Ряды язычков: {banks}. В регистре с наибольшим числом голосов одновременно звучит {reeds} язычков.'
+      other: 'Ряды язычков: {banks}. В регистре с наибольшим числом голосов одновременно звучит {reeds} язычка.'
+  placeholders:
+    banks:
+      type: string
+    reeds:
+      type: integer
+
+instrument.sections.bass: {value: "Басовый механизм"}
+instrument.sections.identity: {value: "Данные инструмента"}
+instrument.sections.keyboard: {value: "Клавиатура"}
+instrument.sections.reference: {value: "Опорная частота и допуски"}
+instrument.sections.voices: {value: "Регистры"}
+instrument.tolerance: {value: "Допуск язычка"}
+
+instrument.toleranceHint: {value: "Допустимое отклонение язычка в единицах по 0,06 % частоты ноты. Показания вне этого диапазона помечаются как расстройка."}
+
+# Target curve editor
+curve.clearAll: {value: "Очистить кривую"}
+
+curve.clearAllConfirm: {value: "Все опорные точки будут удалены. Целью для каждой ноты снова станет её высота в звукоряде, а тюнер будет служить простым индикатором."}
+
+curve.clearAllHint: {value: "Удалить все опорные точки и вернуть цель к частоте ноты в звукоряде."}
+curve.clearAllTitle: {value: "Очистить всю кривую?"}
+curve.entryUnit: {value: "Единица ввода"}
+
+curve.help.hz: {value: "При выборе Гц цель задаётся в герцах при A4 = 440 Гц, как в эталонном списке биений. Она не меняется при изменении A4 в сеансе. Переключатель «Записанные» накладывает измерения этого сеанса на список. В меню «Список» можно подогнать опорные точки по измерениям или скопировать список другого сеанса."}
+
+curve.help.hzTitle: {value: "Герцы и показания"}
+
+curve.help.interp: {value: "При включённой интерполяции ноты между опорными точками следуют соединяющей их линии. При выключенной значение каждой точки сохраняется до следующей. Если точек нет, для всех нот целью служит высота в звукоряде."}
+
+curve.help.interpTitle: {value: "Между точками"}
+
+curve.help.lead: {value: "Цель настройки для каждой ноты задаёт, насколько каждый язычок должен отклоняться от высоты в звукоряде. Таблица сравнивает измеренный язычок с вашей целью и по ней определяет, укладывается ли он в допуск. Нулевое отклонение от звукоряда не обязательно является целью."}
+
+curve.help.set: {value: "Выберите ноту и значение и нажмите «Задать» или перетащите точку графика вверх либо вниз. У каждого ряда своя линия. Редактируемый ряд выделен."}
+
+curve.help.setTitle: {value: "Задание точки"}
+curve.helpTitle: {value: "Желаемые биения"}
+curve.interpolate: {value: "Интерполяция"}
+curve.interpolateHint: {value: "Следовать линии между опорными точками. При выключении значение каждой точки сохраняется до следующей."}
+curve.menu.ends: {value: "За пределами опорных точек"}
+curve.menu.extendHigh: {value: "Продолжить выше верхней точки"}
+curve.menu.extendLow: {value: "Продолжить ниже нижней точки"}
+curve.menu.fit: {value: "Подогнать по измерениям сеанса"}
+
+curve.menu.fitBody:
+  plural:
+    argument: n
+    forms:
+      one: 'Опорные точки заменит кривая, построенная по данным измерений. Число измерений: {n}.'
+      few: 'Опорные точки заменит кривая, построенная по данным измерений. Число измерений: {n}.'
+      many: 'Опорные точки заменит кривая, построенная по данным измерений. Число измерений: {n}.'
+      other: 'Опорные точки заменит кривая, построенная по данным измерений. Число измерений: {n}.'
+  placeholders:
+    n:
+      type: integer
+
+curve.menu.fromFile: {value: "Скопировать из файла сеанса"}
+curve.menu.fromSession: {value: "Скопировать из сеанса"}
+curve.menu.label: {value: "Список"}
+curve.menu.replace: {value: "Заменить список"}
+curve.menu.replaceBody: {value: "Опорные точки будут заменены точками другого списка вместе с его настройками."}
+curve.menu.replaceConfirm: {value: "Заменить"}
+curve.menu.replaceTitle: {value: "Заменить список биений?"}
+curve.rank: {value: "Ряд язычков"}
+curve.recorded: {value: "Записанные"}
+curve.recordedHint: {value: "Показать измерения этого сеанса на графике"}
+curve.remove: {value: "Удалить"}
+curve.removeHint: {value: "Удаляет с кривой опорную точку этой ноты."}
+
+curve.scale:
+  value: Масштаб {v}
+  placeholders:
+    v:
+      type: string
+
+curve.scaleAuto: {value: "Автомасштаб"}
+curve.scaleHint: {value: "Диапазон графика по вертикали"}
+curve.set: {value: "Задать"}
+curve.setHint: {value: "Задаёт в этой ноте опорную точку выбранного ряда."}
+curve.startHint: {value: "Опорных точек пока нет. Цель для каждой ноты — её высота в звукоряде."}
+
+# Readings and workshop actions
+footer.coverage:
+  value: 'Ноты: {done} / {total}'
+  placeholders:
+    done:
+      type: string
+    total:
+      type: string
+
+footer.inTune:
+  value: 'Настроено: {done} / {total}'
+  placeholders:
+    done:
+      type: string
+    total:
+      type: string
+
+footer.none: {value: "Сеанс не открыт"}
+
+readings.notes:
+  plural:
+    argument: n
+    forms:
+      one: '{n} нота'
+      few: '{n} ноты'
+      many: '{n} нот'
+      other: '{n} ноты'
+  placeholders:
+    n:
+      type: integer
+
+workshop.exit: {value: "Выйти из сеанса"}
+workshop.import: {value: "Импорт"}
+workshop.open: {value: "Открыть"}
+workshop.print: {value: "Распечатать карту"}
+
+# Session errors
+error.fitFailed: {value: "Не удалось построить кривую по этой серии измерений."}
+
+error.hasReadings: {value: "В сеансе уже есть измерения с заданной опорной частотой и числом язычков. Оба параметра больше нельзя изменить."}
+
+error.imageUnreadable: {value: "Не удалось открыть фотографию."}
+error.instrumentName: {value: "Дайте аккордеону название, чтобы его можно было найти."}
+error.invalidA4: {value: "Опорная частота должна быть от 430 до 450 Гц."}
+
+error.invalidInstrument: {value: "Этот аккордеон нельзя использовать: название ряда язычков повторяется или регистр включает ряд, которого у инструмента нет."}
+
+error.invalidName: {value: "Дайте сеансу название."}
+error.invalidNote: {value: "Эта нота вне диапазона тюнера."}
+error.invalidReed: {value: "На этом аккордеоне такой язычок не звучит."}
+error.invalidReedCount: {value: "На одной ноте аккордеона звучит от 1 до 8 язычков."}
+error.invalidTranspose: {value: "Диапазон транспонирования — от 0 до 11 полутонов."}
+error.invalidUnit: {value: "Значения вводятся в единицах по 0,06 %, в центах или в герцах."}
+error.invalidValue: {value: "Введённое значение не является числом."}
+error.loadFailed: {value: "Не удалось прочитать сеанс."}
+error.noBassMachine: {value: "Для этого аккордеона не задан басовый механизм."}
+error.noBassRegister: {value: "У аккордеона нет такого басового регистра."}
+error.noCurve: {value: "В этом сеансе нет целевой кривой."}
+error.noReadings: {value: "В этом сеансе пока ничего не записано."}
+error.noRegister: {value: "У этого аккордеона нет такого регистра."}
+error.noSession: {value: "Нет открытого сеанса."}
+error.notAnImage: {value: "Этот файл не является фотографией."}
+error.notFound: {value: "Этот сеанс больше не существует."}
+error.notesTooLong: {value: "Сократите примечание до 500 символов."}
+error.saveFailed: {value: "Не удалось сохранить сеанс. Если закрыть его сейчас, последние записи могут быть потеряны."}
+error.takeNotFound: {value: "Этого измерения больше нет."}
+error.unexpected: {value: "Произошла ошибка."}

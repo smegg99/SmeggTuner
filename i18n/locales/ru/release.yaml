@@ -1,0 +1,15 @@
+# S99AB release notes and update prompts (ru).
+notesTitle:
+  value: "Что нового в версии {version}"
+  placeholders:
+    version: {type: string}
+notTranslated: {value: "Эти примечания к выпуску ещё не переведены."}
+updateBody:
+  value: "Установлена версия {current}. Последняя версия — {latest}."
+  placeholders:
+    current: {type: string}
+    latest: {type: string}
+updateDownload: {value: "Скачать"}
+updateIgnore: {value: "Пропустить эту версию"}
+updateLater: {value: "Позже"}
+updateTitle: {value: "Доступна новая версия"}

@@ -1,0 +1,62 @@
+# S99AB startup and crash dialogs (lt).
+close: {value: "Užverti"}
+copied: {value: "Nukopijuota"}
+copy: {value: "Kopijuoti ataskaitą"}
+details: {value: "Išsami informacija"}
+email: {value: "Siųsti ataskaitą el. paštu"}
+failed:
+  value: "Veiksmo atlikti nepavyko: {error}"
+  placeholders:
+    error: {type: string}
+file:
+  value: "Failas: {path}"
+  placeholders:
+    path: {type: string}
+kill: {value: "Užverti ir pranešti"}
+logs: {value: "Rodyti žurnalo failą"}
+messageConfig:
+  value: "Nepavyko perskaityti nuostatų failo. Pataisykite arba pašalinkite jį ir iš naujo paleiskite „{app}“."
+  placeholders:
+    app: {type: string}
+messageCrash:
+  value: "Programoje „{app}“ įvyko vidinė klaida. Išsiųskite ataskaitą, kad klaidą būtų galima ištaisyti, ir paleiskite programą iš naujo."
+  placeholders:
+    app: {type: string}
+messageHang: {value: "Programa dar gali baigti pradėtą veiksmą. Palaukite arba užverkite programą ir išsiųskite ataskaitą."}
+messageHangStopped:
+  value: "Programa „{app}“ buvo užverta, kai neatsakė. Išsiųskite ataskaitą ir paleiskite programą iš naujo."
+  placeholders:
+    app: {type: string}
+messageKilled:
+  value: "Programa „{app}“ buvo užverta nespėjusi pranešti apie klaidą. Išsiųskite ataskaitą ir paleiskite programą iš naujo."
+  placeholders:
+    app: {type: string}
+messageOom:
+  value: "Sistemai pritrūko atminties, todėl ji užvėrė „{app}“. Išsiųskite ataskaitą ir paleiskite programą iš naujo."
+  placeholders:
+    app: {type: string}
+messageStartup:
+  value: "Pašalinkite toliau nurodytą priežastį ir iš naujo paleiskite „{app}“."
+  placeholders:
+    app: {type: string}
+restart: {value: "Paleisti iš naujo"}
+save: {value: "Išsaugoti ataskaitą"}
+saved:
+  value: "Išsaugota: {path}"
+  placeholders:
+    path: {type: string}
+starting:
+  value: "Paleidžiama „{app}“"
+  placeholders:
+    app: {type: string}
+titleCrash: {value: "Programa netikėtai nustojo veikti"}
+titleHang: {value: "Programa neatsako"}
+titleHangStopped: {value: "Programa nustojo atsakyti"}
+titleKilled: {value: "Programa netikėtai užsivėrė"}
+titleStart: {value: "Nepavyko paleisti programos"}
+wait: {value: "Palaukti"}
+windowCrash: {value: "užlūžo"}
+windowHang: {value: "neatsako"}
+windowHangStopped: {value: "nustojo atsakyti"}
+windowKilled: {value: "netikėtai užsivėrė"}
+windowStart: {value: "nepavyko paleisti"}

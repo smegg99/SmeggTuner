@@ -1,0 +1,104 @@
+# Shared labels and application text (nb).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Buttons and shared labels
+accept: {value: "Godta"}
+back: {value: "Tilbake"}
+cancel: {value: "Avbryt"}
+close: {value: "Lukk"}
+delete: {value: "Slett"}
+export: {value: "Eksporter"}
+next: {value: "Neste"}
+"no": {value: "Nei"}
+none: {value: "Ingen"}
+previous: {value: "Forrige"}
+website: {value: "Nettsted"}
+"yes": {value: "Ja"}
+
+# Musical labels and unit symbols
+accordion: {value: "Trekkspill"}
+note: {value: "Tone"}
+
+reed:
+  value: "Stemtunge {index}"
+  placeholders:
+    index: {type: integer}
+
+unitSymbol.cents: {value: "cent"}
+unitSymbol.hz: {value: "Hz"}
+unitSymbol.reference: {value: "u"}
+
+# Color controls
+color.hue: {value: "Fargetone"}
+color.saturation: {value: "Metning"}
+color.value: {value: "Lysstyrke"}
+
+# Navigation and window titles
+routes.navigation: {value: "Hovednavigasjon"}
+routes.settings: {value: "Innstillinger"}
+routes.tune: {value: "Stem"}
+routes.workshop: {value: "Verksted"}
+
+title.count:
+  value: "{room} {name} ({done})"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+
+title.progress:
+  value: "{room} {name} {done}/{total}"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+    total: {type: string}
+
+title.room.about: {value: "om"}
+title.room.calibrate: {value: "kalibrering"}
+title.room.help: {value: "hjelp"}
+title.room.settings: {value: "innstillinger"}
+title.room.soundcard: {value: "lydkort"}
+title.room.tune: {value: "stemming"}
+title.room.workshop: {value: "verksted"}
+
+title.session:
+  value: "{room} {name}"
+  placeholders:
+    name: {type: string}
+    room: {type: string}
+
+title.uncalibrated:
+  value: "{title} (lydkortet er ikke kalibrert)"
+  placeholders:
+    title: {type: string}
+
+# Application and About dialog
+about.aboutTitle: {value: "Om"}
+about.commit: {value: "Bygg"}
+about.donate: {value: "Støtt på Ko-fi"}
+about.license: {value: "Lisens"}
+about.privacy: {value: "Personvernerklæring"}
+about.guide: {value: "Slik bruker du SmeggTuner"}
+about.onlineVersion: {value: "Åpne nettversjonen"}
+about.support: {value: "Brukerstøtte"}
+about.mascot: {value: "En katt som spiller trekkspill"}
+about.publisher: {value: "Av smegg99"}
+about.tagline: {value: "Gratis program med åpen kildekode for stemming av trekkspill."}
+about.untagged: {value: "utviklingsversjon"}
+about.version: {value: "Versjon"}
+app.description: {value: "Gratis trekkspillstemmer med åpen kildekode."}
+app.name: {value: "SmeggTuner"}
+
+# Help dialog and keyboard instructions
+about.helpTitle: {value: "Hjelp"}
+
+# System tray
+tray.quit: {value: "Avslutt"}
+tray.show: {value: "Vis"}
+
+linkNewTab:
+  value: "{text} (åpnes i en ny fane)"
+  placeholders:
+    text: {type: string}

@@ -1,0 +1,322 @@
+# Live tuner, WAV playback and browser edition (ru).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Input, output and playback
+input.relearnHint: {value: "Повторно измерить фоновый шум (4 с тишины)"}
+input.tooStrong: {value: "Слишком сильный сигнал"}
+input.unreliable: {value: "Ненадёжный сигнал"}
+inputPanel.label: {value: "Входной сигнал"}
+inputPanel.title: {value: "Вход"}
+level.silent: {value: "тишина"}
+output.mute: {value: "Выключить звук"}
+output.unmute: {value: "Включить звук"}
+output.volume: {value: "Выходная громкость"}
+soundcard.running: {value: "Калибровка звуковой карты"}
+soundcard.uncalibrated: {value: "Звуковая карта не откалибрована. Калибровать"}
+soundcard.unreliable: {value: "Калибровка ненадёжна. Повторить калибровку"}
+source.analyze: {value: "Анализировать запись…"}
+source.default: {value: "По умолчанию в системе"}
+source.noDevices: {value: "Микрофоны не найдены"}
+source.refresh: {value: "Обновить список устройств"}
+transport.fileHint: {value: "Запись воспроизводится с её собственной панели"}
+transport.start: {value: "Пуск"}
+transport.stop: {value: "Стоп"}
+
+# Modes, registers and note selection
+bassRegister.all: {value: "Весь басовый механизм"}
+bassRegister.hint: {value: "Включённый басовый регистр"}
+controls: {value: "Управление настройкой"}
+mode.auto: {value: "Авто"}
+mode.autoHint: {value: "Разрешить тюнеру определять ноту"}
+mode.pinHint: {value: "Закрепить эту ноту"}
+mode.pinned: {value: "Закреплённая нота"}
+notes.clickToPin: {value: "щёлкните, чтобы закрепить"}
+notes.label: {value: "Ноты от E0 до C9. Щёлкните по ноте, чтобы закрепить её."}
+notes.range: {value: "От E0 до C9"}
+notes.title: {value: "Ноты"}
+notes.tracking: {value: "отслеживание"}
+panel.boxBase: {value: "Основная нота измеряется всегда"}
+panel.boxChord: {value: "В режиме аккордов измеряются все три ноты"}
+panel.boxLast: {value: "Хотя бы одно поле должно оставаться включённым"}
+
+panel.boxOctave:
+  plural:
+    argument: octaves
+    forms:
+      one: 'Поле {box}: на {octaves} октаву выше основного тона'
+      few: 'Поле {box}: на {octaves} октавы выше основного тона'
+      many: 'Поле {box}: на {octaves} октав выше основного тона'
+      other: 'Поле {box}: на {octaves} октавы выше основного тона'
+  placeholders:
+    octaves:
+      type: integer
+    box:
+      type: string
+
+panel.boxReed:
+  value: 'Язычок {n}: включить или выключить измерение'
+  placeholders:
+    n:
+      type: string
+
+panel.bySession:
+  plural:
+    argument: n
+    forms:
+      one: '{n} язычок согласно выбранному в сеансе регистру'
+      few: '{n} язычка согласно выбранному в сеансе регистру'
+      many: '{n} язычков согласно выбранному в сеансе регистру'
+      other: '{n} язычка согласно выбранному в сеансе регистру'
+  placeholders:
+    n:
+      type: integer
+
+panel.locked: {value: "Фиксация"}
+panel.modeHints.chords: {value: "Аккорды из трёх нот"}
+panel.modeHints.octaves: {value: "Нота и её верхние октавы"}
+panel.modeHints.tones: {value: "Одна нота, до трёх язычков"}
+panel.modeLabel: {value: "Что измеряется"}
+panel.modes.chords: {value: "Аккорды"}
+panel.modes.octaves: {value: "Октавы"}
+panel.modes.tones: {value: "Тоны"}
+panel.quiet: {value: "Слишком тихо"}
+panel.recorded: {value: "Записано"}
+panel.reeds: {value: "Язычки"}
+
+reeds.count:
+  plural:
+    argument: n
+    forms:
+      one: '{n} язычок'
+      few: '{n} язычка'
+      many: '{n} язычков'
+      other: '{n} язычка'
+  placeholders:
+    n:
+      type: integer
+
+register.hint: {value: "Включённый регистр"}
+register.lockedPlaying: {value: "Чтобы сменить регистр, остановите воспроизведение."}
+side.bass: {value: "Басы"}
+side.hint: {value: "Дискантовая или басовая сторона"}
+side.treble: {value: "Дискант"}
+step.noteDown: {value: "На полутон ниже"}
+step.noteUp: {value: "На полутон выше"}
+# Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
+signal.add: {value: "Добавить тон"}
+signal.cents: {value: "Отклонение от ноты в центах"}
+signal.down: {value: "На полутон ниже (стрелка влево, на октаву — стрелка вниз)"}
+signal.open: {value: "Генератор сигнала воспроизводит чистый тон для настройки язычка"}
+signal.play: {value: "Воспроизвести"}
+signal.playHint: {value: "Воспроизвести ноту со всеми заданными тонами. Если нота ещё не выбрана, используется первая услышанная (пробел)"}
+signal.remove: {value: "Удалить этот тон"}
+signal.stop: {value: "Стоп"}
+signal.stopHint: {value: "Остановить тон (пробел)"}
+signal.title: {value: "Генератор сигнала"}
+signal.up: {value: "На полутон выше (стрелка вправо, на октаву — стрелка вверх)"}
+signal.wave.hint: {value: "В звуке язычка есть обертоны, поэтому на них тоже слышны биения"}
+signal.wave.reed: {value: "Язычок"}
+signal.wave.sine: {value: "Синусоида"}
+
+# Reference pitch and units
+reference.a4Locked: {value: "Заблокировано в параметрах"}
+reference.a4Type: {value: "Введите частоту A4 от 430 до 450 Гц"}
+reference.frozen: {value: "Изменение заблокировано: в сеансе уже есть измерения"}
+reference.transpose: {value: "Транспонировать"}
+reference.transposeDown: {value: "На полутон меньше"}
+reference.transposeHint: {value: "На сколько полутонов клавиши звучат выше своих обозначений"}
+reference.transposeMode: {value: "Аккорды и октавы измеряются без транспонирования"}
+reference.transposeUp: {value: "На полутон больше"}
+
+reference.transposed:
+  value: Транспонирование +{n}
+  placeholders:
+    n:
+      type: string
+
+unit.cents: {value: "Цент"}
+unit.hz: {value: "Hz"}
+unit.reference: {value: "Единицы"}
+
+# Live readings and graphs
+boxes.beat:
+  value: Биения между {a} и {b}
+  placeholders:
+    a:
+      type: string
+    b:
+      type: string
+
+boxes.goal: {value: "цель"}
+boxes.hzOnly: {value: "только в Гц"}
+boxes.notHeard: {value: "не слышно"}
+
+boxes.reed:
+  value: Язычок {n}
+  placeholders:
+    n:
+      type: string
+
+boxes.reedBank:
+  value: Язычок {bank}
+  placeholders:
+    bank:
+      type: string
+
+boxes.tone:
+  value: Тон {n}
+  placeholders:
+    n:
+      type: string
+
+ruler.label: {value: "Отклонение каждого язычка"}
+spectrum.label: {value: "Частотный спектр отслеживаемой ноты"}
+spectrum.title: {value: "Спектр"}
+
+# Hold, noise learning and tuner state
+hold.hint: {value: "Удерживать стабильные показания (H)"}
+state.deviceLost: {value: "Вход потерян"}
+state.initializing: {value: "Измерение шума в помещении"}
+state.running: {value: "Прослушивание"}
+state.stopped: {value: "Остановлено"}
+state.tooQuiet: {value: "Слишком тихо. Играйте громче или подойдите ближе"}
+warmup.quiet: {value: "Соблюдайте тишину"}
+
+# WAV files and waveform controls
+file.clearSelection: {value: "Выделить всю запись"}
+file.fit: {value: "Показать всю запись"}
+file.loop: {value: "Зациклить выделенный фрагмент"}
+file.mute: {value: "Выключить звук записи"}
+file.openFilter: {value: "Звук WAV"}
+file.openTitle: {value: "Выберите запись WAV"}
+file.pause: {value: "Пауза"}
+file.play: {value: "Воспроизвести"}
+file.stop: {value: "Остановить и вернуться к началу выделения"}
+file.toEnd: {value: "К концу выделения"}
+file.toStart: {value: "К началу выделения"}
+file.unmute: {value: "Воспроизводить запись со звуком"}
+file.volume: {value: "Громкость воспроизведения"}
+
+file.waveform:
+  value: Форма волны записи {name}. Перетащите указатель на шкале времени для перемотки или выделите фрагмент на графике.
+    После остановки светлая пунктирная линия отмечает участок, по которому получено показание на экране.
+  placeholders:
+    name:
+      type: string
+
+file.zoomIn: {value: "Приблизить"}
+file.zoomOut: {value: "Отдалить"}
+
+# Instrument calibration workflow
+calibrate.leave: {value: "Выйти из калибровки"}
+calibrate.needsSession: {value: "Откройте сеанс для калибровки его инструмента."}
+calibrate.range.again: {value: "Начать заново"}
+
+calibrate.range.backwards: {value: "Верхняя нота не может быть ниже нижней. Измерьте диапазон ещё раз."}
+
+calibrate.range.capture: {value: "Зафиксировать"}
+calibrate.range.highest: {value: "Верхняя"}
+calibrate.range.lowest: {value: "Нижняя"}
+calibrate.range.next: {value: "Перейти к калибровке язычков"}
+calibrate.range.playHigh: {value: "Теперь сыграйте верхнюю ноту клавиатуры."}
+calibrate.range.playLow: {value: "Сыграйте нижнюю ноту клавиатуры."}
+calibrate.range.step: {value: "Клавиатура"}
+calibrate.status.captured: {value: "Зафиксировано"}
+calibrate.status.holding: {value: "Держите ноту ровно"}
+calibrate.status.loud: {value: "Слишком громко"}
+calibrate.status.play: {value: "Сыграйте ноту"}
+calibrate.sweep.bassAll: {value: "Басы — весь механизм"}
+
+calibrate.sweep.done:
+  plural:
+    argument: n
+    forms:
+      one: Проход завершён. В карте {n} измерение.
+      few: Проход завершён. В карте {n} измерения.
+      many: Проход завершён. В карте {n} измерений.
+      other: Проход завершён. В карте {n} измерения.
+  placeholders:
+    n:
+      type: integer
+
+calibrate.sweep.noRegisters: {value: "Для этого аккордеона не заданы регистры. Проход по клавиатуре всё равно возможен, показания попадут в пронумерованные столбцы."}
+
+calibrate.sweep.pickRegister: {value: "Какой регистр вы калибруете?"}
+
+calibrate.sweep.progress:
+  value: '{done} из {total}'
+  placeholders:
+    done:
+      type: string
+    total:
+      type: string
+
+calibrate.sweep.redoRange: {value: "Заново измерить клавиатуру"}
+calibrate.sweep.review: {value: "Показать карту настройки"}
+calibrate.sweep.skip: {value: "Пропустить"}
+
+calibrate.sweep.soloTeaches: {value: "При проходе по одноголосному регистру приложение также запоминает звучание этого голоса."}
+
+calibrate.sweep.startPlain: {value: "Начать проход по клавиатуре"}
+calibrate.sweep.step: {value: "Язычки"}
+calibrate.sweep.stop: {value: "Стоп"}
+calibrate.title: {value: "Калибровать"}
+
+# Browser edition
+web.accent.default: {value: "По умолчанию"}
+web.accent.hint: {value: "Цвет приложения или свой цвет"}
+web.diagnostics.copied: {value: "Скопировано"}
+web.diagnostics.copy: {value: "Скопировать диагностические данные"}
+web.diagnostics.empty: {value: "Запустите тюнер, чтобы увидеть сведения о микрофоне."}
+web.diagnostics.title: {value: "Диагностика"}
+web.downloads.title: {value: "Скачать приложение"}
+web.experimental: {value: "Экспериментальная версия"}
+web.loadFailed: {value: "Не удалось запустить измерительный модуль в этом браузере."}
+
+web.mic.denied: {value: "Доступ к микрофону запрещён. Разрешите его в настройках браузера и снова запустите тюнер."}
+
+web.mic.failed: {value: "Не удалось открыть микрофон."}
+web.mic.none: {value: "Микрофон не найден."}
+web.mic.unsupported: {value: "Этот браузер не может записывать звук."}
+web.notice.background: {value: "На фоновой вкладке обработка звука может приостановиться."}
+web.notice.native: {value: "Для точных измерений используйте установленное приложение."}
+web.notice.ok: {value: "Понятно"}
+
+web.notice.processing: {value: "Браузер может применять к сигналу микрофона эхоподавление, шумоподавление, автоматическую регулировку усиления или передискретизацию. Любая из этих операций может изменить показания."}
+
+web.notice.title: {value: "Экспериментальная веб-версия"}
+web.processing.autoGainControl: {value: "автоматическое усиление"}
+web.processing.echoCancellation: {value: "эхоподавление"}
+web.processing.noiseSuppression: {value: "шумоподавление"}
+
+web.processingOn:
+  value: 'Браузер оставил включёнными следующие функции: {list}. Возможны неточные показания.'
+  placeholders:
+    list:
+      type: string
+
+web.slow: {value: "Устройство не успевает обрабатывать звук. Запоздавшие фрагменты пропускаются, чтобы показания оставались актуальными."}
+
+# Tuner errors
+error.a4Locked: {value: "Опорная частота заблокирована в параметрах."}
+error.chordsAuto: {value: "В режиме аккордов ноты выбираются автоматически."}
+error.deviceGone: {value: "Этот микрофон больше не подключён."}
+error.deviceLost: {value: "Микрофон перестал отвечать, работа тюнера остановлена."}
+error.fileUnreadable: {value: "Не удалось прочитать запись. Требуется файл WAV."}
+error.invalidA4: {value: "Опорная частота должна быть от 430 до 450 Гц."}
+error.invalidBox: {value: "Такого поля язычка нет."}
+error.invalidMode: {value: "Тюнер измеряет тоны, октавы или аккорды."}
+error.invalidNote: {value: "Эта нота вне диапазона тюнера."}
+error.invalidTranspose: {value: "Диапазон транспонирования — от 0 до 11 полутонов."}
+error.lastBox: {value: "Хотя бы одно поле должно оставаться включённым."}
+error.noDevices: {value: "Микрофон не найден. Подключите его и обновите список устройств."}
+error.playbackFailed: {value: "Не удалось воспроизвести опорный тон."}
+
+error.sampleRate: {value: "При этой опорной частоте и транспонировании частота дискретизации входа слишком низка для верхних нот. Используйте запись с частотой дискретизации не менее 44,1 кГц."}
+
+error.sessionDecides: {value: "Состав измерения определяется регистром открытого сеанса."}
+error.signalVoices: {value: "Можно воспроизвести от одного до четырёх тонов, каждый в пределах 100 центов от выбранной ноты."}
+error.toneNeedsManual: {value: "Чтобы воспроизвести тон, закрепите ноту."}
+error.transposeMode: {value: "Аккорды и октавы измеряются без транспонирования."}
+error.unexpected: {value: "Произошла ошибка. Подробности см. в журнале."}

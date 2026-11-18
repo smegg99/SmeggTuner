@@ -1,0 +1,251 @@
+# Sessions, instruments and target curves (zh-Hans).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Session list and actions
+card.a4:
+  value: "A = {hz} Hz"
+  placeholders:
+    hz: {type: string}
+
+card.changed: {value: "乐器库中的这台手风琴自本次会话记录后已被修改。"}
+card.hasCurve: {value: "已设置目标曲线"}
+
+card.readings:
+  plural:
+    argument: count
+    forms:
+      other: "{count} 个读数"
+  placeholders:
+    count: {type: integer}
+
+card.unnamedInstrument: {value: "手风琴尚未命名"}
+
+card.updated:
+  value: "更新于 {when}"
+  placeholders:
+    when: {type: string}
+
+deleteHint: {value: "永久删除此会话及其全部测量轮次、读数和调音曲线。"}
+deleteTitle: {value: "删除此会话？"}
+empty: {value: "暂无会话"}
+emptyHint: {value: "创建会话可保存读数，也可直接使用调音器。"}
+export: {value: "导出会话"}
+file.openFilter: {value: "SmeggTuner 会话"}
+file.openTitle: {value: "选择会话文件"}
+new: {value: "新建会话"}
+title: {value: "会话"}
+
+# Session dialog and tabs
+dialog.backToList: {value: "选择调过音的手风琴"}
+dialog.describeNew: {value: "填写新乐器资料…"}
+dialog.forgetAccordion: {value: "移除此手风琴档案"}
+dialog.loadAccordion: {value: "从文件加载…"}
+dialog.name: {value: "会话名称"}
+dialog.nameHint: {value: "可用乐器或客户名称标识此会话。"}
+dialog.pickAccordion: {value: "选择哪台手风琴？"}
+dialog.start: {value: "开始"}
+page.mobile.curve: {value: "目标"}
+page.mobile.recorded: {value: "读数"}
+
+# Instrument editing restrictions
+accordion.a4Locked: {value: "已固定：本次会话已有读数以此为基准。"}
+
+accordion.columnsRefused:
+  value: "此修改会改变现有读数所用的簧组，未予保存。请恢复先前的簧组或新建会话。"
+accordion.frozen:
+  value: "记录读数后无法更改基准音高和簧组。仍可用现有簧组添加变音器。"
+accordion.frozenShort: {value: "簧组已锁定"}
+accordion.remember: {value: "保存到乐器库"}
+accordion.rememberHint: {value: "将本次会话的乐器存入乐器库，以便以后使用。"}
+
+# Instrument definition and registers
+instrument.a4: {value: "基准音高"}
+
+instrument.a4Hint:
+  value: "A4 的基准频率，以赫兹为单位。此乐器的新会话将使用该值。"
+
+instrument.bass.build: {value: "下一档开关启用的簧组（英尺）"}
+instrument.bass.fixed: {value: "无低音变音器：低音机构固定，所有簧组始终一起发声。"}
+
+instrument.bass.full:
+  value: "此低音机构最多可设置 {n} 个开关"
+  placeholders:
+    n: {type: string}
+
+instrument.bass.hint: {value: "设置低音机构中发声的簧组数，通常为四组或五组。"}
+instrument.bass.registerName: {value: "开关名称"}
+instrument.bass.voices: {value: "低音簧组"}
+instrument.beatTolerance: {value: "拍频容差"}
+instrument.builder.add: {value: "添加"}
+instrument.builder.already: {value: "该开关已设置"}
+instrument.builder.high: {value: "4′ 短笛"}
+instrument.builder.low: {value: "16′ 低音"}
+instrument.builder.middle: {value: "8′ 簧片"}
+instrument.builder.none: {value: "尚无开关。请在下方选择各开关启用的簧组。"}
+instrument.builder.remove: {value: "移除此变音器"}
+instrument.builder.title: {value: "添加开关"}
+instrument.file.exportTitle: {value: "导出手风琴资料"}
+instrument.file.filterName: {value: "SmeggTuner 手风琴文件"}
+instrument.file.imageFilter: {value: "图像"}
+instrument.file.imageTitle: {value: "选择照片"}
+instrument.file.openTitle: {value: "选择手风琴文件"}
+instrument.name: {value: "名称"}
+instrument.nameHint: {value: "在乐器库和会话中显示的名称。"}
+instrument.namePlaceholder: {value: "Hohner Morino V N"}
+instrument.nameRequired: {value: "请输入手风琴名称。"}
+instrument.photo: {value: "照片"}
+instrument.range.backwards: {value: "最高音不能低于最低音。"}
+instrument.range.clear: {value: "清除"}
+instrument.range.down: {value: "降低"}
+
+instrument.range.hint:
+  value: "可选。指定最低音键和最高音键，也可在校准时通过演奏来设置。"
+
+instrument.range.label: {value: "键盘音域"}
+instrument.range.to: {value: "至"}
+instrument.range.up: {value: "升高"}
+
+instrument.registersHint:
+  value: "点击各变音器符号中的圆点（即琴上刻着的圆形标记），或选择常用组合。圆点直接表示启用的簧组。"
+instrument.registersSubtitle: {value: "高音部变音器及各自启用的簧组。"}
+
+instrument.says:
+  plural:
+    argument: reeds
+    forms:
+      other: "簧组：{banks}。启用簧片最多的开关可同时发出 {reeds} 个簧片的声音。"
+  placeholders:
+    banks: {type: string}
+    reeds: {type: integer}
+
+instrument.sections.bass: {value: "低音机构"}
+instrument.sections.identity: {value: "基本资料"}
+instrument.sections.keyboard: {value: "键盘"}
+instrument.sections.reference: {value: "基准与容差"}
+instrument.sections.voices: {value: "变音器"}
+instrument.tolerance: {value: "簧片容差"}
+
+instrument.toleranceHint:
+  value: "簧片允许的偏差，每单位为该音频率的 0.06%。超出范围的读数会标为音不准。"
+# Target curve editor
+curve.clearAll: {value: "清除曲线"}
+
+curve.clearAllConfirm:
+  value: "将移除全部锚点。每个音的目标都会恢复为音阶音高，调音器将只显示偏差。"
+curve.clearAllHint: {value: "移除全部锚点，将目标恢复为音阶音高。"}
+curve.clearAllTitle: {value: "清除整条曲线？"}
+curve.entryUnit: {value: "输入单位"}
+
+curve.help.hz:
+  value: "选择 Hz 时，以 A4 = 440 Hz 输入目标赫兹值，与参考拍频表相同，不随本会话的 A4 改变。“已记录”可在表上叠加本会话的读数；通过“列表”可按读数拟合锚点或复制其他会话的列表。"
+curve.help.hzTitle: {value: "赫兹与读数"}
+
+curve.help.interp:
+  value: "启用插值时，锚点之间的音沿连线取值；关闭时，各锚点的值保持到下一锚点。无锚点时，所有音均以音阶音高为目标。"
+curve.help.interpTitle: {value: "锚点之间"}
+
+curve.help.lead:
+  value: "曲线表示逐音调律的目标，即各簧片应偏离音阶音高多少。表格按此目标判断已记录的簧片是否调准，无需每个读数都归零。"
+curve.help.set:
+  value: "选择音符和数值后按“设置”，也可上下拖动图中的点。每个簧组各有一条线，正在编辑的线会高亮。"
+curve.help.setTitle: {value: "设置锚点"}
+curve.helpTitle: {value: "期望拍频"}
+curve.interpolate: {value: "插值"}
+curve.interpolateHint: {value: "沿锚点连线取值。关闭时，各锚点的值保持到下一锚点。"}
+curve.menu.ends: {value: "锚点范围外"}
+curve.menu.extendHigh: {value: "将曲线延伸至最高锚点音符以上的音域"}
+curve.menu.extendLow: {value: "将曲线延伸至最低锚点音符以下的音域"}
+curve.menu.fit: {value: "拟合本会话的读数"}
+
+curve.menu.fitBody:
+  plural:
+    argument: n
+    forms:
+      other: "将以拟合 {n} 个读数的曲线替换现有锚点。"
+  placeholders:
+    n: {type: integer}
+
+curve.menu.fromFile: {value: "从会话文件复制"}
+curve.menu.fromSession: {value: "从会话复制"}
+curve.menu.label: {value: "列表"}
+curve.menu.replace: {value: "替换列表"}
+curve.menu.replaceBody: {value: "现有锚点将被另一列表的锚点及设置替换。"}
+curve.menu.replaceConfirm: {value: "替换"}
+curve.menu.replaceTitle: {value: "替换拍频列表？"}
+curve.rank: {value: "簧组"}
+curve.recorded: {value: "已记录"}
+curve.recordedHint: {value: "在图中显示本次会话的读数"}
+curve.remove: {value: "移除"}
+curve.removeHint: {value: "从曲线中移除此音的锚点。"}
+
+curve.scale:
+  value: "刻度 {v}"
+  placeholders:
+    v: {type: string}
+
+curve.scaleAuto: {value: "自动刻度"}
+curve.scaleHint: {value: "图表纵轴的显示范围"}
+curve.set: {value: "设置"}
+curve.setHint: {value: "为所选簧组在此音上设置锚点。"}
+curve.startHint: {value: "尚无锚点。各音均以音阶音高为目标。"}
+
+# Readings and workshop actions
+footer.coverage:
+  value: "已测 {done} / {total} 个音"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.inTune:
+  value: "调准 {done} / {total}"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.none: {value: "未打开会话"}
+
+readings.notes:
+  plural:
+    argument: n
+    forms:
+      other: "{n} 个音"
+  placeholders:
+    n: {type: integer}
+
+workshop.exit: {value: "退出会话"}
+workshop.import: {value: "导入"}
+workshop.open: {value: "打开"}
+workshop.print: {value: "打印调音卡"}
+
+# Session errors
+error.fitFailed: {value: "无法根据该轮测量拟合曲线。"}
+
+error.hasReadings:
+  value: "此会话已有读数，测量时使用的基准音高和簧片数都不能再更改。"
+error.imageUnreadable: {value: "无法打开该照片。"}
+error.instrumentName: {value: "请为手风琴命名，以便日后查找。"}
+error.invalidA4: {value: "基准音高必须在 430 至 450 Hz 之间。"}
+
+error.invalidInstrument:
+  value: "无法使用此手风琴资料：簧组重名，或变音器启用了乐器上没有的簧组。"
+error.invalidName: {value: "请为会话命名。"}
+error.invalidNote: {value: "此音超出调音器的跟踪范围。"}
+error.invalidReed: {value: "此手风琴不会启用该簧片。"}
+error.invalidReedCount: {value: "手风琴每个音可同时发声的簧片数为 1 至 8。"}
+error.invalidTranspose: {value: "移调范围为 0 至 11 个半音。"}
+error.invalidUnit: {value: "可用音分、赫兹或 0.06% 单位输入数值。"}
+error.invalidValue: {value: "该值不是数字。"}
+error.loadFailed: {value: "无法读取会话。"}
+error.noBassMachine: {value: "此手风琴尚未定义低音机构。"}
+error.noBassRegister: {value: "此手风琴没有该低音变音器。"}
+error.noCurve: {value: "此会话没有目标曲线。"}
+error.noReadings: {value: "此会话尚未记录任何读数。"}
+error.noRegister: {value: "此手风琴没有该变音器。"}
+error.noSession: {value: "尚未打开会话。"}
+error.notAnImage: {value: "该文件不是照片。"}
+error.notFound: {value: "该会话已不存在。"}
+error.notesTooLong: {value: "请将备注缩短至 500 个字符以内。"}
+error.saveFailed: {value: "未能保存会话。现在关闭可能丢失最近的记录。"}
+error.takeNotFound: {value: "该读数已不存在。"}
+error.unexpected: {value: "发生错误。"}

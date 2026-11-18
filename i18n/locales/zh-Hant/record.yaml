@@ -1,0 +1,67 @@
+# Recording controls and readings (zh-Hant).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Recording controls
+arm.hint: {value: "每次鎖定音高時記錄一次讀數（按 Enter 立即記錄）"}
+arm.needsSession: {value: "開啟調音工作階段以記錄讀數"}
+arm.warmup: {value: "尚未記錄，可自由演奏，不會儲存讀數。按下即可開始記錄。"}
+undo.hint: {value: "撤銷上一次記錄"}
+
+# Readings table and compact columns
+mobile.current: {value: "實測值"}
+mobile.error: {value: "偏差"}
+
+table.beat:
+  value: "拍頻 {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.delete: {value: "刪除此讀數"}
+table.deleteHint: {value: "永久刪除此讀數。重新演奏並記錄該音，即可寫入新的讀數。"}
+table.deleteTitle: {value: "刪除此讀數？"}
+table.editHint: {value: "點選或按 Enter 編輯數值"}
+table.empty: {value: "開始記錄後，演奏音符即可儲存讀數。"}
+table.graph: {value: "圖表"}
+
+table.graphHint:
+  value: "對照各簧片的目標值。點選一列選取對應行，再次點選可選擇下一個變音器。"
+table.graphLabel: {value: "各已記錄音符的簧片誤差"}
+table.helpTitle: {value: "關於此表"}
+table.label: {value: "調音記錄"}
+table.latest: {value: "最近一次記錄：按 Backspace 刪除"}
+table.manual: {value: "已編輯"}
+table.manualHint: {value: "本行含有手動輸入的值。"}
+
+table.notes:
+  plural:
+    argument: count
+    forms:
+      other: "{count} 個音"
+  placeholders:
+    count: {type: integer}
+
+table.unitHint:
+  value: "簧片偏差採用設定中選擇的單位。拍頻按工具欄選擇，以赫茲或偏差單位顯示。"
+# Report export dialog
+report.csv: {value: "CSV"}
+report.date: {value: "日期"}
+report.format: {value: "格式"}
+
+report.formatHint:
+  value: "PDF 按列印版式將調音卡排在一張 A4 紙上。HTML 以網頁顯示同一張調音卡。CSV 可用電子表格開啟。"
+report.html: {value: "HTML"}
+report.notes: {value: "卡片備註"}
+report.notesHint: {value: "列印在表格下方。可填寫已完成或待完成的工作。"}
+
+report.pass:
+  value: "測量輪次：{label}"
+  placeholders:
+    label: {type: string}
+
+report.pdf: {value: "PDF"}
+report.title: {value: "調音卡"}
+
+# Recording errors
+error.takeNotFound: {value: "本輪測量已無此記錄。"}
+error.unexpected: {value: "操作失敗。詳見記錄檔。"}

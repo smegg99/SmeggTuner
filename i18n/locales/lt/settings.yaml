@@ -1,0 +1,166 @@
+# Settings and sound-card calibration (lt).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Microphone and input level
+audioDeviceHint: {value: "Matavimams naudojamas mikrofonas"}
+audioDeviceLabel: {value: "Įvesties įrenginys"}
+audioDeviceSystemDefault: {value: "Numatytasis sistemos įrenginys"}
+autoVolume.hint: {value: "Matuojant reguliuoja mikrofono lygį"}
+autoVolume.label: {value: "Automatinis įvesties garsumas"}
+autoVolume.saveFailed: {value: "Nepavyko įrašyti įvesties garsumo nustatymo."}
+autoVolume.unsupported: {value: "Šio įrenginio įvesties lygio reguliuoti negalima."}
+humFilter50: {value: "50 Hz"}
+humFilter60: {value: "60 Hz"}
+humFilterHint: {value: "Slopina elektros tinklo ūžesį: Europoje 50 Hz, Amerikoje 60 Hz"}
+humFilterLabel: {value: "Elektros tinklo ūžesio filtras"}
+lockedWhileRunning: {value: "Norėdami pakeisti garso įvestį, sustabdykite derintuvą."}
+
+# Detection and reference pitch
+continuousManual: {value: "Nuolat atnaujinti prisegtos natos rodmenį"}
+continuousManualHint: {value: "Atnaujinti prisegtos natos rodmenį dar prieš jam nusistovint"}
+detection.balanced: {value: "Subalansuotas"}
+detection.balancedHint: {value: "Natą pakeičia maždaug per pusę sekundės"}
+detection.fast: {value: "Greitas"}
+detection.fastHint: {value: "Natą pakeičia greičiausiai, bet gali užfiksuoti klaidingą natą"}
+detection.steady: {value: "Stabilus"}
+detection.steadyHint: {value: "Pradinė veiksena: natos keičiamos lėtai"}
+detectionLabel: {value: "Natų atpažinimas"}
+lockA4: {value: "Užrakinti atskaitos dažnį"}
+lockA4Hint: {value: "Neleidžia derintuve keisti A4 dažnio"}
+
+# Reading units, tolerance and note names
+beatUnitHint: {value: "Hercai arba vienetai po 0,06 % natos dažnio"}
+beatUnitLabel: {value: "Plakimo vienetai"}
+errorReference: {value: "Nuokrypio atskaita"}
+errorReferenceGoal: {value: "Tikslas"}
+
+errorReferenceHint:
+  value: "Rodyti nuokrypį nuo gamos natos aukščio arba nuo derinimo tikslo. Pasiekus tikslą, nuokrypis nuo jo lygus nuliui."
+errorReferenceScale: {value: "Gama"}
+scaleNamingHint: {value: "Kaip žymimos natos"}
+scaleNamingLabel: {value: "Natų pavadinimai"}
+scaleNamings.cdefgab: {value: "C D E F G A B (tarptautinė sistema, diezai žymimi C#)"}
+scaleNamings.cdefgah: {value: "C D E F G A H (vokiška sistema, diezai žymimi C#)"}
+scaleNamings.doremi: {value: "Do Re Mi (solfedžio)"}
+scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (lenkiška sistema)"}
+toleranceBeat: {value: "Plakimas"}
+toleranceHint: {value: "Didžiausias liežuvėlio arba plakimo nuokrypis, kuriam esant derinimas dar laikomas tinkamu"}
+toleranceLabel: {value: "Leistinos paklaidos"}
+toleranceReed: {value: "Liežuvėlis"}
+unitHint: {value: "Centai arba vienetai po 0,06 % natos dažnio"}
+unitLabel: {value: "Nuokrypio vienetai"}
+
+# Appearance, language and window behavior
+accent.auto: {value: "Sistemos"}
+accent.custom: {value: "Pasirinktinė"}
+accent.hint: {value: "Sistemos arba jūsų pasirinkta paryškinimo spalva"}
+accent.label: {value: "Paryškinimo spalva"}
+accent.pick: {value: "Pasirinkti spalvą"}
+accent.pickTitle: {value: "Paryškinimo spalva"}
+closeToTray: {value: "Užveriant suskleisti į pranešimų sritį"}
+closeToTrayHint: {value: "Užvėrus langą programa lieka pranešimų srityje"}
+checkUpdates: {value: "Tikrinti, ar yra naujinių", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdatesHint: {value: "Ieško naujesnės versijos „GitHub“", description: "Hint below the desktop update-check checkbox."}
+languageHint: {value: "Sąsajos kalba"}
+languageLabel: {value: "Kalba"}
+phoneLayout.hint: {value: "Nustato telefono dydžio langą „Android“ išdėstymui išbandyti", description: "Debug builds only."}
+phoneLayout.label: {value: "Telefono išdėstymas", description: "Debug builds only."}
+phoneLayout.landscape: {value: "Gulsčias", description: "Debug builds only. The phone held on its side."}
+phoneLayout.off: {value: "Išjungta", description: "Debug builds only. The normal desktop window."}
+phoneLayout.portrait: {value: "Stačias", description: "Debug builds only. The phone held upright."}
+themeHint: {value: "Sistemos, šviesi arba tamsi"}
+themeLabel: {value: "Apipavidalinimas"}
+themes.auto: {value: "Sistemos"}
+themes.dark: {value: "Tamsus"}
+themes.light: {value: "Šviesus"}
+
+# Sound-card calibration
+calibration.askBody:
+  value: "Nesukalibruotas diskretizavimo laikrodis gali sukelti nedidelę pastovią matavimo paklaidą. Kalibravimas trunka apie minutę, garso nereikia."
+calibration.askCalibrate: {value: "Kalibruoti dabar"}
+calibration.askContinue: {value: "Tęsti be pataisos"}
+calibration.askTitle: {value: "Ši garso plokštė nesukalibruota"}
+calibration.hint: {value: "Ištaiso garso plokštės laikrodžio paklaidą. Trunka apie minutę, garso nereikia."}
+calibration.label: {value: "Garso plokštės kalibravimas"}
+calibration.open: {value: "Atverti"}
+calibration.openHint: {value: "Rodyti kalibravimo langą nepradedant matavimo"}
+calibration.saveFailed: {value: "Nepavyko įrašyti kalibravimo rezultato. Derintuvas naudoja anksčiau įrašytą būseną."}
+calibration.screen.again: {value: "Kalibruoti iš naujo"}
+calibration.screen.bar.confirming: {value: "Patvirtinama"}
+calibration.screen.bar.settling: {value: "Stabilizuojasi"}
+
+calibration.screen.calibrated:
+  value: "Sukalibruota. Rodmenų pataisa: {percent} %."
+  placeholders:
+    percent: {type: string}
+
+calibration.screen.calibrating: {value: "Matuojamas garso plokštės laikrodžio dažnis"}
+
+calibration.screen.how:
+  value: "Rodmenys gali turėti nedidelę pastovią garso aukščio paklaidą. Garso nereikia, matavimas trunka apie minutę."
+
+calibration.screen.lead: {value: "Dar nesukalibruota"}
+
+calibration.screen.phase.confirming:
+  value: "Rodmuo nusistovėjo. Tikrinama, ar jis išliks stabilus 20 s."
+
+calibration.screen.phase.preparing: {value: "Prieš matuojant laikrodžio dažnį laukiama, kol įvestis nusistovės."}
+calibration.screen.phase.settling: {value: "Laukiama, kol nusistovės laikrodžio rodmuo."}
+
+calibration.screen.pitch:
+  value: "Kiekvienai natai tai atitinka {pitch} nuokrypį."
+  placeholders:
+    pitch: {type: string}
+
+calibration.screen.preparing: {value: "Įvestis parengiama"}
+calibration.screen.retry: {value: "Rodmenys lieka nekoreguoti. Užverkite kitas garso programas ir bandykite dar kartą."}
+calibration.screen.return: {value: "Grįžti"}
+calibration.screen.stat.dropouts: {value: "Trūkiai"}
+calibration.screen.stat.elapsed: {value: "Praėjo"}
+calibration.screen.stat.offset: {value: "Laikrodžio nuokrypis"}
+calibration.screen.stat.rate: {value: "Diskretizavimo dažnis"}
+calibration.screen.stat.steadiness: {value: "Stabilumas"}
+
+calibration.screen.steadiness:
+  value: "{ppm} ppm, tikslas {target} ppm"
+  placeholders:
+    ppm: {type: string}
+    target: {type: string}
+
+calibration.screen.steps.done: {value: "Baigta"}
+calibration.screen.steps.measure: {value: "Matavimas"}
+calibration.screen.steps.prepare: {value: "Parengimas"}
+calibration.screen.traceEmpty: {value: "Matuojant čia braižomas laikrodžio nuokrypis."}
+calibration.screen.unreliable: {value: "Laikrodžio rodmuo nenusistovėjo"}
+calibration.start: {value: "Kalibruoti"}
+calibration.startHint: {value: "Matuoti įvesties diskretizavimo laikrodį"}
+
+calibration.status.calibrated:
+  value: "Sukalibruota, {percent} %"
+  placeholders:
+    percent: {type: string}
+
+calibration.status.calibrating:
+  value: "Kalibruojama, {seconds} s ({percent} %), atlikta {progress} %"
+  placeholders:
+    percent: {type: string}
+    progress: {type: string}
+    seconds: {type: string}
+
+calibration.status.preparing: {value: "Ruošiama"}
+calibration.status.uncalibrated: {value: "Nesukalibruota"}
+calibration.status.unreliable: {value: "Nepatikima, rodmenys nekoreguojami"}
+
+# Settings section headings
+groups.appearance: {value: "Išvaizda"}
+groups.detection: {value: "Atpažinimas"}
+groups.microphone: {value: "Mikrofonas"}
+groups.output: {value: "Išvestis", description: "Settings section shown on a phone, holding the output volume."}
+groups.readings: {value: "Rodmenys"}
+groups.report: {value: "Dirbtuvių duomenys"}
+
+# Report letterhead
+report.address: {value: "Adresas"}
+report.name: {value: "Dirbtuvių pavadinimas"}
+report.nameHint: {value: "Rodomas eksportuotose ataskaitose, kai įjungta firminė antraštė."}

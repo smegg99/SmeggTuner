@@ -1,0 +1,166 @@
+# Settings and sound-card calibration (fi).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Microphone and input level
+audioDeviceHint: {value: "Mittauksessa käytettävä mikrofoni"}
+audioDeviceLabel: {value: "Tulolaite"}
+audioDeviceSystemDefault: {value: "Järjestelmän oletus"}
+autoVolume.hint: {value: "Säätää mikrofonin tasoa mittauksen aikana"}
+autoVolume.label: {value: "Automaattinen tulotason säätö"}
+autoVolume.saveFailed: {value: "Tulotason asetusta ei voitu tallentaa."}
+autoVolume.unsupported: {value: "Tämän laitteen tulotasoa ei voi säätää."}
+humFilter50: {value: "50 Hz"}
+humFilter60: {value: "60 Hz"}
+humFilterHint: {value: "Poistaa verkkohurinaa: Euroopassa 50 Hz, Amerikassa 60 Hz"}
+humFilterLabel: {value: "Verkkohurinan suodatin"}
+lockedWhileRunning: {value: "Vaihda äänitulo pysäyttämällä ensin viritin."}
+
+# Detection and reference pitch
+continuousManual: {value: "Päivitä kiinnitetyn nuotin lukemaa jatkuvasti"}
+continuousManualHint: {value: "Päivitä kiinnitetyn nuotin lukemaa jo ennen lukittumista"}
+detection.balanced: {value: "Tasapainoinen"}
+detection.balancedHint: {value: "Vaihtaa nuottia noin puolessa sekunnissa"}
+detection.fast: {value: "Nopea"}
+detection.fastHint: {value: "Vaihtaa nuottia nopeimmin, mutta voi lukittua väärään nuottiin"}
+detection.steady: {value: "Vakaa"}
+detection.steadyHint: {value: "Alkuperäinen toimintatapa: nuotti vaihtuu hitaasti"}
+detectionLabel: {value: "Nuotintunnistus"}
+lockA4: {value: "Lukitse vertailusävelen taajuus"}
+lockA4Hint: {value: "Estää A4-taajuuden muuttamisen virittimessä"}
+
+# Reading units, tolerance and note names
+beatUnitHint: {value: "Hertsejä tai yksiköitä, joista kukin on 0,06 % sävelen taajuudesta"}
+beatUnitLabel: {value: "Huojunnan yksikkö"}
+errorReference: {value: "Poikkeaman vertailukohta"}
+errorReferenceGoal: {value: "Tavoite"}
+
+errorReferenceHint:
+  value: "Näytä poikkeama asteikon sävelkorkeudesta tai viritystavoitteesta. Tavoitteen kohdalla poikkeama tavoitteesta on nolla."
+errorReferenceScale: {value: "Asteikko"}
+scaleNamingHint: {value: "Nuottien nimeämistapa"}
+scaleNamingLabel: {value: "Nuottien nimet"}
+scaleNamings.cdefgab: {value: "C D E F G A B (kansainvälinen, ylennys muodossa C#)"}
+scaleNamings.cdefgah: {value: "C D E F G A H (saksalainen, ylennys muodossa C#)"}
+scaleNamings.doremi: {value: "Do Re Mi (solmisaatio)"}
+scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (puolalainen)"}
+toleranceBeat: {value: "Huojunta"}
+toleranceHint: {value: "Suurin kielen tai huojunnan poikkeama, joka vielä hyväksytään vireessä olevaksi"}
+toleranceLabel: {value: "Toleranssit"}
+toleranceReed: {value: "Kieli"}
+unitHint: {value: "Senttejä tai yksiköitä, joista kukin on 0,06 % sävelen taajuudesta"}
+unitLabel: {value: "Poikkeaman yksikkö"}
+
+# Appearance, language and window behavior
+accent.auto: {value: "Järjestelmä"}
+accent.custom: {value: "Oma"}
+accent.hint: {value: "Järjestelmän korostusväri tai itse valittu väri"}
+accent.label: {value: "Korostusväri"}
+accent.pick: {value: "Valitse väri"}
+accent.pickTitle: {value: "Korostusväri"}
+closeToTray: {value: "Pienennä suljettaessa ilmoitusalueelle"}
+closeToTrayHint: {value: "Ikkunan sulkeminen jättää sovelluksen ilmoitusalueelle"}
+checkUpdates: {value: "Tarkista päivitykset", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdatesHint: {value: "Etsii uudempaa versiota GitHubista", description: "Hint below the desktop update-check checkbox."}
+languageHint: {value: "Käyttöliittymän kieli"}
+languageLabel: {value: "Kieli"}
+phoneLayout.hint: {value: "Muuttaa ikkunan puhelimen kokoiseksi Android-asettelun testausta varten", description: "Debug builds only."}
+phoneLayout.label: {value: "Puhelinasettelu", description: "Debug builds only."}
+phoneLayout.landscape: {value: "Vaakasuunta", description: "Debug builds only. The phone held on its side."}
+phoneLayout.off: {value: "Pois", description: "Debug builds only. The normal desktop window."}
+phoneLayout.portrait: {value: "Pystysuunta", description: "Debug builds only. The phone held upright."}
+themeHint: {value: "Järjestelmä, vaalea tai tumma"}
+themeLabel: {value: "Teema"}
+themes.auto: {value: "Järjestelmä"}
+themes.dark: {value: "Tumma"}
+themes.light: {value: "Vaalea"}
+
+# Sound-card calibration
+calibration.askBody:
+  value: "Kalibroimaton näytteenottokello voi aiheuttaa pienen pysyvän mittausvirheen. Kalibrointi kestää noin minuutin eikä vaadi ääntä."
+calibration.askCalibrate: {value: "Kalibroi nyt"}
+calibration.askContinue: {value: "Jatka ilman korjausta"}
+calibration.askTitle: {value: "Äänikorttia ei ole kalibroitu"}
+calibration.hint: {value: "Korjaa äänikortin kellovirheen. Kestää noin minuutin eikä vaadi ääntä."}
+calibration.label: {value: "Äänikortin kalibrointi"}
+calibration.open: {value: "Avaa"}
+calibration.openHint: {value: "Näytä kalibrointinäkymä käynnistämättä mittausta"}
+calibration.saveFailed: {value: "Kalibrointia ei voitu tallentaa. Viritin käyttää aiemmin tallennettua tilaa."}
+calibration.screen.again: {value: "Kalibroi uudelleen"}
+calibration.screen.bar.confirming: {value: "Vahvistetaan"}
+calibration.screen.bar.settling: {value: "Tasaantuu"}
+
+calibration.screen.calibrated:
+  value: "Kalibroitu. Lukemiin tehdään {percent} %:n korjaus."
+  placeholders:
+    percent: {type: string}
+
+calibration.screen.calibrating: {value: "Mitataan äänikortin kelloa"}
+
+calibration.screen.how:
+  value: "Lukemissa voi olla pieni pysyvä sävelkorkeusvirhe. Ääntä ei tarvita. Mittaus kestää noin minuutin."
+
+calibration.screen.lead: {value: "Ei vielä kalibroitu"}
+
+calibration.screen.phase.confirming:
+  value: "Lukema on vakaa. Tarkistetaan, että se pysyy vakaana 20 s."
+
+calibration.screen.phase.preparing: {value: "Tulon annetaan tasaantua ennen kellon mittaamista."}
+calibration.screen.phase.settling: {value: "Odotetaan kellolukeman tasaantumista."}
+
+calibration.screen.pitch:
+  value: "Tämä vastaa jokaisella nuotilla poikkeamaa {pitch}."
+  placeholders:
+    pitch: {type: string}
+
+calibration.screen.preparing: {value: "Lämmitetään tuloa"}
+calibration.screen.retry: {value: "Lukemia ei korjata. Sulje muut äänisovellukset ja yritä uudelleen."}
+calibration.screen.return: {value: "Palaa"}
+calibration.screen.stat.dropouts: {value: "Katkokset"}
+calibration.screen.stat.elapsed: {value: "Kulunut aika"}
+calibration.screen.stat.offset: {value: "Kellon poikkeama"}
+calibration.screen.stat.rate: {value: "Näytteenottotaajuus"}
+calibration.screen.stat.steadiness: {value: "Vakaus"}
+
+calibration.screen.steadiness:
+  value: "{ppm} ppm, tavoite {target} ppm"
+  placeholders:
+    ppm: {type: string}
+    target: {type: string}
+
+calibration.screen.steps.done: {value: "Valmis"}
+calibration.screen.steps.measure: {value: "Mittaus"}
+calibration.screen.steps.prepare: {value: "Lämmitys"}
+calibration.screen.traceEmpty: {value: "Kellon poikkeama piirretään tähän mittauksen aikana."}
+calibration.screen.unreliable: {value: "Kellon lukema ei tasaantunut"}
+calibration.start: {value: "Kalibroi"}
+calibration.startHint: {value: "Mittaa tulon näytteenottokello"}
+
+calibration.status.calibrated:
+  value: "Kalibroitu, {percent} %"
+  placeholders:
+    percent: {type: string}
+
+calibration.status.calibrating:
+  value: "Kalibroidaan, {seconds} s ({percent} %), valmis {progress} %"
+  placeholders:
+    percent: {type: string}
+    progress: {type: string}
+    seconds: {type: string}
+
+calibration.status.preparing: {value: "Valmistellaan"}
+calibration.status.uncalibrated: {value: "Ei kalibroitu"}
+calibration.status.unreliable: {value: "Epäluotettava, lukemia ei korjata"}
+
+# Settings section headings
+groups.appearance: {value: "Ulkoasu"}
+groups.detection: {value: "Tunnistus"}
+groups.microphone: {value: "Mikrofoni"}
+groups.output: {value: "Lähtö", description: "Settings section shown on a phone, holding the output volume."}
+groups.readings: {value: "Lukemat"}
+groups.report: {value: "Verstaan tiedot"}
+
+# Report letterhead
+report.address: {value: "Osoite"}
+report.name: {value: "Verstaan nimi"}
+report.nameHint: {value: "Näytetään viedyissä raporteissa, kun kirjelomakkeen otsake on käytössä."}

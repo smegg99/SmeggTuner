@@ -1,0 +1,298 @@
+# Live tuner, WAV playback and browser edition (th).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Input, output and playback
+input.relearnHint: {value: "เรียนรู้เสียงรบกวนใหม่ (เงียบ 4 วินาที)"}
+input.tooStrong: {value: "สัญญาณแรงเกินไป"}
+input.unreliable: {value: "สัญญาณไม่น่าเชื่อถือ"}
+inputPanel.label: {value: "สัญญาณขาเข้า"}
+inputPanel.title: {value: "ขาเข้า"}
+level.silent: {value: "เงียบ"}
+output.mute: {value: "ปิดเสียง"}
+output.unmute: {value: "เปิดเสียง"}
+output.volume: {value: "ระดับเสียงขาออก"}
+soundcard.running: {value: "กำลังสอบเทียบการ์ดเสียง"}
+soundcard.uncalibrated: {value: "ยังไม่ได้สอบเทียบการ์ดเสียง กดเพื่อสอบเทียบ"}
+soundcard.unreliable: {value: "ผลสอบเทียบไม่น่าเชื่อถือ กดเพื่อสอบเทียบใหม่"}
+source.analyze: {value: "วิเคราะห์เสียงที่บันทึก…"}
+source.default: {value: "ค่าเริ่มต้นของระบบ"}
+source.noDevices: {value: "ไม่พบไมโครโฟน"}
+source.refresh: {value: "รีเฟรชรายการอุปกรณ์"}
+transport.fileHint: {value: "เล่นเสียงที่บันทึกจากแผงของไฟล์นั้น"}
+transport.start: {value: "เริ่ม"}
+transport.stop: {value: "หยุด"}
+
+# Modes, registers and note selection
+bassRegister.all: {value: "กลไกเบสทั้งหมด"}
+bassRegister.hint: {value: "สวิตช์เบสที่ใช้อยู่"}
+controls: {value: "ตัวควบคุมการตั้งเสียง"}
+mode.auto: {value: "อัตโนมัติ"}
+mode.autoHint: {value: "ให้เครื่องตั้งเสียงตรวจจับโน้ตเอง"}
+mode.pinHint: {value: "ตรึงโน้ตนี้"}
+mode.pinned: {value: "โน้ตที่ตรึงไว้"}
+notes.clickToPin: {value: "คลิกเพื่อตรึง"}
+notes.label: {value: "โน้ต E0 ถึง C9 คลิกโน้ตเพื่อตรึง"}
+notes.range: {value: "E0 ถึง C9"}
+notes.title: {value: "โน้ต"}
+notes.tracking: {value: "กำลังติดตาม"}
+panel.boxBase: {value: "วัดโน้ตฐานเสมอ"}
+panel.boxChord: {value: "โหมดคอร์ดจะวัดทั้งสามเสียง"}
+panel.boxLast: {value: "ต้องเปิดช่องวัดไว้อย่างน้อยหนึ่งช่อง"}
+
+panel.boxOctave:
+  plural:
+    argument: octaves
+    forms:
+      other: "ช่อง {box}: สูงกว่าโน้ตฐาน {octaves} อ็อกเทฟ"
+  placeholders:
+    octaves: {type: integer}
+    box: {type: string}
+
+panel.boxReed:
+  value: "ลิ้นเสียง {n}: เลือกว่าจะวัดหรือไม่"
+  placeholders:
+    n: {type: string}
+
+panel.bySession:
+  plural:
+    argument: n
+    forms:
+      other: "ลิ้นเสียง {n} ลิ้น ตามรีจิสเตอร์ของเซสชัน"
+  placeholders:
+    n: {type: integer}
+
+panel.locked: {value: "ล็อก"}
+panel.modeHints.chords: {value: "คอร์ดสามเสียง"}
+panel.modeHints.octaves: {value: "โน้ตหนึ่งตัวและเสียงคู่แปดที่สูงขึ้นไป"}
+panel.modeHints.tones: {value: "โน้ตเดียว ลิ้นเสียงไม่เกินสามลิ้น"}
+panel.modeLabel: {value: "สิ่งที่วัด"}
+panel.modes.chords: {value: "คอร์ด"}
+panel.modes.octaves: {value: "อ็อกเทฟ"}
+panel.modes.tones: {value: "โน้ตเดี่ยว"}
+panel.quiet: {value: "เสียงเบาเกินไป"}
+panel.recorded: {value: "บันทึกแล้ว"}
+panel.reeds: {value: "ลิ้นเสียง"}
+
+reeds.count:
+  plural:
+    argument: n
+    forms:
+      other: "ลิ้นเสียง {n} ลิ้น"
+  placeholders:
+    n: {type: integer}
+
+register.hint: {value: "รีจิสเตอร์ที่ใช้อยู่"}
+register.lockedPlaying: {value: "หยุดเล่นก่อนเปลี่ยนรีจิสเตอร์"}
+side.bass: {value: "ฝั่งเบส"}
+side.hint: {value: "ฝั่งเสียงแหลมหรือฝั่งเบส"}
+side.treble: {value: "ฝั่งเสียงแหลม"}
+step.noteDown: {value: "ลดลงครึ่งเสียง"}
+step.noteUp: {value: "เพิ่มขึ้นครึ่งเสียง"}
+# Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
+signal.add: {value: "เพิ่มเสียง"}
+signal.cents: {value: "ค่าที่ต่างจากโน้ตเป็นเซนต์"}
+signal.down: {value: "ลดลงครึ่งเสียง (ลูกศรซ้าย ใช้ลูกศรลงเพื่อลดหนึ่งอ็อกเทฟ)"}
+signal.open: {value: "เครื่องกำเนิดสัญญาณ: เล่นเสียงอ้างอิงที่ชัดเจนสำหรับเทียบตั้งเสียงลิ้น"}
+signal.play: {value: "เล่น"}
+signal.playHint: {value: "เล่นโน้ตด้วยเสียงที่ตั้งไว้ทั้งหมด หากยังไม่มีโน้ต ให้เล่นโน้ตแรกที่ตรวจพบ (แป้นเว้นวรรค)"}
+signal.remove: {value: "ลบเสียงนี้"}
+signal.stop: {value: "หยุด"}
+signal.stopHint: {value: "หยุดเสียง (แป้นเว้นวรรค)"}
+signal.title: {value: "เครื่องกำเนิดสัญญาณ"}
+signal.up: {value: "เพิ่มขึ้นครึ่งเสียง (ลูกศรขวา ใช้ลูกศรขึ้นเพื่อเพิ่มหนึ่งอ็อกเทฟ)"}
+signal.wave.hint: {value: "เสียงลิ้นมีโอเวอร์โทน จึงได้ยินบีตจากโอเวอร์โทนด้วย"}
+signal.wave.reed: {value: "เสียงลิ้น"}
+signal.wave.sine: {value: "คลื่นไซน์"}
+
+# Reference pitch and units
+reference.a4Locked: {value: "ล็อกไว้ในการตั้งค่า"}
+reference.a4Type: {value: "ป้อนความถี่ A4 ระหว่าง 430 ถึง 450 Hz"}
+reference.frozen: {value: "ล็อกแล้ว เนื่องจากเซสชันมีค่าที่วัดไว้แล้ว"}
+reference.transpose: {value: "ย้ายคีย์"}
+reference.transposeDown: {value: "ลดย่านการย้ายคีย์ลงครึ่งเสียง"}
+reference.transposeHint: {value: "จำนวนครึ่งเสียงที่เสียงจริงสูงกว่าชื่อคีย์"}
+reference.transposeMode: {value: "วัดคอร์ดและอ็อกเทฟโดยไม่ย้ายคีย์"}
+reference.transposeUp: {value: "เพิ่มระยะการย้ายคีย์ขึ้นครึ่งเสียง"}
+
+reference.transposed:
+  value: "ย้ายคีย์ +{n}"
+  placeholders:
+    n: {type: string}
+
+unit.cents: {value: "เซนต์"}
+unit.hz: {value: "Hz"}
+unit.reference: {value: "หน่วยสัมพัทธ์"}
+
+# Live readings and graphs
+boxes.beat:
+  value: "บีตระหว่างลิ้นเสียง {a} กับ {b}"
+  placeholders:
+    a: {type: string}
+    b: {type: string}
+
+boxes.goal: {value: "เป้าหมาย"}
+boxes.hzOnly: {value: "แสดงเป็น Hz เท่านั้น"}
+boxes.notHeard: {value: "ไม่ได้ยินเสียง"}
+
+boxes.reed:
+  value: "ลิ้นเสียง {n}"
+  placeholders:
+    n: {type: string}
+
+boxes.reedBank:
+  value: "ลิ้นเสียง {bank}"
+  placeholders:
+    bank: {type: string}
+
+boxes.tone:
+  value: "เสียง {n}"
+  placeholders:
+    n: {type: string}
+
+ruler.label: {value: "ค่าคลาดเคลื่อนของลิ้นเสียงแต่ละลิ้น"}
+spectrum.label: {value: "สเปกตรัมความถี่ของโน้ตที่ติดตาม"}
+spectrum.title: {value: "สเปกตรัม"}
+
+# Hold, noise learning and tuner state
+hold.hint: {value: "ค้างค่าที่นิ่งไว้ (H)"}
+state.deviceLost: {value: "สัญญาณขาเข้าขาด"}
+state.initializing: {value: "กำลังวัดเสียงรบกวนในห้อง"}
+state.running: {value: "กำลังฟัง"}
+state.stopped: {value: "หยุดแล้ว"}
+state.tooQuiet: {value: "เสียงเบาเกินไป เล่นให้ดังขึ้นหรือขยับเข้าใกล้ไมโครโฟน"}
+warmup.quiet: {value: "กรุณาเงียบ"}
+
+# WAV files and waveform controls
+file.clearSelection: {value: "เลือกเสียงที่บันทึกทั้งหมด"}
+file.fit: {value: "แสดงเสียงที่บันทึกทั้งหมด"}
+file.loop: {value: "เล่นวนช่วงที่เลือก"}
+file.mute: {value: "ปิดเสียงไฟล์ที่เล่น"}
+file.openFilter: {value: "เสียง WAV"}
+file.openTitle: {value: "เลือกไฟล์เสียง WAV"}
+file.pause: {value: "พัก"}
+file.play: {value: "เล่น"}
+file.stop: {value: "หยุดแล้วกลับไปที่ต้นช่วงที่เลือก"}
+file.toEnd: {value: "ไปท้ายช่วงที่เลือก"}
+file.toStart: {value: "ไปต้นช่วงที่เลือก"}
+file.unmute: {value: "เปิดเสียงไฟล์ที่เล่น"}
+file.volume: {value: "ระดับเสียงที่เล่น"}
+
+file.waveform:
+  value: "รูปคลื่นของ {name} ลากเส้นเวลาเพื่อเลื่อนตำแหน่งเล่น หรือลากบนรูปคลื่นเพื่อเลือกช่วง เมื่อหยุดเล่น เส้นประสีอ่อนจะระบุช่วงเสียงที่ใช้วัดค่าบนหน้าจอ"
+  placeholders:
+    name: {type: string}
+
+file.zoomIn: {value: "ซูมเข้า"}
+file.zoomOut: {value: "ซูมออก"}
+
+# Instrument calibration workflow
+calibrate.leave: {value: "ออกจากการสอบเทียบ"}
+calibrate.needsSession: {value: "เปิดเซสชันเพื่อสอบเทียบเครื่องดนตรีในเซสชันนั้น"}
+calibrate.range.again: {value: "เริ่มใหม่"}
+
+calibrate.range.backwards:
+  value: "โน้ตสูงสุดต้องไม่ต่ำกว่าโน้ตต่ำสุด ให้วัดช่วงเสียงใหม่"
+
+calibrate.range.capture: {value: "เก็บค่า"}
+calibrate.range.highest: {value: "สูงสุด"}
+calibrate.range.lowest: {value: "ต่ำสุด"}
+calibrate.range.next: {value: "ไปสอบเทียบลิ้นเสียงต่อ"}
+calibrate.range.playHigh: {value: "ตอนนี้ให้เล่นคีย์ที่สูงที่สุด"}
+calibrate.range.playLow: {value: "เล่นคีย์ที่ต่ำที่สุด"}
+calibrate.range.step: {value: "คีย์บอร์ด"}
+calibrate.status.captured: {value: "เก็บค่าแล้ว"}
+calibrate.status.holding: {value: "รักษาเสียงโน้ตให้นิ่ง"}
+calibrate.status.loud: {value: "เสียงดังเกินไป"}
+calibrate.status.play: {value: "เล่นโน้ตหนึ่งตัว"}
+calibrate.sweep.bassAll: {value: "เบส: กลไกทั้งหมด"}
+
+calibrate.sweep.done:
+  plural:
+    argument: n
+    forms:
+      other: "วัดไล่โน้ตเสร็จแล้ว มีค่าที่วัดได้ {n} ค่าบนบัตร"
+  placeholders:
+    n: {type: integer}
+
+calibrate.sweep.noRegisters:
+  value: "ยังไม่ได้ระบุรีจิสเตอร์ของแอคคอร์เดียนนี้ ยังวัดไล่โน้ตได้ โดยค่าจะอยู่ในคอลัมน์ที่มีหมายเลข"
+calibrate.sweep.pickRegister: {value: "ต้องการสอบเทียบรีจิสเตอร์ใด"}
+
+calibrate.sweep.progress:
+  value: "{done} จาก {total}"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+calibrate.sweep.redoRange: {value: "วัดช่วงคีย์บอร์ดใหม่"}
+calibrate.sweep.review: {value: "ดูบัตรตั้งเสียง"}
+calibrate.sweep.skip: {value: "ข้าม"}
+
+calibrate.sweep.soloTeaches:
+  value: "เมื่อวัดไล่ทีละโน้ตด้วยรีจิสเตอร์ที่เปิดใช้ลิ้นเสียงเพียงแถวเดียว แอปจะเรียนรู้ลักษณะเสียงของแถวนั้นด้วย"
+
+calibrate.sweep.startPlain: {value: "เริ่มวัดไล่โน้ต"}
+calibrate.sweep.step: {value: "ลิ้นเสียง"}
+calibrate.sweep.stop: {value: "หยุด"}
+calibrate.title: {value: "สอบเทียบ"}
+
+# Browser edition
+web.accent.default: {value: "ค่าเริ่มต้น"}
+web.accent.hint: {value: "ใช้สีของแอปหรือเลือกสีเอง"}
+web.diagnostics.copied: {value: "คัดลอกแล้ว"}
+web.diagnostics.copy: {value: "คัดลอกข้อมูลวินิจฉัย"}
+web.diagnostics.empty: {value: "เริ่มเครื่องตั้งเสียงเพื่อดูรายละเอียดไมโครโฟน"}
+web.diagnostics.title: {value: "ข้อมูลวินิจฉัย"}
+web.downloads.title: {value: "ดาวน์โหลดแอป"}
+web.experimental: {value: "รุ่นทดลอง"}
+web.loadFailed: {value: "เริ่มระบบวัดในเบราว์เซอร์นี้ไม่ได้"}
+
+web.mic.denied:
+  value: "ไม่ได้รับอนุญาตให้ใช้ไมโครโฟน โปรดอนุญาตในการตั้งค่าเบราว์เซอร์แล้วเริ่มเครื่องตั้งเสียงอีกครั้ง"
+
+web.mic.failed: {value: "เปิดไมโครโฟนไม่ได้"}
+web.mic.none: {value: "ไม่พบไมโครโฟน"}
+web.mic.unsupported: {value: "เบราว์เซอร์นี้บันทึกเสียงไม่ได้"}
+web.notice.background: {value: "แท็บที่อยู่เบื้องหลังอาจพักเสียง"}
+web.notice.native: {value: "ใช้แอปที่ติดตั้งบนเครื่องเมื่อต้องการความแม่นยำ"}
+web.notice.ok: {value: "เข้าใจแล้ว"}
+
+web.notice.processing:
+  value: "เบราว์เซอร์อาจตัดเสียงสะท้อน ลดเสียงรบกวน ปรับอัตราขยายอัตโนมัติ หรือสุ่มตัวอย่างสัญญาณไมโครโฟนใหม่ แต่ละอย่างอาจทำให้ค่าที่วัดได้เปลี่ยนไป"
+web.notice.title: {value: "รุ่นเว็บทดลอง"}
+web.processing.autoGainControl: {value: "ปรับอัตราขยายอัตโนมัติ"}
+web.processing.echoCancellation: {value: "ตัดเสียงสะท้อน"}
+web.processing.noiseSuppression: {value: "ลดเสียงรบกวน"}
+
+web.processingOn:
+  value: "เบราว์เซอร์ยังเปิดใช้การประมวลผลต่อไปนี้: {list} ค่าที่วัดได้อาจคลาดเคลื่อน"
+  placeholders:
+    list: {type: string}
+
+web.slow:
+  value: "อุปกรณ์นี้ประมวลผลไม่ทันระบบวัด จึงข้ามเสียงที่ล่าช้าเพื่อให้ค่าที่แสดงเป็นปัจจุบัน"
+
+# Tuner errors
+error.a4Locked: {value: "ระดับเสียงอ้างอิงถูกล็อกไว้ในการตั้งค่า"}
+error.chordsAuto: {value: "โหมดคอร์ดจะเลือกโน้ตเอง"}
+error.deviceGone: {value: "ไมโครโฟนนั้นไม่ได้เชื่อมต่อแล้ว"}
+error.deviceLost: {value: "ไมโครโฟนหยุดตอบสนอง เครื่องตั้งเสียงจึงหยุดทำงาน"}
+error.fileUnreadable: {value: "อ่านเสียงที่บันทึกไม่ได้ ต้องใช้ไฟล์ WAV"}
+error.invalidA4: {value: "ระดับเสียงอ้างอิงต้องอยู่ระหว่าง 430 ถึง 450 Hz"}
+error.invalidBox: {value: "ไม่มีช่องวัดลิ้นเสียงดังกล่าว"}
+error.invalidMode: {value: "เครื่องตั้งเสียงวัดโน้ตเดี่ยว อ็อกเทฟ หรือคอร์ดได้"}
+error.invalidNote: {value: "โน้ตนี้อยู่นอกช่วงที่เครื่องตั้งเสียงติดตามได้"}
+error.invalidTranspose: {value: "ย้ายคีย์ได้ตั้งแต่ 0 ถึง 11 ครึ่งเสียง"}
+error.lastBox: {value: "ต้องเปิดช่องวัดไว้อย่างน้อยหนึ่งช่อง"}
+error.noDevices: {value: "ไม่พบไมโครโฟน ให้เชื่อมต่อไมโครโฟนแล้วรีเฟรชรายการอุปกรณ์"}
+error.playbackFailed: {value: "เล่นเสียงอ้างอิงไม่ได้"}
+
+error.sampleRate:
+  value: "อัตราสุ่มตัวอย่างขาเข้าต่ำเกินกว่าจะวัดโน้ตสูงที่ระดับเสียงอ้างอิงและระยะย้ายคีย์นี้ ให้ใช้เสียงที่บันทึกที่ 44.1 kHz ขึ้นไป"
+error.sessionDecides: {value: "รีจิสเตอร์ของเซสชันที่เปิดอยู่เป็นตัวกำหนดสิ่งที่วัด"}
+error.signalVoices:
+  value: "เล่นได้หนึ่งถึงสี่เสียง แต่ละเสียงต้องห่างจากโน้ตไม่เกิน 100 เซนต์"
+error.toneNeedsManual: {value: "ตรึงโน้ตก่อนเล่นเสียงอ้างอิง"}
+error.transposeMode: {value: "วัดคอร์ดและอ็อกเทฟโดยไม่ย้ายคีย์"}
+error.unexpected: {value: "เกิดข้อผิดพลาด ดูรายละเอียดในบันทึกเหตุการณ์"}

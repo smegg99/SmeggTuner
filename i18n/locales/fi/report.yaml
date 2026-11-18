@@ -1,0 +1,154 @@
+# Printed reports and export (fi).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Report title and instrument details
+facts.curve: {value: "Tavoitekäyrä"}
+facts.curveNone: {value: "ei ole"}
+facts.curveUnnamed: {value: "nimetön"}
+facts.reference: {value: "Vertailu-A4 (tämä mittauskierros)"}
+facts.tolerance: {value: "Toleranssi"}
+
+facts.toleranceValue:
+  value: "Kieli {reed} {unit} / huojunta {beat} {unit}"
+  placeholders:
+    beat: {type: string}
+    reed: {type: string}
+    unit: {type: string}
+
+facts.transpose: {value: "Transponointi"}
+
+facts.transposeValue:
+  value: "{key} soi sävelenä {sounds}"
+  placeholders:
+    key: {type: string}
+    sounds: {type: string}
+
+title: {value: "Viritysraportti"}
+
+# Table and column headings
+head.beat:
+  value: "Huojunta {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.bassTitle:
+  value: "Basson viritystaulukko ({unit})"
+  placeholders:
+    unit: {type: string}
+
+table.curr: {value: "Mit."}
+table.err: {value: "Virhe"}
+table.register: {value: "Rekisteri"}
+
+table.title:
+  value: "Viritystaulukko ({unit})"
+  placeholders:
+    unit: {type: string}
+
+# Deviation units
+unit.cents.name: {value: "senttiä"}
+unit.cents.symbol: {value: "c"}
+unit.reference.name: {value: "0,06 %:n yksiköt"}
+
+# Graph legend and reading markers
+graph.edited:
+  value: "{mark} – muokattu käsin."
+  placeholders:
+    mark: {type: string}
+
+legend.error.cents:
+  value: "Viilaa, kunnes virhe lähestyy nollaa. Arvot ovat senttejä suhteessa tasavireiseen asteikkoon, kun A4 on {a4} Hz."
+  placeholders:
+    a4: {type: string}
+
+legend.error.key: {value: "Virhe = mitattu − tavoite."}
+legend.error.noCurve: {value: "Ei tavoitekäyrää: tavoite on nolla, virhe on poikkeama asteikon sävelkorkeudesta."}
+
+legend.error.reference:
+  value: "Viilaa, kunnes virhe lähestyy nollaa. Yksikkö on 0,06 % sävelen taajuudesta suhteessa tasavireiseen asteikkoon, kun A4 on {a4} Hz."
+  placeholders:
+    a4: {type: string}
+
+legend.out.short: {value: "toleranssin ulkopuolella"}
+legend.takes.key: {value: "xN"}
+legend.takes.short: {value: "tallennettu useasti, näkyvissä viimeinen mittaus"}
+mark.edited: {value: "H"}
+mark.out: {value: "!"}
+
+# Summary and footer
+footer.generated:
+  value: "Luotu {at}, sovellus {app}"
+  placeholders:
+    app: {type: string}
+    at: {type: string}
+
+summary.allIn: {value: "Kaikki arvot toleranssin sisällä."}
+
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} huojunta"
+      other: "{pluralCount} huojuntaa"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.line:
+  value: "{notes} ({min}–{max}), {reeds}, {beats}."
+  placeholders:
+    beats: {type: string}
+    max: {type: string}
+    min: {type: string}
+    notes: {type: string}
+    reeds: {type: string}
+
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} nuotti"
+      other: "{pluralCount} nuottia"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "Toleranssin ulkopuolella: {pluralCount} ({reeds}, {beats})."
+      other: "Toleranssin ulkopuolella: {pluralCount} ({reeds}, {beats})."
+  placeholders:
+    beats: {type: string}
+    pluralCount: {type: integer}
+    reeds: {type: string}
+
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} kielilukema"
+      other: "{pluralCount} kielilukemaa"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} kieli"
+      other: "{pluralCount} kieltä"
+  placeholders:
+    pluralCount: {type: integer}
+
+# Export errors
+error.invalidDate: {value: "Anna kelvollinen päivämäärä muodossa VVVV-KK-PP."}
+error.invalidFormat: {value: "Raporttia ei voi kirjoittaa tässä muodossa."}
+
+error.noBrowser:
+  value: "Selain taittaa PDF-tiedoston, mutta tällä koneella ei ole Chromea eikä Chromiumia. Asenna niistä toinen tai vie kortti HTML-muodossa ja tulosta se."
+error.openFailed: {value: "Raportti kirjoitettiin, mutta mikään selain ei avannut sitä. Avaa tiedosto itse."}
+error.renderFailed: {value: "Raporttia ei voitu muodostaa. Mitään ei kirjoitettu."}
+
+error.writeFailed:
+  value: "Raporttia ei voitu kirjoittaa valittuun paikkaan. Mahdollinen aiempi tiedosto säilyi ennallaan."

@@ -1,0 +1,180 @@
+# Printed reports and export (hu).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Report title and instrument details
+facts.curve: {value: "Célgörbe"}
+facts.curveNone: {value: "nincs"}
+facts.curveUnnamed: {value: "névtelen"}
+facts.reference: {value: "Referenciahang (A4, ez a sorozat)"}
+facts.tolerance: {value: "Tűrés"}
+
+facts.toleranceValue:
+  value: 'síp: {reed} {unit} / lebegés: {beat} {unit}'
+  placeholders:
+    beat:
+      type: string
+    reed:
+      type: string
+    unit:
+      type: string
+
+facts.transpose: {value: "Transzponálás"}
+
+facts.transposeValue:
+  value: '{key} így szól: {sounds}'
+  placeholders:
+    key:
+      type: string
+    sounds:
+      type: string
+
+title: {value: "Hangolási jegyzőkönyv"}
+
+# Table and column headings
+head.beat:
+  value: Lebegés {pair}
+  placeholders:
+    pair:
+      type: string
+
+table.bassTitle:
+  value: Basszushangolási táblázat ({unit})
+  placeholders:
+    unit:
+      type: string
+
+table.curr: {value: "Mért"}
+table.err: {value: "Elt."}
+table.register: {value: "Regiszter"}
+
+table.title:
+  value: Hangolási táblázat ({unit})
+  placeholders:
+    unit:
+      type: string
+
+# Deviation units
+unit.cents.name: {value: "cent"}
+unit.cents.symbol: {value: "c"}
+unit.reference.name: {value: "0,06%-os egységek"}
+
+# Graph legend and reading markers
+graph.edited:
+  value: '{mark} – kézzel módosítva.'
+  placeholders:
+    mark:
+      type: string
+
+legend.error.cents:
+  value: Reszelje a sípot úgy, hogy az eltérés nullához közelítsen. Az értékek a temperált skálától való eltérést
+    mutatják centben, {a4} Hz-es referenciahang mellett.
+  placeholders:
+    a4:
+      type: string
+
+legend.error.key: {value: "Eltérés = mért érték − célérték."}
+legend.error.noCurve: {value: "Célgörbe hiányában a célérték nulla, az eltérés a skálához viszonyított különbség."}
+
+legend.error.reference:
+  value: Reszelje a sípot úgy, hogy az eltérés nullához közelítsen. Az eltérés a {a4} Hz-es referenciahangú temperált
+    skálához képest értendő. Egy egység a hang frekvenciájának 0,06%-a.
+  placeholders:
+    a4:
+      type: string
+
+legend.out.short: {value: "tűrésen kívül"}
+legend.takes.key: {value: "xN"}
+legend.takes.short: {value: "többször rögzítve, az utolsó mérés látható"}
+mark.edited: {value: "H"}
+mark.out: {value: "!"}
+
+# Summary and footer
+footer.generated:
+  value: 'Készült: {at}, alkalmazás: {app}'
+  placeholders:
+    app:
+      type: string
+    at:
+      type: string
+
+summary.allIn: {value: "Minden érték tűrésen belül van."}
+
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} lebegés'
+      other: '{pluralCount} lebegés'
+  placeholders:
+    pluralCount:
+      type: integer
+
+summary.line:
+  value: '{notes} ({min} – {max}), {reeds}, {beats}.'
+  placeholders:
+    beats:
+      type: string
+    max:
+      type: string
+    min:
+      type: string
+    notes:
+      type: string
+    reeds:
+      type: string
+
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} hang'
+      other: '{pluralCount} hang'
+  placeholders:
+    pluralCount:
+      type: integer
+
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      one: 'Tűrésen kívül: {pluralCount} ({reeds}, {beats}).'
+      other: 'Tűrésen kívül: {pluralCount} ({reeds}, {beats}).'
+  placeholders:
+    beats:
+      type: string
+    pluralCount:
+      type: integer
+    reeds:
+      type: string
+
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} sípmérés'
+      other: '{pluralCount} sípmérés'
+  placeholders:
+    pluralCount:
+      type: integer
+
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} síp'
+      other: '{pluralCount} síp'
+  placeholders:
+    pluralCount:
+      type: integer
+
+# Export errors
+error.invalidDate: {value: "Adjon meg érvényes dátumot ÉÉÉÉ-HH-NN formátumban."}
+error.invalidFormat: {value: "A jegyzőkönyv ebben a formátumban nem menthető."}
+
+error.noBrowser: {value: "A PDF tördeléséhez böngésző szükséges. Ezen a gépen sem Chrome, sem Chromium nincs. Telepítse valamelyiket, vagy exportálja a hangolási lapot HTML-ként, és nyomtassa ki."}
+
+error.openFailed: {value: "A jegyzőkönyv mentése sikerült, de egyik böngésző sem nyitotta meg. Nyissa meg a fájlt kézzel."}
+error.renderFailed: {value: "A jegyzőkönyvet nem sikerült létrehozni. Semmi sem került mentésre."}
+
+error.writeFailed: {value: "A jegyzőkönyvet nem sikerült a megadott helyre menteni. Ha már volt ott fájl, az változatlan maradt."}

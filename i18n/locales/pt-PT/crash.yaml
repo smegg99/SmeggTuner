@@ -1,0 +1,62 @@
+# S99AB startup and crash dialogs (pt-PT).
+close: {value: "Fechar"}
+copied: {value: "Copiado"}
+copy: {value: "Copiar relatório"}
+details: {value: "Detalhes"}
+email: {value: "Enviar relatório por e-mail"}
+failed:
+  value: "A operação falhou: {error}"
+  placeholders:
+    error: {type: string}
+file:
+  value: "Ficheiro: {path}"
+  placeholders:
+    path: {type: string}
+kill: {value: "Fechar e comunicar o problema"}
+logs: {value: "Mostrar ficheiro de registo"}
+messageConfig:
+  value: "Não foi possível ler o ficheiro de definições. Corrija-o ou elimine-o e volte a iniciar o {app}."
+  placeholders:
+    app: {type: string}
+messageCrash:
+  value: "Ocorreu um erro interno no {app}. Envie o relatório para ajudar a corrigir o problema e reinicie a aplicação."
+  placeholders:
+    app: {type: string}
+messageHang: {value: "A operação em curso ainda pode terminar. Aguarde ou feche a aplicação e envie um relatório."}
+messageHangStopped:
+  value: "O {app} foi fechado enquanto não respondia. Envie o relatório para ajudar a corrigir o problema e reinicie a aplicação."
+  placeholders:
+    app: {type: string}
+messageKilled:
+  value: "O {app} foi fechado antes de conseguir comunicar o problema. Envie o relatório e reinicie a aplicação."
+  placeholders:
+    app: {type: string}
+messageOom:
+  value: "A memória do sistema esgotou-se e o {app} foi fechado. Envie o relatório e reinicie a aplicação."
+  placeholders:
+    app: {type: string}
+messageStartup:
+  value: "Corrija o problema indicado abaixo e volte a iniciar o {app}."
+  placeholders:
+    app: {type: string}
+restart: {value: "Reiniciar"}
+save: {value: "Guardar relatório"}
+saved:
+  value: "Guardado em {path}"
+  placeholders:
+    path: {type: string}
+starting:
+  value: "A iniciar o {app}"
+  placeholders:
+    app: {type: string}
+titleCrash: {value: "A aplicação parou inesperadamente"}
+titleHang: {value: "A aplicação não responde"}
+titleHangStopped: {value: "A aplicação deixou de responder"}
+titleKilled: {value: "A aplicação fechou inesperadamente"}
+titleStart: {value: "Não foi possível iniciar a aplicação"}
+wait: {value: "Aguardar"}
+windowCrash: {value: "falhou"}
+windowHang: {value: "não responde"}
+windowHangStopped: {value: "deixou de responder"}
+windowKilled: {value: "fechou inesperadamente"}
+windowStart: {value: "falha ao iniciar"}

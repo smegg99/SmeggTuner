@@ -118,7 +118,7 @@ types and lint without rewriting anything.
 A debug build has one more setting, Phone layout under Appearance: it sizes the window like a phone,
 upright or on its side, to test the layout the Android app shows.
 
-Locales live in `i18n/locales/{en,pl}` and the settings schema in
+Locales live in `i18n/locales/` and the settings schema in
 `backend/common/config/config.cue`; `just generate` rebuilds everything made from them, plus the
 bindings, icons and S99Wails helpers.
 

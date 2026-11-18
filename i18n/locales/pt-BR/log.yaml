@@ -1,0 +1,100 @@
+# Diagnostic log messages (pt-BR).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Application lifecycle and configuration
+appStarting: {value: "Iniciando o smeggtuner"}
+cleaningUp: {value: "Limpeza em andamento"}
+configLoadFailed: {value: "Não foi possível carregar a configuração"}
+configLoaded: {value: "Configuração carregada"}
+configSaveFailed: {value: "Não foi possível salvar a configuração"}
+crashScreenFailed: {value: "Não foi possível mostrar a tela de erro"}
+crashWatchFailed: {value: "Não foi possível iniciar o monitoramento de falhas"}
+datastoreInitFailed: {value: "Não foi possível inicializar o armazenamento de dados"}
+datastoreReady: {value: "Armazenamento de dados pronto"}
+loadingConfig: {value: "Carregando a configuração"}
+loggerInitFailed: {value: "Não foi possível configurar o sistema de registro"}
+reinitLogger: {value: "Reconfigurando o registro com base nas configurações carregadas"}
+runFailed: {value: "Falha na execução do aplicativo"}
+secondInstance: {value: "Uma segunda instância foi iniciada. A janela existente passa para o primeiro plano"}
+trayIconFailed: {value: "Não foi possível carregar o ícone da área de notificação"}
+updateCheckFailed: {value: "Não foi possível verificar se há atualizações", description: "Update check or stored release-note state failed; logged without a dialog."}
+windowStateLoadFailed: {value: "Não foi possível carregar o estado da janela"}
+windowStateSaveFailed: {value: "Não foi possível salvar o estado da janela"}
+
+# Audio devices and calibration
+audioDeviceEnumFailed: {value: "Não foi possível enumerar os dispositivos de captura"}
+audioDeviceGone: {value: "O dispositivo de captura selecionado não está mais disponível"}
+audioDevicesListed: {value: "Dispositivos de captura enumerados"}
+audioDialogFailed: {value: "Falha na janela de seleção de arquivos"}
+audioDialogUnavailable: {value: "A seleção de arquivo foi solicitada sem que o aplicativo estivesse em execução"}
+audioFileUnreadable: {value: "Não foi possível abrir a gravação"}
+audioNoDevices: {value: "Nenhum dispositivo de captura disponível"}
+audioSourceSelected: {value: "Fonte de entrada selecionada"}
+audioSpeakerUnavailable: {value: "Sem dispositivo de saída, o arquivo será reproduzido sem som"}
+calibrationAbandoned: {value: "Calibração da placa de som abandonada"}
+calibrationFinished: {value: "Calibração da placa de som concluída"}
+calibrationNoDevice: {value: "Não foi possível abrir o dispositivo para calibrar a placa de som"}
+calibrationStarted: {value: "Calibração da placa de som iniciada"}
+deviceStoreFailed: {value: "Não foi possível salvar as configurações do dispositivo de captura"}
+micBlocksDropped: {value: "O componente que recebe o áudio do microfone travou, alguns blocos estão sendo descartados"}
+micDeviceLost: {value: "O dispositivo de captura parou inesperadamente"}
+volumeRestore: {value: "O controle automático de volume não conseguiu restaurar o nível de entrada"}
+volumeStepFailed: {value: "O controle automático de volume não conseguiu ajustar o nível de entrada"}
+volumeUnavailable: {value: "O controle automático de volume não tem acesso ao nível de entrada do dispositivo"}
+
+# Tuner engine
+tunerEventsDropped: {value: "Eventos de medição descartados devido ao atraso da interface"}
+tunerRunFailed: {value: "O motor de medição parou com um erro"}
+tunerSettingRejected: {value: "Configuração fora dos limites rejeitada"}
+tunerStartFailed: {value: "Não foi possível criar a fonte de entrada"}
+tunerStarted: {value: "Motor de medição iniciado"}
+tunerStopped: {value: "Motor de medição parado"}
+tunerTonePlayFailed: {value: "Não foi possível reproduzir o som de referência"}
+tunerTonePlaying: {value: "Reproduzindo o som de referência"}
+
+# Sessions, readings and reports
+recordCleared: {value: "Passagem apagada"}
+recordEdited: {value: "Tomada editada manualmente"}
+recordRejected: {value: "Solicitação de gravação rejeitada"}
+recordTake: {value: "Medição registrada"}
+recordUndone: {value: "Última tomada desfeita"}
+reportFailed: {value: "Não foi possível escrever o relatório de afinação"}
+reportOpenFailed: {value: "Não foi possível abrir o relatório de afinação"}
+reportOpened: {value: "Relatório de afinação enviado para o navegador"}
+reportRejected: {value: "Solicitação de relatório rejeitada"}
+reportWritten: {value: "Relatório de afinação salvo"}
+sessionClosed: {value: "Sessão fechada"}
+sessionCreated: {value: "Sessão criada"}
+sessionCurveDropped: {value: "Curva-alvo removida"}
+sessionCurveFitted: {value: "Curva-alvo ajustada às medições de uma passagem"}
+sessionCurveImported: {value: "Curva-alvo importada"}
+sessionDeleted: {value: "Sessão excluída"}
+sessionLoadFailed: {value: "Não foi possível carregar a sessão"}
+sessionOpened: {value: "Sessão aberta"}
+sessionReedsClamped: {value: "O instrumento faz soar mais palhetas do que o motor consegue distinguir. O motor aplica o seu limite."}
+sessionRejected: {value: "Alteração inválida da sessão rejeitada"}
+sessionSaveFailed: {value: "Não foi possível salvar a sessão"}
+
+# Frontend diagnostics
+frontendAudioCalibrationCancelFailed: {value: "Não foi possível cancelar a calibração"}
+frontendAudioCalibrationFailed: {value: "Não foi possível iniciar a calibração"}
+frontendAudioCorrectionFailed: {value: "Não foi possível ler a correção da placa de som"}
+frontendAudioDialogFailed: {value: "Não foi possível abrir a janela de seleção de arquivos"}
+frontendAudioListFailed: {value: "Não foi possível listar os dispositivos de áudio"}
+frontendAudioSelectFailed: {value: "Não foi possível selecionar a fonte de áudio"}
+frontendAudioStateFailed: {value: "Não foi possível ler o estado do dispositivo de áudio"}
+frontendAudioVolumeFailed: {value: "Não foi possível alterar o controle automático de volume"}
+frontendConfigLoadFailed: {value: "Não foi possível carregar a configuração"}
+frontendConfigLoaded: {value: "Configuração carregada"}
+frontendConfigSaveFailed: {value: "Não foi possível salvar a configuração"}
+frontendCurveViewFailed: {value: "Não foi possível ler as configurações de exibição da curva"}
+frontendError: {value: "Erro inesperado do aplicativo"}
+frontendRejection: {value: "Falha em uma operação do aplicativo"}
+frontendResizeNotice: {value: "Alteração do layout adiada para o próximo quadro (aviso do ResizeObserver do navegador)"}
+frontendSettingFailed: {value: "Não foi possível alterar a configuração do afinador"}
+frontendTunerStartFailed: {value: "Não foi possível iniciar o afinador"}
+frontendTunerStateFailed: {value: "Não foi possível ler o estado do afinador"}
+frontendTunerStopFailed: {value: "Não foi possível parar o afinador"}
+frontendTunerTonePlayFailed: {value: "Não foi possível reproduzir o som de referência"}
+frontendTunerToneStopFailed: {value: "Não foi possível parar o som de referência"}

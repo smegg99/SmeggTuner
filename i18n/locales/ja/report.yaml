@@ -1,0 +1,149 @@
+# Printed reports and export (ja).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Report title and instrument details
+facts.curve: {value: "目標曲線"}
+facts.curveNone: {value: "なし"}
+facts.curveUnnamed: {value: "名称未設定"}
+facts.reference: {value: "基準音 A4（今回の測定）"}
+facts.tolerance: {value: "許容差"}
+
+facts.toleranceValue:
+  value: "リード {reed} {unit}／うなり {beat} {unit}"
+  placeholders:
+    beat: {type: string}
+    reed: {type: string}
+    unit: {type: string}
+
+facts.transpose: {value: "移調"}
+
+facts.transposeValue:
+  value: "{key} の実音は {sounds}"
+  placeholders:
+    key: {type: string}
+    sounds: {type: string}
+
+title: {value: "調律レポート"}
+
+# Table and column headings
+head.beat:
+  value: "うなり {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.bassTitle:
+  value: "ベース調律表（{unit}）"
+  placeholders:
+    unit: {type: string}
+
+table.curr: {value: "実測"}
+table.err: {value: "誤差"}
+table.register: {value: "レジスター"}
+
+table.title:
+  value: "調律表（{unit}）"
+  placeholders:
+    unit: {type: string}
+
+# Deviation units
+unit.cents.name: {value: "セント"}
+unit.cents.symbol: {value: "c"}
+unit.reference.name: {value: "0.06 % を 1 単位とする値"}
+
+# Graph legend and reading markers
+graph.edited:
+  value: "{mark} は手入力で編集した値です。"
+  placeholders:
+    mark: {type: string}
+
+legend.error.cents:
+  value: "誤差がゼロに近づくようにリードを削ります。値は A4 = {a4} Hz の平均律からの偏差をセントで示します。"
+  placeholders:
+    a4: {type: string}
+
+legend.error.key: {value: "誤差 = 実測値 − 目標値。"}
+legend.error.noCurve: {value: "目標曲線がない場合、目標値はゼロで、音階の音高からの偏差がそのまま誤差になります。"}
+
+legend.error.reference:
+  value: "誤差がゼロに近づくようにリードを削ります。A4 = {a4} Hz の平均律を基準とし、各音の周波数の 0.06 % を 1 単位とします。"
+  placeholders:
+    a4: {type: string}
+
+legend.out.short: {value: "許容範囲外"}
+legend.takes.key: {value: "xN"}
+legend.takes.short: {value: "複数回記録したうちの最新値"}
+mark.edited: {value: "H"}
+mark.out: {value: "!"}
+
+# Summary and footer
+footer.generated:
+  value: "{app} で作成（{at}）"
+  placeholders:
+    app: {type: string}
+    at: {type: string}
+
+summary.allIn: {value: "すべて許容範囲内です。"}
+
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      other: "うなり {pluralCount} 組"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.line:
+  value: "{notes}（{min}～{max}）、{reeds}、{beats}。"
+  placeholders:
+    beats: {type: string}
+    max: {type: string}
+    min: {type: string}
+    notes: {type: string}
+    reeds: {type: string}
+
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      other: "{pluralCount} 音"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      other: "許容範囲外 {pluralCount} 件（{reeds}、{beats}）。"
+  placeholders:
+    beats: {type: string}
+    pluralCount: {type: integer}
+    reeds: {type: string}
+
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      other: "リード測定値 {pluralCount} 件"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      other: "リード {pluralCount} 枚"
+  placeholders:
+    pluralCount: {type: integer}
+
+# Export errors
+error.invalidDate: {value: "有効な日付を YYYY-MM-DD 形式で入力してください。"}
+error.invalidFormat: {value: "この形式ではレポートを書き出せません。"}
+
+error.noBrowser:
+  value: "PDF の組版に使う Chrome または Chromium が見つかりません。どちらかをインストールするか、カードを HTML に書き出して印刷してください。"
+error.openFailed: {value: "レポートは保存されましたが、ブラウザーで開けませんでした。ファイルを直接開いてください。"}
+error.renderFailed: {value: "レポートを作成できませんでした。ファイルへの書き込みはありません。"}
+
+error.writeFailed:
+  value: "ここにはレポートを保存できません。既存のファイルがあれば元のままです。"

@@ -1,0 +1,89 @@
+"appStarting": {value: "SmeggTuneri käivitamine"}
+"cleaningUp": {value: "Ressursside vabastamine"}
+"configLoadFailed": {value: "Seadistuse laadimine ebaõnnestus"}
+"configLoaded": {value: "Seadistus laaditud"}
+"configSaveFailed": {value: "Seadistuse salvestamine ebaõnnestus"}
+"crashScreenFailed": {value: "Veakuva näitamine ebaõnnestus"}
+"crashWatchFailed": {value: "Krahhijälgija käivitamine ebaõnnestus"}
+"datastoreInitFailed": {value: "Andmehoidla lähtestamine ebaõnnestus"}
+"datastoreReady": {value: "Andmehoidla on valmis"}
+"loadingConfig": {value: "Seadistuse laadimine"}
+"loggerInitFailed": {value: "Logija seadistamine ebaõnnestus"}
+"reinitLogger": {value: "Logija ümberseadistamine seadistuse alusel"}
+"runFailed": {value: "Rakenduse käitamine ebaõnnestus"}
+"secondInstance": {value: "Käivitati teine eksemplar, aktiveeritakse olemasolev aken"}
+"trayIconFailed": {value: "Süsteemisalve ikooni laadimine ebaõnnestus"}
+"updateCheckFailed":
+  value: "Uuenduste kontroll ebaõnnestus"
+  description: "Update check or stored release-note state failed; logged without a dialog."
+"windowStateLoadFailed": {value: "Akna oleku laadimine ebaõnnestus"}
+"windowStateSaveFailed": {value: "Akna oleku salvestamine ebaõnnestus"}
+"audioDeviceEnumFailed": {value: "Salvestusseadmete loetlemine ebaõnnestus"}
+"audioDeviceGone": {value: "Valitud salvestusseade pole enam saadaval"}
+"audioDevicesListed": {value: "Salvestusseadmed loetletud"}
+"audioDialogFailed": {value: "Failidialoog ebaõnnestus"}
+"audioDialogUnavailable": {value: "Failidialoogi taotleti töötava rakenduseta"}
+"audioFileUnreadable": {value: "Salvestist ei saanud avada"}
+"audioNoDevices": {value: "Salvestusseadmeid pole saadaval"}
+"audioSourceSelected": {value: "Sisendallikas valitud"}
+"audioSpeakerUnavailable": {value: "Väljundseadet pole, faili taasesitus on hääletu"}
+"calibrationAbandoned": {value: "Helikaardi kalibreerimine katkestati"}
+"calibrationFinished": {value: "Helikaardi kalibreerimine lõpetatud"}
+"calibrationNoDevice": {value: "Helikaardi kalibreerimine ei saanud seadet avada"}
+"calibrationStarted": {value: "Helikaardi kalibreerimine alustatud"}
+"deviceStoreFailed": {value: "Salvestusseadme seadete salvestamine ebaõnnestus"}
+"micBlocksDropped": {value: "Mikrofoniandmete tarbija takerdus, andmeplokid jäetakse vahele"}
+"micDeviceLost": {value: "Salvestusseade peatus ootamatult"}
+"volumeRestore": {value: "Automaatne helitugevus ei suutnud sisendtaset taastada"}
+"volumeStepFailed": {value: "Automaatne helitugevus ei suutnud sisendtaset määrata"}
+"volumeUnavailable": {value: "Automaatne helitugevus ei pääse seadme sisendtaseme juhtelemendile ligi"}
+"tunerEventsDropped": {value: "Mõõtesündmused jäeti vahele, kasutajaliides ei jõua järele"}
+"tunerRunFailed": {value: "Mõõtemootor peatus veaga"}
+"tunerSettingRejected": {value: "Vahemikust väljas seade lükati tagasi"}
+"tunerStartFailed": {value: "Sisendallika loomine ebaõnnestus"}
+"tunerStarted": {value: "Mõõtemootor käivitati"}
+"tunerStopped": {value: "Mõõtemootor peatati"}
+"tunerTonePlayFailed": {value: "Võrdlustooni taasesitus ebaõnnestus"}
+"tunerTonePlaying": {value: "Võrdlustooni esitamine"}
+"recordCleared": {value: "Mõõtevoor tühjendatud"}
+"recordEdited": {value: "Mõõtevõtet muudeti käsitsi"}
+"recordRejected": {value: "Salvestustaotlus lükati tagasi"}
+"recordTake": {value: "Mõõtevõte salvestatud"}
+"recordUndone": {value: "Viimane mõõtevõte tagasi võetud"}
+"reportFailed": {value: "Häälestusaruande kirjutamine ebaõnnestus"}
+"reportOpenFailed": {value: "Häälestusaruande avamine ebaõnnestus"}
+"reportOpened": {value: "Häälestusaruanne edastati brauserile"}
+"reportRejected": {value: "Aruandetaotlus lükati tagasi"}
+"reportWritten": {value: "Häälestusaruanne kirjutatud"}
+"sessionClosed": {value: "Seanss suletud"}
+"sessionCreated": {value: "Seanss loodud"}
+"sessionCurveDropped": {value: "Sihtkõver eemaldatud"}
+"sessionCurveFitted": {value: "Sihtkõver sobitatud mõõtevooru alusel"}
+"sessionCurveImported": {value: "Sihtkõver imporditud"}
+"sessionDeleted": {value: "Seanss kustutatud"}
+"sessionLoadFailed": {value: "Seansi laadimine ebaõnnestus"}
+"sessionOpened": {value: "Seanss avatud"}
+"sessionReedsClamped": {value: "Pillil kõlab rohkem keeli, kui mootor eristab; mootori keelte arvu piiratakse"}
+"sessionRejected": {value: "Vigane seansimuudatus lükati tagasi"}
+"sessionSaveFailed": {value: "Seansi salvestamine ebaõnnestus"}
+"frontendAudioCalibrationCancelFailed": {value: "Kalibreerimist ei saanud tühistada"}
+"frontendAudioCalibrationFailed": {value: "Kalibreerimist ei saanud alustada"}
+"frontendAudioCorrectionFailed": {value: "Helikaardi parandust ei saanud lugeda"}
+"frontendAudioDialogFailed": {value: "Failidialoogi ei saanud avada"}
+"frontendAudioListFailed": {value: "Heliseadmeid ei saanud loetleda"}
+"frontendAudioSelectFailed": {value: "Heliallikat ei saanud valida"}
+"frontendAudioStateFailed": {value: "Heliseadme olekut ei saanud lugeda"}
+"frontendAudioVolumeFailed": {value: "Automaatset helitugevuse juhtimist ei saanud muuta"}
+"frontendConfigLoadFailed": {value: "Seadistust ei saanud laadida"}
+"frontendConfigLoaded": {value: "Seadistus laaditud"}
+"frontendConfigSaveFailed": {value: "Seadistust ei saanud salvestada"}
+"frontendCurveViewFailed": {value: "Kõveravaate seadeid ei saanud lugeda"}
+"frontendError": {value: "Ootamatu rakenduse viga"}
+"frontendRejection": {value: "Rakenduse toiming ebaõnnestus"}
+"frontendResizeNotice": {value: "Paigutuse muudatus lükati järgmisse kaadrisse (brauseri ResizeObserveri teade)"}
+"frontendSettingFailed": {value: "Häälestaja seadet ei saanud muuta"}
+"frontendTunerStartFailed": {value: "Häälestajat ei saanud käivitada"}
+"frontendTunerStateFailed": {value: "Häälestaja olekut ei saanud lugeda"}
+"frontendTunerStopFailed": {value: "Häälestajat ei saanud peatada"}
+"frontendTunerTonePlayFailed": {value: "Võrdlustooni ei saanud esitada"}
+"frontendTunerToneStopFailed": {value: "Võrdlustooni ei saanud peatada"}

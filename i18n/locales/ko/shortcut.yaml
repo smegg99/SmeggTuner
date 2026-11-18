@@ -1,0 +1,7 @@
+# Keyboard labels (ko).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Keyboard keycaps and alternatives
+key.minus: {value: "-"}
+key.plus: {value: "+"}

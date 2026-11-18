@@ -1,0 +1,303 @@
+# Live tuner, WAV playback and browser edition (es).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one, other (locale cardinal rules).
+
+# Input, output and playback
+input.relearnHint: {value: "Volver a medir el ruido de fondo (4 s de silencio)"}
+input.tooStrong: {value: "Señal demasiado fuerte"}
+input.unreliable: {value: "Señal poco fiable"}
+inputPanel.label: {value: "Señal de entrada"}
+inputPanel.title: {value: "Entrada"}
+level.silent: {value: "silencio"}
+output.mute: {value: "Silenciar"}
+output.unmute: {value: "Activar sonido"}
+output.volume: {value: "Volumen de salida"}
+soundcard.running: {value: "Calibrando la tarjeta de sonido"}
+soundcard.uncalibrated: {value: "Tarjeta de sonido sin calibrar. Calibrar"}
+soundcard.unreliable: {value: "Calibración poco fiable. Volver a calibrar"}
+source.analyze: {value: "Analizar grabación…"}
+source.default: {value: "Predeterminado del sistema"}
+source.noDevices: {value: "No se encontraron micrófonos"}
+source.refresh: {value: "Actualizar la lista de dispositivos"}
+transport.fileHint: {value: "Reproduce la grabación desde su propio panel"}
+transport.start: {value: "Iniciar"}
+transport.stop: {value: "Detener"}
+
+# Modes, registers and note selection
+bassRegister.all: {value: "Mecanismo completo"}
+bassRegister.hint: {value: "Registro de bajos activado"}
+controls: {value: "Controles de afinación"}
+mode.auto: {value: "Auto"}
+mode.autoHint: {value: "Dejar que el afinador detecte la nota"}
+mode.pinHint: {value: "Fijar esta nota"}
+mode.pinned: {value: "Nota fijada"}
+notes.clickToPin: {value: "haz clic para fijar"}
+notes.label: {value: "Notas de mi0 a do9. Haz clic en una para fijarla."}
+notes.range: {value: "De mi0 a do9"}
+notes.title: {value: "Notas"}
+notes.tracking: {value: "seguimiento"}
+panel.boxBase: {value: "La nota base siempre se mide"}
+panel.boxChord: {value: "En el modo Acordes se miden los tres sonidos"}
+panel.boxLast: {value: "Al menos una casilla debe quedar activa"}
+
+panel.boxOctave:
+  plural:
+    argument: octaves
+    forms:
+      one: "Casilla {box}: {octaves} octava por encima de la base"
+      other: "Casilla {box}: {octaves} octavas por encima de la base"
+  placeholders:
+    octaves: {type: integer}
+    box: {type: string}
+
+panel.boxReed:
+  value: "Lengüeta {n}: activar o desactivar su medición"
+  placeholders:
+    n: {type: string}
+
+panel.bySession:
+  plural:
+    argument: n
+    forms:
+      one: "{n} lengüeta, según el registro de la sesión"
+      other: "{n} lengüetas, según el registro de la sesión"
+  placeholders:
+    n: {type: integer}
+
+panel.locked: {value: "Estable"}
+panel.modeHints.chords: {value: "Acordes de tres notas"}
+panel.modeHints.octaves: {value: "Una nota con sus octavas superiores"}
+panel.modeHints.tones: {value: "Una nota, hasta tres lengüetas"}
+panel.modeLabel: {value: "Qué se mide"}
+panel.modes.chords: {value: "Acordes"}
+panel.modes.octaves: {value: "Octavas"}
+panel.modes.tones: {value: "Sonidos"}
+panel.quiet: {value: "Demasiado bajo"}
+panel.recorded: {value: "Grabado"}
+panel.reeds: {value: "Lengüetas"}
+
+reeds.count:
+  plural:
+    argument: n
+    forms:
+      one: "{n} lengüeta"
+      other: "{n} lengüetas"
+  placeholders:
+    n: {type: integer}
+
+register.hint: {value: "Registro activado"}
+register.lockedPlaying: {value: "Detén la reproducción para cambiar de registro."}
+side.bass: {value: "Bajos"}
+side.hint: {value: "Lado de los agudos o de los bajos"}
+side.treble: {value: "Agudos"}
+step.noteDown: {value: "Bajar un semitono"}
+step.noteUp: {value: "Subir un semitono"}
+# Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
+signal.add: {value: "Añadir un sonido"}
+signal.cents: {value: "Desviación respecto a la nota en cents"}
+signal.down: {value: "Bajar un semitono (flecha izquierda, flecha abajo para una octava)"}
+signal.open: {value: "Generador de señal: emite una nota limpia de referencia para afinar una lengüeta"}
+signal.play: {value: "Reproducir"}
+signal.playHint: {value: "Reproduce la nota con todos los sonidos o, si aún no hay ninguna nota, usa la primera que se oiga (Espacio)"}
+signal.remove: {value: "Quitar este sonido"}
+signal.stop: {value: "Detener"}
+signal.stopHint: {value: "Detener el sonido (Espacio)"}
+signal.title: {value: "Generador de señal"}
+signal.up: {value: "Subir un semitono (flecha derecha, flecha arriba para una octava)"}
+signal.wave.hint: {value: "El sonido de una lengüeta contiene armónicos, en los que también se oyen batidos."}
+signal.wave.reed: {value: "Lengüeta"}
+signal.wave.sine: {value: "Sinusoidal"}
+
+# Reference pitch and units
+reference.a4Locked: {value: "Bloqueado en los ajustes"}
+reference.a4Type: {value: "Introduce la frecuencia del la4 en hercios, entre 430 y 450"}
+reference.frozen: {value: "Valor fijo: la sesión ya contiene mediciones"}
+reference.transpose: {value: "Transponer"}
+reference.transposeDown: {value: "Un semitono menos"}
+reference.transposeHint: {value: "Semitonos que suenan las teclas por encima de su nota nominal"}
+reference.transposeMode: {value: "Los acordes y las octavas se miden sin transposición"}
+reference.transposeUp: {value: "Un semitono más"}
+
+reference.transposed:
+  value: "Transposición +{n}"
+  placeholders:
+    n: {type: string}
+
+unit.cents: {value: "Cent"}
+unit.hz: {value: "Hz"}
+unit.reference: {value: "Unidades"}
+
+# Live readings and graphs
+boxes.beat:
+  value: "Batido entre {a} y {b}"
+  placeholders:
+    a: {type: string}
+    b: {type: string}
+
+boxes.goal: {value: "objetivo"}
+boxes.hzOnly: {value: "solo en Hz"}
+boxes.notHeard: {value: "no detectada"}
+
+boxes.reed:
+  value: "Lengüeta {n}"
+  placeholders:
+    n: {type: string}
+
+boxes.reedBank:
+  value: "Lengüeta {bank}"
+  placeholders:
+    bank: {type: string}
+
+boxes.tone:
+  value: "Sonido {n}"
+  placeholders:
+    n: {type: string}
+
+ruler.label: {value: "Desviación de cada lengüeta"}
+spectrum.label: {value: "Espectro de frecuencias de la nota detectada"}
+spectrum.title: {value: "Espectro"}
+
+# Hold, noise learning and tuner state
+hold.hint: {value: "Retener las mediciones estables (H)"}
+state.deviceLost: {value: "Se perdió la entrada"}
+state.initializing: {value: "Midiendo el ruido ambiente"}
+state.running: {value: "Escuchando"}
+state.stopped: {value: "Detenido"}
+state.tooQuiet: {value: "Señal demasiado débil. Toca más fuerte o acércate al micrófono"}
+warmup.quiet: {value: "Guarda silencio"}
+
+# WAV files and waveform controls
+file.clearSelection: {value: "Seleccionar toda la grabación"}
+file.fit: {value: "Mostrar toda la grabación"}
+file.loop: {value: "Repetir la selección en bucle"}
+file.mute: {value: "Silenciar la grabación"}
+file.openFilter: {value: "Audio WAV"}
+file.openTitle: {value: "Seleccionar una grabación WAV"}
+file.pause: {value: "Pausa"}
+file.play: {value: "Reproducir"}
+file.stop: {value: "Detener y volver al inicio de la selección"}
+file.toEnd: {value: "Ir al final de la selección"}
+file.toStart: {value: "Ir al inicio de la selección"}
+file.unmute: {value: "Reproducir la grabación con sonido"}
+file.volume: {value: "Volumen de reproducción"}
+
+file.waveform:
+  value: "Forma de onda de {name}. Arrastra sobre la línea de tiempo para mover el cursor de reproducción o sobre el trazado para seleccionar un fragmento. Al detener la reproducción, una línea discontinua clara marca el audio del que procede la medición en pantalla."
+  placeholders:
+    name: {type: string}
+
+file.zoomIn: {value: "Acercar"}
+file.zoomOut: {value: "Alejar"}
+
+# Instrument calibration workflow
+calibrate.leave: {value: "Salir de la calibración"}
+calibrate.needsSession: {value: "Abre una sesión para calibrar su instrumento."}
+calibrate.range.again: {value: "Volver a empezar"}
+
+calibrate.range.backwards:
+  value: "La nota más aguda no puede ser más grave que la más baja. Vuelve a medir la extensión."
+
+calibrate.range.capture: {value: "Capturar"}
+calibrate.range.highest: {value: "Más aguda"}
+calibrate.range.lowest: {value: "Más grave"}
+calibrate.range.next: {value: "Continuar con la calibración de las lengüetas"}
+calibrate.range.playHigh: {value: "Ahora toca la tecla más aguda."}
+calibrate.range.playLow: {value: "Toca la tecla más grave."}
+calibrate.range.step: {value: "Teclado"}
+calibrate.status.captured: {value: "Capturada"}
+calibrate.status.holding: {value: "Mantén la nota estable"}
+calibrate.status.loud: {value: "Demasiado fuerte"}
+calibrate.status.play: {value: "Toca una nota"}
+calibrate.sweep.bassAll: {value: "Bajos - mecanismo completo"}
+
+calibrate.sweep.done:
+  plural:
+    argument: n
+    forms:
+      one: "Barrido terminado. {n} medición en la ficha."
+      other: "Barrido terminado. {n} mediciones en la ficha."
+  placeholders:
+    n: {type: integer}
+
+calibrate.sweep.noRegisters:
+  value: "Este acordeón no tiene registros definidos. El barrido funciona igualmente y las mediciones aparecen en columnas numeradas."
+calibrate.sweep.pickRegister: {value: "¿Qué registro estás calibrando?"}
+
+calibrate.sweep.progress:
+  value: "{done} de {total}"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+calibrate.sweep.redoRange: {value: "Volver a medir el teclado"}
+calibrate.sweep.review: {value: "Ver la ficha"}
+calibrate.sweep.skip: {value: "Omitir"}
+
+calibrate.sweep.soloTeaches:
+  value: "Al recorrer un registro de una sola voz, la aplicación también aprende el sonido de esa voz."
+
+calibrate.sweep.startPlain: {value: "Iniciar el barrido"}
+calibrate.sweep.step: {value: "Lengüetas"}
+calibrate.sweep.stop: {value: "Detener"}
+calibrate.title: {value: "Calibrar"}
+
+# Browser edition
+web.accent.default: {value: "Predeterminado"}
+web.accent.hint: {value: "Color de la aplicación o uno de tu elección"}
+web.diagnostics.copied: {value: "Copiado"}
+web.diagnostics.copy: {value: "Copiar el diagnóstico"}
+web.diagnostics.empty: {value: "Inicia el afinador para ver los detalles del micrófono."}
+web.diagnostics.title: {value: "Diagnóstico"}
+web.downloads.title: {value: "Descargar la aplicación"}
+web.experimental: {value: "Experimental"}
+web.loadFailed: {value: "No se pudo iniciar el motor de medición en este navegador."}
+
+web.mic.denied:
+  value: "Se ha denegado el acceso al micrófono. Permítelo en los ajustes del navegador y vuelve a iniciar el afinador."
+
+web.mic.failed: {value: "No se pudo abrir el micrófono."}
+web.mic.none: {value: "No se encontró ningún micrófono."}
+web.mic.unsupported: {value: "Este navegador no puede grabar audio."}
+web.notice.background: {value: "El navegador puede pausar el audio de una pestaña en segundo plano."}
+web.notice.native: {value: "La aplicación instalada ofrece mayor precisión."}
+web.notice.ok: {value: "Entendido"}
+
+web.notice.processing:
+  value: "El navegador puede aplicar al micrófono cancelación de eco, supresión de ruido, ganancia automática o remuestreo. Cualquiera de estos procesos puede alterar las mediciones."
+web.notice.title: {value: "Versión web experimental"}
+web.processing.autoGainControl: {value: "ganancia automática"}
+web.processing.echoCancellation: {value: "cancelación de eco"}
+web.processing.noiseSuppression: {value: "supresión de ruido"}
+
+web.processingOn:
+  value: "El navegador ha mantenido activos estos procesos: {list}. Las mediciones pueden ser imprecisas."
+  placeholders:
+    list: {type: string}
+
+web.slow:
+  value: "El dispositivo no sigue el ritmo del motor. Se descarta el audio que llega tarde para mantener las mediciones al día."
+
+# Tuner errors
+error.a4Locked: {value: "El diapasón está bloqueado en los ajustes."}
+error.chordsAuto: {value: "El modo Acordes selecciona las notas automáticamente."}
+error.deviceGone: {value: "Ese micrófono ya no está conectado."}
+error.deviceLost: {value: "El micrófono dejó de responder y se detuvo el afinador."}
+error.fileUnreadable: {value: "No se pudo leer esa grabación. Debe ser un archivo WAV."}
+error.invalidA4: {value: "La frecuencia de referencia debe estar entre 430 y 450 Hz."}
+error.invalidBox: {value: "Esa casilla de lengüeta no existe."}
+error.invalidMode: {value: "El afinador mide sonidos, octavas o acordes."}
+error.invalidNote: {value: "Esa nota está fuera del intervalo que detecta el afinador."}
+error.invalidTranspose: {value: "La transposición va de 0 a 11 semitonos."}
+error.lastBox: {value: "Al menos una casilla debe quedar activa."}
+error.noDevices: {value: "No se encontró ningún micrófono. Conecta uno y actualiza la lista de dispositivos."}
+error.playbackFailed: {value: "No se pudo reproducir el sonido de referencia."}
+
+error.sampleRate:
+  value: "La frecuencia de muestreo de la entrada es demasiado baja para las notas más agudas con este diapasón y esta transposición. Usa una grabación de al menos 44,1 kHz."
+error.sessionDecides: {value: "El registro de la sesión abierta determina qué se mide."}
+error.signalVoices:
+  value: "Reproduce entre uno y cuatro sonidos, cada uno a un máximo de 100 cents de la nota."
+error.toneNeedsManual: {value: "Fija una nota para reproducir su sonido."}
+error.transposeMode: {value: "Los acordes y las octavas se miden sin transposición."}
+error.unexpected: {value: "Se produjo un error. Consulta el registro para más detalles."}

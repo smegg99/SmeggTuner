@@ -1,0 +1,67 @@
+# Recording controls and readings (th).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Recording controls
+arm.hint: {value: "บันทึกค่าทุกครั้งที่จับโน้ตได้ (กด Enter เพื่อบันทึกทันที)"}
+arm.needsSession: {value: "เปิดเซสชันเพื่อบันทึกค่า"}
+arm.warmup: {value: "ยังไม่ได้บันทึก เล่นได้ตามสบายโดยไม่มีการเก็บค่า กดเพื่อเริ่มบันทึก"}
+undo.hint: {value: "เลิกทำการบันทึกครั้งล่าสุด"}
+
+# Readings table and compact columns
+mobile.current: {value: "ค่าที่วัดได้"}
+mobile.error: {value: "ค่าคลาดเคลื่อน"}
+
+table.beat:
+  value: "บีต {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.delete: {value: "ลบค่าที่วัดได้นี้"}
+table.deleteHint: {value: "ลบค่านี้อย่างถาวร หากต้องการค่าใหม่ ให้เล่นโน้ตเดิมแล้วบันทึกอีกครั้ง"}
+table.deleteTitle: {value: "ลบค่าที่วัดได้นี้หรือไม่"}
+table.editHint: {value: "คลิกหรือกด Enter เพื่อแก้ไขค่า"}
+table.empty: {value: "เริ่มบันทึกแล้วเล่นโน้ตเพื่อเก็บค่าที่วัดได้"}
+table.graph: {value: "กราฟ"}
+
+table.graphHint:
+  value: "เปรียบเทียบลิ้นเสียงแต่ละลิ้นกับค่าเป้าหมาย คลิกคอลัมน์เพื่อเลือกแถวนั้น คลิกอีกครั้งเพื่อเลือกรีจิสเตอร์ถัดไป"
+table.graphLabel: {value: "ความคลาดเคลื่อนของลิ้นเสียงในแต่ละโน้ตที่บันทึก"}
+table.helpTitle: {value: "เกี่ยวกับตารางนี้"}
+table.label: {value: "บันทึกการตั้งเสียง"}
+table.latest: {value: "ค่าที่บันทึกล่าสุด: กด Backspace เพื่อลบ"}
+table.manual: {value: "แก้ไขแล้ว"}
+table.manualHint: {value: "แถวนี้มีค่าที่ป้อนเองแทนการวัดจากเสียง"}
+
+table.notes:
+  plural:
+    argument: count
+    forms:
+      other: "{count} โน้ต"
+  placeholders:
+    count: {type: integer}
+
+table.unitHint:
+  value: "ค่าคลาดเคลื่อนของลิ้นเสียงใช้หน่วยที่เลือกในการตั้งค่า ส่วนบีตใช้เฮิรตซ์หรือหน่วยค่าคลาดเคลื่อนตามที่เลือกในแถบเครื่องมือ"
+# Report export dialog
+report.csv: {value: "CSV"}
+report.date: {value: "วันที่"}
+report.format: {value: "รูปแบบ"}
+
+report.formatHint:
+  value: "PDF จัดบัตรตั้งเสียงให้พอดีกระดาษ A4 หนึ่งหน้าตามรูปแบบที่พิมพ์ ส่วน HTML แสดงบัตรเดียวกันเป็นหน้าเว็บ และ CSV เก็บตารางสำหรับโปรแกรมตารางคำนวณ"
+report.html: {value: "HTML"}
+report.notes: {value: "หมายเหตุบนบัตร"}
+report.notesHint: {value: "พิมพ์ใต้ตาราง ใช้ระบุงานที่ทำแล้วหรืองานที่ยังต้องทำ"}
+
+report.pass:
+  value: "รอบการวัด: {label}"
+  placeholders:
+    label: {type: string}
+
+report.pdf: {value: "PDF"}
+report.title: {value: "บัตรตั้งเสียง"}
+
+# Recording errors
+error.takeNotFound: {value: "ไม่มีบันทึกนี้ในรอบการวัดแล้ว"}
+error.unexpected: {value: "ดำเนินการไม่สำเร็จ ดูรายละเอียดในบันทึกเหตุการณ์"}

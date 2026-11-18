@@ -1,0 +1,47 @@
+"arm.hint": {value: "Salvesta mõõtevõte iga lukustumise korral (Enter salvestab kohe ühe)"}
+"arm.needsSession": {value: "Salvestamiseks ava seanss"}
+"arm.warmup": {value: "Ei salvesta: mängi vabalt, midagi ei salvestata. Vajuta salvestamise alustamiseks."}
+"undo.hint": {value: "Võta viimane mõõtevõte tagasi"}
+"mobile.current": {value: "Mõõdetud"}
+"mobile.error": {value: "Kõrvalekalle"}
+"table.beat":
+  value: "Tuiklemine {pair}"
+  placeholders:
+    pair: {"type": "string"}
+"table.delete": {value: "Eemalda see näit"}
+"table.deleteHint": {value: "Eemalda see näit jäädavalt. Selle asendamiseks mängi nooti ja salvesta uuesti."}
+"table.deleteTitle": {value: "Kas eemaldada see näit?"}
+"table.editHint": {value: "Väärtuse muutmiseks klõpsa või vajuta Enter"}
+"table.empty": {value: "Alusta salvestamist ja mängi noote, et näidud salvestada."}
+"table.graph": {value: "Graafik"}
+"table.graphHint": {value: "Võrdle iga keelt selle sihtväärtusega. Klõpsa tulbal rea valimiseks; klõpsa uuesti järgmise registri valimiseks."}
+"table.graphLabel": {value: "Iga salvestatud noodi keelte vead"}
+"table.helpTitle": {value: "Teave selle tabeli kohta"}
+"table.label": {value: "Salvestatud häälestus"}
+"table.latest": {value: "Viimati salvestatud: Backspace eemaldab selle"}
+"table.manual": {value: "Muudetud"}
+"table.manualHint": {value: "Selle rea väärtus on sisestatud käsitsi, mitte mõõdetud helist."}
+"table.notes":
+  plural:
+    argument: count
+    forms:
+      one: "üks noot"
+      other: "{count} nooti"
+  placeholders:
+    count: {"type": "integer"}
+"table.unitHint": {value: "Keelte kõrvalekalded kasutavad seadetes valitud ühikut. Tuiklemine kasutab hertse või kõrvalekalde ühikut, olenevalt tööriistariba valikust."}
+"report.csv": {value: "CSV"}
+"report.date": {value: "Kuupäev"}
+"report.format": {value: "Vorming"}
+"report.formatHint": {value: "PDF esitab kaardi ühe A4-lehena täpselt nii, nagu see prinditakse. HTML on sama leht veebilehena. CSV on tabel arvutustabeli jaoks."}
+"report.html": {value: "HTML"}
+"report.notes": {value: "Märkus kaardile"}
+"report.notesHint": {value: "Prinditakse tabeli alla. Mis on tehtud või mida tuleb veel teha."}
+"report.pass":
+  value: "Mõõtevoor: {label}"
+  placeholders:
+    label: {"type": "string"}
+"report.pdf": {value: "PDF"}
+"report.title": {value: "Häälestuskaart"}
+"error.takeNotFound": {value: "Seda mõõtevõtet pole enam mõõtevoorus."}
+"error.unexpected": {value: "Toiming ebaõnnestus. Vaata üksikasju logist."}

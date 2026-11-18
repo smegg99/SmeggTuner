@@ -97,3 +97,8 @@ about.helpTitle: {value: "Help"}
 # System tray
 tray.quit: {value: "Quit"}
 tray.show: {value: "Show"}
+
+linkNewTab:
+  value: "{text} (opens in a new tab)"
+  placeholders:
+    text: {type: string}

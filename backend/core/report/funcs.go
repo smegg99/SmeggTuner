@@ -1,30 +1,36 @@
 package report
 
 import (
-	"fmt"
 	"html/template"
+	"math"
 	"strings"
 	"time"
+
+	"golang.org/x/text/language"
+	"golang.org/x/text/message"
+	"golang.org/x/text/number"
 
 	"smegg.me/smeggtuner/backend/common/i18n"
 )
 
 // Localization is read at call time so the template parses once; CSV is deliberately not localized (a decimal comma would break its columns).
 
-// decimal swaps the decimal point for a comma in pl locale, rather than reformatting.
-func decimal(s string) string {
-	if strings.HasPrefix(i18n.Current(), "pl") {
-		return strings.ReplaceAll(s, ".", ",")
+// Measurement columns keep their fixed precision and omit digit grouping.
+func decimal(v float64, places int, signed bool) string {
+	printer := message.NewPrinter(language.Make(i18n.Current()))
+	value := printer.Sprintf("%v", number.Decimal(v, number.NoSeparator(), number.Scale(places)))
+	if signed && !math.Signbit(v) {
+		return "+" + value
 	}
-	return s
+	return value
 }
 
 var funcs = template.FuncMap{
 	// dev prints a deviation in the sheet's unit and keeps its sign even for zero.
-	"dev":   func(v float64) string { return decimal(fmt.Sprintf("%+.1f", v)) },
-	"hz":    func(v float64) string { return decimal(fmt.Sprintf("%+.2f", v)) },
-	"freq":  func(v float64) string { return decimal(fmt.Sprintf("%.1f", v)) },
-	"tol":   func(v float64) string { return decimal(fmt.Sprintf("%.1f", v)) },
+	"dev":   func(v float64) string { return decimal(v, 1, true) },
+	"hz":    func(v float64) string { return decimal(v, 2, true) },
+	"freq":  func(v float64) string { return decimal(v, 1, false) },
+	"tol":   func(v float64) string { return decimal(v, 1, false) },
 	"date":  func(t time.Time) string { return t.Format("2006-01-02") },
 	"stamp": func(t time.Time) string { return t.Format("2006-01-02 15:04") },
 

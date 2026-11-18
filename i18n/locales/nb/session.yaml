@@ -1,0 +1,256 @@
+# Sessions, instruments and target curves (nb).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one = 1; other = 0, 2, 3, ...
+
+# Session list and actions
+card.a4:
+  value: "A = {hz} Hz"
+  placeholders:
+    hz: {type: string}
+
+card.changed: {value: "Instrumentet i biblioteket er endret siden denne økten ble registrert."}
+card.hasCurve: {value: "Målkurve angitt"}
+
+card.readings:
+  plural:
+    argument: count
+    forms:
+      one: "{count} måling"
+      other: "{count} målinger"
+  placeholders:
+    count: {type: integer}
+
+card.unnamedInstrument: {value: "Trekkspill uten navn"}
+
+card.updated:
+  value: "Oppdatert {when}"
+  placeholders:
+    when: {type: string}
+
+deleteHint: {value: "Slett økten permanent med alle målerunder, målinger og stemmekurven."}
+deleteTitle: {value: "Slette denne økten?"}
+empty: {value: "Ingen økter ennå"}
+emptyHint: {value: "Opprett en økt for å lagre målinger, eller bruk stemmeapparatet uten en økt."}
+export: {value: "Eksporter økt"}
+file.openFilter: {value: "smeggtuner-økt"}
+file.openTitle: {value: "Velg en øktfil"}
+new: {value: "Ny økt"}
+title: {value: "Økter"}
+
+# Session dialog and tabs
+dialog.backToList: {value: "Velg et tidligere stemt instrument"}
+dialog.describeNew: {value: "Beskriv et nytt instrument..."}
+dialog.forgetAccordion: {value: "Glem dette trekkspillet"}
+dialog.loadAccordion: {value: "Last fra fil..."}
+dialog.name: {value: "Øktnavn"}
+dialog.nameHint: {value: "Bruk instrumentets eller kundens navn for å kjenne igjen økten."}
+dialog.pickAccordion: {value: "Hvilket trekkspill?"}
+dialog.start: {value: "Start"}
+page.mobile.curve: {value: "Målverdier"}
+page.mobile.recorded: {value: "Målinger"}
+
+# Instrument editing restrictions
+accordion.a4Locked: {value: "Låst: Økten inneholder allerede målinger med denne innstillingen."}
+
+accordion.columnsRefused:
+  value: "Endringen ville endre stemmene som brukes i eksisterende målinger, og ble ikke lagret. Gjenopprett de tidligere stemmene eller opprett en ny økt."
+accordion.frozen:
+  value: "Når målinger er registrert, kan ikke kammertonen og stemmene endres. Du kan fortsatt legge til registre med de eksisterende stemmene."
+accordion.frozenShort: {value: "Stemmer låst"}
+accordion.remember: {value: "Lagre i instrumentbiblioteket"}
+accordion.rememberHint: {value: "Lagre øktens instrument i biblioteket til fremtidige økter."}
+
+# Instrument definition and registers
+instrument.a4: {value: "Kammertone"}
+
+instrument.a4Hint:
+  value: "Referansefrekvensen for A4 i hertz. Nye økter for instrumentet bruker denne verdien."
+
+instrument.bass.build: {value: "Fotlengder for neste registerknapp"}
+instrument.bass.fixed: {value: "Ingen bassregistre: fast bassmekanikk der alle stemmer alltid klinger."}
+
+instrument.bass.full:
+  value: "En bassmekanikk kan her ha høyst {n} registerknapper"
+  placeholders:
+    n: {type: string}
+
+instrument.bass.hint: {value: "Angi antall bassstemmer. De fleste bassmekanikker har fire eller fem."}
+instrument.bass.registerName: {value: "Registerknappens navn"}
+instrument.bass.voices: {value: "Bassstemmer"}
+instrument.beatTolerance: {value: "Toleranse for slag"}
+instrument.builder.add: {value: "Legg til"}
+instrument.builder.already: {value: "Registerknappen er allerede beskrevet"}
+instrument.builder.high: {value: "4' piccolo"}
+instrument.builder.low: {value: "16' bass"}
+instrument.builder.middle: {value: "8'-stemmer"}
+instrument.builder.none: {value: "Ingen registerknapper ennå. Velg nedenfor hvilke stemmer hver knapp aktiverer."}
+instrument.builder.remove: {value: "Fjern dette registeret"}
+instrument.builder.title: {value: "Legg til en registerknapp"}
+instrument.file.exportTitle: {value: "Eksporter trekkspill"}
+instrument.file.filterName: {value: "smeggtuner-trekkspill"}
+instrument.file.imageFilter: {value: "Bilder"}
+instrument.file.imageTitle: {value: "Velg et bilde"}
+instrument.file.openTitle: {value: "Velg en trekkspillfil"}
+instrument.name: {value: "Navn"}
+instrument.nameHint: {value: "Navn i instrumentbiblioteket og øktene."}
+instrument.namePlaceholder: {value: "Hohner Morino V N"}
+instrument.nameRequired: {value: "Skriv inn et navn på trekkspillet."}
+instrument.photo: {value: "Bilde"}
+instrument.range.backwards: {value: "Den høyeste tonen kan ikke være lavere enn den laveste."}
+instrument.range.clear: {value: "Tøm"}
+instrument.range.down: {value: "En halvtone ned"}
+
+instrument.range.hint:
+  value: "Valgfritt. Den laveste og høyeste tangenten. Omfanget kan også stilles inn etter gehør under kalibreringen."
+
+instrument.range.label: {value: "Klaviaturets omfang"}
+instrument.range.to: {value: "til"}
+instrument.range.up: {value: "En halvtone opp"}
+
+instrument.registersHint:
+  value: "Klikk på prikkene i symbolet på hver registerknapp, sirkelen som er gravert på trekkspillet, eller velg et vanlig symbol. Prikkene bestemmer hvilke stemmer som klinger."
+instrument.registersSubtitle: {value: "Registerknappene på diskantsiden og stemmene hver knapp aktiverer."}
+
+instrument.says:
+  plural:
+    argument: reeds
+    forms:
+      one: "Stemmer: {banks}. Det fyldigste registeret aktiverer {reeds} stemtunge."
+      other: "Stemmer: {banks}. Det fyldigste registeret aktiverer {reeds} stemtunger."
+  placeholders:
+    banks: {type: string}
+    reeds: {type: integer}
+
+instrument.sections.bass: {value: "Bassmekanikk"}
+instrument.sections.identity: {value: "Instrumentopplysninger"}
+instrument.sections.keyboard: {value: "Klaviatur"}
+instrument.sections.reference: {value: "Kammertone og toleranse"}
+instrument.sections.voices: {value: "Registre"}
+instrument.tolerance: {value: "Toleranse for stemtunger"}
+
+instrument.toleranceHint:
+  value: "Tillatt stemtungeavvik i enheter på 0,06 % av tonens frekvens. Målinger utenfor området merkes som ustemte."
+# Target curve editor
+curve.clearAll: {value: "Tøm kurven"}
+
+curve.clearAllConfirm:
+  value: "Alle støttepunkter fjernes. Målet blir igjen skalaens tonehøyde for hver tone, og stemmeapparatet fungerer som en enkel indikator."
+curve.clearAllHint: {value: "Fjern alle støttepunkter og bruk skalaens tonehøyder som mål."}
+curve.clearAllTitle: {value: "Tømme hele kurven?"}
+curve.entryUnit: {value: "Inndataenhet"}
+
+curve.help.hz:
+  value: "Med Hz angis målet i hertz ved A4 = 440 Hz som i referanseslaglisten. Det endres derfor ikke med øktens A4. Registrert viser øktens målinger oppå listen. Under Liste kan du tilpasse støttepunktene til målingene eller kopiere listen fra en annen økt."
+curve.help.hzTitle: {value: "Hz og målinger"}
+
+curve.help.interp:
+  value: "Med interpolering følger tonene linjen mellom støttepunktene. Ellers gjelder hvert punkt frem til det neste. Uten punkter er målet overalt skalaens tonehøyde."
+curve.help.interpTitle: {value: "Mellom punktene"}
+
+curve.help.lead:
+  value: "Stemmemålet angir for hver tone hvor langt hver stemtunge skal ligge fra skalaens tonehøyde. Tabellen vurderer den registrerte stemtungen mot målet ditt, også når det avviker fra skalaen."
+curve.help.set:
+  value: "Velg en tone og en verdi og trykk på Angi, eller dra et punkt opp eller ned i grafen. Hver stemme har sin egen linje, og den du redigerer, er fremhevet."
+curve.help.setTitle: {value: "Angi et punkt"}
+curve.helpTitle: {value: "Ønskede slag"}
+curve.interpolate: {value: "Interpoler"}
+curve.interpolateHint: {value: "Følg linjen mellom støttepunktene. Ellers gjelder hvert punkt frem til det neste."}
+curve.menu.ends: {value: "Utenfor støttepunktene"}
+curve.menu.extendHigh: {value: "Fortsett over det høyeste punktet"}
+curve.menu.extendLow: {value: "Fortsett under det laveste punktet"}
+curve.menu.fit: {value: "Tilpass til målingene i denne økten"}
+
+curve.menu.fitBody:
+  plural:
+    argument: n
+    forms:
+      one: "Støttepunktene erstattes av en kurve tilpasset den ene målingen."
+      other: "Støttepunktene erstattes av en kurve tilpasset {n} målinger."
+  placeholders:
+    n: {type: integer}
+
+curve.menu.fromFile: {value: "Kopier fra en øktfil"}
+curve.menu.fromSession: {value: "Kopier fra en økt"}
+curve.menu.label: {value: "Liste"}
+curve.menu.replace: {value: "Erstatt listen"}
+curve.menu.replaceBody: {value: "Støttepunktene erstattes av den andre listen med tilhørende innstillinger."}
+curve.menu.replaceConfirm: {value: "Erstatt"}
+curve.menu.replaceTitle: {value: "Erstatte slaglisten?"}
+curve.rank: {value: "Stemme"}
+curve.recorded: {value: "Registrert"}
+curve.recordedHint: {value: "Vis målingene fra denne økten i grafen"}
+curve.remove: {value: "Fjern"}
+curve.removeHint: {value: "Fjern tonens støttepunkt fra kurven."}
+
+curve.scale:
+  value: "Skala {v}"
+  placeholders:
+    v: {type: string}
+
+curve.scaleAuto: {value: "Automatisk skala"}
+curve.scaleHint: {value: "Grafens vertikale område"}
+curve.set: {value: "Angi"}
+curve.setHint: {value: "Sett et støttepunkt på tonen for den valgte stemmen."}
+curve.startHint: {value: "Ingen støttepunkter ennå. Målet er skalaens tonehøyde for hver tone."}
+
+# Readings and workshop actions
+footer.coverage:
+  value: "{done} / {total} toner"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.inTune:
+  value: "{done} / {total} stemt"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.none: {value: "Ingen økt"}
+
+readings.notes:
+  plural:
+    argument: n
+    forms:
+      one: "én tone"
+      other: "{n} toner"
+  placeholders:
+    n: {type: integer}
+
+workshop.exit: {value: "Avslutt økt"}
+workshop.import: {value: "Importer"}
+workshop.open: {value: "Åpne"}
+workshop.print: {value: "Skriv ut stemmekort"}
+
+# Session errors
+error.fitFailed: {value: "Kunne ikke tilpasse en kurve til målerunden."}
+
+error.hasReadings:
+  value: "Målingene i økten bygger på øktens kammertone og antall stemtunger. Ingen av delene kan lenger endres."
+error.imageUnreadable: {value: "Bildet kunne ikke åpnes."}
+error.instrumentName: {value: "Gi trekkspillet et navn så du finner det igjen."}
+error.invalidA4: {value: "Kammertonen må ligge mellom 430 og 450 Hz."}
+
+error.invalidInstrument:
+  value: "Trekkspillet kan ikke brukes: En stemme er oppført to ganger, eller et register bruker en stemme trekkspillet ikke har."
+error.invalidName: {value: "Gi økten et navn."}
+error.invalidNote: {value: "Tonen er utenfor måleområdet."}
+error.invalidReed: {value: "Denne stemtungen klinger ikke på trekkspillet."}
+error.invalidReedCount: {value: "På et trekkspill klinger 1 til 8 stemtunger per tone."}
+error.invalidTranspose: {value: "Transponeringen kan være 0 til 11 halvtoner."}
+error.invalidUnit: {value: "Angi verdier i enheter på 0,06 %, i cent eller i hertz."}
+error.invalidValue: {value: "Verdien er ikke et tall."}
+error.loadFailed: {value: "Kunne ikke lese økten."}
+error.noBassMachine: {value: "Ingen bassmekanikk er angitt for trekkspillet."}
+error.noBassRegister: {value: "Trekkspillet har ikke dette bassregisteret."}
+error.noCurve: {value: "Økten har ingen målkurve."}
+error.noReadings: {value: "Ingenting er registrert i økten ennå."}
+error.noRegister: {value: "Trekkspillet har ikke dette registeret."}
+error.noSession: {value: "Ingen økt er åpen."}
+error.notAnImage: {value: "Filen er ikke et bilde."}
+error.notFound: {value: "Økten finnes ikke lenger."}
+error.notesTooLong: {value: "Kort ned merknaden til 500 tegn."}
+error.saveFailed: {value: "Økten kunne ikke lagres. Hvis du lukker nå, kan de siste målingene gå tapt."}
+error.takeNotFound: {value: "Målingen finnes ikke lenger."}
+error.unexpected: {value: "Noe gikk galt."}

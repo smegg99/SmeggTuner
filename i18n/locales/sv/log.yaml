@@ -1,0 +1,100 @@
+# Diagnostic log messages (sv).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Application lifecycle and configuration
+appStarting: {value: "Startar smeggtuner"}
+cleaningUp: {value: "Rensar upp"}
+configLoadFailed: {value: "Kunde inte läsa in konfigurationen"}
+configLoaded: {value: "Konfigurationen har lästs in"}
+configSaveFailed: {value: "Kunde inte spara konfigurationen"}
+crashScreenFailed: {value: "Kunde inte visa felskärmen"}
+crashWatchFailed: {value: "Kunde inte starta kraschövervakningen"}
+datastoreInitFailed: {value: "Kunde inte initiera datalagret"}
+datastoreReady: {value: "Datalagret är klart"}
+loadingConfig: {value: "Läser in konfigurationen"}
+loggerInitFailed: {value: "Kunde inte konfigurera loggningen"}
+reinitLogger: {value: "Anpassar loggningen efter konfigurationen"}
+runFailed: {value: "Körningen av programmet misslyckades"}
+secondInstance: {value: "En andra instans startades. Aktiverar det befintliga fönstret"}
+trayIconFailed: {value: "Kunde inte läsa in ikonen för meddelandefältet"}
+updateCheckFailed: {value: "Kunde inte söka efter uppdateringar", description: "Update check or stored release-note state failed; logged without a dialog."}
+windowStateLoadFailed: {value: "Kunde inte läsa in fönstrets tillstånd"}
+windowStateSaveFailed: {value: "Kunde inte spara fönstrets tillstånd"}
+
+# Audio devices and calibration
+audioDeviceEnumFailed: {value: "Kunde inte lista inspelningsenheterna"}
+audioDeviceGone: {value: "Den valda inspelningsenheten är inte längre tillgänglig"}
+audioDevicesListed: {value: "Inspelningsenheterna har listats"}
+audioDialogFailed: {value: "Fildialogen kunde inte öppnas"}
+audioDialogUnavailable: {value: "Fildialog begärdes när programmet inte kördes"}
+audioFileUnreadable: {value: "Kunde inte öppna inspelningen"}
+audioNoDevices: {value: "Inga inspelningsenheter tillgängliga"}
+audioSourceSelected: {value: "Ingångskälla vald"}
+audioSpeakerUnavailable: {value: "Ingen utmatningsenhet. Filen spelas upp utan ljud"}
+calibrationAbandoned: {value: "Kalibreringen av ljudkortet avbröts"}
+calibrationFinished: {value: "Kalibreringen av ljudkortet är klar"}
+calibrationNoDevice: {value: "Kunde inte öppna enheten för kalibrering av ljudkortet"}
+calibrationStarted: {value: "Kalibreringen av ljudkortet har startat"}
+deviceStoreFailed: {value: "Kunde inte spara inspelningsenhetens inställningar"}
+micBlocksDropped: {value: "Bearbetningen av mikrofonljudet har stannat. Hoppar över ljudblock"}
+micDeviceLost: {value: "Inspelningsenheten stannade oväntat"}
+volumeRestore: {value: "Automatisk volymreglering kunde inte återställa ingångsnivån"}
+volumeStepFailed: {value: "Automatisk volymreglering kunde inte ställa in ingångsnivån"}
+volumeUnavailable: {value: "Automatisk volymreglering kommer inte åt enhetens ingångsnivå"}
+
+# Tuner engine
+tunerEventsDropped: {value: "Mäthändelser hoppades över eftersom gränssnittet ligger efter"}
+tunerRunFailed: {value: "Mätmotorn stannade med ett fel"}
+tunerSettingRejected: {value: "Avvisade en inställning utanför tillåtet intervall"}
+tunerStartFailed: {value: "Kunde inte skapa ingångskällan"}
+tunerStarted: {value: "Mätmotorn har startat"}
+tunerStopped: {value: "Mätmotorn har stannat"}
+tunerTonePlayFailed: {value: "Kunde inte spela upp referenstonen"}
+tunerTonePlaying: {value: "Spelar upp referenstonen"}
+
+# Sessions, readings and reports
+recordCleared: {value: "Mätomgången tömd"}
+recordEdited: {value: "Mätningen har redigerats manuellt"}
+recordRejected: {value: "Begäran om registrering avvisades"}
+recordTake: {value: "Mätningen har registrerats"}
+recordUndone: {value: "Senaste mätningen har ångrats"}
+reportFailed: {value: "Kunde inte skriva stämrapporten"}
+reportOpenFailed: {value: "Kunde inte öppna stämrapporten"}
+reportOpened: {value: "Stämrapporten har skickats till webbläsaren"}
+reportRejected: {value: "Rapportbegäran avvisades"}
+reportWritten: {value: "Stämrapporten har skrivits"}
+sessionClosed: {value: "Sessionen har stängts"}
+sessionCreated: {value: "Sessionen har skapats"}
+sessionCurveDropped: {value: "Målkurvan har tagits bort"}
+sessionCurveFitted: {value: "Målkurvan har anpassats till en mätomgång"}
+sessionCurveImported: {value: "Målkurvan har importerats"}
+sessionDeleted: {value: "Sessionen har raderats"}
+sessionLoadFailed: {value: "Kunde inte läsa in sessionen"}
+sessionOpened: {value: "Sessionen har öppnats"}
+sessionReedsClamped: {value: "Fler stämtungor ljuder än mätmotorn kan urskilja. Antalet begränsas"}
+sessionRejected: {value: "Ogiltig sessionsändring avvisades"}
+sessionSaveFailed: {value: "Kunde inte spara sessionen"}
+
+# Frontend diagnostics
+frontendAudioCalibrationCancelFailed: {value: "Kunde inte avbryta kalibreringen"}
+frontendAudioCalibrationFailed: {value: "Kunde inte starta kalibreringen"}
+frontendAudioCorrectionFailed: {value: "Kunde inte läsa ljudkortets korrigering"}
+frontendAudioDialogFailed: {value: "Kunde inte öppna fildialogen"}
+frontendAudioListFailed: {value: "Kunde inte lista ljudenheterna"}
+frontendAudioSelectFailed: {value: "Kunde inte välja ljudkälla"}
+frontendAudioStateFailed: {value: "Kunde inte läsa ljudenhetens status"}
+frontendAudioVolumeFailed: {value: "Kunde inte ändra automatisk volymreglering"}
+frontendConfigLoadFailed: {value: "Kunde inte läsa in konfigurationen"}
+frontendConfigLoaded: {value: "Konfigurationen har lästs in"}
+frontendConfigSaveFailed: {value: "Kunde inte spara konfigurationen"}
+frontendCurveViewFailed: {value: "Kunde inte läsa inställningarna för kurvvyn"}
+frontendError: {value: "Oväntat programfel"}
+frontendRejection: {value: "Åtgärden i programmet misslyckades"}
+frontendResizeNotice: {value: "Layoutändringen sköts upp till nästa bildruta (ResizeObserver-meddelande från webbläsaren)"}
+frontendSettingFailed: {value: "Kunde inte ändra stämapparatens inställning"}
+frontendTunerStartFailed: {value: "Kunde inte starta stämapparaten"}
+frontendTunerStateFailed: {value: "Kunde inte läsa stämapparatens status"}
+frontendTunerStopFailed: {value: "Kunde inte stoppa stämapparaten"}
+frontendTunerTonePlayFailed: {value: "Kunde inte spela upp referenstonen"}
+frontendTunerToneStopFailed: {value: "Kunde inte stoppa referenstonen"}

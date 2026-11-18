@@ -18,6 +18,7 @@
 </template>
 
 <script setup lang="ts">
+import { isLocale } from '../../../i18n/locales'
 import { useTheme } from 'vuetify'
 import { useAppearance } from '@smegg99/s99ab/appearance'
 import { crashActions, onCrashReport, type CrashReport } from '~/composables/s99wails'
@@ -44,7 +45,7 @@ const stopReports = onCrashReport((next) => {
 onBeforeUnmount(stopReports)
 onMounted(async () => {
   const loaded = await crashActions.report()
-  if ((loaded.lang === 'pl' || loaded.lang === 'en') && loaded.lang !== locale.value) await setLocale(loaded.lang)
+  if (isLocale(loaded.lang) && loaded.lang !== locale.value) await setLocale(loaded.lang)
   report.value ??= loaded
 })
 </script>

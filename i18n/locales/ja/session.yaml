@@ -1,0 +1,251 @@
+# Sessions, instruments and target curves (ja).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Session list and actions
+card.a4:
+  value: "A = {hz} Hz"
+  placeholders:
+    hz: {type: string}
+
+card.changed: {value: "このセッションの記録後に、楽器ライブラリのアコーディオン情報が変更されました。"}
+card.hasCurve: {value: "目標曲線設定済み"}
+
+card.readings:
+  plural:
+    argument: count
+    forms:
+      other: "測定値 {count} 件"
+  placeholders:
+    count: {type: integer}
+
+card.unnamedInstrument: {value: "名称未設定のアコーディオン"}
+
+card.updated:
+  value: "更新：{when}"
+  placeholders:
+    when: {type: string}
+
+deleteHint: {value: "セッションとすべての測定回、測定値、調律曲線を完全に削除します。"}
+deleteTitle: {value: "このセッションを削除しますか？"}
+empty: {value: "セッションはまだありません"}
+emptyHint: {value: "測定値を保存するにはセッションを作成します。チューナー単体でも使えます。"}
+export: {value: "セッションを書き出す"}
+file.openFilter: {value: "SmeggTuner セッション"}
+file.openTitle: {value: "セッションファイルを選択"}
+new: {value: "新規セッション"}
+title: {value: "セッション"}
+
+# Session dialog and tabs
+dialog.backToList: {value: "調律したことのある楽器を選ぶ"}
+dialog.describeNew: {value: "新しい楽器の情報を入力…"}
+dialog.forgetAccordion: {value: "このアコーディオンの登録を解除"}
+dialog.loadAccordion: {value: "ファイルから読み込む…"}
+dialog.name: {value: "セッション名"}
+dialog.nameHint: {value: "楽器名や依頼者名を付けるとセッションを識別できます。"}
+dialog.pickAccordion: {value: "どのアコーディオンですか？"}
+dialog.start: {value: "開始"}
+page.mobile.curve: {value: "目標値"}
+page.mobile.recorded: {value: "測定値"}
+
+# Instrument editing restrictions
+accordion.a4Locked: {value: "固定済みです。この値を基準に記録した測定値があります。"}
+
+accordion.columnsRefused:
+  value: "既存の測定値が参照するリード列が変わるため、変更を保存できません。元の列に戻すか、新しいセッションを作成してください。"
+accordion.frozen:
+  value: "測定値の記録後は基準ピッチとリード列を変更できません。既存の列を使ったレジスターは追加できます。"
+accordion.frozenShort: {value: "リード列固定済み"}
+accordion.remember: {value: "楽器ライブラリに保存"}
+accordion.rememberHint: {value: "このセッションの楽器をライブラリに保存し、今後のセッションでも使えるようにします。"}
+
+# Instrument definition and registers
+instrument.a4: {value: "基準ピッチ"}
+
+instrument.a4Hint:
+  value: "A4 の基準周波数（ヘルツ）。この楽器の新しいセッションで使用します。"
+
+instrument.bass.build: {value: "次のスイッチで鳴らす列（フィート）"}
+instrument.bass.fixed: {value: "ベースレジスターのない固定式で、常にすべてのリード列が鳴ります。"}
+
+instrument.bass.full:
+  value: "ここで設定できるベーススイッチは最大 {n} 個です"
+  placeholders:
+    n: {type: string}
+
+instrument.bass.hint: {value: "ベース部で鳴るリード列の数を指定します。通常は4列または5列です。"}
+instrument.bass.registerName: {value: "スイッチ名"}
+instrument.bass.voices: {value: "ベースのリード列"}
+instrument.beatTolerance: {value: "うなりの許容差"}
+instrument.builder.add: {value: "追加"}
+instrument.builder.already: {value: "そのスイッチは登録済みです"}
+instrument.builder.high: {value: "4′ ピッコロ"}
+instrument.builder.low: {value: "16′ バス"}
+instrument.builder.middle: {value: "8′ リード"}
+instrument.builder.none: {value: "スイッチは未登録です。下で各スイッチが鳴らすリード列を選んでください。"}
+instrument.builder.remove: {value: "このレジスターを削除"}
+instrument.builder.title: {value: "スイッチを追加"}
+instrument.file.exportTitle: {value: "アコーディオン情報を書き出す"}
+instrument.file.filterName: {value: "SmeggTuner アコーディオンファイル"}
+instrument.file.imageFilter: {value: "画像"}
+instrument.file.imageTitle: {value: "写真を選択"}
+instrument.file.openTitle: {value: "アコーディオンファイルを選択"}
+instrument.name: {value: "名前"}
+instrument.nameHint: {value: "楽器ライブラリとセッションに表示される名前です。"}
+instrument.namePlaceholder: {value: "Hohner Morino V N"}
+instrument.nameRequired: {value: "アコーディオンの名前を入力してください。"}
+instrument.photo: {value: "写真"}
+instrument.range.backwards: {value: "最高音は最低音以上にしてください。"}
+instrument.range.clear: {value: "クリア"}
+instrument.range.down: {value: "下げる"}
+
+instrument.range.hint:
+  value: "任意です。最低鍵と最高鍵を指定します。校正時に実際に音を出して設定することもできます。"
+
+instrument.range.label: {value: "鍵盤の音域"}
+instrument.range.to: {value: "～"}
+instrument.range.up: {value: "上げる"}
+
+instrument.registersHint:
+  value: "楽器に刻まれた丸いレジスター記号の点をクリックするか、一般的な組み合わせを選びます。鳴るリード列は点の配置で決まります。"
+instrument.registersSubtitle: {value: "トレブル側のスイッチと、それぞれが鳴らすリード列。"}
+
+instrument.says:
+  plural:
+    argument: reeds
+    forms:
+      other: "リード列：{banks}。最も多くの列を使うスイッチではリードが {reeds} 枚鳴ります。"
+  placeholders:
+    banks: {type: string}
+    reeds: {type: integer}
+
+instrument.sections.bass: {value: "ベース機構"}
+instrument.sections.identity: {value: "基本情報"}
+instrument.sections.keyboard: {value: "鍵盤"}
+instrument.sections.reference: {value: "基準と許容差"}
+instrument.sections.voices: {value: "レジスター"}
+instrument.tolerance: {value: "リードの許容差"}
+
+instrument.toleranceHint:
+  value: "リードに許容する偏差です。各音の周波数の 0.06 % を 1 単位とし、範囲外の測定値には調律範囲外の印が付きます。"
+# Target curve editor
+curve.clearAll: {value: "曲線をクリア"}
+
+curve.clearAllConfirm:
+  value: "すべての制御点を削除します。各音の目標は音階の音高に戻り、チューナーは偏差を示すだけになります。"
+curve.clearAllHint: {value: "すべての制御点を外し、音階の音高を目標に戻します。"}
+curve.clearAllTitle: {value: "曲線全体をクリアしますか？"}
+curve.entryUnit: {value: "入力単位"}
+
+curve.help.hz:
+  value: "Hz では基準のうなり表と同じく A4 = 440 Hz 換算で目標を入力するため、セッションの A4 を変えても値は動きません。「記録済み」で今回の測定値を重ね、「リスト」で測定値に制御点を合わせたり、別のセッションのリストをコピーしたりできます。"
+curve.help.hzTitle: {value: "ヘルツと測定値"}
+
+curve.help.interp:
+  value: "補間を有効にすると制御点間の音は線に沿います。無効にすると次の点まで同じ値を保ちます。点がなければ全音の目標は音階の音高です。"
+curve.help.interpTitle: {value: "制御点の間"}
+
+curve.help.lead:
+  value: "各音でリードを音階の音高からどれだけずらすかを示す調律目標です。表の合否は、偏差ゼロではなく、この目標と記録したリードを比較して決まります。"
+curve.help.set:
+  value: "音と値を選んで「設定」を押すか、グラフの点を上下にドラッグします。リード列ごとに線があり、編集中の線が強調表示されます。"
+curve.help.setTitle: {value: "制御点の設定"}
+curve.helpTitle: {value: "目標のうなり"}
+curve.interpolate: {value: "補間"}
+curve.interpolateHint: {value: "制御点の間を線で補間します。オフでは次の点まで同じ値を保ちます。"}
+curve.menu.ends: {value: "制御点の範囲外"}
+curve.menu.extendHigh: {value: "最高点より上に延長"}
+curve.menu.extendLow: {value: "最低点より下に延長"}
+curve.menu.fit: {value: "このセッションの測定値に合わせる"}
+
+curve.menu.fitBody:
+  plural:
+    argument: n
+    forms:
+      other: "{n} 件の測定値に合わせた曲線で制御点を置き換えます。"
+  placeholders:
+    n: {type: integer}
+
+curve.menu.fromFile: {value: "セッションファイルからコピー"}
+curve.menu.fromSession: {value: "セッションからコピー"}
+curve.menu.label: {value: "リスト"}
+curve.menu.replace: {value: "リストを置き換える"}
+curve.menu.replaceBody: {value: "別のリストの制御点と設定で置き換えます。"}
+curve.menu.replaceConfirm: {value: "置き換え"}
+curve.menu.replaceTitle: {value: "うなりリストを置き換えますか？"}
+curve.rank: {value: "リード列"}
+curve.recorded: {value: "記録済み"}
+curve.recordedHint: {value: "このセッションの測定値をグラフに表示"}
+curve.remove: {value: "削除"}
+curve.removeHint: {value: "この音の制御点を曲線から削除します。"}
+
+curve.scale:
+  value: "表示範囲 {v}"
+  placeholders:
+    v: {type: string}
+
+curve.scaleAuto: {value: "表示範囲は自動"}
+curve.scaleHint: {value: "グラフの縦軸の表示範囲"}
+curve.set: {value: "設定"}
+curve.setHint: {value: "選択したリード列のこの音に制御点を置きます。"}
+curve.startHint: {value: "制御点はまだありません。各音の目標は音階の音高です。"}
+
+# Readings and workshop actions
+footer.coverage:
+  value: "測定済み {done} / {total} 音"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.inTune:
+  value: "調律範囲内 {done} / {total}"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.none: {value: "セッションなし"}
+
+readings.notes:
+  plural:
+    argument: n
+    forms:
+      other: "{n} 音"
+  placeholders:
+    n: {type: integer}
+
+workshop.exit: {value: "セッションを終了"}
+workshop.import: {value: "インポート"}
+workshop.open: {value: "開く"}
+workshop.print: {value: "調律カードを印刷"}
+
+# Session errors
+error.fitFailed: {value: "この測定回の値に曲線を合わせられませんでした。"}
+
+error.hasReadings:
+  value: "このセッションには記録済みの測定値があるため、測定に使った基準ピッチとリード数は変更できません。"
+error.imageUnreadable: {value: "その写真を開けませんでした。"}
+error.instrumentName: {value: "後で見つけられるようにアコーディオンに名前を付けてください。"}
+error.invalidA4: {value: "基準ピッチは 430～450 Hz にしてください。"}
+
+error.invalidInstrument:
+  value: "リード列の名前が重複しているか、レジスターが楽器に存在しない列を使うため、このアコーディオンは使用できません。"
+error.invalidName: {value: "セッション名を入力してください。"}
+error.invalidNote: {value: "その音はチューナーの検出範囲外です。"}
+error.invalidReed: {value: "このアコーディオンではそのリードは鳴りません。"}
+error.invalidReedCount: {value: "アコーディオンで 1 音に鳴らせるリード数は 1～8 枚です。"}
+error.invalidTranspose: {value: "移調の範囲は 0～11 半音です。"}
+error.invalidUnit: {value: "値は 0.06 % 単位、セント、またはヘルツで入力してください。"}
+error.invalidValue: {value: "数値を入力してください。"}
+error.loadFailed: {value: "セッションを読み込めませんでした。"}
+error.noBassMachine: {value: "このアコーディオンにはベース機構が設定されていません。"}
+error.noBassRegister: {value: "このアコーディオンに該当するベースレジスターはありません。"}
+error.noCurve: {value: "このセッションに目標曲線はありません。"}
+error.noReadings: {value: "このセッションにはまだ測定値が記録されていません。"}
+error.noRegister: {value: "このアコーディオンに該当するレジスターはありません。"}
+error.noSession: {value: "セッションが開いていません。"}
+error.notAnImage: {value: "そのファイルは写真ではありません。"}
+error.notFound: {value: "そのセッションは既にありません。"}
+error.notesTooLong: {value: "備考は 500 文字以内にしてください。"}
+error.saveFailed: {value: "セッションを保存できませんでした。今閉じると直近の記録が失われることがあります。"}
+error.takeNotFound: {value: "その測定値は既にありません。"}
+error.unexpected: {value: "エラーが発生しました。"}

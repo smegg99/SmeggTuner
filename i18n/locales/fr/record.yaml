@@ -1,0 +1,69 @@
+# Recording controls and readings (fr).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one, other (locale cardinal rules).
+
+# Recording controls
+arm.hint: {value: "Enregistrer une prise à chaque stabilisation (Entrée pour en faire une maintenant)"}
+arm.needsSession: {value: "Ouvrez une session pour enregistrer"}
+arm.warmup: {value: "Enregistrement des mesures désactivé. Jouez librement, aucune mesure n’est conservée. Appuyez pour commencer à les enregistrer."}
+undo.hint: {value: "Annuler la dernière prise"}
+
+# Readings table and compact columns
+mobile.current: {value: "Mesure"}
+mobile.error: {value: "Écart"}
+
+table.beat:
+  value: "Battement {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.delete: {value: "Supprimer cette mesure"}
+table.deleteHint: {value: "Supprime définitivement cette mesure. Pour la remplacer, rejouez la note et enregistrez-la à nouveau."}
+table.deleteTitle: {value: "Supprimer cette mesure ?"}
+table.editHint: {value: "Cliquez ou appuyez sur Entrée pour modifier la valeur"}
+table.empty: {value: "Lancez l'enregistrement puis jouez des notes pour en conserver les mesures."}
+table.graph: {value: "Graphique"}
+
+table.graphHint:
+  value: "Comparez chaque anche à sa cible. Cliquez sur une colonne pour sélectionner la ligne correspondante, puis cliquez à nouveau pour sélectionner le registre suivant."
+table.graphLabel: {value: "Écart des anches pour chaque note enregistrée"}
+table.helpTitle: {value: "À propos de ce tableau"}
+table.label: {value: "Accordage enregistré"}
+table.latest: {value: "Dernière prise : Retour arrière pour la supprimer"}
+table.manual: {value: "Modifié"}
+table.manualHint: {value: "Une valeur de cette ligne a été saisie à la main."}
+
+table.notes:
+  plural:
+    argument: count
+    forms:
+      one: "{count} note"
+      other: "{count} notes"
+  placeholders:
+    count: {type: integer}
+
+table.unitHint:
+  value: "Les écarts des anches utilisent l'unité choisie dans les paramètres. Les battements s'affichent en hertz ou dans l'unité d'écart selon le réglage de la barre d'outils."
+# Report export dialog
+report.csv: {value: "CSV"}
+report.date: {value: "Date"}
+report.format: {value: "Format"}
+
+report.formatHint:
+  value: "Le PDF présente la fiche sur une page A4 telle qu'elle sera imprimée. Le HTML reprend la même fiche sous forme de page web. Le CSV contient le tableau pour un tableur."
+report.html: {value: "HTML"}
+report.notes: {value: "Remarque sur la fiche"}
+report.notesHint: {value: "Imprimée sous le tableau. Indiquez les travaux effectués ou ceux qui restent à faire."}
+
+report.pass:
+  value: "Passage : {label}"
+  placeholders:
+    label: {type: string}
+
+report.pdf: {value: "PDF"}
+report.title: {value: "Fiche d'accordage"}
+
+# Recording errors
+error.takeNotFound: {value: "Cette prise ne figure plus dans ce passage."}
+error.unexpected: {value: "L'opération a échoué. Consultez le journal pour plus de détails."}

@@ -1,0 +1,303 @@
+# Live tuner, WAV playback and browser edition (fr).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one, other (locale cardinal rules).
+
+# Input, output and playback
+input.relearnHint: {value: "Réapprendre le bruit de fond (4 s de silence)"}
+input.tooStrong: {value: "Signal trop fort"}
+input.unreliable: {value: "Signal peu fiable"}
+inputPanel.label: {value: "Signal d'entrée"}
+inputPanel.title: {value: "Entrée"}
+level.silent: {value: "silence"}
+output.mute: {value: "Couper le son"}
+output.unmute: {value: "Rétablir le son"}
+output.volume: {value: "Volume de sortie"}
+soundcard.running: {value: "Étalonnage de la carte son"}
+soundcard.uncalibrated: {value: "Carte son non étalonnée. Étalonner"}
+soundcard.unreliable: {value: "Étalonnage peu fiable. Étalonner à nouveau"}
+source.analyze: {value: "Analyser un enregistrement…"}
+source.default: {value: "Par défaut du système"}
+source.noDevices: {value: "Aucun microphone détecté"}
+source.refresh: {value: "Actualiser la liste des périphériques"}
+transport.fileHint: {value: "Lancez la lecture depuis la fiche de l'enregistrement"}
+transport.start: {value: "Démarrer"}
+transport.stop: {value: "Arrêter"}
+
+# Modes, registers and note selection
+bassRegister.all: {value: "Mécanisme complet"}
+bassRegister.hint: {value: "Registre de basses enclenché"}
+controls: {value: "Commandes d'accordage"}
+mode.auto: {value: "Auto"}
+mode.autoHint: {value: "Laisser l'accordeur détecter la note"}
+mode.pinHint: {value: "Fixer cette note"}
+mode.pinned: {value: "Note fixée"}
+notes.clickToPin: {value: "cliquer pour fixer"}
+notes.label: {value: "Notes de mi0 à do9. Cliquez sur une note pour la fixer."}
+notes.range: {value: "Mi0 à do9"}
+notes.title: {value: "Notes"}
+notes.tracking: {value: "suivi"}
+panel.boxBase: {value: "La note de base est toujours mesurée"}
+panel.boxChord: {value: "En mode Accords, les trois sons sont mesurés"}
+panel.boxLast: {value: "Au moins une case reste active"}
+
+panel.boxOctave:
+  plural:
+    argument: octaves
+    forms:
+      one: "Case {box} : {octaves} octave au-dessus de la base"
+      other: "Case {box} : {octaves} octaves au-dessus de la base"
+  placeholders:
+    octaves: {type: integer}
+    box: {type: string}
+
+panel.boxReed:
+  value: "Anche {n} : activer ou désactiver sa mesure"
+  placeholders:
+    n: {type: string}
+
+panel.bySession:
+  plural:
+    argument: n
+    forms:
+      one: "{n} anche, selon le registre de la session"
+      other: "{n} anches, selon le registre de la session"
+  placeholders:
+    n: {type: integer}
+
+panel.locked: {value: "Stable"}
+panel.modeHints.chords: {value: "Accords de trois notes"}
+panel.modeHints.octaves: {value: "Une note et ses octaves supérieures"}
+panel.modeHints.tones: {value: "Une note, jusqu'à trois anches"}
+panel.modeLabel: {value: "Éléments mesurés"}
+panel.modes.chords: {value: "Accords"}
+panel.modes.octaves: {value: "Octaves"}
+panel.modes.tones: {value: "Sons"}
+panel.quiet: {value: "Trop faible"}
+panel.recorded: {value: "Enregistré"}
+panel.reeds: {value: "Anches"}
+
+reeds.count:
+  plural:
+    argument: n
+    forms:
+      one: "{n} anche"
+      other: "{n} anches"
+  placeholders:
+    n: {type: integer}
+
+register.hint: {value: "Registre enclenché"}
+register.lockedPlaying: {value: "Arrêtez la lecture pour changer de registre."}
+side.bass: {value: "Basses"}
+side.hint: {value: "Côté chant ou basses"}
+side.treble: {value: "Chant"}
+step.noteDown: {value: "Descendre d'un demi-ton"}
+step.noteUp: {value: "Monter d'un demi-ton"}
+# Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
+signal.add: {value: "Ajouter un son"}
+signal.cents: {value: "Écart par rapport à la note en cents"}
+signal.down: {value: "Descendre d'un demi-ton (flèche gauche, flèche bas pour une octave)"}
+signal.open: {value: "Générateur de signal : joue une note de référence pure pour accorder une anche"}
+signal.play: {value: "Lire"}
+signal.playHint: {value: "Jouer la note avec tous les sons ou, si aucune note n'est encore choisie, la première note entendue (Espace)"}
+signal.remove: {value: "Retirer ce son"}
+signal.stop: {value: "Arrêter"}
+signal.stopHint: {value: "Arrêter le son (Espace)"}
+signal.title: {value: "Générateur de signal"}
+signal.up: {value: "Monter d'un demi-ton (flèche droite, flèche haut pour une octave)"}
+signal.wave.hint: {value: "Le son d'une anche comporte des harmoniques. On y entend donc aussi des battements."}
+signal.wave.reed: {value: "Anche"}
+signal.wave.sine: {value: "Sinusoïde"}
+
+# Reference pitch and units
+reference.a4Locked: {value: "Verrouillé dans les paramètres"}
+reference.a4Type: {value: "Saisissez la fréquence du la4 en hertz, de 430 à 450"}
+reference.frozen: {value: "Valeur fixe : la session contient déjà des mesures"}
+reference.transpose: {value: "Transposer"}
+reference.transposeDown: {value: "Un demi-ton de moins"}
+reference.transposeHint: {value: "Nombre de demi-tons dont le son dépasse la note indiquée sur la touche"}
+reference.transposeMode: {value: "Les accords et les octaves se mesurent sans transposition"}
+reference.transposeUp: {value: "Un demi-ton de plus"}
+
+reference.transposed:
+  value: "Transposition +{n}"
+  placeholders:
+    n: {type: string}
+
+unit.cents: {value: "Cent"}
+unit.hz: {value: "Hz"}
+unit.reference: {value: "Unités"}
+
+# Live readings and graphs
+boxes.beat:
+  value: "Battement entre {a} et {b}"
+  placeholders:
+    a: {type: string}
+    b: {type: string}
+
+boxes.goal: {value: "cible"}
+boxes.hzOnly: {value: "en Hz uniquement"}
+boxes.notHeard: {value: "non détectée"}
+
+boxes.reed:
+  value: "Anche {n}"
+  placeholders:
+    n: {type: string}
+
+boxes.reedBank:
+  value: "Anche {bank}"
+  placeholders:
+    bank: {type: string}
+
+boxes.tone:
+  value: "Son {n}"
+  placeholders:
+    n: {type: string}
+
+ruler.label: {value: "Écart de chaque anche"}
+spectrum.label: {value: "Spectre de fréquences de la note suivie"}
+spectrum.title: {value: "Spectre"}
+
+# Hold, noise learning and tuner state
+hold.hint: {value: "Figer les mesures stables (H)"}
+state.deviceLost: {value: "Entrée perdue"}
+state.initializing: {value: "Mesure du bruit ambiant"}
+state.running: {value: "À l'écoute"}
+state.stopped: {value: "Arrêté"}
+state.tooQuiet: {value: "Signal trop faible. Jouez plus fort ou rapprochez-vous du micro"}
+warmup.quiet: {value: "Gardez le silence"}
+
+# WAV files and waveform controls
+file.clearSelection: {value: "Sélectionner tout l'enregistrement"}
+file.fit: {value: "Afficher tout l'enregistrement"}
+file.loop: {value: "Lire la sélection en boucle"}
+file.mute: {value: "Couper le son de l'enregistrement"}
+file.openFilter: {value: "Audio WAV"}
+file.openTitle: {value: "Choisir un enregistrement WAV"}
+file.pause: {value: "Pause"}
+file.play: {value: "Lire"}
+file.stop: {value: "Arrêter et revenir au début de la sélection"}
+file.toEnd: {value: "Aller à la fin de la sélection"}
+file.toStart: {value: "Aller au début de la sélection"}
+file.unmute: {value: "Rétablir le son de l'enregistrement"}
+file.volume: {value: "Volume de lecture"}
+
+file.waveform:
+  value: "Forme d'onde de {name}. Faites glisser la chronologie pour déplacer la tête de lecture, ou le tracé pour sélectionner un extrait. Une fois la lecture arrêtée, des pointillés clairs signalent le passage dont provient la mesure affichée."
+  placeholders:
+    name: {type: string}
+
+file.zoomIn: {value: "Agrandir"}
+file.zoomOut: {value: "Réduire"}
+
+# Instrument calibration workflow
+calibrate.leave: {value: "Quitter l'étalonnage"}
+calibrate.needsSession: {value: "Ouvrez une session pour étalonner son instrument."}
+calibrate.range.again: {value: "Recommencer"}
+
+calibrate.range.backwards:
+  value: "La note la plus aiguë ne peut pas être plus grave que la plus basse. Mesurez à nouveau l'étendue du clavier."
+
+calibrate.range.capture: {value: "Capturer"}
+calibrate.range.highest: {value: "Plus aiguë"}
+calibrate.range.lowest: {value: "Plus grave"}
+calibrate.range.next: {value: "Passer à l'étalonnage des anches"}
+calibrate.range.playHigh: {value: "Jouez maintenant la touche la plus aiguë."}
+calibrate.range.playLow: {value: "Jouez la touche la plus grave."}
+calibrate.range.step: {value: "Clavier"}
+calibrate.status.captured: {value: "Capturée"}
+calibrate.status.holding: {value: "Maintenez la note stable"}
+calibrate.status.loud: {value: "Trop fort"}
+calibrate.status.play: {value: "Jouez une note"}
+calibrate.sweep.bassAll: {value: "Basses - mécanisme complet"}
+
+calibrate.sweep.done:
+  plural:
+    argument: n
+    forms:
+      one: "Parcours terminé. {n} mesure sur la fiche."
+      other: "Parcours terminé. {n} mesures sur la fiche."
+  placeholders:
+    n: {type: integer}
+
+calibrate.sweep.noRegisters:
+  value: "Aucun registre n'est défini pour cet accordéon. Le parcours reste possible. Ses mesures apparaissent dans des colonnes numérotées."
+calibrate.sweep.pickRegister: {value: "Quel registre étalonnez-vous ?"}
+
+calibrate.sweep.progress:
+  value: "{done} sur {total}"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+calibrate.sweep.redoRange: {value: "Remesurer l'étendue du clavier"}
+calibrate.sweep.review: {value: "Voir la fiche"}
+calibrate.sweep.skip: {value: "Passer"}
+
+calibrate.sweep.soloTeaches:
+  value: "Parcourir un registre à une seule voix permet aussi à l'application d'apprendre le son de cette voix."
+
+calibrate.sweep.startPlain: {value: "Démarrer le parcours"}
+calibrate.sweep.step: {value: "Anches"}
+calibrate.sweep.stop: {value: "Arrêter"}
+calibrate.title: {value: "Étalonner"}
+
+# Browser edition
+web.accent.default: {value: "Par défaut"}
+web.accent.hint: {value: "Couleur de l'application ou de votre choix"}
+web.diagnostics.copied: {value: "Copié"}
+web.diagnostics.copy: {value: "Copier le diagnostic"}
+web.diagnostics.empty: {value: "Démarrez l'accordeur pour afficher les détails du microphone."}
+web.diagnostics.title: {value: "Diagnostic"}
+web.downloads.title: {value: "Télécharger l'application"}
+web.experimental: {value: "Expérimental"}
+web.loadFailed: {value: "Le moteur de mesure n'a pas pu démarrer dans ce navigateur."}
+
+web.mic.denied:
+  value: "L'accès au microphone a été refusé. Autorisez-le dans les paramètres du navigateur puis redémarrez l'accordeur."
+
+web.mic.failed: {value: "Impossible d'ouvrir le microphone."}
+web.mic.none: {value: "Aucun microphone détecté."}
+web.mic.unsupported: {value: "Ce navigateur ne peut pas enregistrer de son."}
+web.notice.background: {value: "Le navigateur peut suspendre le son d'un onglet en arrière-plan."}
+web.notice.native: {value: "La version installée offre la meilleure précision."}
+web.notice.ok: {value: "Compris"}
+
+web.notice.processing:
+  value: "Votre navigateur peut appliquer au microphone une annulation d'écho, une réduction du bruit, un gain automatique ou un rééchantillonnage. Chacun de ces traitements peut modifier les mesures."
+web.notice.title: {value: "Version web expérimentale"}
+web.processing.autoGainControl: {value: "gain automatique"}
+web.processing.echoCancellation: {value: "annulation d'écho"}
+web.processing.noiseSuppression: {value: "réduction du bruit"}
+
+web.processingOn:
+  value: "Le navigateur a maintenu ces traitements actifs : {list}. Les mesures peuvent être faussées."
+  placeholders:
+    list: {type: string}
+
+web.slow:
+  value: "Cet appareil ne suit pas le rythme du moteur de mesure. Le son traité trop tard est ignoré pour que les mesures restent à jour."
+
+# Tuner errors
+error.a4Locked: {value: "Le diapason est verrouillé dans les paramètres."}
+error.chordsAuto: {value: "Le mode Accords détecte lui-même les notes."}
+error.deviceGone: {value: "Ce microphone n'est plus connecté."}
+error.deviceLost: {value: "Le microphone ne répond plus. L'accordeur s'est arrêté."}
+error.fileUnreadable: {value: "Impossible de lire cet enregistrement. Il doit s'agir d'un fichier WAV."}
+error.invalidA4: {value: "Le diapason doit être compris entre 430 et 450 Hz."}
+error.invalidBox: {value: "Cette case d'anche n'existe pas."}
+error.invalidMode: {value: "L'accordeur mesure des sons, des octaves ou des accords."}
+error.invalidNote: {value: "Cette note est hors de la plage de détection de l'accordeur."}
+error.invalidTranspose: {value: "La transposition va de 0 à 11 demi-tons."}
+error.lastBox: {value: "Au moins une case doit rester active."}
+error.noDevices: {value: "Aucun microphone détecté. Connectez-en un et actualisez la liste des périphériques."}
+error.playbackFailed: {value: "Impossible de jouer le son de référence."}
+
+error.sampleRate:
+  value: "La fréquence d'échantillonnage de l'entrée est trop basse pour les notes aiguës à ce diapason et à cette transposition. Utilisez un enregistrement à 44,1 kHz ou plus."
+error.sessionDecides: {value: "Le registre de la session ouverte détermine les éléments mesurés."}
+error.signalVoices:
+  value: "Jouez un à quatre sons, chacun à 100 cents au plus de la note."
+error.toneNeedsManual: {value: "Fixez une note pour jouer le son correspondant."}
+error.transposeMode: {value: "Les accords et les octaves se mesurent sans transposition."}
+error.unexpected: {value: "Une erreur s'est produite. Consultez le journal pour plus de détails."}

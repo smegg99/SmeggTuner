@@ -1,0 +1,100 @@
+# Diagnostic log messages (zh-Hant).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Application lifecycle and configuration
+appStarting: {value: "正在啟動 SmeggTuner"}
+cleaningUp: {value: "正在清理資源"}
+configLoadFailed: {value: "無法載入配置"}
+configLoaded: {value: "已載入配置"}
+configSaveFailed: {value: "無法儲存配置"}
+crashScreenFailed: {value: "無法顯示錯誤頁面"}
+crashWatchFailed: {value: "無法啟動崩潰監視器"}
+datastoreInitFailed: {value: "無法初始化資料儲存"}
+datastoreReady: {value: "資料儲存已就緒"}
+loadingConfig: {value: "正在載入配置"}
+loggerInitFailed: {value: "無法配置記錄檔記錄器"}
+reinitLogger: {value: "正在按配置重新設定記錄檔記錄器"}
+runFailed: {value: "應用程式執行失敗"}
+secondInstance: {value: "偵測到第二個例項啟動，正在切換到現有視窗"}
+trayIconFailed: {value: "無法載入托盤圖示"}
+updateCheckFailed: {value: "檢查更新失敗", description: "Update check or stored release-note state failed; logged without a dialog."}
+windowStateLoadFailed: {value: "無法載入視窗狀態"}
+windowStateSaveFailed: {value: "無法儲存視窗狀態"}
+
+# Audio devices and calibration
+audioDeviceEnumFailed: {value: "無法列出音訊採集裝置"}
+audioDeviceGone: {value: "所選音訊採集裝置已斷開"}
+audioDevicesListed: {value: "已列出音訊採集裝置"}
+audioDialogFailed: {value: "檔案對話框出錯"}
+audioDialogUnavailable: {value: "應用程式未執行時收到了檔案對話框請求"}
+audioFileUnreadable: {value: "無法開啟錄音"}
+audioNoDevices: {value: "沒有可用的音訊採集裝置"}
+audioSourceSelected: {value: "已選擇輸入源"}
+audioSpeakerUnavailable: {value: "沒有輸出裝置，檔案將靜音播放"}
+calibrationAbandoned: {value: "已放棄音效卡校正"}
+calibrationFinished: {value: "音效卡校正已完成"}
+calibrationNoDevice: {value: "校正音效卡時無法開啟裝置"}
+calibrationStarted: {value: "已開始校正音效卡"}
+deviceStoreFailed: {value: "無法儲存音訊採集裝置的設定"}
+micBlocksDropped: {value: "麥克風資料處理停滯，正在丟棄資料塊"}
+micDeviceLost: {value: "音訊採集裝置意外停止"}
+volumeRestore: {value: "自動音量控制未能恢復輸入電平"}
+volumeStepFailed: {value: "自動音量控制未能設定輸入電平"}
+volumeUnavailable: {value: "自動音量控制無法存取裝置的輸入電平"}
+
+# Tuner engine
+tunerEventsDropped: {value: "前端處理滯後，已丟棄測量事件"}
+tunerRunFailed: {value: "測量引擎因錯誤停止"}
+tunerSettingRejected: {value: "已拒絕超出範圍的設定值"}
+tunerStartFailed: {value: "無法建立輸入源"}
+tunerStarted: {value: "測量引擎已啟動"}
+tunerStopped: {value: "測量引擎已停止"}
+tunerTonePlayFailed: {value: "參考音播放失敗"}
+tunerTonePlaying: {value: "正在播放參考音"}
+
+# Sessions, readings and reports
+recordCleared: {value: "已清除本輪測量"}
+recordEdited: {value: "已手動編輯記錄"}
+recordRejected: {value: "已拒絕記錄請求"}
+recordTake: {value: "已儲存本次測量記錄"}
+recordUndone: {value: "已撤銷上一次記錄"}
+reportFailed: {value: "未能寫入調音報告"}
+reportOpenFailed: {value: "未能開啟調音報告"}
+reportOpened: {value: "已將調音報告交給瀏覽器開啟"}
+reportRejected: {value: "已拒絕報告請求"}
+reportWritten: {value: "調音報告已寫入"}
+sessionClosed: {value: "工作階段已關閉"}
+sessionCreated: {value: "工作階段已建立"}
+sessionCurveDropped: {value: "已移除目標曲線"}
+sessionCurveFitted: {value: "已根據一輪測量擬合目標曲線"}
+sessionCurveImported: {value: "已匯入目標曲線"}
+sessionDeleted: {value: "工作階段已刪除"}
+sessionLoadFailed: {value: "無法載入工作階段"}
+sessionOpened: {value: "工作階段已開啟"}
+sessionReedsClamped: {value: "發聲的簧片數超過引擎的分辨能力，已將測量數限制為引擎支援的上限"}
+sessionRejected: {value: "已拒絕無效的工作階段修改"}
+sessionSaveFailed: {value: "無法儲存工作階段"}
+
+# Frontend diagnostics
+frontendAudioCalibrationCancelFailed: {value: "無法取消校正"}
+frontendAudioCalibrationFailed: {value: "無法開始校正"}
+frontendAudioCorrectionFailed: {value: "無法讀取音效卡校正值"}
+frontendAudioDialogFailed: {value: "無法開啟檔案對話框"}
+frontendAudioListFailed: {value: "無法列出音訊裝置"}
+frontendAudioSelectFailed: {value: "無法選擇音訊源"}
+frontendAudioStateFailed: {value: "無法讀取音訊裝置狀態"}
+frontendAudioVolumeFailed: {value: "無法更改自動音量控制設定"}
+frontendConfigLoadFailed: {value: "無法載入配置"}
+frontendConfigLoaded: {value: "已載入配置"}
+frontendConfigSaveFailed: {value: "無法儲存配置"}
+frontendCurveViewFailed: {value: "無法讀取曲線顯示設定"}
+frontendError: {value: "應用程式發生意外錯誤"}
+frontendRejection: {value: "應用程式操作失敗"}
+frontendResizeNotice: {value: "佈局更新已推遲到下一幀（瀏覽器 ResizeObserver 通知）"}
+frontendSettingFailed: {value: "無法更改調音器設定"}
+frontendTunerStartFailed: {value: "無法啟動調音器"}
+frontendTunerStateFailed: {value: "無法讀取調音器狀態"}
+frontendTunerStopFailed: {value: "無法停止調音器"}
+frontendTunerTonePlayFailed: {value: "無法播放參考音"}
+frontendTunerToneStopFailed: {value: "無法停止參考音"}

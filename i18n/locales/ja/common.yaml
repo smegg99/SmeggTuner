@@ -1,0 +1,104 @@
+# Shared labels and application text (ja).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Buttons and shared labels
+accept: {value: "同意する"}
+back: {value: "戻る"}
+cancel: {value: "キャンセル"}
+close: {value: "閉じる"}
+delete: {value: "削除"}
+export: {value: "エクスポート"}
+next: {value: "次へ"}
+"no": {value: "いいえ"}
+none: {value: "なし"}
+previous: {value: "前へ"}
+website: {value: "ウェブサイト"}
+"yes": {value: "はい"}
+
+# Musical labels and unit symbols
+accordion: {value: "アコーディオン"}
+note: {value: "音名"}
+
+reed:
+  value: "リード {index}"
+  placeholders:
+    index: {type: integer}
+
+unitSymbol.cents: {value: "セント"}
+unitSymbol.hz: {value: "Hz"}
+unitSymbol.reference: {value: "u"}
+
+# Color controls
+color.hue: {value: "色相"}
+color.saturation: {value: "彩度"}
+color.value: {value: "明度"}
+
+# Navigation and window titles
+routes.navigation: {value: "メインナビゲーション"}
+routes.settings: {value: "設定"}
+routes.tune: {value: "調律"}
+routes.workshop: {value: "調律工房"}
+
+title.count:
+  value: "{room} {name} ({done})"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+
+title.progress:
+  value: "{room} {name} {done}/{total}"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+    total: {type: string}
+
+title.room.about: {value: "このアプリについて"}
+title.room.calibrate: {value: "校正"}
+title.room.help: {value: "ヘルプ"}
+title.room.settings: {value: "設定"}
+title.room.soundcard: {value: "サウンドカード"}
+title.room.tune: {value: "調律"}
+title.room.workshop: {value: "調律工房"}
+
+title.session:
+  value: "{room} {name}"
+  placeholders:
+    name: {type: string}
+    room: {type: string}
+
+title.uncalibrated:
+  value: "{title}（サウンドカード未校正）"
+  placeholders:
+    title: {type: string}
+
+# Application and About dialog
+about.aboutTitle: {value: "このアプリについて"}
+about.commit: {value: "ビルド"}
+about.donate: {value: "Ko-fi で支援"}
+about.license: {value: "ライセンス"}
+about.privacy: {value: "プライバシーポリシー"}
+about.guide: {value: "SmeggTuner の使い方"}
+about.onlineVersion: {value: "オンライン版を開く"}
+about.support: {value: "サポート"}
+about.mascot: {value: "アコーディオンを弾く猫"}
+about.publisher: {value: "開発者：smegg99"}
+about.tagline: {value: "無料で使えるオープンソースのアコーディオン調律ソフトです。"}
+about.untagged: {value: "開発ビルド"}
+about.version: {value: "バージョン"}
+app.description: {value: "無料のオープンソース・アコーディオンチューナー。"}
+app.name: {value: "SmeggTuner"}
+
+# Help dialog and keyboard instructions
+about.helpTitle: {value: "ヘルプ"}
+
+# System tray
+tray.quit: {value: "終了"}
+tray.show: {value: "表示"}
+
+linkNewTab:
+  value: "{text}（新しいタブで開きます）"
+  placeholders:
+    text: {type: string}

@@ -1,6 +1,10 @@
 package i18n
 
-import "testing"
+import (
+	"encoding/json"
+	"strings"
+	"testing"
+)
 
 // Locale files use flat dotted message IDs; go-i18n reserves keys inside nested maps.
 func TestDottedKeysResolve(t *testing.T) {
@@ -45,5 +49,31 @@ func TestOnChangeFires(t *testing.T) {
 	SetLocale("pl")
 	if fired != 1 {
 		t.Fatalf("OnChange fired %d times, want 1", fired)
+	}
+}
+
+// Loading all catalogs into one bundle must preserve regional and script variants.
+func TestNativeMessagesUseSelectedCatalog(t *testing.T) {
+	defer SetLocale(DefaultLocale)
+	for _, code := range Locales {
+		t.Run(code, func(t *testing.T) {
+			data, err := LocaleFiles.ReadFile("locales/" + code + ".json")
+			if err != nil {
+				t.Fatal(err)
+			}
+			var messages map[string]any
+			if err := json.Unmarshal(data, &messages); err != nil {
+				t.Fatal(err)
+			}
+			SetLocale(code)
+			for key, entry := range messages {
+				want, plain := entry.(string)
+				if plain && !strings.Contains(want, "{{") {
+					if got := T(key); got != want {
+						t.Errorf("%s: got %q, want %q", key, got, want)
+					}
+				}
+			}
+		})
 	}
 }

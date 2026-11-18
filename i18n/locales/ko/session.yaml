@@ -1,0 +1,251 @@
+# Sessions, instruments and target curves (ko).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Session list and actions
+card.a4:
+  value: "A = {hz} Hz"
+  placeholders:
+    hz: {type: string}
+
+card.changed: {value: "이 세션을 기록한 뒤 악기 보관함의 아코디언 정보가 변경되었습니다."}
+card.hasCurve: {value: "목표 곡선 설정됨"}
+
+card.readings:
+  plural:
+    argument: count
+    forms:
+      other: "측정값 {count}개"
+  placeholders:
+    count: {type: integer}
+
+card.unnamedInstrument: {value: "이름 없는 아코디언"}
+
+card.updated:
+  value: "{when} 업데이트"
+  placeholders:
+    when: {type: string}
+
+deleteHint: {value: "세션과 모든 측정 회차, 측정값, 조율 곡선을 영구 삭제합니다."}
+deleteTitle: {value: "이 세션을 삭제할까요?"}
+empty: {value: "아직 세션이 없습니다"}
+emptyHint: {value: "측정값을 저장하려면 세션을 만드세요. 세션 없이도 튜너를 사용할 수 있습니다."}
+export: {value: "세션 내보내기"}
+file.openFilter: {value: "SmeggTuner 세션"}
+file.openTitle: {value: "세션 파일 선택"}
+new: {value: "새 세션"}
+title: {value: "세션"}
+
+# Session dialog and tabs
+dialog.backToList: {value: "이전에 조율한 악기 선택"}
+dialog.describeNew: {value: "새 악기 정보 입력…"}
+dialog.forgetAccordion: {value: "이 아코디언 등록 해제"}
+dialog.loadAccordion: {value: "파일에서 불러오기…"}
+dialog.name: {value: "세션 이름"}
+dialog.nameHint: {value: "악기 이름이나 고객 이름으로 세션을 구분하세요."}
+dialog.pickAccordion: {value: "어느 아코디언인가요?"}
+dialog.start: {value: "시작"}
+page.mobile.curve: {value: "목표값"}
+page.mobile.recorded: {value: "측정값"}
+
+# Instrument editing restrictions
+accordion.a4Locked: {value: "이 세션에 이미 이 값을 기준으로 기록한 측정값이 있어 고정되었습니다."}
+
+accordion.columnsRefused:
+  value: "기존 측정값에 쓰인 리드 열이 바뀌므로 변경 사항을 저장하지 않았습니다. 이전 리드 열을 복원하거나 새 세션을 만드세요."
+accordion.frozen:
+  value: "측정값을 기록한 뒤에는 기준 음높이와 리드 열을 바꿀 수 없습니다. 기존 열을 사용하는 레지스터는 추가할 수 있습니다."
+accordion.frozenShort: {value: "리드 열 잠김"}
+accordion.remember: {value: "악기 보관함에 저장"}
+accordion.rememberHint: {value: "이 세션의 악기를 보관함에 저장해 다음 세션에서도 사용합니다."}
+
+# Instrument definition and registers
+instrument.a4: {value: "기준 음높이"}
+
+instrument.a4Hint:
+  value: "A4의 기준 주파수(헤르츠)입니다. 이 악기의 새 세션은 이 값을 사용합니다."
+
+instrument.bass.build: {value: "다음 스위치로 울릴 리드 열(피트)"}
+instrument.bass.fixed: {value: "베이스 레지스터가 없는 고정식 구조로, 모든 리드 열이 항상 함께 울립니다."}
+
+instrument.bass.full:
+  value: "이 베이스 장치는 스위치를 최대 {n}개까지 지원합니다"
+  placeholders:
+    n: {type: string}
+
+instrument.bass.hint: {value: "베이스에서 울리는 리드 열의 수를 지정하세요. 보통 네 열이나 다섯 열입니다."}
+instrument.bass.registerName: {value: "스위치 이름"}
+instrument.bass.voices: {value: "베이스 리드 열"}
+instrument.beatTolerance: {value: "맥놀이 허용 오차"}
+instrument.builder.add: {value: "추가"}
+instrument.builder.already: {value: "이미 등록된 스위치입니다"}
+instrument.builder.high: {value: "4′ 피콜로"}
+instrument.builder.low: {value: "16′ 베이스"}
+instrument.builder.middle: {value: "8′ 리드"}
+instrument.builder.none: {value: "아직 스위치가 없습니다. 아래에서 각 스위치가 울릴 리드 열을 선택하세요."}
+instrument.builder.remove: {value: "이 레지스터 삭제"}
+instrument.builder.title: {value: "스위치 추가"}
+instrument.file.exportTitle: {value: "아코디언 정보 내보내기"}
+instrument.file.filterName: {value: "SmeggTuner 아코디언 파일"}
+instrument.file.imageFilter: {value: "이미지"}
+instrument.file.imageTitle: {value: "사진 선택"}
+instrument.file.openTitle: {value: "아코디언 파일 선택"}
+instrument.name: {value: "이름"}
+instrument.nameHint: {value: "악기 보관함과 세션에 표시되는 이름입니다."}
+instrument.namePlaceholder: {value: "Hohner Morino V N"}
+instrument.nameRequired: {value: "아코디언 이름을 입력하세요."}
+instrument.photo: {value: "사진"}
+instrument.range.backwards: {value: "최고음은 최저음보다 낮을 수 없습니다."}
+instrument.range.clear: {value: "지우기"}
+instrument.range.down: {value: "낮추기"}
+
+instrument.range.hint:
+  value: "선택 사항입니다. 가장 낮은 건반과 높은 건반을 지정하거나 보정할 때 직접 연주해 설정할 수 있습니다."
+
+instrument.range.label: {value: "건반 음역"}
+instrument.range.to: {value: "부터"}
+instrument.range.up: {value: "높이기"}
+
+instrument.registersHint:
+  value: "악기에 새겨진 원형 스위치 기호의 점을 클릭하거나 흔한 조합을 선택하세요. 어떤 리드 열이 울리는지는 점의 위치로 결정됩니다."
+instrument.registersSubtitle: {value: "트레블 쪽 스위치와 각 스위치가 울리는 리드 열입니다."}
+
+instrument.says:
+  plural:
+    argument: reeds
+    forms:
+      other: "리드 열: {banks}. 가장 많은 열을 사용하는 스위치는 리드 {reeds}개를 울립니다."
+  placeholders:
+    banks: {type: string}
+    reeds: {type: integer}
+
+instrument.sections.bass: {value: "베이스 장치"}
+instrument.sections.identity: {value: "기본 정보"}
+instrument.sections.keyboard: {value: "건반"}
+instrument.sections.reference: {value: "기준 및 허용 오차"}
+instrument.sections.voices: {value: "레지스터"}
+instrument.tolerance: {value: "리드 허용 오차"}
+
+instrument.toleranceHint:
+  value: "해당 음 주파수의 0.06%를 한 단위로 하는 리드 허용 편차입니다. 범위를 벗어난 측정값은 조율이 맞지 않는 것으로 표시됩니다."
+# Target curve editor
+curve.clearAll: {value: "곡선 지우기"}
+
+curve.clearAllConfirm:
+  value: "모든 기준점을 제거합니다. 각 음의 목표가 음계 음높이로 돌아가며 튜너는 편차만 표시합니다."
+curve.clearAllHint: {value: "모든 기준점을 제거하고 목표를 음계 음높이로 되돌립니다."}
+curve.clearAllTitle: {value: "곡선 전체를 지울까요?"}
+curve.entryUnit: {value: "입력 단위"}
+
+curve.help.hz:
+  value: "Hz를 선택하면 기준 맥놀이 목록과 같이 A4 = 440 Hz 기준으로 음계 음높이에서 벗어날 목표 편차를 Hz로 입력하므로 세션의 A4가 달라져도 값은 변하지 않습니다. ‘기록됨’으로 세션 측정값을 겹쳐 보고 ‘목록’에서 기준점을 값에 맞추거나 다른 세션의 목록을 복사할 수 있습니다."
+curve.help.hzTitle: {value: "헤르츠와 측정값"}
+
+curve.help.interp:
+  value: "보간을 켜면 기준점 사이의 음이 선을 따릅니다. 끄면 다음 점까지 이전 점의 값을 유지합니다. 점이 없으면 모든 음에서 음계 음높이가 목표입니다."
+curve.help.interpTitle: {value: "기준점 사이"}
+
+curve.help.lead:
+  value: "각 음에서 각 리드가 음계 음높이와 얼마나 달라야 하는지를 나타내는 조율 목표입니다. 표는 편차 0이 아니라 이 목표와 기록한 리드를 비교해 조율 여부를 판정합니다."
+curve.help.set:
+  value: "음과 값을 선택하고 ‘설정’을 누르거나 그래프의 점을 위아래로 드래그하세요. 각 리드 열에는 별도의 선이 있고 편집 중인 선은 강조 표시됩니다."
+curve.help.setTitle: {value: "기준점 설정"}
+curve.helpTitle: {value: "목표 맥놀이"}
+curve.interpolate: {value: "보간"}
+curve.interpolateHint: {value: "기준점 사이의 선을 따릅니다. 끄면 다음 점까지 같은 값을 유지합니다."}
+curve.menu.ends: {value: "기준점 범위 밖"}
+curve.menu.extendHigh: {value: "최고점 위로 연장"}
+curve.menu.extendLow: {value: "최저점 아래로 연장"}
+curve.menu.fit: {value: "이 세션의 측정값에 맞추기"}
+
+curve.menu.fitBody:
+  plural:
+    argument: n
+    forms:
+      other: "기준점을 측정값 {n}개에 맞춘 곡선으로 교체합니다."
+  placeholders:
+    n: {type: integer}
+
+curve.menu.fromFile: {value: "세션 파일에서 복사"}
+curve.menu.fromSession: {value: "세션에서 복사"}
+curve.menu.label: {value: "목록"}
+curve.menu.replace: {value: "목록 교체"}
+curve.menu.replaceBody: {value: "다른 목록의 기준점과 설정으로 교체합니다."}
+curve.menu.replaceConfirm: {value: "교체"}
+curve.menu.replaceTitle: {value: "맥놀이 목록을 교체할까요?"}
+curve.rank: {value: "리드 열"}
+curve.recorded: {value: "기록됨"}
+curve.recordedHint: {value: "이 세션의 측정값을 그래프에 표시"}
+curve.remove: {value: "제거"}
+curve.removeHint: {value: "곡선에서 이 음의 기준점을 제거합니다."}
+
+curve.scale:
+  value: "눈금 {v}"
+  placeholders:
+    v: {type: string}
+
+curve.scaleAuto: {value: "자동 눈금"}
+curve.scaleHint: {value: "그래프 세로축 표시 범위"}
+curve.set: {value: "설정"}
+curve.setHint: {value: "선택한 리드 열의 이 음에 기준점을 설정합니다."}
+curve.startHint: {value: "아직 기준점이 없습니다. 모든 음의 목표는 음계 음높이입니다."}
+
+# Readings and workshop actions
+footer.coverage:
+  value: "측정한 음 {done} / {total}개"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.inTune:
+  value: "조율 일치 {done} / {total}"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.none: {value: "세션 없음"}
+
+readings.notes:
+  plural:
+    argument: n
+    forms:
+      other: "음 {n}개"
+  placeholders:
+    n: {type: integer}
+
+workshop.exit: {value: "세션 나가기"}
+workshop.import: {value: "가져오기"}
+workshop.open: {value: "열기"}
+workshop.print: {value: "조율 카드 인쇄"}
+
+# Session errors
+error.fitFailed: {value: "해당 측정 회차에 곡선을 맞추지 못했습니다."}
+
+error.hasReadings:
+  value: "이 세션에 이미 측정값이 있어 측정에 사용한 기준 음높이와 리드 수를 변경할 수 없습니다."
+error.imageUnreadable: {value: "해당 사진을 열 수 없습니다."}
+error.instrumentName: {value: "나중에 찾을 수 있도록 아코디언 이름을 입력하세요."}
+error.invalidA4: {value: "기준 음높이는 430~450 Hz여야 합니다."}
+
+error.invalidInstrument:
+  value: "리드 열 이름이 중복되거나 레지스터가 악기에 없는 열을 사용하므로 이 아코디언을 사용할 수 없습니다."
+error.invalidName: {value: "세션 이름을 입력하세요."}
+error.invalidNote: {value: "이 음은 튜너의 추적 범위를 벗어납니다."}
+error.invalidReed: {value: "이 아코디언에서는 해당 리드가 울리지 않습니다."}
+error.invalidReedCount: {value: "아코디언은 한 음에 리드 1~8개를 울릴 수 있습니다."}
+error.invalidTranspose: {value: "이조 범위는 0~11반음입니다."}
+error.invalidUnit: {value: "값은 0.06 % 단위, 센트 또는 헤르츠로 입력하세요."}
+error.invalidValue: {value: "숫자가 아닙니다."}
+error.loadFailed: {value: "세션을 읽을 수 없습니다."}
+error.noBassMachine: {value: "이 아코디언에는 베이스 장치가 정의되지 않았습니다."}
+error.noBassRegister: {value: "이 아코디언에는 해당 베이스 레지스터가 없습니다."}
+error.noCurve: {value: "이 세션에 목표 곡선이 없습니다."}
+error.noReadings: {value: "이 세션에는 아직 기록된 측정값이 없습니다."}
+error.noRegister: {value: "이 아코디언에는 해당 레지스터가 없습니다."}
+error.noSession: {value: "열린 세션이 없습니다."}
+error.notAnImage: {value: "해당 파일은 사진이 아닙니다."}
+error.notFound: {value: "해당 세션이 더 이상 없습니다."}
+error.notesTooLong: {value: "메모를 500자 이내로 줄이세요."}
+error.saveFailed: {value: "세션을 저장하지 못했습니다. 지금 닫으면 최근 기록이 사라질 수 있습니다."}
+error.takeNotFound: {value: "해당 측정값이 더 이상 없습니다."}
+error.unexpected: {value: "오류가 발생했습니다."}

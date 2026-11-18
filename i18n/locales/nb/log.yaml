@@ -1,0 +1,100 @@
+# Diagnostic log messages (nb).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Application lifecycle and configuration
+appStarting: {value: "Starter smeggtuner"}
+cleaningUp: {value: "Rydder opp"}
+configLoadFailed: {value: "Kunne ikke laste inn konfigurasjonen"}
+configLoaded: {value: "Konfigurasjonen er lastet inn"}
+configSaveFailed: {value: "Kunne ikke lagre konfigurasjonen"}
+crashScreenFailed: {value: "Kunne ikke vise feilskjermen"}
+crashWatchFailed: {value: "Kunne ikke starte krasjovervåkingen"}
+datastoreInitFailed: {value: "Kunne ikke initialisere datalageret"}
+datastoreReady: {value: "Datalageret er klart"}
+loadingConfig: {value: "Laster inn konfigurasjonen"}
+loggerInitFailed: {value: "Kunne ikke konfigurere loggingen"}
+reinitLogger: {value: "Tilpasser loggingen til konfigurasjonen"}
+runFailed: {value: "Kjøring av programmet mislyktes"}
+secondInstance: {value: "En ny instans ble startet. Aktiverer det eksisterende vinduet"}
+trayIconFailed: {value: "Kunne ikke laste inn ikonet for systemstatusfeltet"}
+updateCheckFailed: {value: "Kunne ikke se etter oppdateringer", description: "Update check or stored release-note state failed; logged without a dialog."}
+windowStateLoadFailed: {value: "Kunne ikke laste inn vindustilstanden"}
+windowStateSaveFailed: {value: "Kunne ikke lagre vindustilstanden"}
+
+# Audio devices and calibration
+audioDeviceEnumFailed: {value: "Kunne ikke hente listen over opptaksenheter"}
+audioDeviceGone: {value: "Den valgte opptaksenheten er ikke lenger tilgjengelig"}
+audioDevicesListed: {value: "Listen over opptaksenheter er hentet"}
+audioDialogFailed: {value: "Fildialogen mislyktes"}
+audioDialogUnavailable: {value: "Fildialog forespurt mens programmet ikke kjørte"}
+audioFileUnreadable: {value: "Kunne ikke åpne opptaket"}
+audioNoDevices: {value: "Ingen opptaksenheter tilgjengelig"}
+audioSourceSelected: {value: "Inngangskilde valgt"}
+audioSpeakerUnavailable: {value: "Ingen utdataenhet. Filen spilles av uten lyd"}
+calibrationAbandoned: {value: "Kalibreringen av lydkortet ble avbrutt"}
+calibrationFinished: {value: "Kalibreringen av lydkortet er ferdig"}
+calibrationNoDevice: {value: "Kunne ikke åpne enheten for kalibrering av lydkortet"}
+calibrationStarted: {value: "Kalibreringen av lydkortet har startet"}
+deviceStoreFailed: {value: "Kunne ikke lagre opptaksenhetens innstillinger"}
+micBlocksDropped: {value: "Behandlingen av mikrofonlyden har stoppet opp. Hopper over lydblokker"}
+micDeviceLost: {value: "Opptaksenheten stoppet uventet"}
+volumeRestore: {value: "Automatisk volumkontroll kunne ikke gjenopprette inngangsnivået"}
+volumeStepFailed: {value: "Automatisk volumkontroll kunne ikke stille inn inngangsnivået"}
+volumeUnavailable: {value: "Automatisk volumkontroll har ikke tilgang til enhetens inngangsnivå"}
+
+# Tuner engine
+tunerEventsDropped: {value: "Målehendelser hoppet over fordi grensesnittet ligger etter"}
+tunerRunFailed: {value: "Målemotoren stoppet med en feil"}
+tunerSettingRejected: {value: "Avviste en innstilling utenfor tillatt område"}
+tunerStartFailed: {value: "Kunne ikke opprette inngangskilden"}
+tunerStarted: {value: "Målemotoren har startet"}
+tunerStopped: {value: "Målemotoren har stoppet"}
+tunerTonePlayFailed: {value: "Kunne ikke spille av referansetonen"}
+tunerTonePlaying: {value: "Spiller av referansetonen"}
+
+# Sessions, readings and reports
+recordCleared: {value: "Målerunden tømt"}
+recordEdited: {value: "Måling redigert manuelt"}
+recordRejected: {value: "Forespørsel om registrering avvist"}
+recordTake: {value: "Måling registrert"}
+recordUndone: {value: "Siste måling angret"}
+reportFailed: {value: "Kunne ikke skrive stemmerapporten"}
+reportOpenFailed: {value: "Kunne ikke åpne stemmerapporten"}
+reportOpened: {value: "Stemmerapporten er sendt til nettleseren"}
+reportRejected: {value: "Forespørsel om rapport avvist"}
+reportWritten: {value: "Stemmerapport skrevet"}
+sessionClosed: {value: "Økten er lukket"}
+sessionCreated: {value: "Økten er opprettet"}
+sessionCurveDropped: {value: "Målkurven er fjernet"}
+sessionCurveFitted: {value: "Målkurven er tilpasset en målerunde"}
+sessionCurveImported: {value: "Målkurven er importert"}
+sessionDeleted: {value: "Økten er slettet"}
+sessionLoadFailed: {value: "Kunne ikke laste inn økten"}
+sessionOpened: {value: "Økten er åpnet"}
+sessionReedsClamped: {value: "Flere stemtunger klinger enn målemotoren kan skille. Antallet begrenses"}
+sessionRejected: {value: "Ugyldig øktendring avvist"}
+sessionSaveFailed: {value: "Kunne ikke lagre økten"}
+
+# Frontend diagnostics
+frontendAudioCalibrationCancelFailed: {value: "Kunne ikke avbryte kalibreringen"}
+frontendAudioCalibrationFailed: {value: "Kunne ikke starte kalibreringen"}
+frontendAudioCorrectionFailed: {value: "Kunne ikke lese lydkortets korreksjon"}
+frontendAudioDialogFailed: {value: "Kunne ikke åpne fildialogen"}
+frontendAudioListFailed: {value: "Kunne ikke hente listen over lydenheter"}
+frontendAudioSelectFailed: {value: "Kunne ikke velge lydkilde"}
+frontendAudioStateFailed: {value: "Kunne ikke lese lydenhetens status"}
+frontendAudioVolumeFailed: {value: "Kunne ikke endre automatisk volumkontroll"}
+frontendConfigLoadFailed: {value: "Kunne ikke laste inn konfigurasjonen"}
+frontendConfigLoaded: {value: "Konfigurasjonen er lastet inn"}
+frontendConfigSaveFailed: {value: "Kunne ikke lagre konfigurasjonen"}
+frontendCurveViewFailed: {value: "Kunne ikke lese innstillingene for kurvevisning"}
+frontendError: {value: "Uventet programfeil"}
+frontendRejection: {value: "Operasjonen i programmet mislyktes"}
+frontendResizeNotice: {value: "Layoutendring utsatt til neste bilde (ResizeObserver-melding fra nettleseren)"}
+frontendSettingFailed: {value: "Kunne ikke endre stemmeapparatets innstilling"}
+frontendTunerStartFailed: {value: "Kunne ikke starte stemmeapparatet"}
+frontendTunerStateFailed: {value: "Kunne ikke lese stemmeapparatets status"}
+frontendTunerStopFailed: {value: "Kunne ikke stoppe stemmeapparatet"}
+frontendTunerTonePlayFailed: {value: "Kunne ikke spille av referansetonen"}
+frontendTunerToneStopFailed: {value: "Kunne ikke stoppe referansetonen"}

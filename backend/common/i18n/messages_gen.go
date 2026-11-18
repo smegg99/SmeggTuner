@@ -163,6 +163,19 @@ func CommonExport(l *i18n.Localizer) string {
 	return plain(l, "common.export")
 }
 
+// CommonLinkNewTabParams are the placeholders of common.linkNewTab.
+type CommonLinkNewTabParams struct {
+	Text string
+}
+
+// CommonLinkNewTab renders common.linkNewTab.
+func CommonLinkNewTab(l *i18n.Localizer, p CommonLinkNewTabParams) string {
+	data := map[string]any{
+		"Text": p.Text,
+	}
+	return withData(l, "common.linkNewTab", data)
+}
+
 // CommonNext renders common.next.
 func CommonNext(l *i18n.Localizer) string {
 	return plain(l, "common.next")

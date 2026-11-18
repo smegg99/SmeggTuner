@@ -8,6 +8,7 @@ import { resolveDesktopTheme, useSystemTheme, type SystemThemeInfo } from '~/com
 import { applyInstrumentTheme, TOKENS } from '~/theme/tokens'
 import { accentMode, themeMode } from '~/types/config'
 import { WEB, WEB_ACCENT } from '~/utils/features'
+import { savedLocale } from '../../i18n/locales'
 import type { LocaleCode } from '~/types/locale'
 import type { AccentMode, ThemeMode } from '~/types/config'
 
@@ -59,7 +60,7 @@ export function initializeThemeSync() {
       appearance.setMode(mode === 'auto' ? 'system' : mode, undefined, 'none')
     }, { immediate: true })
     watch(() => config.preferences.language, async (language) => {
-      const code = language === 'pl' ? 'pl' : 'en'
+      const code = savedLocale(language)
       if (locale.value !== code) await setLocale(code)
     }, { immediate: true })
   })

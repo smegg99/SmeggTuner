@@ -1,0 +1,190 @@
+# Printed reports and export (ru).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Report title and instrument details
+facts.curve: {value: "Целевая кривая"}
+facts.curveNone: {value: "нет"}
+facts.curveUnnamed: {value: "без названия"}
+facts.reference: {value: "Эталонная ля (A4, эта серия)"}
+facts.tolerance: {value: "Допуск"}
+
+facts.toleranceValue:
+  value: 'язычок: {reed} {unit} / биения: {beat} {unit}'
+  placeholders:
+    beat:
+      type: string
+    reed:
+      type: string
+    unit:
+      type: string
+
+facts.transpose: {value: "Транспонирование"}
+
+facts.transposeValue:
+  value: '{key} звучит как {sounds}'
+  placeholders:
+    key:
+      type: string
+    sounds:
+      type: string
+
+title: {value: "Отчёт о настройке"}
+
+# Table and column headings
+head.beat:
+  value: Биения {pair}
+  placeholders:
+    pair:
+      type: string
+
+table.bassTitle:
+  value: Таблица настройки басов ({unit})
+  placeholders:
+    unit:
+      type: string
+
+table.curr: {value: "Изм."}
+table.err: {value: "Откл."}
+table.register: {value: "Регистр"}
+
+table.title:
+  value: Таблица настройки ({unit})
+  placeholders:
+    unit:
+      type: string
+
+# Deviation units
+unit.cents.name: {value: "центы"}
+unit.cents.symbol: {value: "c"}
+unit.reference.name: {value: "единицы по 0,06 %"}
+
+# Graph legend and reading markers
+graph.edited:
+  value: '{mark} — изменено вручную.'
+  placeholders:
+    mark:
+      type: string
+
+legend.error.cents:
+  value: Подпиливайте язычок, приближая отклонение к нулю. Значения даны в центах относительно темперированного строя
+    при опорной частоте {a4} Гц.
+  placeholders:
+    a4:
+      type: string
+
+legend.error.key: {value: "Отклонение = измеренное значение − цель."}
+legend.error.noCurve: {value: "Без целевой кривой цель равна нулю, а отклонение отсчитывается от строя."}
+
+legend.error.reference:
+  value: Подпиливайте язычок, приближая отклонение к нулю. Отклонение от темперированного строя при опорной частоте
+    {a4} Гц дано в единицах по 0,06 % частоты ноты.
+  placeholders:
+    a4:
+      type: string
+
+legend.out.short: {value: "вне допуска"}
+legend.takes.key: {value: "xN"}
+legend.takes.short: {value: "записано несколько раз, показана последняя запись"}
+mark.edited: {value: "H"}
+mark.out: {value: "!"}
+
+# Summary and footer
+footer.generated:
+  value: Создано {at} в приложении {app}
+  placeholders:
+    app:
+      type: string
+    at:
+      type: string
+
+summary.allIn: {value: "Все значения в пределах допуска."}
+
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} биение'
+      few: '{pluralCount} биения'
+      many: '{pluralCount} биений'
+      other: '{pluralCount} биения'
+  placeholders:
+    pluralCount:
+      type: integer
+
+summary.line:
+  value: '{notes} (от {min} до {max}), {reeds}, {beats}.'
+  placeholders:
+    beats:
+      type: string
+    max:
+      type: string
+    min:
+      type: string
+    notes:
+      type: string
+    reeds:
+      type: string
+
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} нота'
+      few: '{pluralCount} ноты'
+      many: '{pluralCount} нот'
+      other: '{pluralCount} ноты'
+  placeholders:
+    pluralCount:
+      type: integer
+
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      one: 'Вне допуска: {pluralCount} ({reeds}, {beats}).'
+      few: 'Вне допуска: {pluralCount} ({reeds}, {beats}).'
+      many: 'Вне допуска: {pluralCount} ({reeds}, {beats}).'
+      other: 'Вне допуска: {pluralCount} ({reeds}, {beats}).'
+  placeholders:
+    beats:
+      type: string
+    pluralCount:
+      type: integer
+    reeds:
+      type: string
+
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} измерение язычков'
+      few: '{pluralCount} измерения язычков'
+      many: '{pluralCount} измерений язычков'
+      other: '{pluralCount} измерения язычков'
+  placeholders:
+    pluralCount:
+      type: integer
+
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} язычок'
+      few: '{pluralCount} язычка'
+      many: '{pluralCount} язычков'
+      other: '{pluralCount} язычка'
+  placeholders:
+    pluralCount:
+      type: integer
+
+# Export errors
+error.invalidDate: {value: "Введите действительную дату в формате ГГГГ-ММ-ДД."}
+error.invalidFormat: {value: "Отчёт нельзя сохранить в этом формате."}
+
+error.noBrowser: {value: "Для вёрстки PDF нужен браузер. На этом компьютере нет ни Chrome, ни Chromium. Установите один из них или экспортируйте карту в HTML и распечатайте её."}
+
+error.openFailed: {value: "Отчёт сохранён, но ни один браузер не смог его открыть. Откройте файл вручную."}
+error.renderFailed: {value: "Не удалось сформировать отчёт. Ничего не записано."}
+
+error.writeFailed: {value: "Не удалось записать отчёт в выбранное место. Если там уже был файл, он остался без изменений."}

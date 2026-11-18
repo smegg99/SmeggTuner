@@ -7,6 +7,7 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import wailsPlugin from '@wailsio/runtime/plugins/vite'
 import svgLoader from 'vite-svg-loader'
 import browserCss from './build/browser'
+import { localeOptions } from './i18n/locales'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const bindingsDir = path.resolve(__dirname, 'bindings')
@@ -166,20 +167,7 @@ export default defineNuxtConfig({
     strategy: 'no_prefix',
     defaultLocale: 'en',
     langDir: 'generated',
-    locales: [
-      {
-        code: 'en',
-        name: 'English',
-        language: 'en-GB',
-        files: localeFiles.map(f => `en/${f}`),
-      },
-      {
-        code: 'pl',
-        name: 'Polski',
-        language: 'pl-PL',
-        files: localeFiles.map(f => `pl/${f}`),
-      },
-    ],
+    locales: localeOptions.map(locale => ({ ...locale, files: localeFiles.map(file => `${locale.code}/${file}`) })),
     compilation: {
       strictMessage: false,
       escapeHtml: false,

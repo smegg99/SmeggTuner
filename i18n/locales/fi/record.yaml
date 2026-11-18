@@ -1,0 +1,68 @@
+# Recording controls and readings (fi).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Recording controls
+arm.hint: {value: "Tallenna mittaus aina sävelen lukittuessa (Enter tallentaa heti)"}
+arm.needsSession: {value: "Avaa istunto tallennusta varten"}
+arm.warmup: {value: "Tallennus ei ole käynnissä. Voit soittaa vapaasti, mitään ei tallenneta. Aloita tallennus painamalla."}
+undo.hint: {value: "Kumoa viimeinen mittaus"}
+
+# Readings table and compact columns
+mobile.current: {value: "Mitattu"}
+mobile.error: {value: "Poikkeama"}
+
+table.beat:
+  value: "Huojunta {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.delete: {value: "Poista tämä lukema"}
+table.deleteHint: {value: "Poista lukema pysyvästi. Korvaa se soittamalla ja tallentamalla nuotti uudelleen."}
+table.deleteTitle: {value: "Poistetaanko lukema?"}
+table.editHint: {value: "Muokkaa arvoa napsauttamalla tai painamalla Enter"}
+table.empty: {value: "Aloita tallennus ja soita sitten nuotteja tallentaaksesi lukemat."}
+table.graph: {value: "Kaavio"}
+
+table.graphHint:
+  value: "Vertaa kutakin kieltä sen tavoitteeseen. Valitse rivi napsauttamalla pylvästä. Napsauta uudelleen valitaksesi seuraavan rekisterin."
+table.graphLabel: {value: "Kielten virheet tallennetuissa nuoteissa"}
+table.helpTitle: {value: "Tietoja taulukosta"}
+table.label: {value: "Tallennettu viritys"}
+table.latest: {value: "Viimeisin mittaus: poista askelpalauttimella"}
+table.manual: {value: "Muokattu"}
+table.manualHint: {value: "Tämän rivin arvo syötettiin käsin äänen mittaamisen sijaan."}
+
+table.notes:
+  plural:
+    argument: count
+    forms:
+      one: "{count} nuotti"
+      other: "{count} nuottia"
+  placeholders:
+    count: {type: integer}
+
+table.unitHint:
+  value: "Kielten poikkeamien yksikkö valitaan asetuksissa. Huojunnat näytetään hertseinä tai poikkeaman yksiköissä työkalurivin valinnan mukaan."
+# Report export dialog
+report.csv: {value: "CSV"}
+report.date: {value: "Päivämäärä"}
+report.format: {value: "Muoto"}
+
+report.formatHint:
+  value: "PDF esittää kortin yhdellä A4-sivulla tulostusasussa. HTML näyttää saman arkin verkkosivuna. CSV sisältää taulukon taulukkolaskentaa varten."
+report.html: {value: "HTML"}
+report.notes: {value: "Huomautus korttiin"}
+report.notesHint: {value: "Tulostetaan taulukon alle. Kirjaa tehdyt tai vielä tekemättömät työt."}
+
+report.pass:
+  value: "Mittauskierros: {label}"
+  placeholders:
+    label: {type: string}
+
+report.pdf: {value: "PDF"}
+report.title: {value: "Virityskortti"}
+
+# Recording errors
+error.takeNotFound: {value: "Mittaus ei enää kuulu tähän mittauskierrokseen."}
+error.unexpected: {value: "Toiminto epäonnistui. Lisätiedot ovat lokissa."}

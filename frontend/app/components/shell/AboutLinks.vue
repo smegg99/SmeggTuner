@@ -21,9 +21,9 @@
 import { computed } from 'vue'
 import * as BrowserService from '~~bindings/github.com/smegg99/s99wails/v2/services/browser/service.js'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const links = computed(() => [
-  { url: 'https://smeggtuner.com', icon: 'mdi-web', label: t('common.website') },
+  { url: locale.value === 'en' ? 'https://smeggtuner.com/' : `https://smeggtuner.com/${locale.value}/`, icon: 'mdi-web', label: t('common.website') },
   { url: 'https://github.com/smegg99/SmeggTuner', icon: 'mdi-github', label: 'GitHub' },
   { url: 'mailto:support@smegg.me', icon: 'mdi-email-outline', label: t('common.about.support') },
   { url: 'https://ko-fi.com/smegg99', icon: 'mdi-coffee-outline', label: t('common.about.donate') },

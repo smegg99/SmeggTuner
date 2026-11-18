@@ -1,0 +1,104 @@
+# Shared labels and application text (th).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Buttons and shared labels
+accept: {value: "ยอมรับ"}
+back: {value: "ย้อนกลับ"}
+cancel: {value: "ยกเลิก"}
+close: {value: "ปิด"}
+delete: {value: "ลบ"}
+export: {value: "ส่งออก"}
+next: {value: "ถัดไป"}
+"no": {value: "ไม่ใช่"}
+none: {value: "ไม่มี"}
+previous: {value: "ก่อนหน้า"}
+website: {value: "เว็บไซต์"}
+"yes": {value: "ใช่"}
+
+# Musical labels and unit symbols
+accordion: {value: "แอคคอร์เดียน"}
+note: {value: "โน้ต"}
+
+reed:
+  value: "ลิ้นเสียง {index}"
+  placeholders:
+    index: {type: integer}
+
+unitSymbol.cents: {value: "เซนต์"}
+unitSymbol.hz: {value: "Hz"}
+unitSymbol.reference: {value: "u"}
+
+# Color controls
+color.hue: {value: "เฉดสี"}
+color.saturation: {value: "ความอิ่มสี"}
+color.value: {value: "ความสว่าง"}
+
+# Navigation and window titles
+routes.navigation: {value: "เมนูหลัก"}
+routes.settings: {value: "การตั้งค่า"}
+routes.tune: {value: "ตั้งเสียง"}
+routes.workshop: {value: "ห้องงานช่าง"}
+
+title.count:
+  value: "{room} {name} ({done})"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+
+title.progress:
+  value: "{room} {name} {done}/{total}"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+    total: {type: string}
+
+title.room.about: {value: "เกี่ยวกับ"}
+title.room.calibrate: {value: "การสอบเทียบ"}
+title.room.help: {value: "วิธีใช้"}
+title.room.settings: {value: "การตั้งค่า"}
+title.room.soundcard: {value: "การ์ดเสียง"}
+title.room.tune: {value: "ตั้งเสียง"}
+title.room.workshop: {value: "ห้องงานช่าง"}
+
+title.session:
+  value: "{room} {name}"
+  placeholders:
+    name: {type: string}
+    room: {type: string}
+
+title.uncalibrated:
+  value: "{title} (ยังไม่ได้สอบเทียบการ์ดเสียง)"
+  placeholders:
+    title: {type: string}
+
+# Application and About dialog
+about.aboutTitle: {value: "เกี่ยวกับ"}
+about.commit: {value: "บิลด์"}
+about.donate: {value: "สนับสนุนผ่าน Ko-fi"}
+about.license: {value: "สัญญาอนุญาต"}
+about.privacy: {value: "นโยบายความเป็นส่วนตัว"}
+about.guide: {value: "วิธีใช้ SmeggTuner"}
+about.onlineVersion: {value: "เปิดฉบับออนไลน์"}
+about.support: {value: "ติดต่อฝ่ายสนับสนุน"}
+about.mascot: {value: "แมวกำลังเล่นแอคคอร์เดียน"}
+about.publisher: {value: "พัฒนาโดย smegg99"}
+about.tagline: {value: "โปรแกรมตั้งเสียงแอคคอร์เดียนแบบโอเพนซอร์สที่ใช้ได้ฟรี"}
+about.untagged: {value: "บิลด์สำหรับพัฒนา"}
+about.version: {value: "เวอร์ชัน"}
+app.description: {value: "เครื่องตั้งเสียงแอคคอร์เดียนแบบโอเพนซอร์สที่ใช้ได้ฟรี"}
+app.name: {value: "SmeggTuner"}
+
+# Help dialog and keyboard instructions
+about.helpTitle: {value: "วิธีใช้"}
+
+# System tray
+tray.quit: {value: "ออก"}
+tray.show: {value: "แสดง"}
+
+linkNewTab:
+  value: "{text} (เปิดในแท็บใหม่)"
+  placeholders:
+    text: {type: string}

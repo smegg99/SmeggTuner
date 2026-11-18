@@ -1,0 +1,62 @@
+# S99AB startup and crash dialogs (nl).
+close: {value: "Sluiten"}
+copied: {value: "Gekopieerd"}
+copy: {value: "Rapport kopiëren"}
+details: {value: "Details"}
+email: {value: "Rapport e-mailen"}
+failed:
+  value: "De bewerking is mislukt: {error}"
+  placeholders:
+    error: {type: string}
+file:
+  value: "Bestand: {path}"
+  placeholders:
+    path: {type: string}
+kill: {value: "Afsluiten en probleem melden"}
+logs: {value: "Logbestand tonen"}
+messageConfig:
+  value: "Het instellingenbestand kan niet worden gelezen. Herstel of verwijder het bestand en start {app} opnieuw."
+  placeholders:
+    app: {type: string}
+messageCrash:
+  value: "Er is een interne fout opgetreden in {app}. Stuur het rapport om het probleem te helpen oplossen en start de toepassing opnieuw."
+  placeholders:
+    app: {type: string}
+messageHang: {value: "De bewerking kan nog worden voltooid. Wacht even of sluit de toepassing en stuur een rapport."}
+messageHangStopped:
+  value: "{app} is afgesloten terwijl de toepassing niet reageerde. Stuur het rapport en start de toepassing opnieuw."
+  placeholders:
+    app: {type: string}
+messageKilled:
+  value: "{app} is afgesloten voordat de toepassing het probleem kon melden. Stuur het rapport en start de toepassing opnieuw."
+  placeholders:
+    app: {type: string}
+messageOom:
+  value: "Het systeem had onvoldoende geheugen en heeft {app} afgesloten. Stuur het rapport en start de toepassing opnieuw."
+  placeholders:
+    app: {type: string}
+messageStartup:
+  value: "Verhelp het onderstaande probleem en start {app} opnieuw."
+  placeholders:
+    app: {type: string}
+restart: {value: "Opnieuw starten"}
+save: {value: "Rapport opslaan"}
+saved:
+  value: "Opgeslagen in {path}"
+  placeholders:
+    path: {type: string}
+starting:
+  value: "{app} wordt gestart"
+  placeholders:
+    app: {type: string}
+titleCrash: {value: "De toepassing is onverwacht gestopt"}
+titleHang: {value: "De toepassing reageert niet"}
+titleHangStopped: {value: "De toepassing reageerde niet meer"}
+titleKilled: {value: "De toepassing is onverwacht afgesloten"}
+titleStart: {value: "De toepassing kon niet worden gestart"}
+wait: {value: "Wachten"}
+windowCrash: {value: "vastgelopen"}
+windowHang: {value: "reageert niet"}
+windowHangStopped: {value: "reageerde niet meer"}
+windowKilled: {value: "onverwacht afgesloten"}
+windowStart: {value: "starten mislukt"}

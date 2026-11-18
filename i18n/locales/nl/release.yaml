@@ -1,0 +1,15 @@
+# S99AB release notes and update prompts (nl).
+notesTitle:
+  value: "Nieuw in versie {version}"
+  placeholders:
+    version: {type: string}
+notTranslated: {value: "Deze versienotities zijn nog niet vertaald."}
+updateBody:
+  value: "Je gebruikt versie {current}. De nieuwste versie is {latest}."
+  placeholders:
+    current: {type: string}
+    latest: {type: string}
+updateDownload: {value: "Downloaden"}
+updateIgnore: {value: "Deze versie overslaan"}
+updateLater: {value: "Later"}
+updateTitle: {value: "Er is een nieuwere versie beschikbaar"}

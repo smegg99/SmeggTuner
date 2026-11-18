@@ -1,0 +1,104 @@
+# Shared labels and application text (nl).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Buttons and shared labels
+accept: {value: "Accepteren"}
+back: {value: "Terug"}
+cancel: {value: "Annuleren"}
+close: {value: "Sluiten"}
+delete: {value: "Verwijderen"}
+export: {value: "Exporteren"}
+next: {value: "Volgende"}
+"no": {value: "Nee"}
+none: {value: "Geen"}
+previous: {value: "Vorige"}
+website: {value: "Website"}
+"yes": {value: "Ja"}
+
+# Musical labels and unit symbols
+accordion: {value: "Accordeon"}
+note: {value: "Noot"}
+
+reed:
+  value: "Tong {index}"
+  placeholders:
+    index: {type: integer}
+
+unitSymbol.cents: {value: "cent"}
+unitSymbol.hz: {value: "Hz"}
+unitSymbol.reference: {value: "u"}
+
+# Color controls
+color.hue: {value: "Tint"}
+color.saturation: {value: "Verzadiging"}
+color.value: {value: "Helderheid"}
+
+# Navigation and window titles
+routes.navigation: {value: "Hoofdnavigatie"}
+routes.settings: {value: "Instellingen"}
+routes.tune: {value: "Stemmen"}
+routes.workshop: {value: "Werkplaats"}
+
+title.count:
+  value: "{room} {name} ({done})"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+
+title.progress:
+  value: "{room} {name} {done}/{total}"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+    total: {type: string}
+
+title.room.about: {value: "info"}
+title.room.calibrate: {value: "kalibratie"}
+title.room.help: {value: "hulp"}
+title.room.settings: {value: "instellingen"}
+title.room.soundcard: {value: "geluidskaart"}
+title.room.tune: {value: "stemmen"}
+title.room.workshop: {value: "werkplaats"}
+
+title.session:
+  value: "{room} {name}"
+  placeholders:
+    name: {type: string}
+    room: {type: string}
+
+title.uncalibrated:
+  value: "{title} (geluidskaart niet gekalibreerd)"
+  placeholders:
+    title: {type: string}
+
+# Application and About dialog
+about.aboutTitle: {value: "Over"}
+about.commit: {value: "Build"}
+about.donate: {value: "Steunen op Ko-fi"}
+about.license: {value: "Licentie"}
+about.privacy: {value: "Privacybeleid"}
+about.guide: {value: "SmeggTuner gebruiken"}
+about.onlineVersion: {value: "Onlineversie openen"}
+about.support: {value: "Ondersteuning"}
+about.mascot: {value: "Een kat die accordeon speelt"}
+about.publisher: {value: "Door smegg99"}
+about.tagline: {value: "Gratis programma met open broncode om accordeons te stemmen."}
+about.untagged: {value: "ontwikkelversie"}
+about.version: {value: "Versie"}
+app.description: {value: "Gratis accordeonstemapparaat met open broncode."}
+app.name: {value: "SmeggTuner"}
+
+# Help dialog and keyboard instructions
+about.helpTitle: {value: "Hulp"}
+
+# System tray
+tray.quit: {value: "Afsluiten"}
+tray.show: {value: "Tonen"}
+
+linkNewTab:
+  value: "{text} (opent in een nieuw tabblad)"
+  placeholders:
+    text: {type: string}

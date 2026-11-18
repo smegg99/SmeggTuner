@@ -1,30 +1,27 @@
 // frontend/app/utils/documents.ts
 import { Marked, Renderer } from 'marked'
-import privacyEnglish from '../../../PRIVACY.md?raw'
-import privacyPolish from '../../../PRIVACY.pl.md?raw'
+import type { LocaleCode } from '../types/locale'
+import { policies } from './privacy'
 import usageEnglish from '../../../USAGE.md?raw'
 import usagePolish from '../../../USAGE.pl.md?raw'
 import license from '../../../LICENSE?raw'
 
 export type DocumentKind = 'guide' | 'privacy' | 'license'
-export type DocumentLocale = 'en' | 'pl'
+export type DocumentLocale = LocaleCode
 
-const sources = {
-  guide: { en: usageEnglish, pl: usagePolish },
-  privacy: { en: privacyEnglish, pl: privacyPolish },
-  license: { en: license, pl: license },
-}
 const assets = import.meta.glob<string>('../../../assets/screenshots/usage-*.png', {
   eager: true, query: '?url', import: 'default',
 })
 export const documentImages = Object.fromEntries(Object.entries(assets).map(([file, url]) => [file.replace('../../../', ''), url]))
 
 export function documentSource(kind: DocumentKind, locale: DocumentLocale): string {
-  return sources[kind][locale]
+  if (kind === 'license') return license
+  if (kind === 'guide') return locale === 'pl' ? usagePolish : usageEnglish
+  return policies[locale]
 }
 
 export function documentURL(kind: DocumentKind, locale: DocumentLocale): string {
-  if (kind === 'privacy') return `https://smeggtuner.com/${locale === 'pl' ? 'pl/' : ''}privacy`
+  if (kind === 'privacy') return `https://smeggtuner.com/${locale === 'en' ? '' : `${locale}/`}privacy`
   return `https://github.com/smegg99/SmeggTuner/blob/main/${kind === 'license' ? 'LICENSE' : locale === 'pl' ? 'USAGE.pl.md' : 'USAGE.md'}`
 }
 

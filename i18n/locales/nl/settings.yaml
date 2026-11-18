@@ -1,0 +1,166 @@
+# Settings and sound-card calibration (nl).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Microphone and input level
+audioDeviceHint: {value: "Microfoon voor de meting"}
+audioDeviceLabel: {value: "Invoerapparaat"}
+audioDeviceSystemDefault: {value: "Systeemstandaard"}
+autoVolume.hint: {value: "Regelt het microfoonniveau tijdens de meting"}
+autoVolume.label: {value: "Automatisch ingangsniveau"}
+autoVolume.saveFailed: {value: "De instelling voor het ingangsniveau kon niet worden opgeslagen."}
+autoVolume.unsupported: {value: "Het ingangsniveau van dit apparaat kan niet worden geregeld."}
+humFilter50: {value: "50 Hz"}
+humFilter60: {value: "60 Hz"}
+humFilterHint: {value: "Onderdrukt netbrom: 50 Hz in Europa, 60 Hz in Amerika"}
+humFilterLabel: {value: "Netbromfilter"}
+lockedWhileRunning: {value: "Stop het stemapparaat om de audio-ingang te wijzigen."}
+
+# Detection and reference pitch
+continuousManual: {value: "Een vastgezette noot voortdurend bijwerken"}
+continuousManualHint: {value: "Een vastgezette noot bijwerken tot de meting stabiel is"}
+detection.balanced: {value: "Gebalanceerd"}
+detection.balancedHint: {value: "Wisselt na ongeveer een halve seconde van noot"}
+detection.fast: {value: "Snel"}
+detection.fastHint: {value: "Wisselt het snelst van noot, maar kan een verkeerde noot vasthouden"}
+detection.steady: {value: "Stabiel"}
+detection.steadyHint: {value: "Oorspronkelijk gedrag, wisselt langzaam van noot"}
+detectionLabel: {value: "Nootdetectie"}
+lockA4: {value: "Referentietoon vergrendelen"}
+lockA4Hint: {value: "Voorkomt dat A4 in het stemapparaat wordt gewijzigd"}
+
+# Reading units, tolerance and note names
+beatUnitHint: {value: "Hertz of eenheden van 0,06% van de toonfrequentie"}
+beatUnitLabel: {value: "Eenheid voor zweving"}
+errorReference: {value: "Referentie voor afwijkingen"}
+errorReferenceGoal: {value: "Doelwaarde"}
+
+errorReferenceHint:
+  value: "Toon de afwijking van de toonladder of van het stemdoel. Bij het stemdoel is de doelgerelateerde afwijking nul."
+errorReferenceScale: {value: "Toonladder"}
+scaleNamingHint: {value: "Hoe noten worden aangeduid"}
+scaleNamingLabel: {value: "Nootnamen"}
+scaleNamings.cdefgab: {value: "C D E F G A B (internationaal, kruisen als C#)"}
+scaleNamings.cdefgah: {value: "C D E F G A H (Duits, kruisen als C#)"}
+scaleNamings.doremi: {value: "Do Re Mi (solfège)"}
+scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (Pools)"}
+toleranceBeat: {value: "Zweving"}
+toleranceHint: {value: "Hoeveel een tong of zweving mag afwijken om nog als zuiver te gelden"}
+toleranceLabel: {value: "Toleranties"}
+toleranceReed: {value: "Tong"}
+unitHint: {value: "Cent of eenheden van 0,06% van de toonfrequentie"}
+unitLabel: {value: "Eenheid voor afwijking"}
+
+# Appearance, language and window behavior
+accent.auto: {value: "Systeem"}
+accent.custom: {value: "Aangepast"}
+accent.hint: {value: "Accentkleur van het systeem of een eigen kleur"}
+accent.label: {value: "Accent"}
+accent.pick: {value: "Kies een kleur"}
+accent.pickTitle: {value: "Accentkleur"}
+closeToTray: {value: "Bij sluiten minimaliseren naar het systeemvak"}
+closeToTrayHint: {value: "Na het sluiten van het venster blijft de app in het systeemvak"}
+checkUpdates: {value: "Controleren op updates", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdatesHint: {value: "Zoekt op GitHub naar een nieuwere versie", description: "Hint below the desktop update-check checkbox."}
+languageHint: {value: "Taal van de interface"}
+languageLabel: {value: "Taal"}
+phoneLayout.hint: {value: "Geeft het venster het formaat van een telefoon om de Android-indeling te testen", description: "Debug builds only."}
+phoneLayout.label: {value: "Telefoonindeling", description: "Debug builds only."}
+phoneLayout.landscape: {value: "Liggend", description: "Debug builds only. The phone held on its side."}
+phoneLayout.off: {value: "Uit", description: "Debug builds only. The normal desktop window."}
+phoneLayout.portrait: {value: "Staand", description: "Debug builds only. The phone held upright."}
+themeHint: {value: "Systeem, licht of donker"}
+themeLabel: {value: "Thema"}
+themes.auto: {value: "Systeem"}
+themes.dark: {value: "Donker"}
+themes.light: {value: "Licht"}
+
+# Sound-card calibration
+calibration.askBody:
+  value: "Een ongekalibreerde sampleklok kan een kleine, vaste meetfout veroorzaken. Kalibratie duurt ongeveer een minuut en vereist geen geluid."
+calibration.askCalibrate: {value: "Nu kalibreren"}
+calibration.askContinue: {value: "Doorgaan zonder correctie"}
+calibration.askTitle: {value: "Deze geluidskaart is niet gekalibreerd"}
+calibration.hint: {value: "Corrigeert de klokafwijking van de geluidskaart. Duurt ongeveer een minuut en vereist geen geluid."}
+calibration.label: {value: "Kalibratie van de geluidskaart"}
+calibration.open: {value: "Openen"}
+calibration.openHint: {value: "Toon het kalibratiescherm zonder te meten"}
+calibration.saveFailed: {value: "De kalibratie kon niet worden opgeslagen. Het stemapparaat gebruikt de eerder opgeslagen toestand."}
+calibration.screen.again: {value: "Opnieuw kalibreren"}
+calibration.screen.bar.confirming: {value: "Bevestigen"}
+calibration.screen.bar.settling: {value: "Stabiliseren"}
+
+calibration.screen.calibrated:
+  value: "Gekalibreerd. De metingen worden met {percent} % gecorrigeerd."
+  placeholders:
+    percent: {type: string}
+
+calibration.screen.calibrating: {value: "De klok van de geluidskaart wordt gemeten"}
+
+calibration.screen.how:
+  value: "De gemeten toonhoogte kan een kleine, vaste afwijking hebben. Geen geluid nodig, duurt ongeveer een minuut."
+
+calibration.screen.lead: {value: "Nog niet gekalibreerd"}
+
+calibration.screen.phase.confirming:
+  value: "De meting is stabiel. Er wordt gecontroleerd of dat 20 s zo blijft."
+
+calibration.screen.phase.preparing: {value: "De ingang krijgt tijd om te stabiliseren voordat de klok wordt gemeten."}
+calibration.screen.phase.settling: {value: "Wachten tot de klokmeting stabiel is."}
+
+calibration.screen.pitch:
+  value: "Dat is {pitch} bij elke noot."
+  placeholders:
+    pitch: {type: string}
+
+calibration.screen.preparing: {value: "Ingang wordt opgewarmd"}
+calibration.screen.retry: {value: "De metingen blijven ongecorrigeerd. Sluit andere audio-apps en probeer het opnieuw."}
+calibration.screen.return: {value: "Terug"}
+calibration.screen.stat.dropouts: {value: "Onderbrekingen"}
+calibration.screen.stat.elapsed: {value: "Verstreken"}
+calibration.screen.stat.offset: {value: "Klokafwijking"}
+calibration.screen.stat.rate: {value: "Samplefrequentie"}
+calibration.screen.stat.steadiness: {value: "Stabiliteit"}
+
+calibration.screen.steadiness:
+  value: "{ppm} ppm, doel {target} ppm"
+  placeholders:
+    ppm: {type: string}
+    target: {type: string}
+
+calibration.screen.steps.done: {value: "Klaar"}
+calibration.screen.steps.measure: {value: "Meten"}
+calibration.screen.steps.prepare: {value: "Opwarmen"}
+calibration.screen.traceEmpty: {value: "Hier verschijnt de klokafwijking tijdens de meting."}
+calibration.screen.unreliable: {value: "De klok werd niet stabiel"}
+calibration.start: {value: "Kalibreren"}
+calibration.startHint: {value: "Meet de sampleklok van de ingang"}
+
+calibration.status.calibrated:
+  value: "Gekalibreerd, {percent} %"
+  placeholders:
+    percent: {type: string}
+
+calibration.status.calibrating:
+  value: "Kalibreren, {seconds} s ({percent} %), {progress} % voltooid"
+  placeholders:
+    percent: {type: string}
+    progress: {type: string}
+    seconds: {type: string}
+
+calibration.status.preparing: {value: "Voorbereiden"}
+calibration.status.uncalibrated: {value: "Niet gekalibreerd"}
+calibration.status.unreliable: {value: "Onbetrouwbaar, metingen worden niet gecorrigeerd"}
+
+# Settings section headings
+groups.appearance: {value: "Uiterlijk"}
+groups.detection: {value: "Detectie"}
+groups.microphone: {value: "Microfoon"}
+groups.output: {value: "Uitvoer", description: "Settings section shown on a phone, holding the output volume."}
+groups.readings: {value: "Metingen"}
+groups.report: {value: "Werkplaatsgegevens"}
+
+# Report letterhead
+report.address: {value: "Adres"}
+report.name: {value: "Naam van de werkplaats"}
+report.nameHint: {value: "Wordt in geëxporteerde rapporten weergegeven wanneer het briefhoofd is ingeschakeld."}

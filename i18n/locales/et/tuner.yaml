@@ -1,0 +1,302 @@
+# Live tuner, WAV playback and browser edition (et).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Input, output and playback
+input.relearnHint: {value: "Õpi taustamüra uuesti (4 s vaikust)"}
+input.tooStrong: {value: "Signaal on liiga tugev"}
+input.unreliable: {value: "Signaal on ebausaldusväärne"}
+inputPanel.label: {value: "Sisendsignaal"}
+inputPanel.title: {value: "Sisend"}
+level.silent: {value: "vaikus"}
+output.mute: {value: "Vaigista"}
+output.unmute: {value: "Taasta heli"}
+output.volume: {value: "Väljundi helitugevus"}
+soundcard.running: {value: "Helikaardi kalibreerimine"}
+soundcard.uncalibrated: {value: "Helikaart on kalibreerimata. Kalibreeri"}
+soundcard.unreliable: {value: "Kalibreerimine on ebausaldusväärne. Kalibreeri uuesti"}
+source.analyze: {value: "Analüüsi salvestist…"}
+source.default: {value: "Süsteemi vaikevalik"}
+source.noDevices: {value: "Mikrofone ei leitud"}
+source.refresh: {value: "Värskenda seadmete loendit"}
+transport.fileHint: {value: "Salvestist saab esitada selle enda kaardilt"}
+transport.start: {value: "Käivita"}
+transport.stop: {value: "Peata"}
+
+# Modes, registers and note selection
+bassRegister.all: {value: "Kogu bassimehhanism"}
+bassRegister.hint: {value: "Valitud bassiregister"}
+controls: {value: "Häälestuse juhtnupud"}
+mode.auto: {value: "Automaatne"}
+mode.autoHint: {value: "Lase häälestajal noot tuvastada"}
+mode.pinHint: {value: "Kinnita see noot"}
+mode.pinned: {value: "Kinnitatud noot"}
+notes.clickToPin: {value: "klõpsa kinnitamiseks"}
+notes.label: {value: "Noodid E0 kuni C9. Klõpsa noodil selle kinnitamiseks."}
+notes.range: {value: "E0 kuni C9"}
+notes.title: {value: "Noodid"}
+notes.tracking: {value: "jälgimine"}
+panel.boxBase: {value: "Põhinooti mõõdetakse alati"}
+panel.boxChord: {value: "Akordirežiimis mõõdetakse kõiki kolme heli"}
+panel.boxLast: {value: "Vähemalt üks kast jääb aktiivseks"}
+
+panel.boxOctave:
+  plural:
+    argument: octaves
+    forms:
+      one: "Kast {box}: põhinoodist {octaves} oktav kõrgemal"
+      other: "Kast {box}: põhinoodist {octaves} oktavit kõrgemal"
+  placeholders:
+    octaves: {type: integer}
+    box: {type: string}
+
+panel.boxReed:
+  value: "Keel {n}: lülita mõõtmine sisse või välja"
+  placeholders:
+    n: {type: string}
+
+panel.bySession:
+  plural:
+    argument: n
+    forms:
+      one: "{n} keel: määratud seansi registriga"
+      other: "{n} keelt: määratud seansi registriga"
+  placeholders:
+    n: {type: integer}
+
+panel.locked: {value: "Lukustunud"}
+panel.modeHints.chords: {value: "Kolmehelilised akordid"}
+panel.modeHints.octaves: {value: "Noot koos ülemiste oktavidega"}
+panel.modeHints.tones: {value: "Üks noot, kuni kolm keelt"}
+panel.modeLabel: {value: "Mida mõõdetakse"}
+panel.modes.chords: {value: "Akordid"}
+panel.modes.octaves: {value: "Oktavid"}
+panel.modes.tones: {value: "Toonid"}
+panel.quiet: {value: "Liiga vaikne"}
+panel.recorded: {value: "Salvestatud"}
+panel.reeds: {value: "Keeled"}
+
+reeds.count:
+  plural:
+    argument: n
+    forms:
+      one: "{n} keel"
+      other: "{n} keelt"
+  placeholders:
+    n: {type: integer}
+
+register.hint: {value: "Valitud register"}
+register.lockedPlaying: {value: "Registri vahetamiseks peata taasesitus."}
+side.bass: {value: "Bass"}
+side.hint: {value: "Meloodia- või bassipool"}
+side.treble: {value: "Meloodiapool"}
+step.noteDown: {value: "Pooltooni võrra madalamale"}
+step.noteUp: {value: "Pooltooni võrra kõrgemale"}
+# Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
+signal.add: {value: "Lisa toon"}
+signal.cents: {value: "Kõrvalekalle noodist sentides"}
+signal.down: {value: "Pooltooni võrra alla (vasaknool, oktavi jaoks allanool)"}
+signal.open: {value: "Signaaligeneraator mängib puhast võrdlustooni, mille järgi keelt häälestada"}
+signal.play: {value: "Esita"}
+signal.playHint: {value: "Esita nooti kõigi toonidega. Kui nooti veel pole, kasuta esimest tuvastatud nooti (tühik)."}
+signal.remove: {value: "Eemalda see toon"}
+signal.stop: {value: "Peata"}
+signal.stopHint: {value: "Peata toon (tühik)"}
+signal.title: {value: "Signaaligeneraator"}
+signal.up: {value: "Pooltooni võrra üles (paremnool, oktavi jaoks ülesnool)"}
+signal.wave.hint: {value: "Keele helis on ülemhelid, seega kuuleb tuiklemist ka neil"}
+signal.wave.reed: {value: "Keel"}
+signal.wave.sine: {value: "Siinus"}
+
+# Reference pitch and units
+reference.a4Locked: {value: "Seadetes lukustatud"}
+reference.a4Type: {value: "Sisesta A4 sagedus hertsides, 430 kuni 450"}
+reference.frozen: {value: "Fikseeritud: seansil on juba näite"}
+reference.transpose: {value: "Transponeeri"}
+reference.transposeDown: {value: "Üks pooltoon vähem"}
+reference.transposeHint: {value: "Mitu pooltooni kõlavad klahvid oma nimest kõrgemalt"}
+reference.transposeMode: {value: "Akorde ja oktaveid mõõdetakse transponeerimata"}
+reference.transposeUp: {value: "Üks pooltoon rohkem"}
+
+reference.transposed:
+  value: "Transponeeritud +{n}"
+  placeholders:
+    n: {type: string}
+
+unit.cents: {value: "Sent"}
+unit.hz: {value: "Hz"}
+unit.reference: {value: "Ühikud"}
+
+# Live readings and graphs
+boxes.beat:
+  value: "Tuiklemine {a}–{b}"
+  placeholders:
+    a: {type: string}
+    b: {type: string}
+
+boxes.goal: {value: "siht"}
+boxes.hzOnly: {value: "ainult hertsides"}
+boxes.notHeard: {value: "pole kuulda"}
+
+boxes.reed:
+  value: "Keel {n}"
+  placeholders:
+    n: {type: string}
+
+boxes.reedBank:
+  value: "Keel {bank}"
+  placeholders:
+    bank: {type: string}
+
+boxes.tone:
+  value: "Toon {n}"
+  placeholders:
+    n: {type: string}
+
+ruler.label: {value: "Iga keele kõrvalekalle"}
+spectrum.label: {value: "Jälgitava noodi sagedusspekter"}
+spectrum.title: {value: "Spekter"}
+
+# Hold, noise learning and tuner state
+hold.hint: {value: "Jäta stabiilsed näidud ekraanile (H)"}
+state.deviceLost: {value: "Sisend kadus"}
+state.initializing: {value: "Ruumi taustamüra mõõtmine"}
+state.running: {value: "Kuulamine"}
+state.stopped: {value: "Peatatud"}
+state.tooQuiet: {value: "Liiga vaikne. Mängi valjemini või liigu lähemale."}
+warmup.quiet: {value: "Ole vaikselt"}
+
+# WAV files and waveform controls
+file.clearSelection: {value: "Vali kogu salvestis"}
+file.fit: {value: "Näita kogu salvestist"}
+file.loop: {value: "Korda valitud lõiku"}
+file.mute: {value: "Vaigista salvestis"}
+file.openFilter: {value: "WAV-heli"}
+file.openTitle: {value: "Vali WAV-salvestis"}
+file.pause: {value: "Paus"}
+file.play: {value: "Esita"}
+file.stop: {value: "Peata ja naase valiku algusse"}
+file.toEnd: {value: "Valiku lõppu"}
+file.toStart: {value: "Valiku algusse"}
+file.unmute: {value: "Esita salvestist heliga"}
+file.volume: {value: "Taasesituse helitugevus"}
+
+file.waveform:
+  value: "Salvestise {name} lainekuju. Lohista ajajoonel esituskoha muutmiseks või lainekujul lõigu valimiseks. Taasesituse peatumisel näitab hele katkendjoon, millise helilõigu põhjal ekraanil olev näit mõõdeti."
+  placeholders:
+    name: {type: string}
+
+file.zoomIn: {value: "Suurenda"}
+file.zoomOut: {value: "Vähenda"}
+
+# Instrument calibration workflow
+calibrate.leave: {value: "Välju kalibreerimisest"}
+calibrate.needsSession: {value: "Pilli kalibreerimiseks ava seanss."}
+calibrate.range.again: {value: "Alusta uuesti"}
+
+calibrate.range.backwards:
+  value: "Kõrgeim noot ei tohi olla madalaimast madalam. Mõõda ulatus uuesti."
+
+calibrate.range.capture: {value: "Fikseeri"}
+calibrate.range.highest: {value: "Kõrgeim"}
+calibrate.range.lowest: {value: "Madalaim"}
+calibrate.range.next: {value: "Jätka keelte kalibreerimisega"}
+calibrate.range.playHigh: {value: "Mängi nüüd kõrgeimat klahvi."}
+calibrate.range.playLow: {value: "Mängi madalaimat klahvi."}
+calibrate.range.step: {value: "Klaviatuur"}
+calibrate.status.captured: {value: "Fikseeritud"}
+calibrate.status.holding: {value: "Hoia nooti ühtlasena"}
+calibrate.status.loud: {value: "Liiga vali"}
+calibrate.status.play: {value: "Mängi nooti"}
+calibrate.sweep.bassAll: {value: "Bass – kogu mehhanism"}
+
+calibrate.sweep.done:
+  plural:
+    argument: n
+    forms:
+      one: "Läbimäng lõpetatud. Kaardil on {n} näit."
+      other: "Läbimäng lõpetatud. Kaardil on {n} näitu."
+  placeholders:
+    n: {type: integer}
+
+calibrate.sweep.noRegisters:
+  value: "Selle akordioni registreid pole kirjeldatud. Läbimängu saab siiski teha ning näidud lähevad nummerdatud veergudesse."
+calibrate.sweep.pickRegister: {value: "Millist registrit kalibreerid?"}
+
+calibrate.sweep.progress:
+  value: "{done}/{total}"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+calibrate.sweep.redoRange: {value: "Mõõda klaviatuur uuesti"}
+calibrate.sweep.review: {value: "Vaata kaarti"}
+calibrate.sweep.skip: {value: "Jäta vahele"}
+
+calibrate.sweep.soloTeaches:
+  value: "Ühehäälse registri läbimäng õpetab rakendusele ka selle hääle kõla."
+
+calibrate.sweep.startPlain: {value: "Alusta läbimängu"}
+calibrate.sweep.step: {value: "Keeled"}
+calibrate.sweep.stop: {value: "Peata"}
+calibrate.title: {value: "Kalibreeri"}
+
+# Browser edition
+web.accent.default: {value: "Vaikimisi"}
+web.accent.hint: {value: "Rakenduse enda või sinu valitud värv"}
+web.diagnostics.copied: {value: "Kopeeritud"}
+web.diagnostics.copy: {value: "Kopeeri diagnostikaandmed"}
+web.diagnostics.empty: {value: "Mikrofoni andmete nägemiseks käivita häälestaja."}
+web.diagnostics.title: {value: "Diagnostika"}
+web.downloads.title: {value: "Hangi rakendus"}
+web.experimental: {value: "Katseline"}
+web.loadFailed: {value: "Mõõtemootor ei käivitunud selles brauseris."}
+
+web.mic.denied:
+  value: "Juurdepääs mikrofonile keelati. Luba see brauseri seadetes ja käivita häälestaja uuesti."
+
+web.mic.failed: {value: "Mikrofoni ei saanud avada."}
+web.mic.none: {value: "Mikrofoni ei leitud."}
+web.mic.unsupported: {value: "See brauser ei saa heli salvestada."}
+web.notice.background: {value: "Taustale jäetud vahelehel võib heli peatuda."}
+web.notice.native: {value: "Täpseks mõõtmiseks kasuta paigaldatud rakendust."}
+web.notice.ok: {value: "Sain aru"}
+
+web.notice.processing:
+  value: "Brauser võib mikrofonile rakendada kajasummutust, mürasummutust, automaatset võimendust või diskreetimissageduse muutmist. Igaüks neist võib näite mõjutada."
+web.notice.title: {value: "Katseline veebiversioon"}
+web.processing.autoGainControl: {value: "automaatne võimendus"}
+web.processing.echoCancellation: {value: "kajasummutus"}
+web.processing.noiseSuppression: {value: "mürasummutus"}
+
+web.processingOn:
+  value: "Brauser jättis sisse järgmised funktsioonid: {list}. Näidud võivad olla ebatäpsed."
+  placeholders:
+    list: {type: string}
+
+web.slow:
+  value: "Seade ei jõua mõõtemootoriga sammu pidada. Hilinenud heli jäetakse vahele, et näidud oleksid ajakohased."
+
+# Tuner errors
+error.a4Locked: {value: "Võrdluskõrgus on seadetes lukustatud."}
+error.chordsAuto: {value: "Akordirežiim valib noodid ise."}
+error.deviceGone: {value: "See mikrofon pole enam ühendatud."}
+error.deviceLost: {value: "Mikrofon lakkas vastamast ja häälestaja peatati."}
+error.fileUnreadable: {value: "Salvestist ei saanud lugeda. Vaja on WAV-faili."}
+error.invalidA4: {value: "Võrdlussagedus peab olema vahemikus 430 kuni 450 Hz."}
+error.invalidBox: {value: "Sellist keele näidukasti pole."}
+error.invalidMode: {value: "Häälestaja mõõdab toone, oktaveid või akorde."}
+error.invalidNote: {value: "Noot jääb häälestaja jälgimisulatusest välja."}
+error.invalidTranspose: {value: "Transpositsioon on 0 kuni 11 pooltooni."}
+error.lastBox: {value: "Vähemalt üks kast jääb aktiivseks."}
+error.noDevices: {value: "Mikrofoni ei leitud. Ühenda mikrofon ja värskenda seadmete loendit."}
+error.playbackFailed: {value: "Võrdlustooni ei saanud esitada."}
+
+error.sampleRate:
+  value: "Selle võrdluskõrguse ja transpositsiooni puhul jääb sisendi diskreetimissagedus ülemiste nootide jaoks liiga madalaks. Kasuta vähemalt 44,1 kHz sagedusega salvestist."
+error.sessionDecides: {value: "Mõõdetava määrab avatud seansi register."}
+error.signalVoices:
+  value: "Esita üks kuni neli tooni, igaüks noodist kuni 100 sendi kaugusel."
+error.toneNeedsManual: {value: "Tooni esitamiseks kinnita noot."}
+error.transposeMode: {value: "Akorde ja oktaveid mõõdetakse transponeerimata."}
+error.unexpected: {value: "Midagi läks valesti. Vaata üksikasju logist."}

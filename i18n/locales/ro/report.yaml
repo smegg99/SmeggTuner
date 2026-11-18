@@ -1,0 +1,185 @@
+# Printed reports and export (ro).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Report title and instrument details
+facts.curve: {value: "Curbă țintă"}
+facts.curveNone: {value: "niciuna"}
+facts.curveUnnamed: {value: "fără nume"}
+facts.reference: {value: "La4 de referință (această serie)"}
+facts.tolerance: {value: "Toleranță"}
+
+facts.toleranceValue:
+  value: 'ancie: {reed} {unit} / bătăi: {beat} {unit}'
+  placeholders:
+    beat:
+      type: string
+    reed:
+      type: string
+    unit:
+      type: string
+
+facts.transpose: {value: "Transpoziție"}
+
+facts.transposeValue:
+  value: '{key} sună ca {sounds}'
+  placeholders:
+    key:
+      type: string
+    sounds:
+      type: string
+
+title: {value: "Raport de acordaj"}
+
+# Table and column headings
+head.beat:
+  value: Bătăi {pair}
+  placeholders:
+    pair:
+      type: string
+
+table.bassTitle:
+  value: Tabel de acordaj pentru bași ({unit})
+  placeholders:
+    unit:
+      type: string
+
+table.curr: {value: "Măs."}
+table.err: {value: "Abat."}
+table.register: {value: "Registru"}
+
+table.title:
+  value: Tabel de acordaj ({unit})
+  placeholders:
+    unit:
+      type: string
+
+# Deviation units
+unit.cents.name: {value: "cenți"}
+unit.cents.symbol: {value: "c"}
+unit.reference.name: {value: "unități de 0,06 %"}
+
+# Graph legend and reading markers
+graph.edited:
+  value: '{mark} – modificat manual.'
+  placeholders:
+    mark:
+      type: string
+
+legend.error.cents:
+  value: Pilește ancia astfel încât abaterea să se apropie de zero. Valorile sunt exprimate în cenți față de gama
+    temperată, cu referința la {a4} Hz.
+  placeholders:
+    a4:
+      type: string
+
+legend.error.key: {value: "Abatere = valoare măsurată − țintă."}
+legend.error.noCurve: {value: "Fără curbă țintă, ținta este zero, iar abaterea se măsoară față de gamă."}
+
+legend.error.reference:
+  value: Pilește ancia astfel încât abaterea să se apropie de zero. Abaterea față de gama temperată, cu referința
+    la {a4} Hz, se exprimă în unități de 0,06 % din frecvența notei.
+  placeholders:
+    a4:
+      type: string
+
+legend.out.short: {value: "în afara toleranței"}
+legend.takes.key: {value: "xN"}
+legend.takes.short: {value: "înregistrat de mai multe ori, se afișează ultima înregistrare"}
+mark.edited: {value: "H"}
+mark.out: {value: "!"}
+
+# Summary and footer
+footer.generated:
+  value: Generat la {at} cu {app}
+  placeholders:
+    app:
+      type: string
+    at:
+      type: string
+
+summary.allIn: {value: "Toate valorile sunt în limitele toleranței."}
+
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} bătaie'
+      few: '{pluralCount} bătăi'
+      other: '{pluralCount} de bătăi'
+  placeholders:
+    pluralCount:
+      type: integer
+
+summary.line:
+  value: '{notes} (între {min} și {max}), {reeds}, {beats}.'
+  placeholders:
+    beats:
+      type: string
+    max:
+      type: string
+    min:
+      type: string
+    notes:
+      type: string
+    reeds:
+      type: string
+
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} notă'
+      few: '{pluralCount} note'
+      other: '{pluralCount} de note'
+  placeholders:
+    pluralCount:
+      type: integer
+
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      one: 'În afara toleranței: {pluralCount} ({reeds}, {beats}).'
+      few: 'În afara toleranței: {pluralCount} ({reeds}, {beats}).'
+      other: 'În afara toleranței: {pluralCount} ({reeds}, {beats}).'
+  placeholders:
+    beats:
+      type: string
+    pluralCount:
+      type: integer
+    reeds:
+      type: string
+
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} măsurătoare a anciilor'
+      few: '{pluralCount} măsurători ale anciilor'
+      other: '{pluralCount} de măsurători ale anciilor'
+  placeholders:
+    pluralCount:
+      type: integer
+
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} ancie'
+      few: '{pluralCount} ancii'
+      other: '{pluralCount} de ancii'
+  placeholders:
+    pluralCount:
+      type: integer
+
+# Export errors
+error.invalidDate: {value: "Introdu o dată validă în formatul AAAA-LL-ZZ."}
+error.invalidFormat: {value: "Raportul nu poate fi salvat în acest format."}
+
+error.noBrowser: {value: "Generarea paginii PDF necesită un browser, iar pe acest calculator nu este instalat nici Chrome, nici Chromium. Instalează unul dintre ele sau exportă fișa în HTML și tipărește-o."}
+
+error.openFailed: {value: "Raportul a fost salvat, dar niciun browser nu l-a putut deschide. Deschide fișierul manual."}
+error.renderFailed: {value: "Raportul nu a putut fi generat. Nu s-a salvat nimic."}
+
+error.writeFailed: {value: "Raportul nu a putut fi salvat în locul ales. Dacă exista deja un fișier, acesta a rămas intact."}

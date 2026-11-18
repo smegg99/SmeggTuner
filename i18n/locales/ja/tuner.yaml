@@ -1,0 +1,298 @@
+# Live tuner, WAV playback and browser edition (ja).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Input, output and playback
+input.relearnHint: {value: "背景雑音を再学習（4 秒間静かにしてください）"}
+input.tooStrong: {value: "信号が強すぎます"}
+input.unreliable: {value: "信号が不安定です"}
+inputPanel.label: {value: "入力信号"}
+inputPanel.title: {value: "入力"}
+level.silent: {value: "無音"}
+output.mute: {value: "ミュート"}
+output.unmute: {value: "ミュート解除"}
+output.volume: {value: "出力音量"}
+soundcard.running: {value: "サウンドカードを校正中"}
+soundcard.uncalibrated: {value: "サウンドカードは未校正です。校正する"}
+soundcard.unreliable: {value: "校正結果が不安定です。再校正する"}
+source.analyze: {value: "録音を解析…"}
+source.default: {value: "システムの既定値"}
+source.noDevices: {value: "マイクが見つかりません"}
+source.refresh: {value: "デバイス一覧を更新"}
+transport.fileHint: {value: "録音は専用のカードから再生します"}
+transport.start: {value: "開始"}
+transport.stop: {value: "停止"}
+
+# Modes, registers and note selection
+bassRegister.all: {value: "ベース機構全体"}
+bassRegister.hint: {value: "現在選ばれているベーススイッチ"}
+controls: {value: "調律コントロール"}
+mode.auto: {value: "自動"}
+mode.autoHint: {value: "チューナーが音を自動で検出します"}
+mode.pinHint: {value: "この音に固定"}
+mode.pinned: {value: "固定した音"}
+notes.clickToPin: {value: "クリックして固定"}
+notes.label: {value: "E0～C9 の音。クリックするとその音に固定します。"}
+notes.range: {value: "E0～C9"}
+notes.title: {value: "音名"}
+notes.tracking: {value: "追跡中"}
+panel.boxBase: {value: "基準となる音は常に測定します"}
+panel.boxChord: {value: "和音では 3 音すべてを測定します"}
+panel.boxLast: {value: "少なくとも 1 つの測定枠を有効にしてください"}
+
+panel.boxOctave:
+  plural:
+    argument: octaves
+    forms:
+      other: "測定枠 {box}：基準の音より {octaves} オクターブ上"
+  placeholders:
+    octaves: {type: integer}
+    box: {type: string}
+
+panel.boxReed:
+  value: "リード {n}：測定のオン・オフ"
+  placeholders:
+    n: {type: string}
+
+panel.bySession:
+  plural:
+    argument: n
+    forms:
+      other: "リード {n} 枚（セッションのレジスターで決定）"
+  placeholders:
+    n: {type: integer}
+
+panel.locked: {value: "ロック"}
+panel.modeHints.chords: {value: "3 音の和音"}
+panel.modeHints.octaves: {value: "ある音とその上のオクターブ"}
+panel.modeHints.tones: {value: "1 音、最大 3 枚のリード"}
+panel.modeLabel: {value: "測定対象"}
+panel.modes.chords: {value: "和音"}
+panel.modes.octaves: {value: "オクターブ"}
+panel.modes.tones: {value: "単音"}
+panel.quiet: {value: "音が小さすぎます"}
+panel.recorded: {value: "記録済み"}
+panel.reeds: {value: "リード"}
+
+reeds.count:
+  plural:
+    argument: n
+    forms:
+      other: "リード {n} 枚"
+  placeholders:
+    n: {type: integer}
+
+register.hint: {value: "現在選ばれているレジスター"}
+register.lockedPlaying: {value: "レジスターを変更するには再生を停止してください。"}
+side.bass: {value: "ベース"}
+side.hint: {value: "トレブル側またはベース側"}
+side.treble: {value: "トレブル"}
+step.noteDown: {value: "半音下げる"}
+step.noteUp: {value: "半音上げる"}
+# Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
+signal.add: {value: "音を追加"}
+signal.cents: {value: "その音からのずれ（セント）"}
+signal.down: {value: "半音下げる（左矢印。下矢印で 1 オクターブ下げる）"}
+signal.open: {value: "信号発生器：リードの調律に使う明瞭な基準音を鳴らします"}
+signal.play: {value: "再生"}
+signal.playHint: {value: "設定したすべての音を重ねて再生します。未選択なら最初に検出した音を使います（スペース）"}
+signal.remove: {value: "この音を削除"}
+signal.stop: {value: "停止"}
+signal.stopHint: {value: "発音を停止（スペース）"}
+signal.title: {value: "信号発生器"}
+signal.up: {value: "半音上げる（右矢印。上矢印で 1 オクターブ上げる）"}
+signal.wave.hint: {value: "リード音には倍音が含まれるので、倍音でもうなりが聞こえます"}
+signal.wave.reed: {value: "リード音"}
+signal.wave.sine: {value: "正弦波"}
+
+# Reference pitch and units
+reference.a4Locked: {value: "設定で固定されています"}
+reference.a4Type: {value: "A4 の周波数を 430～450 Hz で入力"}
+reference.frozen: {value: "固定済み：セッションに測定値があります"}
+reference.transpose: {value: "移調"}
+reference.transposeDown: {value: "移調量を半音減らす"}
+reference.transposeHint: {value: "鍵の音名より実音が何半音高いか"}
+reference.transposeMode: {value: "和音とオクターブは移調せずに測定します"}
+reference.transposeUp: {value: "移調量を半音増やす"}
+
+reference.transposed:
+  value: "移調 +{n}"
+  placeholders:
+    n: {type: string}
+
+unit.cents: {value: "セント"}
+unit.hz: {value: "Hz"}
+unit.reference: {value: "単位"}
+
+# Live readings and graphs
+boxes.beat:
+  value: "リード {a} と {b} のうなり"
+  placeholders:
+    a: {type: string}
+    b: {type: string}
+
+boxes.goal: {value: "目標"}
+boxes.hzOnly: {value: "Hz 表示のみ"}
+boxes.notHeard: {value: "音を検出できず"}
+
+boxes.reed:
+  value: "リード {n}"
+  placeholders:
+    n: {type: string}
+
+boxes.reedBank:
+  value: "リード {bank}"
+  placeholders:
+    bank: {type: string}
+
+boxes.tone:
+  value: "音 {n}"
+  placeholders:
+    n: {type: string}
+
+ruler.label: {value: "各リードの偏差"}
+spectrum.label: {value: "追跡中の音の周波数スペクトル"}
+spectrum.title: {value: "スペクトル"}
+
+# Hold, noise learning and tuner state
+hold.hint: {value: "安定した測定値を保持（H）"}
+state.deviceLost: {value: "入力が途切れました"}
+state.initializing: {value: "室内の雑音を測定中"}
+state.running: {value: "入力待受中"}
+state.stopped: {value: "停止中"}
+state.tooQuiet: {value: "音が小さすぎます。強く弾くか、マイクに近づいてください"}
+warmup.quiet: {value: "静かにしてください"}
+
+# WAV files and waveform controls
+file.clearSelection: {value: "録音全体を選択"}
+file.fit: {value: "録音全体を表示"}
+file.loop: {value: "選択範囲を繰り返し再生"}
+file.mute: {value: "録音をミュート"}
+file.openFilter: {value: "WAV 音声"}
+file.openTitle: {value: "WAV 録音を選択"}
+file.pause: {value: "一時停止"}
+file.play: {value: "再生"}
+file.stop: {value: "停止して選択範囲の先頭に戻る"}
+file.toEnd: {value: "選択範囲の末尾へ"}
+file.toStart: {value: "選択範囲の先頭へ"}
+file.unmute: {value: "録音の音を出す"}
+file.volume: {value: "再生音量"}
+
+file.waveform:
+  value: "{name} の波形。時間軸をドラッグすると再生位置が移動し、波形をドラッグすると範囲を選択できます。再生停止時には、画面の測定値に対応する音声区間を淡い破線で示します。"
+  placeholders:
+    name: {type: string}
+
+file.zoomIn: {value: "拡大"}
+file.zoomOut: {value: "縮小"}
+
+# Instrument calibration workflow
+calibrate.leave: {value: "校正を終了"}
+calibrate.needsSession: {value: "楽器を校正するにはセッションを開いてください。"}
+calibrate.range.again: {value: "最初からやり直す"}
+
+calibrate.range.backwards:
+  value: "最高音が最低音より低くなっています。音域を測り直してください。"
+
+calibrate.range.capture: {value: "取り込む"}
+calibrate.range.highest: {value: "最高音"}
+calibrate.range.lowest: {value: "最低音"}
+calibrate.range.next: {value: "リードの校正に進む"}
+calibrate.range.playHigh: {value: "次に最も高い鍵を弾いてください。"}
+calibrate.range.playLow: {value: "最も低い鍵を弾いてください。"}
+calibrate.range.step: {value: "鍵盤"}
+calibrate.status.captured: {value: "取り込み済み"}
+calibrate.status.holding: {value: "音を一定に保ってください"}
+calibrate.status.loud: {value: "音が大きすぎます"}
+calibrate.status.play: {value: "音を 1 つ鳴らしてください"}
+calibrate.sweep.bassAll: {value: "ベース：機構全体"}
+
+calibrate.sweep.done:
+  plural:
+    argument: n
+    forms:
+      other: "全音の測定が終了しました。カードの測定値は {n} 件です。"
+  placeholders:
+    n: {type: integer}
+
+calibrate.sweep.noRegisters:
+  value: "このアコーディオンにはレジスターが登録されていません。全音の測定は可能で、値は番号付きの列に記録されます。"
+calibrate.sweep.pickRegister: {value: "どのレジスターを校正しますか？"}
+
+calibrate.sweep.progress:
+  value: "{total} 件中 {done} 件"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+calibrate.sweep.redoRange: {value: "鍵盤の音域を測り直す"}
+calibrate.sweep.review: {value: "調律カードを見る"}
+calibrate.sweep.skip: {value: "スキップ"}
+
+calibrate.sweep.soloTeaches:
+  value: "リード列が1列だけ鳴るレジスターで各音を順に測定すると、その列の音色もアプリが学習します。"
+
+calibrate.sweep.startPlain: {value: "全音の測定を開始"}
+calibrate.sweep.step: {value: "リード"}
+calibrate.sweep.stop: {value: "停止"}
+calibrate.title: {value: "校正"}
+
+# Browser edition
+web.accent.default: {value: "既定"}
+web.accent.hint: {value: "アプリの既定色または任意の色"}
+web.diagnostics.copied: {value: "コピーしました"}
+web.diagnostics.copy: {value: "診断情報をコピー"}
+web.diagnostics.empty: {value: "マイクの詳細を表示するにはチューナーを開始してください。"}
+web.diagnostics.title: {value: "診断情報"}
+web.downloads.title: {value: "アプリを入手"}
+web.experimental: {value: "実験版"}
+web.loadFailed: {value: "このブラウザーでは測定エンジンを起動できませんでした。"}
+
+web.mic.denied:
+  value: "マイクの使用が拒否されました。ブラウザーの設定で許可し、チューナーを再度開始してください。"
+
+web.mic.failed: {value: "マイクを開けませんでした。"}
+web.mic.none: {value: "マイクが見つかりません。"}
+web.mic.unsupported: {value: "このブラウザーでは録音できません。"}
+web.notice.background: {value: "バックグラウンドのタブでは音声が一時停止することがあります。"}
+web.notice.native: {value: "精度を求める場合はインストール版を使用してください。"}
+web.notice.ok: {value: "了解"}
+
+web.notice.processing:
+  value: "ブラウザーがマイク音声にエコー除去、雑音抑制、自動ゲイン調整、リサンプリングを適用する場合があります。いずれも測定値に影響し得ます。"
+web.notice.title: {value: "実験的なウェブ版"}
+web.processing.autoGainControl: {value: "自動ゲイン調整"}
+web.processing.echoCancellation: {value: "エコー除去"}
+web.processing.noiseSuppression: {value: "雑音抑制"}
+
+web.processingOn:
+  value: "ブラウザーで次の処理が有効なままです：{list}。測定値にずれが生じることがあります。"
+  placeholders:
+    list: {type: string}
+
+web.slow:
+  value: "このデバイスでは処理が追いつかないため、遅延した音声を飛ばして最新の測定値を表示します。"
+
+# Tuner errors
+error.a4Locked: {value: "基準ピッチは設定で固定されています。"}
+error.chordsAuto: {value: "和音モードでは音を自動で選びます。"}
+error.deviceGone: {value: "そのマイクは接続されていません。"}
+error.deviceLost: {value: "マイクが応答しなくなったためチューナーを停止しました。"}
+error.fileUnreadable: {value: "録音を読み込めませんでした。WAV ファイルを選んでください。"}
+error.invalidA4: {value: "基準ピッチは 430～450 Hz にしてください。"}
+error.invalidBox: {value: "該当するリードの測定枠はありません。"}
+error.invalidMode: {value: "チューナーは単音、オクターブ、和音を測定します。"}
+error.invalidNote: {value: "その音はチューナーの検出範囲外です。"}
+error.invalidTranspose: {value: "移調の範囲は 0～11 半音です。"}
+error.lastBox: {value: "少なくとも 1 つの測定枠を有効にしてください"}
+error.noDevices: {value: "マイクが見つかりません。接続してデバイス一覧を更新してください。"}
+error.playbackFailed: {value: "基準音を再生できませんでした。"}
+
+error.sampleRate:
+  value: "この基準ピッチと移調量で高音域を測定するには、入力のサンプルレートが低すぎます。44.1 kHz 以上の録音を使用してください。"
+error.sessionDecides: {value: "開いているセッションのレジスターが測定対象を決めます。"}
+error.signalVoices:
+  value: "1～4 音を再生できます。各音のずれは選んだ音から 100 セント以内にしてください。"
+error.toneNeedsManual: {value: "基準音を再生するには音を固定してください。"}
+error.transposeMode: {value: "和音とオクターブは移調せずに測定します"}
+error.unexpected: {value: "エラーが発生しました。詳細はログを確認してください。"}

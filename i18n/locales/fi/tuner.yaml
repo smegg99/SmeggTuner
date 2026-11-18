@@ -1,0 +1,302 @@
+# Live tuner, WAV playback and browser edition (fi).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Input, output and playback
+input.relearnHint: {value: "Mittaa taustamelu uudelleen (4 s hiljaisuutta)"}
+input.tooStrong: {value: "Signaali liian voimakas"}
+input.unreliable: {value: "Signaali epäluotettava"}
+inputPanel.label: {value: "Tulosignaali"}
+inputPanel.title: {value: "Tulo"}
+level.silent: {value: "hiljainen"}
+output.mute: {value: "Mykistä"}
+output.unmute: {value: "Poista mykistys"}
+output.volume: {value: "Lähtövoimakkuus"}
+soundcard.running: {value: "Kalibroidaan äänikorttia"}
+soundcard.uncalibrated: {value: "Äänikorttia ei ole kalibroitu. Kalibroi"}
+soundcard.unreliable: {value: "Kalibrointi epäluotettava. Kalibroi uudelleen"}
+source.analyze: {value: "Analysoi äänite…"}
+source.default: {value: "Järjestelmän oletus"}
+source.noDevices: {value: "Mikrofoneja ei löytynyt"}
+source.refresh: {value: "Päivitä laiteluettelo"}
+transport.fileHint: {value: "Käynnistä äänitteen toisto sen omasta kortista"}
+transport.start: {value: "Käynnistä"}
+transport.stop: {value: "Pysäytä"}
+
+# Modes, registers and note selection
+bassRegister.all: {value: "Koko bassokoneisto"}
+bassRegister.hint: {value: "Valittu bassorekisteri"}
+controls: {value: "Virityksen säätimet"}
+mode.auto: {value: "Automaattinen"}
+mode.autoHint: {value: "Anna virittimen tunnistaa nuotti"}
+mode.pinHint: {value: "Kiinnitä tämä nuotti"}
+mode.pinned: {value: "Kiinnitetty nuotti"}
+notes.clickToPin: {value: "kiinnitä napsauttamalla"}
+notes.label: {value: "Nuotit E0–C9. Kiinnitä nuotti napsauttamalla sitä."}
+notes.range: {value: "E0–C9"}
+notes.title: {value: "Nuotit"}
+notes.tracking: {value: "seuranta"}
+panel.boxBase: {value: "Perussävel mitataan aina"}
+panel.boxChord: {value: "Sointutilassa mitataan kaikki kolme säveltä"}
+panel.boxLast: {value: "Vähintään yksi ruutu pysyy käytössä"}
+
+panel.boxOctave:
+  plural:
+    argument: octaves
+    forms:
+      one: "Ruutu {box}: {octaves} oktaavi perussävelen yläpuolella"
+      other: "Ruutu {box}: {octaves} oktaavia perussävelen yläpuolella"
+  placeholders:
+    octaves: {type: integer}
+    box: {type: string}
+
+panel.boxReed:
+  value: "Kieli {n}: ota mittaus käyttöön tai pois käytöstä"
+  placeholders:
+    n: {type: string}
+
+panel.bySession:
+  plural:
+    argument: n
+    forms:
+      one: "{n} kieli istunnon rekisterin mukaan"
+      other: "{n} kieltä istunnon rekisterin mukaan"
+  placeholders:
+    n: {type: integer}
+
+panel.locked: {value: "Lukittu"}
+panel.modeHints.chords: {value: "Kolmisoinnut"}
+panel.modeHints.octaves: {value: "Sävel ja sen yläoktaavit"}
+panel.modeHints.tones: {value: "Yksi sävel, enintään kolme kieltä"}
+panel.modeLabel: {value: "Mitattava kohde"}
+panel.modes.chords: {value: "Soinnut"}
+panel.modes.octaves: {value: "Oktaavit"}
+panel.modes.tones: {value: "Sävelet"}
+panel.quiet: {value: "Liian hiljainen"}
+panel.recorded: {value: "Tallennettu"}
+panel.reeds: {value: "Kielet"}
+
+reeds.count:
+  plural:
+    argument: n
+    forms:
+      one: "{n} kieli"
+      other: "{n} kieltä"
+  placeholders:
+    n: {type: integer}
+
+register.hint: {value: "Valittu rekisteri"}
+register.lockedPlaying: {value: "Vaihda rekisteriä pysäyttämällä toisto."}
+side.bass: {value: "Basso"}
+side.hint: {value: "Diskantti- tai bassopuoli"}
+side.treble: {value: "Diskantti"}
+step.noteDown: {value: "Puolisävelaskel alas"}
+step.noteUp: {value: "Puolisävelaskel ylös"}
+# Signal generator: plays the heard note clean, with offsets in cents, to tune a reed against by ear
+signal.add: {value: "Lisää ääni"}
+signal.cents: {value: "Poikkeama nuotista sentteinä"}
+signal.down: {value: "Puolisävelaskel alas (vasen nuoli, oktaavi alas alanuolella)"}
+signal.open: {value: "Signaaligeneraattori soittaa puhtaan vertailusävelen kielen viritystä varten"}
+signal.play: {value: "Toista"}
+signal.playHint: {value: "Soita nuotti kaikilla äänillä. Jos nuottia ei vielä ole, käytä ensimmäistä kuultua nuottia (välilyönti)."}
+signal.remove: {value: "Poista tämä ääni"}
+signal.stop: {value: "Pysäytä"}
+signal.stopHint: {value: "Pysäytä ääni (välilyönti)"}
+signal.title: {value: "Signaaligeneraattori"}
+signal.up: {value: "Puolisävelaskel ylös (oikea nuoli, oktaavi ylös ylänuolella)"}
+signal.wave.hint: {value: "Kielen äänessä on ylä-ääniä, joten huojuntaa kuuluu niissäkin"}
+signal.wave.reed: {value: "Kieli"}
+signal.wave.sine: {value: "Siniaalto"}
+
+# Reference pitch and units
+reference.a4Locked: {value: "Lukittu asetuksissa"}
+reference.a4Type: {value: "Anna A4-taajuus hertseinä väliltä 430–450"}
+reference.frozen: {value: "Kiinteä: istunnossa on jo lukemia"}
+reference.transpose: {value: "Transponoi"}
+reference.transposeDown: {value: "Puolisävelaskel vähemmän"}
+reference.transposeHint: {value: "Kuinka monta puolisävelaskelta koskettimet soivat nimiään korkeammalta"}
+reference.transposeMode: {value: "Soinnut ja oktaavit mitataan transponoimatta"}
+reference.transposeUp: {value: "Puolisävelaskel enemmän"}
+
+reference.transposed:
+  value: "Transponoitu +{n}"
+  placeholders:
+    n: {type: string}
+
+unit.cents: {value: "Sentti"}
+unit.hz: {value: "Hz"}
+unit.reference: {value: "Yksiköt"}
+
+# Live readings and graphs
+boxes.beat:
+  value: "Huojunta {a}–{b}"
+  placeholders:
+    a: {type: string}
+    b: {type: string}
+
+boxes.goal: {value: "tavoite"}
+boxes.hzOnly: {value: "vain hertseinä"}
+boxes.notHeard: {value: "ei kuulu"}
+
+boxes.reed:
+  value: "Kieli {n}"
+  placeholders:
+    n: {type: string}
+
+boxes.reedBank:
+  value: "Kieli {bank}"
+  placeholders:
+    bank: {type: string}
+
+boxes.tone:
+  value: "Sävel {n}"
+  placeholders:
+    n: {type: string}
+
+ruler.label: {value: "Kunkin kielen poikkeama"}
+spectrum.label: {value: "Seurattavan nuotin taajuusspektri"}
+spectrum.title: {value: "Spektri"}
+
+# Hold, noise learning and tuner state
+hold.hint: {value: "Pidä vakaat lukemat näytössä (H)"}
+state.deviceLost: {value: "Tulo katosi"}
+state.initializing: {value: "Mitataan huoneen taustamelua"}
+state.running: {value: "Kuunnellaan"}
+state.stopped: {value: "Pysäytetty"}
+state.tooQuiet: {value: "Liian hiljaista. Soita kovempaa tai siirry lähemmäs."}
+warmup.quiet: {value: "Ole hiljaa"}
+
+# WAV files and waveform controls
+file.clearSelection: {value: "Valitse koko äänite"}
+file.fit: {value: "Näytä koko äänite"}
+file.loop: {value: "Toista valintaa silmukassa"}
+file.mute: {value: "Mykistä äänite"}
+file.openFilter: {value: "WAV-ääni"}
+file.openTitle: {value: "Valitse WAV-äänite"}
+file.pause: {value: "Tauko"}
+file.play: {value: "Toista"}
+file.stop: {value: "Pysäytä ja palaa valinnan alkuun"}
+file.toEnd: {value: "Valinnan loppuun"}
+file.toStart: {value: "Valinnan alkuun"}
+file.unmute: {value: "Toista äänite ääneen"}
+file.volume: {value: "Toistovoimakkuus"}
+
+file.waveform:
+  value: "Äänitteen {name} aaltomuoto. Siirrä toistokohtaa vetämällä aikajanalla ja valitse katkelma vetämällä aaltomuodossa. Toiston pysähdyttyä vaalea katkoviiva osoittaa, mistä äänestä näytön lukema mitattiin."
+  placeholders:
+    name: {type: string}
+
+file.zoomIn: {value: "Lähennä"}
+file.zoomOut: {value: "Loitonna"}
+
+# Instrument calibration workflow
+calibrate.leave: {value: "Poistu kalibroinnista"}
+calibrate.needsSession: {value: "Avaa istunto kalibroidaksesi sen soittimen."}
+calibrate.range.again: {value: "Aloita alusta"}
+
+calibrate.range.backwards:
+  value: "Ylin nuotti ei saa olla alinta matalampi. Mittaa ääniala uudelleen."
+
+calibrate.range.capture: {value: "Tallenna"}
+calibrate.range.highest: {value: "Ylin"}
+calibrate.range.lowest: {value: "Alin"}
+calibrate.range.next: {value: "Jatka kielten kalibrointiin"}
+calibrate.range.playHigh: {value: "Soita nyt ylintä kosketinta."}
+calibrate.range.playLow: {value: "Soita alinta kosketinta."}
+calibrate.range.step: {value: "Koskettimisto"}
+calibrate.status.captured: {value: "Tallennettu"}
+calibrate.status.holding: {value: "Pidä sävel tasaisena"}
+calibrate.status.loud: {value: "Liian voimakas"}
+calibrate.status.play: {value: "Soita nuotti"}
+calibrate.sweep.bassAll: {value: "Basso – koko koneisto"}
+
+calibrate.sweep.done:
+  plural:
+    argument: n
+    forms:
+      one: "Läpisoitto valmis. Kortilla on {n} lukema."
+      other: "Läpisoitto valmis. Kortilla on {n} lukemaa."
+  placeholders:
+    n: {type: integer}
+
+calibrate.sweep.noRegisters:
+  value: "Tälle harmonikalle ei ole määritetty rekistereitä. Läpisoitto onnistuu silti ja lukemat tulevat numeroituihin sarakkeisiin."
+calibrate.sweep.pickRegister: {value: "Mitä rekisteriä kalibroit?"}
+
+calibrate.sweep.progress:
+  value: "{done}/{total}"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+calibrate.sweep.redoRange: {value: "Mittaa koskettimisto uudelleen"}
+calibrate.sweep.review: {value: "Näytä kortti"}
+calibrate.sweep.skip: {value: "Ohita"}
+
+calibrate.sweep.soloTeaches:
+  value: "Yksiäänisen rekisterin läpisoitto opettaa sovellukselle myös kyseisen äänikerran soinnin."
+
+calibrate.sweep.startPlain: {value: "Aloita läpisoitto"}
+calibrate.sweep.step: {value: "Kielet"}
+calibrate.sweep.stop: {value: "Pysäytä"}
+calibrate.title: {value: "Kalibroi"}
+
+# Browser edition
+web.accent.default: {value: "Oletus"}
+web.accent.hint: {value: "Sovelluksen oma väri tai itse valittu väri"}
+web.diagnostics.copied: {value: "Kopioitu"}
+web.diagnostics.copy: {value: "Kopioi diagnostiikkatiedot"}
+web.diagnostics.empty: {value: "Näet mikrofonin tiedot käynnistämällä virittimen."}
+web.diagnostics.title: {value: "Diagnostiikka"}
+web.downloads.title: {value: "Lataa sovellus"}
+web.experimental: {value: "Kokeellinen"}
+web.loadFailed: {value: "Mittausmoottori ei käynnistynyt tässä selaimessa."}
+
+web.mic.denied:
+  value: "Mikrofonin käyttö estettiin. Salli käyttö selaimen asetuksissa ja käynnistä viritin uudelleen."
+
+web.mic.failed: {value: "Mikrofonia ei voitu avata."}
+web.mic.none: {value: "Mikrofonia ei löytynyt."}
+web.mic.unsupported: {value: "Tämä selain ei voi tallentaa ääntä."}
+web.notice.background: {value: "Taustalle jäävä välilehti voi keskeyttää äänen."}
+web.notice.native: {value: "Tarkkoihin mittauksiin käytä asennettua sovellusta."}
+web.notice.ok: {value: "Selvä"}
+
+web.notice.processing:
+  value: "Selain saattaa käyttää mikrofonille kaiunpoistoa, kohinanvaimennusta, automaattista vahvistusta tai uudelleennäytteistystä. Jokainen niistä voi muuttaa lukemia."
+web.notice.title: {value: "Kokeellinen verkkoversio"}
+web.processing.autoGainControl: {value: "automaattinen vahvistus"}
+web.processing.echoCancellation: {value: "kaiunpoisto"}
+web.processing.noiseSuppression: {value: "kohinanvaimennus"}
+
+web.processingOn:
+  value: "Selain jätti seuraavat toiminnot käyttöön: {list}. Lukemat voivat olla epätarkkoja."
+  placeholders:
+    list: {type: string}
+
+web.slow:
+  value: "Laite ei pysy mittausmoottorin tahdissa. Myöhästynyt ääni ohitetaan, jotta lukemat pysyvät ajan tasalla."
+
+# Tuner errors
+error.a4Locked: {value: "Vertailusävelen taajuus on lukittu asetuksissa."}
+error.chordsAuto: {value: "Sointutila valitsee nuotit itse."}
+error.deviceGone: {value: "Tätä mikrofonia ei ole enää kytketty."}
+error.deviceLost: {value: "Mikrofoni lakkasi vastaamasta ja viritin pysäytettiin."}
+error.fileUnreadable: {value: "Äänitettä ei voitu lukea. Sen on oltava WAV-tiedosto."}
+error.invalidA4: {value: "Vertailutaajuuden on oltava 430–450 Hz."}
+error.invalidBox: {value: "Tällaista kieliruutua ei ole."}
+error.invalidMode: {value: "Viritin mittaa säveliä, oktaaveja tai sointuja."}
+error.invalidNote: {value: "Nuotti on virittimen seuranta-alueen ulkopuolella."}
+error.invalidTranspose: {value: "Transponointi voi olla 0–11 puolisävelaskelta."}
+error.lastBox: {value: "Vähintään yksi ruutu pysyy käytössä."}
+error.noDevices: {value: "Mikrofonia ei löytynyt. Kytke mikrofoni ja päivitä laiteluettelo."}
+error.playbackFailed: {value: "Vertailuääntä ei voitu toistaa."}
+
+error.sampleRate:
+  value: "Tulon näytteenottotaajuus on liian matala ylimmille nuoteille tällä vertailutaajuudella ja transponoinnilla. Käytä vähintään 44,1 kHz:n näytteenottotaajuudella tehtyä äänitettä."
+error.sessionDecides: {value: "Avoimen istunnon rekisteri määrää, mitä mitataan."}
+error.signalVoices:
+  value: "Soita yhdestä neljään ääntä, kukin enintään 100 sentin päässä nuotista."
+error.toneNeedsManual: {value: "Kiinnitä nuotti toistaaksesi sen äänen."}
+error.transposeMode: {value: "Soinnut ja oktaavit mitataan transponoimatta."}
+error.unexpected: {value: "Jokin meni vikaan. Lisätiedot ovat lokissa."}

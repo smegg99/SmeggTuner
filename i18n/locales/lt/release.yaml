@@ -1,0 +1,15 @@
+# S99AB release notes and update prompts (lt).
+notesTitle:
+  value: "Kas naujo {version} versijoje"
+  placeholders:
+    version: {type: string}
+notTranslated: {value: "Šios laidos pastabos dar neišverstos."}
+updateBody:
+  value: "Naudojate {current} versiją. Naujausia versija yra {latest}."
+  placeholders:
+    current: {type: string}
+    latest: {type: string}
+updateDownload: {value: "Atsisiųsti"}
+updateIgnore: {value: "Praleisti šią versiją"}
+updateLater: {value: "Vėliau"}
+updateTitle: {value: "Yra naujesnė versija"}

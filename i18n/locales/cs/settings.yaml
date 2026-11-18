@@ -1,0 +1,172 @@
+# Settings and sound-card calibration (cs).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Microphone and input level
+audioDeviceHint: {value: "Mikrofon používaný k měření"}
+audioDeviceLabel: {value: "Vstupní zařízení"}
+audioDeviceSystemDefault: {value: "Výchozí zařízení systému"}
+autoVolume.hint: {value: "Při měření upravuje vstupní úroveň mikrofonu"}
+autoVolume.label: {value: "Automatická regulace vstupní úrovně"}
+autoVolume.saveFailed: {value: "Nastavení vstupní úrovně se nepodařilo uložit."}
+autoVolume.unsupported: {value: "U tohoto zařízení nelze řídit vstupní úroveň."}
+humFilter50: {value: "50 Hz"}
+humFilter60: {value: "60 Hz"}
+humFilterHint: {value: "Odstraňuje síťový brum: 50 Hz v Evropě, 60 Hz v Americe"}
+humFilterLabel: {value: "Filtr síťového brumu"}
+lockedWhileRunning: {value: "Před změnou zvukového vstupu zastavte ladičku."}
+
+# Detection and reference pitch
+continuousManual: {value: "Průběžně aktualizovat připnutý tón"}
+continuousManualHint: {value: "Aktualizovat měření připnutého tónu už před jeho ustálením"}
+detection.balanced: {value: "Vyvážená"}
+detection.balancedHint: {value: "Přepne na jiný tón přibližně za půl sekundy"}
+detection.fast: {value: "Rychlá"}
+detection.fastHint: {value: "Přepíná tóny nejrychleji, může však zachytit nesprávný tón"}
+detection.steady: {value: "Stabilní"}
+detection.steadyHint: {value: "Původní způsob detekce, pomalé přepínání tónů"}
+detectionLabel: {value: "Detekce tónů"}
+lockA4: {value: "Uzamknout referenční frekvenci"}
+lockA4Hint: {value: "Zabrání změně frekvence A4 v ladičce"}
+
+# Reading units, tolerance and note names
+beatUnitHint: {value: "Hertzy nebo jednotky po 0,06 % frekvence tónu"}
+beatUnitLabel: {value: "Jednotka zázněje"}
+errorReference: {value: "Vztažná hodnota odchylky"}
+errorReferenceGoal: {value: "Cíl"}
+
+errorReferenceHint: {value: "Zobrazí odchylku od tónu stupnice nebo od cílového ladění. Při dosažení cíle je odchylka vůči cíli nulová."}
+
+errorReferenceScale: {value: "Stupnice"}
+scaleNamingHint: {value: "Způsob pojmenování tónů"}
+scaleNamingLabel: {value: "Názvy tónů"}
+scaleNamings.cdefgab: {value: "C D E F G A B (mezinárodní, zvýšené tóny např. C#)"}
+scaleNamings.cdefgah: {value: "C D E F G A H (německé, zvýšené tóny např. C#)"}
+scaleNamings.doremi: {value: "Do Re Mi (solmizace)"}
+scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (polské)"}
+toleranceBeat: {value: "Zázněj"}
+toleranceHint: {value: "Povolená odchylka, při níž se jazýček nebo zázněj ještě považuje za naladěný"}
+toleranceLabel: {value: "Tolerance"}
+toleranceReed: {value: "Jazýček"}
+unitHint: {value: "Centy nebo jednotky po 0,06 % frekvence tónu"}
+unitLabel: {value: "Jednotka odchylky"}
+
+# Appearance, language and window behavior
+accent.auto: {value: "Systémová"}
+accent.custom: {value: "Vlastní"}
+accent.hint: {value: "Systémová nebo vlastní zvýrazňovací barva"}
+accent.label: {value: "Zvýraznění"}
+accent.pick: {value: "Vybrat barvu"}
+accent.pickTitle: {value: "Zvýrazňovací barva"}
+closeToTray: {value: "Při zavření minimalizovat do oznamovací oblasti"}
+closeToTrayHint: {value: "Po zavření okna zůstane aplikace v oznamovací oblasti"}
+checkUpdates: {value: "Kontrolovat aktualizace", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdatesHint: {value: "Hledá novější verzi na GitHubu", description: "Hint below the desktop update-check checkbox."}
+languageHint: {value: "Jazyk rozhraní"}
+languageLabel: {value: "Jazyk"}
+phoneLayout.hint: {value: "Nastaví velikost okna jako na telefonu pro testování rozložení pro Android", description: "Debug builds only."}
+phoneLayout.label: {value: "Rozložení pro telefon", description: "Debug builds only."}
+phoneLayout.landscape: {value: "Na šířku", description: "Debug builds only. The phone held on its side."}
+phoneLayout.off: {value: "Vypnuto", description: "Debug builds only. The normal desktop window."}
+phoneLayout.portrait: {value: "Na výšku", description: "Debug builds only. The phone held upright."}
+themeHint: {value: "Systémový, světlý nebo tmavý"}
+themeLabel: {value: "Motiv"}
+themes.auto: {value: "Systémový"}
+themes.dark: {value: "Tmavý"}
+themes.light: {value: "Světlý"}
+
+# Sound-card calibration
+calibration.askBody: {value: "Nekalibrovaný vzorkovací kmitočet může způsobit malou stálou chybu měření. Kalibrace trvá asi minutu a nepotřebuje zvuk."}
+
+calibration.askCalibrate: {value: "Kalibrovat nyní"}
+calibration.askContinue: {value: "Pokračovat bez korekce"}
+calibration.askTitle: {value: "Tato zvuková karta není zkalibrována"}
+calibration.hint: {value: "Opraví chybu vzorkovacího kmitočtu zvukové karty. Trvá asi minutu a nevyžaduje zvuk."}
+calibration.label: {value: "Kalibrace zvukové karty"}
+calibration.open: {value: "Otevřít"}
+calibration.openHint: {value: "Zobrazí kalibrační obrazovku bez spuštění měření"}
+calibration.saveFailed: {value: "Kalibraci se nepodařilo uložit. Ladička používá dříve uložené nastavení."}
+calibration.screen.again: {value: "Kalibrovat znovu"}
+calibration.screen.bar.confirming: {value: "Ověřování"}
+calibration.screen.bar.settling: {value: "Ustalování"}
+
+calibration.screen.calibrated:
+  value: Zkalibrováno. Výsledky měření se korigují o {percent} %.
+  placeholders:
+    percent:
+      type: string
+
+calibration.screen.calibrating: {value: "Měření vzorkovacího kmitočtu zvukové karty"}
+
+calibration.screen.how: {value: "Měření výšky tónu může mít malou stálou chybu. Kalibrace trvá asi minutu a nevyžaduje zvuk."}
+
+calibration.screen.lead: {value: "Dosud nekalibrováno"}
+
+calibration.screen.phase.confirming: {value: "Hodnota se ustálila. Ověřuje se, zda zůstane stabilní po dobu 20 s."}
+
+calibration.screen.phase.preparing: {value: "Před měřením vzorkovacího kmitočtu se čeká na ustálení vstupu."}
+calibration.screen.phase.settling: {value: "Čeká se na ustálení měřeného kmitočtu."}
+
+calibration.screen.pitch:
+  value: To odpovídá odchylce {pitch} u každého tónu.
+  placeholders:
+    pitch:
+      type: string
+
+calibration.screen.preparing: {value: "Příprava vstupu"}
+calibration.screen.retry: {value: "Měření zůstávají bez korekce. Zavřete ostatní zvukové aplikace a zkuste to znovu."}
+calibration.screen.return: {value: "Zpět"}
+calibration.screen.stat.dropouts: {value: "Výpadky"}
+calibration.screen.stat.elapsed: {value: "Uplynulý čas"}
+calibration.screen.stat.offset: {value: "Odchylka kmitočtu"}
+calibration.screen.stat.rate: {value: "Vzorkovací frekvence"}
+calibration.screen.stat.steadiness: {value: "Stabilita"}
+
+calibration.screen.steadiness:
+  value: '{ppm} ppm, cíl {target} ppm'
+  placeholders:
+    ppm:
+      type: string
+    target:
+      type: string
+
+calibration.screen.steps.done: {value: "Hotovo"}
+calibration.screen.steps.measure: {value: "Měření"}
+calibration.screen.steps.prepare: {value: "Příprava"}
+calibration.screen.traceEmpty: {value: "Zde se během měření vykresluje odchylka vzorkovacího kmitočtu."}
+calibration.screen.unreliable: {value: "Vzorkovací kmitočet se neustálil"}
+calibration.start: {value: "Kalibrovat"}
+calibration.startHint: {value: "Změřit vzorkovací kmitočet vstupu"}
+
+calibration.status.calibrated:
+  value: Zkalibrováno, {percent} %
+  placeholders:
+    percent:
+      type: string
+
+calibration.status.calibrating:
+  value: Kalibrace, {seconds} s ({percent} %), dokončeno {progress} %
+  placeholders:
+    percent:
+      type: string
+    progress:
+      type: string
+    seconds:
+      type: string
+
+calibration.status.preparing: {value: "Příprava"}
+calibration.status.uncalibrated: {value: "Nekalibrováno"}
+calibration.status.unreliable: {value: "Nespolehlivá kalibrace, měření jsou bez korekce"}
+
+# Settings section headings
+groups.appearance: {value: "Vzhled"}
+groups.detection: {value: "Detekce"}
+groups.microphone: {value: "Mikrofon"}
+groups.output: {value: "Výstup", description: "Settings section shown on a phone, holding the output volume."}
+groups.readings: {value: "Měření"}
+groups.report: {value: "Údaje o dílně"}
+
+# Report letterhead
+report.address: {value: "Adresa"}
+report.name: {value: "Název dílny"}
+report.nameHint: {value: "Zobrazí se v exportovaných protokolech, pokud je zapnutá hlavička."}

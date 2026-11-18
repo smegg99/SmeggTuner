@@ -1,6 +1,6 @@
 // i18n/config.cue
 defaultLocale: "en"
-locales: ["en", "pl"]
+locales: ["en", "pl", "de", "nl", "da", "sv", "nb", "fr", "it", "es", "pt-PT", "pt-BR", "cs", "sk", "hu", "ro", "ru", "et", "fi", "lv", "lt", "el", "zh-Hans", "zh-Hant", "ja", "ko", "th"]
 targets: ["web", "backend"]
 roots: ["locales"]
 output: "generated"
@@ -25,6 +25,10 @@ keyPatterns: [
 ]
 // These families are assembled from runtime enums. Report templates are checked separately.
 dynamicKeys: [
+	// Rendered by S99AB's boot, crash and update dialogs.
+	"common.linkNewTab",
+	"crash.",
+	"release.",
 	"common.title.room.",
 	"common.unitSymbol.",
 	"settings.calibration.screen.bar.",

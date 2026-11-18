@@ -1,0 +1,100 @@
+# Diagnostic log messages (sk).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Application lifecycle and configuration
+appStarting: {value: "Spúšťa sa smeggtuner"}
+cleaningUp: {value: "Uvoľňujú sa prostriedky"}
+configLoadFailed: {value: "Konfiguráciu sa nepodarilo načítať"}
+configLoaded: {value: "Konfigurácia načítaná"}
+configSaveFailed: {value: "Konfiguráciu sa nepodarilo uložiť"}
+crashScreenFailed: {value: "Nepodarilo sa zobraziť chybovú obrazovku"}
+crashWatchFailed: {value: "Nepodarilo sa spustiť sledovanie pádov aplikácie"}
+datastoreInitFailed: {value: "Nepodarilo sa inicializovať úložisko údajov"}
+datastoreReady: {value: "Úložisko údajov je pripravené"}
+loadingConfig: {value: "Načítava sa konfigurácia"}
+loggerInitFailed: {value: "Nepodarilo sa nastaviť zapisovanie do denníka"}
+reinitLogger: {value: "Obnovujú sa nastavenia denníka podľa konfigurácie"}
+runFailed: {value: "Beh aplikácie sa skončil chybou"}
+secondInstance: {value: "Spustila sa druhá inštancia, aktivuje sa existujúce okno"}
+trayIconFailed: {value: "Nepodarilo sa načítať ikonu oblasti oznámení"}
+updateCheckFailed: {value: "Kontrola aktualizácií zlyhala", description: "Update check or stored release-note state failed; logged without a dialog."}
+windowStateLoadFailed: {value: "Nepodarilo sa načítať stav okna"}
+windowStateSaveFailed: {value: "Nepodarilo sa uložiť stav okna"}
+
+# Audio devices and calibration
+audioDeviceEnumFailed: {value: "Nepodarilo sa vypísať vstupné zvukové zariadenia"}
+audioDeviceGone: {value: "Vybrané vstupné zariadenie už nie je dostupné"}
+audioDevicesListed: {value: "Vstupné zariadenia vypísané"}
+audioDialogFailed: {value: "Chyba dialógu na výber súboru"}
+audioDialogUnavailable: {value: "Požiadavka na dialóg na výber súboru bez spustenej aplikácie"}
+audioFileUnreadable: {value: "Nahrávku sa nepodarilo otvoriť"}
+audioNoDevices: {value: "Nie sú dostupné žiadne vstupné zariadenia"}
+audioSourceSelected: {value: "Vstupný zdroj vybraný"}
+audioSpeakerUnavailable: {value: "Chýba výstupné zariadenie. Súbor sa prehrá bez zvuku"}
+calibrationAbandoned: {value: "Kalibrácia zvukovej karty prerušená"}
+calibrationFinished: {value: "Kalibrácia zvukovej karty dokončená"}
+calibrationNoDevice: {value: "Pri kalibrácii zvukovej karty sa nepodarilo otvoriť zariadenie"}
+calibrationStarted: {value: "Kalibrácia zvukovej karty spustená"}
+deviceStoreFailed: {value: "Nepodarilo sa uložiť nastavenia vstupného zariadenia"}
+micBlocksDropped: {value: "Spracovanie údajov z mikrofónu mešká, bloky sa zahadzujú"}
+micDeviceLost: {value: "Vstupné zariadenie sa neočakávane zastavilo"}
+volumeRestore: {value: "Automatická regulácia hlasitosti nedokázala obnoviť vstupnú úroveň"}
+volumeStepFailed: {value: "Automatická regulácia hlasitosti nedokázala nastaviť vstupnú úroveň"}
+volumeUnavailable: {value: "Automatická regulácia hlasitosti nemá prístup k nastaveniu vstupnej úrovne zariadenia"}
+
+# Tuner engine
+tunerEventsDropped: {value: "Rozhranie nestíha spracúvať udalosti merania, niektoré sa zahodili"}
+tunerRunFailed: {value: "Merací modul sa zastavil s chybou"}
+tunerSettingRejected: {value: "Nastavenie mimo povoleného rozsahu bolo odmietnuté"}
+tunerStartFailed: {value: "Nepodarilo sa vytvoriť vstupný zdroj"}
+tunerStarted: {value: "Merací modul spustený"}
+tunerStopped: {value: "Merací modul zastavený"}
+tunerTonePlayFailed: {value: "Prehratie referenčného tónu zlyhalo"}
+tunerTonePlaying: {value: "Prehráva sa referenčný tón"}
+
+# Sessions, readings and reports
+recordCleared: {value: "Séria meraní vymazaná"}
+recordEdited: {value: "Záznam ručne upravený"}
+recordRejected: {value: "Požiadavka na záznam odmietnutá"}
+recordTake: {value: "Meranie zaznamenané"}
+recordUndone: {value: "Posledný záznam vrátený späť"}
+reportFailed: {value: "Nepodarilo sa uložiť protokol o ladení"}
+reportOpenFailed: {value: "Nepodarilo sa otvoriť protokol o ladení"}
+reportOpened: {value: "Protokol o ladení odovzdaný prehliadaču"}
+reportRejected: {value: "Požiadavka na protokol odmietnutá"}
+reportWritten: {value: "Protokol o ladení uložený"}
+sessionClosed: {value: "Relácia zatvorená"}
+sessionCreated: {value: "Relácia vytvorená"}
+sessionCurveDropped: {value: "Cieľová krivka odstránená"}
+sessionCurveFitted: {value: "Cieľová krivka vypočítaná preložením série meraní"}
+sessionCurveImported: {value: "Cieľová krivka importovaná"}
+sessionDeleted: {value: "Relácia odstránená"}
+sessionLoadFailed: {value: "Nepodarilo sa načítať reláciu"}
+sessionOpened: {value: "Relácia otvorená"}
+sessionReedsClamped: {value: "Na nástroji znie viac jazýčkov, než merací modul rozlíši. Ich počet sa v module obmedzil"}
+sessionRejected: {value: "Neplatná zmena relácie odmietnutá"}
+sessionSaveFailed: {value: "Nepodarilo sa uložiť reláciu"}
+
+# Frontend diagnostics
+frontendAudioCalibrationCancelFailed: {value: "Nepodarilo sa zrušiť kalibráciu"}
+frontendAudioCalibrationFailed: {value: "Nepodarilo sa spustiť kalibráciu"}
+frontendAudioCorrectionFailed: {value: "Nepodarilo sa načítať korekciu zvukovej karty"}
+frontendAudioDialogFailed: {value: "Nepodarilo sa otvoriť dialóg na výber súboru"}
+frontendAudioListFailed: {value: "Nepodarilo sa vypísať zvukové zariadenia"}
+frontendAudioSelectFailed: {value: "Nepodarilo sa vybrať zdroj zvuku"}
+frontendAudioStateFailed: {value: "Nepodarilo sa načítať stav zvukového zariadenia"}
+frontendAudioVolumeFailed: {value: "Nepodarilo sa zmeniť automatickú reguláciu hlasitosti"}
+frontendConfigLoadFailed: {value: "Nepodarilo sa načítať konfiguráciu"}
+frontendConfigLoaded: {value: "Konfigurácia načítaná"}
+frontendConfigSaveFailed: {value: "Nepodarilo sa uložiť konfiguráciu"}
+frontendCurveViewFailed: {value: "Nepodarilo sa načítať nastavenia zobrazenia krivky"}
+frontendError: {value: "Neočakávaná chyba aplikácie"}
+frontendRejection: {value: "Operácia aplikácie zlyhala"}
+frontendResizeNotice: {value: "Zmena rozloženia odložená na ďalšiu snímku (oznámenie ResizeObserver z prehliadača)"}
+frontendSettingFailed: {value: "Nepodarilo sa zmeniť nastavenie ladičky"}
+frontendTunerStartFailed: {value: "Nepodarilo sa spustiť ladičku"}
+frontendTunerStateFailed: {value: "Nepodarilo sa načítať stav ladičky"}
+frontendTunerStopFailed: {value: "Nepodarilo sa zastaviť ladičku"}
+frontendTunerTonePlayFailed: {value: "Nepodarilo sa prehrať referenčný tón"}
+frontendTunerToneStopFailed: {value: "Nepodarilo sa zastaviť referenčný tón"}

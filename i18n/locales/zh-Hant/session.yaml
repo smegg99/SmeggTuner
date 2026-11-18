@@ -1,0 +1,251 @@
+# Sessions, instruments and target curves (zh-Hant).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Session list and actions
+card.a4:
+  value: "A = {hz} Hz"
+  placeholders:
+    hz: {type: string}
+
+card.changed: {value: "樂器庫中的這臺手風琴自本次工作階段記錄後已被修改。"}
+card.hasCurve: {value: "已設定目標曲線"}
+
+card.readings:
+  plural:
+    argument: count
+    forms:
+      other: "{count} 個讀數"
+  placeholders:
+    count: {type: integer}
+
+card.unnamedInstrument: {value: "手風琴尚未命名"}
+
+card.updated:
+  value: "更新於 {when}"
+  placeholders:
+    when: {type: string}
+
+deleteHint: {value: "永久刪除此工作階段及其全部測量輪次、讀數和調音曲線。"}
+deleteTitle: {value: "刪除此工作階段？"}
+empty: {value: "暫無工作階段"}
+emptyHint: {value: "建立工作階段可儲存讀數，也可直接使用調音器。"}
+export: {value: "匯出工作階段"}
+file.openFilter: {value: "SmeggTuner 工作階段"}
+file.openTitle: {value: "選擇工作階段檔案"}
+new: {value: "新建工作階段"}
+title: {value: "工作階段"}
+
+# Session dialog and tabs
+dialog.backToList: {value: "選擇調過音的手風琴"}
+dialog.describeNew: {value: "填寫新樂器資料…"}
+dialog.forgetAccordion: {value: "移除此手風琴檔案"}
+dialog.loadAccordion: {value: "從檔案載入…"}
+dialog.name: {value: "工作階段名稱"}
+dialog.nameHint: {value: "可用樂器或客戶名稱標識此工作階段。"}
+dialog.pickAccordion: {value: "選擇哪臺手風琴？"}
+dialog.start: {value: "開始"}
+page.mobile.curve: {value: "目標"}
+page.mobile.recorded: {value: "讀數"}
+
+# Instrument editing restrictions
+accordion.a4Locked: {value: "已固定：本次工作階段已有讀數以此為基準。"}
+
+accordion.columnsRefused:
+  value: "此修改會改變現有讀數所用的簧組，未予儲存。請恢復先前的簧組或新建工作階段。"
+accordion.frozen:
+  value: "記錄讀數後無法更改基準音高和簧組。仍可用現有簧組新增變音器。"
+accordion.frozenShort: {value: "簧組已鎖定"}
+accordion.remember: {value: "儲存到樂器庫"}
+accordion.rememberHint: {value: "將本次工作階段的樂器存入樂器庫，以便以後使用。"}
+
+# Instrument definition and registers
+instrument.a4: {value: "基準音高"}
+
+instrument.a4Hint:
+  value: "A4 的基準頻率，以赫茲為單位。此樂器的新工作階段將使用該值。"
+
+instrument.bass.build: {value: "下一檔開關啟用的簧組（英尺）"}
+instrument.bass.fixed: {value: "無低音變音器：低音機構固定，所有簧組始終一起發聲。"}
+
+instrument.bass.full:
+  value: "此低音機構最多可設定 {n} 個開關"
+  placeholders:
+    n: {type: string}
+
+instrument.bass.hint: {value: "設定低音機構中發聲的簧組數，通常為四組或五組。"}
+instrument.bass.registerName: {value: "開關名稱"}
+instrument.bass.voices: {value: "低音簧組"}
+instrument.beatTolerance: {value: "拍頻容差"}
+instrument.builder.add: {value: "新增"}
+instrument.builder.already: {value: "該開關已設定"}
+instrument.builder.high: {value: "4′ 短笛"}
+instrument.builder.low: {value: "16′ 低音"}
+instrument.builder.middle: {value: "8′ 簧片"}
+instrument.builder.none: {value: "尚無開關。請在下方選擇各開關啟用的簧組。"}
+instrument.builder.remove: {value: "移除此變音器"}
+instrument.builder.title: {value: "新增開關"}
+instrument.file.exportTitle: {value: "匯出手風琴資料"}
+instrument.file.filterName: {value: "SmeggTuner 手風琴檔案"}
+instrument.file.imageFilter: {value: "影象"}
+instrument.file.imageTitle: {value: "選擇照片"}
+instrument.file.openTitle: {value: "選擇手風琴檔案"}
+instrument.name: {value: "名稱"}
+instrument.nameHint: {value: "在樂器庫和工作階段中顯示的名稱。"}
+instrument.namePlaceholder: {value: "Hohner Morino V N"}
+instrument.nameRequired: {value: "請輸入手風琴名稱。"}
+instrument.photo: {value: "照片"}
+instrument.range.backwards: {value: "最高音不能低於最低音。"}
+instrument.range.clear: {value: "清除"}
+instrument.range.down: {value: "降低"}
+
+instrument.range.hint:
+  value: "可選。指定最低音鍵和最高音鍵，也可在校正時透過演奏來設定。"
+
+instrument.range.label: {value: "鍵盤音域"}
+instrument.range.to: {value: "至"}
+instrument.range.up: {value: "升高"}
+
+instrument.registersHint:
+  value: "點選各變音器符號中的圓點（即琴上刻著的圓形標記），或選擇常用組合。圓點直接表示啟用的簧組。"
+instrument.registersSubtitle: {value: "高音部變音器及各自啟用的簧組。"}
+
+instrument.says:
+  plural:
+    argument: reeds
+    forms:
+      other: "簧組：{banks}。啟用簧片最多的開關可同時發出 {reeds} 個簧片的聲音。"
+  placeholders:
+    banks: {type: string}
+    reeds: {type: integer}
+
+instrument.sections.bass: {value: "低音機構"}
+instrument.sections.identity: {value: "基本資料"}
+instrument.sections.keyboard: {value: "鍵盤"}
+instrument.sections.reference: {value: "基準與容差"}
+instrument.sections.voices: {value: "變音器"}
+instrument.tolerance: {value: "簧片容差"}
+
+instrument.toleranceHint:
+  value: "簧片允許的偏差，每單位為該音符頻率的 0.06%。超出範圍的讀數會標為音不準。"
+# Target curve editor
+curve.clearAll: {value: "清除曲線"}
+
+curve.clearAllConfirm:
+  value: "將移除全部錨點。每個音的目標都會恢復為音階音高，調音器將只顯示偏差。"
+curve.clearAllHint: {value: "移除全部錨點，將目標恢復為音階音高。"}
+curve.clearAllTitle: {value: "清除整條曲線？"}
+curve.entryUnit: {value: "輸入單位"}
+
+curve.help.hz:
+  value: "選擇 Hz 時，以 A4 = 440 Hz 輸入目標赫茲值，與參考拍頻表相同，不隨本工作階段的 A4 改變。「已記錄」可在表上疊加本工作階段的讀數；透過「清單」可按讀數擬合錨點或複製其他工作階段的清單。"
+curve.help.hzTitle: {value: "赫茲與讀數"}
+
+curve.help.interp:
+  value: "啟用插值時，錨點之間的音沿連線取值；關閉時，各錨點的值保持到下一錨點。無錨點時，所有音均以音階音高為目標。"
+curve.help.interpTitle: {value: "錨點之間"}
+
+curve.help.lead:
+  value: "曲線表示逐音調律的目標，即各簧片應偏離音階音高多少。表格按此目標判斷已記錄的簧片是否調準，無需每個讀數都歸零。"
+curve.help.set:
+  value: "選擇音符和數值後按「設定」，也可上下拖動圖中的點。每個簧組各有一條線，正在編輯的線會高亮。"
+curve.help.setTitle: {value: "設定錨點"}
+curve.helpTitle: {value: "期望拍頻"}
+curve.interpolate: {value: "插值"}
+curve.interpolateHint: {value: "沿錨點連線取值。關閉時，各錨點的值保持到下一錨點。"}
+curve.menu.ends: {value: "錨點範圍外"}
+curve.menu.extendHigh: {value: "將曲線延伸至最高錨點音符以上的音域"}
+curve.menu.extendLow: {value: "將曲線延伸至最低錨點音符以下的音域"}
+curve.menu.fit: {value: "擬合本工作階段的讀數"}
+
+curve.menu.fitBody:
+  plural:
+    argument: n
+    forms:
+      other: "將以擬合 {n} 個讀數的曲線替換現有錨點。"
+  placeholders:
+    n: {type: integer}
+
+curve.menu.fromFile: {value: "從工作階段檔案複製"}
+curve.menu.fromSession: {value: "從工作階段複製"}
+curve.menu.label: {value: "清單"}
+curve.menu.replace: {value: "替換清單"}
+curve.menu.replaceBody: {value: "現有錨點將被另一清單的錨點及設定替換。"}
+curve.menu.replaceConfirm: {value: "替換"}
+curve.menu.replaceTitle: {value: "替換拍頻清單？"}
+curve.rank: {value: "簧組"}
+curve.recorded: {value: "已記錄"}
+curve.recordedHint: {value: "在圖中顯示本次工作階段的讀數"}
+curve.remove: {value: "移除"}
+curve.removeHint: {value: "從曲線中移除此音的錨點。"}
+
+curve.scale:
+  value: "刻度 {v}"
+  placeholders:
+    v: {type: string}
+
+curve.scaleAuto: {value: "自動刻度"}
+curve.scaleHint: {value: "圖表縱軸的顯示範圍"}
+curve.set: {value: "設定"}
+curve.setHint: {value: "為所選簧組在此音上設定錨點。"}
+curve.startHint: {value: "尚無錨點。各音均以音階音高為目標。"}
+
+# Readings and workshop actions
+footer.coverage:
+  value: "已測 {done} / {total} 個音"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.inTune:
+  value: "調準 {done} / {total}"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.none: {value: "未開啟工作階段"}
+
+readings.notes:
+  plural:
+    argument: n
+    forms:
+      other: "{n} 個音"
+  placeholders:
+    n: {type: integer}
+
+workshop.exit: {value: "退出工作階段"}
+workshop.import: {value: "匯入"}
+workshop.open: {value: "開啟"}
+workshop.print: {value: "列印調音卡"}
+
+# Session errors
+error.fitFailed: {value: "無法根據該輪測量擬合曲線。"}
+
+error.hasReadings:
+  value: "此工作階段已有讀數，測量時使用的基準音高和簧片數都不能再更改。"
+error.imageUnreadable: {value: "無法開啟該照片。"}
+error.instrumentName: {value: "請為手風琴命名，以便日後查詢。"}
+error.invalidA4: {value: "基準音高必須在 430 至 450 Hz 之間。"}
+
+error.invalidInstrument:
+  value: "無法使用此手風琴資料：簧組重名，或變音器啟用了樂器上沒有的簧組。"
+error.invalidName: {value: "請為工作階段命名。"}
+error.invalidNote: {value: "此音超出調音器的追蹤範圍。"}
+error.invalidReed: {value: "此手風琴不會啟用該簧片。"}
+error.invalidReedCount: {value: "手風琴每個音可同時發聲的簧片數為 1 至 8。"}
+error.invalidTranspose: {value: "移調範圍為 0 至 11 個半音。"}
+error.invalidUnit: {value: "可用音分、赫茲或 0.06% 單位輸入數值。"}
+error.invalidValue: {value: "該值不是數字。"}
+error.loadFailed: {value: "無法讀取工作階段。"}
+error.noBassMachine: {value: "此手風琴尚未定義低音機構。"}
+error.noBassRegister: {value: "此手風琴沒有該低音變音器。"}
+error.noCurve: {value: "此工作階段沒有目標曲線。"}
+error.noReadings: {value: "此工作階段尚未記錄任何讀數。"}
+error.noRegister: {value: "此手風琴沒有該變音器。"}
+error.noSession: {value: "尚未開啟工作階段。"}
+error.notAnImage: {value: "該檔案不是照片。"}
+error.notFound: {value: "該工作階段已不存在。"}
+error.notesTooLong: {value: "請將備註縮短至 500 個字元以內。"}
+error.saveFailed: {value: "未能儲存工作階段。現在關閉可能丟失最近的記錄。"}
+error.takeNotFound: {value: "該讀數已不存在。"}
+error.unexpected: {value: "發生錯誤。"}

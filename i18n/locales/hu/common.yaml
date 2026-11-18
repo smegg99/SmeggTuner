@@ -1,0 +1,115 @@
+# Shared labels and application text (hu).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Buttons and shared labels
+accept: {value: "Elfogadás"}
+back: {value: "Vissza"}
+cancel: {value: "Mégse"}
+close: {value: "Bezárás"}
+delete: {value: "Törlés"}
+export: {value: "Exportálás"}
+next: {value: "Következő"}
+"no": {value: "Nem"}
+none: {value: "Nincs"}
+previous: {value: "Előző"}
+website: {value: "Weboldal"}
+"yes": {value: "Igen"}
+
+# Musical labels and unit symbols
+accordion: {value: "Harmonika"}
+note: {value: "Hang"}
+
+reed:
+  value: '{index}. síp'
+  placeholders:
+    index:
+      type: integer
+
+unitSymbol.cents: {value: "cent"}
+unitSymbol.hz: {value: "Hz"}
+unitSymbol.reference: {value: "u"}
+
+# Color controls
+color.hue: {value: "Színárnyalat"}
+color.saturation: {value: "Telítettség"}
+color.value: {value: "Fényerő"}
+
+# Navigation and window titles
+routes.navigation: {value: "Fő navigáció"}
+routes.settings: {value: "Beállítások"}
+routes.tune: {value: "Hangolás"}
+routes.workshop: {value: "Műhely"}
+
+title.count:
+  value: '{room} {name} ({done})'
+  placeholders:
+    done:
+      type: string
+    name:
+      type: string
+    room:
+      type: string
+
+title.progress:
+  value: '{room} {name} {done}/{total}'
+  placeholders:
+    done:
+      type: string
+    name:
+      type: string
+    room:
+      type: string
+    total:
+      type: string
+
+title.room.about: {value: "névjegy"}
+title.room.calibrate: {value: "kalibrálás"}
+title.room.help: {value: "súgó"}
+title.room.settings: {value: "beállítások"}
+title.room.soundcard: {value: "hangkártya"}
+title.room.tune: {value: "hangolás"}
+title.room.workshop: {value: "műhely"}
+
+title.session:
+  value: '{room} {name}'
+  placeholders:
+    name:
+      type: string
+    room:
+      type: string
+
+title.uncalibrated:
+  value: '{title} (a hangkártya nincs kalibrálva)'
+  placeholders:
+    title:
+      type: string
+
+# Application and About dialog
+about.aboutTitle: {value: "Névjegy"}
+about.commit: {value: "Összeállítás"}
+about.donate: {value: "Támogatás a Ko-fi oldalon"}
+about.license: {value: "Licenc"}
+about.privacy: {value: "Adatvédelmi tájékoztató"}
+about.guide: {value: "A SmeggTuner használata"}
+about.onlineVersion: {value: "Online változat megnyitása"}
+about.support: {value: "Támogatás"}
+about.mascot: {value: "Harmonikázó macska"}
+about.publisher: {value: "Készítette: smegg99"}
+about.tagline: {value: "Ingyenes, nyílt forráskódú harmonikahangoló program."}
+about.untagged: {value: "fejlesztői összeállítás"}
+about.version: {value: "Verzió"}
+app.description: {value: "Ingyenes, nyílt forráskódú harmonikahangoló."}
+app.name: {value: "SmeggTuner"}
+
+# Help dialog and keyboard instructions
+about.helpTitle: {value: "Súgó"}
+
+# System tray
+tray.quit: {value: "Kilépés"}
+tray.show: {value: "Megjelenítés"}
+
+linkNewTab:
+  value: "{text} (új lapon nyílik meg)"
+  placeholders:
+    text: {type: string}

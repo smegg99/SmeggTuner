@@ -58,4 +58,4 @@ Przetwarzanie niezbędne do udostępniania i zabezpieczania strony lub odpowiada
 
 ## Zmiany
 
-Ta strona będzie aktualizowana, gdy zmienią się istotne funkcje lub zasady przetwarzania danych. Data na początku wskazuje bieżącą wersję. Kopia tej polityki jest dołączona do aplikacji i dostępna bez internetu w oknie O programie. Aktualna wersja na stronie jest dostępna pod adresem [smeggtuner.com/privacy](https://smeggtuner.com/privacy).
+Ta strona będzie aktualizowana, gdy zmienią się istotne funkcje lub zasady przetwarzania danych. Data na początku wskazuje bieżącą wersję. Kopia tej polityki jest dołączona do aplikacji i dostępna bez internetu w oknie O programie. Aktualna wersja na stronie jest dostępna pod adresem [smeggtuner.com/pl/privacy](https://smeggtuner.com/pl/privacy).

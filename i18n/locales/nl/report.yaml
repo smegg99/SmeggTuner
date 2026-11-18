@@ -1,0 +1,155 @@
+# Printed reports and export (nl).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one = 1; other = 0, 2, 3, ...
+
+# Report title and instrument details
+facts.curve: {value: "Doelcurve"}
+facts.curveNone: {value: "geen"}
+facts.curveUnnamed: {value: "naamloos"}
+facts.reference: {value: "Referentietoon A4 (deze meetronde)"}
+facts.tolerance: {value: "Tolerantie"}
+
+facts.toleranceValue:
+  value: "Tong {reed} {unit} / zweving {beat} {unit}"
+  placeholders:
+    beat: {type: string}
+    reed: {type: string}
+    unit: {type: string}
+
+facts.transpose: {value: "Transpositie"}
+
+facts.transposeValue:
+  value: "{key} klinkt als {sounds}"
+  placeholders:
+    key: {type: string}
+    sounds: {type: string}
+
+title: {value: "Stemrapport"}
+
+# Table and column headings
+head.beat:
+  value: "Zweving {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.bassTitle:
+  value: "Stemtabel bas ({unit})"
+  placeholders:
+    unit: {type: string}
+
+table.curr: {value: "Gem."}
+table.err: {value: "Fout"}
+table.register: {value: "Register"}
+
+table.title:
+  value: "Stemtabel ({unit})"
+  placeholders:
+    unit: {type: string}
+
+# Deviation units
+unit.cents.name: {value: "cent"}
+unit.cents.symbol: {value: "c"}
+unit.reference.name: {value: "eenheden van 0,06%"}
+
+# Graph legend and reading markers
+graph.edited:
+  value: "{mark} - handmatig bewerkt."
+  placeholders:
+    mark: {type: string}
+
+legend.error.cents:
+  value: "Vijl totdat het verschil tussen de gemeten waarde en de doelwaarde nul nadert. In cent ten opzichte van de gelijkzwevende stemming bij {a4} Hz."
+  placeholders:
+    a4: {type: string}
+
+legend.error.key: {value: "Fout = gemeten - doel."}
+legend.error.noCurve: {value: "Zonder doelcurve is de doelwaarde nul en is de fout de afwijking van de toonladder."}
+
+legend.error.reference:
+  value: "Vijl totdat het verschil tussen de gemeten waarde en de doelwaarde nul nadert. In eenheden van 0,06% van de toonfrequentie ten opzichte van de gelijkzwevende stemming bij {a4} Hz."
+  placeholders:
+    a4: {type: string}
+
+legend.out.short: {value: "buiten de tolerantie"}
+legend.takes.key: {value: "xN"}
+legend.takes.short: {value: "meermaals gemeten, laatste meting weergegeven"}
+mark.edited: {value: "H"}
+mark.out: {value: "!"}
+
+# Summary and footer
+footer.generated:
+  value: "Gemaakt op {at} met {app}"
+  placeholders:
+    app: {type: string}
+    at: {type: string}
+
+summary.allIn: {value: "Alle waarden binnen de tolerantie."}
+
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} zweving"
+      other: "{pluralCount} zwevingen"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.line:
+  value: "{notes} ({min} tot {max}), {reeds}, {beats}."
+  placeholders:
+    beats: {type: string}
+    max: {type: string}
+    min: {type: string}
+    notes: {type: string}
+    reeds: {type: string}
+
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} noot"
+      other: "{pluralCount} noten"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} buiten de tolerantie ({reeds}, {beats})."
+      other: "{pluralCount} buiten de tolerantie ({reeds}, {beats})."
+  placeholders:
+    beats: {type: string}
+    pluralCount: {type: integer}
+    reeds: {type: string}
+
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} tongmeting"
+      other: "{pluralCount} tongmetingen"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} tong"
+      other: "{pluralCount} tongen"
+  placeholders:
+    pluralCount: {type: integer}
+
+# Export errors
+error.invalidDate: {value: "Voer een geldige datum in als JJJJ-MM-DD."}
+error.invalidFormat: {value: "Dit rapport kan niet in de gekozen indeling worden opgeslagen."}
+
+error.noBrowser:
+  value: "Voor de pdf-opmaak is een browser nodig. Chrome en Chromium ontbreken op deze computer. Installeer een van beide of exporteer de kaart als HTML en druk die af."
+error.openFailed: {value: "Het rapport is opgeslagen, maar geen browser kon het openen. Open het bestand zelf."}
+error.renderFailed: {value: "Het rapport kon niet worden opgebouwd. Er is niets opgeslagen."}
+
+error.writeFailed:
+  value: "Het rapport kon daar niet worden opgeslagen. Een eventueel bestaand bestand is behouden."

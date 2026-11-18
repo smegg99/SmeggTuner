@@ -1,0 +1,71 @@
+# Recording controls and readings (hu).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Recording controls
+arm.hint: {value: "Mérés rögzítése minden stabil hangnál (az Enter azonnal rögzít)"}
+arm.needsSession: {value: "A rögzítéshez nyisson meg egy munkamenetet"}
+arm.warmup: {value: "A rögzítés ki van kapcsolva. Játsszon szabadon, semmi sem kerül mentésre. Nyomja meg a rögzítés indításához."}
+undo.hint: {value: "Az utolsó mérés visszavonása"}
+
+# Readings table and compact columns
+mobile.current: {value: "Mért érték"}
+mobile.error: {value: "Eltérés"}
+
+table.beat:
+  value: Lebegés {pair}
+  placeholders:
+    pair:
+      type: string
+
+table.delete: {value: "Mérés törlése"}
+table.deleteHint: {value: "Végleg törli ezt a mérést. Új érték rögzítéséhez játssza le ismét a hangot, és rögzítse a mérést."}
+table.deleteTitle: {value: "Törli ezt a mérést?"}
+table.editHint: {value: "Az érték szerkesztéséhez kattintson rá, vagy nyomja meg az Entert"}
+table.empty: {value: "Indítsa el a rögzítést, majd játssza le a hangokat a mérések mentéséhez."}
+table.graph: {value: "Grafikon"}
+
+table.graphHint: {value: "Hasonlítsa össze a sípokat a célértékükkel. Egy oszlopra kattintva kijelölheti a hozzá tartozó sort, újabb kattintással pedig a következő regisztert."}
+
+table.graphLabel: {value: "A sípok eltérései rögzített hangonként"}
+table.helpTitle: {value: "A táblázatról"}
+table.label: {value: "Rögzített hangolás"}
+table.latest: {value: "Legutóbbi mérés. A Backspace billentyűvel törölhető"}
+table.manual: {value: "Módosítva"}
+table.manualHint: {value: "A sor egyik értékét kézzel adták meg, nem hangméréssel."}
+
+table.notes:
+  plural:
+    argument: count
+    forms:
+      one: '{count} hang'
+      other: '{count} hang'
+  placeholders:
+    count:
+      type: integer
+
+table.unitHint: {value: "A sípok eltérései a Beállításokban kiválasztott mértékegységben jelennek meg. A lebegés az eszköztáron választott beállítástól függően hertzben vagy az eltérés egységében látható."}
+
+# Report export dialog
+report.csv: {value: "CSV"}
+report.date: {value: "Dátum"}
+report.format: {value: "Formátum"}
+
+report.formatHint: {value: "A PDF egyetlen A4-es oldalon, a nyomtatási elrendezésben tartalmazza a hangolási lapot. A HTML ugyanezt a lapot weboldalként jeleníti meg. A CSV táblázatkezelőben nyitható meg."}
+
+report.html: {value: "HTML"}
+report.notes: {value: "Megjegyzés a lapon"}
+report.notesHint: {value: "A táblázat alá kerül nyomtatáskor. Ide írhatja az elvégzett és a hátralévő munkákat."}
+
+report.pass:
+  value: 'Mérési sorozat: {label}'
+  placeholders:
+    label:
+      type: string
+
+report.pdf: {value: "PDF"}
+report.title: {value: "Hangolási lap"}
+
+# Recording errors
+error.takeNotFound: {value: "Ez a mérés már nem szerepel a sorozatban."}
+error.unexpected: {value: "A művelet sikertelen. A részleteket a naplóban találja."}

@@ -1,0 +1,159 @@
+# Printed reports and export (lv).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Report title and instrument details
+facts.curve: {value: "Mērķlīkne"}
+facts.curveNone: {value: "nav"}
+facts.curveUnnamed: {value: "bez nosaukuma"}
+facts.reference: {value: "Atsauces A4 (šis mērījumu cikls)"}
+facts.tolerance: {value: "Pielaide"}
+
+facts.toleranceValue:
+  value: "Mēlīte {reed} {unit} / pulsācija {beat} {unit}"
+  placeholders:
+    beat: {type: string}
+    reed: {type: string}
+    unit: {type: string}
+
+facts.transpose: {value: "Transponēšana"}
+
+facts.transposeValue:
+  value: "{key} skan kā {sounds}"
+  placeholders:
+    key: {type: string}
+    sounds: {type: string}
+
+title: {value: "Skaņošanas pārskats"}
+
+# Table and column headings
+head.beat:
+  value: "Pulsācija {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.bassTitle:
+  value: "Basu skaņošanas tabula ({unit})"
+  placeholders:
+    unit: {type: string}
+
+table.curr: {value: "Mēr."}
+table.err: {value: "Kļūda"}
+table.register: {value: "Reģistrs"}
+
+table.title:
+  value: "Skaņošanas tabula ({unit})"
+  placeholders:
+    unit: {type: string}
+
+# Deviation units
+unit.cents.name: {value: "centi"}
+unit.cents.symbol: {value: "c"}
+unit.reference.name: {value: "0,06 % vienības"}
+
+# Graph legend and reading markers
+graph.edited:
+  value: "{mark} – labots manuāli."
+  placeholders:
+    mark: {type: string}
+
+legend.error.cents:
+  value: "Vīlējiet, tuvinot kļūdu nullei. Vērtības centos attiecībā pret vienmērīgi temperēto skaņojumu, kur A4 ir {a4} Hz."
+  placeholders:
+    a4: {type: string}
+
+legend.error.key: {value: "Kļūda = mērījums − mērķis."}
+legend.error.noCurve: {value: "Nav mērķlīknes: mērķis ir nulle, kļūda ir novirze no skaņkārtas."}
+
+legend.error.reference:
+  value: "Vīlējiet, tuvinot kļūdu nullei. Vienība ir 0,06 % no nots frekvences attiecībā pret vienmērīgi temperēto skaņojumu, kur A4 ir {a4} Hz."
+  placeholders:
+    a4: {type: string}
+
+legend.out.short: {value: "ārpus pielaides"}
+legend.takes.key: {value: "xN"}
+legend.takes.short: {value: "ierakstīts vairākkārt, redzams pēdējais mērījums"}
+mark.edited: {value: "H"}
+mark.out: {value: "!"}
+
+# Summary and footer
+footer.generated:
+  value: "Izveidots {at}, lietotne {app}"
+  placeholders:
+    app: {type: string}
+    at: {type: string}
+
+summary.allIn: {value: "Viss pielaides robežās."}
+
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      zero: "{pluralCount} pulsāciju"
+      one: "{pluralCount} pulsācija"
+      other: "{pluralCount} pulsācijas"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.line:
+  value: "{notes} (no {min} līdz {max}), {reeds}, {beats}."
+  placeholders:
+    beats: {type: string}
+    max: {type: string}
+    min: {type: string}
+    notes: {type: string}
+    reeds: {type: string}
+
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      zero: "{pluralCount} nošu"
+      one: "{pluralCount} nots"
+      other: "{pluralCount} notis"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      zero: "Ārpus pielaides: {pluralCount} ({reeds}, {beats})."
+      one: "Ārpus pielaides: {pluralCount} ({reeds}, {beats})."
+      other: "Ārpus pielaides: {pluralCount} ({reeds}, {beats})."
+  placeholders:
+    beats: {type: string}
+    pluralCount: {type: integer}
+    reeds: {type: string}
+
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      zero: "{pluralCount} mēlīšu rādījumu"
+      one: "{pluralCount} mēlītes rādījums"
+      other: "{pluralCount} mēlīšu rādījumi"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      zero: "{pluralCount} mēlīšu"
+      one: "{pluralCount} mēlīte"
+      other: "{pluralCount} mēlītes"
+  placeholders:
+    pluralCount: {type: integer}
+
+# Export errors
+error.invalidDate: {value: "Ievadiet derīgu datumu formātā GGGG-MM-DD."}
+error.invalidFormat: {value: "Pārskatu nevar ierakstīt šajā formātā."}
+
+error.noBrowser:
+  value: "PDF lapu izkārto pārlūks, taču šajā datorā nav ne Chrome, ne Chromium. Instalējiet vienu no tiem vai eksportējiet karti HTML formātā un izdrukājiet to."
+error.openFailed: {value: "Pārskats ir ierakstīts, bet neviens pārlūks to neatvēra. Atveriet failu manuāli."}
+error.renderFailed: {value: "Neizdevās izveidot pārskatu. Nekas netika ierakstīts."}
+
+error.writeFailed:
+  value: "Neizdevās ierakstīt pārskatu norādītajā vietā. Iepriekšējais fails, ja tāds bija, netika mainīts."

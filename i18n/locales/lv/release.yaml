@@ -1,0 +1,15 @@
+# S99AB release notes and update prompts (lv).
+notesTitle:
+  value: "Jaunumi versijā {version}"
+  placeholders:
+    version: {type: string}
+notTranslated: {value: "Šīs laidiena piezīmes vēl nav iztulkotas."}
+updateBody:
+  value: "Pašreizējā versija ir {current}. Jaunākā versija ir {latest}."
+  placeholders:
+    current: {type: string}
+    latest: {type: string}
+updateDownload: {value: "Lejupielādēt"}
+updateIgnore: {value: "Izlaist šo versiju"}
+updateLater: {value: "Vēlāk"}
+updateTitle: {value: "Pieejama jaunāka versija"}

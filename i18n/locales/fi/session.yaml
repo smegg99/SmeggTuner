@@ -1,0 +1,255 @@
+# Sessions, instruments and target curves (fi).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Session list and actions
+card.a4:
+  value: "A = {hz} Hz"
+  placeholders:
+    hz: {type: string}
+
+card.changed: {value: "Kirjastossa olevan harmonikan tiedot ovat muuttuneet istunnon tallentamisen jälkeen."}
+card.hasCurve: {value: "Tavoitekäyrä asetettu"}
+
+card.readings:
+  plural:
+    argument: count
+    forms:
+      one: "{count} lukema"
+      other: "{count} lukemaa"
+  placeholders:
+    count: {type: integer}
+
+card.unnamedInstrument: {value: "Nimetön harmonikka"}
+
+card.updated:
+  value: "Päivitetty {when}"
+  placeholders:
+    when: {type: string}
+
+deleteHint: {value: "Poista istunto pysyvästi mukaan lukien kaikki mittauskierrokset, lukemat ja virityskäyrä."}
+deleteTitle: {value: "Poistetaanko istunto?"}
+empty: {value: "Ei vielä istuntoja"}
+emptyHint: {value: "Luo istunto mittausten tallentamista varten tai käytä viritintä ilman istuntoa."}
+export: {value: "Vie istunto"}
+file.openFilter: {value: "SmeggTuner-istunto"}
+file.openTitle: {value: "Valitse istuntotiedosto"}
+new: {value: "Uusi istunto"}
+title: {value: "Istunnot"}
+
+# Session dialog and tabs
+dialog.backToList: {value: "Valitse aiemmin viritetty soitin"}
+dialog.describeNew: {value: "Kuvaile uusi soitin…"}
+dialog.forgetAccordion: {value: "Unohda tämä harmonikka"}
+dialog.loadAccordion: {value: "Lataa tiedostosta…"}
+dialog.name: {value: "Istunnon nimi"}
+dialog.nameHint: {value: "Käytä istunnon tunnisteena soittimen tai asiakkaan nimeä."}
+dialog.pickAccordion: {value: "Mikä harmonikka?"}
+dialog.start: {value: "Aloita"}
+page.mobile.curve: {value: "Tavoitteet"}
+page.mobile.recorded: {value: "Lukemat"}
+
+# Instrument editing restrictions
+accordion.a4Locked: {value: "Kiinteä: istunnossa on jo mitattu tätä vertailutaajuutta vasten."}
+
+accordion.columnsRefused:
+  value: "Muutos vaihtaisi aiempien lukemien äänikerrat. Muutosta ei tallennettu. Palauta aiemmat äänikerrat tai luo uusi istunto."
+accordion.frozen:
+  value: "Vertailutaajuutta ja äänikertoja ei voi muuttaa lukemien tallennuksen jälkeen. Voit silti lisätä rekistereitä, jotka käyttävät nykyisiä äänikertoja."
+accordion.frozenShort: {value: "Äänikerrat lukittu"}
+accordion.remember: {value: "Tallenna soitinkirjastoon"}
+accordion.rememberHint: {value: "Tallenna istunnon soitin kirjastoon tulevia istuntoja varten."}
+
+# Instrument definition and registers
+instrument.a4: {value: "Vertailutaajuus"}
+
+instrument.a4Hint:
+  value: "A4:n vertailutaajuus hertseinä. Soittimen uudet istunnot käyttävät tätä arvoa."
+
+instrument.bass.build: {value: "Seuraavan kytkimen äänikerrat jalkoina"}
+instrument.bass.fixed: {value: "Ei bassorekistereitä: kiinteässä koneistossa kaikki äänet soivat aina."}
+
+instrument.bass.full:
+  value: "Bassokoneistossa voi tässä olla enintään {n} kytkintä"
+  placeholders:
+    n: {type: string}
+
+instrument.bass.hint: {value: "Määritä soivien bassoäänien määrä. Useimmissa koneistoissa niitä on neljä tai viisi."}
+instrument.bass.registerName: {value: "Kytkimen nimi"}
+instrument.bass.voices: {value: "Bassoäänet"}
+instrument.beatTolerance: {value: "Huojunnan toleranssi"}
+instrument.builder.add: {value: "Lisää"}
+instrument.builder.already: {value: "Kytkin on jo määritetty"}
+instrument.builder.high: {value: "4' pikkolo"}
+instrument.builder.low: {value: "16' basso"}
+instrument.builder.middle: {value: "8' kielet"}
+instrument.builder.none: {value: "Kytkimiä ei vielä ole. Valitse alla kunkin kytkimen äänikerrat."}
+instrument.builder.remove: {value: "Poista tämä rekisteri"}
+instrument.builder.title: {value: "Lisää kytkin"}
+instrument.file.exportTitle: {value: "Vie harmonikka"}
+instrument.file.filterName: {value: "SmeggTuner-harmonikka"}
+instrument.file.imageFilter: {value: "Kuvat"}
+instrument.file.imageTitle: {value: "Valitse valokuva"}
+instrument.file.openTitle: {value: "Valitse harmonikkatiedosto"}
+instrument.name: {value: "Nimi"}
+instrument.nameHint: {value: "Soitinkirjastossa ja istunnoissa näkyvä nimi."}
+instrument.namePlaceholder: {value: "Hohner Morino V N"}
+instrument.nameRequired: {value: "Anna harmonikalle nimi."}
+instrument.photo: {value: "Valokuva"}
+instrument.range.backwards: {value: "Ylin nuotti ei saa olla alinta matalampi."}
+instrument.range.clear: {value: "Tyhjennä"}
+instrument.range.down: {value: "Alemmas"}
+
+instrument.range.hint:
+  value: "Valinnainen. Alin ja ylin kosketin. Voit määrittää äänialan myös korvakuulolta kalibroinnin aikana."
+
+instrument.range.label: {value: "Koskettimiston ääniala"}
+instrument.range.to: {value: "–"}
+instrument.range.up: {value: "Ylemmäs"}
+
+instrument.registersHint:
+  value: "Napsauta kunkin rekisterikytkimen symbolin pisteitä (harmonikkaan kaiverrettu ympyrä) tai valitse tavallinen symboli. Pisteet kertovat suoraan soivat äänikerrat."
+instrument.registersSubtitle: {value: "Diskanttipuolen kytkimet ja niiden soittamat äänikerrat."}
+
+instrument.says:
+  plural:
+    argument: reeds
+    forms:
+      one: "Äänikerrat: {banks}. Laajin rekisteri soittaa {reeds} kielen."
+      other: "Äänikerrat: {banks}. Laajimmalla rekisterillä soi {reeds} kieltä."
+  placeholders:
+    banks: {type: string}
+    reeds: {type: integer}
+
+instrument.sections.bass: {value: "Bassokoneisto"}
+instrument.sections.identity: {value: "Soittimen tiedot"}
+instrument.sections.keyboard: {value: "Koskettimisto"}
+instrument.sections.reference: {value: "Vertailutaajuus ja toleranssi"}
+instrument.sections.voices: {value: "Rekisterit"}
+instrument.tolerance: {value: "Kielen toleranssi"}
+
+instrument.toleranceHint:
+  value: "Kielen sallittu poikkeama yksiköissä, joista kukin on 0,06 % sävelen taajuudesta. Rajat ylittävät lukemat merkitään epävireisiksi."
+# Target curve editor
+curve.clearAll: {value: "Tyhjennä käyrä"}
+
+curve.clearAllConfirm:
+  value: "Kaikki kiintopisteet poistetaan. Kunkin nuotin tavoitteeksi palaa asteikon sävelkorkeus, ja viritin toimii tavallisena ilmaisimena."
+curve.clearAllHint: {value: "Poista kaikki kiintopisteet ja jätä tavoitteeksi asteikon sävelkorkeus."}
+curve.clearAllTitle: {value: "Tyhjennetäänkö koko käyrä?"}
+curve.entryUnit: {value: "Syöttöyksikkö"}
+
+curve.help.hz:
+  value: "Hz-valinnalla tavoite annetaan hertseinä käyttäen vertailuhuojuntalistan tavoin arvoa A4 = 440 Hz. Istunnon A4 ei siis siirrä tavoitetta. Tallennettu näyttää istunnon lukemat listan päällä. Lista-valikossa voit sovittaa kiintopisteet lukemiin tai kopioida toisen istunnon listan."
+curve.help.hzTitle: {value: "Hertsit ja lukemat"}
+
+curve.help.interp:
+  value: "Kun interpolointi on käytössä, kiintopisteiden väliset nuotit seuraavat viivaa. Muuten kunkin pisteen arvo säilyy seuraavaan asti. Ilman pisteitä tavoitteena on kaikkialla asteikon sävelkorkeus."
+curve.help.interpTitle: {value: "Pisteiden välillä"}
+
+curve.help.lead:
+  value: "Viritystavoite kertoo sävel kerrallaan, kuinka paljon kunkin kielen tulee poiketa asteikon sävelkorkeudesta. Tallennettua kieltä verrataan tähän. Taulukko arvioi vireen oman tavoitteesi perusteella sen sijaan, että vertaisi lukemaa nollaan."
+curve.help.set:
+  value: "Valitse nuotti ja arvo ja paina Aseta tai vedä kaavion pistettä ylös tai alas. Kullakin äänikerralla on oma viiva. Muokattava viiva on korostettu."
+curve.help.setTitle: {value: "Pisteen asettaminen"}
+curve.helpTitle: {value: "Tavoitehuojunnat"}
+curve.interpolate: {value: "Interpoloi"}
+curve.interpolateHint: {value: "Seuraa kiintopisteiden välistä viivaa. Kun toiminto on pois, pisteen arvo säilyy seuraavaan asti."}
+curve.menu.ends: {value: "Kiintopisteiden ulkopuolella"}
+curve.menu.extendHigh: {value: "Jatka ylimmän yläpuolelle"}
+curve.menu.extendLow: {value: "Jatka alimman alapuolelle"}
+curve.menu.fit: {value: "Sovita istunnon lukemiin"}
+
+curve.menu.fitBody:
+  plural:
+    argument: n
+    forms:
+      one: "Kiintopisteet korvataan {n} lukemaan sovitetulla käyrällä."
+      other: "Kiintopisteet korvataan {n} lukemaan sovitetulla käyrällä."
+  placeholders:
+    n: {type: integer}
+
+curve.menu.fromFile: {value: "Kopioi istuntotiedostosta"}
+curve.menu.fromSession: {value: "Kopioi istunnosta"}
+curve.menu.label: {value: "Lista"}
+curve.menu.replace: {value: "Korvaa lista"}
+curve.menu.replaceBody: {value: "Kiintopisteet korvataan toisen listan pisteillä ja asetuksilla."}
+curve.menu.replaceConfirm: {value: "Korvaa"}
+curve.menu.replaceTitle: {value: "Korvataanko huojuntalista?"}
+curve.rank: {value: "Äänikerta"}
+curve.recorded: {value: "Tallennettu"}
+curve.recordedHint: {value: "Näytä istunnon lukemat kaaviossa"}
+curve.remove: {value: "Poista"}
+curve.removeHint: {value: "Poista tämän nuotin kiintopiste käyrästä."}
+
+curve.scale:
+  value: "Asteikko {v}"
+  placeholders:
+    v: {type: string}
+
+curve.scaleAuto: {value: "Automaattinen asteikko"}
+curve.scaleHint: {value: "Kaavion pystysuuntainen alue"}
+curve.set: {value: "Aseta"}
+curve.setHint: {value: "Aseta tälle nuotille valitun äänikerran kiintopiste."}
+curve.startHint: {value: "Ei vielä kiintopisteitä. Kunkin nuotin tavoitteena on asteikon sävelkorkeus."}
+
+# Readings and workshop actions
+footer.coverage:
+  value: "{done}/{total} nuottia"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.inTune:
+  value: "Vireessä {done}/{total}"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.none: {value: "Ei istuntoa"}
+
+readings.notes:
+  plural:
+    argument: n
+    forms:
+      one: "{n} nuotti"
+      other: "{n} nuottia"
+  placeholders:
+    n: {type: integer}
+
+workshop.exit: {value: "Poistu istunnosta"}
+workshop.import: {value: "Tuo"}
+workshop.open: {value: "Avaa"}
+workshop.print: {value: "Tulosta kortti"}
+
+# Session errors
+error.fitFailed: {value: "Käyrää ei voitu sovittaa tähän mittauskierrokseen."}
+
+error.hasReadings:
+  value: "Istunnossa on jo lukemia. Ne mitattiin nykyisellä vertailutaajuudella ja kielimäärällä, joten kumpaakaan ei voi enää muuttaa."
+error.imageUnreadable: {value: "Valokuvaa ei voitu avata."}
+error.instrumentName: {value: "Anna harmonikalle nimi, jotta löydät sen uudelleen."}
+error.invalidA4: {value: "Vertailutaajuuden on oltava 430–450 Hz."}
+
+error.invalidInstrument:
+  value: "Harmonikkaa ei voi käyttää: kahdella äänikerralla on sama nimi tai rekisteri käyttää äänikertaa, jota soittimessa ei ole."
+error.invalidName: {value: "Anna istunnolle nimi."}
+error.invalidNote: {value: "Nuotti on virittimen seuranta-alueen ulkopuolella."}
+error.invalidReed: {value: "Tämä kieli ei soi tässä harmonikassa."}
+error.invalidReedCount: {value: "Harmonikassa soi 1–8 kieltä nuottia kohden."}
+error.invalidTranspose: {value: "Transponointi voi olla 0–11 puolisävelaskelta."}
+error.invalidUnit: {value: "Arvot annetaan 0,06 %:n yksikköinä, sentteinä tai hertseinä."}
+error.invalidValue: {value: "Arvo ei ole luku."}
+error.loadFailed: {value: "Istuntoa ei voitu lukea."}
+error.noBassMachine: {value: "Tälle harmonikalle ei ole määritetty bassokoneistoa."}
+error.noBassRegister: {value: "Harmonikassa ei ole tällaista bassorekisteriä."}
+error.noCurve: {value: "Istunnossa ei ole tavoitekäyrää."}
+error.noReadings: {value: "Istuntoon ei ole vielä tallennettu mitään."}
+error.noRegister: {value: "Harmonikassa ei ole tällaista rekisteriä."}
+error.noSession: {value: "Yhtään istuntoa ei ole auki."}
+error.notAnImage: {value: "Tiedosto ei ole valokuva."}
+error.notFound: {value: "Istuntoa ei enää ole."}
+error.notesTooLong: {value: "Lyhennä huomautus enintään 500 merkkiin."}
+error.saveFailed: {value: "Istuntoa ei voitu tallentaa. Viimeiset mittauksesi saattavat kadota, jos suljet istunnon nyt."}
+error.takeNotFound: {value: "Lukemaa ei enää ole."}
+error.unexpected: {value: "Jokin meni vikaan."}

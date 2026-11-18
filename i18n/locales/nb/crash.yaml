@@ -1,0 +1,62 @@
+# S99AB startup and crash dialogs (nb).
+close: {value: "Lukk"}
+copied: {value: "Kopiert"}
+copy: {value: "Kopier rapport"}
+details: {value: "Detaljer"}
+email: {value: "Send rapport på e-post"}
+failed:
+  value: "Handlingen mislyktes: {error}"
+  placeholders:
+    error: {type: string}
+file:
+  value: "Fil: {path}"
+  placeholders:
+    path: {type: string}
+kill: {value: "Lukk og rapporter feilen"}
+logs: {value: "Vis loggfil"}
+messageConfig:
+  value: "Kunne ikke lese innstillingsfilen. Rett feilen eller slett filen, og start {app} på nytt."
+  placeholders:
+    app: {type: string}
+messageCrash:
+  value: "Det oppstod en intern feil i {app}. Send rapporten slik at feilen kan rettes, og start deretter programmet på nytt."
+  placeholders:
+    app: {type: string}
+messageHang: {value: "Programmet kan fortsatt klare å fullføre oppgaven. Vent, eller lukk programmet og send en rapport."}
+messageHangStopped:
+  value: "{app} ble lukket mens programmet ikke svarte. Send rapporten og start programmet på nytt."
+  placeholders:
+    app: {type: string}
+messageKilled:
+  value: "{app} ble lukket før programmet rakk å rapportere feilen. Send rapporten og start programmet på nytt."
+  placeholders:
+    app: {type: string}
+messageOom:
+  value: "Systemet gikk tomt for minne og lukket {app}. Send rapporten og start programmet på nytt."
+  placeholders:
+    app: {type: string}
+messageStartup:
+  value: "Rett opp problemet nedenfor og start {app} på nytt."
+  placeholders:
+    app: {type: string}
+restart: {value: "Start på nytt"}
+save: {value: "Lagre rapport"}
+saved:
+  value: "Lagret i {path}"
+  placeholders:
+    path: {type: string}
+starting:
+  value: "Starter {app}"
+  placeholders:
+    app: {type: string}
+titleCrash: {value: "Programmet stoppet uventet"}
+titleHang: {value: "Programmet svarer ikke"}
+titleHangStopped: {value: "Programmet sluttet å svare"}
+titleKilled: {value: "Programmet ble lukket uventet"}
+titleStart: {value: "Kunne ikke starte programmet"}
+wait: {value: "Vent"}
+windowCrash: {value: "krasjet"}
+windowHang: {value: "svarer ikke"}
+windowHangStopped: {value: "sluttet å svare"}
+windowKilled: {value: "lukket uventet"}
+windowStart: {value: "kunne ikke starte"}

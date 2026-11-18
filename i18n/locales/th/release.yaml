@@ -1,0 +1,15 @@
+# S99AB release notes and update prompts (th).
+notesTitle:
+  value: "มีอะไรใหม่ในเวอร์ชัน {version}"
+  placeholders:
+    version: {type: string}
+notTranslated: {value: "ยังไม่มีคำแปลของบันทึกประจำรุ่นนี้"}
+updateBody:
+  value: "เวอร์ชันที่ใช้อยู่คือ {current} เวอร์ชันล่าสุดคือ {latest}"
+  placeholders:
+    current: {type: string}
+    latest: {type: string}
+updateDownload: {value: "ดาวน์โหลด"}
+updateIgnore: {value: "ข้ามเวอร์ชันนี้"}
+updateLater: {value: "ภายหลัง"}
+updateTitle: {value: "มีเวอร์ชันใหม่ให้ดาวน์โหลด"}

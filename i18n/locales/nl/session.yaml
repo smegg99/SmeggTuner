@@ -1,0 +1,256 @@
+# Sessions, instruments and target curves (nl).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one = 1; other = 0, 2, 3, ...
+
+# Session list and actions
+card.a4:
+  value: "A = {hz} Hz"
+  placeholders:
+    hz: {type: string}
+
+card.changed: {value: "Het instrument in de bibliotheek is gewijzigd sinds deze sessie werd vastgelegd."}
+card.hasCurve: {value: "Doelcurve ingesteld"}
+
+card.readings:
+  plural:
+    argument: count
+    forms:
+      one: "{count} meting"
+      other: "{count} metingen"
+  placeholders:
+    count: {type: integer}
+
+card.unnamedInstrument: {value: "Accordeon zonder naam"}
+
+card.updated:
+  value: "Bijgewerkt {when}"
+  placeholders:
+    when: {type: string}
+
+deleteHint: {value: "Verwijder deze sessie definitief, inclusief alle meetrondes, metingen en de stemcurve."}
+deleteTitle: {value: "Deze sessie verwijderen?"}
+empty: {value: "Nog geen sessies"}
+emptyHint: {value: "Maak een sessie om metingen op te slaan of gebruik het stemapparaat zonder sessie."}
+export: {value: "Sessie exporteren"}
+file.openFilter: {value: "smeggtuner-sessie"}
+file.openTitle: {value: "Selecteer een sessiebestand"}
+new: {value: "Nieuwe sessie"}
+title: {value: "Sessies"}
+
+# Session dialog and tabs
+dialog.backToList: {value: "Kies een eerder gestemd instrument"}
+dialog.describeNew: {value: "Beschrijf een nieuw instrument..."}
+dialog.forgetAccordion: {value: "Deze accordeon uit de bibliotheek verwijderen"}
+dialog.loadAccordion: {value: "Laden uit bestand..."}
+dialog.name: {value: "Sessienaam"}
+dialog.nameHint: {value: "Gebruik de naam van een instrument of klant om de sessie te herkennen."}
+dialog.pickAccordion: {value: "Welke accordeon?"}
+dialog.start: {value: "Starten"}
+page.mobile.curve: {value: "Doelwaarden"}
+page.mobile.recorded: {value: "Metingen"}
+
+# Instrument editing restrictions
+accordion.a4Locked: {value: "Vergrendeld: in deze sessie zijn al metingen met deze instelling vastgelegd."}
+
+accordion.columnsRefused:
+  value: "Deze wijziging zou de koren van bestaande metingen veranderen en is niet opgeslagen. Herstel de vorige koren of maak een nieuwe sessie."
+accordion.frozen:
+  value: "Na het vastleggen van metingen liggen de referentietoon en koren vast. Je kunt nog registers toevoegen die de bestaande koren gebruiken."
+accordion.frozenShort: {value: "Koren vergrendeld"}
+accordion.remember: {value: "Opslaan in instrumentenbibliotheek"}
+accordion.rememberHint: {value: "Sla het instrument van deze sessie op in de bibliotheek voor volgende sessies."}
+
+# Instrument definition and registers
+instrument.a4: {value: "Referentietoon"}
+
+instrument.a4Hint:
+  value: "Referentiefrequentie van A4 in hertz. Nieuwe sessies voor dit instrument gebruiken deze waarde."
+
+instrument.bass.build: {value: "Voetmaten van de volgende registerschakelaar"}
+instrument.bass.fixed: {value: "Geen basregisters: vaste basmechaniek waarbij alle stemmen altijd klinken."}
+
+instrument.bass.full:
+  value: "Een basmechaniek kan hier maximaal {n} registerschakelaars hebben"
+  placeholders:
+    n: {type: string}
+
+instrument.bass.hint: {value: "Geef het aantal basstemmen op. De meeste basmechanieken hebben er vier of vijf."}
+instrument.bass.registerName: {value: "Naam van de registerschakelaar"}
+instrument.bass.voices: {value: "Basstemmen"}
+instrument.beatTolerance: {value: "Zwevingstolerantie"}
+instrument.builder.add: {value: "Toevoegen"}
+instrument.builder.already: {value: "Deze registerschakelaar is al beschreven"}
+instrument.builder.high: {value: "4' piccolo"}
+instrument.builder.low: {value: "16' bas"}
+instrument.builder.middle: {value: "8'-koren"}
+instrument.builder.none: {value: "Nog geen registerschakelaars. Kies hieronder welke koren elke schakelaar inschakelt."}
+instrument.builder.remove: {value: "Dit register verwijderen"}
+instrument.builder.title: {value: "Registerschakelaar toevoegen"}
+instrument.file.exportTitle: {value: "Accordeon exporteren"}
+instrument.file.filterName: {value: "smeggtuner-accordeon"}
+instrument.file.imageFilter: {value: "Afbeeldingen"}
+instrument.file.imageTitle: {value: "Kies een foto"}
+instrument.file.openTitle: {value: "Kies een accordeonbestand"}
+instrument.name: {value: "Naam"}
+instrument.nameHint: {value: "Naam in de instrumentenbibliotheek en de sessies."}
+instrument.namePlaceholder: {value: "Hohner Morino V N"}
+instrument.nameRequired: {value: "Geef de accordeon een naam."}
+instrument.photo: {value: "Foto"}
+instrument.range.backwards: {value: "De hoogste noot mag niet lager zijn dan de laagste."}
+instrument.range.clear: {value: "Wissen"}
+instrument.range.down: {value: "Een halve toon lager"}
+
+instrument.range.hint:
+  value: "Optioneel. De laagste en hoogste toets. Je kunt het bereik ook tijdens de kalibratie op het gehoor instellen."
+
+instrument.range.label: {value: "Klavierbereik"}
+instrument.range.to: {value: "tot"}
+instrument.range.up: {value: "Een halve toon hoger"}
+
+instrument.registersHint:
+  value: "Klik op de stippen in het gegraveerde cirkelsymbool van elke registerschakelaar of kies een gangbaar symbool. De stippen bepalen welke koren klinken."
+instrument.registersSubtitle: {value: "De schakelaars aan de discantzijde en de koren die ze inschakelen."}
+
+instrument.says:
+  plural:
+    argument: reeds
+    forms:
+      one: "Koren: {banks}. Bij het volste register klinkt {reeds} tong."
+      other: "Koren: {banks}. Bij het volste register klinken {reeds} tongen."
+  placeholders:
+    banks: {type: string}
+    reeds: {type: integer}
+
+instrument.sections.bass: {value: "Basmechaniek"}
+instrument.sections.identity: {value: "Instrumentgegevens"}
+instrument.sections.keyboard: {value: "Klavier"}
+instrument.sections.reference: {value: "Referentietoon en tolerantie"}
+instrument.sections.voices: {value: "Registers"}
+instrument.tolerance: {value: "Tongtolerantie"}
+
+instrument.toleranceHint:
+  value: "Toegestane tongafwijking in eenheden van 0,06% van de toonfrequentie. Metingen buiten dit bereik worden als onzuiver gemarkeerd."
+# Target curve editor
+curve.clearAll: {value: "Curve wissen"}
+
+curve.clearAllConfirm:
+  value: "Alle ankerpunten worden verwijderd. Voor elke noot wordt de toonladdertoon weer het doel en dient het stemapparaat als gewone indicator."
+curve.clearAllHint: {value: "Verwijder alle ankerpunten en gebruik de toonhoogten van de toonladder als doel."}
+curve.clearAllTitle: {value: "De hele curve wissen?"}
+curve.entryUnit: {value: "Invoereenheid"}
+
+curve.help.hz:
+  value: "Met Hz voer je een doel in hertz in bij A4 = 440 Hz, zoals in de referentiezwevingslijst. Het verandert dus niet met de A4 van de sessie. ‘Vastgelegd’ toont de metingen over de lijst. Via ‘Lijst’ pas je de ankerpunten aan die metingen aan of kopieer je een lijst uit een andere sessie."
+curve.help.hzTitle: {value: "Hz en metingen"}
+
+curve.help.interp:
+  value: "Met interpolatie volgen de noten tussen de ankerpunten de lijn. Zonder interpolatie blijft elk punt gelden tot het volgende. Zonder punten geldt overal de toonhoogte van de toonladder."
+curve.help.interpTitle: {value: "Tussen de punten"}
+
+curve.help.lead:
+  value: "Het stemdoel geeft per noot aan hoeveel hoger of lager elke tong moet klinken dan de toonhoogte van de gelijkzwevende stemming. De tabel vergelijkt de meting met dit doel en geeft aan of de afwijking binnen de tolerantie valt."
+curve.help.set:
+  value: "Kies een noot en een waarde en druk op ‘Instellen’ of sleep een punt in de grafiek omhoog of omlaag. Elk koor heeft een eigen lijn. De lijn die je bewerkt is gemarkeerd."
+curve.help.setTitle: {value: "Een punt instellen"}
+curve.helpTitle: {value: "Gewenste zwevingen"}
+curve.interpolate: {value: "Interpoleren"}
+curve.interpolateHint: {value: "Volg de lijn tussen de ankerpunten. Anders blijft elk punt gelden tot het volgende."}
+curve.menu.ends: {value: "Buiten de ankerpunten"}
+curve.menu.extendHigh: {value: "Doortrekken boven het hoogste punt"}
+curve.menu.extendLow: {value: "Doortrekken onder het laagste punt"}
+curve.menu.fit: {value: "Aanpassen aan de metingen van deze sessie"}
+
+curve.menu.fitBody:
+  plural:
+    argument: n
+    forms:
+      one: "De ankerpunten worden vervangen door een curve die aan de ene meting is aangepast."
+      other: "De ankerpunten worden vervangen door een curve die aan {n} metingen is aangepast."
+  placeholders:
+    n: {type: integer}
+
+curve.menu.fromFile: {value: "Kopiëren uit een sessiebestand"}
+curve.menu.fromSession: {value: "Kopiëren uit een sessie"}
+curve.menu.label: {value: "Lijst"}
+curve.menu.replace: {value: "Lijst vervangen"}
+curve.menu.replaceBody: {value: "De ankerpunten worden vervangen door de andere lijst met de bijbehorende instellingen."}
+curve.menu.replaceConfirm: {value: "Vervangen"}
+curve.menu.replaceTitle: {value: "Zwevingslijst vervangen?"}
+curve.rank: {value: "Koor"}
+curve.recorded: {value: "Vastgelegd"}
+curve.recordedHint: {value: "Metingen van deze sessie in de grafiek tonen"}
+curve.remove: {value: "Verwijderen"}
+curve.removeHint: {value: "Verwijder het ankerpunt van deze noot uit de curve."}
+
+curve.scale:
+  value: "Schaal {v}"
+  placeholders:
+    v: {type: string}
+
+curve.scaleAuto: {value: "Automatische schaal"}
+curve.scaleHint: {value: "Het verticale bereik van de grafiek"}
+curve.set: {value: "Instellen"}
+curve.setHint: {value: "Plaats een ankerpunt op deze noot voor het gekozen koor."}
+curve.startHint: {value: "Nog geen ankerpunten. Voor elke noot geldt de toonhoogte van de toonladder als doel."}
+
+# Readings and workshop actions
+footer.coverage:
+  value: "{done} / {total} noten"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.inTune:
+  value: "{done} / {total} zuiver"
+  placeholders:
+    done: {type: string}
+    total: {type: string}
+
+footer.none: {value: "Geen sessie"}
+
+readings.notes:
+  plural:
+    argument: n
+    forms:
+      one: "één noot"
+      other: "{n} noten"
+  placeholders:
+    n: {type: integer}
+
+workshop.exit: {value: "Sessie verlaten"}
+workshop.import: {value: "Importeren"}
+workshop.open: {value: "Openen"}
+workshop.print: {value: "Stemkaart afdrukken"}
+
+# Session errors
+error.fitFailed: {value: "Er kon geen curve aan deze meetronde worden aangepast."}
+
+error.hasReadings:
+  value: "De metingen in deze sessie zijn gebaseerd op de ingestelde referentietoon en aantal tongen. Beide liggen nu vast."
+error.imageUnreadable: {value: "Deze foto kon niet worden geopend."}
+error.instrumentName: {value: "Geef de accordeon een naam zodat je de accordeon kunt terugvinden."}
+error.invalidA4: {value: "De referentietoon moet tussen 430 en 450 Hz liggen."}
+
+error.invalidInstrument:
+  value: "Deze accordeon kan niet worden gebruikt: een koor is dubbel vermeld of een register gebruikt een koor dat het instrument niet heeft."
+error.invalidName: {value: "Geef de sessie een naam."}
+error.invalidNote: {value: "Deze noot valt buiten het meetbereik."}
+error.invalidReed: {value: "Deze tong klinkt niet op deze accordeon."}
+error.invalidReedCount: {value: "Bij een accordeon klinken 1 tot 8 tongen per noot."}
+error.invalidTranspose: {value: "Transpositie kan van 0 tot 11 halve tonen."}
+error.invalidUnit: {value: "Voer waarden in eenheden van 0,06%, in cent of in hertz in."}
+error.invalidValue: {value: "Deze waarde is geen getal."}
+error.loadFailed: {value: "De sessie kon niet worden gelezen."}
+error.noBassMachine: {value: "Voor deze accordeon is geen basmechaniek opgegeven."}
+error.noBassRegister: {value: "De accordeon heeft dit basregister niet."}
+error.noCurve: {value: "Deze sessie heeft geen doelcurve."}
+error.noReadings: {value: "In deze sessie is nog niets vastgelegd."}
+error.noRegister: {value: "Deze accordeon heeft dit register niet."}
+error.noSession: {value: "Er is geen sessie geopend."}
+error.notAnImage: {value: "Dit bestand is geen foto."}
+error.notFound: {value: "Deze sessie bestaat niet meer."}
+error.notesTooLong: {value: "Kort de opmerking in tot 500 tekens."}
+error.saveFailed: {value: "De sessie kon niet worden opgeslagen. Als je nu sluit, kunnen de laatste metingen verloren gaan."}
+error.takeNotFound: {value: "Deze meting bestaat niet meer."}
+error.unexpected: {value: "Er is iets misgegaan."}

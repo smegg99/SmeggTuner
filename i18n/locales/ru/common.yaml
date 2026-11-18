@@ -1,0 +1,115 @@
+# Shared labels and application text (ru).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Buttons and shared labels
+accept: {value: "Принять"}
+back: {value: "Назад"}
+cancel: {value: "Отмена"}
+close: {value: "Закрыть"}
+delete: {value: "Удалить"}
+export: {value: "Экспорт"}
+next: {value: "Далее"}
+"no": {value: "Нет"}
+none: {value: "Нет"}
+previous: {value: "Назад"}
+website: {value: "Сайт"}
+"yes": {value: "Да"}
+
+# Musical labels and unit symbols
+accordion: {value: "Аккордеон"}
+note: {value: "Нота"}
+
+reed:
+  value: Язычок {index}
+  placeholders:
+    index:
+      type: integer
+
+unitSymbol.cents: {value: "цент"}
+unitSymbol.hz: {value: "Hz"}
+unitSymbol.reference: {value: "u"}
+
+# Color controls
+color.hue: {value: "Тон"}
+color.saturation: {value: "Насыщенность"}
+color.value: {value: "Яркость"}
+
+# Navigation and window titles
+routes.navigation: {value: "Основная навигация"}
+routes.settings: {value: "Параметры"}
+routes.tune: {value: "Настройка"}
+routes.workshop: {value: "Мастерская"}
+
+title.count:
+  value: '{room} {name} ({done})'
+  placeholders:
+    done:
+      type: string
+    name:
+      type: string
+    room:
+      type: string
+
+title.progress:
+  value: '{room} {name} {done}/{total}'
+  placeholders:
+    done:
+      type: string
+    name:
+      type: string
+    room:
+      type: string
+    total:
+      type: string
+
+title.room.about: {value: "о программе"}
+title.room.calibrate: {value: "калибровка"}
+title.room.help: {value: "справка"}
+title.room.settings: {value: "параметры"}
+title.room.soundcard: {value: "звуковая карта"}
+title.room.tune: {value: "настройка"}
+title.room.workshop: {value: "мастерская"}
+
+title.session:
+  value: '{room} {name}'
+  placeholders:
+    name:
+      type: string
+    room:
+      type: string
+
+title.uncalibrated:
+  value: '{title} (звуковая карта не откалибрована)'
+  placeholders:
+    title:
+      type: string
+
+# Application and About dialog
+about.aboutTitle: {value: "О программе"}
+about.commit: {value: "Сборка"}
+about.donate: {value: "Поддержать на Ko-fi"}
+about.license: {value: "Лицензия"}
+about.privacy: {value: "Политика конфиденциальности"}
+about.guide: {value: "Как пользоваться SmeggTuner"}
+about.onlineVersion: {value: "Открыть онлайн-версию"}
+about.support: {value: "Поддержка"}
+about.mascot: {value: "Кот, играющий на аккордеоне"}
+about.publisher: {value: "Автор: smegg99"}
+about.tagline: {value: "Бесплатная программа с открытым исходным кодом для настройки аккордеонов."}
+about.untagged: {value: "сборка для разработки"}
+about.version: {value: "Версия"}
+app.description: {value: "Бесплатный тюнер для аккордеонов с открытым исходным кодом."}
+app.name: {value: "SmeggTuner"}
+
+# Help dialog and keyboard instructions
+about.helpTitle: {value: "Справка"}
+
+# System tray
+tray.quit: {value: "Выход"}
+tray.show: {value: "Показать"}
+
+linkNewTab:
+  value: "{text} (откроется в новой вкладке)"
+  placeholders:
+    text: {type: string}

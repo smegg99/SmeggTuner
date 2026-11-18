@@ -1,0 +1,67 @@
+# Recording controls and readings (ko).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Recording controls
+arm.hint: {value: "음이 확정될 때마다 측정값 기록(Enter를 누르면 즉시 기록)"}
+arm.needsSession: {value: "측정값을 기록하려면 세션을 여세요"}
+arm.warmup: {value: "기록 중이 아닙니다. 자유롭게 연주하세요. 값을 저장하려면 눌러서 기록을 시작하세요."}
+undo.hint: {value: "마지막 기록 취소"}
+
+# Readings table and compact columns
+mobile.current: {value: "측정값"}
+mobile.error: {value: "편차"}
+
+table.beat:
+  value: "맥놀이 {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.delete: {value: "이 측정값 삭제"}
+table.deleteHint: {value: "이 측정값을 영구 삭제합니다. 같은 음을 다시 연주하고 기록하면 새 값으로 대체할 수 있습니다."}
+table.deleteTitle: {value: "이 측정값을 삭제할까요?"}
+table.editHint: {value: "클릭하거나 Enter를 눌러 값 편집"}
+table.empty: {value: "기록을 시작한 뒤 음을 연주하면 측정값이 저장됩니다."}
+table.graph: {value: "그래프"}
+
+table.graphHint:
+  value: "각 리드를 목표값과 비교합니다. 열을 클릭해 해당 행을 선택하고 다시 클릭해 다음 레지스터를 선택하세요."
+table.graphLabel: {value: "기록한 음별 리드 오차"}
+table.helpTitle: {value: "이 표에 대하여"}
+table.label: {value: "조율 기록"}
+table.latest: {value: "마지막 기록: Backspace로 삭제"}
+table.manual: {value: "편집됨"}
+table.manualHint: {value: "이 행에는 소리를 측정한 값 대신 직접 입력한 값이 있습니다."}
+
+table.notes:
+  plural:
+    argument: count
+    forms:
+      other: "음 {count}개"
+  placeholders:
+    count: {type: integer}
+
+table.unitHint:
+  value: "리드 편차에는 설정에서 선택한 단위를 사용합니다. 맥놀이는 도구 모음에서 선택한 헤르츠 또는 편차 단위로 표시합니다."
+# Report export dialog
+report.csv: {value: "CSV"}
+report.date: {value: "날짜"}
+report.format: {value: "형식"}
+
+report.formatHint:
+  value: "PDF는 조율 카드를 인쇄할 때와 같이 A4 한 장에 배치합니다. HTML은 같은 카드를 웹페이지로, CSV는 표를 스프레드시트용으로 내보냅니다."
+report.html: {value: "HTML"}
+report.notes: {value: "카드 메모"}
+report.notesHint: {value: "표 아래에 인쇄됩니다. 마친 작업이나 남은 작업을 적으세요."}
+
+report.pass:
+  value: "측정 회차: {label}"
+  placeholders:
+    label: {type: string}
+
+report.pdf: {value: "PDF"}
+report.title: {value: "조율 카드"}
+
+# Recording errors
+error.takeNotFound: {value: "이 측정 회차에 해당 기록이 더 이상 없습니다."}
+error.unexpected: {value: "작업에 실패했습니다. 자세한 내용은 로그를 확인하세요."}

@@ -1,0 +1,166 @@
+# Settings and sound-card calibration (nb).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Microphone and input level
+audioDeviceHint: {value: "Mikrofon til måling"}
+audioDeviceLabel: {value: "Inndataenhet"}
+audioDeviceSystemDefault: {value: "Systemstandard"}
+autoVolume.hint: {value: "Justerer mikrofonnivået under målingen"}
+autoVolume.label: {value: "Automatisk inngangsnivå"}
+autoVolume.saveFailed: {value: "Innstillingen for inngangsnivå kunne ikke lagres."}
+autoVolume.unsupported: {value: "Inngangsnivået kan ikke justeres på denne enheten."}
+humFilter50: {value: "50 Hz"}
+humFilter60: {value: "60 Hz"}
+humFilterHint: {value: "Fjerner nettbrum: 50 Hz i Europa, 60 Hz i Amerika"}
+humFilterLabel: {value: "Nettbrumfilter"}
+lockedWhileRunning: {value: "Stopp stemmeapparatet for å bytte lydinngang."}
+
+# Detection and reference pitch
+continuousManual: {value: "Oppdater en festet tone fortløpende"}
+continuousManualHint: {value: "Oppdater en festet tone til målingen låses"}
+detection.balanced: {value: "Balansert"}
+detection.balancedHint: {value: "Skifter tone på omtrent et halvt sekund"}
+detection.fast: {value: "Rask"}
+detection.fastHint: {value: "Skifter tone raskest, men kan låse på feil tone"}
+detection.steady: {value: "Stabil"}
+detection.steadyHint: {value: "Opprinnelig virkemåte, langsomt toneskifte"}
+detectionLabel: {value: "Tonegjenkjenning"}
+lockA4: {value: "Lås kammertonen"}
+lockA4Hint: {value: "Hindrer endring av A4 i stemmeapparatet"}
+
+# Reading units, tolerance and note names
+beatUnitHint: {value: "Hertz eller enheter på 0,06 % av tonens frekvens"}
+beatUnitLabel: {value: "Enhet for slag"}
+errorReference: {value: "Referanse for avvik"}
+errorReferenceGoal: {value: "Målverdi"}
+
+errorReferenceHint:
+  value: "Vis avviket fra skalaens tonehøyde eller fra stemmemålet. Ved målet er avviket fra målet null."
+errorReferenceScale: {value: "Skala"}
+scaleNamingHint: {value: "Hvordan tonene navngis"}
+scaleNamingLabel: {value: "Tonenavn"}
+scaleNamings.cdefgab: {value: "C D E F G A B (internasjonalt, kryss som C#)"}
+scaleNamings.cdefgah: {value: "C D E F G A H (tysk, kryss som C#)"}
+scaleNamings.doremi: {value: "Do Re Mi (solmisasjon)"}
+scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H (polsk)"}
+toleranceBeat: {value: "Slag"}
+toleranceHint: {value: "Hvor mye en stemtunge eller et slag kan avvike og fortsatt regnes som stemt"}
+toleranceLabel: {value: "Toleranser"}
+toleranceReed: {value: "Stemtunge"}
+unitHint: {value: "Cent eller enheter på 0,06 % av tonens frekvens"}
+unitLabel: {value: "Enhet for avvik"}
+
+# Appearance, language and window behavior
+accent.auto: {value: "System"}
+accent.custom: {value: "Egendefinert"}
+accent.hint: {value: "Systemets uthevingsfarge eller din egen farge"}
+accent.label: {value: "Utheving"}
+accent.pick: {value: "Velg en farge"}
+accent.pickTitle: {value: "Uthevingsfarge"}
+closeToTray: {value: "Minimer til systemstatusfeltet ved lukking"}
+closeToTrayHint: {value: "Når vinduet lukkes, blir appen værende i systemstatusfeltet"}
+checkUpdates: {value: "Se etter oppdateringer", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdatesHint: {value: "Ser etter en nyere versjon på GitHub", description: "Hint below the desktop update-check checkbox."}
+languageHint: {value: "Språk i brukergrensesnittet"}
+languageLabel: {value: "Språk"}
+phoneLayout.hint: {value: "Gir vinduet telefonstørrelse for å teste Android-oppsettet", description: "Debug builds only."}
+phoneLayout.label: {value: "Telefonoppsett", description: "Debug builds only."}
+phoneLayout.landscape: {value: "Liggende", description: "Debug builds only. The phone held on its side."}
+phoneLayout.off: {value: "Av", description: "Debug builds only. The normal desktop window."}
+phoneLayout.portrait: {value: "Stående", description: "Debug builds only. The phone held upright."}
+themeHint: {value: "System, lyst eller mørkt"}
+themeLabel: {value: "Tema"}
+themes.auto: {value: "System"}
+themes.dark: {value: "Mørkt"}
+themes.light: {value: "Lyst"}
+
+# Sound-card calibration
+calibration.askBody:
+  value: "En ukalibrert samplingsklokke kan gi en liten, konstant målefeil. Kalibreringen tar omtrent ett minutt og krever ingen lyd."
+calibration.askCalibrate: {value: "Kalibrer nå"}
+calibration.askContinue: {value: "Fortsett uten korreksjon"}
+calibration.askTitle: {value: "Lydkortet er ikke kalibrert"}
+calibration.hint: {value: "Korrigerer lydkortets klokkefeil. Tar omtrent ett minutt og krever ingen lyd."}
+calibration.label: {value: "Kalibrering av lydkort"}
+calibration.open: {value: "Åpne"}
+calibration.openHint: {value: "Vis kalibreringsskjermen uten å måle"}
+calibration.saveFailed: {value: "Kalibreringen kunne ikke lagres. Stemmeapparatet bruker den tidligere lagrede tilstanden."}
+calibration.screen.again: {value: "Kalibrer på nytt"}
+calibration.screen.bar.confirming: {value: "Bekrefter"}
+calibration.screen.bar.settling: {value: "Stabiliserer"}
+
+calibration.screen.calibrated:
+  value: "Kalibrert. Målingene korrigeres med {percent} %."
+  placeholders:
+    percent: {type: string}
+
+calibration.screen.calibrating: {value: "Måler lydkortets klokke"}
+
+calibration.screen.how:
+  value: "Målingene kan ha en liten, fast tonehøydefeil. Krever ingen lyd og tar omtrent ett minutt."
+
+calibration.screen.lead: {value: "Ikke kalibrert ennå"}
+
+calibration.screen.phase.confirming:
+  value: "Målingen er stabil. Sjekker at den holder seg stabil i 20 s."
+
+calibration.screen.phase.preparing: {value: "Venter på at inngangen stabiliserer seg før klokken måles."}
+calibration.screen.phase.settling: {value: "Venter på en stabil klokkemåling."}
+
+calibration.screen.pitch:
+  value: "Det tilsvarer {pitch} ved hver tone."
+  placeholders:
+    pitch: {type: string}
+
+calibration.screen.preparing: {value: "Varmer opp inngangen"}
+calibration.screen.retry: {value: "Målingene blir ikke korrigert. Lukk andre lydapper og prøv igjen."}
+calibration.screen.return: {value: "Tilbake"}
+calibration.screen.stat.dropouts: {value: "Avbrudd"}
+calibration.screen.stat.elapsed: {value: "Medgått tid"}
+calibration.screen.stat.offset: {value: "Klokkeavvik"}
+calibration.screen.stat.rate: {value: "Samplingsfrekvens"}
+calibration.screen.stat.steadiness: {value: "Stabilitet"}
+
+calibration.screen.steadiness:
+  value: "{ppm} ppm, mål {target} ppm"
+  placeholders:
+    ppm: {type: string}
+    target: {type: string}
+
+calibration.screen.steps.done: {value: "Ferdig"}
+calibration.screen.steps.measure: {value: "Mål"}
+calibration.screen.steps.prepare: {value: "Oppvarming"}
+calibration.screen.traceEmpty: {value: "Her vises klokkeavviket under målingen."}
+calibration.screen.unreliable: {value: "Klokken ble ikke stabil"}
+calibration.start: {value: "Kalibrer"}
+calibration.startHint: {value: "Mål inngangens samplingsklokke"}
+
+calibration.status.calibrated:
+  value: "Kalibrert, {percent} %"
+  placeholders:
+    percent: {type: string}
+
+calibration.status.calibrating:
+  value: "Kalibrerer, {seconds} s ({percent} %), {progress} % ferdig"
+  placeholders:
+    percent: {type: string}
+    progress: {type: string}
+    seconds: {type: string}
+
+calibration.status.preparing: {value: "Forbereder"}
+calibration.status.uncalibrated: {value: "Ikke kalibrert"}
+calibration.status.unreliable: {value: "Upålitelig, målingene korrigeres ikke"}
+
+# Settings section headings
+groups.appearance: {value: "Utseende"}
+groups.detection: {value: "Gjenkjenning"}
+groups.microphone: {value: "Mikrofon"}
+groups.output: {value: "Utgang", description: "Settings section shown on a phone, holding the output volume."}
+groups.readings: {value: "Målinger"}
+groups.report: {value: "Verkstedopplysninger"}
+
+# Report letterhead
+report.address: {value: "Adresse"}
+report.name: {value: "Verkstedets navn"}
+report.nameHint: {value: "Vises i eksporterte rapporter når brevhodet er slått på."}

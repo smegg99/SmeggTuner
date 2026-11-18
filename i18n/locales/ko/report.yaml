@@ -1,0 +1,149 @@
+# Printed reports and export (ko).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Report title and instrument details
+facts.curve: {value: "목표 곡선"}
+facts.curveNone: {value: "없음"}
+facts.curveUnnamed: {value: "이름 없음"}
+facts.reference: {value: "기준음 A4(이번 측정 회차)"}
+facts.tolerance: {value: "허용 오차"}
+
+facts.toleranceValue:
+  value: "리드 {reed} {unit} / 맥놀이 {beat} {unit}"
+  placeholders:
+    beat: {type: string}
+    reed: {type: string}
+    unit: {type: string}
+
+facts.transpose: {value: "이조"}
+
+facts.transposeValue:
+  value: "{key}의 실제 음은 {sounds}"
+  placeholders:
+    key: {type: string}
+    sounds: {type: string}
+
+title: {value: "조율 보고서"}
+
+# Table and column headings
+head.beat:
+  value: "맥놀이 {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.bassTitle:
+  value: "베이스 조율표({unit})"
+  placeholders:
+    unit: {type: string}
+
+table.curr: {value: "측정값"}
+table.err: {value: "오차"}
+table.register: {value: "레지스터"}
+
+table.title:
+  value: "조율표({unit})"
+  placeholders:
+    unit: {type: string}
+
+# Deviation units
+unit.cents.name: {value: "센트"}
+unit.cents.symbol: {value: "c"}
+unit.reference.name: {value: "0.06 % 단위"}
+
+# Graph legend and reading markers
+graph.edited:
+  value: "{mark} 표시는 직접 편집한 값입니다."
+  placeholders:
+    mark: {type: string}
+
+legend.error.cents:
+  value: "오차가 0에 가까워지도록 리드를 줄로 다듬으세요. A4 = {a4} Hz인 평균율 음높이와의 차이를 센트로 표시합니다."
+  placeholders:
+    a4: {type: string}
+
+legend.error.key: {value: "오차 = 측정값 − 목표값."}
+legend.error.noCurve: {value: "목표 곡선이 없으면 목표값은 0이며 음계 음높이와의 편차가 곧 오차입니다."}
+
+legend.error.reference:
+  value: "오차가 0에 가까워지도록 리드를 줄로 다듬으세요. A4 = {a4} Hz인 평균율 음높이를 기준으로 각 음 주파수의 0.06 %를 한 단위로 표시합니다."
+  placeholders:
+    a4: {type: string}
+
+legend.out.short: {value: "허용 범위 초과"}
+legend.takes.key: {value: "xN"}
+legend.takes.short: {value: "여러 차례 기록한 값 중 마지막 값 표시"}
+mark.edited: {value: "H"}
+mark.out: {value: "!"}
+
+# Summary and footer
+footer.generated:
+  value: "{app}에서 생성 · {at}"
+  placeholders:
+    app: {type: string}
+    at: {type: string}
+
+summary.allIn: {value: "모두 허용 범위 안에 있습니다."}
+
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      other: "맥놀이 {pluralCount}개"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.line:
+  value: "{notes}({min}~{max}), {reeds}, {beats}."
+  placeholders:
+    beats: {type: string}
+    max: {type: string}
+    min: {type: string}
+    notes: {type: string}
+    reeds: {type: string}
+
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      other: "음 {pluralCount}개"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      other: "허용 범위 초과 {pluralCount}건({reeds}, {beats})."
+  placeholders:
+    beats: {type: string}
+    pluralCount: {type: integer}
+    reeds: {type: string}
+
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      other: "리드 측정값 {pluralCount}개"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      other: "리드 {pluralCount}개"
+  placeholders:
+    pluralCount: {type: integer}
+
+# Export errors
+error.invalidDate: {value: "유효한 날짜를 YYYY-MM-DD 형식으로 입력하세요."}
+error.invalidFormat: {value: "이 형식으로는 보고서를 내보낼 수 없습니다."}
+
+error.noBrowser:
+  value: "PDF 레이아웃에 필요한 Chrome 또는 Chromium이 이 기기에 없습니다. 둘 중 하나를 설치하거나 카드를 HTML로 내보내 인쇄하세요."
+error.openFailed: {value: "보고서를 저장했지만 브라우저로 열 수 없습니다. 파일을 직접 여세요."}
+error.renderFailed: {value: "보고서를 생성하지 못했습니다. 아무것도 기록되지 않았습니다."}
+
+error.writeFailed:
+  value: "여기에 보고서를 저장할 수 없습니다. 기존 파일이 있다면 그대로 유지됩니다."

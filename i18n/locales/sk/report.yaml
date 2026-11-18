@@ -1,0 +1,190 @@
+# Printed reports and export (sk).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Report title and instrument details
+facts.curve: {value: "Cieľová krivka"}
+facts.curveNone: {value: "žiadna"}
+facts.curveUnnamed: {value: "bez názvu"}
+facts.reference: {value: "Referenčný tón A4 (táto séria)"}
+facts.tolerance: {value: "Tolerancia"}
+
+facts.toleranceValue:
+  value: jazýček {reed} {unit} / ráz {beat} {unit}
+  placeholders:
+    beat:
+      type: string
+    reed:
+      type: string
+    unit:
+      type: string
+
+facts.transpose: {value: "Transpozícia"}
+
+facts.transposeValue:
+  value: '{key} znie ako {sounds}'
+  placeholders:
+    key:
+      type: string
+    sounds:
+      type: string
+
+title: {value: "Protokol o ladení"}
+
+# Table and column headings
+head.beat:
+  value: Ráz {pair}
+  placeholders:
+    pair:
+      type: string
+
+table.bassTitle:
+  value: Tabuľka ladenia basov ({unit})
+  placeholders:
+    unit:
+      type: string
+
+table.curr: {value: "Namer."}
+table.err: {value: "Odch."}
+table.register: {value: "Register"}
+
+table.title:
+  value: Tabuľka ladenia ({unit})
+  placeholders:
+    unit:
+      type: string
+
+# Deviation units
+unit.cents.name: {value: "centy"}
+unit.cents.symbol: {value: "c"}
+unit.reference.name: {value: "jednotky po 0,06 %"}
+
+# Graph legend and reading markers
+graph.edited:
+  value: '{mark} – upravené ručne.'
+  placeholders:
+    mark:
+      type: string
+
+legend.error.cents:
+  value: Pilovaním jazýčka priblížte odchýlku k nule. Údaje sú v centoch vzhľadom na temperovanú stupnicu pri {a4}
+    Hz.
+  placeholders:
+    a4:
+      type: string
+
+legend.error.key: {value: "Odchýlka = nameraná hodnota − cieľ."}
+legend.error.noCurve: {value: "Bez cieľovej krivky je cieľ nulový a odchýlka sa počíta od stupnice."}
+
+legend.error.reference:
+  value: Pilovaním jazýčka priblížte odchýlku k nule. Odchýlka od temperovanej stupnice pri {a4} Hz sa uvádza v jednotkách
+    po 0,06 % frekvencie tónu.
+  placeholders:
+    a4:
+      type: string
+
+legend.out.short: {value: "mimo tolerancie"}
+legend.takes.key: {value: "xN"}
+legend.takes.short: {value: "zaznamenané viackrát, zobrazuje sa posledný záznam"}
+mark.edited: {value: "H"}
+mark.out: {value: "!"}
+
+# Summary and footer
+footer.generated:
+  value: Vytvorené {at} v aplikácii {app}
+  placeholders:
+    app:
+      type: string
+    at:
+      type: string
+
+summary.allIn: {value: "Všetko v tolerancii."}
+
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} ráz'
+      few: '{pluralCount} rázy'
+      many: '{pluralCount} rázu'
+      other: '{pluralCount} rázov'
+  placeholders:
+    pluralCount:
+      type: integer
+
+summary.line:
+  value: '{notes} ({min} až {max}), {reeds}, {beats}.'
+  placeholders:
+    beats:
+      type: string
+    max:
+      type: string
+    min:
+      type: string
+    notes:
+      type: string
+    reeds:
+      type: string
+
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} tón'
+      few: '{pluralCount} tóny'
+      many: '{pluralCount} tónu'
+      other: '{pluralCount} tónov'
+  placeholders:
+    pluralCount:
+      type: integer
+
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      one: 'Mimo tolerancie: {pluralCount} ({reeds}, {beats}).'
+      few: 'Mimo tolerancie: {pluralCount} ({reeds}, {beats}).'
+      many: 'Mimo tolerancie: {pluralCount} ({reeds}, {beats}).'
+      other: 'Mimo tolerancie: {pluralCount} ({reeds}, {beats}).'
+  placeholders:
+    beats:
+      type: string
+    pluralCount:
+      type: integer
+    reeds:
+      type: string
+
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} meranie jazýčkov'
+      few: '{pluralCount} merania jazýčkov'
+      many: '{pluralCount} merania jazýčkov'
+      other: '{pluralCount} meraní jazýčkov'
+  placeholders:
+    pluralCount:
+      type: integer
+
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      one: '{pluralCount} jazýček'
+      few: '{pluralCount} jazýčky'
+      many: '{pluralCount} jazýčka'
+      other: '{pluralCount} jazýčkov'
+  placeholders:
+    pluralCount:
+      type: integer
+
+# Export errors
+error.invalidDate: {value: "Zadajte platný dátum vo formáte RRRR-MM-DD."}
+error.invalidFormat: {value: "V tomto formáte nemožno protokol uložiť."}
+
+error.noBrowser: {value: "PDF sa vytvára pomocou prehliadača. Na tomto počítači nie je Chrome ani Chromium. Nainštalujte jeden z nich alebo exportujte ladiaci list do HTML a vytlačte ho."}
+
+error.openFailed: {value: "Protokol sa uložil, ale nepodarilo sa ho otvoriť v prehliadači. Otvorte súbor ručne."}
+error.renderFailed: {value: "Protokol sa nepodarilo vytvoriť. Nič sa neuložilo."}
+
+error.writeFailed: {value: "Na toto miesto sa nepodarilo protokol uložiť. Prípadný pôvodný súbor zostal nezmenený."}

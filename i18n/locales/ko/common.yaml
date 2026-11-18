@@ -1,0 +1,104 @@
+# Shared labels and application text (ko).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Buttons and shared labels
+accept: {value: "동의"}
+back: {value: "뒤로"}
+cancel: {value: "취소"}
+close: {value: "닫기"}
+delete: {value: "삭제"}
+export: {value: "내보내기"}
+next: {value: "다음"}
+"no": {value: "아니요"}
+none: {value: "없음"}
+previous: {value: "이전"}
+website: {value: "웹사이트"}
+"yes": {value: "예"}
+
+# Musical labels and unit symbols
+accordion: {value: "아코디언"}
+note: {value: "음"}
+
+reed:
+  value: "리드 {index}"
+  placeholders:
+    index: {type: integer}
+
+unitSymbol.cents: {value: "센트"}
+unitSymbol.hz: {value: "Hz"}
+unitSymbol.reference: {value: "u"}
+
+# Color controls
+color.hue: {value: "색상"}
+color.saturation: {value: "채도"}
+color.value: {value: "명도"}
+
+# Navigation and window titles
+routes.navigation: {value: "주 탐색 메뉴"}
+routes.settings: {value: "설정"}
+routes.tune: {value: "조율"}
+routes.workshop: {value: "조율 작업실"}
+
+title.count:
+  value: "{room} {name} ({done})"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+
+title.progress:
+  value: "{room} {name} {done}/{total}"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+    total: {type: string}
+
+title.room.about: {value: "앱 정보"}
+title.room.calibrate: {value: "보정"}
+title.room.help: {value: "도움말"}
+title.room.settings: {value: "설정"}
+title.room.soundcard: {value: "사운드 카드"}
+title.room.tune: {value: "조율"}
+title.room.workshop: {value: "조율 작업실"}
+
+title.session:
+  value: "{room} {name}"
+  placeholders:
+    name: {type: string}
+    room: {type: string}
+
+title.uncalibrated:
+  value: "{title} (사운드 카드 미보정)"
+  placeholders:
+    title: {type: string}
+
+# Application and About dialog
+about.aboutTitle: {value: "앱 정보"}
+about.commit: {value: "빌드"}
+about.donate: {value: "Ko-fi에서 후원"}
+about.license: {value: "라이선스"}
+about.privacy: {value: "개인정보 처리방침"}
+about.guide: {value: "SmeggTuner 사용법"}
+about.onlineVersion: {value: "온라인 버전 열기"}
+about.support: {value: "지원"}
+about.mascot: {value: "아코디언을 연주하는 고양이"}
+about.publisher: {value: "개발자 smegg99"}
+about.tagline: {value: "무료 오픈 소스 아코디언 조율 프로그램입니다."}
+about.untagged: {value: "개발 빌드"}
+about.version: {value: "버전"}
+app.description: {value: "무료 오픈 소스 아코디언 튜너입니다."}
+app.name: {value: "SmeggTuner"}
+
+# Help dialog and keyboard instructions
+about.helpTitle: {value: "도움말"}
+
+# System tray
+tray.quit: {value: "종료"}
+tray.show: {value: "표시"}
+
+linkNewTab:
+  value: "{text}(새 탭에서 열림)"
+  placeholders:
+    text: {type: string}

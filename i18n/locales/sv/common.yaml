@@ -1,0 +1,104 @@
+# Shared labels and application text (sv).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Buttons and shared labels
+accept: {value: "Acceptera"}
+back: {value: "Tillbaka"}
+cancel: {value: "Avbryt"}
+close: {value: "Stäng"}
+delete: {value: "Ta bort"}
+export: {value: "Exportera"}
+next: {value: "Nästa"}
+"no": {value: "Nej"}
+none: {value: "Inga"}
+previous: {value: "Föregående"}
+website: {value: "Webbplats"}
+"yes": {value: "Ja"}
+
+# Musical labels and unit symbols
+accordion: {value: "Dragspel"}
+note: {value: "Ton"}
+
+reed:
+  value: "Stämtunga {index}"
+  placeholders:
+    index: {type: integer}
+
+unitSymbol.cents: {value: "cent"}
+unitSymbol.hz: {value: "Hz"}
+unitSymbol.reference: {value: "u"}
+
+# Color controls
+color.hue: {value: "Nyans"}
+color.saturation: {value: "Mättnad"}
+color.value: {value: "Ljusstyrka"}
+
+# Navigation and window titles
+routes.navigation: {value: "Huvudnavigering"}
+routes.settings: {value: "Inställningar"}
+routes.tune: {value: "Stäm"}
+routes.workshop: {value: "Verkstad"}
+
+title.count:
+  value: "{room} {name} ({done})"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+
+title.progress:
+  value: "{room} {name} {done}/{total}"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+    total: {type: string}
+
+title.room.about: {value: "om"}
+title.room.calibrate: {value: "kalibrering"}
+title.room.help: {value: "hjälp"}
+title.room.settings: {value: "inställningar"}
+title.room.soundcard: {value: "ljudkort"}
+title.room.tune: {value: "stämning"}
+title.room.workshop: {value: "verkstad"}
+
+title.session:
+  value: "{room} {name}"
+  placeholders:
+    name: {type: string}
+    room: {type: string}
+
+title.uncalibrated:
+  value: "{title} (ljudkortet är inte kalibrerat)"
+  placeholders:
+    title: {type: string}
+
+# Application and About dialog
+about.aboutTitle: {value: "Om"}
+about.commit: {value: "Byggversion"}
+about.donate: {value: "Stöd på Ko-fi"}
+about.license: {value: "Licens"}
+about.privacy: {value: "Integritetspolicy"}
+about.guide: {value: "Så använder du SmeggTuner"}
+about.onlineVersion: {value: "Öppna webbversionen"}
+about.support: {value: "Support"}
+about.mascot: {value: "En katt som spelar dragspel"}
+about.publisher: {value: "Av smegg99"}
+about.tagline: {value: "Gratis program med öppen källkod för dragspelsstämning."}
+about.untagged: {value: "utvecklingsversion"}
+about.version: {value: "Version"}
+app.description: {value: "Gratis dragspelsstämmare med öppen källkod."}
+app.name: {value: "SmeggTuner"}
+
+# Help dialog and keyboard instructions
+about.helpTitle: {value: "Hjälp"}
+
+# System tray
+tray.quit: {value: "Avsluta"}
+tray.show: {value: "Visa"}
+
+linkNewTab:
+  value: "{text} (öppnas i en ny flik)"
+  placeholders:
+    text: {type: string}

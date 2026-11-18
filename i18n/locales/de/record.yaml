@@ -1,0 +1,69 @@
+# Recording controls and readings (de).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one = 1; other = 0, 2, 3, ...
+
+# Recording controls
+arm.hint: {value: "Bei jedem Einrasten eine Messung speichern (Enter speichert sofort)"}
+arm.needsSession: {value: "Zum Aufzeichnen eine Sitzung öffnen"}
+arm.warmup: {value: "Aufzeichnung aus. Spiele frei, es wird nichts gespeichert. Zum Aufzeichnen drücken."}
+undo.hint: {value: "Letzte Messung rückgängig machen"}
+
+# Readings table and compact columns
+mobile.current: {value: "Gemessen"}
+mobile.error: {value: "Abweichung"}
+
+table.beat:
+  value: "Schwebung {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.delete: {value: "Messwert entfernen"}
+table.deleteHint: {value: "Diesen Messwert endgültig entfernen. Um ihn zu ersetzen, den Ton erneut spielen und aufzeichnen."}
+table.deleteTitle: {value: "Diesen Messwert entfernen?"}
+table.editHint: {value: "Zum Bearbeiten klicken oder Enter drücken"}
+table.empty: {value: "Aufzeichnung starten und Töne spielen, um Messwerte zu speichern."}
+table.graph: {value: "Diagramm"}
+
+table.graphHint:
+  value: "Vergleiche jede Stimmzunge mit ihrem Sollwert. Klicke auf eine Säule, um ihre Zeile auszuwählen, und erneut für das nächste Register."
+table.graphLabel: {value: "Stimmzungenabweichungen je aufgezeichnetem Ton"}
+table.helpTitle: {value: "Über diese Tabelle"}
+table.label: {value: "Aufgezeichnete Stimmung"}
+table.latest: {value: "Zuletzt aufgezeichnet. Rücktaste zum Entfernen"}
+table.manual: {value: "Bearbeitet"}
+table.manualHint: {value: "Ein Wert in dieser Zeile wurde von Hand eingegeben."}
+
+table.notes:
+  plural:
+    argument: count
+    forms:
+      one: "ein Ton"
+      other: "{count} Töne"
+  placeholders:
+    count: {type: integer}
+
+table.unitHint:
+  value: "Stimmzungenabweichungen werden in der unter Einstellungen gewählten Einheit angezeigt. Für Schwebungen gilt je nach Auswahl in der Werkzeugleiste Hertz oder die Abweichungseinheit."
+# Report export dialog
+report.csv: {value: "CSV"}
+report.date: {value: "Datum"}
+report.format: {value: "Format"}
+
+report.formatHint:
+  value: "Die PDF-Datei enthält die Karte als druckfertige A4-Seite. HTML zeigt dasselbe Blatt als Webseite. CSV liefert die Tabelle für eine Tabellenkalkulation."
+report.html: {value: "HTML"}
+report.notes: {value: "Vermerk auf der Stimmkarte"}
+report.notesHint: {value: "Wird unter der Tabelle gedruckt. Hier ist Platz für erledigte und ausstehende Arbeiten."}
+
+report.pass:
+  value: "Messdurchgang: {label}"
+  placeholders:
+    label: {type: string}
+
+report.pdf: {value: "PDF"}
+report.title: {value: "Stimmkarte"}
+
+# Recording errors
+error.takeNotFound: {value: "Diese Messung ist nicht mehr im Messdurchgang enthalten."}
+error.unexpected: {value: "Vorgang fehlgeschlagen. Einzelheiten stehen im Protokoll."}

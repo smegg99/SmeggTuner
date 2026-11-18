@@ -30,6 +30,7 @@ const (
 	KeyCommonColorValue                        = "common.color.value"
 	KeyCommonDelete                            = "common.delete"
 	KeyCommonExport                            = "common.export"
+	KeyCommonLinkNewTab                        = "common.linkNewTab"
 	KeyCommonNext                              = "common.next"
 	KeyCommonNo                                = "common.no"
 	KeyCommonNone                              = "common.none"
@@ -196,4 +197,29 @@ const DefaultLocale = "en"
 var Locales = []string{
 	"en",
 	"pl",
+	"de",
+	"nl",
+	"da",
+	"sv",
+	"nb",
+	"fr",
+	"it",
+	"es",
+	"pt-PT",
+	"pt-BR",
+	"cs",
+	"sk",
+	"hu",
+	"ro",
+	"ru",
+	"et",
+	"fi",
+	"lv",
+	"lt",
+	"el",
+	"zh-Hans",
+	"zh-Hant",
+	"ja",
+	"ko",
+	"th",
 }

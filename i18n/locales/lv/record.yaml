@@ -1,0 +1,69 @@
+# Recording controls and readings (lv).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Recording controls
+arm.hint: {value: "Ierakstīt mērījumu ikreiz, kad nots nofiksējas (Enter ieraksta uzreiz)"}
+arm.needsSession: {value: "Lai ierakstītu, atveriet sesiju"}
+arm.warmup: {value: "Ieraksts nav sākts: spēlējiet brīvi, nekas netiek saglabāts. Nospiediet, lai sāktu ierakstu."}
+undo.hint: {value: "Atsaukt pēdējo mērījumu"}
+
+# Readings table and compact columns
+mobile.current: {value: "Izmērīts"}
+mobile.error: {value: "Novirze"}
+
+table.beat:
+  value: "Pulsācija {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.delete: {value: "Noņemt šo rādījumu"}
+table.deleteHint: {value: "Rādījums tiks neatgriezeniski noņemts. Lai to aizstātu, vēlreiz nospēlējiet un ierakstiet noti."}
+table.deleteTitle: {value: "Vai noņemt šo rādījumu?"}
+table.editHint: {value: "Lai mainītu vērtību, noklikšķiniet vai nospiediet Enter"}
+table.empty: {value: "Sāciet ierakstu un spēlējiet notis, lai saglabātu rādījumus."}
+table.graph: {value: "Diagramma"}
+
+table.graphHint:
+  value: "Salīdziniet katru mēlīti ar tās mērķvērtību. Noklikšķiniet uz stabiņa, lai atlasītu rindu, un vēlreiz, lai atlasītu nākamo reģistru."
+table.graphLabel: {value: "Mēlīšu kļūdas katrai ierakstītajai notij"}
+table.helpTitle: {value: "Par šo tabulu"}
+table.label: {value: "Ierakstītais skaņojums"}
+table.latest: {value: "Pēdējais ieraksts: Backspace to noņem"}
+table.manual: {value: "Labots"}
+table.manualHint: {value: "Šīs rindas vērtība ievadīta manuāli, nevis izmērīta no skaņas."}
+
+table.notes:
+  plural:
+    argument: count
+    forms:
+      zero: "{count} nošu"
+      one: "{count} nots"
+      other: "{count} notis"
+  placeholders:
+    count: {type: integer}
+
+table.unitHint:
+  value: "Mēlīšu novirzēm izmanto iestatījumos izvēlēto mērvienību. Pulsāciju rāda hercos vai novirzes mērvienībās atkarībā no rīkjoslas izvēles."
+# Report export dialog
+report.csv: {value: "CSV"}
+report.date: {value: "Datums"}
+report.format: {value: "Formāts"}
+
+report.formatHint:
+  value: "PDF formātā karte ir viena A4 lapa drukas izkārtojumā. HTML ir tā pati lapa tīmekļa formātā. CSV satur tabulu darbam izklājlapā."
+report.html: {value: "HTML"}
+report.notes: {value: "Piezīme kartē"}
+report.notesHint: {value: "Drukā zem tabulas. Norādiet, kas paveikts vai kas vēl jāpaveic."}
+
+report.pass:
+  value: "Mērījumu cikls: {label}"
+  placeholders:
+    label: {type: string}
+
+report.pdf: {value: "PDF"}
+report.title: {value: "Skaņošanas karte"}
+
+# Recording errors
+error.takeNotFound: {value: "Šī mērījuma ciklā vairs nav."}
+error.unexpected: {value: "Darbība neizdevās. Sīkāku informāciju skatiet žurnālā."}

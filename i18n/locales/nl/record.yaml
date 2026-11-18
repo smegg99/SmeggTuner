@@ -1,0 +1,69 @@
+# Recording controls and readings (nl).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one = 1; other = 0, 2, 3, ...
+
+# Recording controls
+arm.hint: {value: "Bij elke stabiele detectie een meting vastleggen (Enter legt er direct één vast)"}
+arm.needsSession: {value: "Open een sessie om metingen vast te leggen"}
+arm.warmup: {value: "Metingen opslaan staat uit. Speel gerust, er worden geen meetwaarden opgeslagen. Druk om meetwaarden te gaan opslaan."}
+undo.hint: {value: "Laatste meting ongedaan maken"}
+
+# Readings table and compact columns
+mobile.current: {value: "Gemeten"}
+mobile.error: {value: "Afwijking"}
+
+table.beat:
+  value: "Zweving {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.delete: {value: "Deze meting verwijderen"}
+table.deleteHint: {value: "Verwijder deze meting definitief. Speel de noot opnieuw en leg de meting vast om deze te vervangen."}
+table.deleteTitle: {value: "Deze meting verwijderen?"}
+table.editHint: {value: "Klik of druk op Enter om de waarde te bewerken"}
+table.empty: {value: "Start de opname en speel noten om metingen op te slaan."}
+table.graph: {value: "Grafiek"}
+
+table.graphHint:
+  value: "Vergelijk elke tong met haar doelwaarde. Klik op een kolom om de bijbehorende rij te kiezen en klik opnieuw voor het volgende register."
+table.graphLabel: {value: "Tongafwijkingen per vastgelegde noot"}
+table.helpTitle: {value: "Over deze tabel"}
+table.label: {value: "Vastgelegde stemming"}
+table.latest: {value: "Laatst vastgelegd. Verwijderen met Backspace"}
+table.manual: {value: "Bewerkt"}
+table.manualHint: {value: "Een waarde in deze rij is met de hand ingevoerd."}
+
+table.notes:
+  plural:
+    argument: count
+    forms:
+      one: "één noot"
+      other: "{count} noten"
+  placeholders:
+    count: {type: integer}
+
+table.unitHint:
+  value: "Tongafwijkingen worden weergegeven in de eenheid uit de instellingen. Voor zwevingen geldt hertz of de afwijkingseenheid, zoals gekozen in de werkbalk."
+# Report export dialog
+report.csv: {value: "CSV"}
+report.date: {value: "Datum"}
+report.format: {value: "Indeling"}
+
+report.formatHint:
+  value: "De pdf bevat de kaart als één A4-pagina in afdrukopmaak. HTML geeft hetzelfde blad als webpagina. CSV bevat de tabel voor een rekenblad."
+report.html: {value: "HTML"}
+report.notes: {value: "Opmerking op de stemkaart"}
+report.notesHint: {value: "Wordt onder de tabel afgedrukt. Vermeld wat er is gedaan of nog moet gebeuren."}
+
+report.pass:
+  value: "Meetronde: {label}"
+  placeholders:
+    label: {type: string}
+
+report.pdf: {value: "PDF"}
+report.title: {value: "Stemkaart"}
+
+# Recording errors
+error.takeNotFound: {value: "Deze meting staat niet meer in de meetronde."}
+error.unexpected: {value: "De bewerking is mislukt. Zie het logboek voor details."}

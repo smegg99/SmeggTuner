@@ -1,0 +1,274 @@
+# Sessions, instruments and target curves (cs).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Session list and actions
+card.a4:
+  value: A = {hz} Hz
+  placeholders:
+    hz:
+      type: string
+
+card.changed: {value: "Akordeon v knihovně byl od záznamu této relace změněn."}
+card.hasCurve: {value: "Cílová křivka nastavena"}
+
+card.readings:
+  plural:
+    argument: count
+    forms:
+      one: '{count} měření'
+      few: '{count} měření'
+      many: '{count} měření'
+      other: '{count} měření'
+  placeholders:
+    count:
+      type: integer
+
+card.unnamedInstrument: {value: "Akordeon bez názvu"}
+
+card.updated:
+  value: Aktualizováno {when}
+  placeholders:
+    when:
+      type: string
+
+deleteHint: {value: "Trvale odstraní tuto relaci včetně všech sérií, měření a ladicí křivky."}
+deleteTitle: {value: "Odstranit tuto relaci?"}
+empty: {value: "Zatím žádné relace"}
+emptyHint: {value: "Pro ukládání měření vytvořte relaci. Ladičku můžete používat i bez ní."}
+export: {value: "Exportovat relaci"}
+file.openFilter: {value: "Relace smeggtuner"}
+file.openTitle: {value: "Vyberte soubor relace"}
+new: {value: "Nová relace"}
+title: {value: "Relace"}
+
+# Session dialog and tabs
+dialog.backToList: {value: "Vybrat dříve laděný akordeon"}
+dialog.describeNew: {value: "Popsat nový akordeon…"}
+dialog.forgetAccordion: {value: "Zapomenout tento akordeon"}
+dialog.loadAccordion: {value: "Načíst ze souboru…"}
+dialog.name: {value: "Název relace"}
+dialog.nameHint: {value: "Pro snadné rozpoznání relace použijte název nástroje nebo jméno zákazníka."}
+dialog.pickAccordion: {value: "Který akordeon?"}
+dialog.start: {value: "Spustit"}
+page.mobile.curve: {value: "Cílové hodnoty"}
+page.mobile.recorded: {value: "Měření"}
+
+# Instrument editing restrictions
+accordion.a4Locked: {value: "Uzamčeno: v této relaci už byla provedena měření s touto referencí."}
+
+accordion.columnsRefused: {value: "Tato změna by ovlivnila hlasové řady použité v dosavadních měřeních. Změna se neuložila. Obnovte původní řady nebo vytvořte novou relaci."}
+
+accordion.frozen: {value: "Po záznamu měření už nelze změnit referenční frekvenci ani hlasové řady. Stále můžete přidat rejstříky využívající stávající řady."}
+
+accordion.frozenShort: {value: "Hlasové řady uzamčeny"}
+accordion.remember: {value: "Uložit do knihovny nástrojů"}
+accordion.rememberHint: {value: "Uloží nástroj z této relace do knihovny pro použití v dalších relacích."}
+
+# Instrument definition and registers
+instrument.a4: {value: "Referenční frekvence"}
+
+instrument.a4Hint: {value: "Referenční frekvence A4 v hertzech. Nové relace pro tento nástroj použijí tuto hodnotu."}
+
+instrument.bass.build: {value: "Stopové výšky dalšího rejstříku"}
+instrument.bass.fixed: {value: "Bez basových rejstříků: mechanismus je pevný a všechny hlasy znějí stále."}
+
+instrument.bass.full:
+  value: 'Nejvyšší počet přepínačů basového mechanismu: {n}'
+  placeholders:
+    n:
+      type: string
+
+instrument.bass.hint: {value: "Zadejte počet hlasů basového mechanismu. Většina má čtyři nebo pět."}
+instrument.bass.registerName: {value: "Název přepínače"}
+instrument.bass.voices: {value: "Basové hlasy"}
+instrument.beatTolerance: {value: "Tolerance zázněje"}
+instrument.builder.add: {value: "Přidat"}
+instrument.builder.already: {value: "Tento přepínač je již popsán"}
+instrument.builder.high: {value: "4' pikola"}
+instrument.builder.low: {value: "16' bas"}
+instrument.builder.middle: {value: "8' jazýčky"}
+instrument.builder.none: {value: "Zatím žádné přepínače. Níže vyberte hlasové řady, které každý přepínač zapíná."}
+instrument.builder.remove: {value: "Odebrat tento rejstřík"}
+instrument.builder.title: {value: "Přidat přepínač"}
+instrument.file.exportTitle: {value: "Exportovat akordeon"}
+instrument.file.filterName: {value: "Akordeon smeggtuner"}
+instrument.file.imageFilter: {value: "Obrázky"}
+instrument.file.imageTitle: {value: "Vyberte fotografii"}
+instrument.file.openTitle: {value: "Vyberte soubor akordeonu"}
+instrument.name: {value: "Název"}
+instrument.nameHint: {value: "Název zobrazený v knihovně nástrojů a v relacích."}
+instrument.namePlaceholder: {value: "Hohner Morino V N"}
+instrument.nameRequired: {value: "Zadejte název akordeonu."}
+instrument.photo: {value: "Fotografie"}
+instrument.range.backwards: {value: "Nejvyšší tón nesmí být níže než nejnižší."}
+instrument.range.clear: {value: "Vymazat"}
+instrument.range.down: {value: "Níže"}
+
+instrument.range.hint: {value: "Nepovinné. Nejnižší a nejvyšší klávesa. Rozsah lze také určit podle zvuku při kalibraci."}
+
+instrument.range.label: {value: "Rozsah klaviatury"}
+instrument.range.to: {value: "až"}
+instrument.range.up: {value: "Výše"}
+
+instrument.registersHint: {value: "Klikněte na tečky v symbolu každého přepínače podle kruhu vyrytého na akordeonu, nebo vyberte běžný rejstřík. Tečky přímo určují, které hlasy znějí."}
+
+instrument.registersSubtitle: {value: "Přepínače na diskantové straně a hlasové řady, které zapínají."}
+
+instrument.says:
+  plural:
+    argument: reeds
+    forms:
+      one: 'Hlasové řady: {banks}. Rejstřík s nejvíce hlasy rozezní {reeds} jazýček.'
+      few: 'Hlasové řady: {banks}. Rejstřík s nejvíce hlasy rozezní {reeds} jazýčky.'
+      many: 'Hlasové řady: {banks}. Rejstřík s nejvíce hlasy rozezní {reeds} jazýčku.'
+      other: 'Hlasové řady: {banks}. Rejstřík s nejvíce hlasy rozezní {reeds} jazýčků.'
+  placeholders:
+    banks:
+      type: string
+    reeds:
+      type: integer
+
+instrument.sections.bass: {value: "Basový mechanismus"}
+instrument.sections.identity: {value: "Identifikace nástroje"}
+instrument.sections.keyboard: {value: "Klaviatura"}
+instrument.sections.reference: {value: "Reference a tolerance"}
+instrument.sections.voices: {value: "Rejstříky"}
+instrument.tolerance: {value: "Tolerance jazýčku"}
+
+instrument.toleranceHint: {value: "Povolená odchylka jazýčku v jednotkách po 0,06 % frekvence tónu. Hodnoty mimo tento rozsah se označí jako rozladěné."}
+
+# Target curve editor
+curve.clearAll: {value: "Vymazat křivku"}
+
+curve.clearAllConfirm: {value: "Odstraní se všechny opěrné body. Cílem bude u každého tónu opět výška podle stupnice a ladička bude pouze ukazovat odchylku."}
+
+curve.clearAllHint: {value: "Odstraní všechny opěrné body a nastaví cíl na výšku tónu podle stupnice."}
+curve.clearAllTitle: {value: "Vymazat celou křivku?"}
+curve.entryUnit: {value: "Jednotka zadávání"}
+
+curve.help.hz: {value: "Při volbě Hz zadáváte cíl v hertzech vztažených k A4 = 440 Hz, stejně jako v referenčním seznamu záznějů. Změnou A4 v relaci se proto cíl neposune. Volba Zaznamenáno přidá do grafu měření této relace. V nabídce Seznam můžete podle nich proložit opěrné body nebo zkopírovat seznam jiné relace."}
+
+curve.help.hzTitle: {value: "Hz a měření"}
+
+curve.help.interp: {value: "Při zapnuté interpolaci sledují tóny mezi opěrnými body spojnici. Při vypnuté se hodnota bodu zachová až do dalšího bodu. Bez opěrných bodů je cílem vždy výška podle stupnice."}
+
+curve.help.interpTitle: {value: "Mezi body"}
+
+curve.help.lead: {value: "Cílová křivka určuje pro každý tón, jak daleko má být každý jazýček od výšky podle stupnice. Podle této cílové hodnoty tabulka hodnotí, zda je zaznamenaný jazýček v toleranci. Nulová odchylka od stupnice tedy nemusí být cílem."}
+
+curve.help.set: {value: "Vyberte tón a hodnotu a stiskněte Nastavit nebo přetáhněte bod v grafu nahoru či dolů. Každá hlasová řada má vlastní křivku. Právě upravovaná řada je zvýrazněná."}
+
+curve.help.setTitle: {value: "Nastavení bodu"}
+curve.helpTitle: {value: "Požadované zázněje"}
+curve.interpolate: {value: "Interpolovat"}
+curve.interpolateHint: {value: "Mezi opěrnými body sleduje spojnici. Při vypnutí se hodnota každého bodu zachová až do dalšího."}
+curve.menu.ends: {value: "Za krajními body"}
+curve.menu.extendHigh: {value: "Pokračovat nad nejvyšším bodem"}
+curve.menu.extendLow: {value: "Pokračovat pod nejnižším bodem"}
+curve.menu.fit: {value: "Proložit podle měření této relace"}
+
+curve.menu.fitBody:
+  plural:
+    argument: n
+    forms:
+      one: Opěrné body nahradí křivka proložená podle {n} měření.
+      few: Opěrné body nahradí křivka proložená podle {n} měření.
+      many: Opěrné body nahradí křivka proložená podle {n} měření.
+      other: Opěrné body nahradí křivka proložená podle {n} měření.
+  placeholders:
+    n:
+      type: integer
+
+curve.menu.fromFile: {value: "Zkopírovat ze souboru relace"}
+curve.menu.fromSession: {value: "Zkopírovat z relace"}
+curve.menu.label: {value: "Seznam"}
+curve.menu.replace: {value: "Nahradit seznam"}
+curve.menu.replaceBody: {value: "Opěrné body se nahradí body druhého seznamu včetně jeho nastavení."}
+curve.menu.replaceConfirm: {value: "Nahradit"}
+curve.menu.replaceTitle: {value: "Nahradit seznam záznějů?"}
+curve.rank: {value: "Hlasová řada"}
+curve.recorded: {value: "Zaznamenáno"}
+curve.recordedHint: {value: "Zobrazit měření této relace v grafu"}
+curve.remove: {value: "Odebrat"}
+curve.removeHint: {value: "Odstraní opěrný bod tohoto tónu z křivky."}
+
+curve.scale:
+  value: Měřítko {v}
+  placeholders:
+    v:
+      type: string
+
+curve.scaleAuto: {value: "Automatické měřítko"}
+curve.scaleHint: {value: "Svislý rozsah grafu"}
+curve.set: {value: "Nastavit"}
+curve.setHint: {value: "Přidá u tohoto tónu opěrný bod pro vybranou hlasovou řadu."}
+curve.startHint: {value: "Zatím žádné opěrné body. Cílem je u každého tónu výška podle stupnice."}
+
+# Readings and workshop actions
+footer.coverage:
+  value: 'Tóny: {done} / {total}'
+  placeholders:
+    done:
+      type: string
+    total:
+      type: string
+
+footer.inTune:
+  value: 'Naladěno: {done} / {total}'
+  placeholders:
+    done:
+      type: string
+    total:
+      type: string
+
+footer.none: {value: "Žádná relace"}
+
+readings.notes:
+  plural:
+    argument: n
+    forms:
+      one: '{n} tón'
+      few: '{n} tóny'
+      many: '{n} tónu'
+      other: '{n} tónů'
+  placeholders:
+    n:
+      type: integer
+
+workshop.exit: {value: "Opustit relaci"}
+workshop.import: {value: "Importovat"}
+workshop.open: {value: "Otevřít"}
+workshop.print: {value: "Vytisknout ladicí list"}
+
+# Session errors
+error.fitFailed: {value: "Podle této série měření se nepodařilo proložit křivku."}
+
+error.hasReadings: {value: "Relace už obsahuje měření pořízená při její referenční frekvenci a počtu jazýčků. Ani jeden z těchto údajů už nelze změnit."}
+
+error.imageUnreadable: {value: "Fotografii se nepodařilo otevřít."}
+error.instrumentName: {value: "Zadejte název akordeonu, abyste jej mohli znovu najít."}
+error.invalidA4: {value: "Referenční frekvence musí být od 430 do 450 Hz."}
+
+error.invalidInstrument: {value: "Tento akordeon nelze použít: název hlasové řady se opakuje nebo rejstřík zapíná řadu, kterou nástroj nemá."}
+
+error.invalidName: {value: "Zadejte název relace."}
+error.invalidNote: {value: "Tento tón je mimo rozsah ladičky."}
+error.invalidReed: {value: "Tento akordeon nemá znějící jazýček tohoto typu."}
+error.invalidReedCount: {value: "Na jeden tón může na akordeonu znít 1 až 8 jazýčků."}
+error.invalidTranspose: {value: "Transpozice je v rozsahu 0 až 11 půltónů."}
+error.invalidUnit: {value: "Hodnoty se zadávají v jednotkách po 0,06 %, v centech nebo v hertzech."}
+error.invalidValue: {value: "Zadaná hodnota není číslo."}
+error.loadFailed: {value: "Relaci se nepodařilo přečíst."}
+error.noBassMachine: {value: "U tohoto akordeonu není zadán basový mechanismus."}
+error.noBassRegister: {value: "Akordeon nemá takový basový rejstřík."}
+error.noCurve: {value: "Tato relace nemá cílovou křivku."}
+error.noReadings: {value: "V této relaci zatím nebylo nic zaznamenáno."}
+error.noRegister: {value: "Tento akordeon nemá takový rejstřík."}
+error.noSession: {value: "Není otevřena žádná relace."}
+error.notAnImage: {value: "Tento soubor není fotografie."}
+error.notFound: {value: "Tato relace již neexistuje."}
+error.notesTooLong: {value: "Zkraťte poznámku na nejvýše 500 znaků."}
+error.saveFailed: {value: "Relaci se nepodařilo uložit. Pokud ji nyní zavřete, můžete přijít o poslední záznamy."}
+error.takeNotFound: {value: "Toto měření již neexistuje."}
+error.unexpected: {value: "Došlo k chybě."}

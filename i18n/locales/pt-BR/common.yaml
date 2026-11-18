@@ -1,0 +1,104 @@
+# Shared labels and application text (pt-BR).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Buttons and shared labels
+accept: {value: "Aceitar"}
+back: {value: "Voltar"}
+cancel: {value: "Cancelar"}
+close: {value: "Fechar"}
+delete: {value: "Excluir"}
+export: {value: "Exportar"}
+next: {value: "Próximo"}
+"no": {value: "Não"}
+none: {value: "Nenhum"}
+previous: {value: "Anterior"}
+website: {value: "Site"}
+"yes": {value: "Sim"}
+
+# Musical labels and unit symbols
+accordion: {value: "Acordeão"}
+note: {value: "Nota"}
+
+reed:
+  value: "Palheta {index}"
+  placeholders:
+    index: {type: integer}
+
+unitSymbol.cents: {value: "cent"}
+unitSymbol.hz: {value: "Hz"}
+unitSymbol.reference: {value: "u"}
+
+# Color controls
+color.hue: {value: "Matiz"}
+color.saturation: {value: "Saturação"}
+color.value: {value: "Valor"}
+
+# Navigation and window titles
+routes.navigation: {value: "Navegação principal"}
+routes.settings: {value: "Configurações"}
+routes.tune: {value: "Afinar"}
+routes.workshop: {value: "Oficina"}
+
+title.count:
+  value: "{room} {name} ({done})"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+
+title.progress:
+  value: "{room} {name} {done}/{total}"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+    total: {type: string}
+
+title.room.about: {value: "sobre"}
+title.room.calibrate: {value: "calibração"}
+title.room.help: {value: "ajuda"}
+title.room.settings: {value: "configurações"}
+title.room.soundcard: {value: "placa de som"}
+title.room.tune: {value: "afinação"}
+title.room.workshop: {value: "oficina"}
+
+title.session:
+  value: "{room} {name}"
+  placeholders:
+    name: {type: string}
+    room: {type: string}
+
+title.uncalibrated:
+  value: "{title} (placa de som não calibrada)"
+  placeholders:
+    title: {type: string}
+
+# Application and About dialog
+about.aboutTitle: {value: "Sobre"}
+about.commit: {value: "Compilação"}
+about.donate: {value: "Apoiar no Ko-fi"}
+about.license: {value: "Licença"}
+about.privacy: {value: "Política de privacidade"}
+about.guide: {value: "Como usar o SmeggTuner"}
+about.onlineVersion: {value: "Abrir a versão online"}
+about.support: {value: "Suporte"}
+about.mascot: {value: "Um gato tocando acordeão"}
+about.publisher: {value: "Por smegg99"}
+about.tagline: {value: "Programa livre e gratuito para afinar acordeões."}
+about.untagged: {value: "compilação de desenvolvimento"}
+about.version: {value: "Versão"}
+app.description: {value: "Afinador de acordeão livre e gratuito."}
+app.name: {value: "SmeggTuner"}
+
+# Help dialog and keyboard instructions
+about.helpTitle: {value: "Ajuda"}
+
+# System tray
+tray.quit: {value: "Sair"}
+tray.show: {value: "Mostrar"}
+
+linkNewTab:
+  value: "{text} (abre em uma nova guia)"
+  placeholders:
+    text: {type: string}

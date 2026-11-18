@@ -1,0 +1,104 @@
+# Shared labels and application text (da).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Buttons and shared labels
+accept: {value: "Accepter"}
+back: {value: "Tilbage"}
+cancel: {value: "Annuller"}
+close: {value: "Luk"}
+delete: {value: "Slet"}
+export: {value: "Eksporter"}
+next: {value: "Næste"}
+"no": {value: "Nej"}
+none: {value: "Ingen"}
+previous: {value: "Forrige"}
+website: {value: "Websted"}
+"yes": {value: "Ja"}
+
+# Musical labels and unit symbols
+accordion: {value: "Harmonika"}
+note: {value: "Tone"}
+
+reed:
+  value: "Tunge {index}"
+  placeholders:
+    index: {type: integer}
+
+unitSymbol.cents: {value: "cent"}
+unitSymbol.hz: {value: "Hz"}
+unitSymbol.reference: {value: "u"}
+
+# Color controls
+color.hue: {value: "Farvetone"}
+color.saturation: {value: "Mætning"}
+color.value: {value: "Lysstyrke"}
+
+# Navigation and window titles
+routes.navigation: {value: "Hovednavigation"}
+routes.settings: {value: "Indstillinger"}
+routes.tune: {value: "Stem"}
+routes.workshop: {value: "Værksted"}
+
+title.count:
+  value: "{room} {name} ({done})"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+
+title.progress:
+  value: "{room} {name} {done}/{total}"
+  placeholders:
+    done: {type: string}
+    name: {type: string}
+    room: {type: string}
+    total: {type: string}
+
+title.room.about: {value: "om"}
+title.room.calibrate: {value: "kalibrering"}
+title.room.help: {value: "hjælp"}
+title.room.settings: {value: "indstillinger"}
+title.room.soundcard: {value: "lydkort"}
+title.room.tune: {value: "stemning"}
+title.room.workshop: {value: "værksted"}
+
+title.session:
+  value: "{room} {name}"
+  placeholders:
+    name: {type: string}
+    room: {type: string}
+
+title.uncalibrated:
+  value: "{title} (lydkort ikke kalibreret)"
+  placeholders:
+    title: {type: string}
+
+# Application and About dialog
+about.aboutTitle: {value: "Om"}
+about.commit: {value: "Build"}
+about.donate: {value: "Støt på Ko-fi"}
+about.license: {value: "Licens"}
+about.privacy: {value: "Privatlivspolitik"}
+about.guide: {value: "Sådan bruges SmeggTuner"}
+about.onlineVersion: {value: "Åbn onlineversion"}
+about.support: {value: "Hjælp"}
+about.mascot: {value: "En kat, der spiller harmonika"}
+about.publisher: {value: "Af smegg99"}
+about.tagline: {value: "Gratis program med åben kildekode til harmonikastemning."}
+about.untagged: {value: "udviklingsversion"}
+about.version: {value: "Version"}
+app.description: {value: "Gratis harmonikastemmer med åben kildekode."}
+app.name: {value: "SmeggTuner"}
+
+# Help dialog and keyboard instructions
+about.helpTitle: {value: "Hjælp"}
+
+# System tray
+tray.quit: {value: "Afslut"}
+tray.show: {value: "Vis"}
+
+linkNewTab:
+  value: "{text} (åbner i en ny fane)"
+  placeholders:
+    text: {type: string}

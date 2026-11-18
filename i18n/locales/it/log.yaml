@@ -1,0 +1,100 @@
+# Diagnostic log messages (it).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Application lifecycle and configuration
+appStarting: {value: "Avvio di smeggtuner"}
+cleaningUp: {value: "Pulizia in corso"}
+configLoadFailed: {value: "Impossibile caricare la configurazione"}
+configLoaded: {value: "Configurazione caricata"}
+configSaveFailed: {value: "Impossibile salvare la configurazione"}
+crashScreenFailed: {value: "Impossibile mostrare la schermata di errore"}
+crashWatchFailed: {value: "Impossibile avviare il monitoraggio degli arresti anomali"}
+datastoreInitFailed: {value: "Impossibile inizializzare l'archivio dati"}
+datastoreReady: {value: "Archivio dati pronto"}
+loadingConfig: {value: "Caricamento della configurazione"}
+loggerInitFailed: {value: "Impossibile configurare il sistema di registrazione eventi"}
+reinitLogger: {value: "Riconfigurazione del registro eventi in base alle impostazioni caricate"}
+runFailed: {value: "Errore durante l'esecuzione dell'app"}
+secondInstance: {value: "Avviata una seconda istanza, la finestra esistente viene portata in primo piano"}
+trayIconFailed: {value: "Impossibile caricare l'icona dell'area di notifica"}
+updateCheckFailed: {value: "Impossibile verificare la disponibilità di aggiornamenti", description: "Update check or stored release-note state failed; logged without a dialog."}
+windowStateLoadFailed: {value: "Impossibile caricare lo stato della finestra"}
+windowStateSaveFailed: {value: "Impossibile salvare lo stato della finestra"}
+
+# Audio devices and calibration
+audioDeviceEnumFailed: {value: "Impossibile elencare i dispositivi di acquisizione"}
+audioDeviceGone: {value: "Il dispositivo di acquisizione selezionato non è più presente"}
+audioDevicesListed: {value: "Dispositivi di acquisizione elencati"}
+audioDialogFailed: {value: "Errore nella finestra di selezione del file"}
+audioDialogUnavailable: {value: "Selezione di un file richiesta senza che l'app sia in esecuzione"}
+audioFileUnreadable: {value: "Impossibile aprire la registrazione"}
+audioNoDevices: {value: "Nessun dispositivo di acquisizione disponibile"}
+audioSourceSelected: {value: "Sorgente di ingresso selezionata"}
+audioSpeakerUnavailable: {value: "Nessun dispositivo di uscita, il file verrà riprodotto senza audio"}
+calibrationAbandoned: {value: "Calibrazione della scheda audio abbandonata"}
+calibrationFinished: {value: "Calibrazione della scheda audio completata"}
+calibrationNoDevice: {value: "Impossibile aprire il dispositivo per calibrare la scheda audio"}
+calibrationStarted: {value: "Calibrazione della scheda audio avviata"}
+deviceStoreFailed: {value: "Impossibile salvare le impostazioni del dispositivo di acquisizione"}
+micBlocksDropped: {value: "Il componente che riceve l'audio del microfono è bloccato, alcuni blocchi vengono scartati"}
+micDeviceLost: {value: "Arresto inatteso del dispositivo di acquisizione"}
+volumeRestore: {value: "Il controllo automatico del volume non è riuscito a ripristinare il livello di ingresso"}
+volumeStepFailed: {value: "Il controllo automatico del volume non è riuscito a impostare il livello di ingresso"}
+volumeUnavailable: {value: "Il controllo automatico del volume non può accedere al livello di ingresso del dispositivo"}
+
+# Tuner engine
+tunerEventsDropped: {value: "Eventi di misurazione scartati perché l'interfaccia è in ritardo"}
+tunerRunFailed: {value: "Il motore di misurazione si è fermato con un errore"}
+tunerSettingRejected: {value: "Impostazione fuori intervallo rifiutata"}
+tunerStartFailed: {value: "Impossibile creare la sorgente di ingresso"}
+tunerStarted: {value: "Motore di misurazione avviato"}
+tunerStopped: {value: "Motore di misurazione fermato"}
+tunerTonePlayFailed: {value: "Impossibile riprodurre il suono di riferimento"}
+tunerTonePlaying: {value: "Riproduzione del suono di riferimento"}
+
+# Sessions, readings and reports
+recordCleared: {value: "Passata cancellata"}
+recordEdited: {value: "Acquisizione modificata a mano"}
+recordRejected: {value: "Richiesta di registrazione rifiutata"}
+recordTake: {value: "Acquisizione registrata"}
+recordUndone: {value: "Ultima acquisizione annullata"}
+reportFailed: {value: "Impossibile scrivere il rapporto di accordatura"}
+reportOpenFailed: {value: "Impossibile aprire il rapporto di accordatura"}
+reportOpened: {value: "Rapporto di accordatura passato al browser"}
+reportRejected: {value: "Richiesta di rapporto rifiutata"}
+reportWritten: {value: "Rapporto di accordatura salvato"}
+sessionClosed: {value: "Sessione chiusa"}
+sessionCreated: {value: "Sessione creata"}
+sessionCurveDropped: {value: "Curva obiettivo rimossa"}
+sessionCurveFitted: {value: "Curva obiettivo adattata alle misurazioni di una passata"}
+sessionCurveImported: {value: "Curva obiettivo importata"}
+sessionDeleted: {value: "Sessione eliminata"}
+sessionLoadFailed: {value: "Impossibile caricare la sessione"}
+sessionOpened: {value: "Sessione aperta"}
+sessionReedsClamped: {value: "Lo strumento fa suonare più ance di quante il motore possa distinguere. Il motore applica il proprio limite."}
+sessionRejected: {value: "Modifica della sessione non valida rifiutata"}
+sessionSaveFailed: {value: "Impossibile salvare la sessione"}
+
+# Frontend diagnostics
+frontendAudioCalibrationCancelFailed: {value: "Impossibile annullare la calibrazione"}
+frontendAudioCalibrationFailed: {value: "Impossibile avviare la calibrazione"}
+frontendAudioCorrectionFailed: {value: "Impossibile leggere la correzione della scheda audio"}
+frontendAudioDialogFailed: {value: "Impossibile aprire la finestra di selezione del file"}
+frontendAudioListFailed: {value: "Impossibile elencare i dispositivi audio"}
+frontendAudioSelectFailed: {value: "Impossibile selezionare la sorgente audio"}
+frontendAudioStateFailed: {value: "Impossibile leggere lo stato del dispositivo audio"}
+frontendAudioVolumeFailed: {value: "Impossibile modificare il controllo automatico del volume"}
+frontendConfigLoadFailed: {value: "Impossibile caricare la configurazione"}
+frontendConfigLoaded: {value: "Configurazione caricata"}
+frontendConfigSaveFailed: {value: "Impossibile salvare la configurazione"}
+frontendCurveViewFailed: {value: "Impossibile leggere le impostazioni di visualizzazione della curva"}
+frontendError: {value: "Errore imprevisto dell'app"}
+frontendRejection: {value: "Operazione dell'app non riuscita"}
+frontendResizeNotice: {value: "Modifica del layout rinviata al fotogramma successivo (avviso ResizeObserver del browser)"}
+frontendSettingFailed: {value: "Impossibile modificare l'impostazione dell'accordatore"}
+frontendTunerStartFailed: {value: "Impossibile avviare l'accordatore"}
+frontendTunerStateFailed: {value: "Impossibile leggere lo stato dell'accordatore"}
+frontendTunerStopFailed: {value: "Impossibile fermare l'accordatore"}
+frontendTunerTonePlayFailed: {value: "Impossibile riprodurre il suono di riferimento"}
+frontendTunerToneStopFailed: {value: "Impossibile fermare il suono di riferimento"}

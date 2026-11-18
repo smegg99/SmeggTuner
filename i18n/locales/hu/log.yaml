@@ -1,0 +1,100 @@
+# Diagnostic log messages (hu).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Application lifecycle and configuration
+appStarting: {value: "A smeggtuner indítása"}
+cleaningUp: {value: "Erőforrások felszabadítása"}
+configLoadFailed: {value: "Nem sikerült betölteni a konfigurációt"}
+configLoaded: {value: "Konfiguráció betöltve"}
+configSaveFailed: {value: "Nem sikerült menteni a konfigurációt"}
+crashScreenFailed: {value: "Nem sikerült megjeleníteni a hibaképernyőt"}
+crashWatchFailed: {value: "Nem sikerült elindítani az összeomlásfigyelőt"}
+datastoreInitFailed: {value: "Nem sikerült inicializálni az adattárat"}
+datastoreReady: {value: "Az adattár használatra kész"}
+loadingConfig: {value: "Konfiguráció betöltése"}
+loggerInitFailed: {value: "Nem sikerült beállítani a naplózást"}
+reinitLogger: {value: "A naplózás újrabeállítása a konfiguráció alapján"}
+runFailed: {value: "Az alkalmazás futása hibával végződött"}
+secondInstance: {value: "Elindult egy második példány, a meglévő ablak kerül előtérbe"}
+trayIconFailed: {value: "Nem sikerült betölteni a tálcaikont"}
+updateCheckFailed: {value: "A frissítések keresése sikertelen", description: "Update check or stored release-note state failed; logged without a dialog."}
+windowStateLoadFailed: {value: "Nem sikerült betölteni az ablak állapotát"}
+windowStateSaveFailed: {value: "Nem sikerült menteni az ablak állapotát"}
+
+# Audio devices and calibration
+audioDeviceEnumFailed: {value: "Nem sikerült listázni a hangbemeneti eszközöket"}
+audioDeviceGone: {value: "A kiválasztott bemeneti eszköz már nem érhető el"}
+audioDevicesListed: {value: "A bemeneti eszközök listázása kész"}
+audioDialogFailed: {value: "Hiba a fájlválasztó ablakban"}
+audioDialogUnavailable: {value: "A fájlválasztó ablakot futó alkalmazás nélkül kérték"}
+audioFileUnreadable: {value: "Nem sikerült megnyitni a felvételt"}
+audioNoDevices: {value: "Nincs elérhető hangbemeneti eszköz"}
+audioSourceSelected: {value: "Bemeneti forrás kiválasztva"}
+audioSpeakerUnavailable: {value: "Nincs kimeneti eszköz, a fájl lejátszása néma lesz"}
+calibrationAbandoned: {value: "A hangkártya kalibrálása megszakadt"}
+calibrationFinished: {value: "A hangkártya kalibrálása befejeződött"}
+calibrationNoDevice: {value: "A hangkártya kalibrálásához nem sikerült megnyitni az eszközt"}
+calibrationStarted: {value: "A hangkártya kalibrálása elindult"}
+deviceStoreFailed: {value: "Nem sikerült menteni a bemeneti eszköz beállításait"}
+micBlocksDropped: {value: "A mikrofonadatok feldolgozása elakadt, adatblokkok maradnak ki"}
+micDeviceLost: {value: "A bemeneti eszköz váratlanul leállt"}
+volumeRestore: {value: "Az automatikus hangerőszabályozás nem tudta visszaállítani a bemeneti szintet"}
+volumeStepFailed: {value: "Az automatikus hangerőszabályozás nem tudta beállítani a bemeneti szintet"}
+volumeUnavailable: {value: "Az automatikus hangerőszabályozás nem fér hozzá az eszköz bemeneti szintjéhez"}
+
+# Tuner engine
+tunerEventsDropped: {value: "A felület lemaradt a feldolgozással, mérési események maradtak ki"}
+tunerRunFailed: {value: "A mérőmodul hibával leállt"}
+tunerSettingRejected: {value: "A megengedett tartományon kívüli beállítás elutasítva"}
+tunerStartFailed: {value: "Nem sikerült létrehozni a bemeneti forrást"}
+tunerStarted: {value: "A mérőmodul elindult"}
+tunerStopped: {value: "A mérőmodul leállt"}
+tunerTonePlayFailed: {value: "Nem sikerült lejátszani a referenciahangot"}
+tunerTonePlaying: {value: "Referenciahang lejátszása"}
+
+# Sessions, readings and reports
+recordCleared: {value: "A mérési sorozat kiürítve"}
+recordEdited: {value: "A mérés kézzel módosítva"}
+recordRejected: {value: "A rögzítési kérés elutasítva"}
+recordTake: {value: "Mérés rögzítve"}
+recordUndone: {value: "Az utolsó mérés visszavonva"}
+reportFailed: {value: "Nem sikerült menteni a hangolási jegyzőkönyvet"}
+reportOpenFailed: {value: "Nem sikerült megnyitni a hangolási jegyzőkönyvet"}
+reportOpened: {value: "A hangolási jegyzőkönyv átadva a böngészőnek"}
+reportRejected: {value: "A jegyzőkönyvre vonatkozó kérés elutasítva"}
+reportWritten: {value: "Hangolási jegyzőkönyv mentve"}
+sessionClosed: {value: "Munkamenet bezárva"}
+sessionCreated: {value: "Munkamenet létrehozva"}
+sessionCurveDropped: {value: "Célgörbe eltávolítva"}
+sessionCurveFitted: {value: "Célgörbe illesztve a mérési sorozatra"}
+sessionCurveImported: {value: "Célgörbe importálva"}
+sessionDeleted: {value: "Munkamenet törölve"}
+sessionLoadFailed: {value: "Nem sikerült betölteni a munkamenetet"}
+sessionOpened: {value: "Munkamenet megnyitva"}
+sessionReedsClamped: {value: "A hangszeren több síp szól, mint amennyit a mérőmodul el tud különíteni. A modul a kezelhető számra korlátozta a sípokat"}
+sessionRejected: {value: "Érvénytelen munkamenet-módosítás elutasítva"}
+sessionSaveFailed: {value: "Nem sikerült menteni a munkamenetet"}
+
+# Frontend diagnostics
+frontendAudioCalibrationCancelFailed: {value: "Nem sikerült megszakítani a kalibrálást"}
+frontendAudioCalibrationFailed: {value: "Nem sikerült elindítani a kalibrálást"}
+frontendAudioCorrectionFailed: {value: "Nem sikerült kiolvasni a hangkártya korrekcióját"}
+frontendAudioDialogFailed: {value: "Nem sikerült megnyitni a fájlválasztó ablakot"}
+frontendAudioListFailed: {value: "Nem sikerült listázni a hangeszközöket"}
+frontendAudioSelectFailed: {value: "Nem sikerült kiválasztani a hangforrást"}
+frontendAudioStateFailed: {value: "Nem sikerült kiolvasni a hangeszköz állapotát"}
+frontendAudioVolumeFailed: {value: "Nem sikerült módosítani az automatikus hangerőszabályozást"}
+frontendConfigLoadFailed: {value: "Nem sikerült betölteni a konfigurációt"}
+frontendConfigLoaded: {value: "Konfiguráció betöltve"}
+frontendConfigSaveFailed: {value: "Nem sikerült menteni a konfigurációt"}
+frontendCurveViewFailed: {value: "Nem sikerült beolvasni a görbe megjelenítési beállításait"}
+frontendError: {value: "Váratlan alkalmazáshiba"}
+frontendRejection: {value: "Az alkalmazás művelete sikertelen"}
+frontendResizeNotice: {value: "Az elrendezés módosítása a következő képkockára halasztva (a böngésző ResizeObserver értesítése)"}
+frontendSettingFailed: {value: "Nem sikerült módosítani a hangoló beállítását"}
+frontendTunerStartFailed: {value: "Nem sikerült elindítani a hangolót"}
+frontendTunerStateFailed: {value: "Nem sikerült kiolvasni a hangoló állapotát"}
+frontendTunerStopFailed: {value: "Nem sikerült leállítani a hangolót"}
+frontendTunerTonePlayFailed: {value: "Nem sikerült lejátszani a referenciahangot"}
+frontendTunerToneStopFailed: {value: "Nem sikerült leállítani a referenciahangot"}

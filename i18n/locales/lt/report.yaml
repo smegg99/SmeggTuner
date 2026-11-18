@@ -1,0 +1,164 @@
+# Printed reports and export (lt).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Report title and instrument details
+facts.curve: {value: "Tikslinė kreivė"}
+facts.curveNone: {value: "nėra"}
+facts.curveUnnamed: {value: "be pavadinimo"}
+facts.reference: {value: "Atskaitos A4 (šis matavimo etapas)"}
+facts.tolerance: {value: "Leistina paklaida"}
+
+facts.toleranceValue:
+  value: "Liežuvėlis {reed} {unit} / plakimas {beat} {unit}"
+  placeholders:
+    beat: {type: string}
+    reed: {type: string}
+    unit: {type: string}
+
+facts.transpose: {value: "Transponavimas"}
+
+facts.transposeValue:
+  value: "{key} skamba kaip {sounds}"
+  placeholders:
+    key: {type: string}
+    sounds: {type: string}
+
+title: {value: "Derinimo ataskaita"}
+
+# Table and column headings
+head.beat:
+  value: "Plakimas {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.bassTitle:
+  value: "Bosų derinimo lentelė ({unit})"
+  placeholders:
+    unit: {type: string}
+
+table.curr: {value: "Išm."}
+table.err: {value: "Pakl."}
+table.register: {value: "Registras"}
+
+table.title:
+  value: "Derinimo lentelė ({unit})"
+  placeholders:
+    unit: {type: string}
+
+# Deviation units
+unit.cents.name: {value: "centai"}
+unit.cents.symbol: {value: "c"}
+unit.reference.name: {value: "0,06 % vienetai"}
+
+# Graph legend and reading markers
+graph.edited:
+  value: "{mark} – pakeista ranka."
+  placeholders:
+    mark: {type: string}
+
+legend.error.cents:
+  value: "Dildykite, kad paklaida artėtų prie nulio. Vertės centais lyginamos su tolygiai temperuota gama, kai A4 yra {a4} Hz."
+  placeholders:
+    a4: {type: string}
+
+legend.error.key: {value: "Paklaida = išmatuota vertė − tikslinė vertė."}
+legend.error.noCurve: {value: "Tikslinės kreivės nėra: tikslinė vertė lygi nuliui, paklaida yra nuokrypis nuo gamos."}
+
+legend.error.reference:
+  value: "Dildykite, kad paklaida artėtų prie nulio. Vienetas lygus 0,06 % natos dažnio. Atskaita – tolygiai temperuota gama, kai A4 yra {a4} Hz."
+  placeholders:
+    a4: {type: string}
+
+legend.out.short: {value: "už leistinų ribų"}
+legend.takes.key: {value: "xN"}
+legend.takes.short: {value: "įrašyta keliskart, rodomas paskutinis matavimas"}
+mark.edited: {value: "H"}
+mark.out: {value: "!"}
+
+# Summary and footer
+footer.generated:
+  value: "Sukurta {at}, programa {app}"
+  placeholders:
+    app: {type: string}
+    at: {type: string}
+
+summary.allIn: {value: "Visi rodmenys telpa į leistinas ribas."}
+
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} plakimas"
+      few: "{pluralCount} plakimai"
+      many: "{pluralCount} plakimo"
+      other: "{pluralCount} plakimų"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.line:
+  value: "{notes} (nuo {min} iki {max}), {reeds}, {beats}."
+  placeholders:
+    beats: {type: string}
+    max: {type: string}
+    min: {type: string}
+    notes: {type: string}
+    reeds: {type: string}
+
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} nata"
+      few: "{pluralCount} natos"
+      many: "{pluralCount} natos"
+      other: "{pluralCount} natų"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "Už leistinų ribų: {pluralCount} ({reeds}, {beats})."
+      few: "Už leistinų ribų: {pluralCount} ({reeds}, {beats})."
+      many: "Už leistinų ribų: {pluralCount} ({reeds}, {beats})."
+      other: "Už leistinų ribų: {pluralCount} ({reeds}, {beats})."
+  placeholders:
+    beats: {type: string}
+    pluralCount: {type: integer}
+    reeds: {type: string}
+
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} liežuvėlio rodmuo"
+      few: "{pluralCount} liežuvėlių rodmenys"
+      many: "{pluralCount} liežuvėlio rodmens"
+      other: "{pluralCount} liežuvėlių rodmenų"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} liežuvėlis"
+      few: "{pluralCount} liežuvėliai"
+      many: "{pluralCount} liežuvėlio"
+      other: "{pluralCount} liežuvėlių"
+  placeholders:
+    pluralCount: {type: integer}
+
+# Export errors
+error.invalidDate: {value: "Įveskite tinkamą datą formatu MMMM-MM-DD."}
+error.invalidFormat: {value: "Šiuo formatu ataskaitos įrašyti negalima."}
+
+error.noBrowser:
+  value: "PDF maketuoja naršyklė, tačiau šiame kompiuteryje nėra nei „Chrome“, nei „Chromium“. Įdiekite vieną iš jų arba eksportuokite kortelę HTML formatu ir ją išspausdinkite."
+error.openFailed: {value: "Ataskaita įrašyta, tačiau jokia naršyklė jos neatvėrė. Atverkite failą patys."}
+error.renderFailed: {value: "Nepavyko sukurti ataskaitos. Nieko neįrašyta."}
+
+error.writeFailed:
+  value: "Nepavyko įrašyti ataskaitos pasirinktoje vietoje. Jei ten buvo ankstesnis failas, jis nepakeistas."

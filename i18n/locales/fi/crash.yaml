@@ -1,0 +1,62 @@
+# S99AB startup and crash dialogs (fi).
+close: {value: "Sulje"}
+copied: {value: "Kopioitu"}
+copy: {value: "Kopioi raportti"}
+details: {value: "Lisätiedot"}
+email: {value: "Lähetä raportti sähköpostitse"}
+failed:
+  value: "Toiminto epäonnistui: {error}"
+  placeholders:
+    error: {type: string}
+file:
+  value: "Tiedosto: {path}"
+  placeholders:
+    path: {type: string}
+kill: {value: "Sulje ja ilmoita ongelmasta"}
+logs: {value: "Näytä lokitiedosto"}
+messageConfig:
+  value: "Asetustiedostoa ei voitu lukea. Korjaa tai poista tiedosto ja käynnistä {app} uudelleen."
+  placeholders:
+    app: {type: string}
+messageCrash:
+  value: "Sovelluksessa {app} tapahtui sisäinen virhe. Lähetä raportti virheen selvittämistä varten ja käynnistä sovellus uudelleen."
+  placeholders:
+    app: {type: string}
+messageHang: {value: "Sovellus saattaa vielä saada tehtävänsä valmiiksi. Voit odottaa tai sulkea sovelluksen ja lähettää raportin."}
+messageHangStopped:
+  value: "{app} suljettiin, kun se ei vastannut. Lähetä raportti virheen selvittämistä varten ja käynnistä sovellus uudelleen."
+  placeholders:
+    app: {type: string}
+messageKilled:
+  value: "{app} suljettiin ennen kuin se ehti ilmoittaa virheestä. Lähetä raportti ja käynnistä sovellus uudelleen."
+  placeholders:
+    app: {type: string}
+messageOom:
+  value: "Järjestelmän muisti loppui, ja {app} suljettiin. Lähetä raportti ja käynnistä sovellus uudelleen."
+  placeholders:
+    app: {type: string}
+messageStartup:
+  value: "Korjaa alla ilmoitettu ongelma ja käynnistä {app} uudelleen."
+  placeholders:
+    app: {type: string}
+restart: {value: "Käynnistä uudelleen"}
+save: {value: "Tallenna raportti"}
+saved:
+  value: "Tallennettu kohteeseen {path}"
+  placeholders:
+    path: {type: string}
+starting:
+  value: "Käynnistetään {app}"
+  placeholders:
+    app: {type: string}
+titleCrash: {value: "Sovellus pysähtyi odottamatta"}
+titleHang: {value: "Sovellus ei vastaa"}
+titleHangStopped: {value: "Sovellus lakkasi vastaamasta"}
+titleKilled: {value: "Sovellus sulkeutui odottamatta"}
+titleStart: {value: "Sovellusta ei voitu käynnistää"}
+wait: {value: "Odota"}
+windowCrash: {value: "kaatui"}
+windowHang: {value: "ei vastaa"}
+windowHangStopped: {value: "lakkasi vastaamasta"}
+windowKilled: {value: "sulkeutui odottamatta"}
+windowStart: {value: "ei käynnistynyt"}

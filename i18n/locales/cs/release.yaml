@@ -1,0 +1,15 @@
+# S99AB release notes and update prompts (cs).
+notesTitle:
+  value: "Novinky ve verzi {version}"
+  placeholders:
+    version: {type: string}
+notTranslated: {value: "Tyto poznámky k vydání zatím nejsou přeložené."}
+updateBody:
+  value: "Používáte verzi {current}. Nejnovější verze je {latest}."
+  placeholders:
+    current: {type: string}
+    latest: {type: string}
+updateDownload: {value: "Stáhnout"}
+updateIgnore: {value: "Přeskočit tuto verzi"}
+updateLater: {value: "Později"}
+updateTitle: {value: "Je k dispozici novější verze"}

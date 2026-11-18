@@ -1,0 +1,155 @@
+# Printed reports and export (it).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+# Plurals: one, other (locale cardinal rules).
+
+# Report title and instrument details
+facts.curve: {value: "Curva obiettivo"}
+facts.curveNone: {value: "nessuna"}
+facts.curveUnnamed: {value: "senza nome"}
+facts.reference: {value: "La4 di riferimento (questa passata)"}
+facts.tolerance: {value: "Tolleranza"}
+
+facts.toleranceValue:
+  value: "ancia: {reed} {unit} / battimento: {beat} {unit}"
+  placeholders:
+    beat: {type: string}
+    reed: {type: string}
+    unit: {type: string}
+
+facts.transpose: {value: "Trasposizione"}
+
+facts.transposeValue:
+  value: "{key} suona come {sounds}"
+  placeholders:
+    key: {type: string}
+    sounds: {type: string}
+
+title: {value: "Rapporto di accordatura"}
+
+# Table and column headings
+head.beat:
+  value: "Battimento {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.bassTitle:
+  value: "Tabella di accordatura dei bassi ({unit})"
+  placeholders:
+    unit: {type: string}
+
+table.curr: {value: "Mis."}
+table.err: {value: "Err."}
+table.register: {value: "Registro"}
+
+table.title:
+  value: "Tabella di accordatura ({unit})"
+  placeholders:
+    unit: {type: string}
+
+# Deviation units
+unit.cents.name: {value: "cent"}
+unit.cents.symbol: {value: "c"}
+unit.reference.name: {value: "unità dello 0,06%"}
+
+# Graph legend and reading markers
+graph.edited:
+  value: "{mark} - modifica manuale."
+  placeholders:
+    mark: {type: string}
+
+legend.error.cents:
+  value: "Lima l'ancia per portare l'errore a zero. Scostamento in cent dalla scala temperata a {a4} Hz."
+  placeholders:
+    a4: {type: string}
+
+legend.error.key: {value: "Errore = misura - obiettivo."}
+legend.error.noCurve: {value: "Senza curva obiettivo, l'obiettivo è zero e l'errore è lo scostamento dalla scala."}
+
+legend.error.reference:
+  value: "Lima l'ancia per portare l'errore a zero. Lo scostamento dalla scala temperata a {a4} Hz è espresso in unità dello 0,06% della frequenza della nota."
+  placeholders:
+    a4: {type: string}
+
+legend.out.short: {value: "fuori tolleranza"}
+legend.takes.key: {value: "xN"}
+legend.takes.short: {value: "più acquisizioni, è mostrata l'ultima"}
+mark.edited: {value: "M"}
+mark.out: {value: "!"}
+
+# Summary and footer
+footer.generated:
+  value: "Generato il {at} da {app}"
+  placeholders:
+    app: {type: string}
+    at: {type: string}
+
+summary.allIn: {value: "Tutte le misurazioni rientrano nella tolleranza."}
+
+summary.beats:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} battimento"
+      other: "{pluralCount} battimenti"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.line:
+  value: "{notes} (da {min} a {max}), {reeds}, {beats}."
+  placeholders:
+    beats: {type: string}
+    max: {type: string}
+    min: {type: string}
+    notes: {type: string}
+    reeds: {type: string}
+
+summary.notes:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} nota"
+      other: "{pluralCount} note"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.out:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} fuori tolleranza ({reeds}, {beats})."
+      other: "{pluralCount} fuori tolleranza ({reeds}, {beats})."
+  placeholders:
+    beats: {type: string}
+    pluralCount: {type: integer}
+    reeds: {type: string}
+
+summary.reeds:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} misurazione di ancia"
+      other: "{pluralCount} misurazioni di ance"
+  placeholders:
+    pluralCount: {type: integer}
+
+summary.reedsShort:
+  plural:
+    argument: pluralCount
+    forms:
+      one: "{pluralCount} ancia"
+      other: "{pluralCount} ance"
+  placeholders:
+    pluralCount: {type: integer}
+
+# Export errors
+error.invalidDate: {value: "Inserisci una data valida nel formato AAAA-MM-GG."}
+error.invalidFormat: {value: "Non è possibile esportare il rapporto in questo formato."}
+
+error.noBrowser:
+  value: "Per impaginare il PDF serve Chrome o Chromium. Nessuno dei due è installato. Installane uno oppure esporta la scheda in HTML e stampala."
+error.openFailed: {value: "Il rapporto è stato salvato, ma nessun browser è riuscito ad aprirlo. Apri il file manualmente."}
+error.renderFailed: {value: "Impossibile generare il rapporto. Non è stato scritto alcun file."}
+
+error.writeFailed:
+  value: "Impossibile salvare il rapporto in questa posizione. L'eventuale file precedente è rimasto intatto."

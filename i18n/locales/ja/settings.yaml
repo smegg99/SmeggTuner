@@ -1,0 +1,166 @@
+# Settings and sound-card calibration (ja).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Microphone and input level
+audioDeviceHint: {value: "測定に使うマイク"}
+audioDeviceLabel: {value: "入力デバイス"}
+audioDeviceSystemDefault: {value: "システムの既定値"}
+autoVolume.hint: {value: "測定中にマイクの入力レベルを調整します"}
+autoVolume.label: {value: "入力音量の自動調整"}
+autoVolume.saveFailed: {value: "入力音量の設定を保存できませんでした。"}
+autoVolume.unsupported: {value: "このデバイスでは入力レベルを調整できません。"}
+humFilter50: {value: "50 Hz"}
+humFilter60: {value: "60 Hz"}
+humFilterHint: {value: "電源ハムを除去します（欧州は 50 Hz、米州は 60 Hz）"}
+humFilterLabel: {value: "電源ハムフィルター"}
+lockedWhileRunning: {value: "音声入力を変更するにはチューナーを停止してください。"}
+
+# Detection and reference pitch
+continuousManual: {value: "固定した音の測定値を連続更新"}
+continuousManualHint: {value: "値が確定する前から固定した音の表示を更新します"}
+detection.balanced: {value: "バランス"}
+detection.balancedHint: {value: "約 0.5 秒で別の音に切り替わります"}
+detection.fast: {value: "高速"}
+detection.fastHint: {value: "最も速く切り替わりますが、別の音を誤って確定することがあります"}
+detection.steady: {value: "安定"}
+detection.steadyHint: {value: "従来の動作です。音の切り替えは遅めです"}
+detectionLabel: {value: "音の検出"}
+lockA4: {value: "基準ピッチを固定"}
+lockA4Hint: {value: "チューナーで A4 の値を変更できないようにします"}
+
+# Reading units, tolerance and note names
+beatUnitHint: {value: "ヘルツ、または音の周波数の 0.06 % を 1 単位とする値"}
+beatUnitLabel: {value: "うなりの単位"}
+errorReference: {value: "偏差の基準"}
+errorReferenceGoal: {value: "目標音高"}
+
+errorReferenceHint:
+  value: "音階の音高または調律の目標音高からの偏差を表示します。目標を基準にすると、目標音高での表示はゼロです。"
+errorReferenceScale: {value: "音階"}
+scaleNamingHint: {value: "音名の表し方"}
+scaleNamingLabel: {value: "音名表記"}
+scaleNamings.cdefgab: {value: "C D E F G A B（国際式、嬰音の例：C#）"}
+scaleNamings.cdefgah: {value: "C D E F G A H（ドイツ式、嬰音の例：C#）"}
+scaleNamings.doremi: {value: "ド レ ミ（階名）"}
+scaleNamings.polish: {value: "C Cis D Dis E F Fis G Gis A Ais H（ポーランド式）"}
+toleranceBeat: {value: "うなり"}
+toleranceHint: {value: "調律済みとみなすリードの音高やうなりの偏差の上限"}
+toleranceLabel: {value: "許容差"}
+toleranceReed: {value: "リード"}
+unitHint: {value: "セント、または音の周波数の 0.06 % を 1 単位とする値"}
+unitLabel: {value: "偏差の単位"}
+
+# Appearance, language and window behavior
+accent.auto: {value: "システムに従う"}
+accent.custom: {value: "カスタム"}
+accent.hint: {value: "システムのアクセントカラーまたは任意の色"}
+accent.label: {value: "アクセントカラー"}
+accent.pick: {value: "色を選択"}
+accent.pickTitle: {value: "アクセントカラー"}
+closeToTray: {value: "閉じるときはトレイに最小化"}
+closeToTrayHint: {value: "ウィンドウを閉じてもアプリはトレイに残ります"}
+checkUpdates: {value: "更新を確認", description: "Desktop settings checkbox enabling GitHub update checks."}
+checkUpdatesHint: {value: "GitHub で新しいバージョンを探します", description: "Hint below the desktop update-check checkbox."}
+languageHint: {value: "画面の表示言語"}
+languageLabel: {value: "言語"}
+phoneLayout.hint: {value: "ウィンドウをスマートフォンの大きさにして Android のレイアウトを確認します", description: "Debug builds only."}
+phoneLayout.label: {value: "スマートフォン表示", description: "Debug builds only."}
+phoneLayout.landscape: {value: "横向き", description: "Debug builds only. The phone held on its side."}
+phoneLayout.off: {value: "オフ", description: "Debug builds only. The normal desktop window."}
+phoneLayout.portrait: {value: "縦向き", description: "Debug builds only. The phone held upright."}
+themeHint: {value: "システムに従う、ライト、ダーク"}
+themeLabel: {value: "テーマ"}
+themes.auto: {value: "システムに従う"}
+themes.dark: {value: "ダーク"}
+themes.light: {value: "ライト"}
+
+# Sound-card calibration
+calibration.askBody:
+  value: "サンプリングクロックが未校正の場合、測定値に一定の小さな誤差が生じることがあります。校正は約 1 分で、音を出す必要はありません。"
+calibration.askCalibrate: {value: "今すぐ校正"}
+calibration.askContinue: {value: "補正せずに続ける"}
+calibration.askTitle: {value: "このサウンドカードは未校正です"}
+calibration.hint: {value: "サウンドカードのクロック誤差を補正します。約 1 分で、音は不要です。"}
+calibration.label: {value: "サウンドカードの校正"}
+calibration.open: {value: "開く"}
+calibration.openHint: {value: "測定を開始せずに校正画面を開きます"}
+calibration.saveFailed: {value: "校正結果を保存できませんでした。チューナーは以前の保存状態を使用します。"}
+calibration.screen.again: {value: "再校正"}
+calibration.screen.bar.confirming: {value: "確認中"}
+calibration.screen.bar.settling: {value: "安定待ち"}
+
+calibration.screen.calibrated:
+  value: "校正済みです。測定値の補正量は {percent} % です。"
+  placeholders:
+    percent: {type: string}
+
+calibration.screen.calibrating: {value: "サウンドカードのクロックを測定中"}
+
+calibration.screen.how:
+  value: "音高の測定値に一定の小さな誤差が生じることがあります。校正には約 1 分かかります。音は不要です。"
+
+calibration.screen.lead: {value: "未校正"}
+
+calibration.screen.phase.confirming:
+  value: "測定値が安定しました。この状態が 20 秒間続くか確認しています。"
+
+calibration.screen.phase.preparing: {value: "入力が安定してからクロックを測定します。"}
+calibration.screen.phase.settling: {value: "クロックの測定値が安定するのを待っています。"}
+
+calibration.screen.pitch:
+  value: "どの音でも、これは音高のずれ {pitch} に相当します。"
+  placeholders:
+    pitch: {type: string}
+
+calibration.screen.preparing: {value: "入力を準備中"}
+calibration.screen.retry: {value: "測定値は未補正です。他の音声アプリを閉じてやり直してください。"}
+calibration.screen.return: {value: "戻る"}
+calibration.screen.stat.dropouts: {value: "ドロップアウト回数"}
+calibration.screen.stat.elapsed: {value: "経過時間"}
+calibration.screen.stat.offset: {value: "クロック偏差"}
+calibration.screen.stat.rate: {value: "サンプルレート"}
+calibration.screen.stat.steadiness: {value: "安定度"}
+
+calibration.screen.steadiness:
+  value: "{ppm} ppm、目標 {target} ppm"
+  placeholders:
+    ppm: {type: string}
+    target: {type: string}
+
+calibration.screen.steps.done: {value: "完了"}
+calibration.screen.steps.measure: {value: "測定"}
+calibration.screen.steps.prepare: {value: "準備"}
+calibration.screen.traceEmpty: {value: "測定中はここにクロック偏差のグラフが表示されます。"}
+calibration.screen.unreliable: {value: "クロックが安定しませんでした"}
+calibration.start: {value: "校正"}
+calibration.startHint: {value: "入力のサンプリングクロックを測定します"}
+
+calibration.status.calibrated:
+  value: "校正済み、{percent} %"
+  placeholders:
+    percent: {type: string}
+
+calibration.status.calibrating:
+  value: "校正中、{seconds} 秒（{percent} %）、進捗 {progress} %"
+  placeholders:
+    percent: {type: string}
+    progress: {type: string}
+    seconds: {type: string}
+
+calibration.status.preparing: {value: "準備中"}
+calibration.status.uncalibrated: {value: "未校正"}
+calibration.status.unreliable: {value: "校正結果の信頼性が低いため測定値は未補正です"}
+
+# Settings section headings
+groups.appearance: {value: "外観"}
+groups.detection: {value: "検出"}
+groups.microphone: {value: "マイク"}
+groups.output: {value: "出力", description: "Settings section shown on a phone, holding the output volume."}
+groups.readings: {value: "測定値"}
+groups.report: {value: "調律工房の情報"}
+
+# Report letterhead
+report.address: {value: "住所"}
+report.name: {value: "調律工房名"}
+report.nameHint: {value: "レターヘッドを有効にすると、書き出したレポートに表示されます。"}

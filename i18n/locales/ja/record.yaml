@@ -1,0 +1,67 @@
+# Recording controls and readings (ja).
+# Translate value and plural.forms only. Keep keys and {placeholders} unchanged.
+# Editing guide: ../../README.md.
+
+# Recording controls
+arm.hint: {value: "音が確定するたびに測定値を記録します（Enter で今すぐ記録）"}
+arm.needsSession: {value: "測定値を記録するにはセッションを開いてください"}
+arm.warmup: {value: "記録は停止中です。自由に演奏できます。測定値を保存するには押してください。"}
+undo.hint: {value: "直前の記録を取り消す"}
+
+# Readings table and compact columns
+mobile.current: {value: "測定値"}
+mobile.error: {value: "偏差"}
+
+table.beat:
+  value: "うなり {pair}"
+  placeholders:
+    pair: {type: string}
+
+table.delete: {value: "この測定値を削除"}
+table.deleteHint: {value: "この測定値を完全に削除します。もう一度同じ音を出して記録すると、新しい値に置き換えられます。"}
+table.deleteTitle: {value: "この測定値を削除しますか？"}
+table.editHint: {value: "クリックまたは Enter で値を編集"}
+table.empty: {value: "記録を開始して音を鳴らすと、測定値が保存されます。"}
+table.graph: {value: "グラフ"}
+
+table.graphHint:
+  value: "各リードの測定値と目標値を比較します。列をクリックすると対応する行を選択し、もう一度クリックすると次のレジスターを選択します。"
+table.graphLabel: {value: "記録した音ごとのリードの誤差"}
+table.helpTitle: {value: "この表について"}
+table.label: {value: "調律記録"}
+table.latest: {value: "直近の記録：Backspace で削除"}
+table.manual: {value: "編集済み"}
+table.manualHint: {value: "この行には音から測定せずに手入力した値があります。"}
+
+table.notes:
+  plural:
+    argument: count
+    forms:
+      other: "{count} 音"
+  placeholders:
+    count: {type: integer}
+
+table.unitHint:
+  value: "リードの偏差には設定で選んだ単位を使います。うなりにはツールバーで選んだヘルツまたは偏差の単位を使います。"
+# Report export dialog
+report.csv: {value: "CSV"}
+report.date: {value: "日付"}
+report.format: {value: "形式"}
+
+report.formatHint:
+  value: "PDF は調律カードを印刷時と同じ A4 用紙 1 枚に収めます。HTML は同じカードのウェブ版、CSV は表計算用の表です。"
+report.html: {value: "HTML"}
+report.notes: {value: "カードの備考"}
+report.notesHint: {value: "表の下に印刷します。済んだ作業や残りの作業を入力してください。"}
+
+report.pass:
+  value: "測定回：{label}"
+  placeholders:
+    label: {type: string}
+
+report.pdf: {value: "PDF"}
+report.title: {value: "調律カード"}
+
+# Recording errors
+error.takeNotFound: {value: "この測定回にはその記録がありません。"}
+error.unexpected: {value: "操作に失敗しました。詳細はログを確認してください。"}
