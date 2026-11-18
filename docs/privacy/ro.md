@@ -18,7 +18,7 @@ Când alegi un fișier WAV, SmeggTuner îl citește pentru redare și analiză. 
 
 Aplicația păstrează local preferințe precum limba, tema, frecvența de referință și calibrarea audio. Baza de date locală poate conține și lucrări de acordaj salvate în edițiile care oferă aceste funcții.
 
-Jurnalele tehnice pot conține erori ale aplicației, detalii despre dispozitiv sau echipamentele audio, setări și căi către fișiere. Jurnalele sunt păstrate local, inclusiv jurnalul de sistem Android. Aplicația nu încarcă automat aceste jurnale și nu trimite dezvoltatorului rapoarte de închidere neașteptată. Dacă alegi să trimiți un jurnal sau o captură de ecran pentru asistență, verifică mai întâi conținutul și elimină ce nu dorești să comunici.
+Jurnalele tehnice pot conține erori ale aplicației, detalii despre dispozitiv sau echipamentele audio, setări și căi către fișiere. Jurnalele sunt păstrate local, inclusiv jurnalul de sistem Android. Aplicația nu transmite automat aceste jurnale și nici nu trimite automat dezvoltatorului rapoarte despre închiderile neașteptate. Dacă alegi să trimiți un jurnal sau o captură de ecran pentru asistență, verifică mai întâi conținutul și elimină ce nu dorești să comunici.
 
 Aplicația Android folosește spațiul de stocare privat al aplicației. Nu adaugă un strat suplimentar de criptare pentru baza de date locală sau pentru fișiere. Protecția depinde și de setările de securitate ale dispozitivului. Copiile de rezervă Android și transferul între dispozitive sunt activate. În funcție de versiunea Android, de dispozitiv și de setările pentru copii de rezervă, sistemul de operare poate copia datele aplicației la furnizorul tău de copii de rezervă sau pe alt dispozitiv. Dezvoltatorul nu primește aceste copii. Le poți gestiona de pe dispozitiv și prin furnizorul tău.
 
@@ -52,7 +52,7 @@ Corespondența cu asistența este păstrată atât timp cât este necesar pentru
 
 ## Opțiunile și drepturile tale
 
-În măsura în care se aplică legislația privind protecția datelor, poți avea dreptul de a accesa, rectifica sau șterge datele tale cu caracter personal, de a restricționa prelucrarea sau de a te opune acesteia și de a primi o copie portabilă. Poți depune și o plângere la autoritatea locală pentru protecția datelor. Contactează dezvoltatorul pentru a-ți exercita drepturile. Poate fi necesară verificarea identității pentru a evita divulgarea datelor altei persoane.
+În măsura în care se aplică legislația privind protecția datelor, poți avea dreptul de a accesa, rectifica sau șterge datele tale cu caracter personal, de a restricționa prelucrarea sau de a te opune acesteia și de a primi o copie portabilă. Poți depune și o plângere la autoritatea locală pentru protecția datelor. Contactează dezvoltatorul pentru a-ți exercita drepturile. Poate fi necesară verificarea identității pentru ca datele tale să nu fie comunicate altcuiva.
 
 Prelucrarea necesară pentru furnizarea și securizarea site-ului sau pentru a răspunde cererilor se bazează pe scopul serviciului respectiv și pe interese legitime, acolo unde legea permite. Informațiile pot fi păstrate și pentru îndeplinirea obligațiilor legale. Furnizorii de servicii pot prelucra informații în alte țări decât a ta, conform condițiilor și garanțiilor aplicabile. Aplicația nu creează un cont, așadar nu există un cont SmeggTuner de șters.
 

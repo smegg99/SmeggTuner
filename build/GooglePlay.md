@@ -11,15 +11,11 @@ Android release: a local page or an unpublished source file is not sufficient.
 The app includes the complete policy in About and reads it without an internet
 connection. Its optional online-version button opens the public website.
 
-The canonical policy files are bundled from the SmeggTuner repository root:
-
-- `PRIVACY.md`
-- `PRIVACY.pl.md`
-
-Run `just privacy-site` after editing them to update the generated copies in
+The app bundles one Markdown file per language from [docs/privacy](../docs/privacy/).
+Run `just privacy-site` after editing a policy to update the generated copies in
 SmeggTunerSite's `web/app/content/privacy/`. `just privacy-site --check` verifies
-that both copies match before deployment. The Help dialog likewise bundles
-`USAGE.md`, `USAGE.pl.md` and their screenshots, so the guide works offline.
+that every website copy matches its source before deployment. The Help dialog likewise bundles
+[the usage guides](../docs/usage/) and their screenshots, so the guide works offline.
 
 Developer name: `smegg99`. Public privacy contact: `support@smegg.me`.
 Keep the app's behavior, policy and Play Console declarations consistent.
@@ -28,7 +24,7 @@ and logs, Android backups, support requests, deletion and website processing.
 Website analytics and security providers are separate from Android app behavior.
 
 The page must return readable HTML over HTTPS worldwide, without signing in,
-an editor, a download or a bot challenge. Check the app link, both languages,
+an editor, a download or a bot challenge. Check the app link, localized pages,
 mobile layout and the published content after deployment. Google requires both
 an in-app policy and a public URL. See the
 [User Data policy](https://support.google.com/googleplay/android-developer/answer/10144311?hl=en).

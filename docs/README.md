@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/smeggtuner-readme.svg" alt="SmeggTuner" width="240">
+  <img src="../assets/smeggtuner-readme.svg" alt="SmeggTuner" width="240">
 </p>
 
 <p align="center">
@@ -18,15 +18,15 @@ It is a beta and has seen few accordions and sound cards so far. Check a reading
 trust before you file a reed.
 
 <p align="center">
-  <img src="assets/screenshots/smeggtuner-recording-analysis.png" alt="Three reeds of C4 read from a recording" width="760">
+  <img src="../assets/screenshots/smeggtuner-recording-analysis.png" alt="Three reeds of C4 read from a recording" width="760">
 </p>
 
-[How to use SmeggTuner, with pictures](USAGE.md).
+[How to use SmeggTuner, with pictures](usage/en.md).
 
 ## What it does
 
-Tones reads the reeds of one note; Octaves and Chords read across notes. Deviation is in Dirk's units
-(0.06 % of the note, about a cent) or in cents, and beats in Hz or units. Note detection is Fast,
+In Single note mode, play one note to measure up to three reeds together. Octaves and Chords measure
+several pitches at once. Deviation is in Dirk's units (0.06% of the note frequency, about a cent) or in cents, and beats in Hz or units. Note detection is Fast,
 Balanced or Steady; Steady picks and locks a note the way Dirk's tuner does.
 
 Every microphone gets its own sound card calibration, which takes about a minute and needs no sound,
@@ -51,7 +51,7 @@ reports) is switched off in 1.4. The code is still here and comes back in a late
 | Source | Closed | AGPL-3.0-only |
 | Systems | Windows, macOS | Linux, Windows; Android and browser, experimental |
 | Reeds at once | 3 | 3 |
-| Tones, Octaves, Chords | Yes | Yes |
+| Single note, Octaves, Chords | Yes | Yes |
 | Sound card calibration | Per device | Per microphone |
 | Detection | One setting | Fast, Balanced, Steady |
 | WAV files | Not in its menus | Yes |
@@ -76,20 +76,20 @@ Prices from [dirksprojects.com](https://www.dirksprojects.com/), October 2026.
 - Windows x86_64: installer, portable exe
 - Android ARM64: APK, experimental
 
-[CHANGELOG.md](CHANGELOG.md) lists what changed.
+[CHANGELOG.md](../CHANGELOG.md) lists what changed.
 
 <table>
   <tr>
-    <td><img src="assets/screenshots/smeggtuner-tuning.png" alt="Two reeds and their beat" width="400"></td>
-    <td><img src="assets/screenshots/smeggtuner-tuner-idle.png" alt="Waiting for a note" width="400"></td>
+    <td><img src="../assets/screenshots/smeggtuner-tuning.png" alt="Two reeds and their beat" width="400"></td>
+    <td><img src="../assets/screenshots/smeggtuner-tuner-idle.png" alt="Waiting for a note" width="400"></td>
   </tr>
   <tr>
-    <td><img src="assets/screenshots/smeggtuner-input-devices.png" alt="Choosing the input" width="400"></td>
-    <td><img src="assets/screenshots/smeggtuner-settings.png" alt="Settings" width="400"></td>
+    <td><img src="../assets/screenshots/smeggtuner-input-devices.png" alt="Choosing the input" width="400"></td>
+    <td><img src="../assets/screenshots/smeggtuner-settings.png" alt="Settings" width="400"></td>
   </tr>
   <tr>
-    <td><img src="assets/screenshots/smeggtuner-calibration-warmup.png" alt="Sound card calibration warming up" width="400"></td>
-    <td><img src="assets/screenshots/smeggtuner-calibration-complete.png" alt="Sound card calibration done" width="400"></td>
+    <td><img src="../assets/screenshots/smeggtuner-calibration-warmup.png" alt="Sound card calibration warming up" width="400"></td>
+    <td><img src="../assets/screenshots/smeggtuner-calibration-complete.png" alt="Sound card calibration done" width="400"></td>
   </tr>
 </table>
 
@@ -122,12 +122,12 @@ Locales live in `i18n/locales/` and the settings schema in
 `backend/common/config/config.cue`; `just generate` rebuilds everything made from them, plus the
 bindings, icons and S99Wails helpers.
 
-To translate the app, follow the [translation guide](i18n/README.md).
+To translate the app, follow the [translation guide](../i18n/README.md).
 `just locales` regenerates only translations; `just check-locales` validates them.
 
 `just web` builds the browser edition into `dist/web`. `just release` runs the checks and builds every
 target into `dist/release/<version>`; the Android APK needs the signing keystore described in
-[build/Android.md](build/Android.md).
+[build/Android.md](../build/Android.md).
 
 `deploy.json` deploys the browser edition with [S99Deploy](https://github.com/smegg99/S99Deploy):
 `deploy/app/fetch.sh` downloads the web archive of `VERSION` from its GitHub release and checks it against
@@ -146,7 +146,7 @@ window naming the file and the setting.
 Copyright (c) 2026 Smegg99.
 
 SmeggTuner is licensed under the GNU Affero General Public License, version 3 only
-(`AGPL-3.0-only`). See [LICENSE](LICENSE).
+(`AGPL-3.0-only`). See [LICENSE](../LICENSE).
 
 Distributed derivatives must remain under the AGPL and provide corresponding source code to
 recipients. Modified versions used to serve users over a network must also offer their corresponding

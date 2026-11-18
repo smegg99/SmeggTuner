@@ -105,6 +105,16 @@ Do not copy English's two-form structure over Polish's four forms.
 | File toward zero | Remove metal with a file to adjust a reed, not save a computer file |
 | Reference unit | A deviation of 0.06% of the note frequency; distinct from a cent |
 
+## Translate the control in context
+
+| Catalog key | What the user does |
+| --- | --- |
+| `common.about.support` / `common.about.donate` | The [About links](../frontend/app/components/shell/AboutLinks.vue) open an email to technical support and a Ko-fi donation page respectively. Use wording that tells the two actions apart. |
+| `tuner.mode.pinHint` / `tuner.hold.hint` | The [note button](../frontend/app/components/shell/ToolbarNote.vue) fixes the note the detector measures. The [snowflake](../frontend/app/components/shell/ToolbarReading.vue) keeps a stable reading on screen. |
+| `tuner.panel.modes.tones` | In the [mode selector](../frontend/app/components/tuner/ModePanel.vue), the player sounds one note. Several reeds can sound that note together. |
+| `tuner.signal.wave.reed` | In the [signal generator](../frontend/app/components/signal/SignalPanel.vue), this selects a synthesized reed sound for playback. |
+| `record.arm.hint` | Recording saves a tuning measurement whenever the detector locks onto a note. A take here is a set of measured values. |
+
 ## Generate and check
 
 From the repository root, with the project's Go, Node.js, Python and `just`
@@ -134,7 +144,7 @@ Add the code to [config.cue](config.cue) and the [settings schema](../backend/co
 Register the matching widget messages in the [Vuetify plugin](../frontend/app/plugins/vuetify.ts).
 The language picker, saved preferences and date formats use the generated locale list.
 
-Translate `PRIVACY.md` into `PRIVACY.<language-code>.md` and add its import to
-[the bundled policies](../frontend/app/utils/privacy.ts). Run `just locales`,
+Translate [the English privacy policy](../docs/privacy/en.md) into `docs/privacy/<language-code>.md`.
+The app bundles these files automatically. Run `just locales`,
 `just check-locales` and `just privacy-site` to generate the catalogs, check
 the references and copy the policy to the sibling SmeggTunerSite checkout.

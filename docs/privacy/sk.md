@@ -18,7 +18,7 @@ Keď vyberiete súbor WAV, SmeggTuner ho načíta na prehrávanie a analýzu. Kt
 
 Nastavenia jazyka, motívu, referenčnej frekvencie a kalibrácie zvuku sa ukladajú miestne. Miestna databáza môže obsahovať aj uložené výsledky práce z verzií, ktoré podporujú ukladanie ladenia.
 
-Technické denníky môžu obsahovať chyby aplikácie, informácie o zariadení alebo jeho zvukovom vybavení, nastavenia a cesty k súborom. Denníky vrátane systémového denníka Androidu zostávajú v zariadení. Aplikácia ich automaticky neodosiela ani neposiela vývojárovi hlásenia o pádoch. Ak sa rozhodnete poslať podpore denník alebo snímku obrazovky, najprv ich skontrolujte a odstráňte všetko, čo nechcete zdieľať.
+Technické denníky môžu obsahovať chyby aplikácie, informácie o zariadení alebo jeho zvukovom vybavení, nastavenia a cesty k súborom. Denníky vrátane systémového denníka Androidu zostávajú v zariadení. Denníky sa automaticky nikam neodosielajú. Ani hlásenie o páde sa vývojárovi neposiela automaticky. Ak sa rozhodnete poslať podpore denník alebo snímku obrazovky, najprv ich skontrolujte a odstráňte všetko, čo nechcete zdieľať.
 
 Verzia pre Android používa súkromné úložisko aplikácie. Pre miestnu databázu ani súbory nezabezpečuje ďalšiu vrstvu šifrovania. Ich ochrana závisí aj od nastavení zabezpečenia zariadenia. Zálohovanie v systéme Android a prenos medzi zariadeniami sú povolené. V závislosti od verzie Androidu, zariadenia a nastavení zálohovania môže systém skopírovať údaje aplikácie k poskytovateľovi záloh alebo do iného zariadenia. Vývojár tieto zálohy nedostáva. Spravovať ich môžete v zariadení a u svojho poskytovateľa záloh.
 

@@ -10,7 +10,7 @@ Adatvédelmi kérdéssel vagy kéréssel a [support@smegg.me](mailto:support@sme
 
 A SmeggTuner a mikrofon jeléből az Ön eszközén számítja ki a hangmagasságot, a sípok frekvenciáját és a lebegést. Androidon engedélyt kér a mikrofon használatára. Az Android alkalmazásbeállításaiban megtagadhatja vagy visszavonhatja ezt az engedélyt. Ilyenkor az élő mikrofonos hangolás nem érhető el. Hangfájl megnyitásához nincs szükség mikrofonengedélyre.
 
-A hangelemzés helyben történik. A SmeggTuner nem küld mikrofonhangot, importált hangfájlokat vagy hangolási méréseket a fejlesztőnek, analitikai vagy hirdetési szolgáltatásnak. Az elemzéshez az élő hang a memóriában marad. A hangoló elindítása nem ment automatikusan mikrofonfelvételt. Androidon a hangrögzítés és a generált hangok lejátszása leáll, amikor az alkalmazás a háttérbe kerül.
+A hangelemzés helyben történik. A SmeggTuner nem küld mikrofonhangot, importált hangfájlokat vagy hangolási méréseket a fejlesztőnek, analitikai vagy hirdetési szolgáltatásnak. Az elemzéshez az élő hang a memóriában marad. A hangoló elindítása nem ment automatikusan mikrofonfelvételt. Androidon a mikrofonjel vétele és a generált hangok lejátszása leáll, amikor az alkalmazás a háttérbe kerül.
 
 WAV-fájl kiválasztásakor a SmeggTuner beolvassa a fájlt lejátszáshoz és elemzéshez. Az Android dokumentumválasztója határozza meg, melyik fájlhoz férhet hozzá az alkalmazás. Ha felhőtárhely-szolgáltatót választ, az a saját eljárásai szerint letöltheti a fájlt. Ideiglenes helyi másolatok maradhatnak az alkalmazás gyorsítótárában mindaddig, amíg az Android vagy Ön ki nem üríti azt.
 
@@ -18,7 +18,7 @@ WAV-fájl kiválasztásakor a SmeggTuner beolvassa a fájlt lejátszáshoz és e
 
 Az alkalmazás helyben tárolja az olyan beállításokat, mint a nyelv, a téma, a referenciahang és a hangkalibrálás. A helyi adatbázis olyan kiadásokból származó mentett hangolási munkákat is tartalmazhat, amelyek támogatják ezt a funkciót.
 
-A műszaki naplók alkalmazáshibákat, az eszköz vagy a hangeszköz adatait, beállításokat és fájlútvonalakat tartalmazhatnak. A naplók, köztük az Android rendszernaplója, helyben maradnak. Az alkalmazás nem tölti fel automatikusan a naplókat, és nem küld összeomlási jelentést a fejlesztőnek. Ha segítségkéréshez naplót vagy képernyőképet küld, előbb nézze át, és távolítson el belőle mindent, amit nem szeretne megosztani.
+A műszaki naplók alkalmazáshibákat, az eszköz vagy a hangeszköz adatait, beállításokat és fájlútvonalakat tartalmazhatnak. A naplók, köztük az Android rendszernaplója, helyben maradnak. Az alkalmazás nem tölti fel automatikusan a naplókat, és hibajelentést sem küld automatikusan a fejlesztőnek az alkalmazás összeomlásáról. Ha segítségkéréshez naplót vagy képernyőképet küld, előbb nézze át, és távolítson el belőle mindent, amit nem szeretne megosztani.
 
 Az androidos alkalmazás a saját, elkülönített tárhelyét használja. Helyi adatbázisához és fájljaihoz nem biztosít további titkosítási réteget. A védelem az eszköz biztonsági beállításaitól is függ. Az androidos biztonsági mentés és az eszközök közötti átvitel engedélyezett. Az Android verziójától, az eszköztől és a mentési beállításoktól függően az operációs rendszer az alkalmazás adatait a biztonsági mentést kezelő szolgáltatóhoz vagy másik eszközre másolhatja. Ezeket a mentéseket a fejlesztő nem kapja meg. Az eszközön és a mentési szolgáltatónál kezelheti őket.
 

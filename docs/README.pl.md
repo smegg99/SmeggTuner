@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/smeggtuner-readme.svg" alt="SmeggTuner" width="240">
+  <img src="../assets/smeggtuner-readme.svg" alt="SmeggTuner" width="240">
 </p>
 
 <p align="center">
@@ -18,22 +18,22 @@ To wciąż beta, sprawdzona na niewielu akordeonach i kartach dźwiękowych. Zan
 stroik, porównaj odczyt z tunerem, któremu ufasz.
 
 <p align="center">
-  <img src="assets/screenshots/smeggtuner-recording-analysis.png" alt="Trzy stroiki C4 zmierzone z nagrania" width="760">
+  <img src="../assets/screenshots/smeggtuner-recording-analysis.png" alt="Trzy stroiki C4 zmierzone z nagrania" width="760">
 </p>
 
-[Jak używać SmeggTuner, ze zdjęciami](USAGE.pl.md).
+[Jak używać SmeggTuner, ze zdjęciami](usage/pl.md).
 
 ## Co potrafi
 
-Tuner mierzy dźwięki, oktawy albo akordy. W trybie Dźwięki pokazuje stroiki jednej nuty, w trybach
-Oktawy i Akordy kilka nut naraz. Odchyłkę podaje w jednostkach Dirka (0,06 % częstotliwości nuty, czyli
+W trybie „Jeden dźwięk” grasz jedną nutę, a tuner mierzy do trzech stroików naraz. W trybach
+„Oktawy” i „Akordy” mierzy kilka nut jednocześnie. Odchyłkę podaje w jednostkach Dirka (0,06 % częstotliwości nuty, czyli
 mniej więcej cent) albo w centach, a dudnienie w hercach albo w jednostkach. Wykrywanie nut ma trzy
 ustawienia: Szybkie, Zrównoważone i Stabilne. Stabilne wybiera i blokuje nutę tak samo jak tuner Dirka.
 
 Każdy mikrofon ma własną kalibrację karty dźwiękowej. Trwa około minuty i nie potrzebuje żadnego
-dźwięku. Szum tła tuner poznaje raz dla każdego mikrofonu, a przyciskiem na górnym pasku można go
-nauczyć od nowa. Głośność wejścia może ustawiać się sama. Przycisk ze śnieżynką zatrzymuje każdy
-zablokowany odczyt, dopóki dźwięk nie ucichnie.
+dźwięku. Tuner mierzy szum tła raz dla każdego mikrofonu. Pomiar można powtórzyć przyciskiem
+na górnym pasku. Głośność wejścia może ustawiać się sama. Przycisk ze śnieżynką zatrzymuje każdy
+stabilny odczyt, dopóki dźwięk nie ucichnie.
 
 Nagranie WAV mierzy się tak samo jak mikrofon. Można je odtwarzać, przewijać, zapętlać i powiększać.
 Kliknięcie w pasek nut gra wybraną nutę. A4 ustawia się od 430 do 450 Hz; jest też transpozycja, filtr
@@ -53,7 +53,7 @@ raporty) jest w 1.4 wyłączony. Warsztat wróci w którymś z kolejnych wydań.
 | Kod | Zamknięty | AGPL-3.0-only |
 | Systemy | Windows, macOS | Linux, Windows; Android i przeglądarka eksperymentalnie |
 | Stroiki naraz | 3 | 3 |
-| Dźwięki, oktawy, akordy | Tak | Tak |
+| Jeden dźwięk, oktawy, akordy | Tak | Tak |
 | Kalibracja karty dźwiękowej | Dla każdego urządzenia | Dla każdego mikrofonu |
 | Wykrywanie nut | Jedno ustawienie | Szybkie, Zrównoważone, Stabilne |
 | Pliki WAV | Brak w menu | Tak |
@@ -79,20 +79,20 @@ Najnowsza wersja jest na stronie
 - Windows x86_64: instalator i wersja przenośna
 - Android ARM64: APK, wersja eksperymentalna
 
-Co się zmieniło, opisuje [CHANGELOG.md](CHANGELOG.md).
+Co się zmieniło, opisuje [CHANGELOG.md](../CHANGELOG.md).
 
 <table>
   <tr>
-    <td><img src="assets/screenshots/smeggtuner-tuning.png" alt="Dwa stroiki i ich dudnienie" width="400"></td>
-    <td><img src="assets/screenshots/smeggtuner-tuner-idle.png" alt="Tuner czeka na dźwięk" width="400"></td>
+    <td><img src="../assets/screenshots/smeggtuner-tuning.png" alt="Dwa stroiki i ich dudnienie" width="400"></td>
+    <td><img src="../assets/screenshots/smeggtuner-tuner-idle.png" alt="Tuner czeka na dźwięk" width="400"></td>
   </tr>
   <tr>
-    <td><img src="assets/screenshots/smeggtuner-input-devices.png" alt="Wybór wejścia" width="400"></td>
-    <td><img src="assets/screenshots/smeggtuner-settings.png" alt="Ustawienia" width="400"></td>
+    <td><img src="../assets/screenshots/smeggtuner-input-devices.png" alt="Wybór wejścia" width="400"></td>
+    <td><img src="../assets/screenshots/smeggtuner-settings.png" alt="Ustawienia" width="400"></td>
   </tr>
   <tr>
-    <td><img src="assets/screenshots/smeggtuner-calibration-warmup.png" alt="Rozgrzewanie przed kalibracją karty dźwiękowej" width="400"></td>
-    <td><img src="assets/screenshots/smeggtuner-calibration-complete.png" alt="Kalibracja karty dźwiękowej zakończona" width="400"></td>
+    <td><img src="../assets/screenshots/smeggtuner-calibration-warmup.png" alt="Rozgrzewanie przed kalibracją karty dźwiękowej" width="400"></td>
+    <td><img src="../assets/screenshots/smeggtuner-calibration-complete.png" alt="Kalibracja karty dźwiękowej zakończona" width="400"></td>
   </tr>
 </table>
 
@@ -123,12 +123,12 @@ Tłumaczenia leżą w `i18n/locales/`, a schemat ustawień w `backend/common/con
 `just generate` odtwarza wszystko, co z nich powstaje, a do tego bindingi, ikony i pliki pomocnicze
 S99Wails.
 
-Zobacz [instrukcję tłumaczenia](i18n/README.md) (po angielsku).
+Zobacz [instrukcję tłumaczenia](../i18n/README.md) (po angielsku).
 `just locales` odtwarza tylko tłumaczenia, a `just check-locales` je sprawdza.
 
 `just web` buduje wersję przeglądarkową do `dist/web`. `just release` przepuszcza wszystkie
 sprawdzenia i buduje każdy cel do `dist/release/<wersja>`; APK na Androida potrzebuje klucza do
-podpisu, opisanego w [build/Android.md](build/Android.md).
+podpisu, opisanego w [build/Android.md](../build/Android.md).
 
 `deploy.json` wdraża wersję przeglądarkową przez [S99Deploy](https://github.com/smegg99/S99Deploy):
 `deploy/app/fetch.sh` pobiera archiwum webowe wersji z `VERSION` z jej wydania na GitHubie i sprawdza je
@@ -148,7 +148,7 @@ ustawienia.
 Copyright (c) 2026 Smegg99.
 
 SmeggTuner jest udostępniany na licencji GNU Affero General Public License, wyłącznie w wersji 3
-(`AGPL-3.0-only`). Szczegóły w [LICENSE](LICENSE).
+(`AGPL-3.0-only`). Szczegóły w [LICENSE](../LICENSE).
 
 Rozpowszechniane wersje pochodne muszą zachować licencję AGPL i udostępniać odbiorcom odpowiadający
 im kod źródłowy. Zmodyfikowane wersje obsługujące użytkowników przez sieć muszą również oferować im

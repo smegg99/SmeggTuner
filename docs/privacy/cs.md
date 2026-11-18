@@ -18,7 +18,7 @@ Když vyberete soubor WAV, SmeggTuner jej načte pro přehrávání a analýzu. 
 
 Nastavení jazyka, motivu, referenční frekvence a kalibrace zvuku se ukládají místně. Místní databáze může obsahovat také uložené výsledky práce z verzí, které ukládání ladění podporují.
 
-Technické protokoly mohou obsahovat chyby aplikace, informace o zařízení nebo jeho zvukovém vybavení, nastavení a cesty k souborům. Protokoly včetně systémového protokolu Androidu zůstávají v zařízení. Aplikace je automaticky neodesílá ani neposílá vývojáři hlášení o pádech. Pokud se rozhodnete poslat podpoře protokol nebo snímek obrazovky, nejprve jej zkontrolujte a odstraňte vše, co nechcete sdílet.
+Technické protokoly mohou obsahovat chyby aplikace, informace o zařízení nebo jeho zvukovém vybavení, nastavení a cesty k souborům. Protokoly včetně systémového protokolu Androidu zůstávají v zařízení. Protokoly se automaticky nikam neodesílají. Ani hlášení o pádu se vývojáři neposílá automaticky. Pokud se rozhodnete poslat podpoře protokol nebo snímek obrazovky, nejprve jej zkontrolujte a odstraňte vše, co nechcete sdílet.
 
 Verze pro Android používá soukromé úložiště aplikace. Pro místní databázi ani soubory nezajišťuje další vrstvu šifrování. Jejich ochrana závisí také na nastavení zabezpečení zařízení. Zálohování v systému Android a přenos mezi zařízeními jsou povoleny. V závislosti na verzi Androidu, zařízení a nastavení zálohování může systém zkopírovat data aplikace k poskytovateli záloh nebo do jiného zařízení. Vývojář tyto zálohy nedostává. Spravovat je můžete v zařízení a u svého poskytovatele záloh.
 

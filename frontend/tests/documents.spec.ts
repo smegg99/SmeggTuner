@@ -25,7 +25,11 @@ describe.each(['en', 'pl'] as const)('bundled %s documents', (locale) => {
     for (const link of article.querySelectorAll<HTMLAnchorElement>('a[href^="#"]:not([data-document-locale])')) {
       expect(article.querySelector(`[id="${decodeURIComponent(link.hash.slice(1))}"]`)).not.toBeNull()
     }
-    expect(article.querySelector('a[data-document-locale]')).not.toBeNull()
+    const other = locale === 'en' ? 'pl' : 'en'
+    expect(article.querySelector('a[data-document-locale]')?.getAttribute('data-document-locale')).toBe(other)
+    const download = locale === 'en' ? 'README.md#download' : 'README.pl.md#pobieranie'
+    expect(article.querySelector(`a[href="https://github.com/smegg99/SmeggTuner/blob/main/docs/${download}"]`)).not.toBeNull()
+    expect(documentURL('guide', locale)).toBe(`https://github.com/smegg99/SmeggTuner/blob/main/docs/usage/${locale}.md`)
     expect(article.querySelectorAll('a[data-document-image]').length).toBe(6)
   })
 

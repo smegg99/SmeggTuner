@@ -18,13 +18,12 @@ def main():
         parser.error(f"Privacy content directory does not exist: {destination}")
     manifest = ROOT / "backend/common/i18n/loc-manifest.json"
     languages = json.loads(manifest.read_text())["locales"]
-    policies = {code: ROOT / ("PRIVACY.md" if code == "en" else f"PRIVACY.{code}.md")
-                for code in languages}
+    policies = {code: ROOT / "docs/privacy" / f"{code}.md" for code in languages}
     for path in policies.values():
         if not path.is_file():
             parser.error(f"Missing translated privacy policy: {path.name}")
     for locale, path in policies.items():
-        name = path.name
+        name = path.relative_to(ROOT).as_posix()
         source = path.read_text()
         content = f"<!-- Generated from SmeggTuner/{name} by scripts/sync-privacy.py. -->\n\n" + source
         target = destination / f"{locale}.md"
