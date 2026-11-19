@@ -1,11 +1,9 @@
 <!-- lang:en -->
 
-## SmeggTuner 1.4.7
+## SmeggTuner 1.4.8
 
-Added 25 translations. You can now choose from 27 languages in Settings,
-including separate options for Brazilian and European Portuguese and for
-Simplified and Traditional Chinese. The privacy policy is available offline
-in all 27 languages.
+The x86_64 AppImage now runs on Ubuntu 22.04. Download
+`SmeggTuner-1.4.8-x86_64.AppImage` for this build.
 
 ### Supported platforms
 
@@ -23,12 +21,10 @@ iOS and macOS are not currently supported.
 
 <!-- lang:pl -->
 
-## SmeggTuner 1.4.7
+## SmeggTuner 1.4.8
 
-Dodano 25 tłumaczeń. W ustawieniach można teraz wybrać jeden z 27 języków,
-w tym portugalski w odmianie brazylijskiej lub europejskiej oraz chiński
-z pismem uproszczonym lub tradycyjnym. Polityka prywatności jest dostępna
-bez połączenia z internetem we wszystkich 27 językach.
+Wersja AppImage dla architektury x86_64 działa teraz na Ubuntu 22.04.
+Aby z niej skorzystać, pobierz plik `SmeggTuner-1.4.8-x86_64.AppImage`.
 
 ### Obsługiwane platformy
 
