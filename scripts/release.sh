@@ -31,11 +31,14 @@ linux() {
     host=$(uname -m)
     case "$host" in x86_64) host=amd64 ;; aarch64) host=arm64 ;; esac
     if [[ "$arch" == "$host" ]]; then
+        local image_name="$name.AppImage"
+        if [[ "$arch" == amd64 ]]; then image_name="SmeggTuner-$version-x86_64.AppImage"; fi
+        rm -f -- "$out/$image_name"
         VERSION=$version EXTRA_TAGS=gtk3 CI=true "${node[@]}" go tool wails3 task linux:package ARCH="$arch" || return 1
         local images=(bin/"$app"-*.AppImage)
         [[ ${#images[@]} == 1 ]] || { echo "ERR: expected one AppImage for linux/$arch, found ${#images[@]}" >&2; exit 1; }
         require "${images[0]}"
-        mv -f -- "${images[0]}" "$out/$name.AppImage"
+        mv -f -- "${images[0]}" "$out/$image_name"
     else
         bash scripts/linux-cross.sh "$arch" "bin/$app" || return 1
         for f in deb rpm aur; do

@@ -93,7 +93,19 @@ tasks:
       - task: create:aur
 
   create:appimage:
-    summary: Creates an AppImage
+    summary: Builds the AppImage for the native Linux architecture
+    cmds:
+      - task: '{{if eq ARCH "amd64"}}appimage:jammy{{else}}appimage:native{{end}}'
+
+  appimage:jammy:
+    internal: true
+    deps:
+      - task: build
+    cmds:
+      - bash scripts/appimage.sh bin/smeggtuner-x86_64.AppImage
+
+  appimage:native:
+    internal: true
     dir: build/linux/appimage
     deps:
       - task: build

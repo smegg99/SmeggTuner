@@ -63,6 +63,11 @@ test: build
 web:
     bash scripts/web.sh dist/web
 
+# Build bin/SmeggTuner-VERSION-x86_64.AppImage using Ubuntu 22.04 (Linux amd64, Docker).
+appimage:
+    @test "$(uname -sm)" = "Linux x86_64" || { echo "AppImage target requires Linux x86_64" >&2; exit 1; }
+    bash scripts/build.sh appimage
+
 # Build the per-user Linux archive and checksum in dist/.
 package: build
     scripts/package.sh bin/smeggtuner dist

@@ -80,7 +80,8 @@ class ReleaseTests(unittest.TestCase):
         result, files, sums = self.run_release("linux/amd64")
         self.assertEqual(result.returncode, 0, result.stderr)
         names = ["smeggtuner-1.2.3-linux-amd64" + suffix for suffix in
-                 (".AppImage", ".deb", ".pkg.tar.zst", ".rpm", ".tar.zst")]
+                 (".deb", ".pkg.tar.zst", ".rpm", ".tar.zst")]
+        names.append("SmeggTuner-1.2.3-x86_64.AppImage")
         self.assertEqual(files, sorted(names + ["SHA256SUMS"]))
         self.assertEqual(sorted(line.split()[1] for line in sums.splitlines()), sorted(names))
 

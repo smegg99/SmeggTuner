@@ -8,9 +8,9 @@ binary=bin/smeggtuner
 # Debug builds carry the Smegglect overlay and its save and bridge service; production builds neither.
 overlay=0
 case "$mode" in
-    production) tags=gtk3,production; ldflags="-s -w"; flags=(-trimpath) ;;
+    production|appimage) tags=gtk3,production; ldflags="-s -w"; flags=(-trimpath) ;;
     debug) tags=gtk3; ldflags=""; flags=(-gcflags=all=-l); overlay=1 ;;
-    *) echo "ERR: build mode must be production or debug" >&2; exit 2 ;;
+    *) echo "ERR: build mode must be production, debug or appimage" >&2; exit 2 ;;
 esac
 
 node=(python3 scripts/node_env.py)
@@ -20,4 +20,7 @@ SMEGGLECT_DEBUG=$overlay "${node[@]}" pnpm --dir frontend generate
 rm -rf -- backend/frontend/public
 mkdir -p backend/frontend/public bin
 cp -a frontend/.output/public/. backend/frontend/public/
+if [[ "$mode" == appimage ]]; then
+    exec bash scripts/appimage.sh
+fi
 CGO_ENABLED=1 go build -tags "$tags" -buildvcs=false "${flags[@]}" -ldflags "$ldflags" -o "$binary" ./backend
